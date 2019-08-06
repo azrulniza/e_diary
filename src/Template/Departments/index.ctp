@@ -1,14 +1,5 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="actions">
-            <ul class="side-nav btn-group">
-                <li class="btn btn-primary btn-sm"><?= $this->Html->link(__('New Department'), ['action' => 'add']) ?></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
         <div class="box box-info">
             <div class="box-header"></div>
             <div class="box-body">
@@ -28,7 +19,7 @@
                         <?php foreach ($departments as $key => $department): ?>
                             <tr id="<?= $department->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $this->Number->format($department->id) ?></td>
-                                <td><?= $this->Number->format($department->name) ?></td>
+                                <td><?= h($department->name) ?></td>
                                 <td><?= h($department->date_created) ?></td>
                                 <td><?= h($department->date_modified) ?></td>
                                 <td class="actions">

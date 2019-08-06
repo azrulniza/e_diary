@@ -16,7 +16,7 @@ class DepartmentsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'name' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'date_created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'date_modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -38,9 +38,9 @@ class DepartmentsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'name' => 1,
-                'date_created' => '2019-08-06 23:58:24',
-                'date_modified' => '2019-08-06 23:58:24'
+                'name' => 'Lorem ipsum dolor sit amet',
+                'date_created' => '2019-08-07 00:13:54',
+                'date_modified' => '2019-08-07 00:13:54'
             ],
         ];
         parent::init();

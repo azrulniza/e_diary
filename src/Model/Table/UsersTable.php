@@ -30,6 +30,9 @@ class UsersTable extends Table {
         $this->addBehavior('Timestamp');
 		$this->addBehavior('Captcha.Captcha', ['field'=>'<captcha>']);
 
+        $this->belongsTo('Departments', [
+            'foreignKey' => 'department_id'
+        ]);
         $this->belongsToMany('Roles', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'role_id',
@@ -120,6 +123,7 @@ class UsersTable extends Table {
     public function buildRules(RulesChecker $rules) {
         $rules->add($rules->isUnique(['email']));
         //$rules->add($rules->existsIn(['role_id'], 'Roles'));
+        $rules->add($rules->existsIn(['department_id'], 'Departments'));
         return $rules;
     }
 	

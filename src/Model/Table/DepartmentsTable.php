@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Departments Model
  *
- * @property |\Cake\ORM\Association\HasMany $Users
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\HasMany $Users
  *
  * @method \App\Model\Entity\Department get($primaryKey, $options = [])
  * @method \App\Model\Entity\Department newEntity($data = null, array $options = [])
@@ -54,8 +54,9 @@ class DepartmentsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->integer('name')
-            ->notEmptyString('name');
+            ->scalar('name')
+            ->maxLength('name', 255)
+            ->allowEmptyString('name');
 
         $validator
             ->dateTime('date_created')

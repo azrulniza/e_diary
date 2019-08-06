@@ -1,18 +1,3 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Department $department
- */
-?>
-<div class="row">
-    <div class="col-xs-12">
-        <div class="actions">
-            <ul class="side-nav btn-group">
-                <li class="btn btn-info btn-sm"><?= $this->Html->link(__('List Departments'), ['action' => 'index']) ?></li>
-            </ul>
-        </div>
-    </div>
-</div>
 <div class="row">
     <div class="col-xs-12">
         <div class="departments form">

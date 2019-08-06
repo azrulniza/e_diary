@@ -394,9 +394,9 @@ class UsersController extends AppController
             $roles = $this->Users->Roles->find('list')->where(['id IN' => [CLIENT]]);
 
         }
-
+		$departments = $this->Users->Departments->find('list', ['limit' => 200]);
         $userStatus = $this->userStatus;
-        $this->set(compact('user', 'roles', 'userStatus'));
+        $this->set(compact('user', 'roles', 'userStatus','departments'));
         $this->set('_serialize', ['user']);
     }
 

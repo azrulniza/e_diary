@@ -7,9 +7,11 @@ use Cake\ORM\Entity;
  * Department Entity
  *
  * @property int $id
- * @property int $name
+ * @property string|null $name
  * @property \Cake\I18n\Time|null $date_created
  * @property \Cake\I18n\Time|null $date_modified
+ *
+ * @property \App\Model\Entity\User[] $users
  */
 class Department extends Entity
 {
@@ -25,6 +27,7 @@ class Department extends Entity
     protected $_accessible = [
         'name' => true,
         'date_created' => true,
-        'date_modified' => true
+        'date_modified' => true,
+        'users' => true
     ];
 }

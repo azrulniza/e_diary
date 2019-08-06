@@ -26,9 +26,9 @@ $this->Html->script('users', ['block' => 'script']);
                         echo $this->Form->input('new_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter new password'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false]);
                         echo $this->Form->input('confirm_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter password confirmation'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false]);
                         echo $this->Form->input('status', ['class' => 'form-control', 'options' => $userStatus]);
+						echo $this->Form->input('department_id', ['options' => $departments, 'empty' => __('-- Please Select --'), 'class' => 'form-control']);
 						if($user_level == 1 OR $user_level == 2){
 							echo $this->Form->input('roles._ids', ['options' => $roles, 'multiple' => 'checkbox']);
-							echo $this->Form->input('resellers._ids', ['options' => $resellers, 'multiple' => 'checkbox']);
 						}
                        ?>
 						<!--<b>Clients</b><br>

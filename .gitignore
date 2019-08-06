@@ -1,2 +1,9 @@
 .DS_Store
-
+composer.lock
+/config/app.php
+/config/routes.php
+/config/acl.ini
+/tmp/*
+/logs/*
+/webroot/uploads/*
+/webroot/files/*

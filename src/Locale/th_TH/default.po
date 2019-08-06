@@ -1,0 +1,2296 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-11-07 09:59+0800\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/ClientCmsesController.php:21;70;113
+msgid "Client CMS"
+msgstr ""
+
+#: Controller/ClientCmsesController.php:93;123
+msgid "The client cmse has been saved."
+msgstr ""
+
+#: Controller/ClientCmsesController.php:96;126
+msgid "The client cmse could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ClientCmsesController.php:145
+msgid "The client cmse has been deleted."
+msgstr ""
+
+#: Controller/ClientCmsesController.php:147
+msgid "The client cmse could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ClientHistoriesController.php:58;86
+msgid "The client history has been saved."
+msgstr ""
+
+#: Controller/ClientHistoriesController.php:61;89
+msgid "The client history could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ClientHistoriesController.php:111
+msgid "The client history has been deleted."
+msgstr ""
+
+#: Controller/ClientHistoriesController.php:113
+msgid "The client history could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:25
+msgid "Client Subscriptions"
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:219;235;283
+msgid "Client Subscription"
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:258;310
+msgid "The subscription client has been saved."
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:261;313
+msgid "The subscription client could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:338
+msgid "The subscription client has been deleted."
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:340
+msgid "The subscription client could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ClientsController.php:153;195
+msgid "The client has been saved."
+msgstr ""
+
+#: Controller/ClientsController.php:156;198
+msgid "The client could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ClientsController.php:242
+msgid "The post with id: {0} has been deleted."
+msgstr ""
+
+#: Controller/ClientsController.php:244
+msgid "The client could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/DeviceLocationsController.php:22;38;54;87
+msgid "Device Locations"
+msgstr ""
+
+#: Controller/DeviceLocationsController.php:67;102
+msgid "The device location has been saved."
+msgstr ""
+
+#: Controller/DeviceLocationsController.php:71;106
+msgid "The device location could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/DeviceLocationsController.php:143
+msgid "The device location has been deleted."
+msgstr ""
+
+#: Controller/DeviceLocationsController.php:145
+msgid "The device location could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:30
+#: Model/Entity/DeviceStatus.php:41
+msgid "Updated"
+msgstr ""
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:29;30
+#: Model/Entity/DeviceStatus.php:42
+msgid "Pending"
+msgstr ""
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:30
+#: Model/Entity/DeviceStatus.php:43
+msgid "Offline"
+msgstr ""
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:30
+msgid "Unknown"
+msgstr ""
+
+#: Controller/DevicesController.php:29
+msgid "Approved"
+msgstr ""
+
+#: Controller/DevicesController.php:29
+msgid "Revoked"
+msgstr ""
+
+#: Controller/DevicesController.php:31
+#: Controller/PageTemplatesController.php:130
+#: Template/PageTemplates/add.ctp:13
+msgid "Vertical"
+msgstr ""
+
+#: Controller/DevicesController.php:31
+#: Controller/PageTemplatesController.php:130
+#: Template/PageTemplates/add.ctp:13
+msgid "Horizontal"
+msgstr ""
+
+#: Controller/DevicesController.php:368;560
+msgid "The device has been saved."
+msgstr ""
+
+#: Controller/DevicesController.php:377;563
+msgid "The device could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/DevicesController.php:426
+msgid "Upload content format incorrect."
+msgstr ""
+
+#: Controller/DevicesController.php:507
+msgid "Fail to insert one or more devices. Whole process is aborted."
+msgstr ""
+
+#: Controller/DevicesController.php:587
+msgid "The device has been deleted."
+msgstr ""
+
+#: Controller/DevicesController.php:589
+msgid "The device could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/MenusController.php:58;84
+msgid "The menu has been saved."
+msgstr ""
+
+#: Controller/MenusController.php:61;87
+msgid "The menu could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/MenusController.php:107
+msgid "The menu has been deleted."
+msgstr ""
+
+#: Controller/MenusController.php:109
+msgid "The menu could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/NewsController.php:59;87
+msgid "The news has been saved."
+msgstr ""
+
+#: Controller/NewsController.php:63;91
+msgid "The news could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/NewsController.php:110
+msgid "The news has been deleted."
+msgstr ""
+
+#: Controller/NewsController.php:112
+msgid "The news could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/NotificationEmailTemplatesController.php:21;40;56;85
+msgid "Notification Email Templates"
+msgstr ""
+
+#: Controller/NotificationEmailTemplatesController.php:64;94
+msgid "The notification email template has been saved."
+msgstr ""
+
+#: Controller/NotificationEmailTemplatesController.php:68;98
+msgid "The notification email template could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/NotificationEmailTemplatesController.php:118
+msgid "The notification email template has been deleted."
+msgstr ""
+
+#: Controller/NotificationEmailTemplatesController.php:120
+msgid "The notification email template could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/NotificationLogsController.php:67;94
+msgid "The notification has been saved."
+msgstr ""
+
+#: Controller/NotificationLogsController.php:71;98
+msgid "The notification could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/NotificationLogsController.php:118
+msgid "The notification has been deleted."
+msgstr ""
+
+#: Controller/NotificationLogsController.php:120
+msgid "The notification could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/PageSlotsController.php:58;85
+msgid "The page slot has been saved."
+msgstr ""
+
+#: Controller/PageSlotsController.php:62;89
+msgid "The page slot could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PageSlotsController.php:109
+msgid "The page slot has been deleted."
+msgstr ""
+
+#: Controller/PageSlotsController.php:111
+msgid "The page slot could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:60;302
+msgid "The page templates client has been saved."
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:64;306
+msgid "The page templates client could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:76
+#: Controller/PageTemplatesController.php:22;114;131;187
+#: Template/PageSlots/view.ctp:38
+#: Template/PageTemplatesClients/view.ctp:30
+msgid "Page Template"
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:268
+#: Controller/PageTemplatesController.php:164;171;226
+msgid "The page template could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:274
+msgid "The page template assign to the client."
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:327
+msgid "The page templates client has been deleted."
+msgstr ""
+
+#: Controller/PageTemplatesClientsController.php:329
+msgid "The page templates client could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/PageTemplatesController.php:167;221
+msgid "The page template has been saved."
+msgstr ""
+
+#: Controller/PageTemplatesController.php:246
+msgid "The page template has been deleted."
+msgstr ""
+
+#: Controller/PageTemplatesController.php:248
+msgid "The page template could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/PluginsController.php:55;81
+msgid "The plugin has been saved."
+msgstr ""
+
+#: Controller/PluginsController.php:58;84
+msgid "The plugin could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PluginsController.php:104
+msgid "The plugin has been deleted."
+msgstr ""
+
+#: Controller/PluginsController.php:106
+msgid "The plugin could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProductKeyBatchesController.php:23;50;70;141
+msgid "Product Key Batches"
+msgstr ""
+
+#: Controller/ProductKeyBatchesController.php:118;169
+msgid "The product key batch has been saved."
+msgstr ""
+
+#: Controller/ProductKeyBatchesController.php:121;173
+msgid "The product key batch could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProductKeyBatchesController.php:177
+msgid "The product key batch could not be saved. Product Key has been assign to the client."
+msgstr ""
+
+#: Controller/ProductKeyBatchesController.php:198
+msgid "The product key batch has been deleted."
+msgstr ""
+
+#: Controller/ProductKeyBatchesController.php:200
+msgid "The product key batch could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProductKeysController.php:22
+#: Template/Dashboards/index.ctp:121
+msgid "Product Keys"
+msgstr ""
+
+#: Controller/ProductKeysController.php:275;291;328
+#: Template/Devices/status.ctp:34
+#: Template/ProductKeys/view.ctp:16
+msgid "Product Key"
+msgstr ""
+
+#: Controller/ProductKeysController.php:304;344
+msgid "The product key has been saved."
+msgstr ""
+
+#: Controller/ProductKeysController.php:308;348
+msgid "The product key could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProductKeysController.php:392
+msgid "The product key has been deleted."
+msgstr ""
+
+#: Controller/ProductKeysController.php:394
+msgid "The product key could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/RemoteCommandsController.php:21;40;56;86;117
+msgid "Remote Commands"
+msgstr ""
+
+#: Controller/RemoteCommandsController.php:64;95
+msgid "The remote command has been saved."
+msgstr ""
+
+#: Controller/RemoteCommandsController.php:68;99
+msgid "The remote command could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/RemoteCommandsController.php:121
+msgid "The remote command has been deleted."
+msgstr ""
+
+#: Controller/RemoteCommandsController.php:123
+msgid "The remote command could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ResellersController.php:78
+#: Template/Resellers/add.ctp:8
+msgid "Add Reseller"
+msgstr ""
+
+#: Controller/ResellersController.php:105;169;222;255
+msgid "The reseller has been saved."
+msgstr ""
+
+#: Controller/ResellersController.php:108;172;225;258
+msgid "The reseller could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ResellersController.php:129
+msgid "Sorry. Your account has no access."
+msgstr ""
+
+#: Controller/ResellersController.php:148
+#: Template/Resellers/add_master.ctp:8
+msgid "Add Master Reseller"
+msgstr ""
+
+#: Controller/ResellersController.php:192
+#: Template/Resellers/edit.ctp:8
+msgid "Edit Reseller"
+msgstr ""
+
+#: Controller/ResellersController.php:245
+#: Template/Resellers/edit_master.ctp:8
+msgid "Edit Master Reseller"
+msgstr ""
+
+#: Controller/ResellersController.php:280
+msgid "The reseller has been deleted."
+msgstr ""
+
+#: Controller/ResellersController.php:282
+msgid "The reseller could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ResellersController.php:300
+msgid "Master Resellers"
+msgstr ""
+
+#: Controller/ResellersController.php:350
+msgid "Sorry. Incorrect parameters."
+msgstr ""
+
+#: Controller/SubscriptionPackageClientsController.php:21;37;53;77
+msgid "Subscription Package Clients"
+msgstr ""
+
+#: Controller/SubscriptionPackageClientsController.php:58;84
+msgid "The subscription package client has been saved."
+msgstr ""
+
+#: Controller/SubscriptionPackageClientsController.php:61;87
+msgid "The subscription package client could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionPackageClientsController.php:106
+msgid "The subscription package client has been deleted."
+msgstr ""
+
+#: Controller/SubscriptionPackageClientsController.php:108
+msgid "The subscription package client could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionPackageResellersController.php:21;37;53;77
+msgid "Subscription Package Resellers"
+msgstr ""
+
+#: Controller/SubscriptionPackageResellersController.php:58;84
+msgid "The subscription package reseller has been saved."
+msgstr ""
+
+#: Controller/SubscriptionPackageResellersController.php:61;87
+msgid "The subscription package reseller could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionPackageResellersController.php:106
+msgid "The subscription package reseller has been deleted."
+msgstr ""
+
+#: Controller/SubscriptionPackageResellersController.php:108
+msgid "The subscription package reseller could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionResellersController.php:22
+msgid "Reseller Subscriptions"
+msgstr ""
+
+#: Controller/SubscriptionResellersController.php:88;104;157
+msgid "Reseller Subscription"
+msgstr ""
+
+#: Controller/SubscriptionResellersController.php:132;172
+msgid "The subscription reseller has been saved."
+msgstr ""
+
+#: Controller/SubscriptionResellersController.php:135;175
+msgid "The subscription reseller could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionResellersController.php:199
+msgid "The subscription reseller has been deleted."
+msgstr ""
+
+#: Controller/SubscriptionResellersController.php:201
+msgid "The subscription reseller could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionsController.php:58;87
+msgid "The subscription has been saved."
+msgstr ""
+
+#: Controller/SubscriptionsController.php:61;90
+msgid "The subscription could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/SubscriptionsController.php:113
+msgid "The subscription has been deleted."
+msgstr ""
+
+#: Controller/SubscriptionsController.php:115
+msgid "The subscription could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:24
+msgid "Active"
+msgstr ""
+
+#: Controller/UsersController.php:25
+msgid "Disabled"
+msgstr ""
+
+#: Controller/UsersController.php:26
+msgid "Pending activiation"
+msgstr ""
+
+#: Controller/UsersController.php:27
+msgid "Pending update profile"
+msgstr ""
+
+#: Controller/UsersController.php:28
+msgid "Password reset requested"
+msgstr ""
+
+#: Controller/UsersController.php:146
+msgid "The signup has been processed."
+msgstr ""
+
+#: Controller/UsersController.php:150
+msgid "The signup could not be processed. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:176
+msgid "Email or password is incorrect"
+msgstr ""
+
+#: Controller/UsersController.php:224;287
+msgid "The user has been saved."
+msgstr ""
+
+#: Controller/UsersController.php:227;290
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:253
+msgid "User not found"
+msgstr ""
+
+#: Controller/UsersController.php:364
+msgid "The user has been deleted."
+msgstr ""
+
+#: Controller/UsersController.php:366
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:381
+msgid "Your login account did not have the access to this module."
+msgstr ""
+
+#: Controller/UsersController.php:426
+msgid "Password reset instruction will be sent to e-mail address {0}."
+msgstr ""
+
+#: Controller/UsersController.php:429
+msgid "<p>Hi {0},</p><p>A new password reset has been requested on {1} for i3Display.</p><p>Please click link below to confirm reset your password:</p><p><a href=\"{2}\">Confirm Reset Password</a></p><p>Thank you and have a nice day.</p>"
+msgstr ""
+
+#: Controller/UsersController.php:440
+msgid "Password Reset for i3Display"
+msgstr ""
+
+#: Controller/UsersController.php:445;479
+msgid "Reset password cannot be processed. Please, try again later."
+msgstr ""
+
+#: Controller/UsersController.php:472
+msgid "New password accepted. Please sign in using new password."
+msgstr ""
+
+#: Controller/UsersController.php:483
+msgid "Invalid reset password token received. Please request new reset password."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:50
+msgid "Invalid product key"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:55
+msgid "Product key already registered"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:59
+msgid "Product key is not assigned to any client."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:63
+msgid "Product key already expired"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:95
+msgid "Fail to assign device product key"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:102
+msgid "Can't associate device with product key"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:111;152
+msgid "Invalid parameters"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:165
+msgid "Device date/time is incorrect."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:170
+msgid "Please register this device."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:174
+msgid "Device is not approved"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:179
+msgid "Invalid Mac Address."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:183
+msgid "Device has no associated product key"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:187
+msgid "Invalid Product Key."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:191
+msgid "Product key status is not active"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:195
+msgid "Device has no product ke. Please register again."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:200
+msgid "Device product key has expired"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:205
+msgid "Device has no associated client"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:209
+msgid "Client subscription is not active"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:213
+msgid "Client subscription is expired"
+msgstr ""
+
+#: Controller/Api/DevicesController.php:218
+msgid "Device is valid. Please reload API-KEY."
+msgstr ""
+
+#: Controller/Api/DevicesController.php:223
+msgid "Device is valid."
+msgstr ""
+
+#: Model/Table/UsersTable.php:82
+msgid "Sorry. The email address you entered is already in use."
+msgstr ""
+
+#: Shell/CreateClientShell.php:188
+msgid "New password for "
+msgstr ""
+
+#: Template/ClientCmses/add.ctp:8
+msgid "Add Client Cmse"
+msgstr ""
+
+#: Template/ClientCmses/add.ctp:14;15;16;17;18;19;20;21;27
+#: Template/ClientCmses/edit.ctp:14;15;16;17;18;19;20;21;22;25
+#: Template/ClientHistories/add.ctp:15;16
+#: Template/ClientHistories/edit.ctp:16;17
+#: Template/ClientSubscriptions/add.ctp:14;15
+#: Template/ClientSubscriptions/edit.ctp:14;15
+#: Template/Clients/add.ctp:20;21;22;23;24;25;26;27;38;39;54;55;56
+#: Template/Clients/edit.ctp:15;16;17;18;19;20;21;22
+#: Template/DeviceLocations/add.ctp:12;13;14;15;16;17;18;19
+#: Template/DeviceLocations/edit.ctp:12;13;14;15;16;17;18;19
+#: Template/Devices/add.ctp:18;21;22;23;24;25;26;27;28;29;30;31;32;33
+#: Template/Devices/edit.ctp:19;21;22;23;24;25;26;27;28;29;30;31;32;33;34;36
+#: Template/Menus/add.ctp:26;27;28;29;30;31
+#: Template/Menus/edit.ctp:31;32;33;34;35;36
+#: Template/News/add.ctp:13;14
+#: Template/News/edit.ctp:12;13
+#: Template/NotificationEmailTemplates/add.ctp:13;14
+#: Template/NotificationEmailTemplates/edit.ctp:14;15
+#: Template/NotificationLogs/add.ctp:24;25;26;27;28
+#: Template/NotificationLogs/edit.ctp:29;30;31;32;33
+#: Template/PageSlots/add.ctp:23;24;25;26;27;28;29;31;32;33;34;35;36;37;38
+#: Template/PageSlots/edit.ctp:28;29;30;31;32;33;34;36;37;38;39;40;41;42;43
+#: Template/PageTemplates/add.ctp:12;16
+#: Template/PageTemplatesClients/add.ctp:27;28
+#: Template/PageTemplatesClients/edit.ctp:32;33
+#: Template/Plugins/add.ctp:23;24;25;26;27;28;29
+#: Template/Plugins/edit.ctp:28;29;30;31;32;33;34
+#: Template/ProductKeyBatches/add.ctp:12;13
+#: Template/ProductKeyBatches/edit.ctp:15
+#: Template/ProductKeys/add.ctp:13;17;19;20
+#: Template/ProductKeys/edit.ctp:20
+#: Template/RemoteCommands/add.ctp:14
+#: Template/RemoteCommands/edit.ctp:14
+#: Template/Resellers/add.ctp:14;22;24;25;26;27;28;38;39
+#: Template/Resellers/add_master.ctp:16;24;25;26;27;28;29;30;40;41
+#: Template/Resellers/edit.ctp:25;26;27;28;29;30;31
+#: Template/Resellers/edit_master.ctp:23;24;25;26;27;28;29
+#: Template/SubscriptionPackageClients/add.ctp:12
+#: Template/SubscriptionPackageClients/edit.ctp:13
+#: Template/SubscriptionPackageResellers/add.ctp:12
+#: Template/SubscriptionPackageResellers/edit.ctp:12
+#: Template/SubscriptionResellers/add.ctp:15;16
+#: Template/SubscriptionResellers/edit.ctp:15;16
+#: Template/Subscriptions/add.ctp:32;33;35;36
+#: Template/Subscriptions/edit.ctp:37;38;40;41
+#: Template/Users/add.ctp:12;13;14;15;16
+#: Template/Users/edit.ctp:12;13;14;15;16
+msgid "Enter ..."
+msgstr ""
+
+#: Template/ClientCmses/add.ctp:23
+#: Template/ClientCmses/index.ctp:12
+#: Template/ClientCmses/view.ctp:32
+#: Template/Devices/add_multiple.ctp:20
+#: Template/Devices/index.ctp:16
+#: Template/Devices/status.ctp:16
+#: Template/Plugins/view.ctp:42
+#: Template/ProductKeyBatches/edit.ctp:16
+#: Template/ProductKeyBatches/view.ctp:22
+#: Template/ProductKeys/view.ctp:26
+msgid "Status"
+msgstr ""
+
+#: Template/ClientCmses/add.ctp:32
+#: Template/ClientCmses/edit.ctp:30
+#: Template/ClientHistories/add.ctp:21
+#: Template/ClientHistories/edit.ctp:22
+#: Template/ClientSubscriptions/add.ctp:20
+#: Template/ClientSubscriptions/edit.ctp:20
+#: Template/Clients/add.ctp:63
+#: Template/Clients/edit.ctp:27
+#: Template/DeviceLocations/add.ctp:24
+#: Template/DeviceLocations/edit.ctp:24
+#: Template/Devices/add.ctp:41
+#: Template/Devices/add_multiple.ctp:63
+#: Template/Devices/edit.ctp:42
+#: Template/Menus/add.ctp:36
+#: Template/Menus/edit.ctp:41
+#: Template/News/add.ctp:19
+#: Template/News/edit.ctp:18
+#: Template/NotificationEmailTemplates/add.ctp:19
+#: Template/NotificationEmailTemplates/edit.ctp:20
+#: Template/NotificationLogs/add.ctp:33
+#: Template/NotificationLogs/edit.ctp:38
+#: Template/PageSlots/add.ctp:43
+#: Template/PageSlots/edit.ctp:48
+#: Template/PageTemplates/add.ctp:25
+#: Template/PageTemplates/edit.ctp:67;122
+#: Template/PageTemplatesClients/add.ctp:33
+#: Template/PageTemplatesClients/assign.ctp:46
+#: Template/PageTemplatesClients/edit.ctp:38
+#: Template/Plugins/add.ctp:35
+#: Template/Plugins/edit.ctp:40
+#: Template/ProductKeyBatches/edit.ctp:24
+#: Template/ProductKeys/add.ctp:25
+#: Template/ProductKeys/edit.ctp:26
+#: Template/RemoteCommands/add.ctp:19
+#: Template/RemoteCommands/edit.ctp:19
+#: Template/Resellers/add.ctp:45
+#: Template/Resellers/add_master.ctp:47
+#: Template/Resellers/edit.ctp:41
+#: Template/Resellers/edit_master.ctp:37
+#: Template/SubscriptionPackageClients/add.ctp:17
+#: Template/SubscriptionPackageClients/edit.ctp:18
+#: Template/SubscriptionPackageResellers/add.ctp:17
+#: Template/SubscriptionPackageResellers/edit.ctp:17
+#: Template/SubscriptionResellers/add.ctp:24
+#: Template/SubscriptionResellers/edit.ctp:24
+#: Template/Subscriptions/add.ctp:41
+#: Template/Subscriptions/edit.ctp:46
+#: Template/Users/add.ctp:24
+#: Template/Users/edit.ctp:24
+msgid "Submit"
+msgstr ""
+
+#: Template/ClientCmses/add.ctp:33
+#: Template/ClientCmses/edit.ctp:31
+#: Template/ClientHistories/add.ctp:22
+#: Template/ClientHistories/edit.ctp:23
+#: Template/ClientSubscriptions/add.ctp:21
+#: Template/ClientSubscriptions/edit.ctp:21
+#: Template/Clients/add.ctp:64
+#: Template/Clients/edit.ctp:28
+#: Template/DeviceLocations/add.ctp:25
+#: Template/DeviceLocations/edit.ctp:25
+#: Template/Devices/add.ctp:42
+#: Template/Devices/add_multiple.ctp:64
+#: Template/Devices/edit.ctp:43
+#: Template/Menus/add.ctp:37
+#: Template/Menus/edit.ctp:42
+#: Template/News/add.ctp:20
+#: Template/News/edit.ctp:19
+#: Template/NotificationEmailTemplates/add.ctp:20
+#: Template/NotificationEmailTemplates/edit.ctp:21
+#: Template/NotificationLogs/add.ctp:34
+#: Template/NotificationLogs/edit.ctp:39
+#: Template/PageSlots/add.ctp:44
+#: Template/PageSlots/edit.ctp:49
+#: Template/PageTemplates/add.ctp:26
+#: Template/PageTemplates/edit.ctp:68;123
+#: Template/PageTemplatesClients/add.ctp:34
+#: Template/PageTemplatesClients/assign.ctp:47
+#: Template/PageTemplatesClients/edit.ctp:39
+#: Template/Plugins/add.ctp:36
+#: Template/Plugins/edit.ctp:41
+#: Template/ProductKeyBatches/add.ctp:26
+#: Template/ProductKeyBatches/edit.ctp:25
+#: Template/ProductKeys/add.ctp:26
+#: Template/ProductKeys/edit.ctp:27
+#: Template/RemoteCommands/add.ctp:20
+#: Template/RemoteCommands/edit.ctp:20
+#: Template/Resellers/add.ctp:46
+#: Template/Resellers/add_master.ctp:48
+#: Template/Resellers/edit.ctp:42
+#: Template/Resellers/edit_master.ctp:38
+#: Template/SubscriptionPackageClients/add.ctp:18
+#: Template/SubscriptionPackageClients/edit.ctp:19
+#: Template/SubscriptionPackageResellers/add.ctp:18
+#: Template/SubscriptionPackageResellers/edit.ctp:18
+#: Template/SubscriptionResellers/add.ctp:25
+#: Template/SubscriptionResellers/edit.ctp:25
+#: Template/Subscriptions/add.ctp:42
+#: Template/Subscriptions/edit.ctp:47
+#: Template/Users/add.ctp:25
+#: Template/Users/edit.ctp:25
+msgid "Cancel"
+msgstr ""
+
+#: Template/ClientCmses/edit.ctp:8
+msgid "Edit Client Cmse"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:15
+#: Template/ClientSubscriptions/index.ctp:17
+#: Template/Devices/index.ctp:20
+#: Template/Devices/status.ctp:20
+#: Template/ProductKeys/index.ctp:25
+#: Template/Resellers/resellers.ctp:12
+msgid "Filter"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:37
+#: Template/ClientHistories/index.ctp:17
+#: Template/ClientSubscriptions/index.ctp:40
+#: Template/Clients/index.ctp:17
+#: Template/DeviceLocations/index.ctp:17
+#: Template/Devices/approval.ctp:18
+#: Template/Devices/index.ctp:38
+#: Template/Devices/status.ctp:37
+#: Template/Menus/index.ctp:28
+#: Template/News/index.ctp:14
+#: Template/NotificationEmailTemplates/index.ctp:15
+#: Template/NotificationLogs/index.ctp:16
+#: Template/PageSlots/index.ctp:28
+#: Template/PageTemplates/index.ctp:20
+#: Template/PageTemplatesClients/index.ctp:28
+#: Template/Plugins/index.ctp:28
+#: Template/ProductKeyBatches/index.ctp:20
+#: Template/ProductKeys/index.ctp:47
+#: Template/RemoteCommands/index.ctp:16
+#: Template/Resellers/index.ctp:17
+#: Template/Resellers/master_resellers.ctp:18
+#: Template/Resellers/resellers.ctp:39
+#: Template/SubscriptionPackageClients/index.ctp:12
+#: Template/SubscriptionPackageResellers/index.ctp:12
+#: Template/SubscriptionResellers/index.ctp:17
+#: Template/Subscriptions/index.ctp:34
+#: Template/Users/index.ctp:15
+#: Template/Users/list_by_reseller_client.ctp:24;73;121;170
+#: Template/Users/master_resellers.ctp:23
+#: Template/Users/resellers.ctp:24;71
+msgid "Actions"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:55
+#: Template/ClientHistories/index.ctp:38
+#: Template/ClientSubscriptions/index.ctp:78
+#: Template/Clients/index.ctp:37;44
+#: Template/DeviceLocations/index.ctp:33
+#: Template/Devices/approval.ctp:32
+#: Template/Devices/index.ctp:56
+#: Template/Devices/status.ctp:52
+#: Template/Menus/index.ctp:46
+#: Template/News/index.ctp:27
+#: Template/NotificationEmailTemplates/index.ctp:31
+#: Template/NotificationLogs/index.ctp:33
+#: Template/PageSlots/index.ctp:44
+#: Template/PageTemplates/index.ctp:97
+#: Template/PageTemplatesClients/index.ctp:46
+#: Template/Plugins/index.ctp:44
+#: Template/ProductKeyBatches/index.ctp:39
+#: Template/ProductKeys/index.ctp:70
+#: Template/RemoteCommands/index.ctp:35
+#: Template/Resellers/index.ctp:39
+#: Template/Resellers/master_resellers.ctp:35
+#: Template/Resellers/resellers.ctp:61
+#: Template/SubscriptionPackageClients/index.ctp:23
+#: Template/SubscriptionPackageResellers/index.ctp:23
+#: Template/SubscriptionResellers/index.ctp:39
+#: Template/Subscriptions/index.ctp:58
+#: Template/Users/index.ctp:28
+#: Template/Users/list_by_reseller_client.ctp:37;86;134;183
+#: Template/Users/master_resellers.ctp:36
+#: Template/Users/resellers.ctp:37;84
+msgid "View"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:56
+#: Template/ClientHistories/index.ctp:39
+#: Template/ClientSubscriptions/index.ctp:79
+#: Template/Clients/index.ctp:45
+#: Template/DeviceLocations/index.ctp:34
+#: Template/Devices/approval.ctp:33
+#: Template/Devices/index.ctp:57
+#: Template/Menus/index.ctp:47
+#: Template/News/index.ctp:28
+#: Template/NotificationEmailTemplates/index.ctp:32
+#: Template/NotificationLogs/index.ctp:34
+#: Template/PageSlots/index.ctp:45
+#: Template/PageTemplates/index.ctp:98
+#: Template/PageTemplatesClients/index.ctp:47
+#: Template/Plugins/index.ctp:45
+#: Template/ProductKeyBatches/index.ctp:40
+#: Template/ProductKeys/index.ctp:71
+#: Template/RemoteCommands/index.ctp:36
+#: Template/Resellers/index.ctp:40
+#: Template/Resellers/master_resellers.ctp:36
+#: Template/Resellers/resellers.ctp:62
+#: Template/SubscriptionPackageClients/index.ctp:24
+#: Template/SubscriptionPackageResellers/index.ctp:24
+#: Template/SubscriptionResellers/index.ctp:40
+#: Template/Subscriptions/index.ctp:59
+#: Template/Users/index.ctp:29
+#: Template/Users/list_by_reseller_client.ctp:38;87;135;184
+#: Template/Users/master_resellers.ctp:37
+#: Template/Users/resellers.ctp:38;85
+msgid "Edit"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:57
+#: Template/ClientHistories/index.ctp:40
+#: Template/ClientSubscriptions/index.ctp:80
+#: Template/Clients/index.ctp:46
+#: Template/DeviceLocations/index.ctp:35
+#: Template/Devices/approval.ctp:34
+#: Template/Devices/index.ctp:58
+#: Template/Menus/edit.ctp:6
+#: Template/Menus/index.ctp:48
+#: Template/News/index.ctp:29
+#: Template/NotificationEmailTemplates/index.ctp:33
+#: Template/NotificationLogs/edit.ctp:6
+#: Template/NotificationLogs/index.ctp:35
+#: Template/PageSlots/edit.ctp:6
+#: Template/PageSlots/index.ctp:46
+#: Template/PageTemplates/index.ctp:99
+#: Template/PageTemplatesClients/edit.ctp:6
+#: Template/PageTemplatesClients/index.ctp:48
+#: Template/Plugins/edit.ctp:6
+#: Template/Plugins/index.ctp:46
+#: Template/ProductKeyBatches/index.ctp:41
+#: Template/ProductKeys/index.ctp:72
+#: Template/RemoteCommands/index.ctp:37
+#: Template/Resellers/index.ctp:41
+#: Template/Resellers/master_resellers.ctp:37
+#: Template/Resellers/resellers.ctp:63
+#: Template/SubscriptionPackageClients/index.ctp:25
+#: Template/SubscriptionPackageResellers/index.ctp:25
+#: Template/SubscriptionResellers/index.ctp:41
+#: Template/Subscriptions/edit.ctp:6
+#: Template/Subscriptions/index.ctp:60
+#: Template/Users/index.ctp:30
+#: Template/Users/list_by_reseller_client.ctp:39;88;136;185
+#: Template/Users/master_resellers.ctp:38
+#: Template/Users/resellers.ctp:39;86
+msgid "Delete"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:57
+#: Template/ClientHistories/index.ctp:40
+#: Template/ClientSubscriptions/index.ctp:80
+#: Template/Clients/index.ctp:46
+#: Template/DeviceLocations/index.ctp:35
+#: Template/Devices/approval.ctp:34
+#: Template/Devices/index.ctp:58
+#: Template/Menus/edit.ctp:8
+#: Template/Menus/index.ctp:48
+#: Template/News/index.ctp:29
+#: Template/NotificationEmailTemplates/index.ctp:33
+#: Template/NotificationLogs/edit.ctp:8
+#: Template/NotificationLogs/index.ctp:35
+#: Template/PageSlots/edit.ctp:8
+#: Template/PageSlots/index.ctp:46
+#: Template/PageTemplates/index.ctp:99
+#: Template/PageTemplatesClients/edit.ctp:8
+#: Template/PageTemplatesClients/index.ctp:48
+#: Template/Plugins/edit.ctp:8
+#: Template/Plugins/index.ctp:46
+#: Template/ProductKeyBatches/index.ctp:41
+#: Template/ProductKeys/index.ctp:72
+#: Template/RemoteCommands/index.ctp:37
+#: Template/Resellers/index.ctp:41
+#: Template/Resellers/master_resellers.ctp:37
+#: Template/Resellers/resellers.ctp:63
+#: Template/SubscriptionPackageClients/index.ctp:25
+#: Template/SubscriptionPackageResellers/index.ctp:25
+#: Template/SubscriptionResellers/index.ctp:41
+#: Template/Subscriptions/edit.ctp:8
+#: Template/Subscriptions/index.ctp:60
+#: Template/Users/index.ctp:30
+#: Template/Users/list_by_reseller_client.ctp:39;88;136;185
+#: Template/Users/master_resellers.ctp:38
+#: Template/Users/resellers.ctp:39;86
+msgid "Are you sure you want to delete this {0}?"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:69
+#: Template/ClientHistories/index.ctp:52
+#: Template/ClientSubscriptions/index.ctp:93
+#: Template/Clients/index.ctp:58
+#: Template/DeviceLocations/index.ctp:47
+#: Template/DeviceStatusLogs/view.ctp:62
+#: Template/Devices/approval.ctp:46
+#: Template/Devices/index.ctp:70
+#: Template/Devices/status.ctp:64
+#: Template/Menus/index.ctp:60
+#: Template/News/index.ctp:41
+#: Template/NotificationEmailTemplates/index.ctp:45
+#: Template/NotificationLogs/index.ctp:47
+#: Template/PageSlots/index.ctp:58
+#: Template/PageTemplates/index.ctp:111
+#: Template/PageTemplatesClients/index.ctp:60
+#: Template/Plugins/index.ctp:58
+#: Template/ProductKeyBatches/index.ctp:53
+#: Template/ProductKeys/index.ctp:84
+#: Template/RemoteCommands/index.ctp:49
+#: Template/Resellers/index.ctp:53
+#: Template/Resellers/master_resellers.ctp:49
+#: Template/Resellers/resellers.ctp:75
+#: Template/SubscriptionPackageClients/index.ctp:37
+#: Template/SubscriptionPackageResellers/index.ctp:37
+#: Template/SubscriptionResellers/index.ctp:53
+#: Template/Subscriptions/index.ctp:72
+#: Template/Users/index.ctp:42
+msgid "previous"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:71
+#: Template/ClientHistories/index.ctp:54
+#: Template/ClientSubscriptions/index.ctp:95
+#: Template/Clients/index.ctp:60
+#: Template/DeviceLocations/index.ctp:49
+#: Template/DeviceStatusLogs/view.ctp:64
+#: Template/Devices/approval.ctp:48
+#: Template/Devices/index.ctp:72
+#: Template/Devices/status.ctp:66
+#: Template/Menus/index.ctp:62
+#: Template/News/index.ctp:43
+#: Template/NotificationEmailTemplates/index.ctp:47
+#: Template/NotificationLogs/index.ctp:49
+#: Template/PageSlots/index.ctp:60
+#: Template/PageTemplates/index.ctp:113
+#: Template/PageTemplatesClients/index.ctp:62
+#: Template/Plugins/index.ctp:60
+#: Template/ProductKeyBatches/index.ctp:55
+#: Template/ProductKeys/index.ctp:86
+#: Template/RemoteCommands/index.ctp:51
+#: Template/Resellers/index.ctp:55
+#: Template/Resellers/master_resellers.ctp:51
+#: Template/Resellers/resellers.ctp:77
+#: Template/SubscriptionPackageClients/index.ctp:39
+#: Template/SubscriptionPackageResellers/index.ctp:39
+#: Template/SubscriptionResellers/index.ctp:55
+#: Template/Subscriptions/index.ctp:74
+#: Template/Users/index.ctp:44
+msgid "next"
+msgstr ""
+
+#: Template/ClientCmses/index.ctp:78
+msgid "No client under cmses."
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:14
+#: Template/ClientHistories/view.ctp:15
+#: Template/ClientSubscriptions/view.ctp:14
+#: Template/DeviceStatusLogs/view.ctp:17
+#: Template/DeviceStatuses/view.ctp:16
+#: Template/PageTemplatesClients/view.ctp:32
+#: Template/ProductKeys/view.ctp:20
+#: Template/Subscriptions/view.ctp:34
+#: Template/Users/list_by_reseller_client.ctp:54;151
+msgid "Client"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:16
+msgid "Cms Server"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:18
+msgid "Database Server"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:20
+msgid "Cms Url"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:22
+msgid "Cms Domain"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:24
+msgid "Cms Path"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:26
+msgid "Database Name"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:28
+msgid "Database User"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:30
+msgid "Database Password"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:34
+#: Template/ClientHistories/view.ctp:23
+#: Template/ClientSubscriptions/view.ctp:18
+#: Template/Clients/view.ctp:34
+#: Template/DeviceLocations/view.ctp:26
+#: Template/DeviceStatusLogs/view.ctp:25
+#: Template/DeviceStatuses/view.ctp:24
+#: Template/Devices/view.ctp:28
+#: Template/Menus/view.ctp:40
+#: Template/News/view.ctp:16
+#: Template/NotificationEmailTemplates/view.ctp:18
+#: Template/PageSlots/view.ctp:44
+#: Template/PageTemplates/view.ctp:23
+#: Template/PageTemplatesClients/view.ctp:34
+#: Template/Plugins/view.ctp:38
+#: Template/ProductKeyBatches/view.ctp:18
+#: Template/ProductKeys/view.ctp:24
+#: Template/RemoteCommands/view.ctp:20
+#: Template/Resellers/view.ctp:36
+#: Template/SubscriptionPackageClients/view.ctp:17
+#: Template/SubscriptionPackageResellers/view.ctp:16
+#: Template/SubscriptionResellers/view.ctp:20
+#: Template/Subscriptions/view.ctp:42
+msgid "Id"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:36
+#: Template/Clients/view.ctp:36
+#: Template/DeviceLocations/view.ctp:32
+#: Template/News/view.ctp:18
+#: Template/NotificationEmailTemplates/view.ctp:22
+#: Template/NotificationLogs/view.ctp:35
+#: Template/PageSlots/view.ctp:58
+#: Template/PageTemplates/view.ctp:29
+#: Template/PageTemplatesClients/view.ctp:36
+#: Template/ProductKeyBatches/view.ctp:26
+#: Template/ProductKeys/view.ctp:28
+#: Template/RemoteCommands/view.ctp:22
+#: Template/Resellers/view.ctp:38
+#: Template/Users/view.ctp:18
+msgid "Date Created"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:38
+#: Template/Clients/view.ctp:38
+#: Template/DeviceLocations/view.ctp:34
+#: Template/Devices/view.ctp:38
+#: Template/News/view.ctp:20
+#: Template/NotificationEmailTemplates/view.ctp:20
+#: Template/PageSlots/view.ctp:60
+#: Template/PageTemplates/view.ctp:31
+#: Template/PageTemplatesClients/view.ctp:38
+#: Template/ProductKeyBatches/view.ctp:28
+#: Template/ProductKeys/view.ctp:30
+#: Template/RemoteCommands/view.ctp:24
+#: Template/Resellers/view.ctp:40
+#: Template/Users/view.ctp:20
+msgid "Date Modified"
+msgstr ""
+
+#: Template/ClientCmses/view.ctp:40
+#: Template/PageSlots/view.ctp:42
+#: Template/PageTemplates/view.ctp:21
+msgid "Remark"
+msgstr ""
+
+#: Template/ClientHistories/add.ctp:7
+msgid "Add Client History"
+msgstr ""
+
+#: Template/ClientHistories/edit.ctp:8
+msgid "Edit Client History"
+msgstr ""
+
+#: Template/ClientHistories/view.ctp:17
+msgid "Client History Type"
+msgstr ""
+
+#: Template/ClientHistories/view.ctp:19
+#: Template/Clients/view.ctp:18
+msgid "Client Status"
+msgstr ""
+
+#: Template/ClientHistories/view.ctp:21
+#: Template/Menus/view.ctp:34
+#: Template/News/view.ctp:22
+#: Template/Plugins/view.ctp:30
+msgid "Description"
+msgstr ""
+
+#: Template/ClientHistories/view.ctp:25
+msgid "Added"
+msgstr ""
+
+#: Template/ClientSubscriptions/add.ctp:7
+msgid "Add Client Subscription"
+msgstr ""
+
+#: Template/ClientSubscriptions/edit.ctp:7
+msgid "Edit Client Subscription"
+msgstr ""
+
+#: Template/ClientSubscriptions/index.ctp:13
+#: Template/Clients/view.ctp:20
+#: Template/Devices/index.ctp:12
+#: Template/Devices/status.ctp:12
+#: Template/PageTemplatesClients/assign.ctp:18
+#: Template/ProductKeys/index.ctp:13
+#: Template/ProductKeys/view.ctp:18
+#: Template/SubscriptionResellers/view.ctp:14
+#: Template/Subscriptions/view.ctp:36
+#: Template/Users/list_by_reseller_client.ctp:8
+#: Template/Users/resellers.ctp:8
+msgid "Reseller"
+msgstr ""
+
+#: Template/ClientSubscriptions/index.ctp:15;38
+msgid "Subscription Status"
+msgstr ""
+
+#: Template/ClientSubscriptions/index.ctp:103
+msgid "No client subscription under  selected reseller."
+msgstr ""
+
+#: Template/ClientSubscriptions/view.ctp:16
+msgid "Package"
+msgstr ""
+
+#: Template/ClientSubscriptions/view.ctp:20
+#: Template/SubscriptionResellers/view.ctp:22
+msgid "Added By"
+msgstr ""
+
+#: Template/ClientSubscriptions/view.ctp:22
+#: Template/SubscriptionResellers/view.ctp:24
+#: Template/Subscriptions/view.ctp:44
+msgid "Start"
+msgstr ""
+
+#: Template/ClientSubscriptions/view.ctp:24
+#: Template/SubscriptionResellers/view.ctp:26
+#: Template/Subscriptions/view.ctp:46
+msgid "End"
+msgstr ""
+
+#: Template/ClientSubscriptions/view.ctp:26
+#: Template/Devices/view.ctp:36
+#: Template/SubscriptionResellers/view.ctp:28
+#: Template/Subscriptions/view.ctp:48
+msgid "Date Added"
+msgstr ""
+
+#: Template/ClientSubscriptions/view.ctp:28
+#: Template/SubscriptionResellers/view.ctp:30
+#: Template/Subscriptions/view.ctp:50
+msgid "Date Modify"
+msgstr ""
+
+#: Template/Clients/add.ctp:8
+msgid "Add Client"
+msgstr ""
+
+#: Template/Clients/edit.ctp:7
+msgid "Edit Client"
+msgstr ""
+
+#: Template/Clients/index.ctp:37
+msgid "Content Panel"
+msgstr ""
+
+#: Template/Clients/view.ctp:14
+#: Template/Devices/view.ctp:14
+#: Template/Resellers/view.ctp:14
+msgid "Code"
+msgstr ""
+
+#: Template/Clients/view.ctp:16
+#: Template/Plugins/view.ctp:28
+#: Template/ProductKeyBatches/view.ctp:14
+#: Template/SubscriptionPackageClients/view.ctp:15
+#: Template/SubscriptionPackageResellers/view.ctp:14
+#: Template/Users/view.ctp:16
+msgid "Name"
+msgstr ""
+
+#: Template/Clients/view.ctp:22
+#: Template/Resellers/view.ctp:26
+msgid "Address"
+msgstr ""
+
+#: Template/Clients/view.ctp:24
+#: Template/Resellers/view.ctp:28
+msgid "Postcode"
+msgstr ""
+
+#: Template/Clients/view.ctp:26
+#: Template/DeviceLocations/view.ctp:20
+#: Template/Resellers/view.ctp:30
+msgid "City"
+msgstr ""
+
+#: Template/Clients/view.ctp:28
+#: Template/DeviceLocations/view.ctp:24
+#: Template/Resellers/view.ctp:32
+msgid "Country"
+msgstr ""
+
+#: Template/Clients/view.ctp:30
+#: Template/Resellers/view.ctp:34
+msgid "Phone Number"
+msgstr ""
+
+#: Template/Clients/view.ctp:32
+#: Template/Resellers/view.ctp:24
+msgid "Logo"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:38
+msgid "Need Urgent Attention"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:39;56;88
+msgid "{0}"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:45;62;78;94;111
+msgid "{0} total devices"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:55
+msgid "Online but Not Updated"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:71
+msgid "Offline & Not Updated less than 24 Hours"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:72
+msgid "{0} needs attention"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:87
+msgid "Working Fine"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:104
+msgid "Registered Devices"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:105
+msgid "{0} (this month)"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:122
+msgid "{0} Activated"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:128
+msgid "{0} total product keys"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:143
+msgid "Latest News"
+msgstr ""
+
+#: Template/Dashboards/index.ctp:228
+msgid "View All"
+msgstr ""
+
+#: Template/DeviceLocations/add.ctp:7
+msgid "Add Device Location"
+msgstr ""
+
+#: Template/DeviceLocations/edit.ctp:7
+msgid "Edit Device Location"
+msgstr ""
+
+#: Template/DeviceLocations/view.ctp:14
+msgid "Building"
+msgstr ""
+
+#: Template/DeviceLocations/view.ctp:16
+msgid "Road"
+msgstr ""
+
+#: Template/DeviceLocations/view.ctp:18
+msgid "District"
+msgstr ""
+
+#: Template/DeviceLocations/view.ctp:22
+msgid "State"
+msgstr ""
+
+#: Template/DeviceLocations/view.ctp:28
+msgid "Longitude"
+msgstr ""
+
+#: Template/DeviceLocations/view.ctp:30
+msgid "Latitude"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:15
+#: Template/DeviceStatuses/view.ctp:14
+#: Template/ProductKeys/view.ctp:22
+#: Template/RemoteCommands/view.ctp:14
+msgid "Device"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:19
+#: Template/DeviceStatuses/view.ctp:18
+msgid "Version No"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:21
+#: Template/DeviceStatuses/view.ctp:20
+msgid "Remote Ip"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:23
+#: Template/DeviceStatuses/view.ctp:22
+msgid "Local Ip"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:27
+#: Template/DeviceStatuses/view.ctp:26
+#: Template/Devices/view.ctp:32
+msgid "Channel Id"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:29;42
+#: Template/DeviceStatuses/view.ctp:28
+#: Template/Devices/status.ctp:36
+msgid "Last Update"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:31;41
+#: Template/DeviceStatuses/view.ctp:30
+msgid "Log Time"
+msgstr ""
+
+#: Template/DeviceStatusLogs/view.ctp:43
+#: Template/Devices/status.ctp:35
+msgid "Sync Status"
+msgstr ""
+
+#: Template/Devices/add.ctp:13
+#: Template/Devices/add_multiple.ctp:9
+msgid "Add Device"
+msgstr ""
+
+#: Template/Devices/add.ctp:18
+#: Template/Devices/add_multiple.ctp:17
+#: Template/Devices/edit.ctp:19
+msgid "MAC Address"
+msgstr ""
+
+#: Template/Devices/add.ctp:20
+#: Template/Devices/edit.ctp:20
+msgid "E.g. FMT46WM001 or SKU Number"
+msgstr ""
+
+#: Template/Devices/add.ctp:21
+#: Template/Devices/edit.ctp:21
+msgid "Android ID"
+msgstr ""
+
+#: Template/Devices/add.ctp:34
+#: Template/Devices/edit.ctp:35
+msgid "My Location"
+msgstr ""
+
+#: Template/Devices/add_multiple.ctp:18
+msgid "Ref Code / Tag ID"
+msgstr ""
+
+#: Template/Devices/add_multiple.ctp:19
+#: Template/Devices/view.ctp:26
+#: Template/PageSlots/view.ctp:30
+#: Template/PageTemplates/view.ctp:17
+msgid "Orientation"
+msgstr ""
+
+#: Template/Devices/add_multiple.ctp:41
+msgid "Copy & Paste from Excel app. Format: MAC_ADDRESS, REF_NUMBER, ORIENTATION, APPROVAL STATUS"
+msgstr ""
+
+#: Template/Devices/add_multiple.ctp:41
+msgid "Multiple MAC Addresses File"
+msgstr ""
+
+#: Template/Devices/add_multiple.ctp:56
+msgid "Uploaded data confirmed correct"
+msgstr ""
+
+#: Template/Devices/approval.ctp:5
+msgid "Devices Pending Approval"
+msgstr ""
+
+#: Template/Devices/edit.ctp:13
+msgid "Edit Device"
+msgstr ""
+
+#: Template/Devices/index.ctp:47;48;49
+#: Template/Devices/status.ctp:45;46
+msgid "Not assigned"
+msgstr ""
+
+#: Template/Devices/status.ctp:48
+msgid "No data yet"
+msgstr ""
+
+#: Template/Devices/view.ctp:16
+msgid "Mac Address"
+msgstr ""
+
+#: Template/Devices/view.ctp:18
+msgid "Android Id"
+msgstr ""
+
+#: Template/Devices/view.ctp:20
+msgid "Android Serial No"
+msgstr ""
+
+#: Template/Devices/view.ctp:22
+msgid "Os Version"
+msgstr ""
+
+#: Template/Devices/view.ctp:24
+msgid "Chipset"
+msgstr ""
+
+#: Template/Devices/view.ctp:30
+msgid "Client Id"
+msgstr ""
+
+#: Template/Devices/view.ctp:34
+msgid "Approval Status"
+msgstr ""
+
+#: Template/Element/Flash/default.ctp:10
+msgid "Info"
+msgstr ""
+
+#: Template/Element/Flash/error.ctp:3
+msgid "Alert!"
+msgstr ""
+
+#: Template/Element/Flash/success.ctp:3
+msgid "Ok!"
+msgstr ""
+
+#: Template/Element/Layout/Default/header.ctp:29
+msgid "Member since"
+msgstr ""
+
+#: Template/Element/Layout/Default/header.ctp:50
+msgid "Profile"
+msgstr ""
+
+#: Template/Element/Layout/Default/header.ctp:53
+msgid "Sign out"
+msgstr ""
+
+#: Template/Layout/default.ctp:92
+msgid "Home"
+msgstr ""
+
+#: Template/Menus/add.ctp:5;8
+#: Template/Menus/edit.ctp:10;13
+#: Template/Menus/view.ctp:7;11
+msgid "List Menus"
+msgstr ""
+
+#: Template/Menus/add.ctp:6
+#: Template/Menus/edit.ctp:11
+#: Template/Menus/index.ctp:6
+#: Template/Menus/view.ctp:9
+msgid "List Menu Groups"
+msgstr ""
+
+#: Template/Menus/add.ctp:7
+#: Template/Menus/edit.ctp:12
+#: Template/Menus/index.ctp:7
+#: Template/Menus/view.ctp:10
+msgid "New Menu Group"
+msgstr ""
+
+#: Template/Menus/add.ctp:9
+#: Template/Menus/edit.ctp:14
+#: Template/Menus/index.ctp:5
+#: Template/Menus/view.ctp:8;12
+msgid "New Menu"
+msgstr ""
+
+#: Template/Menus/add.ctp:20
+msgid "Add Menu"
+msgstr ""
+
+#: Template/Menus/edit.ctp:25
+#: Template/Menus/view.ctp:5
+msgid "Edit Menu"
+msgstr ""
+
+#: Template/Menus/view.ctp:6
+msgid "Delete Menu"
+msgstr ""
+
+#: Template/Menus/view.ctp:6
+#: Template/NotificationLogs/view.ctp:6
+#: Template/PageSlots/view.ctp:6
+#: Template/PageTemplatesClients/view.ctp:6
+#: Template/Plugins/view.ctp:6
+#: Template/Subscriptions/view.ctp:6
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Menus/view.ctp:30
+msgid "Menu Group"
+msgstr ""
+
+#: Template/Menus/view.ctp:32
+msgid "Label"
+msgstr ""
+
+#: Template/Menus/view.ctp:36
+msgid "Controller"
+msgstr ""
+
+#: Template/Menus/view.ctp:38
+#: Template/Plugins/view.ctp:34
+msgid "Action"
+msgstr ""
+
+#: Template/Menus/view.ctp:42
+msgid "Parent Id"
+msgstr ""
+
+#: Template/Menus/view.ctp:44
+#: Template/PageSlots/view.ctp:52
+msgid "Ordering"
+msgstr ""
+
+#: Template/News/add.ctp:8
+msgid "Add News"
+msgstr ""
+
+#: Template/News/edit.ctp:7
+msgid "Edit News"
+msgstr ""
+
+#: Template/News/view.ctp:14
+msgid "Title"
+msgstr ""
+
+#: Template/NotificationEmailTemplates/add.ctp:7
+msgid "Add Notification Email Template"
+msgstr ""
+
+#: Template/NotificationEmailTemplates/edit.ctp:8
+msgid "Edit Notification Email Template"
+msgstr ""
+
+#: Template/NotificationEmailTemplates/view.ctp:14
+#: Template/NotificationLogs/view.ctp:37
+msgid "Notification Type"
+msgstr ""
+
+#: Template/NotificationEmailTemplates/view.ctp:16
+#: Template/NotificationLogs/view.ctp:31
+msgid "Subject"
+msgstr ""
+
+#: Template/NotificationEmailTemplates/view.ctp:24
+#: Template/NotificationLogs/view.ctp:33
+msgid "Message"
+msgstr ""
+
+#: Template/NotificationLogs/add.ctp:5
+#: Template/NotificationLogs/edit.ctp:10
+#: Template/NotificationLogs/view.ctp:7
+msgid "List Notifications"
+msgstr ""
+
+#: Template/NotificationLogs/add.ctp:6
+#: Template/NotificationLogs/edit.ctp:11
+#: Template/NotificationLogs/view.ctp:9
+#: Template/Subscriptions/add.ctp:12
+#: Template/Subscriptions/edit.ctp:17
+#: Template/Subscriptions/index.ctp:12
+#: Template/Subscriptions/view.ctp:15
+msgid "List Users"
+msgstr ""
+
+#: Template/NotificationLogs/add.ctp:7
+#: Template/NotificationLogs/edit.ctp:12
+#: Template/NotificationLogs/view.ctp:10
+#: Template/Subscriptions/add.ctp:13
+#: Template/Subscriptions/edit.ctp:18
+#: Template/Subscriptions/index.ctp:13
+#: Template/Subscriptions/view.ctp:16
+msgid "New User"
+msgstr ""
+
+#: Template/NotificationLogs/add.ctp:18
+msgid "Add Notification"
+msgstr ""
+
+#: Template/NotificationLogs/edit.ctp:23
+#: Template/NotificationLogs/view.ctp:5
+msgid "Edit Notification"
+msgstr ""
+
+#: Template/NotificationLogs/view.ctp:6
+msgid "Delete Notification"
+msgstr ""
+
+#: Template/NotificationLogs/view.ctp:8
+msgid "New Notification"
+msgstr ""
+
+#: Template/NotificationLogs/view.ctp:28
+msgid "To"
+msgstr ""
+
+#: Template/PageSlots/add.ctp:5
+#: Template/PageSlots/edit.ctp:10
+#: Template/PageSlots/view.ctp:7
+msgid "List Page Slots"
+msgstr ""
+
+#: Template/PageSlots/add.ctp:6
+#: Template/PageSlots/edit.ctp:11
+#: Template/PageSlots/index.ctp:6
+#: Template/PageSlots/view.ctp:9
+#: Template/PageTemplatesClients/add.ctp:6
+#: Template/PageTemplatesClients/edit.ctp:11
+#: Template/PageTemplatesClients/index.ctp:6
+#: Template/PageTemplatesClients/view.ctp:9
+msgid "List Page Templates"
+msgstr ""
+
+#: Template/PageSlots/add.ctp:7
+#: Template/PageSlots/edit.ctp:12
+#: Template/PageSlots/index.ctp:7
+#: Template/PageSlots/view.ctp:10
+#: Template/PageTemplatesClients/add.ctp:7
+#: Template/PageTemplatesClients/edit.ctp:12
+#: Template/PageTemplatesClients/index.ctp:7
+#: Template/PageTemplatesClients/view.ctp:10
+msgid "New Page Template"
+msgstr ""
+
+#: Template/PageSlots/add.ctp:18
+msgid "Add Page Slot"
+msgstr ""
+
+#: Template/PageSlots/edit.ctp:23
+#: Template/PageSlots/view.ctp:5
+msgid "Edit Page Slot"
+msgstr ""
+
+#: Template/PageSlots/index.ctp:5
+#: Template/PageSlots/view.ctp:8
+msgid "New Page Slot"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:6
+msgid "Delete Page Slot"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:28
+msgid "Slot Code"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:32
+msgid "Slot Height"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:34
+msgid "Slot Width"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:36
+msgid "Group"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:40
+msgid "Slot Display Type"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:46
+msgid "Slot X"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:48
+msgid "Slot Y"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:50
+msgid "Multiple Status"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:54
+#: Template/PageTemplates/view.ctp:25
+msgid "User Created"
+msgstr ""
+
+#: Template/PageSlots/view.ctp:56
+#: Template/PageTemplates/view.ctp:27
+msgid "User Modified"
+msgstr ""
+
+#: Template/PageTemplates/add.ctp:7
+msgid "Add Page Template"
+msgstr ""
+
+#: Template/PageTemplates/edit.ctp:11
+msgid "Edit Page Template"
+msgstr ""
+
+#: Template/PageTemplates/edit.ctp:21
+msgid "Page Name :"
+msgstr ""
+
+#: Template/PageTemplates/edit.ctp:23
+msgid "Orientation :"
+msgstr ""
+
+#: Template/PageTemplates/edit.ctp:25
+msgid "Remark :"
+msgstr ""
+
+#: Template/PageTemplates/view.ctp:15
+msgid "Page Name"
+msgstr ""
+
+#: Template/PageTemplates/view.ctp:19
+msgid "Adv Status"
+msgstr ""
+
+#: Template/PageTemplates/view.ctp:33
+msgid "Is Dynamic"
+msgstr ""
+
+#: Template/PageTemplates/view.ctp:34
+msgid "Yes"
+msgstr ""
+
+#: Template/PageTemplates/view.ctp:34
+msgid "No"
+msgstr ""
+
+#: Template/PageTemplatesClients/add.ctp:5
+#: Template/PageTemplatesClients/edit.ctp:10
+#: Template/PageTemplatesClients/view.ctp:7
+msgid "List Page Templates Clients"
+msgstr ""
+
+#: Template/PageTemplatesClients/add.ctp:8
+#: Template/PageTemplatesClients/edit.ctp:13
+#: Template/PageTemplatesClients/index.ctp:8
+#: Template/PageTemplatesClients/view.ctp:11
+#: Template/Plugins/add.ctp:6
+#: Template/Plugins/edit.ctp:11
+#: Template/Plugins/index.ctp:6
+#: Template/Plugins/view.ctp:9
+#: Template/Subscriptions/add.ctp:6
+#: Template/Subscriptions/edit.ctp:11
+#: Template/Subscriptions/index.ctp:6
+#: Template/Subscriptions/view.ctp:9
+msgid "List Clients"
+msgstr ""
+
+#: Template/PageTemplatesClients/add.ctp:9
+#: Template/PageTemplatesClients/edit.ctp:14
+#: Template/PageTemplatesClients/index.ctp:9
+#: Template/PageTemplatesClients/view.ctp:12
+#: Template/Plugins/add.ctp:7
+#: Template/Plugins/edit.ctp:12
+#: Template/Plugins/index.ctp:7
+#: Template/Plugins/view.ctp:10
+#: Template/Subscriptions/add.ctp:7
+#: Template/Subscriptions/edit.ctp:12
+#: Template/Subscriptions/index.ctp:7
+#: Template/Subscriptions/view.ctp:10
+msgid "New Client"
+msgstr ""
+
+#: Template/PageTemplatesClients/add.ctp:20
+msgid "Add Page Templates Client"
+msgstr ""
+
+#: Template/PageTemplatesClients/assign.ctp:10
+msgid "Assign Page Template"
+msgstr ""
+
+#: Template/PageTemplatesClients/assign.ctp:16
+msgid "Template"
+msgstr ""
+
+#: Template/PageTemplatesClients/edit.ctp:25
+#: Template/PageTemplatesClients/view.ctp:5
+msgid "Edit Page Templates Client"
+msgstr ""
+
+#: Template/PageTemplatesClients/index.ctp:5
+#: Template/PageTemplatesClients/view.ctp:8
+msgid "New Page Templates Client"
+msgstr ""
+
+#: Template/PageTemplatesClients/view.ctp:6
+msgid "Delete Page Templates Client"
+msgstr ""
+
+#: Template/Plugins/add.ctp:5
+#: Template/Plugins/edit.ctp:10
+#: Template/Plugins/view.ctp:7
+msgid "List Plugins"
+msgstr ""
+
+#: Template/Plugins/add.ctp:18
+msgid "Add Plugin"
+msgstr ""
+
+#: Template/Plugins/edit.ctp:23
+#: Template/Plugins/view.ctp:5
+msgid "Edit Plugin"
+msgstr ""
+
+#: Template/Plugins/index.ctp:5
+#: Template/Plugins/view.ctp:8
+msgid "New Plugin"
+msgstr ""
+
+#: Template/Plugins/view.ctp:6
+msgid "Delete Plugin"
+msgstr ""
+
+#: Template/Plugins/view.ctp:32
+msgid "Type"
+msgstr ""
+
+#: Template/Plugins/view.ctp:36
+#: Template/RemoteCommands/view.ctp:18
+msgid "Parameters"
+msgstr ""
+
+#: Template/Plugins/view.ctp:40
+msgid "Parameter Count"
+msgstr ""
+
+#: Template/ProductKeyBatches/add.ctp:7
+msgid "Generate Product Key"
+msgstr ""
+
+#: Template/ProductKeyBatches/add.ctp:15
+#: Template/ProductKeyBatches/edit.ctp:18
+#: Template/ProductKeyBatches/view.ctp:24
+#: Template/ProductKeys/add.ctp:18
+#: Template/ProductKeys/edit.ctp:21
+msgid "Expired Date"
+msgstr ""
+
+#: Template/ProductKeyBatches/add.ctp:25
+msgid "Generate"
+msgstr ""
+
+#: Template/ProductKeyBatches/edit.ctp:7
+msgid "Edit Product Key Batch"
+msgstr ""
+
+#: Template/ProductKeyBatches/view.ctp:16
+#: Template/Subscriptions/view.ctp:40
+msgid "User"
+msgstr ""
+
+#: Template/ProductKeyBatches/view.ctp:20
+msgid "Total Keys"
+msgstr ""
+
+#: Template/ProductKeys/add.ctp:7
+msgid "Add Product Key"
+msgstr ""
+
+#: Template/ProductKeys/batch_reseller.ctp:3
+#: Template/ProductKeys/index.ctp:18
+msgid "Batch Name"
+msgstr ""
+
+#: Template/ProductKeys/batch_reseller.ctp:6
+#: Template/ProductKeys/index.ctp:21
+msgid "Client Name"
+msgstr ""
+
+#: Template/ProductKeys/edit.ctp:7
+msgid "Edit Product Key"
+msgstr ""
+
+#: Template/ProductKeys/index.ctp:93
+msgid "No product keys under  selected reseller."
+msgstr ""
+
+#: Template/ProductKeys/view.ctp:14
+msgid "Product Key Batch"
+msgstr ""
+
+#: Template/RemoteCommands/add.ctp:7
+msgid "Add Remote Command"
+msgstr ""
+
+#: Template/RemoteCommands/edit.ctp:7
+msgid "Edit Remote Command"
+msgstr ""
+
+#: Template/RemoteCommands/view.ctp:16
+msgid "Remote Command Type"
+msgstr ""
+
+#: Template/Resellers/add.ctp:13
+#: Template/Resellers/resellers.ctp:10
+msgid "Upline"
+msgstr ""
+
+#: Template/Resellers/add.ctp:20
+#: Template/Resellers/add_master.ctp:22
+#: Template/Resellers/edit.ctp:23
+#: Template/Resellers/edit_master.ctp:21
+msgid "Company Details"
+msgstr ""
+
+#: Template/Resellers/add.ctp:36
+#: Template/Resellers/add_master.ctp:38
+msgid "Person in charge"
+msgstr ""
+
+#: Template/Resellers/resellers.ctp:10
+msgid "All"
+msgstr ""
+
+#: Template/Resellers/resellers.ctp:85
+msgid "No reseller registered under selected upline."
+msgstr ""
+
+#: Template/Resellers/view.ctp:16
+msgid "Company Name"
+msgstr ""
+
+#: Template/Resellers/view.ctp:18
+msgid "Reseller Status"
+msgstr ""
+
+#: Template/Resellers/view.ctp:20
+msgid "Reseller Type"
+msgstr ""
+
+#: Template/Resellers/view.ctp:22
+msgid "Upline Reseller"
+msgstr ""
+
+#: Template/SubscriptionPackageClients/add.ctp:7
+msgid "Add Subscription Package Client"
+msgstr ""
+
+#: Template/SubscriptionPackageClients/edit.ctp:8
+msgid "Edit Subscription Package Client"
+msgstr ""
+
+#: Template/SubscriptionPackageResellers/add.ctp:7
+msgid "Add Subscription Package Reseller"
+msgstr ""
+
+#: Template/SubscriptionPackageResellers/edit.ctp:7
+msgid "Edit Subscription Package Reseller"
+msgstr ""
+
+#: Template/SubscriptionResellers/add.ctp:7
+msgid "Add Subscription Reseller"
+msgstr ""
+
+#: Template/SubscriptionResellers/edit.ctp:7
+msgid "Edit Subscription Reseller"
+msgstr ""
+
+#: Template/SubscriptionResellers/view.ctp:16
+msgid "Subscription Package Reseller"
+msgstr ""
+
+#: Template/SubscriptionResellers/view.ctp:18
+#: Template/Subscriptions/view.ctp:38
+msgid "Subscription Type"
+msgstr ""
+
+#: Template/Subscriptions/add.ctp:5
+#: Template/Subscriptions/edit.ctp:10
+#: Template/Subscriptions/view.ctp:7
+msgid "List Subscriptions"
+msgstr ""
+
+#: Template/Subscriptions/add.ctp:8
+#: Template/Subscriptions/edit.ctp:13
+#: Template/Subscriptions/index.ctp:8
+#: Template/Subscriptions/view.ctp:11
+msgid "List Resellers"
+msgstr ""
+
+#: Template/Subscriptions/add.ctp:9
+#: Template/Subscriptions/edit.ctp:14
+#: Template/Subscriptions/index.ctp:9
+#: Template/Subscriptions/view.ctp:12
+msgid "New Reseller"
+msgstr ""
+
+#: Template/Subscriptions/add.ctp:10
+#: Template/Subscriptions/edit.ctp:15
+#: Template/Subscriptions/index.ctp:10
+#: Template/Subscriptions/view.ctp:13
+msgid "List Subscription Types"
+msgstr ""
+
+#: Template/Subscriptions/add.ctp:11
+#: Template/Subscriptions/edit.ctp:16
+#: Template/Subscriptions/index.ctp:11
+#: Template/Subscriptions/view.ctp:14
+msgid "New Subscription Type"
+msgstr ""
+
+#: Template/Subscriptions/add.ctp:24
+msgid "Add Subscription"
+msgstr ""
+
+#: Template/Subscriptions/edit.ctp:29
+#: Template/Subscriptions/view.ctp:5
+msgid "Edit Subscription"
+msgstr ""
+
+#: Template/Subscriptions/index.ctp:5
+#: Template/Subscriptions/view.ctp:8
+msgid "New Subscription"
+msgstr ""
+
+#: Template/Subscriptions/view.ctp:6
+msgid "Delete Subscription"
+msgstr ""
+
+#: Template/Users/add.ctp:7
+msgid "Add User"
+msgstr ""
+
+#: Template/Users/confirm_reset_password.ctp:4
+#: Template/Users/login.ctp:45
+msgid "Reset Password"
+msgstr ""
+
+#: Template/Users/confirm_reset_password.ctp:10
+msgid "Enter new password for <strong>{0}</strong>"
+msgstr ""
+
+#: Template/Users/confirm_reset_password.ctp:17
+msgid "New Password"
+msgstr ""
+
+#: Template/Users/confirm_reset_password.ctp:27
+#: Template/Users/signup.ctp:24
+msgid "Repeat Password"
+msgstr ""
+
+#: Template/Users/confirm_reset_password.ctp:33;44
+#: Template/Users/reset_password.ctp:24
+#: Template/Users/signup.ctp:30
+msgid "Sign-in"
+msgstr ""
+
+#: Template/Users/confirm_reset_password.ctp:36
+#: Template/Users/reset_password.ctp:15
+msgid "Reset"
+msgstr ""
+
+#: Template/Users/edit.ctp:7
+msgid "Edit User"
+msgstr ""
+
+#: Template/Users/list_by_reseller_client.ctp:105
+#: Template/Users/resellers.ctp:55
+msgid "Downline Reseller"
+msgstr ""
+
+#: Template/Users/login.ctp:1
+msgid "Sign in to start your session"
+msgstr "เข้าสู่ระบบเพื่อเริ่มต้นเซสชันของคุณ"
+
+#: Template/Users/login.ctp:7
+#: Template/Users/reset_password.ctp:8
+#: Template/Users/view.ctp:14
+msgid "E-mail"
+msgstr ""
+
+#: Template/Users/login.ctp:16
+#: Template/Users/signup.ctp:15
+msgid "Password"
+msgstr ""
+
+#: Template/Users/login.ctp:28
+msgid "Remember Me"
+msgstr ""
+
+#: Template/Users/login.ctp:33
+msgid "Sign In"
+msgstr ""
+
+#: Template/Users/login.ctp:45
+msgid "Register a new membership"
+msgstr ""
+
+#: Template/Users/master_resellers.ctp:5
+msgid "Master Reseller"
+msgstr ""
+
+#: Template/Users/reset_password.ctp:2
+msgid "Fill in e-mail address for your account."
+msgstr ""
+
+#: Template/Users/signup.ctp:1
+msgid "Sign up to login"
+msgstr ""
+
+#: Template/Users/signup.ctp:7
+msgid "Email"
+msgstr ""
+
+#: Template/Users/signup.ctp:33
+msgid "Sign up"
+msgstr ""
+

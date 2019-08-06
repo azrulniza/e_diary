@@ -1,0 +1,3959 @@
+﻿# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2018-01-11 11:56+0800\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /mnt/i3d/reseller//Controller/ApkController.php:77;114
+msgid "The apk has been saved."
+msgstr "apk已經被保存"
+
+#: /mnt/i3d/reseller//Controller/ApkController.php:81;118
+msgid "The apk could not be saved. Please, try again."
+msgstr "apk無法保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ApkController.php:137
+msgid "The apk has been deleted."
+msgstr "apk已經刪除了"
+
+#: /mnt/i3d/reseller//Controller/ApkController.php:139
+msgid "The apk could not be deleted. Please, try again."
+msgstr "apk不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ApkManagerLogController.php:76;101
+msgid "The apk manager log has been saved."
+msgstr "apk管理日志已經保存"
+
+#: /mnt/i3d/reseller//Controller/ApkManagerLogController.php:80;105
+msgid "The apk manager log could not be saved. Please, try again."
+msgstr "apk管理日志不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ApkManagerLogController.php:123
+msgid "The apk manager log has been deleted."
+msgstr "apk管理日志已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ApkManagerLogController.php:125
+msgid "The apk manager log could not be deleted. Please, try again."
+msgstr "apk管理日志不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:25
+msgid "Client Subscriptions"
+msgstr "客戶簽約"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:378;412;538
+msgid "Client Subscription"
+msgstr "客戶簽約"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:447;568
+msgid "The subscription client has been saved."
+msgstr "客戶簽約已經保存"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:500
+msgid "The subscription client still active."
+msgstr "客戶簽約還有效"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:617
+msgid "The subscription client could not be saved. Please, try again."
+msgstr "客戶簽約無法保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:643
+msgid "The subscription client has been deleted."
+msgstr "客戶簽約已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ClientSubscriptionsController.php:645
+msgid "The subscription client could not be deleted. Please, try again."
+msgstr "客戶簽約無法刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ClientsController.php:257;317
+msgid "The client has been saved."
+msgstr "客戶已經保存"
+
+#: /mnt/i3d/reseller//Controller/ClientsController.php:260;320
+msgid "The client could not be saved. Please, try again."
+msgstr "客戶不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ClientsController.php:263
+msgid "Total limit for client has been exceeded. Client could not be saved. Please contact administration."
+msgstr "客戶數已經超過總限制。客戶不能保存。請聯系管理員。"
+
+#: /mnt/i3d/reseller//Controller/ClientsController.php:376
+msgid "Client {0} has been deleted."
+msgstr "客戶 {0} 已經刪除。"
+
+#: /mnt/i3d/reseller//Controller/ClientsController.php:378
+msgid "The client could not be deleted. Please, try again."
+msgstr "客戶不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/MasterResellerSubscriptionsController.php:168
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:208
+msgid "The master reseller subscription has been saved."
+msgstr "總代理商簽約已經保存。"
+
+#: /mnt/i3d/reseller//Controller/MasterResellerSubscriptionsController.php:172
+msgid "The master reseller subscription could not be saved. Please, try again."
+msgstr "總代理商簽約已經保存，請重試。"
+
+#: /mnt/i3d/reseller//Controller/MasterResellerSubscriptionsController.php:175
+msgid "The master reseller subscription still active"
+msgstr "總代理商簽約還是有效的。"
+
+#: /mnt/i3d/reseller//Controller/MasterResellerSubscriptionsController.php:221
+msgid "The master reseller subscription cannot be edited."
+msgstr "總代理商簽約不能編輯"
+
+#: /mnt/i3d/reseller//Controller/MasterResellerSubscriptionsController.php:243
+msgid "The master reseller subscription has been deleted."
+msgstr "總代理商簽約已經刪除"
+
+#: /mnt/i3d/reseller//Controller/MasterResellerSubscriptionsController.php:245
+msgid "The master reseller subscription could not be deleted. Please, try again."
+msgstr "總代理商簽約無法刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/PackagesController.php:88;201
+msgid "The package has been saved."
+msgstr "套餐已經保存"
+
+#: /mnt/i3d/reseller//Controller/PackagesController.php:132;327
+msgid "The package could not be saved. Please, try again."
+msgstr "套餐不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/PackagesController.php:394
+msgid "Package used. The package could not be deleted."
+msgstr "套餐在使用中，不能刪除"
+
+#: /mnt/i3d/reseller//Controller/PackagesController.php:399
+msgid "The package has been deleted."
+msgstr "套餐已經刪除了"
+
+#: /mnt/i3d/reseller//Controller/PackagesController.php:401
+msgid "The package could not be deleted. Please, try again."
+msgstr "套餐不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:23;50;70;233
+msgid "Product Key Batches"
+msgstr "産品鑰匙批次"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:191
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2045;2140
+msgid "The product key could not be saved. Please, try again."
+msgstr "産品鑰匙不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:195;265
+msgid "The product key batch could not be saved. Please, try again."
+msgstr "産品鑰匙批次不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:261
+msgid "The product key batch has been saved."
+msgstr "産品鑰匙批次已經保存"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:269
+msgid "The product key batch could not be saved. Product Key has been assign to the client."
+msgstr "産品鑰匙批次不能保存，産品鑰匙已經分配"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:318
+msgid "The product key batch has been deleted."
+msgstr "産品鑰匙批次已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ProductKeyBatchesController.php:320
+msgid "The product key batch could not be deleted. Please, try again."
+msgstr "産品鑰匙批次不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeySubscriptionsController.php:1680
+msgid "The product key subscription for"
+msgstr "産品鑰匙簽約 "
+
+#: /mnt/i3d/reseller//Controller/ProductKeySubscriptionsController.php:1682
+msgid "The subscription client for "
+msgstr "簽約客戶 "
+
+#: /mnt/i3d/reseller//Controller/ProductKeySubscriptionsController.php:1761
+msgid "The product key subscription has been saved."
+msgstr "産品鑰匙簽約已經保存"
+
+#: /mnt/i3d/reseller//Controller/ProductKeySubscriptionsController.php:1765
+msgid "The product key subscription could not be saved. Please, try again."
+msgstr "産品鑰匙簽約不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeySubscriptionsController.php:1784
+msgid "The product key subscription has been deleted."
+msgstr "産品鑰匙簽約已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ProductKeySubscriptionsController.php:1786
+msgid "The product key subscription could not be deleted. Please, try again."
+msgstr "産品鑰匙簽約不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:23;956;2194
+msgid "Product Keys"
+msgstr "産品鑰匙"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2012;2028;2065
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:34
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:57
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:14
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:58
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:14
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:16
+msgid "Product Key"
+msgstr "産品鑰匙"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2041;2136
+msgid "The product key has been saved."
+msgstr "産品鑰匙已經保存"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2184
+msgid "The product key has been deleted."
+msgstr "産品鑰匙已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2186
+msgid "The product key could not be deleted. Please, try again."
+msgstr "産品鑰匙無法刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2349
+msgid "Assign product key to client has been saved."
+msgstr "産品鑰匙分配給客戶已經保存"
+
+#: /mnt/i3d/reseller//Controller/ProductKeysController.php:2351
+msgid "Assign product key to client could not save."
+msgstr "産品鑰匙分配給客戶不能保存"
+
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:175
+msgid "Reseller Subscription"
+msgstr "代理商簽約"
+
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:212;276
+msgid "The reseller subscription could not be saved. Please, try again."
+msgstr "代理商簽約不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:215
+msgid "The reseller subscription still active"
+msgstr "代理商簽約還有效"
+
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:272
+msgid "The reseller subscription has been saved."
+msgstr "代理商簽約已經保存"
+
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:318
+msgid "The reseller subscription has been deleted."
+msgstr "代理商簽約已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ResellerSubscriptionsController.php:320
+msgid "The reseller subscription could not be deleted. Please, try again."
+msgstr "代理商簽約不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:78
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:8
+msgid "Add Reseller"
+msgstr "添加代理商"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:120;193;248;281
+msgid "The reseller has been saved."
+msgstr "代理商已經保存"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:123;196;251;284
+msgid "The reseller could not be saved. Please, try again."
+msgstr "代理商不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:127
+msgid "Total limit for reseller has been exceeded. Reseller could not be saved. Please contact administration."
+msgstr "代理商總數已經超過限制，代理商不能保存,請聯系管理員。"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:148
+msgid "Sorry. Your account has no access."
+msgstr "對不起，您的賬戶不能訪問"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:168
+#: /mnt/i3d/reseller//Template/Resellers/add_master.ctp:8
+msgid "Add Master Reseller"
+msgstr "添加總代理商"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:218
+#: /mnt/i3d/reseller//Template/Resellers/edit.ctp:8
+msgid "Edit Reseller"
+msgstr "編輯代理商"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:271
+#: /mnt/i3d/reseller//Template/Resellers/edit_master.ctp:8
+msgid "Edit Master Reseller"
+msgstr "編輯總代理商"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:306
+msgid "The reseller has been deleted."
+msgstr "代理商已經刪除"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:308
+msgid "The reseller could not be deleted. Please, try again."
+msgstr "代理商不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:326
+msgid "Master Resellers"
+msgstr "總代理商"
+
+#: /mnt/i3d/reseller//Controller/ResellersController.php:376
+msgid "Sorry. Incorrect parameters."
+msgstr "對不起，不正確的參數"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:25;224
+msgid "Active"
+msgstr "有效"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:26
+msgid "Disabled"
+msgstr "禁用"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:27
+msgid "Pending activation"
+msgstr "等待激活"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:28
+msgid "Pending update profile"
+msgstr "等待更新個人信息"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:29
+msgid "Password reset requested"
+msgstr "密碼重置已經請求"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:158
+msgid "The signup has been processed."
+msgstr "注冊已經處理"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:162
+msgid "The signup could not be processed. Please, try again."
+msgstr "注冊不能處理，請重試"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:218
+msgid "Pending renew (7 days)"
+msgstr "等待續訂（3天）"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:221
+msgid "Pending renew (30 days)"
+msgstr "等待續訂（30天）"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:229
+msgid "Subscription has ended"
+msgstr "簽約已經結束"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:239
+msgid "Email or password is incorrect"
+msgstr "郵箱或者密碼不正確"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:287;432
+msgid "The user has been saved."
+msgstr "用戶已經保存"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:290;435
+msgid "The user could not be saved. Please, try again."
+msgstr "用戶不能保存，請重試"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:391
+msgid "User not found"
+msgstr "用戶不存在"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:550
+msgid "The user has been deleted."
+msgstr "用戶已經刪除"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:552
+msgid "The user could not be deleted. Please, try again."
+msgstr "用戶不能刪除，請重試"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:567
+msgid "Your login account did not have the access to this module."
+msgstr "您登錄的賬號沒有權限訪問該模塊"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:622
+msgid "Password reset instruction will be sent to e-mail address {0}."
+msgstr "密碼重置指令將會發送至郵箱地址 {0}."
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:625
+msgid "<p>Hi {0},</p><p>A new password reset has been requested on {1} for i3Display.</p><p>Please click link below to confirm reset your password:</p><p><a href=\"{2}\">Confirm Reset Password</a></p><p>Thank you and have a nice day.</p>"
+msgstr "<p>{0}您好,</p><p>在 {1} 已經請求重置i3Display密碼.</p><p>點擊以下鏈接確認重置密碼:</p><p><a href=\"{2}\">確認重置密碼</a></p><p>謝謝，天天快樂.</p>"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:636
+msgid "Password Reset for i3Display"
+msgstr "i3Display密碼重置"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:641;675
+msgid "Reset password cannot be processed. Please, try again later."
+msgstr "重置密碼無法進行，請重試"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:668
+msgid "New password accepted. Please sign in using new password."
+msgstr "新密碼已經收到，請使用新密碼登錄"
+
+#: /mnt/i3d/reseller//Controller/UsersController.php:679
+msgid "Invalid reset password token received. Please request new reset password."
+msgstr "接收到無效的重置密碼令牌。請求重置密碼。"
+
+#: /mnt/i3d/reseller//Controller/Api/ChannelsController.php:44
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:128;195
+#: /mnt/i3d/reseller//Controller/Api/ProductkeyController.php:74
+msgid "Invalid parameters"
+msgstr "無效參數"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:47
+msgid "Invalid product key"
+msgstr "無效産品鑰匙"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:52
+msgid "Product key already registered"
+msgstr "産品鑰匙已經注冊"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:57
+msgid "Product Key Package not exist. Please contact your reseller to assign package to your product key."
+msgstr "産品密鑰包套餐不存在。請聯系您的代理商給您的産品密鑰分配套餐。"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:61
+msgid "Product key already expired"
+msgstr "産品鑰匙已經過期"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:83
+msgid "Product key is not belong to "
+msgstr "産品鑰匙不再屬于"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:111
+msgid "Fail to assign device product key"
+msgstr "設備分配産品鑰匙失敗"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:118
+msgid "Can't associate device with product key"
+msgstr "無法關聯設備和産品鑰匙"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:205
+msgid "Device date/time is incorrect."
+msgstr "設備日期/時間不正確"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:209
+msgid "Please register this device."
+msgstr "請注冊該設備"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:213
+msgid "Device is not approved"
+msgstr "設備未審批"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:224
+msgid "Device has no associated product key"
+msgstr "設備已經關聯産品鑰匙"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:228
+msgid "Invalid Product Key."
+msgstr "無産産品鑰匙"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:232
+msgid "Product key status is not active"
+msgstr "産品鑰匙無效"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:236
+msgid "Device has no product key. Please register again."
+msgstr "設備沒有産品鑰匙，請重新注冊"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:241
+msgid "Device product key has expired"
+msgstr "設備産品鑰匙已經過期"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:246
+msgid "Device has no associated client"
+msgstr "設備沒有關聯客戶"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:251
+msgid "Client Subscription is not active"
+msgstr "客戶簽約未激活"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:256;272;283
+msgid "Device is valid. Please reload API-KEY."
+msgstr "設備有效，請重新載入API-KEY"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:261;277;288
+msgid "Device is valid."
+msgstr "設備有效"
+
+#: /mnt/i3d/reseller//Controller/Api/DevicesController.php:267
+msgid "Subscription is expired"
+msgstr "簽約已經過期"
+
+#: /mnt/i3d/reseller//Controller/Api/ProductkeyController.php:51
+msgid "Valid"
+msgstr "有效"
+
+#: /mnt/i3d/reseller//Controller/Api/ProductkeyController.php:56;62;68
+msgid "Invalid"
+msgstr "無效"
+
+#: /mnt/i3d/reseller//Shell/CreateCameraShell.php:280
+msgid "i3D Selfie Email and Password - "
+msgstr "i3D自拍郵箱和密碼"
+
+#: /mnt/i3d/reseller//Shell/CreateClientShell.php:387
+msgid "New i3D Client Registration - "
+msgstr "新的i3D客戶注冊"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:10
+msgid "List Client Cmscameras"
+msgstr "自拍客戶列表"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:11
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:8
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:8
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:11
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:6
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:6
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:9
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:6
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:6
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:9
+msgid "List Clients"
+msgstr "客戶列表"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:12
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:9
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:14
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:9
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:12
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:7
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:12
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:7
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:10
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:7
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:12
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:7
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:10
+msgid "New Client"
+msgstr "新客戶"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:23
+msgid "Add Client Cmscamera"
+msgstr "添加客戶自拍內容管理系統"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:29;30;31;32;33;34;35;36;37;38;39;40
+#: /mnt/i3d/reseller//Template/ClientCmscameras/edit.ctp:18;19;20;21;22;23;24;25;26;27;28;29
+#: /mnt/i3d/reseller//Template/ClientCmses/add.ctp:14;15;16;17;18;19;20;21;27
+#: /mnt/i3d/reseller//Template/ClientCmses/edit.ctp:14;15;16;17;18;19;20;21;22;25
+#: /mnt/i3d/reseller//Template/ClientHistories/add.ctp:15;16
+#: /mnt/i3d/reseller//Template/ClientHistories/edit.ctp:16;17
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/add.ctp:14;15
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/edit.ctp:14;15
+#: /mnt/i3d/reseller//Template/Clients/add.ctp:48;49;50;51;52;53;54;55;66;67;91;92;93
+#: /mnt/i3d/reseller//Template/Clients/edit.ctp:17;18;19;20;21;22;23;24
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:34;35;36;37;38;39
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:39;40;41;42;43;44
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:28;29;30;31
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:33;34;35;36
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:30;31;32;33;34;35;36
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:35;36;37;38;39;40;41
+#: /mnt/i3d/reseller//Template/DeviceLocations/add.ctp:12;13;14;15;16;17;18;19
+#: /mnt/i3d/reseller//Template/DeviceLocations/edit.ctp:12;13;14;15;16;17;18;19
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:18;21;22;23;24;25;26;27;28;29;30;31;32;33
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:19;21;22;23;24;25;26;27;28;29;30;31;32;33;34;36
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/add.ctp:19;20
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/edit.ctp:19;20
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:26;27;28;29;30;31
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:31;32;33;34;35;36
+#: /mnt/i3d/reseller//Template/News/add.ctp:13;14
+#: /mnt/i3d/reseller//Template/News/edit.ctp:12;13
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/add.ctp:13;14
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/edit.ctp:14;15
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:24;25;26;27;28
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:29;30;31;32;33
+#: /mnt/i3d/reseller//Template/Packages/add.ctp:77;80;83;85;86;87
+#: /mnt/i3d/reseller//Template/Packages/add.php:76;79;82;84;85;86
+#: /mnt/i3d/reseller//Template/Packages/edit.ctp:67;70;73;75;76;77
+#: /mnt/i3d/reseller//Template/Packages/edit.php:64;67;70;72;73;74
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:23;24;25;26;27;28;29;31;32;33;34;35;36;37;38
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:28;29;30;31;32;33;34;36;37;38;39;40;41;42;43
+#: /mnt/i3d/reseller//Template/PageTemplates/add.ctp:12;16
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:27;28
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:32;33
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:23;24;25;26;27;28;29
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:28;29;30;31;32;33;34
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/add.ctp:40;41
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/edit.ctp:15
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/add.ctp:48;49
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:37;38;39;40;41;42;43
+#: /mnt/i3d/reseller//Template/ProductKeys/add.ctp:13;17;19;20
+#: /mnt/i3d/reseller//Template/ProductKeys/edit.ctp:21
+#: /mnt/i3d/reseller//Template/RemoteCommands/add.ctp:14
+#: /mnt/i3d/reseller//Template/RemoteCommands/edit.ctp:14
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/add.ctp:19;20
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/edit.ctp:19;20
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:14;22;24;25;26;27;28;38;39;46;47;48
+#: /mnt/i3d/reseller//Template/Resellers/add_master.ctp:16;24;25;26;27;28;29;30;40;41;48;49;50
+#: /mnt/i3d/reseller//Template/Resellers/edit.ctp:25;26;27;28;29;30;31
+#: /mnt/i3d/reseller//Template/Resellers/edit_master.ctp:23;24;25;26;27;28;29
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:28;29;30;31;32;33
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:33;34;35;36;37;38
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/add.ctp:12
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/edit.ctp:13
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/add.ctp:12
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/edit.ctp:12
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/add.ctp:15;16
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/edit.ctp:15;16
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:32;33;35;36
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:37;38;40;41
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:28;29;30;31;32;33;34;35;36;37;38;39;40
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:33;34;35;36;37;38;39;40;41;42;43;44;45
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:28;29;30;31;32;33;34
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:33;34;35;36;37;38;39
+#: /mnt/i3d/reseller//Template/Users/add.ctp:12;13;14;15;16
+#: /mnt/i3d/reseller//Template/Versions/add.ctp:26;27;28;29;30
+#: /mnt/i3d/reseller//Template/Versions/edit.ctp:17;18;19;20;21
+msgid "Enter ..."
+msgstr "进入 ..."
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:45
+#: /mnt/i3d/reseller//Template/ClientCmscameras/edit.ctp:34
+#: /mnt/i3d/reseller//Template/ClientCmses/add.ctp:32
+#: /mnt/i3d/reseller//Template/ClientCmses/edit.ctp:30
+#: /mnt/i3d/reseller//Template/ClientHistories/add.ctp:21
+#: /mnt/i3d/reseller//Template/ClientHistories/edit.ctp:22
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/add.ctp:20
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/edit.ctp:20
+#: /mnt/i3d/reseller//Template/Clients/add.ctp:102
+#: /mnt/i3d/reseller//Template/Clients/edit.ctp:29
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:45
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:50
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:39
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:44
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:37
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:42
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:42
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:47
+#: /mnt/i3d/reseller//Template/DeviceLocations/add.ctp:24
+#: /mnt/i3d/reseller//Template/DeviceLocations/edit.ctp:24
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:41
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:63
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:42
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/add.ctp:25
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/edit.ctp:25
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:36
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:41
+#: /mnt/i3d/reseller//Template/News/add.ctp:19
+#: /mnt/i3d/reseller//Template/News/edit.ctp:18
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/add.ctp:19
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/edit.ctp:20
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:33
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:38
+#: /mnt/i3d/reseller//Template/Packages/add.ctp:168
+#: /mnt/i3d/reseller//Template/Packages/add.php:167
+#: /mnt/i3d/reseller//Template/Packages/edit.ctp:154
+#: /mnt/i3d/reseller//Template/Packages/edit.php:151
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:41
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:41
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:41
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:41
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:41
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:41
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:43
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:48
+#: /mnt/i3d/reseller//Template/PageTemplates/add.ctp:25
+#: /mnt/i3d/reseller//Template/PageTemplates/edit.ctp:69;121
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:33
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/assign.ctp:46
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:38
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:35
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:40
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/edit.ctp:26
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/add.ctp:55
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:48
+#: /mnt/i3d/reseller//Template/ProductKeys/add.ctp:25
+#: /mnt/i3d/reseller//Template/ProductKeys/add_productkey.ctp:55
+#: /mnt/i3d/reseller//Template/ProductKeys/edit.ctp:27
+#: /mnt/i3d/reseller//Template/RemoteCommands/add.ctp:19
+#: /mnt/i3d/reseller//Template/RemoteCommands/edit.ctp:19
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/add.ctp:25
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/edit.ctp:25
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:55
+#: /mnt/i3d/reseller//Template/Resellers/add_master.ctp:57
+#: /mnt/i3d/reseller//Template/Resellers/edit.ctp:41
+#: /mnt/i3d/reseller//Template/Resellers/edit_master.ctp:37
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:50
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:55
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:39
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:44
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/add.ctp:17
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/edit.ctp:18
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/add.ctp:17
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/edit.ctp:17
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/add.ctp:24
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/edit.ctp:24
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:41
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:46
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:46
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:51
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:39
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:44
+#: /mnt/i3d/reseller//Template/Users/add.ctp:24
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:38
+#: /mnt/i3d/reseller//Template/Versions/add.ctp:35
+#: /mnt/i3d/reseller//Template/Versions/edit.ctp:26
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Helper/FormHelper.php:1919
+msgid "Submit"
+msgstr "提交"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/add.ctp:46
+#: /mnt/i3d/reseller//Template/ClientCmscameras/edit.ctp:35
+#: /mnt/i3d/reseller//Template/ClientCmses/add.ctp:33
+#: /mnt/i3d/reseller//Template/ClientCmses/edit.ctp:31
+#: /mnt/i3d/reseller//Template/ClientHistories/add.ctp:22
+#: /mnt/i3d/reseller//Template/ClientHistories/edit.ctp:23
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/add.ctp:21
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/edit.ctp:21
+#: /mnt/i3d/reseller//Template/Clients/add.ctp:103
+#: /mnt/i3d/reseller//Template/Clients/edit.ctp:30
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:46
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:51
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:40
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:45
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:38
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:43
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:43
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:48
+#: /mnt/i3d/reseller//Template/DeviceLocations/add.ctp:25
+#: /mnt/i3d/reseller//Template/DeviceLocations/edit.ctp:25
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:42
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:64
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:43
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/add.ctp:26
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/edit.ctp:26
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:37
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:42
+#: /mnt/i3d/reseller//Template/News/add.ctp:20
+#: /mnt/i3d/reseller//Template/News/edit.ctp:19
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/add.ctp:20
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/edit.ctp:21
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:34
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:39
+#: /mnt/i3d/reseller//Template/Packages/add.ctp:169
+#: /mnt/i3d/reseller//Template/Packages/add.php:168
+#: /mnt/i3d/reseller//Template/Packages/edit.ctp:155
+#: /mnt/i3d/reseller//Template/Packages/edit.php:152
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:42
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:44
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:49
+#: /mnt/i3d/reseller//Template/PageTemplates/add.ctp:26
+#: /mnt/i3d/reseller//Template/PageTemplates/edit.ctp:70;122
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:34
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/assign.ctp:47
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:39
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:36
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:41
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/add.ctp:55
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/edit.ctp:27
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/add.ctp:56
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:49
+#: /mnt/i3d/reseller//Template/ProductKeys/add.ctp:26
+#: /mnt/i3d/reseller//Template/ProductKeys/add_productkey.ctp:56
+#: /mnt/i3d/reseller//Template/ProductKeys/edit.ctp:28
+#: /mnt/i3d/reseller//Template/RemoteCommands/add.ctp:20
+#: /mnt/i3d/reseller//Template/RemoteCommands/edit.ctp:20
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/add.ctp:26
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/edit.ctp:26
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:56
+#: /mnt/i3d/reseller//Template/Resellers/add_master.ctp:58
+#: /mnt/i3d/reseller//Template/Resellers/edit.ctp:42
+#: /mnt/i3d/reseller//Template/Resellers/edit_master.ctp:38
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:51
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:56
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:40
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:45
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/add.ctp:18
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/edit.ctp:19
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/add.ctp:18
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/edit.ctp:18
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/add.ctp:25
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/edit.ctp:25
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:42
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:47
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:47
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:52
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:40
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:45
+#: /mnt/i3d/reseller//Template/Users/add.ctp:25
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:39
+#: /mnt/i3d/reseller//Template/Versions/add.ctp:36
+#: /mnt/i3d/reseller//Template/Versions/edit.ctp:27
+msgid "Cancel"
+msgstr "取消"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/edit.ctp:12
+msgid "Edit Client Cmscamera"
+msgstr "編輯客戶自拍內容管理系統"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:12
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:32
+#: /mnt/i3d/reseller//Template/ClientCmses/add.ctp:23
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:12
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:32
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:42
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:20
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:16
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:16
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:16
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:42
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/edit.ctp:18
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:22
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:26
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:32
+msgid "Status"
+msgstr "狀態"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:15
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:15
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:17
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:20
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:20
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:16
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:16
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:12
+msgid "Filter"
+msgstr "過濾"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:37
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:37
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:17
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:40
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:35
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:30
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:29
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:26
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:30
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:17
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:18
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:38
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:37
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:33
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:28
+#: /mnt/i3d/reseller//Template/News/index.ctp:14
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:15
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:16
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:21
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:26
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:26
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:26
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:26
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:26
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:26
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:28
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:20
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:28
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:28
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:20
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:131
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:136
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:90
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:16
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:33
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:17
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:18
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:39
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:28
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:28
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:12
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:12
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:17
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:34
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:28
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:28
+#: /mnt/i3d/reseller//Template/Users/index.ctp:15
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:24;78;131;185
+#: /mnt/i3d/reseller//Template/Users/master_resellers.ctp:23
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:24;76
+msgid "Actions"
+msgstr "動作"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:55
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:55
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:38
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:78
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:59;60;66;73
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:50
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:48
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:40
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:46
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:33
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:32
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:55
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:52
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:70
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:46
+#: /mnt/i3d/reseller//Template/News/index.ctp:27
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:31
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:33
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:35
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:42
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:42
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:44
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:97
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:46
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:44
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:39
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:182
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:163
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:113
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:35
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:70
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:39
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:35
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:61
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:44
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:44
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:23
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:23
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:39
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:58
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:44
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:44
+#: /mnt/i3d/reseller//Template/Users/index.ctp:33
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:42;96;149;203
+#: /mnt/i3d/reseller//Template/Users/master_resellers.ctp:41
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:42;94
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Helper/PaginatorHelper.php:1214
+msgid "View"
+msgstr "查看"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:56
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:56
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:39
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:79
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:74
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:51
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:49
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:41
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:47
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:34
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:33
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:56
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:71
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:47
+#: /mnt/i3d/reseller//Template/News/index.ctp:28
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:32
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:34
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:36
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:43
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:43
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:43
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:43
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:43
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:43
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:45
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:98
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:47
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:45
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:40
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:164
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:114
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:36
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:71
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:40
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:36
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:62
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:45
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:45
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:24
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:24
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:40
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:59
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:45
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:45
+#: /mnt/i3d/reseller//Template/Users/index.ctp:34
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:43;97;150;204
+#: /mnt/i3d/reseller//Template/Users/master_resellers.ctp:42
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:43;95
+msgid "Edit"
+msgstr "編輯"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:57
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:57
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:40
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:80
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:75
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:52
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:11
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:50
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:42
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:48
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:35
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:34
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:57
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:72
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:6
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:48
+#: /mnt/i3d/reseller//Template/News/index.ctp:29
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:33
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:6
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:35
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:44
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:6
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:46
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:99
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:6
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:48
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:6
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:46
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:41
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:11
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:183
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:165
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:115
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:37
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:72
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:41
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:37
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:63
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:46
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:46
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:25
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:25
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:41
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:6
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:60
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:46
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:46
+#: /mnt/i3d/reseller//Template/Users/index.ctp:35
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:44;98;151;205
+#: /mnt/i3d/reseller//Template/Users/master_resellers.ctp:43
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:44;96
+msgid "Delete"
+msgstr "刪除"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:57
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:57
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:40
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:80
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:75
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:52
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:13
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:50
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:42
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:48
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:35
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:34
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:57
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:72
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:8
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:48
+#: /mnt/i3d/reseller//Template/News/index.ctp:29
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:33
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:8
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:35
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:37
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:44
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:44
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:8
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:46
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:99
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:8
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:48
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:8
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:46
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:41
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:13
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:183
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:165
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:115
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:37
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:72
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:41
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:37
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:63
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:46
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:46
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:25
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:25
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:41
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:8
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:60
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:46
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:46
+#: /mnt/i3d/reseller//Template/Users/index.ctp:35
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:44;98;151;205
+#: /mnt/i3d/reseller//Template/Users/master_resellers.ctp:43
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:44;96
+msgid "Are you sure you want to delete this {0}?"
+msgstr "您確定要刪除{0}?"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:69
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:69
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:52
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:93
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:87
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:64
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:62
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:54
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:60
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:47
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:62
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:46
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:69
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:64
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:84
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:60
+#: /mnt/i3d/reseller//Template/News/index.ctp:41
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:45
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:47
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:49
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:56
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:56
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:56
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:56
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:56
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:56
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:58
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:111
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:60
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:58
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:53
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:198
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:180
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:127
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:49
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:84
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:53
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:49
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:75
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:58
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:58
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:37
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:37
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:53
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:72
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:58
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:58
+#: /mnt/i3d/reseller//Template/Users/index.ctp:47
+#: /mnt/i3d/reseller//Template/Versions/index.ctp:33
+msgid "previous"
+msgstr "前一個"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:71
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:71
+#: /mnt/i3d/reseller//Template/ClientHistories/index.ctp:54
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:95
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:89
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:66
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:64
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:56
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:62
+#: /mnt/i3d/reseller//Template/DeviceLocations/index.ctp:49
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:64
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:48
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:71
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:66
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:86
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:62
+#: /mnt/i3d/reseller//Template/News/index.ctp:43
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/index.ctp:47
+#: /mnt/i3d/reseller//Template/NotificationLogs/index.ctp:49
+#: /mnt/i3d/reseller//Template/Packages/index.ctp:51
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:58
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:58
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:58
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:58
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:58
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:58
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:60
+#: /mnt/i3d/reseller//Template/PageTemplates/index.ctp:113
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:62
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:60
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/index.ctp:55
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:200
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:182
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:129
+#: /mnt/i3d/reseller//Template/RemoteCommands/index.ctp:51
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:86
+#: /mnt/i3d/reseller//Template/Resellers/index.ctp:55
+#: /mnt/i3d/reseller//Template/Resellers/master_resellers.ctp:51
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:77
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:60
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:60
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/index.ctp:39
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/index.ctp:39
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/index.ctp:55
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:74
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:60
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:60
+#: /mnt/i3d/reseller//Template/Users/index.ctp:49
+#: /mnt/i3d/reseller//Template/Versions/index.ctp:35
+msgid "next"
+msgstr "後一個"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/index.ctp:78
+#: /mnt/i3d/reseller//Template/ClientCmses/index.ctp:78
+msgid "No client under cmses."
+msgstr "內容管理系統下沒有客戶"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:14
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:14
+#: /mnt/i3d/reseller//Template/ClientHistories/view.ctp:15
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:14
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:17
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:16
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:32
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:20
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:34
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:59;166
+msgid "Client"
+msgstr "客戶"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:16
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:16
+msgid "Cms Server"
+msgstr "內容管理系統服務器"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:18
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:18
+msgid "Database Server"
+msgstr "數據庫服務器"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:20
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:20
+msgid "Cms Url"
+msgstr "內容管理系統URL"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:22
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:22
+msgid "Cms Domain"
+msgstr "內容管理系統域名"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:24
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:24
+msgid "Cms Path"
+msgstr "內容管理系統目錄"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:26
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:26
+msgid "Database Name"
+msgstr "數據庫名稱"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:28
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:28
+msgid "Database User"
+msgstr "數據庫用戶"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:30
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:30
+msgid "Database Password"
+msgstr "數據庫密碼"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:34
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:34
+#: /mnt/i3d/reseller//Template/ClientHistories/view.ctp:23
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:18
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:34
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:46
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:38
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:30
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:40
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:26
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:25
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:24
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:28
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:18
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:40
+#: /mnt/i3d/reseller//Template/News/view.ctp:16
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/view.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:34
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:34
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:34
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:34
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:34
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:34
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:44
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:23
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:34
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:38
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:18
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:18
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:24
+#: /mnt/i3d/reseller//Template/RemoteCommands/view.ctp:20
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:18
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:36
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:40
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:34
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/view.ctp:17
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/view.ctp:16
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:20
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:42
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:38
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:32
+#: /mnt/i3d/reseller//Template/Versions/view.ctp:18
+msgid "Id"
+msgstr "Id"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:36
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:36
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:36
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:34
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:32
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:26
+#: /mnt/i3d/reseller//Template/News/view.ctp:18
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/view.ctp:22
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:35
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:31
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:58
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:29
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:36
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:26
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:26
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:28
+#: /mnt/i3d/reseller//Template/RemoteCommands/view.ctp:22
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:26
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:38
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:60
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:38
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:50
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:42
+#: /mnt/i3d/reseller//Template/Users/view.ctp:18
+#: /mnt/i3d/reseller//Template/Versions/view.ctp:20
+msgid "Date Created"
+msgstr "創建日期"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:38
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:38
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:38
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:36
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:34
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:38
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:28
+#: /mnt/i3d/reseller//Template/News/view.ctp:20
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/view.ctp:20
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:33
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:60
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:31
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:38
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:28
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:28
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:30
+#: /mnt/i3d/reseller//Template/RemoteCommands/view.ctp:24
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:28
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:40
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:62
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:40
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:52
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:40
+#: /mnt/i3d/reseller//Template/Users/view.ctp:20
+#: /mnt/i3d/reseller//Template/Versions/view.ctp:22
+msgid "Date Modified"
+msgstr "修改日期"
+
+#: /mnt/i3d/reseller//Template/ClientCmscameras/view.ctp:40
+#: /mnt/i3d/reseller//Template/ClientCmses/view.ctp:40
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:36
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:42
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:21
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:36
+msgid "Remark"
+msgstr "備注"
+
+#: /mnt/i3d/reseller//Template/ClientCmses/add.ctp:8
+msgid "Add Client Cmse"
+msgstr "添加客戶內容管理系統"
+
+#: /mnt/i3d/reseller//Template/ClientCmses/edit.ctp:8
+msgid "Edit Client Cmse"
+msgstr "編輯客戶內容管理系統"
+
+#: /mnt/i3d/reseller//Template/ClientHistories/add.ctp:7
+msgid "Add Client History"
+msgstr "添加客戶曆史"
+
+#: /mnt/i3d/reseller//Template/ClientHistories/edit.ctp:8
+msgid "Edit Client History"
+msgstr "編輯客戶曆史"
+
+#: /mnt/i3d/reseller//Template/ClientHistories/view.ctp:17
+msgid "Client History Type"
+msgstr "客戶曆史類型"
+
+#: /mnt/i3d/reseller//Template/ClientHistories/view.ctp:19
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:18
+msgid "Client Status"
+msgstr "客戶狀態"
+
+#: /mnt/i3d/reseller//Template/ClientHistories/view.ctp:21
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:40
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:34
+#: /mnt/i3d/reseller//Template/News/view.ctp:22
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:27
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:30
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:30
+#: /mnt/i3d/reseller//Template/Versions/view.ctp:24
+msgid "Description"
+msgstr "描述"
+
+#: /mnt/i3d/reseller//Template/ClientHistories/view.ctp:25
+msgid "Added"
+msgstr "添加"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/add.ctp:7
+msgid "Add Client Subscription"
+msgstr "添加客戶簽約"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/edit.ctp:7
+msgid "Edit Client Subscription"
+msgstr "編輯客戶簽約"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:13
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:12
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:20
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:12
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:12
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:12
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:14
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/assign.ctp:18
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:66
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:67
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:23
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:18
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:12
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:14
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:14
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:36
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:8
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:8
+msgid "Reseller"
+msgstr "代理商"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:15;38
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:14;31
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:97;129
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:14;31
+msgid "Subscription Status"
+msgstr "簽約狀態"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/index.ctp:103
+msgid "No client subscription under  selected reseller."
+msgstr "選中的代理商沒有客戶簽約"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:16
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:32
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:30
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:16
+msgid "Package"
+msgstr "套餐"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:20
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:20
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:20
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:20
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:22
+msgid "Added By"
+msgstr "添加人"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:22
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:22
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:22
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:22
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:24
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:44
+msgid "Start"
+msgstr "開始日期"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:24
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/view.ctp:24
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:24
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/view.ctp:24
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:26
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:46
+msgid "End"
+msgstr "結束日期"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:26
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:36
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:28
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:48
+msgid "Date Added"
+msgstr "添加日期"
+
+#: /mnt/i3d/reseller//Template/ClientSubscriptions/view.ctp:28
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:30
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:50
+msgid "Date Modify"
+msgstr "修改日期"
+
+#: /mnt/i3d/reseller//Template/Clients/add.ctp:8
+msgid "Add Client"
+msgstr "添加客戶"
+
+#: /mnt/i3d/reseller//Template/Clients/edit.ctp:7
+msgid "Edit Client"
+msgstr "編輯客戶"
+
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:16
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:87
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:88
+#: /mnt/i3d/reseller//Template/ProductKeys/batch_reseller.ctp:6
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:44
+msgid "Client Name"
+msgstr "客戶姓名"
+
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:19
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:107
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:108
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:64
+msgid "Search"
+msgstr "搜索"
+
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:28
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:34
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:55
+msgid "No"
+msgstr "編號"
+
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:59;60
+msgid "Content Panel"
+msgstr "內容面板"
+
+#: /mnt/i3d/reseller//Template/Clients/index.ctp:66
+msgid "Selfie Panel"
+msgstr "自拍面板"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:14
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:14
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:14
+msgid "Code"
+msgstr "編碼"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:16
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:38
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:28
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:28
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:14
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:28
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:28
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/view.ctp:15
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/view.ctp:14
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:30
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:28
+#: /mnt/i3d/reseller//Template/Users/view.ctp:16
+msgid "Name"
+msgstr "姓名"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:22
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:26
+msgid "Address"
+msgstr "地址"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:24
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:28
+msgid "Postcode"
+msgstr "郵編"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:26
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:20
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:30
+msgid "City"
+msgstr "城市"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:28
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:24
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:32
+msgid "Country"
+msgstr "國家"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:30
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:34
+msgid "Phone Number"
+msgstr "電話號碼"
+
+#: /mnt/i3d/reseller//Template/Clients/view.ctp:32
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:38
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:24
+msgid "Logo"
+msgstr "標志"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:10
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:7
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:13
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:18
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:8
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:11
+msgid "List Cmsmenus"
+msgstr "內容管理系統菜單列表"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:11
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:6
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:9
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:6
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:11
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:6
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:9
+msgid "List Menu Groups"
+msgstr "菜單列表分組"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:12
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:7
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:10
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:7
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:12
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:7
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:10
+msgid "New Menu Group"
+msgstr "新菜單分組"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:13
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:18
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:11
+msgid "List Parent Cmsmenus"
+msgstr "上級內容管理系統菜單列表"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:14
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:19
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:12
+msgid "New Parent Cmsmenu"
+msgstr "新上級內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:15
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:20
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:8
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:13
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:11
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:16
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:6
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:9
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:11
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:6
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:9
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:13
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:18
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:8
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:11
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:16
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:9
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:11
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:6
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:9
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:11
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:6
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:9
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:11
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:6
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:9
+msgid "List Packages"
+msgstr "套餐列表"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:16
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:21
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:9
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:14
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:12
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:17
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:7
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:10
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:12
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:7
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:10
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:14
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:19
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:9
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:17
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:17
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:17
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:17
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:17
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:17
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:10
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:12
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:7
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:10
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:12
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:7
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:10
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:12
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:7
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:10
+msgid "New Package"
+msgstr "新套餐"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/add.ctp:27
+msgid "Add Cmsmenu"
+msgstr "添加內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/edit.ctp:32
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:5
+msgid "Edit Cmsmenu"
+msgstr "編輯內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/index.ctp:5
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:8
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:14
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:19
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:9
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:12
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:14
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:19
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:12
+msgid "New Cmsmenu"
+msgstr "新內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:6
+msgid "Delete Cmsmenu"
+msgstr "刪除內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:6
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:6
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:6
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:6
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:6
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:6
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:6
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:6
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:6
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:6
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:6
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:6
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:6
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:6
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:6
+msgid "Are you sure you want to delete # {0}?"
+msgstr "您是否確認刪除 # {0}?"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:32
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:30
+msgid "Menu Group"
+msgstr "菜單分組"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:34
+msgid "Parent Cmsmenu"
+msgstr "上級內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:36
+msgid "Icon"
+msgstr "圖標"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:42
+msgid "Link Base"
+msgstr "關聯基礎"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:44
+msgid "Link Parameters"
+msgstr "關聯參數"
+
+#: /mnt/i3d/reseller//Template/Cmsmenus/view.ctp:48
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:44
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:52
+msgid "Ordering"
+msgstr "訂購"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:10
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:15
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:7
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:11
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:6
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:9
+msgid "List Cmsmenus Permission"
+msgstr "內容管理系統菜單權限列表"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:15
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:20
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:10
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:13
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:10
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:7
+msgid "List Usergroups"
+msgstr "用戶分組列表"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:16
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:21
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:11
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:14
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:5
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:8
+msgid "New Usergroup"
+msgstr "新用戶分組"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/add.ctp:27
+msgid "Add Cmsmenus Permission"
+msgstr "添加內容管理系統菜單權限"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/edit.ctp:32
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:5
+msgid "Edit Cmsmenus Permission"
+msgstr "編輯內容管理系統菜單權限"#: /mnt/i3d/reseller//Template/CmsmenusPermission/index.ctp:5
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:8
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:12
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Usergroups/index.ctp:7
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:10
+msgid "New Cmsmenus Permission"
+msgstr "新的內容管理系統菜單權限"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:6
+msgid "Delete Cmsmenus Permission"
+msgstr "刪除內容管理系統菜單權限"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:34
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:32
+msgid "Cmsmenu"
+msgstr "內容管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/CmsmenusPermission/view.ctp:36
+msgid "Usergroup"
+msgstr "用戶分組"
+
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:10
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:7
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:11
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:6
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:11
+msgid "List Cmsplugins"
+msgstr "內容管理系統插件列表"
+
+#: /mnt/i3d/reseller//Template/Cmsplugins/add.ctp:23
+msgid "Add Cmsplugin"
+msgstr "添加內容管理插件"
+
+#: /mnt/i3d/reseller//Template/Cmsplugins/edit.ctp:28
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:5
+msgid "Edit Cmsplugin"
+msgstr "編輯內容管理系統插件"
+
+#: /mnt/i3d/reseller//Template/Cmsplugins/index.ctp:5
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:8
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:12
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:7
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:14
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:19
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:12
+msgid "New Cmsplugin"
+msgstr "新的內容管理系統插件"
+
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:6
+msgid "Delete Cmsplugin"
+msgstr "刪除內容管理系統插件"
+
+#: /mnt/i3d/reseller//Template/Cmsplugins/view.ctp:32
+msgid "Cmsplugintype Id"
+msgstr "內容管理系統插件類型Id"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:10
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:7
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:11
+msgid "List Cmsplugintypes"
+msgstr "內容管理系統插件類型列表"
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/add.ctp:25
+msgid "Add Cmsplugintype"
+msgstr "添加內容管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/edit.ctp:30
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:5
+msgid "Edit Cmsplugintype"
+msgstr "編輯內容管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/index.ctp:5
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:14
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:19
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:12
+msgid "New Cmsplugintype"
+msgstr "新的內容管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:6
+msgid "Delete Cmsplugintype"
+msgstr "刪除內容管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:30
+msgid "Plugin Name"
+msgstr "插件名稱"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:32
+msgid "Plugin Value"
+msgstr "插件值"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:34
+msgid "Plugin Type"
+msgstr "插件類型"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:38
+msgid "Template Refs"
+msgstr "模板參考"
+
+#: /mnt/i3d/reseller//Template/Cmsplugintypes/view.ctp:44
+msgid "Setup Required"
+msgstr "需要先創建"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:38
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:38
+msgid "Need Urgent Attention"
+msgstr "需要緊急注意"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:39;56;88
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:39;56;88
+msgid "{0}"
+msgstr "{0}"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:45;62;78;94;111
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:45;62;78;94;111
+msgid "{0} total devices"
+msgstr "{0} 全部設備"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:55
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:55
+msgid "Online but Not Updated"
+msgstr "在线但没有更新"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:71
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:71
+msgid "Offline & Not Updated less than 24 Hours"
+msgstr "離線並沒有更新超過24小時"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:72
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:72
+msgid "{0} needs attention"
+msgstr "{0}需要注意"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:87
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:87
+msgid "Working Fine"
+msgstr "工作良好"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:104
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:104
+msgid "Registered Devices"
+msgstr "注冊設置"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:105
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:105
+msgid "{0} (this month)"
+msgstr "{0} (這個月)"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:143
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:143
+msgid "Latest News"
+msgstr "最後的新聞"
+
+#: /mnt/i3d/reseller//Template/Dashboards/index.ctp:228
+#: /mnt/i3d/reseller//Template/Dashboards/index.x.ctp:228
+msgid "View All"
+msgstr "查看全部"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/add.ctp:7
+msgid "Add Device Location"
+msgstr "添加設置位置"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/edit.ctp:7
+msgid "Edit Device Location"
+msgstr "編輯設備位置"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:14
+msgid "Building"
+msgstr "創建中"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:16
+msgid "Road"
+msgstr "路徑"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:18
+msgid "District"
+msgstr "区"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:22
+msgid "State"
+msgstr "省"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:28
+msgid "Longitude"
+msgstr "經度"
+
+#: /mnt/i3d/reseller//Template/DeviceLocations/view.ctp:30
+msgid "Latitude"
+msgstr "緯度"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:15
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:14
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:22
+#: /mnt/i3d/reseller//Template/RemoteCommands/view.ctp:14
+msgid "Device"
+msgstr "設備"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:19
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:18
+msgid "Version No"
+msgstr "版本編號"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:21
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:20
+msgid "Remote Ip"
+msgstr "遠程IP"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:23
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:22
+msgid "Local Ip"
+msgstr "本地IP"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:27
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:26
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:32
+msgid "Channel Id"
+msgstr "頻道IP"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:29;42
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:28
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:36
+msgid "Last Update"
+msgstr "最後更新"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:31;41
+#: /mnt/i3d/reseller//Template/DeviceStatuses/view.ctp:30
+msgid "Log Time"
+msgstr "日志時間"
+
+#: /mnt/i3d/reseller//Template/DeviceStatusLogs/view.ctp:43
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:35
+msgid "Sync Status"
+msgstr "同步狀態"
+
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:13
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:9
+msgid "Add Device"
+msgstr "添加設備"
+
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:18
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:17
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:19
+msgid "MAC Address"
+msgstr "MAC地址"
+
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:20
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:20
+msgid "E.g. FMT46WM001 or SKU Number"
+msgstr "例如：FMT46WM001或SKU編碼"
+
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:21
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:21
+msgid "Android ID"
+msgstr "安卓ID"
+
+#: /mnt/i3d/reseller//Template/Devices/add.ctp:34
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:35
+msgid "My Location"
+msgstr "我的位置"
+
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:18
+msgid "Ref Code / Tag ID"
+msgstr "參考編碼/標簽ID"
+
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:19
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:26
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:30
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:17
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:32
+msgid "Orientation"
+msgstr "方向"
+
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:41
+msgid "Copy & Paste from Excel app. Format: MAC_ADDRESS, REF_NUMBER, ORIENTATION, APPROVAL STATUS"
+msgstr "從Excel應用拷貝並粘貼"，格式：MAc地址,參考編碼,方向,審批狀態
+
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:41
+msgid "Multiple MAC Addresses File"
+msgstr "多個MAC地址文件"
+
+#: /mnt/i3d/reseller//Template/Devices/add_multiple.ctp:56
+msgid "Uploaded data confirmed correct"
+msgstr "上傳數據確定正確"
+
+#: /mnt/i3d/reseller//Template/Devices/approval.ctp:5
+msgid "Devices Pending Approval"
+msgstr "設備等待審批"
+
+#: /mnt/i3d/reseller//Template/Devices/edit.ctp:13
+msgid "Edit Device"
+msgstr "編輯設備"
+
+#: /mnt/i3d/reseller//Template/Devices/index.ctp:46;47;48
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:45;46
+msgid "Not assigned"
+msgstr "未分配"
+
+#: /mnt/i3d/reseller//Template/Devices/status.ctp:48
+msgid "No data yet"
+msgstr "沒有數據"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:16
+msgid "Mac Address"
+msgstr "Mac地址"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:18
+msgid "Android Id"
+msgstr "安卓Id"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:20
+msgid "Android Serial No"
+msgstr "安卓序列號"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:22
+msgid "Os Version"
+msgstr "系統版本"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:24
+msgid "Chipset"
+msgstr "芯片集"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:30
+msgid "Client Id"
+msgstr "客戶ID"
+
+#: /mnt/i3d/reseller//Template/Devices/view.ctp:34
+msgid "Approval Status"
+msgstr "審批狀態"
+
+#: /mnt/i3d/reseller//Template/Element/Flash/default.ctp:10
+msgid "Info"
+msgstr "信息"
+
+#: /mnt/i3d/reseller//Template/Element/Flash/error.ctp:3
+msgid "Alert!"
+msgstr "提醒"
+
+#: /mnt/i3d/reseller//Template/Element/Flash/success.ctp:3
+msgid "Ok!"
+msgstr "好！"
+
+#: /mnt/i3d/reseller//Template/Element/Layout/Default/header.ctp:29
+msgid "Member since"
+msgstr "成員"
+
+#: /mnt/i3d/reseller//Template/Element/Layout/Default/header.ctp:50
+msgid "Profile"
+msgstr "個人信息"
+
+#: /mnt/i3d/reseller//Template/Element/Layout/Default/header.ctp:53
+msgid "Sign out"
+msgstr "注銷"
+
+#: /mnt/i3d/reseller//Template/Layout/default.ctp:92
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Helper/HtmlHelper.php:795
+msgid "Home"
+msgstr "主頁"
+
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/add.ctp:12
+msgid "Add Master Reseller Subscription"
+msgstr "添加總代理商簽約"
+
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/edit.ctp:12
+msgid "Edit Master Reseller Subscription"
+msgstr "編輯總代理商簽約"
+
+#: /mnt/i3d/reseller//Template/MasterResellerSubscriptions/index.ctp:93
+msgid "No master reseller subscription under  selected reseller."
+msgstr "選中的代理商沒有總代理商簽約"#: /mnt/i3d/reseller//Template/Menus/add.ctp:5;8
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:10;13
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:7;11
+msgid "List Menus"
+msgstr "菜單列表"
+
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:9
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:14
+#: /mnt/i3d/reseller//Template/Menus/index.ctp:5
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:8;12
+msgid "New Menu"
+msgstr "新菜單"
+
+#: /mnt/i3d/reseller//Template/Menus/add.ctp:20
+msgid "Add Menu"
+msgstr "添加菜單"
+
+#: /mnt/i3d/reseller//Template/Menus/edit.ctp:25
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:5
+msgid "Edit Menu"
+msgstr "編輯菜單"
+
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:6
+msgid "Delete Menu"
+msgstr "刪除菜單"
+
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:32
+msgid "Label"
+msgstr "標簽"
+
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:36
+msgid "Controller"
+msgstr "控制台"
+
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:38
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:34
+msgid "Action"
+msgstr "動作"
+
+#: /mnt/i3d/reseller//Template/Menus/view.ctp:42
+msgid "Parent Id"
+msgstr "上級ID"
+
+#: /mnt/i3d/reseller//Template/News/add.ctp:8
+msgid "Add News"
+msgstr "添加新聞"
+
+#: /mnt/i3d/reseller//Template/News/edit.ctp:7
+msgid "Edit News"
+msgstr "編輯新聞"
+
+#: /mnt/i3d/reseller//Template/News/view.ctp:14
+msgid "Title"
+msgstr "標題"
+
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/add.ctp:7
+msgid "Add Notification Email Template"
+msgstr "添加通知郵箱模板"
+
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/edit.ctp:8
+msgid "Edit Notification Email Template"
+msgstr "編輯通知郵箱模板"
+
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/view.ctp:14
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:37
+msgid "Notification Type"
+msgstr "通知類型"
+
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/view.ctp:16
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:31
+msgid "Subject"
+msgstr "主題"
+
+#: /mnt/i3d/reseller//Template/NotificationEmailTemplates/view.ctp:24
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:33
+msgid "Message"
+msgstr "消息"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:5
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:10
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:7
+msgid "List Notifications"
+msgstr "通知列表"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:6
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:11
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:9
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:12
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:17
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:12
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:15
+msgid "List Users"
+msgstr "用戶列表"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:7
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:12
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:10
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:13
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:18
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:13
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:16
+msgid "New User"
+msgstr "新用戶"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/add.ctp:18
+msgid "Add Notification"
+msgstr "添加通知"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/edit.ctp:23
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:5
+msgid "Edit Notification"
+msgstr "編輯通知"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:6
+msgid "Delete Notification"
+msgstr "刪除通知"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:8
+msgid "New Notification"
+msgstr "新通知"
+
+#: /mnt/i3d/reseller//Template/NotificationLogs/view.ctp:28
+msgid "To"
+msgstr "到/給"
+
+#: /mnt/i3d/reseller//Template/Packages/add.ctp:12
+#: /mnt/i3d/reseller//Template/Packages/add.php:12
+msgid "Add Package"
+msgstr "添加套餐"
+
+#: /mnt/i3d/reseller//Template/Packages/edit.ctp:12
+#: /mnt/i3d/reseller//Template/Packages/edit.php:12
+msgid "Edit Package"
+msgstr "編輯套餐"
+
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:14
+msgid "Client Type"
+msgstr "客戶類型"
+
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:20
+msgid "Total Reseller"
+msgstr "全部代理商"
+
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:23
+msgid "Total Client"
+msgstr "全部客戶"
+
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:25
+msgid "Package Name"
+msgstr "套餐名稱"
+
+#: /mnt/i3d/reseller//Template/Packages/view.ctp:29
+msgid "Price"
+msgstr "价格"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:15
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:7
+msgid "List Packages Cmsmenus"
+msgstr "套餐內管管理系統菜單列表"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/add.ctp:25
+msgid "Add Packages Cmsmenu"
+msgstr "添加內管管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/edit.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:5
+msgid "Edit Packages Cmsmenu"
+msgstr "編輯內管管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/index.ctp:5
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:8
+msgid "New Packages Cmsmenu"
+msgstr "新內管管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsmenus/view.ctp:6
+msgid "Delete Packages Cmsmenu"
+msgstr "刪除內管管理系統菜單"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:15
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:7
+msgid "List Packages Cmsplugins"
+msgstr "套餐內管管理系統插件列表"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/add.ctp:25
+msgid "Add Packages Cmsplugin"
+msgstr "添加套餐內管管理系統插件"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/edit.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:5
+msgid "Edit Packages Cmsplugin"
+msgstr "編輯套餐內管管理系統插件"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/index.ctp:5
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:8
+msgid "New Packages Cmsplugin"
+msgstr "新套餐內管管理系統插件"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:6
+msgid "Delete Packages Cmsplugin"
+msgstr "刪除套餐內管管理系統插件"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugins/view.ctp:32
+msgid "Cmsplugin"
+msgstr "內管管理系統插件"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:15
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:7
+msgid "List Packages Cmsplugintypes"
+msgstr "套餐內管管理系統插件類型列表"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/add.ctp:25
+msgid "Add Packages Cmsplugintype"
+msgstr "添加套餐內管管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/edit.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:5
+msgid "Edit Packages Cmsplugintype"
+msgstr "編輯套餐內管管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/index.ctp:5
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:8
+msgid "New Packages Cmsplugintype"
+msgstr "新套餐內管管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:6
+msgid "Delete Packages Cmsplugintype"
+msgstr "刪除套餐內管管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/PackagesCmsplugintypes/view.ctp:32
+msgid "Cmsplugintype"
+msgstr "套餐內管管理系統插件類型"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:15
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:7
+msgid "List Packages Slottextstyles"
+msgstr "套餐插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:11
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:10
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:7
+msgid "List Slottextstyles"
+msgstr "插槽文本樣式列表"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:14
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:19
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:12
+#: /mnt/i3d/reseller//Template/Slottextstyles/index.ctp:5
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:8
+msgid "New Slottextstyle"
+msgstr "新插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/add.ctp:25
+msgid "Add Packages Slottextstyle"
+msgstr "添加套餐插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/edit.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:5
+msgid "Edit Packages Slottextstyle"
+msgstr "編輯套餐插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/index.ctp:5
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:8
+msgid "New Packages Slottextstyle"
+msgstr "新套餐插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:6
+msgid "Delete Packages Slottextstyle"
+msgstr "刪除套餐插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottextstyles/view.ctp:32
+msgid "Slottextstyle"
+msgstr "插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:15
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:7
+msgid "List Packages Slottypes"
+msgstr "套餐插槽類型列表"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:11
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:10
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:7
+msgid "List Slottypes"
+msgstr "插槽類型列表"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:14
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:19
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:12
+#: /mnt/i3d/reseller//Template/Slottypes/index.ctp:5
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:8
+msgid "New Slottype"
+msgstr "新插槽類型"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/add.ctp:25
+msgid "Add Packages Slottype"
+msgstr "添加套餐插槽類型"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/edit.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:5
+msgid "Edit Packages Slottype"
+msgstr "編輯套餐插槽類型"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/index.ctp:5
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:8
+msgid "New Packages Slottype"
+msgstr "新套餐插槽類型"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:6
+msgid "Delete Packages Slottype"
+msgstr "刪除套餐插槽類型"
+
+#: /mnt/i3d/reseller//Template/PackagesSlottypes/view.ctp:32
+msgid "Slottype"
+msgstr "插槽類型"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:10
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:15
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:7
+msgid "List Packages Templates"
+msgstr "套餐模板列表"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:13
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:18
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:8
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:11
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:10
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:7
+msgid "List Templates"
+msgstr "模板列表"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:14
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:19
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:9
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:12
+#: /mnt/i3d/reseller//Template/Templates/index.ctp:5
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:8
+msgid "New Template"
+msgstr "新模板"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/add.ctp:25
+msgid "Add Packages Template"
+msgstr "添加套餐模板"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/edit.ctp:30
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:5
+msgid "Edit Packages Template"
+msgstr "編輯套餐模板"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/index.ctp:5
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:8
+msgid "New Packages Template"
+msgstr "新套餐模板"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:6
+msgid "Delete Packages Template"
+msgstr "刪除套餐模板"
+
+#: /mnt/i3d/reseller//Template/PackagesTemplates/view.ctp:32
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/assign.ctp:16
+msgid "Template"
+msgstr "模板"
+
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:5
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:10
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:7
+msgid "List Page Slots"
+msgstr "頁面插槽列表"
+
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:6
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:6
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:9
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:6
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:11
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:6
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:9
+msgid "List Page Templates"
+msgstr "頁面模板列表"
+
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:7
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:12
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:7
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:10
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:7
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:12
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:7
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:10
+msgid "New Page Template"
+msgstr "新頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageSlots/add.ctp:18
+msgid "Add Page Slot"
+msgstr "添加頁面插槽"
+
+#: /mnt/i3d/reseller//Template/PageSlots/edit.ctp:23
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:5
+msgid "Edit Page Slot"
+msgstr "編輯頁面插槽"
+
+#: /mnt/i3d/reseller//Template/PageSlots/index.ctp:5
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:8
+msgid "New Page Slot"
+msgstr "新頁面插槽"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:6
+msgid "Delete Page Slot"
+msgstr "刪除頁面插槽"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:28
+msgid "Slot Code"
+msgstr "插槽編碼"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:32
+msgid "Slot Height"
+msgstr "插槽高度"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:34
+msgid "Slot Width"
+msgstr "插槽寬度"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:36
+msgid "Group"
+msgstr "分組"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:38
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:30
+msgid "Page Template"
+msgstr "頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:40
+msgid "Slot Display Type"
+msgstr "插槽顯示類型"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:46
+msgid "Slot X"
+msgstr "插槽 X"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:48
+msgid "Slot Y"
+msgstr "插槽 Y"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:50
+msgid "Multiple Status"
+msgstr "多個狀態"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:54
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:25
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:58
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:36
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:46
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:38
+msgid "User Created"
+msgstr "用戶已創建"
+
+#: /mnt/i3d/reseller//Template/PageSlots/view.ctp:56
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:27
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:48
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:36
+msgid "User Modified"
+msgstr "用戶已修改"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/add.ctp:7
+msgid "Add Page Template"
+msgstr "添加頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/add.ctp:13
+msgid "Vertical"
+msgstr "豎屏"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/add.ctp:13
+msgid "Horizontal"
+msgstr "橫屏"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/edit.ctp:13
+msgid "Edit Page Template"
+msgstr "編輯頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/edit.ctp:23
+msgid "Page Name :"
+msgstr "頁面名稱 :"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/edit.ctp:25
+msgid "Orientation :"
+msgstr "方向 :"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/edit.ctp:27
+msgid "Remark :"
+msgstr "備注 :"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:15
+msgid "Page Name"
+msgstr "頁面名稱"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:19
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:34
+msgid "Adv Status"
+msgstr "廣告狀態"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:33
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:54
+msgid "Is Dynamic"
+msgstr "動態的"
+
+#: /mnt/i3d/reseller//Template/PageTemplates/view.ctp:34
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:55
+msgid "Yes"
+msgstr "是"
+
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:5
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:10
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:7
+msgid "List Page Templates Clients"
+msgstr "客戶頁面模板列表"
+
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/add.ctp:20
+msgid "Add Page Templates Client"
+msgstr "添加客戶頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/assign.ctp:10
+msgid "Assign Page Template"
+msgstr "分配頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/edit.ctp:25
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:5
+msgid "Edit Page Templates Client"
+msgstr "編輯客戶頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/index.ctp:5
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:8
+msgid "New Page Templates Client"
+msgstr "新增客戶頁面模板"
+
+#: /mnt/i3d/reseller//Template/PageTemplatesClients/view.ctp:6
+msgid "Delete Page Templates Client"
+msgstr "刪除客戶頁面模板"
+
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:5
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:10
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:7
+msgid "List Plugins"
+msgstr "插件列表"
+
+#: /mnt/i3d/reseller//Template/Plugins/add.ctp:18
+msgid "Add Plugin"
+msgstr "添加插件"
+
+#: /mnt/i3d/reseller//Template/Plugins/edit.ctp:23
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:5
+msgid "Edit Plugin"
+msgstr "編輯插件"
+
+#: /mnt/i3d/reseller//Template/Plugins/index.ctp:5
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:8
+msgid "New Plugin"
+msgstr "新插件"
+
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:6
+msgid "Delete Plugin"
+msgstr "刪除插件"
+
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:32
+msgid "Type"
+msgstr "類型"
+
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:36
+#: /mnt/i3d/reseller//Template/RemoteCommands/view.ctp:18
+msgid "Parameters"
+msgstr "參數"
+
+#: /mnt/i3d/reseller//Template/Plugins/view.ctp:40
+msgid "Parameter Count"
+msgstr "參數個數"
+
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/add.ctp:7
+msgid "Generate Product Key"
+msgstr "生成産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/add.ctp:45
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/edit.ctp:20
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:24
+#: /mnt/i3d/reseller//Template/ProductKeys/add.ctp:18
+#: /mnt/i3d/reseller//Template/ProductKeys/edit.ctp:22
+msgid "Expired Date"
+msgstr "過期日期"
+
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/add.ctp:54
+msgid "Generate"
+msgstr "生成"
+
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/edit.ctp:7
+msgid "Edit Product Key Batch"
+msgstr "編輯産品鑰匙批次"
+
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:16
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:40
+msgid "User"
+msgstr "用戶"
+
+#: /mnt/i3d/reseller//Template/ProductKeyBatches/view.ctp:20
+msgid "Total Keys"
+msgstr "全部産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/add.ctp:12
+msgid "Add Product Key Subscription"
+msgstr "添加産品鑰匙簽約"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:15
+msgid "List Product Key Subscriptions"
+msgstr "産品鑰匙簽約列表"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:16
+msgid "List Product Keys"
+msgstr "産品鑰匙列表"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:17
+msgid "New Product Key"
+msgstr "新産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:18
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:10
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:15
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:10
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:13
+msgid "List Subscription Types"
+msgstr "簽約類型列表"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:19
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:11
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:16
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:11
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:14
+msgid "New Subscription Type"
+msgstr "新簽約類型"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/edit.ctp:30
+msgid "Edit Product Key Subscription"
+msgstr "編輯産品鑰匙簽約"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:77
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:78
+#: /mnt/i3d/reseller//Template/ProductKeys/batch_reseller.ctp:3
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:34
+msgid "Batch Name"
+msgstr "批次名稱"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:119
+msgid "Renew Subscription"
+msgstr "續訂簽約"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/index.ctp:207
+msgid "No product key subscription under  selected reseller."
+msgstr "選中的代理商沒有産品鑰匙簽約"
+
+#: /mnt/i3d/reseller//Template/ProductKeySubscriptions/view.ctp:16
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:18
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:38
+msgid "Subscription Type"
+msgstr "簽約類型"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/add.ctp:7
+msgid "Add Product Key"
+msgstr "添加産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/add_productkey.ctp:12
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:124
+msgid "Assign Product Key"
+msgstr "分配産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:98
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:54
+msgid "Register Status"
+msgstr "注冊狀態"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/assign_productkey.ctp:189
+msgid "No product keys available under selected reseller."
+msgstr "選中代理商沒有可用的産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/edit.ctp:7
+msgid "Edit Product Key"
+msgstr "編輯産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/index.ctp:136
+msgid "No product keys under  selected reseller."
+msgstr "選中的代理商沒有産品鑰匙"
+
+#: /mnt/i3d/reseller//Template/ProductKeys/view.ctp:14
+msgid "Product Key Batch"
+msgstr "産品鑰匙批次"
+
+#: /mnt/i3d/reseller//Template/RemoteCommands/add.ctp:7
+msgid "Add Remote Command"
+msgstr "添加遠程命令"
+
+#: /mnt/i3d/reseller//Template/RemoteCommands/edit.ctp:7
+msgid "Edit Remote Command"
+msgstr "編輯遠程命令"
+
+#: /mnt/i3d/reseller//Template/RemoteCommands/view.ctp:16
+msgid "Remote Command Type"
+msgstr "遠程命令類型"
+
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/add.ctp:12
+msgid "Add Reseller Subscription"
+msgstr "添加代理商簽約"
+
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/edit.ctp:12
+msgid "Edit Reseller Subscription"
+msgstr "編輯代理商簽約"
+
+#: /mnt/i3d/reseller//Template/ResellerSubscriptions/index.ctp:93
+msgid "No reseller subscription under  selected reseller."
+msgstr "選中的代理下面沒有簽約的代理商"
+
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:13
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:10
+msgid "Upline"
+msgstr "上線"
+
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:20
+#: /mnt/i3d/reseller//Template/Resellers/add_master.ctp:22
+#: /mnt/i3d/reseller//Template/Resellers/edit.ctp:23
+#: /mnt/i3d/reseller//Template/Resellers/edit_master.ctp:21
+msgid "Company Details"
+msgstr "公司詳情"
+
+#: /mnt/i3d/reseller//Template/Resellers/add.ctp:36
+#: /mnt/i3d/reseller//Template/Resellers/add_master.ctp:38
+msgid "Person in charge"
+msgstr "負責人"
+
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:10
+msgid "All"
+msgstr "全部"
+
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:35
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:18
+msgid "Reseller Status"
+msgstr "代理商狀態"
+
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:36
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:20
+msgid "Reseller Type"
+msgstr "代理商類型"
+
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:37
+msgid "Parent"
+msgstr "上線"
+
+#: /mnt/i3d/reseller//Template/Resellers/resellers.ctp:85
+msgid "No reseller registered under selected upline."
+msgstr "選中的上線沒有注冊的代理商"
+
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:16
+msgid "Company Name"
+msgstr "公司名稱"
+
+#: /mnt/i3d/reseller//Template/Resellers/view.ctp:22
+msgid "Upline Reseller"
+msgstr "上線代理商"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/add.ctp:23
+msgid "Add Slottextstyle"
+msgstr "添加插槽文本樣式"
+#: /mnt/i3d/reseller//Template/Slottextstyles/edit.ctp:28
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:5
+msgid "Edit Slottextstyle"
+msgstr "編輯插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:6
+msgid "Delete Slottextstyle"
+msgstr "刪除插槽文本樣式"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:30
+msgid "Text Style"
+msgstr "文本樣式"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:32
+msgid "Text Color"
+msgstr "文本顔色"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:34
+msgid "Shadow Color"
+msgstr "陰影顔色"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:36
+msgid "Font Face"
+msgstr "字體"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:38
+msgid "Gravity"
+msgstr "重力"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:42
+msgid "Text Size"
+msgstr "文本大小"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:44
+msgid "Shadow Dx"
+msgstr "陰影 Dx"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:46
+msgid "Shadow Dy"
+msgstr "陰影 Dy"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:48
+msgid "Shadow Radius"
+msgstr "陰影半徑"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:50
+msgid "Max Width"
+msgstr "最大寬度"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:52
+msgid "Max Height"
+msgstr "最大高度"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:54
+msgid "Pos X"
+msgstr "位置 X"
+
+#: /mnt/i3d/reseller//Template/Slottextstyles/view.ctp:56
+msgid "Pos Y"
+msgstr "位置 Y"
+
+#: /mnt/i3d/reseller//Template/Slottypes/add.ctp:23
+msgid "Add Slottype"
+msgstr "添加插槽類型"
+
+#: /mnt/i3d/reseller//Template/Slottypes/edit.ctp:28
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:5
+msgid "Edit Slottype"
+msgstr "編輯插槽類型"
+
+#: /mnt/i3d/reseller//Template/Slottypes/view.ctp:6
+msgid "Delete Slottype"
+msgstr "刪除插槽類型"
+
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/add.ctp:7
+msgid "添加簽約套餐客戶"
+msgstr ""
+
+#: /mnt/i3d/reseller//Template/SubscriptionPackageClients/edit.ctp:8
+msgid "編輯簽約套餐客戶"
+msgstr ""
+
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/add.ctp:7
+msgid "Add Subscription Package Reseller"
+msgstr "添加簽約套餐代理商"
+
+#: /mnt/i3d/reseller//Template/SubscriptionPackageResellers/edit.ctp:7
+msgid "Edit Subscription Package Reseller"
+msgstr "編輯簽約套餐代理商"
+
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/add.ctp:7
+msgid "Add Subscription Reseller"
+msgstr "添加簽約代理商"
+
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/edit.ctp:7
+msgid "Edit Subscription Reseller"
+msgstr "編輯簽約代理商"
+
+#: /mnt/i3d/reseller//Template/SubscriptionResellers/view.ctp:16
+msgid "Subscription Package Reseller"
+msgstr "簽約套餐代理商"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:5
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:10
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:7
+msgid "List Subscriptions"
+msgstr "簽約列表"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:8
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:13
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:8
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:11
+msgid "List Resellers"
+msgstr "代理商列表"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:9
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:14
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:9
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:12
+msgid "New Reseller"
+msgstr "新增代理商"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/add.ctp:24
+msgid "Add Subscription"
+msgstr "添加訂閱"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/edit.ctp:29
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:5
+msgid "Edit Subscription"
+msgstr "編輯訂閱"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/index.ctp:5
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:8
+msgid "New Subscription"
+msgstr "新增訂閱"
+
+#: /mnt/i3d/reseller//Template/Subscriptions/view.ctp:6
+msgid "Delete Subscription"
+msgstr "刪除訂閱"
+
+#: /mnt/i3d/reseller//Template/Templates/add.ctp:23
+msgid "Add Template"
+msgstr "添加模板"
+
+#: /mnt/i3d/reseller//Template/Templates/edit.ctp:28
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:5
+msgid "Edit Template"
+msgstr "編輯模板"
+
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:6
+msgid "Delete Template"
+msgstr "刪除模板"
+
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:28
+msgid "Plugin Ref"
+msgstr "插件索引編碼"
+
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:40
+msgid "Is Sub Page"
+msgstr "是否子頁面？"
+
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:42
+msgid "Width"
+msgstr "寬度"
+
+#: /mnt/i3d/reseller//Template/Templates/view.ctp:44
+msgid "Height"
+msgstr "高度"
+
+#: /mnt/i3d/reseller//Template/Usergroups/add.ctp:23
+msgid "Add Usergroup"
+msgstr "添加用戶分組"
+
+#: /mnt/i3d/reseller//Template/Usergroups/edit.ctp:28
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:5
+msgid "Edit Usergroup"
+msgstr "編輯用戶分組"
+
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:6
+msgid "Delete Usergroup"
+msgstr "刪除用戶分組"
+
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:30
+msgid "Ref Keyword"
+msgstr "參考關鍵字"
+
+#: /mnt/i3d/reseller//Template/Usergroups/view.ctp:34
+msgid "Ref Group"
+msgstr "參考分組"
+
+#: /mnt/i3d/reseller//Template/Users/add.ctp:7
+msgid "Add User"
+msgstr "添加用戶"
+
+#: /mnt/i3d/reseller//Template/Users/confirm_reset_password.ctp:4
+#: /mnt/i3d/reseller//Template/Users/login.ctp:45
+msgid "Reset Password"
+msgstr "重置密碼"
+
+#: /mnt/i3d/reseller//Template/Users/confirm_reset_password.ctp:10
+msgid "Enter new password for <strong>{0}</strong>"
+msgstr "輸入<strong>{0}</strong>的新密碼"
+
+#: /mnt/i3d/reseller//Template/Users/confirm_reset_password.ctp:17
+msgid "New Password"
+msgstr "新密碼"
+
+#: /mnt/i3d/reseller//Template/Users/confirm_reset_password.ctp:27
+#: /mnt/i3d/reseller//Template/Users/signup.ctp:24
+msgid "Repeat Password"
+msgstr "二次驗證密碼"
+
+#: /mnt/i3d/reseller//Template/Users/confirm_reset_password.ctp:33;44
+#: /mnt/i3d/reseller//Template/Users/reset_password.ctp:24
+#: /mnt/i3d/reseller//Template/Users/signup.ctp:30
+msgid "Sign-in"
+msgstr "登錄"
+
+#: /mnt/i3d/reseller//Template/Users/confirm_reset_password.ctp:36
+#: /mnt/i3d/reseller//Template/Users/reset_password.ctp:15
+msgid "Reset"
+msgstr "重置"
+
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:10
+msgid "Edit User"
+msgstr "編輯用戶"
+
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:24
+msgid "Enter fullname"
+msgstr "輸入完整姓名"
+
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:25
+msgid "Enter e-mail"
+msgstr "輸入電子郵箱"
+
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:26
+msgid "Enter new password"
+msgstr "輸入新密碼"
+
+#: /mnt/i3d/reseller//Template/Users/edit.ctp:27
+msgid "Enter password confirmation"
+msgstr "輸入確認密碼"
+
+#: /mnt/i3d/reseller//Template/Users/list_by_reseller_client.ctp:115
+#: /mnt/i3d/reseller//Template/Users/resellers.ctp:60
+msgid "Downline Reseller"
+msgstr "下線代理商"
+
+#: /mnt/i3d/reseller//Template/Users/login.ctp:1
+msgid "Sign in to start your session"
+msgstr "登錄開始使用"
+
+#: /mnt/i3d/reseller//Template/Users/login.ctp:7
+#: /mnt/i3d/reseller//Template/Users/reset_password.ctp:8
+#: /mnt/i3d/reseller//Template/Users/view.ctp:14
+msgid "E-mail"
+msgstr "郵箱"
+
+#: /mnt/i3d/reseller//Template/Users/login.ctp:16
+#: /mnt/i3d/reseller//Template/Users/signup.ctp:15
+msgid "Password"
+msgstr "密碼"
+
+#: /mnt/i3d/reseller//Template/Users/login.ctp:28
+msgid "Remember Me"
+msgstr "記住我"
+
+#: /mnt/i3d/reseller//Template/Users/login.ctp:33
+msgid "Sign In"
+msgstr "登錄"
+
+#: /mnt/i3d/reseller//Template/Users/login.ctp:45
+msgid "Register a new membership"
+msgstr "注冊新會員"
+
+#: /mnt/i3d/reseller//Template/Users/master_resellers.ctp:5
+msgid "Master Reseller"
+msgstr "總代理商"
+
+#: /mnt/i3d/reseller//Template/Users/reset_password.ctp:2
+msgid "Fill in e-mail address for your account."
+msgstr "填寫你的帳戶使用的電子郵件地址。"
+
+#: /mnt/i3d/reseller//Template/Users/signup.ctp:1
+msgid "Sign up to login"
+msgstr "注冊並登錄"
+
+#: /mnt/i3d/reseller//Template/Users/signup.ctp:7
+msgid "Email"
+msgstr "郵箱"
+
+#: /mnt/i3d/reseller//Template/Users/signup.ctp:33
+msgid "Sign up"
+msgstr "注冊"
+
+#: /mnt/i3d/reseller//Template/Versions/add.ctp:10
+msgid "List Versions"
+msgstr "版本列表"
+
+#: /mnt/i3d/reseller//Template/Versions/add.ctp:21
+msgid "Add Version"
+msgstr "添加版本"
+
+#: /mnt/i3d/reseller//Template/Versions/edit.ctp:12
+msgid "Edit Version"
+msgstr "編輯版本"
+
+#: /mnt/i3d/reseller//Template/Versions/view.ctp:14
+msgid "Branch"
+msgstr "分支"
+
+#: /mnt/i3d/reseller//Template/Versions/view.ctp:16
+msgid "Version Number"
+msgstr "版本編碼"
+
+#: /mnt/i3d/reseller//Template/Error/error400.ctp:33
+#: /mnt/i3d/reseller//Template/Error/error500.ctp:35
+msgid "Error"
+msgstr "錯誤"
+
+#: /mnt/i3d/reseller//Template/Error/error400.ctp:35
+msgid "The requested address %s was not found on this server."
+msgstr "請求的地址%s在該服務器無法找到"
+
+#: /mnt/i3d/reseller//Template/Error/error500.ctp:33
+msgid "An Internal Error Has Occurred"
+msgstr "發生了一個內部錯誤"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Controller/Component/AuthComponent.php:496
+msgid "You are not authorized to access that location."
+msgstr "您沒有權限訪問該位置。"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Controller/Component/CsrfComponent.php:157
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Http/Middleware/CsrfProtectionMiddleware.php:190
+msgid "Missing CSRF token cookie"
+msgstr "丟失CSRF令牌cookie"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Controller/Component/CsrfComponent.php:161
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Http/Middleware/CsrfProtectionMiddleware.php:194
+msgid "CSRF token mismatch."
+msgstr "CSRF令牌不匹配。"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Error/ExceptionRenderer.php:258
+msgid "Not Found"
+msgstr "沒有找到"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Error/ExceptionRenderer.php:260
+msgid "An Internal Error Has Occurred."
+msgstr "發生了一個內部錯誤。"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Http/Response.php:2400
+msgid "The requested file contains `..` and will not be read."
+msgstr "所請求的文件包含`..`將無法被閱讀。"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Http/Response.php:2411
+msgid "The requested file was not found"
+msgstr "未找到所請求的文件"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/Number.php:90
+msgid "{0,number,#,###.##} KB"
+msgstr "{0,number,#,###.##} KB"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/Number.php:92
+msgid "{0,number,#,###.##} MB"
+msgstr "{0,number,#,###.##} MB"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/Number.php:94
+msgid "{0,number,#,###.##} GB"
+msgstr "{0,number,#,###.##} GB"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/Number.php:96
+msgid "{0,number,#,###.##} TB"
+msgstr "{0,number,#,###.##} TB"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/Number.php:88
+msgid "{0,number,integer} Byte"
+msgid_plural "{0,number,integer} Bytes"
+msgstr[0] "{0,number,integer} 再见"
+msgstr[1] "{0,number,integer} 再見"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:80
+msgid "{0} from now"
+msgstr "{0} 現在開始"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:80
+msgid "{0} ago"
+msgstr "{0} 以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:83
+msgid "{0} after"
+msgstr "{0} 之後"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:83
+msgid "{0} before"
+msgstr "{0} 之前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:114
+msgid "just now"
+msgstr "剛才"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:151
+msgid "about a second ago"
+msgstr "大約一秒之前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:152
+msgid "about a minute ago"
+msgstr "大約一分鍾以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:153
+msgid "about an hour ago"
+msgstr "大約一小時以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:154;332
+msgid "about a day ago"
+msgstr "大約一天以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:155;333
+msgid "about a week ago"
+msgstr "大約一星期以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:156;334
+msgid "about a month ago"
+msgstr "大約一個月以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:157;335
+msgid "about a year ago"
+msgstr "大約一年以前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:168
+msgid "in about a second"
+msgstr "大約一秒"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:169
+msgid "in about a minute"
+msgstr "大約一分鍾"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:170
+msgid "in about an hour"
+msgstr "大約一小時"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:171;346
+msgid "in about a day"
+msgstr "大約一天"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:172;347
+msgid "in about a week"
+msgstr "大約一星期"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:173;348
+msgid "in about a month"
+msgstr "大約一個月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:174;349
+msgid "in about a year"
+msgstr "大約一年"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:304
+msgid "today"
+msgstr "今天"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:370
+msgid "%s ago"
+msgstr "%s 之前"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:371
+msgid "on %s"
+msgstr "在 %s"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:47;126;316
+msgid "{0} year"
+msgid_plural "{0} years"
+msgstr[0] "{0} 年"
+msgstr[1] "{0} 年"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:51;129;319
+msgid "{0} month"
+msgid_plural "{0} months"
+msgstr[0] "{0} 月"
+msgstr[1] "{0} 月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:57;132;322
+msgid "{0} week"
+msgid_plural "{0} weeks"
+msgstr[0] "{0} 星期"
+msgstr[1] "{0} 星期"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:59;135;325
+msgid "{0} day"
+msgid_plural "{0} days"
+msgstr[0] "{0} 天"
+msgstr[1] "{0} 天"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:64;138
+msgid "{0} hour"
+msgid_plural "{0} hours"
+msgstr[0] "{0} 小時"
+msgstr[1] "{0} 小時"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:68;141
+msgid "{0} minute"
+msgid_plural "{0} minutes"
+msgstr[0] "{0} 分鍾"
+msgstr[1] "{0} 分鍾"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//I18n/RelativeTimeFormatter.php:72;144
+msgid "{0} second"
+msgid_plural "{0} seconds"
+msgstr[0] "{0} 秒"
+msgstr[1] "{0} 秒"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//ORM/RulesChecker.php:57
+msgid "This value is already in use"
+msgstr "該值已經在使用"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//ORM/RulesChecker.php:104
+msgid "This value does not exist"
+msgstr "值不存在"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//ORM/RulesChecker.php:128
+msgid "The count does not match {0}{1}"
+msgstr "數量不匹配 {0}{1}"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Utility/Text.php:902
+msgid "and"
+msgstr "和"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Validation/Validator.php:111
+msgid "This field is required"
+msgstr "這個字段是必需的"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Validation/Validator.php:112
+msgid "This field cannot be left empty"
+msgstr "這個字段不能是空的"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//Validation/Validator.php:1885
+msgid "The provided value is invalid"
+msgstr "所提供的值是無效的"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Helper/FormHelper.php:1039
+msgid "New %s"
+msgstr "新增 %s"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Helper/FormHelper.php:1042
+msgid "Edit %s"
+msgstr "編輯 %s"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:540
+msgid "January"
+msgstr "一月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:541
+msgid "February"
+msgstr "二月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:542
+msgid "March"
+msgstr "三月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:543
+msgid "April"
+msgstr "四月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:544
+msgid "May"
+msgstr "五月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:545
+msgid "June"
+msgstr "六月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:546
+msgid "July"
+msgstr "七月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:547
+msgid "August"
+msgstr "八月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:548
+msgid "September"
+msgstr "九月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:549
+msgid "October"
+msgstr "十月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:550
+msgid "November"
+msgstr "十一月"
+
+#: /mnt/i3d/reseller/vendor/cakephp/cakephp//View/Widget/DateTimeWidget.php:551
+msgid "December"
+msgstr "十二月"
+
+msgid "Remote Commands"
+msgstr "遠程命令"
+
+
+msgid "MAIN NAVIGATION"
+msgstr "主頁"
+
+
+msgid "Dashboard"
+msgstr "中控台"
+
+
+msgid "List Master Resellers"
+msgstr "總代理商列表"
+
+
+msgid "Renew Master Reseller Subscription"
+msgstr "總代理商簽約續訂"
+
+
+msgid "Renew Reseller Subscription"
+msgstr "代理商簽約續訂"
+
+
+msgid "List Master Reseller Subscription"
+msgstr "總代理商簽約列表"
+
+
+msgid "List Reseller Subscription"
+msgstr "代理商簽約列表"
+
+
+msgid "Add New Client"
+msgstr "添加新客戶"
+
+
+msgid "Client CMS"
+msgstr "客戶內容管理系統"
+
+
+msgid "Client Camera CMS"
+msgstr "客戶自拍內容管理系統"
+
+
+msgid "List Client Subscriptions"
+msgstr "客戶簽約列表"
+
+
+msgid "Devices"
+msgstr "設備"
+
+
+msgid "Device Status"
+msgstr "設備狀態"
+
+
+msgid "Devices List"
+msgstr "設備列表"
+
+
+msgid "Remote Control History"
+msgstr "遠程控制曆史"
+
+
+msgid "Remote Control"
+msgstr "遠程控制"
+
+
+msgid "List Batches"
+msgstr "批次列表"
+
+
+msgid "List Product Key"
+msgstr "産品鑰匙列表"
+
+
+msgid "Product Key Subscription"
+msgstr "産品鑰匙簽約"
+
+
+msgid "Settings"
+msgstr "設定"
+
+
+msgid "Packages for Reseller"
+msgstr "代理商套餐"
+
+
+msgid "Packages for  Client"
+msgstr "客戶套餐"
+
+
+msgid "Add Packages for Client"
+msgstr "添加客戶套餐"
+
+
+msgid "E-mail Templates"
+msgstr "郵件模板"
+
+
+msgid "Add Email Template"
+msgstr "添加郵件模板"
+
+
+msgid "List User"
+msgstr "用戶列表"
+
+
+msgid "List Users (Master Reseller)"
+msgstr "用戶列表（總代理商）"
+
+
+msgid "List Users (Reseller)"
+msgstr "用戶代表（代理商）"
+
+
+msgid "i3D News"
+msgstr "i3D新聞"
+
+
+msgid "List i3D News"
+msgstr "i3D新聞列表"
+
+
+msgid "Add i3D News"
+msgstr "添加i3D新聞"
+
+
+msgid "List Page Template"
+msgstr "頁面模板列表"
+
+
+msgid "Add New Package"
+msgstr "添加新套餐"
+
+
+msgid "List Package"
+msgstr "套餐列表"
+
+
+msgid "Version"
+msgstr "版本"
+
+
+msgid "No."
+msgstr "編號"
+
+
+msgid "Total Channel"
+msgstr "全部頻道"
+
+
+msgid "Select All"
+msgstr "全選"
+
+
+msgid "Packages"
+msgstr "套餐"
+
+
+msgid "Id"
+msgstr "編號"
+
+
+msgid "Device Statuses"
+msgstr "設備狀態"
+
+
+msgid "Latest Device Statuses"
+msgstr "最新設備狀態"
+
+
+msgid "Time"
+msgstr "時間"
+
+
+msgid "Dashboards"
+msgstr "中控台"
+
+
+
+
+msgid "Resellers"
+msgstr "代理商"
+
+
+msgid "Sorry. The email address you entered is already in use."
+msgstr "對不起，您輸入的郵箱已經存在"
+
+
+msgid "Subscription"
+msgstr "簽約"
+
+
+
+
+msgid "MasterResellerSubscriptions"
+msgstr "總代理商簽約"
+
+
+
+msgid "ResellerSubscriptions"
+msgstr "代理商簽約"
+
+
+msgid "PIC Info"
+msgstr "負責人信息"
+
+
+msgid "Clients"
+msgstr "客戶"
+
+
+
+
+msgid "Reseller Name"
+msgstr "代理商姓名"
+
+
+
+
+msgid "Created By User"
+msgstr "創建人"
+
+
+msgid "Total Key"
+msgstr "全部産品鑰匙"
+
+
+
+msgid "Register Date"
+msgstr "注冊日期"
+
+
+msgid "Expiry Date"
+msgstr "過期日期"
+
+
+msgid "ProductKeySubscriptions"
+msgstr "産品鑰匙簽約"
+
+
+msgid "Subscription Package Resellers"
+msgstr "代理商簽約套餐"
+
+
+msgid "Subscription Package Clients"
+msgstr "客戶簽約套餐"
+
+
+msgid "Add Subscription Package Client"
+msgstr "添加客戶簽約套餐"
+
+
+msgid "Notification Email Templates"
+msgstr "通知郵件模板"
+
+
+msgid "Confirm Password"
+msgstr "確認密碼"
+
+
+msgid "Roles"
+msgstr "角色"
+
+
+msgid "Users"
+msgstr "用戶"
+
+
+msgid "News"
+msgstr "新聞"
+
+msgid "Preview"
+msgstr "預覽"
+
+
+msgid "Version {0}"
+msgstr "版本 {0}"
+
+msgid "Copyright &copy; {0} <a target="_blank" href="{1}">{2}</a></strong>. All rights reserved."
+msgstr "版權所有 &copy; {0} <a target="_blank" href="{1}">{2}</a></strong>. 所有權限都受保護."
+
+
+msgid "List Distributor"
+msgstr "列表分銷商"
+
+msgid "Add Distributor"
+msgstr "添加分銷商"
+
+msgid "Renew Distributor Subscription"
+msgstr "更新分銷商訂閱"
+
+msgid "List Distributor Subscription"
+msgstr "列表分銷商訂閱"

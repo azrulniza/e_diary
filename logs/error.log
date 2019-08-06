@@ -1,0 +1,444 @@
+2019-08-06 22:30:44 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /users/add
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE\src\I18n\I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE\src\I18n\I18n.php, line 203
+__ - CORE\src\I18n\functions.php, line 35
+App\Controller\UsersController::__construct() - APP/Controller\UsersController.php, line 27
+ReflectionClass::newInstance() - [internal], line ??
+Cake\Http\ControllerFactory::create() - CORE\src\Http\ControllerFactory.php, line 47
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE\src\Routing\Filter\ControllerFactoryFilter.php, line 64
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE\src\Routing\Filter\ControllerFactoryFilter.php, line 49
+Cake\Routing\DispatcherFilter::handle() - CORE\src\Routing\DispatcherFilter.php, line 143
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Http\ActionDispatcher::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 79
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:30:44 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /users/add
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\Cache\Cache::read() - CORE\src\Cache\Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE\src\Database\Schema\CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE\src\ORM\Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE\src\ORM\Query.php, line 269
+Cake\ORM\Query::__construct() - CORE\src\ORM\Query.php, line 167
+Cake\ORM\Table::query() - CORE\src\ORM\Table.php, line 1776
+Cake\ORM\Table::find() - CORE\src\ORM\Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE\src\Controller\Component\AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:30:44 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e_diary.resellers' doesn't exist in C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 133
+Stack Trace:
+#0 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(99): Cake\Database\Schema\Collection->_reflect('Column', 'resellers', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('resellers', Array)
+#2 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(560): Cake\Database\Schema\CachedCollection->describe('resellers')
+#3 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(269): Cake\ORM\Table->getSchema()
+#4 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(167): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1776): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1362): Cake\ORM\Table->query()
+#7 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Association\BelongsToMany.php(1105): Cake\ORM\Table->find('list', Array)
+#8 C:\xampp\htdocs\e_diary\src\Controller\UsersController.php(427): Cake\ORM\Association\BelongsToMany->find('list', Array)
+#9 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Controller\Controller.php(610): App\Controller\UsersController->add()
+#10 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#11 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#12 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(67): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 C:\xampp\htdocs\e_diary\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e_diary.resellers' doesn't exist in C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query('SHOW FULL COLUM...')
+#5 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(131): Cake\Database\Connection->execute('SHOW FULL COLUM...', Array)
+#8 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(99): Cake\Database\Schema\Collection->_reflect('Column', 'resellers', Array, Object(Cake\Database\Schema\TableSchema))
+#9 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('resellers', Array)
+#10 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(560): Cake\Database\Schema\CachedCollection->describe('resellers')
+#11 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(269): Cake\ORM\Table->getSchema()
+#12 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(167): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#13 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1776): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#14 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1362): Cake\ORM\Table->query()
+#15 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Association\BelongsToMany.php(1105): Cake\ORM\Table->find('list', Array)
+#16 C:\xampp\htdocs\e_diary\src\Controller\UsersController.php(427): Cake\ORM\Association\BelongsToMany->find('list', Array)
+#17 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Controller\Controller.php(610): App\Controller\UsersController->add()
+#18 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#19 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#20 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(67): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 C:\xampp\htdocs\e_diary\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 {main}
+
+
+Request URL: /users/add
+Referer URL: http://localhost/e_diary/
+2019-08-06 22:31:48 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE\src\I18n\I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE\src\I18n\I18n.php, line 203
+__d - CORE\src\I18n\functions.php, line 88
+Cake\Controller\Component\AuthComponent::_setDefaults() - CORE\src\Controller\Component\AuthComponent.php, line 500
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 304
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:48 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\Cache\Cache::read() - CORE\src\Cache\Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE\src\Database\Schema\CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE\src\ORM\Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE\src\ORM\Query.php, line 269
+Cake\ORM\Query::__construct() - CORE\src\ORM\Query.php, line 167
+Cake\ORM\Table::query() - CORE\src\ORM\Table.php, line 1776
+Cake\ORM\Table::find() - CORE\src\ORM\Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE\src\Controller\Component\AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:49 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE\src\I18n\I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE\src\I18n\I18n.php, line 203
+__d - CORE\src\I18n\functions.php, line 88
+Cake\Controller\Component\AuthComponent::_setDefaults() - CORE\src\Controller\Component\AuthComponent.php, line 500
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 304
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:49 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\Cache\Cache::read() - CORE\src\Cache\Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE\src\Database\Schema\CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE\src\ORM\Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE\src\ORM\Query.php, line 269
+Cake\ORM\Query::__construct() - CORE\src\ORM\Query.php, line 167
+Cake\ORM\Table::query() - CORE\src\ORM\Table.php, line 1776
+Cake\ORM\Table::find() - CORE\src\ORM\Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE\src\Controller\Component\AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:56 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /users/edit/1
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE\src\I18n\I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE\src\I18n\I18n.php, line 203
+__ - CORE\src\I18n\functions.php, line 35
+App\Controller\UsersController::__construct() - APP/Controller\UsersController.php, line 27
+ReflectionClass::newInstance() - [internal], line ??
+Cake\Http\ControllerFactory::create() - CORE\src\Http\ControllerFactory.php, line 47
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE\src\Routing\Filter\ControllerFactoryFilter.php, line 64
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE\src\Routing\Filter\ControllerFactoryFilter.php, line 49
+Cake\Routing\DispatcherFilter::handle() - CORE\src\Routing\DispatcherFilter.php, line 143
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Http\ActionDispatcher::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 79
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:56 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /users/edit/1
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\Cache\Cache::read() - CORE\src\Cache\Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE\src\Database\Schema\CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE\src\ORM\Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE\src\ORM\Query.php, line 269
+Cake\ORM\Query::__construct() - CORE\src\ORM\Query.php, line 167
+Cake\ORM\Table::query() - CORE\src\ORM\Table.php, line 1776
+Cake\ORM\Table::find() - CORE\src\ORM\Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE\src\Controller\Component\AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:56 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e_diary.resellers' doesn't exist in C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 133
+Stack Trace:
+#0 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(99): Cake\Database\Schema\Collection->_reflect('Column', 'resellers', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('resellers', Array)
+#2 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(560): Cake\Database\Schema\CachedCollection->describe('resellers')
+#3 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(685): Cake\ORM\Table->getSchema()
+#4 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(522): Cake\ORM\Table->getPrimaryKey()
+#5 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(478): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\UsersTable), Object(Cake\Database\TypeMap), Array)
+#6 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(838): Cake\ORM\Query->contain(Array)
+#7 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(2423): Cake\ORM\Query->applyOptions(Array)
+#8 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1365): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#9 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1611): Cake\ORM\Table->find('all', Array)
+#10 C:\xampp\htdocs\e_diary\src\Controller\UsersController.php(520): Cake\ORM\Table->get('1', Array)
+#11 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Controller\Controller.php(610): App\Controller\UsersController->edit('1')
+#12 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#13 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#14 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(67): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 C:\xampp\htdocs\e_diary\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'e_diary.resellers' doesn't exist in C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query('SHOW FULL COLUM...')
+#5 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(131): Cake\Database\Connection->execute('SHOW FULL COLUM...', Array)
+#8 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(99): Cake\Database\Schema\Collection->_reflect('Column', 'resellers', Array, Object(Cake\Database\Schema\TableSchema))
+#9 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('resellers', Array)
+#10 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(560): Cake\Database\Schema\CachedCollection->describe('resellers')
+#11 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(685): Cake\ORM\Table->getSchema()
+#12 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(522): Cake\ORM\Table->getPrimaryKey()
+#13 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(478): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\UsersTable), Object(Cake\Database\TypeMap), Array)
+#14 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Query.php(838): Cake\ORM\Query->contain(Array)
+#15 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(2423): Cake\ORM\Query->applyOptions(Array)
+#16 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1365): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#17 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\ORM\Table.php(1611): Cake\ORM\Table->find('all', Array)
+#18 C:\xampp\htdocs\e_diary\src\Controller\UsersController.php(520): Cake\ORM\Table->get('1', Array)
+#19 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Controller\Controller.php(610): App\Controller\UsersController->edit('1')
+#20 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#21 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#22 C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(67): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#23 C:\xampp\htdocs\e_diary\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 {main}
+
+
+Request URL: /users/edit/1
+Referer URL: http://localhost/e_diary/
+2019-08-06 22:31:59 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/users/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE\src\I18n\I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE\src\I18n\I18n.php, line 203
+__d - CORE\src\I18n\functions.php, line 88
+Cake\Controller\Component\AuthComponent::_setDefaults() - CORE\src\Controller\Component\AuthComponent.php, line 500
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 304
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:31:59 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/users/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\Cache\Cache::read() - CORE\src\Cache\Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE\src\Database\Schema\CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE\src\ORM\Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE\src\ORM\Query.php, line 269
+Cake\ORM\Query::__construct() - CORE\src\ORM\Query.php, line 167
+Cake\ORM\Table::query() - CORE\src\ORM\Table.php, line 1776
+Cake\ORM\Table::find() - CORE\src\ORM\Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE\src\Controller\Component\AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:32:00 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE\src\I18n\I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE\src\I18n\I18n.php, line 203
+__d - CORE\src\I18n\functions.php, line 88
+Cake\Controller\Component\AuthComponent::_setDefaults() - CORE\src\Controller\Component\AuthComponent.php, line 500
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 304
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2019-08-06 22:32:00 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [C:\xampp\htdocs\e_diary\vendor\cakephp\cakephp\src\Cache\Cache.php, line 179]
+Request URL: /
+Referer URL: http://localhost/e_diary/
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE\src\Cache\Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE\src\Cache\Cache.php, line 237
+Cake\Cache\Cache::read() - CORE\src\Cache\Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE\src\Database\Schema\CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE\src\ORM\Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE\src\ORM\Query.php, line 269
+Cake\ORM\Query::__construct() - CORE\src\ORM\Query.php, line 167
+Cake\ORM\Table::query() - CORE\src\ORM\Table.php, line 1776
+Cake\ORM\Table::find() - CORE\src\ORM\Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT\vendor\dereuromark\cakephp-tinyauth\src\Auth\TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE\src\Controller\Component\AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE\src\Controller\Component\AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE\src\Controller\Component\AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE\src\Event\EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE\src\Event\EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE\src\Event\EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE\src\Controller\Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 67
+[main] - ROOT\webroot\index.php, line 37
+
+
+

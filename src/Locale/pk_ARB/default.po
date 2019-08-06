@@ -1,0 +1,5201 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-11-07 11:05+0800\n"
+"PO-Revision-Date: 2016-11-07 11:06+0800\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: pk_ARB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: Template/Users/resellers.ctp:8
+msgid "Reseller"
+msgstr "موزع"
+
+#: Controller/AccountsController.php:137
+#: Controller/ResellersController.php:78
+#: Template/Accounts/add.ctp:8
+#: Template/Resellers/add.ctp:8
+msgid "Add Reseller"
+msgstr "أضف موزع"
+
+#: Controller/AccountsController.php:258;336;430
+#: Controller/ResellersController.php:120;188;242;275
+msgid "The reseller has been saved."
+msgstr "حفظ البائع"
+
+#: Controller/AccountsController.php:261;339;433
+#: Controller/ResellersController.php:123;191;245;278
+msgid "The reseller could not be saved. Please, try again."
+msgstr "لا يمكن حفظ البائع. حاول مرة اخرى۔"
+
+#: Controller/AccountsController.php:265
+msgid "The product key is registered on other client"
+msgstr "يتم تسجيل مفتاح المنتج على عميل آخر"
+
+#: Controller/AccountsController.php:267
+msgid "The product key is not valid"
+msgstr "مفتاح المنتج غير صالح"
+
+#: Controller/AccountsController.php:300
+#: Controller/FeedbackController.php:73
+#: Controller/ProductKeysController.php:4161;4168
+#: Shell/CreateClientShell.php:413
+msgid "i3D "
+msgstr "i3D"
+
+#: Controller/AccountsController.php:375;420
+#: Controller/ResellersController.php:144
+msgid "Sorry. Your account has no access."
+msgstr "آسف. حسابك ليس لديه حق الوصول"
+
+#: Controller/AccountsController.php:396
+#: Controller/ResellersController.php:212
+#: Template/Accounts/edit.ctp:8
+#: Template/Resellers/edit.ctp:8
+msgid "Edit Reseller"
+msgstr "تحرير موزع"
+
+#: Controller/AccountsController.php:455
+#: Controller/ResellersController.php:300
+msgid "The reseller has been deleted."
+msgstr "تم حذف البائع"
+
+#: Controller/AccountsController.php:457
+#: Controller/ResellersController.php:302
+msgid "The reseller could not be deleted. Please, try again."
+msgstr "لا يمكن حذف المورد. حاول مرة اخرى"
+
+#: Controller/AccountsController.php:475
+#: Template/Accounts/index.ctp:37
+#: Template/Users/resellers.ctp:60
+msgid "End User"
+msgstr "المستخدم النهائي"
+
+#: Controller/ApkController.php:85;122
+msgid "The apk has been saved."
+msgstr "apk تم حفظ ملف"
+
+#: Controller/ApkController.php:89;126
+msgid "The apk could not be saved. Please, try again."
+msgstr "  حاول مرة اخرىapk. تعذر حفظ ملف"
+
+#: Controller/ApkController.php:145
+msgid "The apk has been deleted."
+"تم حذف ملفmsgstr " apk 
+
+#: Controller/ApkController.php:147
+msgid "The apk could not be deleted. Please, try again."
+msgstr " حاول مرة اخرى apk تعذر حذف ملف"
+
+#: Controller/ApkManagerLogController.php:84;109
+msgid "The apk manager log has been saved."
+msgstr " apk تم حفظ سجل مدير"
+
+#: Controller/ApkManagerLogController.php:88;113
+msgid "The apk manager log could not be saved. Please, try again."
+msgstr " حاول مرة اخرى apk تعذر حفظ سجل مدير "
+
+#: Controller/ApkManagerLogController.php:131
+msgid "The apk manager log has been deleted."
+msgstr "apk تم حذف سجل مدير"
+
+#: Controller/ApkManagerLogController.php:133
+msgid "The apk manager log could not be deleted. Please, try again."
+msgstr " حاول مرة اخرى apk تعذر حذف سجل مدير"
+
+#: Controller/ClientCmscamerasController.php:21
+msgid "Client Camera CMS"
+msgstr "CMS كاميرا العميل "
+
+#: Controller/ClientCmscamerasController.php:88;114
+msgid "The client cmscamera has been saved."
+msgstr " العميلcmscamera تم حفظ"
+
+#: Controller/ClientCmscamerasController.php:92;118
+msgid "The client cmscamera could not be saved. Please, try again."
+Msgstr " العميل. حاول مرة اخرىcmscamera  تعذر حفظ"
+
+#: Controller/ClientCmscamerasController.php:137
+msgid "The client cmscamera has been deleted."
+msgstr " العميل cmscamera تم حذف"
+
+#: Controller/ClientCmscamerasController.php:139
+msgid "The client cmscamera could not be deleted. Please, try again."
+msgstr " العميل. حاول مرة اخرى cmscamera تعذر حذف"
+
+#: Controller/ClientCmsesController.php:21;70;113
+msgid "Client CMS"
+msgstr "CMS عميل"
+
+#: Controller/ClientCmsesController.php:93;136
+msgid "The client cmse has been saved."
+msgstr " العميل cmse تم حفظ"
+
+#: Controller/ClientCmsesController.php:96;139
+msgid "The client cmse could not be saved. Please, try again."
+msgstr " العميل. حاول مرة اخرى cmse تعذر حفظ"
+
+#: Controller/ClientCmsesController.php:159
+msgid "The client cmse has been deleted."
+msgstr " العميل cmse تم حذف"
+
+#: Controller/ClientCmsesController.php:161
+msgid "The client cmse could not be deleted. Please, try again."
+msgstr " العميل. حاول مرة اخرى cmse تعذر حذف"
+
+#: Controller/ClientHistoriesController.php:58;86
+msgid "The client history has been saved."
+msgstr "تم حفظ سجل العميل"
+
+#: Controller/ClientHistoriesController.php:61;89
+msgid "The client history could not be saved. Please, try again."
+msgstr "لا يمكن حفظ سجل العميل. حاول مرة اخرى"
+
+
+#: Controller/ClientHistoriesController.php:111
+msgid "The client history has been deleted."
+msgstr "تم حذف سجل العميل"
+
+#: Controller/ClientHistoriesController.php:113
+msgid "The client history could not be deleted. Please, try again."
+msgstr "لا يمكن حذف سجل العميل. حاول مرة اخرى"
+
+#: Controller/ClientSubscriptionsController.php:25
+msgid "Client Subscriptions"
+msgstr "اشتراكات العملاء"
+	
+#: Controller/ClientSubscriptionsController.php:378;412;538
+msgid "Client Subscription"
+msgstr "اشتراك العميل"
+
+#: Controller/ClientSubscriptionsController.php:447;568
+msgid "The subscription client has been saved."
+msgstr ""
+
+#: Controller/ClientSubscriptionsController.php:500
+msgid "The subscription client still active."
+msgstr "تم حفظ عميل الاشتراك"
+
+#: Controller/ClientSubscriptionsController.php:617
+msgid "The subscription client could not be saved. Please, try again."
+msgstr "تعذر حفظ عميل الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/ClientSubscriptionsController.php:642
+msgid "The subscription client has been deleted."
+msgstr "تم حذف عميل الاشتراك"
+
+#: Controller/ClientSubscriptionsController.php:644
+msgid "The subscription client could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ClientsController.php:253;300
+msgid "The client has been saved."
+msgstr "تعذر حذف عميل الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/ClientsController.php:256;303
+msgid "The client could not be saved. Please, try again."
+msgstr "تعذر حفظ العميل. من فضلك ، حاول مرة أخرى"
+
+#: Controller/ClientsController.php:361
+msgid "Client {0} has been deleted."
+msgstr "{0}تم حذف العميل "
+
+
+
+#: Controller/ClientsController.php:363
+msgid "The client could not be deleted. Please, try again."
+msgstr "تعذر حذف العميل. من فضلك ، حاول مرة أخرى"
+
+#: Controller/CmsmenusController.php:58;86
+msgid "The cmsmenu has been saved."
+msgstr "cmsmenuتم حفظ "
+
+#: Controller/CmsmenusController.php:62;90
+msgid "The cmsmenu could not be saved. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرى cmsmenu. تعذر حفظ"
+
+#: Controller/CmsmenusController.php:111
+msgid "The cmsmenu has been deleted."
+msgstr "cmsmenu تم حذف"
+
+#: Controller/CmsmenusController.php:113
+msgid "The cmsmenu could not be deleted. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرىcmsmenu تعذر حذف"
+
+#: Controller/CmsmenusPermissionController.php:58;86
+msgid "The cmsmenus permission has been saved."
+msgstr "cmsmenus "تم حفظ إذن 
+
+#: Controller/CmsmenusPermissionController.php:62;90
+msgid "The cmsmenus permission could not be saved. Please, try again."
+msgstr "تعذر حفظ إذن cmsmenusمن فضلك ، حاول مرة أخرى "
+
+#: Controller/CmsmenusPermissionController.php:111
+msgid "The cmsmenus permission has been deleted."
+msgstr "cmsmenusتم حذف إذن "
+
+#: Controller/CmsmenusPermissionController.php:113
+msgid "The cmsmenus permission could not be deleted. Please, try again."
+msgstr  من فضلك ، حاول مرة أخرى" cmsmenus تعذر حذف إذن"
+
+#: Controller/CmspluginsController.php:58;85
+msgid "The cmsplugin has been saved."
+msgstr "cmsplugin   "تم حفظ 
+
+#: Controller/CmspluginsController.php:62;89
+msgid "The cmsplugin could not be saved. Please, try again."
+msgstr من فضلك ، حاول مرة أخرى" cmsplugin. تعذر حفظ "
+
+#: Controller/CmspluginsController.php:109
+msgid "The cmsplugin has been deleted."
+msgstr "cmspluginتم حذف "
+
+
+
+#: Controller/CmspluginsController.php:111
+msgid "The cmsplugin could not be deleted. Please, try again."
+msgstr من فضلك ، حاول مرة أخرى"  cmsplugin تعذر حذف"
+
+#: Controller/CmsplugintypesController.php:55;81
+msgid "The cmsplugintype has been saved."
+msgstr "cmsplugintype "تم حفظ 
+
+#: Controller/CmsplugintypesController.php:59;85
+msgid "The cmsplugintype could not be saved. Please, try again."
+msgstr "من فضلك ، حاول مرة أخرى cmsplugintype تعذر حفظ"
+
+#: Controller/CmsplugintypesController.php:104
+msgid "The cmsplugintype has been deleted."
+msgstr "cmsplugintype تم حذف"
+
+#: Controller/CmsplugintypesController.php:106
+msgid "The cmsplugintype could not be deleted. Please, try again."
+msgstr  من فضلك ، حاول مرة أخرى" cmsplugintype تعذر حذف"
+
+#: Controller/DeviceLocationsController.php:22;38;54;87
+msgid "Device Locations"
+msgstr "مواقع الأجهزة"
+
+#: Controller/DeviceLocationsController.php:67;102
+msgid "The device location has been saved."
+msgstr "تم حفظ موقع الجهاز"
+
+#: Controller/DeviceLocationsController.php:71;106
+msgid "The device location could not be saved. Please, try again."
+msgstr "تعذر حفظ موقع الجهاز. يرجى المحاولة مرة أخرى"
+
+#: Controller/DeviceLocationsController.php:143
+msgid "The device location has been deleted."
+msgstr "تم حذف موقع الجهاز"
+
+#: Controller/DeviceLocationsController.php:145
+msgid "The device location could not be deleted. Please, try again."
+msgstr "تعذر حذف موقع الجهاز. يرجى المحاولة مرة أخرى"
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:32
+#: Model/Entity/DeviceStatus.php:41
+msgid "Updated"
+msgstr "محدث"
+
+
+
+
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:31;32
+#: Model/Entity/DeviceStatus.php:42
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:32
+#: Model/Entity/DeviceStatus.php:43
+msgid "Offline"
+msgstr "غير متصل على الانترنت"
+
+#: Controller/DeviceStatusLogsController.php:24
+#: Controller/DevicesController.php:32
+msgid "Unknown"
+msgstr "غير معروف"
+
+#: Controller/DevicesController.php:31
+msgid "Approved"
+msgstr "وافق"
+
+#: Controller/DevicesController.php:31
+msgid "Revoked"
+msgstr "إبطال"
+
+#: Controller/DevicesController.php:33
+#: Controller/PageTemplatesController.php:130
+#: Template/PageTemplates/add.ctp:13
+msgid "Vertical"
+msgstr "عمودي"
+
+#: Controller/DevicesController.php:33
+#: Controller/PageTemplatesController.php:130
+#: Template/PageTemplates/add.ctp:13
+msgid "Horizontal"
+msgstr "أفقي"
+
+#: Controller/DevicesController.php:494;694
+msgid "The device has been saved."
+msgstr "تم حفظ الجهاز"
+
+#: Controller/DevicesController.php:510;697
+msgid "The device could not be saved. Please, try again."
+msgstr "تعذر حفظ الجهاز. من فضلك ، حاول مرة أخرى"
+
+#: Controller/DevicesController.php:560
+msgid "Upload content format incorrect."
+msgstr "تحميل تنسيق المحتوى غير صحيح"
+
+
+#: Controller/DevicesController.php:641
+msgid "Fail to insert one or more devices. Whole process is aborted."
+msgstr "فشل في إدخال جهاز أو أكثر. تم إحباط العملية بالكامل"
+
+#: Controller/DevicesController.php:721
+msgid "The device has been deleted."
+msgstr "تم حذف الجهاز"
+
+#: Controller/DevicesController.php:723
+msgid "The device could not be deleted. Please, try again."
+msgstr "تعذر حذف الجهاز. من فضلك ، حاول مرة أخرى"	
+
+#: Controller/FeedbackController.php:23
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+#: Controller/FeedbackController.php:95;164;200
+msgid "The feedback has been saved."
+msgstr "تم حفظ التعليق"
+
+#: Controller/FeedbackController.php:98;167;204
+msgid "The feedback could not be saved. Please, try again."
+msgstr "تعذر حفظ التعليق. من فضلك ، حاول مرة أخرى"
+
+#: Controller/FeedbackController.php:101;170
+msgid "Email Cannot Send."
+msgstr "لا يمكن إرسال البريد الإلكتروني"
+
+#: Controller/FeedbackController.php:143
+msgid "New i3D Feedback (Reseller) - "
+msgstr " -(موزع) جديدة i3D ملاحظات"
+
+#: Controller/FeedbackController.php:223
+msgid "The feedback has been deleted."
+msgstr "تم حذف التعليق"
+
+#: Controller/FeedbackController.php:225
+msgid "The feedback could not be deleted. Please, try again."
+msgstr "تعذر حذف التعليق. من فضلك ، حاول مرة أخرى"
+
+#: Controller/MasterResellerSubscriptionsController.php:168
+#: Controller/ResellerSubscriptionsController.php:208
+msgid "The master reseller subscription has been saved."
+msgstr "تم حفظ اشتراك المورِّد الرئيسي"
+
+#: Controller/MasterResellerSubscriptionsController.php:172
+msgid "The master reseller subscription could not be saved. Please, try again."
+msgstr "تعذر حفظ اشتراك المورِّد الرئيسي. يرجى المحاولة مرة أخرى"
+
+
+#: Controller/MasterResellerSubscriptionsController.php:175
+msgid "The master reseller subscription still active"
+msgstr "لا يزال اشتراك المورّد الرئيسي نشطًا"
+
+#: Controller/MasterResellerSubscriptionsController.php:221
+msgid "The master reseller subscription cannot be edited."
+msgstr "لا يمكن تعديل اشتراك المورِّد الرئيسي"
+
+#: Controller/MasterResellerSubscriptionsController.php:243
+msgid "The master reseller subscription has been deleted."
+msgstr "تم حذف اشتراك المورِّد الرئيسي"
+
+#: Controller/MasterResellerSubscriptionsController.php:245
+msgid "The master reseller subscription could not be deleted. Please, try again."
+msgstr "تعذر حذف اشتراك المورِّد الرئيسي. يرجى المحاولة مرة أخرى"
+
+#: Controller/MenusController.php:58;84
+msgid "The menu has been saved."
+msgstr "تم حفظ القائمة"
+
+#: Controller/MenusController.php:61;87
+msgid "The menu could not be saved. Please, try again."
+msgstr "تعذر حفظ القائمة. من فضلك ، حاول مرة أخرى"
+
+#: Controller/MenusController.php:107
+msgid "The menu has been deleted."
+msgstr "تم حذف القائمة"
+
+#: Controller/MenusController.php:109
+msgid "The menu could not be deleted. Please, try again."
+msgstr "تعذر حذف القائمة. من فضلك ، حاول مرة أخرى"
+
+#: Controller/NewsController.php:59;87
+msgid "The news has been saved."
+msgstr "لقد تم حفظ الأخبار"
+
+#: Controller/NewsController.php:63;91
+msgid "The news could not be saved. Please, try again."
+msgstr "تعذر حفظ الأخبار. من فضلك ، حاول مرة أخرى"
+
+#: Controller/NewsController.php:110
+msgid "The news has been deleted."
+msgstr "تم حذف الأخبار"
+
+#: Controller/NewsController.php:112
+msgid "The news could not be deleted. Please, try again."
+msgstr "تعذر حذف الأخبار. من فضلك ، حاول مرة أخرى"
+
+
+#: Controller/NotificationEmailTemplatesController.php:21;40;56;85
+msgid "Notification Email Templates"
+msgstr "قوالب البريد الإلكتروني للإشعار"
+
+#: Controller/NotificationEmailTemplatesController.php:64;94
+msgid "The notification email template has been saved."
+msgstr "تم حفظ قالب البريد الإلكتروني للإشعار"
+
+#: Controller/NotificationEmailTemplatesController.php:68;98
+msgid "The notification email template could not be saved. Please, try again."
+msgstr "تعذر حفظ قالب البريد الإلكتروني للإشعارات. يرجى إعادة المحاولة"
+
+#: Controller/NotificationEmailTemplatesController.php:118
+msgid "The notification email template has been deleted."
+msgstr "تم حذف قالب البريد الإلكتروني الخاص بالإعلام"
+
+#: Controller/NotificationEmailTemplatesController.php:120
+msgid "The notification email template could not be deleted. Please, try again."
+msgstr "تعذر حذف قالب البريد الإلكتروني الخاص بالإشعارات. يرجى إعادة المحاولة"
+
+#: Controller/NotificationLogsController.php:67;94
+msgid "The notification has been saved."
+msgstr "تم حفظ الإشعار"
+
+#: Controller/NotificationLogsController.php:71;98
+msgid "The notification could not be saved. Please, try again."
+msgstr "تعذر حفظ الإشعار. يرجى المحاولة مرة أخرى"
+
+#: Controller/NotificationLogsController.php:118
+msgid "The notification has been deleted."
+msgstr "تم حذف الإشعار"
+
+#: Controller/NotificationLogsController.php:120
+msgid "The notification could not be deleted. Please, try again."
+msgstr "تعذر حذف الإشعار. يرجى المحاولة مرة أخرى"
+
+#: Controller/PackagesCmsmenusController.php:58;85
+msgid "The packages cmsmenu has been saved."
+msgstr "cmsmenuتم حفظ الحزم "
+
+#: Controller/PackagesCmsmenusController.php:62;89
+msgid "The packages cmsmenu could not be saved. Please, try again."
+msgstr  من فضلك ، حاول مرة أخرى" cmsmenu. تعذر حفظ الحزم "
+
+#: Controller/PackagesCmsmenusController.php:109
+msgid "The packages cmsmenu has been deleted."
+msgstr "cmsmenu تم حذف الحزم"
+
+
+
+#: Controller/PackagesCmsmenusController.php:111
+msgid "The packages cmsmenu could not be deleted. Please, try again."
+msgstr من فضلك ، حاول مرة أخرى"  cmsmenu تعذر حذف الحزم "
+
+#: Controller/PackagesCmspluginsController.php:58;85
+msgid "The packages cmsplugin has been saved."
+msgstr "cmsplugin تم حفظ الحزم"
+
+#: Controller/PackagesCmspluginsController.php:62;89
+msgid "The packages cmsplugin could not be saved. Please, try again."
+msgstr "من فضلك ، حاول مرة أخرى cmsplugin تعذر حفظ الحزم "
+
+#: Controller/PackagesCmspluginsController.php:109
+msgid "The packages cmsplugin has been deleted."
+msgstr "cmsplugin تم حذف الحزم"
+
+#: Controller/PackagesCmspluginsController.php:111
+msgid "The packages cmsplugin could not be deleted. Please, try again."
+msgstr "من فضلك ، حاول مرة أخرى cmsplugin "تعذر حذف الحزم 
+
+#: Controller/PackagesCmsplugintypesController.php:58;85
+msgid "The packages cmsplugintype has been saved."
+msgstr "cmsplugintype تم حفظ الحزم"
+
+#: Controller/PackagesCmsplugintypesController.php:62;89
+msgid "The packages cmsplugintype could not be saved. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرى cmsplugintype تعذر حفظ الحزم"
+
+#: Controller/PackagesCmsplugintypesController.php:109
+msgid "The packages cmsplugintype has been deleted."
+msgstr "cmsplugintype تم حذف الحزم"
+
+#: Controller/PackagesCmsplugintypesController.php:111
+msgid "The packages cmsplugintype could not be deleted. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرىcmsplugintype تعذر حذف الحزم "
+
+#: Controller/PackagesController.php:93;207
+msgid "The package has been saved."
+msgstr "تم حفظ الحزمة"
+
+#: Controller/PackagesController.php:137;302
+msgid "The package could not be saved. Please, try again."
+msgstr "تعذر حفظ الحزمة. من فضلك ، حاول مرة أخرى"
+
+#: Controller/PackagesController.php:369
+msgid "Package used. The package could not be deleted."
+msgstr "الحزمة المستخدمة. لا يمكن حذف الحزمة"
+
+
+
+#: Controller/PackagesController.php:374
+msgid "The package has been deleted."
+msgstr "تم حذف الحزمة"
+
+#: Controller/PackagesController.php:376
+msgid "The package could not be deleted. Please, try again."
+msgstr "تعذر حذف الحزمة. من فضلك ، حاول مرة أخرى"
+
+#: Controller/PackagesSlottextstylesController.php:58;85
+msgid "The packages slottextstyle has been saved."
+msgstr "slottextstyle تم حفظ الحزم"
+
+#: Controller/PackagesSlottextstylesController.php:62;89
+msgid "The packages slottextstyle could not be saved. Please, try again."
+Msgstr  " يرجى المحاولة مرة أخرى slottextstyle. تعذر حفظ الحزم"
+
+#: Controller/PackagesSlottextstylesController.php:109
+msgid "The packages slottextstyle has been deleted."
+msgstr "slottextstyle تم حذف الحزم"
+
+#: Controller/PackagesSlottextstylesController.php:111
+msgid "The packages slottextstyle could not be deleted. Please, try again."
+msgstr "من فضلك ، حاول مرة أخرى تعذر حذف الحزم slottextstyle تعذر حذف الحزم "
+
+#: Controller/PackagesSlottypesController.php:58;85
+msgid "The packages slottype has been saved."
+msgstr "slottype تم حفظ حزم"
+
+#: Controller/PackagesSlottypesController.php:62;89
+msgid "The packages slottype could not be saved. Please, try again."
+msgstr  من فضلك ، حاول مرة أخرى" slottype تعذر حفظ حزم"
+
+#: Controller/PackagesSlottypesController.php:109
+msgid "The packages slottype has been deleted."
+msgstr "slottype تم حذف حزم "
+
+#: Controller/PackagesSlottypesController.php:111
+msgid "The packages slottype could not be deleted. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرى slottype تعذر حذف حزمة "
+
+#: Controller/PackagesTemplatesController.php:58;85
+msgid "The packages template has been saved."
+msgstr "تم حفظ قالب الحزم"
+
+#: Controller/PackagesTemplatesController.php:62;89
+msgid "The packages template could not be saved. Please, try again."
+msgstr "تعذر حفظ قالب الحزم. يرجى المحاولة مرة أخرى"
+
+
+
+#: Controller/PackagesTemplatesController.php:109
+msgid "The packages template has been deleted."
+msgstr "تم حذف قالب الحزم"
+
+#: Controller/PackagesTemplatesController.php:111
+msgid "The packages template could not be deleted. Please, try again."
+msgstr "تعذر حذف قالب الحزم. يرجى المحاولة مرة أخرى"
+
+#: Controller/PageSlotsController.php:58;85
+msgid "The page slot has been saved."
+msgstr "تم حفظ فتحة الصفحة"
+
+#: Controller/PageSlotsController.php:62;89
+msgid "The page slot could not be saved. Please, try again."
+msgstr "تعذر حفظ فتحة الصفحة. يرجى المحاولة مرة أخرى"
+
+#: Controller/PageSlotsController.php:109
+msgid "The page slot has been deleted."
+msgstr "تم حذف فتحة الصفحة"
+
+#: Controller/PageSlotsController.php:111
+msgid "The page slot could not be deleted. Please, try again."
+msgstr "تعذر حذف فتحة الصفحة. يرجى المحاولة مرة أخرى"
+
+#: Controller/PageTemplatesClientsController.php:60;310
+msgid "The page templates client has been saved."
+msgstr "تم حفظ عميل قوالب الصفحة"
+
+#: Controller/PageTemplatesClientsController.php:64;314
+msgid "The page templates client could not be saved. Please, try again."
+msgstr "تعذر حفظ عميل قوالب الصفحة. يرجى المحاولة مرة أخرى"
+
+#: Controller/PageTemplatesClientsController.php:76
+#: Controller/PageTemplatesController.php:22;114;131;187
+#: Template/PageSlots/view.ctp:38
+#: Template/PageTemplatesClients/view.ctp:30
+msgid "Page Template"
+msgstr "قالب الصفحة"
+
+#: Controller/PageTemplatesClientsController.php:276
+#: Controller/PageTemplatesController.php:164;171;233
+msgid "The page template could not be saved. Please, try again."
+msgstr "تعذر حفظ قالب الصفحة. من فضلك ، حاول مرة أخرى"
+
+#: Controller/PageTemplatesClientsController.php:282
+msgid "The page template assign to the client."
+msgstr "تعيين قالب الصفحة إلى العميل"
+
+
+
+#: Controller/PageTemplatesClientsController.php:335
+msgid "The page templates client has been deleted."
+msgstr "تم حذف عميل قوالب الصفحة"
+
+#: Controller/PageTemplatesClientsController.php:337
+msgid "The page templates client could not be deleted. Please, try again."
+msgstr "تعذر حذف عميل قوالب الصفحة. الرجاء المحاولة مرة أخرى"
+
+#: Controller/PageTemplatesController.php:167;228
+msgid "The page template has been saved."
+msgstr "تم حفظ قالب الصفحة"
+
+#: Controller/PageTemplatesController.php:253
+msgid "The page template has been deleted."
+msgstr "تم حذف قالب الصفحة"
+
+#: Controller/PageTemplatesController.php:255
+msgid "The page template could not be deleted. Please, try again."
+msgstr "تعذر حذف قالب الصفحة. من فضلك ، حاول مرة أخرى"
+
+#: Controller/PluginsController.php:55;81
+msgid "The plugin has been saved."
+msgstr "تم حفظ المكون الإضافي"
+
+#: Controller/PluginsController.php:58;84
+msgid "The plugin could not be saved. Please, try again."
+msgstr "تعذر حفظ المكون الإضافي. الرجاء المحاولة مرة أخرى"
+
+#: Controller/PluginsController.php:104
+msgid "The plugin has been deleted."
+msgstr "تم حذف المكون الإضافي"
+
+#: Controller/PluginsController.php:106
+msgid "The plugin could not be deleted. Please, try again."
+msgstr "تعذر حذف المكون الإضافي. الرجاء المحاولة مرة أخرى"
+
+#: Controller/ProductKeyBatchesController.php:23;50;233;344
+msgid "Keycode Batches"
+msgstr "مجموعات رمز المفتاح"
+
+#: Controller/ProductKeyBatchesController.php:70
+msgid "Product Key Batches"
+msgstr "دفعات مفتاح المنتج"
+
+#: Controller/ProductKeyBatchesController.php:191;480
+#: Controller/ProductKeysController.php:2053;2148
+msgid "The product key could not be saved. Please, try again."
+msgstr "تعذر حفظ مفتاح المنتج. يرجى المحاولة مرة أخرى"
+
+
+#: Controller/ProductKeyBatchesController.php:195;265;484
+msgid "The product key batch could not be saved. Please, try again."
+msgstr "تعذر حفظ دُفعة مفتاح المنتج. يرجى المحاولة مرة أخرى"
+
+#: Controller/ProductKeyBatchesController.php:261
+msgid "The product key batch has been saved."
+msgstr "تم حفظ دُفعة مفتاح المنتج"
+
+#: Controller/ProductKeyBatchesController.php:269
+msgid "The product key batch could not be saved. Product Key has been assign to the client."
+msgstr "تعذر حفظ دُفعة مفتاح المنتج. تم تعيين مفتاح المنتج للعميل"
+
+#: Controller/ProductKeyBatchesController.php:318
+msgid "The product key batch has been deleted."
+msgstr "تم حذف مجموعة مفاتيح المنتج"
+
+#: Controller/ProductKeyBatchesController.php:320
+msgid "The product key batch could not be deleted. Please, try again."
+msgstr "تعذر حذف مجموعة مفاتيح المنتج. يرجى المحاولة مرة أخرى"
+
+#: Controller/ProductKeySubscriptionsController.php:1641;1796;2405;2505
+msgid "Keycode Subscription"
+msgstr "اشتراك رمز المفتاح"
+
+#: Controller/ProductKeySubscriptionsController.php:1681;2430
+msgid "The product key subscription for"
+msgstr "الاشتراك مفتاح المنتج ل"
+
+#: Controller/ProductKeySubscriptionsController.php:1683;2432
+msgid "The subscription client for "
+msgstr "عميل الاشتراك ل"
+
+#: Controller/ProductKeySubscriptionsController.php:1762;2512
+msgid "The product key subscription has been saved."
+msgstr "تم حفظ اشتراك مفتاح المنتج"
+
+#: Controller/ProductKeySubscriptionsController.php:1766;2516
+msgid "The product key subscription could not be saved. Please, try again."
+msgstr "تعذر حفظ اشتراك مفتاح المنتج. يرجى المحاولة مرة أخرى"
+
+#: Controller/ProductKeySubscriptionsController.php:1785;2535
+msgid "The product key subscription has been deleted."
+msgstr "تم حذف اشتراك مفتاح المنتج"
+
+#: Controller/ProductKeySubscriptionsController.php:1787;2537
+msgid "The product key subscription could not be deleted. Please, try again."
+msgstr "تعذر حذف اشتراك مفتاح المنتج. يرجى المحاولة مرة أخرى"
+
+
+
+#: Controller/ProductKeysController.php:23;956;2202;2921
+msgid "Product Keys"
+msgstr "مفاتيح المنتج"
+
+#: Controller/ProductKeysController.php:2020;2073;2385
+#: Template/ProductKeySubscriptions/expiry_key.ctp:57
+#: Template/ProductKeySubscriptions/view.ctp:14
+#: Template/ProductKeys/edit.ctp:16
+#: Template/ProductKeys/view.ctp:16
+#: Template/ProductKeys/view_keylist.ctp:14
+msgid "Keycode"
+msgstr "رمز المفتاح"
+
+#: Controller/ProductKeysController.php:2036;3819
+#: Template/Accounts/add.ctp:75
+#: Template/Devices/status.ctp:35
+#: Template/ProductKeySubscriptions/index.ctp:57
+#: Template/ProductKeys/assign_productkey.ctp:58
+#: Template/ProductKeys/index.ctp:14
+#: Template/TransfersDetail/view.ctp:32
+msgid "Product Key"
+msgstr "مفتاح المنتج"
+
+#: Controller/ProductKeysController.php:2049;2144
+msgid "The product key has been saved."
+msgstr "تم حفظ مفتاح المنتج"
+
+#: Controller/ProductKeysController.php:2192
+msgid "The product key has been deleted."
+msgstr "تم حذف مفتاح المنتج"
+
+#: Controller/ProductKeysController.php:2194
+msgid "The product key could not be deleted. Please, try again."
+msgstr "تعذر حذف مفتاح المنتج. يرجى المحاولة مرة أخرى"
+
+#: Controller/ProductKeysController.php:2357
+msgid "Assign product key to client has been saved."
+msgstr "تم حفظ تعيين مفتاح المنتج للعميل"
+
+#: Controller/ProductKeysController.php:2359
+msgid "Assign product key to client could not save."
+msgstr "تعذر حفظ مفتاح المنتج للعميل"
+
+#: Controller/ProductKeysController.php:3563;3929
+#: Template/ProductKeys/transfer_productkey.ctp:7
+msgid "Transfer Keycode"
+msgstr "نقل رمز المفتاح"
+
+
+
+#: Controller/ProductKeysController.php:3605;3642;3686;4066
+msgid "Product key exceed the limit."
+msgstr "مفتاح المنتج يتجاوز الحد الأقصى"
+
+#: Controller/ProductKeysController.php:3759
+msgid "i3D Transfer Keycode"
+msgstr "i3D Keycode Transfer"
+
+#: Controller/ProductKeysController.php:3766
+msgid "i3D Receive Keycode"
+msgstr "تلقي رمز مفتاحي i3D"
+
+#: Controller/ProductKeysController.php:3797;4199
+msgid "Email could not send."
+msgstr "البريد الإلكتروني لا يمكن أن ترسل"
+
+#: Controller/ProductKeysController.php:3800;4202
+msgid "Transfer product key to reseller has been saved."
+msgstr "تم حفظ مفتاح نقل المنتج إلى البائع"
+
+#: Controller/ProductKeysController.php:3802;4137;4205
+msgid "Transfer product key to reseller could not save."
+msgstr "تعذر حفظ مفتاح نقل المنتج إلى البائع"
+
+#: Controller/ProductKeysController.php:3806
+msgid "Please choose which account."
+msgstr "الرجاء اختيار الحساب"
+
+#: Controller/ProductKeysController.php:3883
+msgid "Product Key {0} exist."
+msgstr "مفتاح المنتج {0} موجود"
+
+#: Controller/ProductKeysController.php:3907
+msgid "Keycode {0} succesfully save."
+msgstr "رمز المفتاح {0} حفظ بنجاح"
+
+#: Controller/ProductKeysController.php:3909
+msgid "Keycode {0} cannot save."
+msgstr "رمز المفتاح {0} لا يمكن حفظ"
+
+#: Controller/ProductKeysController.php:3912
+msgid "Keycode {0} has been used."
+msgstr "رمز المفتاح {0} تم استخدام"
+
+#: Controller/ProductKeysController.php:3915
+msgid "Invalid Keycode entered."
+msgstr "تم إدخال رمز مفتاح غير صالح"
+
+
+
+#: Controller/ProductKeysController.php:4063
+msgid "Invalid input."
+msgstr "مدخل غير صالح"
+
+#: Controller/ProductKeysLogsController.php:21
+msgid "Transaction Logs"
+msgstr "سجلات المعاملات"
+
+#: Controller/ProductKeysLogsController.php:62;91
+msgid "The product keys log has been saved."
+msgstr "تم حفظ سجل مفاتيح المنتج"
+
+#: Controller/ProductKeysLogsController.php:66;95
+msgid "The product keys log could not be saved. Please, try again."
+msgstr "تعذر حفظ سجل مفاتيح المنتج. يرجى المحاولة مرة أخرى"
+
+#: Controller/ProductKeysLogsController.php:117
+msgid "The product keys log has been deleted."
+msgstr "تم حذف سجل مفاتيح المنتج"
+
+#: Controller/ProductKeysLogsController.php:119
+msgid "The product keys log could not be deleted. Please, try again."
+msgstr "تعذر حذف سجل مفاتيح المنتج. يرجى المحاولة مرة أخرى"
+
+#: Controller/RemoteCommandsController.php:21;40;56;86;117
+msgid "Remote Commands"
+msgstr "الأوامر البعيدة"
+
+#: Controller/RemoteCommandsController.php:64;95
+msgid "The remote command has been saved."
+msgstr "تم حفظ الأمر البعيد"
+
+#: Controller/RemoteCommandsController.php:68;99
+msgid "The remote command could not be saved. Please, try again."
+msgstr "تعذر حفظ الأمر البعيد. من فضلك ، حاول مرة أخرى"
+
+#: Controller/RemoteCommandsController.php:121
+msgid "The remote command has been deleted."
+msgstr "تم حذف الأمر البعيد"
+
+#: Controller/RemoteCommandsController.php:123
+msgid "The remote command could not be deleted. Please, try again."
+msgstr "تعذر حذف الأمر البعيد. من فضلك ، حاول مرة أخرى"
+
+#: Controller/ResellerSubscriptionsController.php:175
+#: Controller/SubscriptionResellersController.php:88;104;157
+msgid "Reseller Subscription"
+msgstr "اشتراك الموزع"
+
+
+#: Controller/ResellerSubscriptionsController.php:212;276
+msgid "The reseller subscription could not be saved. Please, try again."
+msgstr "تعذر حفظ اشتراك الموزع. يرجى المحاولة مرة أخرى"
+
+#: Controller/ResellerSubscriptionsController.php:215
+msgid "The reseller subscription still active"
+msgstr "لا يزال اشتراك المورد نشطًا"
+
+#: Controller/ResellerSubscriptionsController.php:272
+msgid "The reseller subscription has been saved."
+msgstr "تم حفظ اشتراك المورد"
+
+#: Controller/ResellerSubscriptionsController.php:318
+msgid "The reseller subscription has been deleted."
+msgstr "تم حذف اشتراك المورد"
+
+#: Controller/ResellerSubscriptionsController.php:320
+msgid "The reseller subscription could not be deleted. Please, try again."
+msgstr "تعذر حذف اشتراك المورِّد. يرجى المحاولة مرة أخرى"
+
+#: Controller/ResellersController.php:163
+#: Template/Resellers/add_master.ctp:8
+msgid "Add Master Reseller"
+msgstr "إضافة موزع رئيسي"
+
+#: Controller/ResellersController.php:265
+#: Template/Resellers/edit_master.ctp:8
+msgid "Edit Master Reseller"
+msgstr "تحرير المورّد الرئيسي"
+
+#: Controller/ResellersController.php:320
+msgid "Master Resellers"
+msgstr "ماجستير البائعين"
+
+#: Controller/ResellersController.php:370
+msgid "Sorry. Incorrect parameters."
+msgstr "عذرا. المعلمات غير صحيحة"
+
+#: Controller/SlottextstylesController.php:55;81
+msgid "The slottextstyle has been saved."
+msgstr "slottextstyleتم حفظ "
+
+#: Controller/SlottextstylesController.php:59;85
+msgid "The slottextstyle could not be saved. Please, try again."
+msgstr "من فضلك ، حاول مرة أخرىslottextstyle تعذر حفظ "
+
+#: Controller/SlottextstylesController.php:104
+msgid "The slottextstyle has been deleted."
+msgstr "slottextstyle "تم حذف
+
+#: Controller/SlottextstylesController.php:106
+msgid "The slottextstyle could not be deleted. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرى slottextstyle تعذر حذف"
+
+#: Controller/SlottypesController.php:55;81
+msgid "The slottype has been saved."
+msgstr "slottype لقد تم حفظ صورة "
+
+#: Controller/SlottypesController.php:59;85
+msgid "The slottype could not be saved. Please, try again."
+msgstr "من فضلك ، حاول مرة أخرى slottype تعذر حفظ نوع"
+
+#: Controller/SlottypesController.php:104
+msgid "The slottype has been deleted."
+msgstr "slottypeتم حذف " 
+
+#: Controller/SlottypesController.php:106
+msgid "The slottype could not be deleted. Please, try again."
+msgstr " من فضلك ، حاول مرة أخرىslottype تعذر حذف"
+
+#: Controller/SubscriptionPackageClientsController.php:21;37;53;77
+msgid "Subscription Package Clients"
+msgstr "عملاء باقة الاشتراك"
+
+#: Controller/SubscriptionPackageClientsController.php:58;84
+msgid "The subscription package client has been saved."
+msgstr "تم حفظ عميل حزمة الاشتراك"
+
+#: Controller/SubscriptionPackageClientsController.php:61;87
+msgid "The subscription package client could not be saved. Please, try again."
+msgstr "تعذر حفظ عميل حزمة الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/SubscriptionPackageClientsController.php:106
+msgid "The subscription package client has been deleted."
+msgstr "تم حذف عميل حزمة الاشتراك"
+
+#: Controller/SubscriptionPackageClientsController.php:108
+msgid "The subscription package client could not be deleted. Please, try again."
+msgstr "تعذر حذف عميل حزمة الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/SubscriptionPackageResellersController.php:21;37;53;77
+msgid "Subscription Package Resellers"
+msgstr "بائعي حزمة الاشتراك"
+
+#: Controller/SubscriptionPackageResellersController.php:58;84
+msgid "The subscription package reseller has been saved."
+msgstr "تم حفظ موزع حزمة الاشتراك"
+
+
+
+#: Controller/SubscriptionPackageResellersController.php:61;87
+msgid "The subscription package reseller could not be saved. Please, try again."
+msgstr "تعذر حفظ موزع حزمة الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/SubscriptionPackageResellersController.php:106
+msgid "The subscription package reseller has been deleted."
+msgstr "تم حذف موزع حزمة الاشتراك"
+
+#: Controller/SubscriptionPackageResellersController.php:108
+msgid "The subscription package reseller could not be deleted. Please, try again."
+msgstr "تعذر حذف موزع حزمة الاشتراك. يرجى إعادة المحاولة"
+
+#: Controller/SubscriptionResellersController.php:22
+msgid "Reseller Subscriptions"
+msgstr "اشتراكات الموزع"
+
+#: Controller/SubscriptionResellersController.php:132;172
+msgid "The subscription reseller has been saved."
+msgstr "تم حفظ موزع الاشتراك"
+
+#: Controller/SubscriptionResellersController.php:135;175
+msgid "The subscription reseller could not be saved. Please, try again."
+msgstr "تعذر حفظ موزع الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/SubscriptionResellersController.php:199
+msgid "The subscription reseller has been deleted."
+msgstr "تم حذف موزع الاشتراك"
+
+#: Controller/SubscriptionResellersController.php:201
+msgid "The subscription reseller could not be deleted. Please, try again."
+msgstr "تعذر حذف موزع الاشتراك. يرجى المحاولة مرة أخرى"
+
+#: Controller/SubscriptionsController.php:58;87
+msgid "The subscription has been saved."
+msgstr "تم حفظ الاشتراك"
+
+#: Controller/SubscriptionsController.php:61;90
+msgid "The subscription could not be saved. Please, try again."
+msgstr "تعذر حفظ الاشتراك. من فضلك ، حاول مرة أخرى"
+
+#: Controller/SubscriptionsController.php:113
+msgid "The subscription has been deleted."
+msgstr "تم حذف الاشتراك"
+
+#: Controller/SubscriptionsController.php:115
+msgid "The subscription could not be deleted. Please, try again."
+msgstr "تعذر حذف الاشتراك. من فضلك ، حاول مرة أخرى"
+
+
+
+#: Controller/TemplatesController.php:55;81
+msgid "The template has been saved."
+msgstr "تم حفظ القالب"
+
+#: Controller/TemplatesController.php:59;85
+msgid "The template could not be saved. Please, try again."
+msgstr "تعذر حفظ القالب. من فضلك ، حاول مرة أخرى"
+
+#: Controller/TemplatesController.php:104
+msgid "The template has been deleted."
+msgstr "تم حذف القالب"
+
+#: Controller/TemplatesController.php:106
+msgid "The template could not be deleted. Please, try again."
+msgstr "تعذر حذف القالب. من فضلك ، حاول مرة أخرى"
+
+#: Controller/TransferDetailsController.php:58;85
+msgid "The transfer detail has been saved."
+msgstr "تم حفظ تفاصيل النقل"
+
+#: Controller/TransferDetailsController.php:62;89
+msgid "The transfer detail could not be saved. Please, try again."
+msgstr "تعذر حفظ تفاصيل النقل. من فضلك ، حاول مرة أخرى"
+
+#: Controller/TransferDetailsController.php:109
+msgid "The transfer detail has been deleted."
+msgstr "تم حذف تفاصيل النقل"
+
+#: Controller/TransferDetailsController.php:111
+msgid "The transfer detail could not be deleted. Please, try again."
+msgstr "تعذر حذف تفاصيل النقل. من فضلك ، حاول مرة أخرى"
+
+#: Controller/TransfersController.php:123;149
+msgid "The transfer has been saved."
+msgstr "تم حفظ النقل"
+
+#: Controller/TransfersController.php:127;153
+msgid "The transfer could not be saved. Please, try again."
+msgstr "تعذر حفظ النقل. من فضلك ، حاول مرة أخرى"
+
+#: Controller/TransfersController.php:172
+msgid "The transfer has been deleted."
+msgstr "تم حذف النقل"
+
+#: Controller/TransfersController.php:174
+msgid "The transfer could not be deleted. Please, try again."
+msgstr "تعذر حذف النقل. من فضلك ، حاول مرة أخرى"
+
+
+
+#: Controller/UsergroupsController.php:55;80
+msgid "The usergroup has been saved."
+msgstr "تم حفظ مجموعة المستخدمين"
+
+#: Controller/UsergroupsController.php:59;84
+msgid "The usergroup could not be saved. Please, try again."
+msgstr "تعذر حفظ مجموعة المستخدم. يرجى المحاولة مرة أخرى"
+
+#: Controller/UsergroupsController.php:102
+msgid "The usergroup has been deleted."
+msgstr "تم حذف مجموعة المستخدمين"
+
+#: Controller/UsergroupsController.php:104
+msgid "The usergroup could not be deleted. Please, try again."
+msgstr "تعذر حذف مجموعة المستخدم. يرجى المحاولة مرة أخرى"
+
+#: Controller/UsersController.php:25
+msgid "Active"
+msgstr "نشيط"
+
+#: Controller/UsersController.php:26
+msgid "Disabled"
+msgstr "معاق"
+
+#: Controller/UsersController.php:27
+msgid "Pending activation"
+msgstr "في انتظار التنشيط"
+
+#: Controller/UsersController.php:28
+msgid "Pending update profile"
+msgstr ""
+
+#: Controller/UsersController.php:29
+msgid "Password reset requested"
+msgstr "في انتظار ملف تعريف التحديث"
+
+#: Controller/UsersController.php:157
+msgid "The signup has been processed."
+msgstr "تمت معالجة الاشتراك"
+
+#: Controller/UsersController.php:161
+msgid "The signup could not be processed. Please, try again."
+msgstr "تعذر معالجة الاشتراك. من فضلك ، حاول مرة أخرى"
+
+#: Controller/UsersController.php:261
+msgid "Email or password is incorrect"
+msgstr "البريد الالكتروني او كلمة المرور غير صحيحة"
+
+
+
+#: Controller/UsersController.php:266
+msgid "Captcha Validation False"
+msgstr التحقق من صحة كلمة التحقق" " 
+
+#: Controller/UsersController.php:316;460
+msgid "The user has been saved."
+msgstr "تم حفظ المستخدم"
+
+#: Controller/UsersController.php:319;468
+msgid "The user could not be saved. Please, try again."
+msgstr "تعذر حفظ المستخدم. من فضلك ، حاول مرة أخرى"
+
+#: Controller/UsersController.php:419
+msgid "User not found"
+msgstr "المستخدم ليس موجود"
+
+#: Controller/UsersController.php:585
+msgid "The user has been deleted."
+msgstr "تم حذف المستخدم"
+
+#: Controller/UsersController.php:587
+msgid "The user could not be deleted. Please, try again."
+msgstr "تعذر حذف المستخدم. من فضلك ، حاول مرة أخرى"
+
+#: Controller/UsersController.php:602
+msgid "Your login account did not have the access to this module."
+msgstr "لم يكن لحساب تسجيل الدخول الخاص بك حق الوصول إلى هذه الوحدة"
+
+#: Controller/UsersController.php:656
+msgid "Password reset instruction will be sent to e-mail address {0}."
+msgstr "{سيتم إرسال تعليمات إعادة تعيين كلمة المرور إلى عنوان البريد الإلكتروني {0"
+
+#: Controller/UsersController.php:659
+msgid "<p>Hi {0},</p><p>A new password reset has been requested on {1} for i3Display.</p><p>Please click link below to confirm reset your password:</p><p><a href=\"{2}\">Confirm Reset Password</a></p><p>Thank you and have a nice day.</p>"
+msgstr "شكرًا لك ونتمنى لك يومًا سعيدًا </a> </p> <p> تأكيد إعادة تعيين كلمة المرور "
+
+#: Controller/UsersController.php:670
+msgid "Password Reset for i3Display"
+msgstr "i3Display إعادة تعيين كلمة المرور ل "
+
+#: Controller/UsersController.php:675;709
+msgid "Reset password cannot be processed. Please, try again later."
+msgstr "إعادة تعيين كلمة المرور لا يمكن معالجتها. يرجى المحاولة مرة أخرى لاحقًا"
+
+#: Controller/UsersController.php:702
+msgid "New password accepted. Please sign in using new password."
+msgstr "تم قبول كلمة مرور جديدة. يرجى تسجيل الدخول باستخدام كلمة مرور جديدة"
+
+#: Controller/UsersController.php:713
+msgid "Invalid reset password token received. Please request new reset password."
+msgstr "تم تلقي رمز إعادة تعيين كلمة مرور غير صالح. يرجى طلب كلمة مرور جديدة لإعادة تعيين"
+
+#: Controller/VersionsController.php:55;80
+msgid "The version has been saved."
+msgstr "تم حفظ الإصدار"
+
+#: Controller/VersionsController.php:59;84
+msgid "The version could not be saved. Please, try again."
+msgstr "تعذر حفظ الإصدار. من فضلك ، حاول مرة أخرى"
+
+#: Controller/VersionsController.php:102
+msgid "The version has been deleted."
+msgstr "تم حذف الإصدار"
+
+#: Controller/VersionsController.php:104
+msgid "The version could not be deleted. Please, try again."
+msgstr "تعذر حذف الإصدار. من فضلك ، حاول مرة أخرى"
+
+#: Controller/Api/ChannelsController.php:44
+#: Controller/Api/DevicesController.php:186;303
+#: Controller/Api/ProductkeyController.php:67
+msgid "Invalid parameters"
+msgstr "معلمات غير صالحة"
+
+#: Controller/Api/DevicesController.php:56
+msgid "Invalid key code"
+msgstr "رمز مفتاح غير صالح"
+
+#: Controller/Api/DevicesController.php:61
+msgid "Keycode already used for renewal. Please use previous keycode."
+msgstr "رمز المفتاح المستخدم بالفعل للتجديد. الرجاء استخدام رمز المفتاح السابق"
+
+#: Controller/Api/DevicesController.php:66
+msgid "Keycode subscription has expired."
+msgstr "انتهت صلاحية رمز المفتاح"
+
+#: Controller/Api/DevicesController.php:73
+msgid "Keycode already registered"
+msgstr "رمز المفتاح مسجل بالفعل"
+
+#: Controller/Api/DevicesController.php:79
+msgid "Keycode package not exist. Please contact your reseller to assign package to your keycode."
+msgstr "حزمة رمز المفتاح غير موجودة. يرجى الاتصال بالموزع لتعيين الحزمة إلى رمز المفتاح الخاص بك"
+
+
+
+
+#: Controller/Api/DevicesController.php:155
+#: Controller/Api/ProductkeyController.php:511
+msgid "Fail to create subscription"
+msgstr "فشل في إنشاء اشتراك"
+
+#: Controller/Api/DevicesController.php:168
+msgid "Fail to assign device keycode"
+msgstr "فشل في تعيين رمز مفتاح الجهاز"
+
+#: Controller/Api/DevicesController.php:175
+msgid "Can't associate device with keycode"
+msgstr "لا يمكن ربط الجهاز بكود المفتاح"
+
+#: Controller/Api/DevicesController.php:316
+msgid "Device date/time is incorrect."
+msgstr " الوقت غير صحيح/ تاريخ الجهاز"
+
+#: Controller/Api/DevicesController.php:321
+msgid "Please register this device."
+msgstr "الرجاء تسجيل هذا الجهاز"
+
+#: Controller/Api/DevicesController.php:326
+msgid "Device is not approved"
+msgstr "الجهاز غير معتمد"
+
+#: Controller/Api/DevicesController.php:337
+msgid "Device has no associated product key"
+msgstr "لا يوجد للجهاز مفتاح منتج مرتبط"
+
+#: Controller/Api/DevicesController.php:343
+msgid "Invalid Product Key."
+msgstr "مفتاح المنتج غير صالح"
+
+#: Controller/Api/DevicesController.php:354
+msgid "Device has no product key. Please register again."
+msgstr "لا يحتوي الجهاز على مفتاح منتج. يرجى التسجيل مرة أخرى"
+
+#: Controller/Api/DevicesController.php:371
+msgid "Product key subscription is not available."
+msgstr "اشتراك مفتاح المنتج غير متاح"
+
+#: Controller/Api/DevicesController.php:394
+msgid "Subscription is expired"
+msgstr "انتهت صلاحية الاشتراك"
+
+#: Controller/Api/DevicesController.php:406;421
+msgid "Device is valid."
+msgstr "الجهاز صالح"
+
+
+#: Controller/Api/ProductkeyController.php:48
+msgid "Valid"
+msgstr "صالح"
+
+#: Controller/Api/ProductkeyController.php:52;57;62
+msgid "Invalid"
+msgstr "غير صالحة"
+
+#: Controller/Api/ProductkeyController.php:314
+msgid "Failed. Keycode not valid."
+msgstr "فشل. رمز المفتاح غير صالح"
+
+#: Controller/Api/ProductkeyController.php:331
+msgid "Failed to update status"
+msgstr "فشل في تحديث الحالة"
+
+#: Controller/Api/ProductkeyController.php:335
+msgid "Success"
+msgstr "نجاح"
+
+#: Controller/Api/ProductkeyController.php:420
+msgid "Failed to update subscription"
+msgstr "فشل في تحديث الاشتراك"
+
+#: Controller/Api/ProductkeyController.php:424
+msgid "Failed. Keycode not available."
+msgstr "فشل. رمز المفتاح غير متوفر"
+
+#: Controller/Api/ProductkeyController.php:507
+msgid "Activation was successful. Thank you."
+msgstr "كان التنشيط ناجحًا. شكرًا لك"
+
+#: Controller/Api/ProductkeyController.php:517
+msgid "Activation done. Thank you."
+msgstr "تم التنشيط. شكرًا لك"
+
+#: Controller/Api/ProductkeyController.php:522;528
+msgid "Fail to insert into product keys log"
+msgstr "فشل في إدراج في سجل مفاتيح المنتج"
+
+#: Controller/Api/ProductkeyController.php:534
+msgid "Fail to update new keycode."
+msgstr "فشل في تحديث رمز مفتاح جديد"
+
+#: Controller/Api/ProductkeyController.php:540
+msgid "Invalid keycode."
+msgstr "رمز مفتاح غير صالح"
+
+
+
+#: Controller/Api/ProductkeyController.php:545
+msgid "Invalid parameters."
+msgstr "معلمات غير صالحة"
+
+#: Model/Table/UsersTable.php:83
+msgid "Sorry. The email address you entered is already in use."
+msgstr "عذرًا ، عنوان البريد الإلكتروني الذي أدخلته قيد الاستخدام بالفعل"
+
+#: Shell/CreateCameraShell.php:275
+msgid "i3D Selfie Email and Password - "
+msgstr "وكلمة المرور صورة شخصية البريد الإلكتروني i3D"
+
+#: Template/Accounts/add.ctp:49
+#: Template/Resellers/add.ctp:36
+#: Template/Resellers/add_master.ctp:38
+msgid "Person in charge"
+msgstr "الشخص المسؤول"
+
+#: Template/Accounts/add.ctp:51;52;60;62;63;64;65;66;77
+#: Template/Accounts/edit.ctp:28;30;31;32;33;34
+#: Template/Apk/add.ctp:26;27;28;29;30;31;32;33;34;35
+#: Template/Apk/edit.ctp:17;18;19;20;21;22;23;24;25;26
+#: Template/ApkManagerLog/add.ctp:26;27;28;29;30;31;32
+#: Template/ApkManagerLog/edit.ctp:31;32;33;34;35;36;37
+#: Template/ClientCmscameras/add.ctp:29;30;31;32;33;34;35;36;37;38;39;40
+#: Template/ClientCmscameras/edit.ctp:18;19;20;21;22;23;24;25;26;27;28;29
+#: Template/ClientCmses/add.ctp:14;15;16;17;18;19;20;21;27
+#: Template/ClientCmses/edit.ctp:14;15;16;17;18;19;20;21;22;25
+#: Template/ClientHistories/add.ctp:15;16
+#: Template/ClientHistories/edit.ctp:16;17
+#: Template/ClientSubscriptions/add.ctp:14;15
+#: Template/ClientSubscriptions/edit.ctp:14;15
+#: Template/Clients/add.ctp:48;49;50;51;52;53;54;55;66;67;91;92;93
+#: Template/Clients/edit.ctp:17;18;19;20;21;22;23;24
+#: Template/Cmsmenus/add.ctp:34;35;36;37;38;39
+#: Template/Cmsmenus/edit.ctp:39;40;41;42;43;44
+#: Template/Cmsplugins/add.ctp:28;29;30;31
+#: Template/Cmsplugins/edit.ctp:33;34;35;36
+#: Template/Cmsplugintypes/add.ctp:30;31;32;33;34;35;36
+#: Template/Cmsplugintypes/edit.ctp:35;36;37;38;39;40;41
+#: Template/DeviceLocations/add.ctp:12;13;14;15;16;17;18;19
+#: Template/DeviceLocations/edit.ctp:12;13;14;15;16;17;18;19
+#: Template/Devices/add.ctp:18;21;22;23;24;25;26;27;28;29;30;31;32;33
+#: Template/Devices/edit.ctp:19;21;22;23;24;25;26;27;28;29;30;31;32;33;34;36
+#: Template/Feedback/add.ctp:17
+#: Template/Feedback/edit.ctp:17
+#: Template/Feedback/index.ctp:22
+#: Template/MasterResellerSubscriptions/add.ctp:19;20
+#: Template/MasterResellerSubscriptions/edit.ctp:19;20
+#: Template/Menus/add.ctp:26;27;28;29;30;31
+#: Template/Menus/edit.ctp:31;32;33;34;35;36
+#: Template/News/add.ctp:13;14
+#: Template/News/edit.ctp:12;13
+#: Template/NotificationEmailTemplates/add.ctp:13;14
+#: Template/NotificationEmailTemplates/edit.ctp:14;15
+#: Template/NotificationLogs/add.ctp:24;25;26;27;28
+#: Template/NotificationLogs/edit.ctp:29;30;31;32;33
+#: Template/Packages/add.ctp:42;43;44;45
+#: Template/Packages/add.php:76;79;82;84;85;86
+#: Template/Packages/edit.ctp:99;100;101;102
+#: Template/Packages/edit.php:64;67;70;72;73;74
+#: Template/PageSlots/add.ctp:23;24;25;26;27;28;29;31;32;33;34;35;36;37;38
+#: Template/PageSlots/edit.ctp:28;29;30;31;32;33;34;36;37;38;39;40;41;42;43
+#: Template/PageTemplates/add.ctp:12;16
+#: Template/PageTemplatesClients/add.ctp:27;28
+#: Template/PageTemplatesClients/edit.ctp:32;33
+#: Template/Plugins/add.ctp:23;24;25;26;27;28;29
+#: Template/Plugins/edit.ctp:28;29;30;31;32;33;34
+#: Template/ProductKeyBatches/add.ctp:40;41
+#: Template/ProductKeyBatches/add_batch.ctp:40;41
+#: Template/ProductKeyBatches/edit.ctp:15
+#: Template/ProductKeySubscriptions/add.ctp:48;49
+#: Template/ProductKeySubscriptions/edit.ctp:37;38;39;40;41;42;43
+#: Template/ProductKeys/add.ctp:13;17;19;20
+#: Template/ProductKeys/edit.ctp:21
+#: Template/ProductKeys/transfer_productkey.ctp:35
+#: Template/ProductKeysLogs/add.ctp:39;43;44;45;46;47
+#: Template/ProductKeysLogs/edit.ctp:44;48;49;50;51;52
+#: Template/RemoteCommands/add.ctp:14
+#: Template/RemoteCommands/edit.ctp:14
+#: Template/ResellerSubscriptions/add.ctp:19;20
+#: Template/ResellerSubscriptions/edit.ctp:19;20
+#: Template/Resellers/add.ctp:14;22;24;25;26;27;28;38;39;46;47;48
+#: Template/Resellers/add_master.ctp:16;24;25;26;27;28;29;30;40;41;48;49;50
+#: Template/Resellers/edit.ctp:25;26;27;28;29;30;31
+#: Template/Resellers/edit_master.ctp:23;24;25;26;27;28;29
+#: Template/Slottextstyles/add.ctp:28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44
+#: Template/Slottextstyles/edit.ctp:33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49
+#: Template/Slottypes/add.ctp:28;29;30;31;32;33
+#: Template/Slottypes/edit.ctp:33;34;35;36;37;38
+#: Template/SubscriptionPackageClients/add.ctp:12
+#: Template/SubscriptionPackageClients/edit.ctp:13
+#: Template/SubscriptionPackageResellers/add.ctp:12
+#: Template/SubscriptionPackageResellers/edit.ctp:12
+#: Template/SubscriptionResellers/add.ctp:15;16
+#: Template/SubscriptionResellers/edit.ctp:15;16
+#: Template/Subscriptions/add.ctp:32;33;35;36
+#: Template/Subscriptions/edit.ctp:37;38;40;41
+#: Template/Templates/add.ctp:28;29;30;31;32;33;34;35;36;37;38;39;40
+#: Template/Templates/edit.ctp:33;34;35;36;37;38;39;40;41;42;43;44;45
+#: Template/Transfers/add.ctp:30;31;32;33;35;36
+#: Template/Transfers/edit.ctp:35;36;37;38;40;41
+#: Template/TransfersDetail/add.ctp:31;32;33
+#: Template/TransfersDetail/edit.ctp:36;37;38
+#: Template/Usergroups/add.ctp:28;29;30;31;32;33;34
+#: Template/Usergroups/edit.ctp:33;34;35;36;37;38;39
+#: Template/Users/add.ctp:12;13;14;15;16
+#: Template/Versions/add.ctp:26;27;28;29;30
+#: Template/Versions/edit.ctp:17;18;19;20;21
+msgid "Enter ..."
+msgstr " أدخل"
+
+#: Template/Accounts/add.ctp:58
+#: Template/Accounts/edit.ctp:26
+#: Template/Resellers/add.ctp:20
+#: Template/Resellers/add_master.ctp:22
+#: Template/Resellers/edit.ctp:23
+#: Template/Resellers/edit_master.ctp:21
+msgid "Company Details"
+msgstr "تفاصيل الشركة"
+
+#: Template/Accounts/add.ctp:83
+#: Template/Accounts/edit.ctp:43
+#: Template/Apk/add.ctp:40
+#: Template/Apk/edit.ctp:31
+#: Template/ApkManagerLog/add.ctp:37
+#: Template/ApkManagerLog/edit.ctp:42
+#: Template/ClientCmscameras/add.ctp:45
+#: Template/ClientCmscameras/edit.ctp:34
+#: Template/ClientCmses/add.ctp:32
+#: Template/ClientCmses/edit.ctp:30
+#: Template/ClientHistories/add.ctp:21
+#: Template/ClientHistories/edit.ctp:22
+#: Template/ClientSubscriptions/add.ctp:20
+#: Template/ClientSubscriptions/edit.ctp:20
+#: Template/Clients/add.ctp:102
+#: Template/Clients/edit.ctp:29
+#: Template/Cmsmenus/add.ctp:45
+#: Template/Cmsmenus/edit.ctp:50
+#: Template/CmsmenusPermission/add.ctp:39
+#: Template/CmsmenusPermission/edit.ctp:44
+#: Template/Cmsplugins/add.ctp:37
+#: Template/Cmsplugins/edit.ctp:42
+#: Template/Cmsplugintypes/add.ctp:42
+#: Template/Cmsplugintypes/edit.ctp:47
+#: Template/DeviceLocations/add.ctp:24
+#: Template/DeviceLocations/edit.ctp:24
+#: Template/Devices/add.ctp:41
+#: Template/Devices/add_multiple.ctp:63
+#: Template/Devices/edit.ctp:42
+#: Template/Feedback/add.ctp:22
+#: Template/Feedback/edit.ctp:22
+#: Template/Feedback/index.ctp:24
+#: Template/MasterResellerSubscriptions/add.ctp:25
+#: Template/MasterResellerSubscriptions/edit.ctp:25
+#: Template/Menus/add.ctp:36
+#: Template/Menus/edit.ctp:41
+#: Template/News/add.ctp:19
+#: Template/News/edit.ctp:18
+#: Template/NotificationEmailTemplates/add.ctp:19
+#: Template/NotificationEmailTemplates/edit.ctp:20
+#: Template/NotificationLogs/add.ctp:33
+#: Template/NotificationLogs/edit.ctp:38
+#: Template/Packages/add.ctp:124
+#: Template/Packages/add.php:167
+#: Template/Packages/edit.ctp:177
+#: Template/Packages/edit.php:151
+#: Template/Packages/index.ctp:11
+#: Template/PackagesCmsmenus/add.ctp:36
+#: Template/PackagesCmsmenus/edit.ctp:41
+#: Template/PackagesCmsplugins/add.ctp:36
+#: Template/PackagesCmsplugins/edit.ctp:41
+#: Template/PackagesCmsplugintypes/add.ctp:36
+#: Template/PackagesCmsplugintypes/edit.ctp:41
+#: Template/PackagesSlottextstyles/add.ctp:36
+#: Template/PackagesSlottextstyles/edit.ctp:41
+#: Template/PackagesSlottypes/add.ctp:36
+#: Template/PackagesSlottypes/edit.ctp:41
+#: Template/PackagesTemplates/add.ctp:36
+#: Template/PackagesTemplates/edit.ctp:41
+#: Template/PageSlots/add.ctp:43
+#: Template/PageSlots/edit.ctp:48
+#: Template/PageTemplates/add.ctp:25
+#: Template/PageTemplates/edit.ctp:69;121
+#: Template/PageTemplatesClients/add.ctp:33
+#: Template/PageTemplatesClients/assign.ctp:46
+#: Template/PageTemplatesClients/edit.ctp:38
+#: Template/Plugins/add.ctp:35
+#: Template/Plugins/edit.ctp:40
+#: Template/ProductKeyBatches/edit.ctp:26
+#: Template/ProductKeyPackages/add.ctp:39
+#: Template/ProductKeySubscriptions/add.ctp:55
+#: Template/ProductKeySubscriptions/edit.ctp:48
+#: Template/ProductKeys/add.ctp:25
+#: Template/ProductKeys/add_keycode.ctp:32
+#: Template/ProductKeys/edit.ctp:27
+#: Template/ProductKeys/transfer_productkey.ctp:42
+#: Template/ProductKeysLogs/add.ctp:52
+#: Template/ProductKeysLogs/edit.ctp:57
+#: Template/RemoteCommands/add.ctp:19
+#: Template/RemoteCommands/edit.ctp:19
+#: Template/ResellerSubscriptions/add.ctp:25
+#: Template/ResellerSubscriptions/edit.ctp:25
+#: Template/Resellers/add.ctp:55
+#: Template/Resellers/add_master.ctp:57
+#: Template/Resellers/edit.ctp:41
+#: Template/Resellers/edit_master.ctp:37
+#: Template/Slottextstyles/add.ctp:50
+#: Template/Slottextstyles/edit.ctp:55
+#: Template/Slottypes/add.ctp:39
+#: Template/Slottypes/edit.ctp:44
+#: Template/SubscriptionPackageClients/add.ctp:17
+#: Template/SubscriptionPackageClients/edit.ctp:18
+#: Template/SubscriptionPackageResellers/add.ctp:17
+#: Template/SubscriptionPackageResellers/edit.ctp:17
+#: Template/SubscriptionResellers/add.ctp:24
+#: Template/SubscriptionResellers/edit.ctp:24
+#: Template/Subscriptions/add.ctp:41
+#: Template/Subscriptions/edit.ctp:46
+#: Template/Templates/add.ctp:46
+#: Template/Templates/edit.ctp:51
+#: Template/Transfers/add.ctp:41
+#: Template/Transfers/edit.ctp:46
+#: Template/TransfersDetail/add.ctp:38
+#: Template/TransfersDetail/edit.ctp:43
+#: Template/Usergroups/add.ctp:39
+#: Template/Usergroups/edit.ctp:44
+#: Template/Users/add.ctp:24
+#: Template/Users/edit.ctp:41
+#: Template/Versions/add.ctp:35
+#: Template/Versions/edit.ctp:26
+msgid "Submit"
+msgstr "خضع"
+
+#: Template/Accounts/add.ctp:84
+#: Template/Accounts/edit.ctp:44
+#: Template/Apk/add.ctp:41
+#: Template/Apk/edit.ctp:32
+#: Template/ApkManagerLog/add.ctp:38
+#: Template/ApkManagerLog/edit.ctp:43
+#: Template/ClientCmscameras/add.ctp:46
+#: Template/ClientCmscameras/edit.ctp:35
+#: Template/ClientCmses/add.ctp:33
+#: Template/ClientCmses/edit.ctp:31
+#: Template/ClientHistories/add.ctp:22
+#: Template/ClientHistories/edit.ctp:23
+#: Template/ClientSubscriptions/add.ctp:21
+#: Template/ClientSubscriptions/edit.ctp:21
+#: Template/Clients/add.ctp:103
+#: Template/Clients/edit.ctp:30
+#: Template/Cmsmenus/add.ctp:46
+#: Template/Cmsmenus/edit.ctp:51
+#: Template/CmsmenusPermission/add.ctp:40
+#: Template/CmsmenusPermission/edit.ctp:45
+#: Template/Cmsplugins/add.ctp:38
+#: Template/Cmsplugins/edit.ctp:43
+#: Template/Cmsplugintypes/add.ctp:43
+#: Template/Cmsplugintypes/edit.ctp:48
+#: Template/DeviceLocations/add.ctp:25
+#: Template/DeviceLocations/edit.ctp:25
+#: Template/Devices/add.ctp:42
+#: Template/Devices/add_multiple.ctp:64
+#: Template/Devices/edit.ctp:43
+#: Template/Feedback/add.ctp:23
+#: Template/Feedback/edit.ctp:23
+#: Template/MasterResellerSubscriptions/add.ctp:26
+#: Template/MasterResellerSubscriptions/edit.ctp:26
+#: Template/Menus/add.ctp:37
+#: Template/Menus/edit.ctp:42
+#: Template/News/add.ctp:20
+#: Template/News/edit.ctp:19
+#: Template/NotificationEmailTemplates/add.ctp:20
+#: Template/NotificationEmailTemplates/edit.ctp:21
+#: Template/NotificationLogs/add.ctp:34
+#: Template/NotificationLogs/edit.ctp:39
+#: Template/Packages/add.ctp:125
+#: Template/Packages/add.php:168
+#: Template/Packages/edit.ctp:178
+#: Template/Packages/edit.php:152
+#: Template/PackagesCmsmenus/add.ctp:37
+#: Template/PackagesCmsmenus/edit.ctp:42
+#: Template/PackagesCmsplugins/add.ctp:37
+#: Template/PackagesCmsplugins/edit.ctp:42
+#: Template/PackagesCmsplugintypes/add.ctp:37
+#: Template/PackagesCmsplugintypes/edit.ctp:42
+#: Template/PackagesSlottextstyles/add.ctp:37
+#: Template/PackagesSlottextstyles/edit.ctp:42
+#: Template/PackagesSlottypes/add.ctp:37
+#: Template/PackagesSlottypes/edit.ctp:42
+#: Template/PackagesTemplates/add.ctp:37
+#: Template/PackagesTemplates/edit.ctp:42
+#: Template/PageSlots/add.ctp:44
+#: Template/PageSlots/edit.ctp:49
+#: Template/PageTemplates/add.ctp:26
+#: Template/PageTemplates/edit.ctp:70;122
+#: Template/PageTemplatesClients/add.ctp:34
+#: Template/PageTemplatesClients/assign.ctp:47
+#: Template/PageTemplatesClients/edit.ctp:39
+#: Template/Plugins/add.ctp:36
+#: Template/Plugins/edit.ctp:41
+#: Template/ProductKeyBatches/add.ctp:55
+#: Template/ProductKeyBatches/add_batch.ctp:55
+#: Template/ProductKeyBatches/edit.ctp:27
+#: Template/ProductKeyPackages/add.ctp:40
+#: Template/ProductKeySubscriptions/add.ctp:56
+#: Template/ProductKeySubscriptions/edit.ctp:49
+#: Template/ProductKeys/add.ctp:26
+#: Template/ProductKeys/add_productkey.ctp:54
+#: Template/ProductKeys/edit.ctp:28
+#: Template/ProductKeysLogs/add.ctp:53
+#: Template/ProductKeysLogs/edit.ctp:58
+#: Template/RemoteCommands/add.ctp:20
+#: Template/RemoteCommands/edit.ctp:20
+#: Template/ResellerSubscriptions/add.ctp:26
+#: Template/ResellerSubscriptions/edit.ctp:26
+#: Template/Resellers/add.ctp:56
+#: Template/Resellers/add_master.ctp:58
+#: Template/Resellers/edit.ctp:42
+#: Template/Resellers/edit_master.ctp:38
+#: Template/Slottextstyles/add.ctp:51
+#: Template/Slottextstyles/edit.ctp:56
+#: Template/Slottypes/add.ctp:40
+#: Template/Slottypes/edit.ctp:45
+#: Template/SubscriptionPackageClients/add.ctp:18
+#: Template/SubscriptionPackageClients/edit.ctp:19
+#: Template/SubscriptionPackageResellers/add.ctp:18
+#: Template/SubscriptionPackageResellers/edit.ctp:18
+#: Template/SubscriptionResellers/add.ctp:25
+#: Template/SubscriptionResellers/edit.ctp:25
+#: Template/Subscriptions/add.ctp:42
+#: Template/Subscriptions/edit.ctp:47
+#: Template/Templates/add.ctp:47
+#: Template/Templates/edit.ctp:52
+#: Template/Transfers/add.ctp:42
+#: Template/Transfers/edit.ctp:47
+#: Template/TransfersDetail/add.ctp:39
+#: Template/TransfersDetail/edit.ctp:44
+#: Template/Usergroups/add.ctp:40
+#: Template/Usergroups/edit.ctp:45
+#: Template/Users/add.ctp:25
+#: Template/Users/edit.ctp:42
+#: Template/Versions/add.ctp:36
+#: Template/Versions/edit.ctp:27
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: Template/Accounts/end_user.ctp:36
+#: Template/Accounts/index.ctp:68
+#: Template/Apk/index.ctp:47
+#: Template/ApkManagerLog/index.ctp:39
+#: Template/ClientCmscameras/index.ctp:69
+#: Template/ClientCmses/index.ctp:69
+#: Template/ClientHistories/index.ctp:52
+#: Template/ClientSubscriptions/index.ctp:93
+#: Template/Clients/index.ctp:88
+#: Template/Cmsmenus/index.ctp:64
+#: Template/CmsmenusPermission/index.ctp:62
+#: Template/Cmsplugins/index.ctp:54
+#: Template/Cmsplugintypes/index.ctp:60
+#: Template/DeviceLocations/index.ctp:47
+#: Template/DeviceStatusLogs/view.ctp:62
+#: Template/Devices/approval.ctp:46
+#: Template/Devices/index.ctp:70
+#: Template/Devices/status.ctp:65
+#: Template/MasterResellerSubscriptions/index.ctp:84
+#: Template/Menus/index.ctp:60
+#: Template/News/index.ctp:41
+#: Template/NotificationEmailTemplates/index.ctp:45
+#: Template/NotificationLogs/index.ctp:47
+#: Template/Packages/index.ctp:49
+#: Template/PackagesCmsmenus/index.ctp:56
+#: Template/PackagesCmsplugins/index.ctp:56
+#: Template/PackagesCmsplugintypes/index.ctp:56
+#: Template/PackagesSlottextstyles/index.ctp:56
+#: Template/PackagesSlottypes/index.ctp:56
+#: Template/PackagesTemplates/index.ctp:56
+#: Template/PageSlots/index.ctp:58
+#: Template/PageTemplates/index.ctp:111
+#: Template/PageTemplatesClients/index.ctp:60
+#: Template/Plugins/index.ctp:58
+#: Template/ProductKeyBatches/index.ctp:53
+#: Template/ProductKeySubscriptions/expiry_key.ctp:176
+#: Template/ProductKeySubscriptions/index.ctp:198
+#: Template/ProductKeys/assign_productkey.ctp:180
+#: Template/ProductKeys/index.ctp:127
+#: Template/ProductKeys/view_keylist.ctp:120
+#: Template/ProductKeysLogs/index.ctp:65
+#: Template/RemoteCommands/index.ctp:49
+#: Template/ResellerSubscriptions/index.ctp:84
+#: Template/Resellers/index.ctp:53
+#: Template/Resellers/master_resellers.ctp:49
+#: Template/Resellers/resellers.ctp:75
+#: Template/Slottextstyles/index.ctp:58
+#: Template/Slottypes/index.ctp:58
+#: Template/SubscriptionPackageClients/index.ctp:37
+#: Template/SubscriptionPackageResellers/index.ctp:37
+#: Template/SubscriptionResellers/index.ctp:53
+#: Template/Subscriptions/index.ctp:72
+#: Template/Templates/index.ctp:58
+#: Template/Transfers/index.ctp:185
+#: Template/TransfersDetail/index.ctp:49
+#: Template/Usergroups/index.ctp:58
+#: Template/Users/index.ctp:47
+#: Template/Versions/index.ctp:33
+msgid "previous"
+msgstr "السابق"
+
+#: Template/Accounts/end_user.ctp:38
+#: Template/Accounts/index.ctp:70
+#: Template/Apk/index.ctp:49
+#: Template/ApkManagerLog/index.ctp:41
+#: Template/ClientCmscameras/index.ctp:71
+#: Template/ClientCmses/index.ctp:71
+#: Template/ClientHistories/index.ctp:54
+#: Template/ClientSubscriptions/index.ctp:95
+#: Template/Clients/index.ctp:90
+#: Template/Cmsmenus/index.ctp:66
+#: Template/CmsmenusPermission/index.ctp:64
+#: Template/Cmsplugins/index.ctp:56
+#: Template/Cmsplugintypes/index.ctp:62
+#: Template/DeviceLocations/index.ctp:49
+#: Template/DeviceStatusLogs/view.ctp:64
+#: Template/Devices/approval.ctp:48
+#: Template/Devices/index.ctp:72
+#: Template/Devices/status.ctp:67
+#: Template/MasterResellerSubscriptions/index.ctp:86
+#: Template/Menus/index.ctp:62
+#: Template/News/index.ctp:43
+#: Template/NotificationEmailTemplates/index.ctp:47
+#: Template/NotificationLogs/index.ctp:49
+#: Template/Packages/index.ctp:51
+#: Template/PackagesCmsmenus/index.ctp:58
+#: Template/PackagesCmsplugins/index.ctp:58
+#: Template/PackagesCmsplugintypes/index.ctp:58
+#: Template/PackagesSlottextstyles/index.ctp:58
+#: Template/PackagesSlottypes/index.ctp:58
+#: Template/PackagesTemplates/index.ctp:58
+#: Template/PageSlots/index.ctp:60
+#: Template/PageTemplates/index.ctp:113
+#: Template/PageTemplatesClients/index.ctp:62
+#: Template/Plugins/index.ctp:60
+#: Template/ProductKeyBatches/index.ctp:55
+#: Template/ProductKeySubscriptions/expiry_key.ctp:178
+#: Template/ProductKeySubscriptions/index.ctp:200
+#: Template/ProductKeys/assign_productkey.ctp:182
+#: Template/ProductKeys/index.ctp:129
+#: Template/ProductKeys/view_keylist.ctp:122
+#: Template/ProductKeysLogs/index.ctp:67
+#: Template/RemoteCommands/index.ctp:51
+#: Template/ResellerSubscriptions/index.ctp:86
+#: Template/Resellers/index.ctp:55
+#: Template/Resellers/master_resellers.ctp:51
+#: Template/Resellers/resellers.ctp:77
+#: Template/Slottextstyles/index.ctp:60
+#: Template/Slottypes/index.ctp:60
+#: Template/SubscriptionPackageClients/index.ctp:39
+#: Template/SubscriptionPackageResellers/index.ctp:39
+#: Template/SubscriptionResellers/index.ctp:55
+#: Template/Subscriptions/index.ctp:74
+#: Template/Templates/index.ctp:60
+#: Template/Transfers/index.ctp:187
+#: Template/TransfersDetail/index.ctp:51
+#: Template/Usergroups/index.ctp:60
+#: Template/Users/index.ctp:49
+#: Template/Versions/index.ctp:35
+msgid "next"
+msgstr "التالى"
+
+#: Template/Accounts/end_user.ctp:45
+msgid "No end user under  selected account."
+msgstr "لا يوجد مستخدم نهائي تحت الحساب المحدد"
+
+#: Template/Accounts/index.ctp:6
+#: Template/Dashboards/index.ctp:130
+msgid "List Reseller"
+msgstr "قائمة الموزعين"
+
+#: Template/Accounts/index.ctp:35
+#: Template/Resellers/resellers.ctp:37
+msgid "Parent"
+msgstr "الأبوين"
+
+#: Template/Accounts/index.ctp:36
+#: Template/Apk/index.ctp:17
+#: Template/ClientCmscameras/index.ctp:37
+#: Template/ClientCmses/index.ctp:37
+#: Template/ClientHistories/index.ctp:17
+#: Template/ClientSubscriptions/index.ctp:40
+#: Template/Clients/index.ctp:36
+#: Template/Cmsmenus/index.ctp:30
+#: Template/CmsmenusPermission/index.ctp:29
+#: Template/Cmsplugins/index.ctp:26
+#: Template/Cmsplugintypes/index.ctp:30
+#: Template/DeviceLocations/index.ctp:17
+#: Template/Devices/approval.ctp:18
+#: Template/Devices/index.ctp:39
+#: Template/Devices/status.ctp:38
+#: Template/MasterResellerSubscriptions/index.ctp:33
+#: Template/Menus/index.ctp:28
+#: Template/News/index.ctp:14
+#: Template/NotificationEmailTemplates/index.ctp:15
+#: Template/NotificationLogs/index.ctp:16
+#: Template/Packages/index.ctp:21
+#: Template/PackagesCmsmenus/index.ctp:26
+#: Template/PackagesCmsplugins/index.ctp:26
+#: Template/PackagesCmsplugintypes/index.ctp:26
+#: Template/PackagesSlottextstyles/index.ctp:26
+#: Template/PackagesSlottypes/index.ctp:26
+#: Template/PackagesTemplates/index.ctp:26
+#: Template/PageSlots/index.ctp:28
+#: Template/PageTemplates/index.ctp:20
+#: Template/PageTemplatesClients/index.ctp:28
+#: Template/Plugins/index.ctp:28
+#: Template/ProductKeyBatches/index.ctp:20
+#: Template/ProductKeySubscriptions/expiry_key.ctp:109
+#: Template/ProductKeySubscriptions/index.ctp:131
+#: Template/ProductKeys/assign_productkey.ctp:136
+#: Template/ProductKeys/index.ctp:90
+#: Template/ProductKeys/view_keylist.ctp:67
+#: Template/RemoteCommands/index.ctp:16
+#: Template/ResellerSubscriptions/index.ctp:33
+#: Template/Resellers/index.ctp:17
+#: Template/Resellers/master_resellers.ctp:18
+#: Template/Resellers/resellers.ctp:39
+#: Template/Slottextstyles/index.ctp:28
+#: Template/Slottypes/index.ctp:28
+#: Template/SubscriptionPackageClients/index.ctp:12
+#: Template/SubscriptionPackageResellers/index.ctp:12
+#: Template/SubscriptionResellers/index.ctp:17
+#: Template/Subscriptions/index.ctp:34
+#: Template/Templates/index.ctp:28
+#: Template/Transfers/index.ctp:113
+#: Template/TransfersDetail/index.ctp:16
+#: Template/Usergroups/index.ctp:28
+#: Template/Users/index.ctp:15
+#: Template/Users/list_by_reseller_client.ctp:24;78;131;185
+#: Template/Users/master_resellers.ctp:23
+#: Template/Users/resellers.ctp:24;76
+msgid "Actions"
+msgstr "أفعال"
+
+#: Template/Accounts/index.ctp:53;58
+#: Template/Apk/index.ctp:33
+#: Template/ClientCmscameras/index.ctp:55
+#: Template/ClientCmses/index.ctp:55
+#: Template/ClientHistories/index.ctp:38
+#: Template/ClientSubscriptions/index.ctp:78
+#: Template/Clients/index.ctp:60;61;67;74
+#: Template/Cmsmenus/index.ctp:50
+#: Template/CmsmenusPermission/index.ctp:48
+#: Template/Cmsplugins/index.ctp:40
+#: Template/Cmsplugintypes/index.ctp:46
+#: Template/DeviceLocations/index.ctp:33
+#: Template/Devices/approval.ctp:32
+#: Template/Devices/index.ctp:56
+#: Template/Devices/status.ctp:53
+#: Template/MasterResellerSubscriptions/index.ctp:70
+#: Template/Menus/index.ctp:46
+#: Template/News/index.ctp:27
+#: Template/NotificationEmailTemplates/index.ctp:31
+#: Template/NotificationLogs/index.ctp:33
+#: Template/Packages/index.ctp:35
+#: Template/PackagesCmsmenus/index.ctp:42
+#: Template/PackagesCmsplugins/index.ctp:42
+#: Template/PackagesCmsplugintypes/index.ctp:42
+#: Template/PackagesSlottextstyles/index.ctp:42
+#: Template/PackagesSlottypes/index.ctp:42
+#: Template/PackagesTemplates/index.ctp:42
+#: Template/PageSlots/index.ctp:44
+#: Template/PageTemplates/index.ctp:97
+#: Template/PageTemplatesClients/index.ctp:46
+#: Template/Plugins/index.ctp:44
+#: Template/ProductKeyBatches/index.ctp:39
+#: Template/ProductKeySubscriptions/expiry_key.ctp:160
+#: Template/ProductKeySubscriptions/index.ctp:182
+#: Template/ProductKeys/assign_productkey.ctp:163
+#: Template/ProductKeys/index.ctp:113
+#: Template/ProductKeys/view_keylist.ctp:105;110
+#: Template/RemoteCommands/index.ctp:35
+#: Template/ResellerSubscriptions/index.ctp:70
+#: Template/Resellers/index.ctp:39
+#: Template/Resellers/master_resellers.ctp:35
+#: Template/Resellers/resellers.ctp:61
+#: Template/Slottextstyles/index.ctp:44
+#: Template/Slottypes/index.ctp:44
+#: Template/SubscriptionPackageClients/index.ctp:23
+#: Template/SubscriptionPackageResellers/index.ctp:23
+#: Template/SubscriptionResellers/index.ctp:39
+#: Template/Subscriptions/index.ctp:58
+#: Template/Templates/index.ctp:44
+#: Template/TransfersDetail/index.ctp:35
+#: Template/Usergroups/index.ctp:44
+#: Template/Users/index.ctp:33
+#: Template/Users/list_by_reseller_client.ctp:42;96;149;203
+#: Template/Users/master_resellers.ctp:41
+#: Template/Users/resellers.ctp:42;94
+msgid "View"
+msgstr "رأي"
+
+#: Template/Accounts/index.ctp:54
+#: Template/Apk/index.ctp:34
+#: Template/ClientCmscameras/index.ctp:56
+#: Template/ClientCmses/index.ctp:56
+#: Template/ClientHistories/index.ctp:39
+#: Template/ClientSubscriptions/index.ctp:79
+#: Template/Clients/index.ctp:75
+#: Template/Cmsmenus/index.ctp:51
+#: Template/CmsmenusPermission/index.ctp:49
+#: Template/Cmsplugins/index.ctp:41
+#: Template/Cmsplugintypes/index.ctp:47
+#: Template/DeviceLocations/index.ctp:34
+#: Template/Devices/approval.ctp:33
+#: Template/Devices/index.ctp:57
+#: Template/MasterResellerSubscriptions/index.ctp:71
+#: Template/Menus/index.ctp:47
+#: Template/News/index.ctp:28
+#: Template/NotificationEmailTemplates/index.ctp:32
+#: Template/NotificationLogs/index.ctp:34
+#: Template/Packages/index.ctp:36
+#: Template/PackagesCmsmenus/index.ctp:43
+#: Template/PackagesCmsplugins/index.ctp:43
+#: Template/PackagesCmsplugintypes/index.ctp:43
+#: Template/PackagesSlottextstyles/index.ctp:43
+#: Template/PackagesSlottypes/index.ctp:43
+#: Template/PackagesTemplates/index.ctp:43
+#: Template/PageSlots/index.ctp:45
+#: Template/PageTemplates/index.ctp:98
+#: Template/PageTemplatesClients/index.ctp:47
+#: Template/Plugins/index.ctp:45
+#: Template/ProductKeyBatches/index.ctp:40
+#: Template/ProductKeys/assign_productkey.ctp:164
+#: Template/ProductKeys/index.ctp:114
+#: Template/ProductKeys/view_keylist.ctp:106
+#: Template/RemoteCommands/index.ctp:36
+#: Template/ResellerSubscriptions/index.ctp:71
+#: Template/Resellers/index.ctp:40
+#: Template/Resellers/master_resellers.ctp:36
+#: Template/Resellers/resellers.ctp:62
+#: Template/Slottextstyles/index.ctp:45
+#: Template/Slottypes/index.ctp:45
+#: Template/SubscriptionPackageClients/index.ctp:24
+#: Template/SubscriptionPackageResellers/index.ctp:24
+#: Template/SubscriptionResellers/index.ctp:40
+#: Template/Subscriptions/index.ctp:59
+#: Template/Templates/index.ctp:45
+#: Template/TransfersDetail/index.ctp:36
+#: Template/Usergroups/index.ctp:45
+#: Template/Users/index.ctp:34
+#: Template/Users/list_by_reseller_client.ctp:43;97;150;204
+#: Template/Users/master_resellers.ctp:42
+#: Template/Users/resellers.ctp:43;95
+msgid "Edit"
+msgstr "تصحيح"
+
+#: Template/Accounts/index.ctp:55
+#: Template/Apk/index.ctp:35
+#: Template/ApkManagerLog/edit.ctp:11
+#: Template/ClientCmscameras/index.ctp:57
+#: Template/ClientCmses/index.ctp:57
+#: Template/ClientHistories/index.ctp:40
+#: Template/ClientSubscriptions/index.ctp:80
+#: Template/Clients/index.ctp:76
+#: Template/Cmsmenus/edit.ctp:11
+#: Template/Cmsmenus/index.ctp:52
+#: Template/CmsmenusPermission/edit.ctp:11
+#: Template/CmsmenusPermission/index.ctp:50
+#: Template/Cmsplugins/edit.ctp:11
+#: Template/Cmsplugins/index.ctp:42
+#: Template/Cmsplugintypes/edit.ctp:11
+#: Template/Cmsplugintypes/index.ctp:48
+#: Template/DeviceLocations/index.ctp:35
+#: Template/Devices/approval.ctp:34
+#: Template/Devices/index.ctp:58
+#: Template/MasterResellerSubscriptions/index.ctp:72
+#: Template/Menus/edit.ctp:6
+#: Template/Menus/index.ctp:48
+#: Template/News/index.ctp:29
+#: Template/NotificationEmailTemplates/index.ctp:33
+#: Template/NotificationLogs/edit.ctp:6
+#: Template/NotificationLogs/index.ctp:35
+#: Template/Packages/index.ctp:37
+#: Template/PackagesCmsmenus/edit.ctp:11
+#: Template/PackagesCmsmenus/index.ctp:44
+#: Template/PackagesCmsplugins/edit.ctp:11
+#: Template/PackagesCmsplugins/index.ctp:44
+#: Template/PackagesCmsplugintypes/edit.ctp:11
+#: Template/PackagesCmsplugintypes/index.ctp:44
+#: Template/PackagesSlottextstyles/edit.ctp:11
+#: Template/PackagesSlottextstyles/index.ctp:44
+#: Template/PackagesSlottypes/edit.ctp:11
+#: Template/PackagesSlottypes/index.ctp:44
+#: Template/PackagesTemplates/edit.ctp:11
+#: Template/PackagesTemplates/index.ctp:44
+#: Template/PageSlots/edit.ctp:6
+#: Template/PageSlots/index.ctp:46
+#: Template/PageTemplates/index.ctp:99
+#: Template/PageTemplatesClients/edit.ctp:6
+#: Template/PageTemplatesClients/index.ctp:48
+#: Template/Plugins/edit.ctp:6
+#: Template/Plugins/index.ctp:46
+#: Template/ProductKeyBatches/index.ctp:41
+#: Template/ProductKeySubscriptions/edit.ctp:11
+#: Template/ProductKeySubscriptions/expiry_key.ctp:161
+#: Template/ProductKeySubscriptions/index.ctp:183
+#: Template/ProductKeys/assign_productkey.ctp:165
+#: Template/ProductKeys/index.ctp:115
+#: Template/ProductKeys/view_keylist.ctp:107
+#: Template/ProductKeysLogs/edit.ctp:11
+#: Template/RemoteCommands/index.ctp:37
+#: Template/ResellerSubscriptions/index.ctp:72
+#: Template/Resellers/index.ctp:41
+#: Template/Resellers/master_resellers.ctp:37
+#: Template/Resellers/resellers.ctp:63
+#: Template/Slottextstyles/edit.ctp:11
+#: Template/Slottextstyles/index.ctp:46
+#: Template/Slottypes/edit.ctp:11
+#: Template/Slottypes/index.ctp:46
+#: Template/SubscriptionPackageClients/index.ctp:25
+#: Template/SubscriptionPackageResellers/index.ctp:25
+#: Template/SubscriptionResellers/index.ctp:41
+#: Template/Subscriptions/edit.ctp:6
+#: Template/Subscriptions/index.ctp:60
+#: Template/Templates/edit.ctp:11
+#: Template/Templates/index.ctp:46
+#: Template/Transfers/edit.ctp:11
+#: Template/TransfersDetail/edit.ctp:11
+#: Template/TransfersDetail/index.ctp:37
+#: Template/Usergroups/edit.ctp:11
+#: Template/Usergroups/index.ctp:46
+#: Template/Users/index.ctp:35
+#: Template/Users/list_by_reseller_client.ctp:44;98;151;205
+#: Template/Users/master_resellers.ctp:43
+#: Template/Users/resellers.ctp:44;96
+msgid "Delete"
+msgstr "حذف"
+
+#: Template/Accounts/index.ctp:55
+#: Template/Apk/index.ctp:35
+#: Template/ApkManagerLog/edit.ctp:13
+#: Template/ClientCmscameras/index.ctp:57
+#: Template/ClientCmses/index.ctp:57
+#: Template/ClientHistories/index.ctp:40
+#: Template/ClientSubscriptions/index.ctp:80
+#: Template/Clients/index.ctp:76
+#: Template/Cmsmenus/edit.ctp:13
+#: Template/Cmsmenus/index.ctp:52
+#: Template/CmsmenusPermission/edit.ctp:13
+#: Template/CmsmenusPermission/index.ctp:50
+#: Template/Cmsplugins/edit.ctp:13
+#: Template/Cmsplugins/index.ctp:42
+#: Template/Cmsplugintypes/edit.ctp:13
+#: Template/Cmsplugintypes/index.ctp:48
+#: Template/DeviceLocations/index.ctp:35
+#: Template/Devices/approval.ctp:34
+#: Template/Devices/index.ctp:58
+#: Template/MasterResellerSubscriptions/index.ctp:72
+#: Template/Menus/edit.ctp:8
+#: Template/Menus/index.ctp:48
+#: Template/News/index.ctp:29
+#: Template/NotificationEmailTemplates/index.ctp:33
+#: Template/NotificationLogs/edit.ctp:8
+#: Template/NotificationLogs/index.ctp:35
+#: Template/Packages/index.ctp:37
+#: Template/PackagesCmsmenus/edit.ctp:13
+#: Template/PackagesCmsmenus/index.ctp:44
+#: Template/PackagesCmsplugins/edit.ctp:13
+#: Template/PackagesCmsplugins/index.ctp:44
+#: Template/PackagesCmsplugintypes/edit.ctp:13
+#: Template/PackagesCmsplugintypes/index.ctp:44
+#: Template/PackagesSlottextstyles/edit.ctp:13
+#: Template/PackagesSlottextstyles/index.ctp:44
+#: Template/PackagesSlottypes/edit.ctp:13
+#: Template/PackagesSlottypes/index.ctp:44
+#: Template/PackagesTemplates/edit.ctp:13
+#: Template/PackagesTemplates/index.ctp:44
+#: Template/PageSlots/edit.ctp:8
+#: Template/PageSlots/index.ctp:46
+#: Template/PageTemplates/index.ctp:99
+#: Template/PageTemplatesClients/edit.ctp:8
+#: Template/PageTemplatesClients/index.ctp:48
+#: Template/Plugins/edit.ctp:8
+#: Template/Plugins/index.ctp:46
+#: Template/ProductKeyBatches/index.ctp:41
+#: Template/ProductKeySubscriptions/edit.ctp:13
+#: Template/ProductKeySubscriptions/expiry_key.ctp:161
+#: Template/ProductKeySubscriptions/index.ctp:183
+#: Template/ProductKeys/assign_productkey.ctp:165
+#: Template/ProductKeys/index.ctp:115
+#: Template/ProductKeys/view_keylist.ctp:107
+#: Template/ProductKeysLogs/edit.ctp:13
+#: Template/RemoteCommands/index.ctp:37
+#: Template/ResellerSubscriptions/index.ctp:72
+#: Template/Resellers/index.ctp:41
+#: Template/Resellers/master_resellers.ctp:37
+#: Template/Resellers/resellers.ctp:63
+#: Template/Slottextstyles/edit.ctp:13
+#: Template/Slottextstyles/index.ctp:46
+#: Template/Slottypes/edit.ctp:13
+#: Template/Slottypes/index.ctp:46
+#: Template/SubscriptionPackageClients/index.ctp:25
+#: Template/SubscriptionPackageResellers/index.ctp:25
+#: Template/SubscriptionResellers/index.ctp:41
+#: Template/Subscriptions/edit.ctp:8
+#: Template/Subscriptions/index.ctp:60
+#: Template/Templates/edit.ctp:13
+#: Template/Templates/index.ctp:46
+#: Template/Transfers/edit.ctp:13
+#: Template/TransfersDetail/edit.ctp:13
+#: Template/TransfersDetail/index.ctp:37
+#: Template/Usergroups/edit.ctp:13
+#: Template/Usergroups/index.ctp:46
+#: Template/Users/index.ctp:35
+#: Template/Users/list_by_reseller_client.ctp:44;98;151;205
+#: Template/Users/master_resellers.ctp:43
+#: Template/Users/resellers.ctp:44;96
+msgid "Are you sure you want to delete this {0}?"
+msgstr "{0}هل أنت متأكد أنك تريد حذف هذا"
+
+#: Template/Accounts/index.ctp:78
+#: Template/Resellers/resellers.ctp:85
+msgid "No reseller registered under selected upline."
+msgstr "لا يوجد بائع مسجل تحت الخط المحدد"
+
+#: Template/Accounts/view.ctp:14
+#: Template/Clients/view.ctp:14
+#: Template/Devices/view.ctp:14
+#: Template/Resellers/view.ctp:14
+msgid "Code"
+msgstr "الشفرة"
+
+#: Template/Accounts/view.ctp:16
+#: Template/Dashboards/index.ctp:15;138
+#: Template/Feedback/index.ctp:13
+#: Template/Resellers/view.ctp:16
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+#: Template/Accounts/view.ctp:18
+#: Template/Resellers/resellers.ctp:35
+#: Template/Resellers/view.ctp:18
+msgid "Reseller Status"
+msgstr "حالة البائع"
+
+#: Template/Accounts/view.ctp:20
+#: Template/Resellers/resellers.ctp:36
+#: Template/Resellers/view.ctp:20
+msgid "Reseller Type"
+msgstr "نوع الموزع"
+
+#: Template/Accounts/view.ctp:22
+#: Template/Resellers/view.ctp:22
+msgid "Upline Reseller"
+msgstr "موزع الخط الأعلى"
+
+#: Template/Accounts/view.ctp:24
+#: Template/Clients/view.ctp:32
+#: Template/Resellers/resellers.ctp:38
+#: Template/Resellers/view.ctp:24
+msgid "Logo"
+msgstr "شعار"
+
+
+
+
+#: Template/Accounts/view.ctp:26
+#: Template/Clients/view.ctp:22
+#: Template/Dashboards/index.ctp:31
+#: Template/Resellers/view.ctp:26
+msgid "Address"
+msgstr "عنوان"
+
+#: Template/Accounts/view.ctp:28
+#: Template/Clients/view.ctp:24
+#: Template/Resellers/view.ctp:28
+msgid "Postcode"
+msgstr "الرمز البريدي"
+
+#: Template/Accounts/view.ctp:30
+#: Template/Clients/view.ctp:26
+#: Template/DeviceLocations/view.ctp:20
+#: Template/Resellers/view.ctp:30
+msgid "City"
+msgstr "مدينة"
+
+#: Template/Accounts/view.ctp:32
+#: Template/Clients/view.ctp:28
+#: Template/DeviceLocations/view.ctp:24
+#: Template/Resellers/view.ctp:32
+msgid "Country"
+msgstr "بلد"
+
+#: Template/Accounts/view.ctp:34
+#: Template/Clients/view.ctp:30
+#: Template/Feedback/index.ctp:17
+#: Template/Resellers/view.ctp:34
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: Template/Accounts/view.ctp:36
+#: Template/Apk/view.ctp:33
+#: Template/ApkManagerLog/view.ctp:38
+#: Template/ClientCmscameras/view.ctp:34
+#: Template/ClientCmses/view.ctp:34
+#: Template/ClientHistories/view.ctp:23
+#: Template/ClientSubscriptions/view.ctp:18
+#: Template/Clients/view.ctp:34
+#: Template/Cmsmenus/view.ctp:46
+#: Template/CmsmenusPermission/view.ctp:38
+#: Template/Cmsplugins/view.ctp:30
+#: Template/Cmsplugintypes/view.ctp:40
+#: Template/DeviceLocations/view.ctp:26
+#: Template/DeviceStatusLogs/view.ctp:25
+#: Template/DeviceStatuses/view.ctp:24
+#: Template/Devices/view.ctp:28
+#: Template/MasterResellerSubscriptions/view.ctp:18
+#: Template/Menus/view.ctp:40
+#: Template/News/view.ctp:16
+#: Template/NotificationEmailTemplates/view.ctp:18
+#: Template/Packages/view.ctp:41
+#: Template/PackagesCmsmenus/view.ctp:34
+#: Template/PackagesCmsplugins/view.ctp:34
+#: Template/PackagesCmsplugintypes/view.ctp:34
+#: Template/PackagesSlottextstyles/view.ctp:34
+#: Template/PackagesSlottypes/view.ctp:34
+#: Template/PackagesTemplates/view.ctp:34
+#: Template/PageSlots/view.ctp:44
+#: Template/PageTemplates/view.ctp:23
+#: Template/PageTemplatesClients/view.ctp:34
+#: Template/Plugins/view.ctp:38
+#: Template/ProductKeyBatches/view.ctp:18
+#: Template/ProductKeySubscriptions/view.ctp:18
+#: Template/ProductKeys/view.ctp:24
+#: Template/ProductKeysLogs/view.ctp:26
+#: Template/RemoteCommands/view.ctp:20
+#: Template/ResellerSubscriptions/view.ctp:18
+#: Template/Resellers/view.ctp:36
+#: Template/Slottextstyles/view.ctp:40
+#: Template/Slottypes/view.ctp:34
+#: Template/SubscriptionPackageClients/view.ctp:17
+#: Template/SubscriptionPackageResellers/view.ctp:16
+#: Template/SubscriptionResellers/view.ctp:20
+#: Template/Subscriptions/view.ctp:42
+#: Template/Templates/view.ctp:38
+#: Template/Transfers/view.ctp:38
+#: Template/TransfersDetail/view.ctp:36
+#: Template/Usergroups/view.ctp:32
+#: Template/Versions/view.ctp:18
+msgid "Id"
+msgstr "هوية شخصية"
+
+#: Template/Accounts/view.ctp:38
+#: Template/ClientCmscameras/view.ctp:36
+#: Template/ClientCmses/view.ctp:36
+#: Template/Clients/view.ctp:36
+#: Template/Cmsplugins/view.ctp:34
+#: Template/DeviceLocations/view.ctp:32
+#: Template/Feedback/view.ctp:18
+#: Template/MasterResellerSubscriptions/view.ctp:26
+#: Template/News/view.ctp:18
+#: Template/NotificationEmailTemplates/view.ctp:22
+#: Template/NotificationLogs/view.ctp:35
+#: Template/Packages/view.ctp:31;45
+#: Template/PageSlots/view.ctp:58
+#: Template/PageTemplates/view.ctp:29
+#: Template/PageTemplatesClients/view.ctp:36
+#: Template/ProductKeyBatches/view.ctp:26
+#: Template/ProductKeySubscriptions/view.ctp:26
+#: Template/ProductKeys/view.ctp:28
+#: Template/ProductKeysLogs/view.ctp:30
+#: Template/RemoteCommands/view.ctp:22
+#: Template/ResellerSubscriptions/view.ctp:26
+#: Template/Resellers/view.ctp:38
+#: Template/Slottextstyles/view.ctp:60
+#: Template/Slottypes/view.ctp:38
+#: Template/Templates/view.ctp:50
+#: Template/Transfers/view.ctp:42
+#: Template/TransfersDetail/view.ctp:38
+#: Template/Usergroups/view.ctp:42
+#: Template/Users/view.ctp:18
+#: Template/Versions/view.ctp:20
+msgid "Date Created"
+msgstr "تاريخ الإنشاء"
+
+#: Template/Accounts/view.ctp:40
+#: Template/ClientCmscameras/view.ctp:38
+#: Template/ClientCmses/view.ctp:38
+#: Template/Clients/view.ctp:38
+#: Template/Cmsplugins/view.ctp:36
+#: Template/DeviceLocations/view.ctp:34
+#: Template/Devices/view.ctp:38
+#: Template/MasterResellerSubscriptions/view.ctp:28
+#: Template/News/view.ctp:20
+#: Template/NotificationEmailTemplates/view.ctp:20
+#: Template/Packages/view.ctp:33;47
+#: Template/PageSlots/view.ctp:60
+#: Template/PageTemplates/view.ctp:31
+#: Template/PageTemplatesClients/view.ctp:38
+#: Template/ProductKeyBatches/view.ctp:28
+#: Template/ProductKeySubscriptions/view.ctp:28
+#: Template/ProductKeys/view.ctp:30
+#: Template/ProductKeysLogs/view.ctp:32
+#: Template/RemoteCommands/view.ctp:24
+#: Template/ResellerSubscriptions/view.ctp:28
+#: Template/Resellers/view.ctp:40
+#: Template/Slottextstyles/view.ctp:62
+#: Template/Slottypes/view.ctp:40
+#: Template/Templates/view.ctp:52
+#: Template/Transfers/view.ctp:44
+#: Template/TransfersDetail/view.ctp:40
+#: Template/Usergroups/view.ctp:40
+#: Template/Users/view.ctp:20
+#: Template/Versions/view.ctp:22
+msgid "Date Modified"
+msgstr "التاريخ عدل"
+
+
+#: Template/Apk/add.ctp:10
+msgid "List Apk"
+msgstr "Apk قائمة "
+
+#: Template/Apk/add.ctp:21
+msgid "Add Apk"
+msgstr "Apk أضف"
+
+#: Template/Apk/edit.ctp:12
+msgid "Edit Apk"
+msgstr "Apk  تصحيح"
+
+#: Template/Apk/view.ctp:15
+#: Template/ApkManagerLog/view.ctp:26
+msgid "Country Code"
+msgstr "الرقم الدولي"
+
+#: Template/Apk/view.ctp:17
+#: Template/ApkManagerLog/view.ctp:28
+msgid "Client Code"
+msgstr "رمز العميل"
+
+#: Template/Apk/view.ctp:19
+msgid "Apk Name"
+msgstr "Apk اسم"
+
+#: Template/Apk/view.ctp:21
+msgid "Apk Version"
+msgstr "Apk إصدار"
+
+#: Template/Apk/view.ctp:23
+msgid "Apk Size"
+msgstr "Apk بحجم"
+
+#: Template/Apk/view.ctp:25
+msgid "Apk Filename"
+msgstr "Apkاسم الملف "
+
+#: Template/Apk/view.ctp:27
+msgid "Apk File Path"
+msgstr "Apk مسار الملف"
+
+#: Template/Apk/view.ctp:29
+#: Template/ApkManagerLog/view.ctp:36
+#: Template/ClientCmscameras/index.ctp:12
+#: Template/ClientCmscameras/view.ctp:32
+#: Template/ClientCmses/add.ctp:23
+#: Template/ClientCmses/index.ctp:12
+#: Template/ClientCmses/view.ctp:32
+#: Template/Cmsplugintypes/view.ctp:42
+#: Template/Devices/add_multiple.ctp:20
+#: Template/Devices/index.ctp:16
+#: Template/Devices/status.ctp:16
+#: Template/Packages/view.ctp:16;43
+#: Template/Plugins/view.ctp:42
+#: Template/ProductKeyBatches/edit.ctp:18
+#: Template/ProductKeyBatches/view.ctp:22
+#: Template/ProductKeys/view.ctp:26
+#: Template/ProductKeysLogs/view.ctp:28
+#: Template/Slottypes/view.ctp:32
+#: Template/Transfers/view.ctp:34
+#: Template/TransfersDetail/view.ctp:34
+msgid "Status"
+msgstr "الحالة"
+
+#: Template/Apk/view.ctp:31
+#: Template/ClientCmscameras/view.ctp:40
+#: Template/ClientCmses/view.ctp:40
+#: Template/Cmsplugintypes/view.ctp:36
+#: Template/PageSlots/view.ctp:42
+#: Template/PageTemplates/view.ctp:21
+#: Template/Templates/view.ctp:36
+msgid "Remark"
+msgstr "ملاحظة"
+
+#: Template/Apk/view.ctp:35
+msgid "Date Create"
+msgstr "تاريخ الإنشاء"
+
+#: Template/ApkManagerLog/add.ctp:10
+#: Template/ApkManagerLog/edit.ctp:15
+#: Template/ApkManagerLog/view.ctp:7
+msgid "List Apk Manager Log"
+msgstr "Apk قائمة سجل مدير"
+
+#: Template/ApkManagerLog/add.ctp:21
+msgid "Add Apk Manager Log"
+msgstr "Apk إضافة سجل مدير"
+
+#: Template/ApkManagerLog/edit.ctp:26
+#: Template/ApkManagerLog/view.ctp:5
+msgid "Edit Apk Manager Log"
+msgstr "Apk تحرير سجل مدير "
+
+#: Template/ApkManagerLog/view.ctp:6
+msgid "Delete Apk Manager Log"
+msgstr "Apk حذف سجل مدير"
+
+
+
+#: Template/ApkManagerLog/view.ctp:6
+#: Template/Cmsmenus/view.ctp:6
+#: Template/CmsmenusPermission/view.ctp:6
+#: Template/Cmsplugins/view.ctp:6
+#: Template/Cmsplugintypes/view.ctp:6
+#: Template/Menus/view.ctp:6
+#: Template/NotificationLogs/view.ctp:6
+#: Template/PackagesCmsmenus/view.ctp:6
+#: Template/PackagesCmsplugins/view.ctp:6
+#: Template/PackagesCmsplugintypes/view.ctp:6
+#: Template/PackagesSlottextstyles/view.ctp:6
+#: Template/PackagesSlottypes/view.ctp:6
+#: Template/PackagesTemplates/view.ctp:6
+#: Template/PageSlots/view.ctp:6
+#: Template/PageTemplatesClients/view.ctp:6
+#: Template/Plugins/view.ctp:6
+#: Template/Slottextstyles/view.ctp:6
+#: Template/Slottypes/view.ctp:6
+#: Template/Subscriptions/view.ctp:6
+#: Template/Templates/view.ctp:6
+#: Template/Transfers/view.ctp:6
+#: Template/TransfersDetail/view.ctp:6
+#: Template/Usergroups/view.ctp:6
+msgid "Are you sure you want to delete # {0}?"
+msgstr "هل أنت متأكد أنك تريد حذف"
+
+#: Template/ApkManagerLog/view.ctp:8
+msgid "New Apk Manager Log"
+msgstr " الجديد Apk سجل مدير"
+
+#: Template/ApkManagerLog/view.ctp:30
+#: Template/Devices/view.ctp:18
+msgid "Android Id"
+msgstr "Android معرف"
+
+#: Template/ApkManagerLog/view.ctp:32
+#: Template/Devices/view.ctp:16
+msgid "Mac Address"
+msgstr "عنوان ماك"
+
+#: Template/ApkManagerLog/view.ctp:34
+msgid "Apk File Name"
+msgstr "Apk اسم ملف"
+
+#: Template/ApkManagerLog/view.ctp:40
+msgid "Datetime"
+msgstr "التاريخ والوقت"
+
+
+
+#: Template/ClientCmscameras/add.ctp:10
+msgid "List Client Cmscameras"
+msgstr "Cmscameras قائمة عميل"
+
+#: Template/ClientCmscameras/add.ctp:11
+#: Template/PageTemplatesClients/add.ctp:8
+#: Template/PageTemplatesClients/edit.ctp:13
+#: Template/PageTemplatesClients/index.ctp:8
+#: Template/PageTemplatesClients/view.ctp:11
+#: Template/Plugins/add.ctp:6
+#: Template/Plugins/edit.ctp:11
+#: Template/Plugins/index.ctp:6
+#: Template/Plugins/view.ctp:9
+#: Template/ProductKeyPackages/add.ctp:15
+#: Template/ProductKeysLogs/add.ctp:15
+#: Template/ProductKeysLogs/edit.ctp:20
+#: Template/Subscriptions/add.ctp:6
+#: Template/Subscriptions/edit.ctp:11
+#: Template/Subscriptions/index.ctp:6
+#: Template/Subscriptions/view.ctp:9
+msgid "List Clients"
+msgstr "قائمة العملاء"
+
+#: Template/ClientCmscameras/add.ctp:12
+#: Template/PageTemplatesClients/add.ctp:9
+#: Template/PageTemplatesClients/edit.ctp:14
+#: Template/PageTemplatesClients/index.ctp:9
+#: Template/PageTemplatesClients/view.ctp:12
+#: Template/Plugins/add.ctp:7
+#: Template/Plugins/edit.ctp:12
+#: Template/Plugins/index.ctp:7
+#: Template/Plugins/view.ctp:10
+#: Template/ProductKeyPackages/add.ctp:16
+#: Template/ProductKeysLogs/add.ctp:16
+#: Template/ProductKeysLogs/edit.ctp:21
+#: Template/Subscriptions/add.ctp:7
+#: Template/Subscriptions/edit.ctp:12
+#: Template/Subscriptions/index.ctp:7
+#: Template/Subscriptions/view.ctp:10
+msgid "New Client"
+msgstr "عميل جديد"
+
+#: Template/ClientCmscameras/add.ctp:23
+msgid "Add Client Cmscamera"
+msgstr "Cmscamera  إضافة عميل"
+
+#: Template/ClientCmscameras/edit.ctp:12
+msgid "Edit Client Cmscamera"
+msgstr "Cmscamera تحرير عميل "
+
+#: Template/ClientCmscameras/index.ctp:15
+#: Template/ClientCmses/index.ctp:15
+#: Template/ClientSubscriptions/index.ctp:17
+#: Template/Devices/index.ctp:20
+#: Template/Devices/status.ctp:20
+#: Template/MasterResellerSubscriptions/index.ctp:16
+#: Template/ProductKeys/transfer_productkey_.ctp:78
+#: Template/ResellerSubscriptions/index.ctp:16
+#: Template/Resellers/resellers.ctp:12
+msgid "Filter"
+msgstr "منقي"
+
+#: Template/ClientCmscameras/index.ctp:78
+#: Template/ClientCmses/index.ctp:78
+msgid "No client under cmses."
+msgstr "cmses لا يوجد عميل تحت"
+
+#: Template/ClientCmscameras/view.ctp:14
+#: Template/ClientCmses/view.ctp:14
+#: Template/ClientHistories/view.ctp:15
+#: Template/ClientSubscriptions/view.ctp:14
+#: Template/DeviceStatusLogs/view.ctp:17
+#: Template/DeviceStatuses/view.ctp:16
+#: Template/PageTemplatesClients/view.ctp:32
+#: Template/ProductKeys/view.ctp:20
+#: Template/ProductKeysLogs/view.ctp:20
+#: Template/Subscriptions/view.ctp:34
+#: Template/Users/list_by_reseller_client.ctp:59;166
+msgid "Client"
+msgstr "عميل"
+
+#: Template/ClientCmscameras/view.ctp:16
+#: Template/ClientCmses/view.ctp:16
+msgid "Cms Server"
+msgstr "CMS خادم"
+
+#: Template/ClientCmscameras/view.ctp:18
+#: Template/ClientCmses/view.ctp:18
+msgid "Database Server"
+msgstr "خادم قاعدة البيانات"
+
+#: Template/ClientCmscameras/view.ctp:20
+#: Template/ClientCmses/view.ctp:20
+msgid "Cms Url"
+msgstr "CMS رابط"
+
+#: Template/ClientCmscameras/view.ctp:22
+#: Template/ClientCmses/view.ctp:22
+msgid "Cms Domain"
+msgstr "CMS نطاق"
+
+#: Template/ClientCmscameras/view.ctp:24
+#: Template/ClientCmses/view.ctp:24
+msgid "Cms Path"
+msgstr "مسار CMS"
+
+#: Template/ClientCmscameras/view.ctp:26
+#: Template/ClientCmses/view.ctp:26
+msgid "Database Name"
+msgstr "اسم قاعدة البيانات"
+
+#: Template/ClientCmscameras/view.ctp:28
+#: Template/ClientCmses/view.ctp:28
+msgid "Database User"
+msgstr "مستخدم قاعدة البيانات"
+
+#: Template/ClientCmscameras/view.ctp:30
+#: Template/ClientCmses/view.ctp:30
+msgid "Database Password"
+msgstr "كلمة مرور قاعدة البيانات"
+
+#: Template/ClientCmses/add.ctp:8
+msgid "Add Client Cmse"
+msgstr "Cmse  إضافة عميل"
+
+#: Template/ClientCmses/edit.ctp:8
+msgid "Edit Client Cmse"
+msgstr "Cmse تحرير عميل "
+
+#: Template/ClientHistories/add.ctp:7
+msgid "Add Client History"
+msgstr "إضافة سجل العميل"
+
+#: Template/ClientHistories/edit.ctp:8
+msgid "Edit Client History"
+msgstr "تحرير سجل العميل"
+
+#: Template/ClientHistories/view.ctp:17
+msgid "Client History Type"
+msgstr "نوع تاريخ العميل"
+
+#: Template/ClientHistories/view.ctp:19
+#: Template/Clients/view.ctp:18
+msgid "Client Status"
+msgstr "حالة العميل"
+
+#: Template/ClientHistories/view.ctp:21
+#: Template/Cmsmenus/view.ctp:40
+#: Template/Menus/view.ctp:34
+#: Template/News/view.ctp:22
+#: Template/Packages/view.ctp:27;37
+#: Template/Plugins/view.ctp:30
+#: Template/Slottypes/view.ctp:30
+#: Template/Transfers/view.ctp:32
+#: Template/Versions/view.ctp:24
+msgid "Description"
+msgstr "وصف"
+
+#: Template/ClientHistories/view.ctp:25
+msgid "Added"
+msgstr "واضاف"
+
+#: Template/ClientSubscriptions/add.ctp:7
+msgid "Add Client Subscription"
+msgstr "إضافة اشتراك العميل"
+
+#: Template/ClientSubscriptions/edit.ctp:7
+msgid "Edit Client Subscription"
+msgstr "تحرير اشتراك العميل"
+
+#: Template/ClientSubscriptions/index.ctp:15;38
+#: Template/MasterResellerSubscriptions/index.ctp:14;31
+#: Template/ProductKeySubscriptions/expiry_key.ctp:107
+#: Template/ProductKeySubscriptions/index.ctp:97;129
+#: Template/ResellerSubscriptions/index.ctp:14;31
+msgid "Subscription Status"
+msgstr "حالة الاشتراك"
+
+#: Template/ClientSubscriptions/index.ctp:103
+msgid "No client subscription under  selected reseller."
+msgstr "لا يوجد اشتراك عميل ضمن موزع محدد"
+
+#: Template/ClientSubscriptions/view.ctp:16
+#: Template/CmsmenusPermission/view.ctp:32
+#: Template/MasterResellerSubscriptions/view.ctp:16
+#: Template/PackagesCmsmenus/view.ctp:30
+#: Template/PackagesCmsplugins/view.ctp:30
+#: Template/PackagesCmsplugintypes/view.ctp:30
+#: Template/PackagesSlottextstyles/view.ctp:30
+#: Template/PackagesSlottypes/view.ctp:30
+#: Template/PackagesTemplates/view.ctp:30
+#: Template/ResellerSubscriptions/view.ctp:16
+msgid "Package"
+msgstr "صفقة"
+
+
+
+
+
+
+#: Template/ClientSubscriptions/view.ctp:20
+#: Template/MasterResellerSubscriptions/view.ctp:20
+#: Template/ProductKeySubscriptions/view.ctp:20
+#: Template/ResellerSubscriptions/view.ctp:20
+#: Template/SubscriptionResellers/view.ctp:22
+msgid "Added By"
+msgstr "أضيفت بواسطة"
+
+#: Template/ClientSubscriptions/view.ctp:22
+#: Template/MasterResellerSubscriptions/view.ctp:22
+#: Template/ProductKeySubscriptions/view.ctp:22
+#: Template/ResellerSubscriptions/view.ctp:22
+#: Template/SubscriptionResellers/view.ctp:24
+#: Template/Subscriptions/view.ctp:44
+msgid "Start"
+msgstr "بداية"
+
+#: Template/ClientSubscriptions/view.ctp:24
+#: Template/MasterResellerSubscriptions/view.ctp:24
+#: Template/ProductKeySubscriptions/view.ctp:24
+#: Template/ResellerSubscriptions/view.ctp:24
+#: Template/SubscriptionResellers/view.ctp:26
+#: Template/Subscriptions/view.ctp:46
+msgid "End"
+msgstr "النهاية"
+
+#: Template/ClientSubscriptions/view.ctp:26
+#: Template/Devices/view.ctp:36
+#: Template/SubscriptionResellers/view.ctp:28
+#: Template/Subscriptions/view.ctp:48
+msgid "Date Added"
+msgstr "تم إضافة التاريخ"
+
+#: Template/ClientSubscriptions/view.ctp:28
+#: Template/SubscriptionResellers/view.ctp:30
+#: Template/Subscriptions/view.ctp:50
+msgid "Date Modify"
+msgstr "تاريخ التعديل"
+
+#: Template/Clients/add.ctp:8
+msgid "Add Client"
+msgstr "إضافة عميل"
+
+#: Template/Clients/edit.ctp:7
+msgid "Edit Client"
+msgstr "تحرير العميل"
+
+
+
+
+#: Template/Clients/index.ctp:16
+#: Template/ProductKeySubscriptions/index.ctp:87
+#: Template/ProductKeys/assign_productkey.ctp:88
+#: Template/ProductKeys/batch_reseller.ctp:6
+#: Template/ProductKeys/index.ctp:44
+msgid "Client Name"
+msgstr "اسم العميل"
+
+#: Template/Clients/index.ctp:19
+#: Template/ProductKeySubscriptions/expiry_key.ctp:86
+#: Template/ProductKeySubscriptions/index.ctp:107
+#: Template/ProductKeys/assign_productkey.ctp:108
+#: Template/ProductKeys/index.ctp:64
+#: Template/ProductKeys/view_keylist.ctp:43
+msgid "Search"
+msgstr "بحث"
+
+#: Template/Clients/index.ctp:28
+#: Template/PageTemplates/view.ctp:34
+#: Template/Templates/view.ctp:55
+msgid "No"
+msgstr "لا"
+
+#: Template/Clients/index.ctp:60;61
+msgid "Content Panel"
+msgstr "لوحة المحتوى"
+
+#: Template/Clients/index.ctp:67
+msgid "Selfie Panel"
+msgstr "لوحة الصور الشخصية"
+
+#: Template/Clients/view.ctp:16
+#: Template/Cmsmenus/view.ctp:38
+#: Template/Cmsplugins/view.ctp:28
+#: Template/Plugins/view.ctp:28
+#: Template/ProductKeyBatches/view.ctp:14
+#: Template/Slottextstyles/view.ctp:28
+#: Template/Slottypes/view.ctp:28
+#: Template/SubscriptionPackageClients/view.ctp:15
+#: Template/SubscriptionPackageResellers/view.ctp:14
+#: Template/Templates/view.ctp:30
+#: Template/Usergroups/view.ctp:28
+#: Template/Users/view.ctp:16
+msgid "Name"
+msgstr "اسم"
+
+#: Template/Cmsmenus/add.ctp:10
+#: Template/Cmsmenus/edit.ctp:15
+#: Template/Cmsmenus/view.ctp:7
+#: Template/CmsmenusPermission/add.ctp:13
+#: Template/CmsmenusPermission/edit.ctp:18
+#: Template/CmsmenusPermission/index.ctp:8
+#: Template/CmsmenusPermission/view.ctp:11
+#: Template/PackagesCmsmenus/add.ctp:13
+#: Template/PackagesCmsmenus/edit.ctp:18
+#: Template/PackagesCmsmenus/index.ctp:8
+#: Template/PackagesCmsmenus/view.ctp:11
+msgid "List Cmsmenus"
+msgstr "Cmsmenus قائمة "
+
+#: Template/Cmsmenus/add.ctp:11
+#: Template/Cmsmenus/edit.ctp:16
+#: Template/Cmsmenus/index.ctp:6
+#: Template/Cmsmenus/view.ctp:9
+#: Template/Menus/add.ctp:6
+#: Template/Menus/edit.ctp:11
+#: Template/Menus/index.ctp:6
+#: Template/Menus/view.ctp:9
+msgid "List Menu Groups"
+msgstr "قائمة مجموعات القائمة"
+
+#: Template/Cmsmenus/add.ctp:12
+#: Template/Cmsmenus/edit.ctp:17
+#: Template/Cmsmenus/index.ctp:7
+#: Template/Cmsmenus/view.ctp:10
+#: Template/Menus/add.ctp:7
+#: Template/Menus/edit.ctp:12
+#: Template/Menus/index.ctp:7
+#: Template/Menus/view.ctp:10
+msgid "New Menu Group"
+msgstr "مجموعة قائمة جديدة"
+
+#: Template/Cmsmenus/add.ctp:13
+#: Template/Cmsmenus/edit.ctp:18
+#: Template/Cmsmenus/view.ctp:11
+msgid "List Parent Cmsmenus"
+msgstr "Cmsmenus قائمة الأم"
+
+#: Template/Cmsmenus/add.ctp:14
+#: Template/Cmsmenus/edit.ctp:19
+#: Template/Cmsmenus/view.ctp:12
+msgid "New Parent Cmsmenu"
+msgstr "Cmsmenus الأم الجديدة"
+
+#: Template/Cmsmenus/add.ctp:15
+#: Template/Cmsmenus/edit.ctp:20
+#: Template/Cmsmenus/index.ctp:8
+#: Template/Cmsmenus/view.ctp:13
+#: Template/CmsmenusPermission/add.ctp:11
+#: Template/CmsmenusPermission/edit.ctp:16
+#: Template/CmsmenusPermission/index.ctp:6
+#: Template/CmsmenusPermission/view.ctp:9
+#: Template/Cmsplugins/add.ctp:11
+#: Template/Cmsplugins/edit.ctp:16
+#: Template/Cmsplugins/index.ctp:6
+#: Template/Cmsplugins/view.ctp:9
+#: Template/Cmsplugintypes/add.ctp:13
+#: Template/Cmsplugintypes/edit.ctp:18
+#: Template/Cmsplugintypes/index.ctp:8
+#: Template/Cmsplugintypes/view.ctp:11
+#: Template/PackagesCmsmenus/add.ctp:11
+#: Template/PackagesCmsmenus/edit.ctp:16
+#: Template/PackagesCmsmenus/index.ctp:6
+#: Template/PackagesCmsmenus/view.ctp:9
+#: Template/PackagesCmsplugins/add.ctp:11
+#: Template/PackagesCmsplugins/edit.ctp:16
+#: Template/PackagesCmsplugins/index.ctp:6
+#: Template/PackagesCmsplugins/view.ctp:9
+#: Template/PackagesCmsplugintypes/add.ctp:11
+#: Template/PackagesCmsplugintypes/edit.ctp:16
+#: Template/PackagesCmsplugintypes/index.ctp:6
+#: Template/PackagesCmsplugintypes/view.ctp:9
+#: Template/PackagesSlottextstyles/add.ctp:11
+#: Template/PackagesSlottextstyles/edit.ctp:16
+#: Template/PackagesSlottextstyles/index.ctp:6
+#: Template/PackagesSlottextstyles/view.ctp:9
+#: Template/PackagesSlottypes/add.ctp:11
+#: Template/PackagesSlottypes/edit.ctp:16
+#: Template/PackagesSlottypes/index.ctp:6
+#: Template/PackagesSlottypes/view.ctp:9
+#: Template/PackagesTemplates/add.ctp:11
+#: Template/PackagesTemplates/edit.ctp:16
+#: Template/PackagesTemplates/index.ctp:6
+#: Template/PackagesTemplates/view.ctp:9
+#: Template/ProductKeyPackages/add.ctp:13
+#: Template/Slottextstyles/add.ctp:11
+#: Template/Slottextstyles/edit.ctp:16
+#: Template/Slottextstyles/index.ctp:6
+#: Template/Slottextstyles/view.ctp:9
+#: Template/Slottypes/add.ctp:11
+#: Template/Slottypes/edit.ctp:16
+#: Template/Slottypes/index.ctp:6
+#: Template/Slottypes/view.ctp:9
+#: Template/Templates/add.ctp:11
+#: Template/Templates/edit.ctp:16
+#: Template/Templates/index.ctp:6
+#: Template/Templates/view.ctp:9
+msgid "List Packages"
+msgstr "قائمة الحزم"
+
+#: Template/Cmsmenus/add.ctp:16
+#: Template/Cmsmenus/edit.ctp:21
+#: Template/Cmsmenus/index.ctp:9
+#: Template/Cmsmenus/view.ctp:14
+#: Template/CmsmenusPermission/add.ctp:12
+#: Template/CmsmenusPermission/edit.ctp:17
+#: Template/CmsmenusPermission/index.ctp:7
+#: Template/CmsmenusPermission/view.ctp:10
+#: Template/Cmsplugins/add.ctp:12
+#: Template/Cmsplugins/edit.ctp:17
+#: Template/Cmsplugins/index.ctp:7
+#: Template/Cmsplugins/view.ctp:10
+#: Template/Cmsplugintypes/add.ctp:14
+#: Template/Cmsplugintypes/edit.ctp:19
+#: Template/Cmsplugintypes/index.ctp:9
+#: Template/Cmsplugintypes/view.ctp:12
+#: Template/PackagesCmsmenus/add.ctp:12
+#: Template/PackagesCmsmenus/edit.ctp:17
+#: Template/PackagesCmsmenus/index.ctp:7
+#: Template/PackagesCmsmenus/view.ctp:10
+#: Template/PackagesCmsplugins/add.ctp:12
+#: Template/PackagesCmsplugins/edit.ctp:17
+#: Template/PackagesCmsplugins/index.ctp:7
+#: Template/PackagesCmsplugins/view.ctp:10
+#: Template/PackagesCmsplugintypes/add.ctp:12
+#: Template/PackagesCmsplugintypes/edit.ctp:17
+#: Template/PackagesCmsplugintypes/index.ctp:7
+#: Template/PackagesCmsplugintypes/view.ctp:10
+#: Template/PackagesSlottextstyles/add.ctp:12
+#: Template/PackagesSlottextstyles/edit.ctp:17
+#: Template/PackagesSlottextstyles/index.ctp:7
+#: Template/PackagesSlottextstyles/view.ctp:10
+#: Template/PackagesSlottypes/add.ctp:12
+#: Template/PackagesSlottypes/edit.ctp:17
+#: Template/PackagesSlottypes/index.ctp:7
+#: Template/PackagesSlottypes/view.ctp:10
+#: Template/PackagesTemplates/add.ctp:12
+#: Template/PackagesTemplates/edit.ctp:17
+#: Template/PackagesTemplates/index.ctp:7
+#: Template/PackagesTemplates/view.ctp:10
+#: Template/ProductKeyPackages/add.ctp:14
+#: Template/Slottextstyles/add.ctp:12
+#: Template/Slottextstyles/edit.ctp:17
+#: Template/Slottextstyles/index.ctp:7
+#: Template/Slottextstyles/view.ctp:10
+#: Template/Slottypes/add.ctp:12
+#: Template/Slottypes/edit.ctp:17
+#: Template/Slottypes/index.ctp:7
+#: Template/Slottypes/view.ctp:10
+#: Template/Templates/add.ctp:12
+#: Template/Templates/edit.ctp:17
+#: Template/Templates/index.ctp:7
+#: Template/Templates/view.ctp:10
+msgid "New Package"
+msgstr "باقة جديدة"
+
+#: Template/Cmsmenus/add.ctp:27
+msgid "Add Cmsmenu"
+msgstr "Cmsmenus أضف"
+
+#: Template/Cmsmenus/edit.ctp:32
+#: Template/Cmsmenus/view.ctp:5
+msgid "Edit Cmsmenu"
+msgstr "Cmsmenus تحرير"
+
+#: Template/Cmsmenus/index.ctp:5
+#: Template/Cmsmenus/view.ctp:8
+#: Template/CmsmenusPermission/add.ctp:14
+#: Template/CmsmenusPermission/edit.ctp:19
+#: Template/CmsmenusPermission/index.ctp:9
+#: Template/CmsmenusPermission/view.ctp:12
+#: Template/PackagesCmsmenus/add.ctp:14
+#: Template/PackagesCmsmenus/edit.ctp:19
+#: Template/PackagesCmsmenus/index.ctp:9
+#: Template/PackagesCmsmenus/view.ctp:12
+msgid "New Cmsmenu"
+msgstr "Cmsmenus جديدة"
+
+#: Template/Cmsmenus/view.ctp:6
+msgid "Delete Cmsmenu"
+msgstr "Cmsmenus حذف"
+
+#: Template/Cmsmenus/view.ctp:32
+#: Template/Menus/view.ctp:30
+msgid "Menu Group"
+msgstr "مجموعة القائمة"
+
+#: Template/Cmsmenus/view.ctp:34
+msgid "Parent Cmsmenu"
+msgstr "Cmsmenus الأم"
+
+#: Template/Cmsmenus/view.ctp:36
+msgid "Icon"
+msgstr "أيقونة"
+
+#: Template/Cmsmenus/view.ctp:42
+msgid "Link Base"
+msgstr "قاعدة الارتباط"
+
+#: Template/Cmsmenus/view.ctp:44
+msgid "Link Parameters"
+msgstr "ارتباطات المعلمات"
+
+#: Template/Cmsmenus/view.ctp:48
+#: Template/Menus/view.ctp:44
+#: Template/PageSlots/view.ctp:52
+msgid "Ordering"
+msgstr "الترتيب"
+
+#: Template/CmsmenusPermission/add.ctp:10
+#: Template/CmsmenusPermission/edit.ctp:15
+#: Template/CmsmenusPermission/view.ctp:7
+#: Template/Usergroups/add.ctp:11
+#: Template/Usergroups/edit.ctp:16
+#: Template/Usergroups/index.ctp:6
+#: Template/Usergroups/view.ctp:9
+msgid "List Cmsmenus Permission"
+msgstr "Cmsmenus قائمة إذن"
+
+#: Template/CmsmenusPermission/add.ctp:15
+#: Template/CmsmenusPermission/edit.ctp:20
+#: Template/CmsmenusPermission/index.ctp:10
+#: Template/CmsmenusPermission/view.ctp:13
+#: Template/Usergroups/add.ctp:10
+#: Template/Usergroups/edit.ctp:15
+#: Template/Usergroups/view.ctp:7
+msgid "List Usergroups"
+msgstr "قائمة مجموعات المستخدمين"
+
+#: Template/CmsmenusPermission/add.ctp:16
+#: Template/CmsmenusPermission/edit.ctp:21
+#: Template/CmsmenusPermission/index.ctp:11
+#: Template/CmsmenusPermission/view.ctp:14
+#: Template/Usergroups/index.ctp:5
+#: Template/Usergroups/view.ctp:8
+msgid "New Usergroup"
+msgstr "مجموعة مستخدمين جديدة"
+
+#: Template/CmsmenusPermission/add.ctp:27
+msgid "Add Cmsmenus Permission"
+msgstr "Cmsmenus إضافة إذن "
+
+#: Template/CmsmenusPermission/edit.ctp:32
+#: Template/CmsmenusPermission/view.ctp:5
+msgid "Edit Cmsmenus Permission"
+msgstr "Cmsmenus تحرير إذن"
+
+#: Template/CmsmenusPermission/index.ctp:5
+#: Template/CmsmenusPermission/view.ctp:8
+#: Template/Usergroups/add.ctp:12
+#: Template/Usergroups/edit.ctp:17
+#: Template/Usergroups/index.ctp:7
+#: Template/Usergroups/view.ctp:10
+msgid "New Cmsmenus Permission"
+msgstr "جديد Cmsmenus إذن"
+
+#: Template/CmsmenusPermission/view.ctp:6
+msgid "Delete Cmsmenus Permission"
+msgstr "Cmsmenus حذف إذن"
+
+#: Template/CmsmenusPermission/view.ctp:34
+#: Template/PackagesCmsmenus/view.ctp:32
+msgid "Cmsmenu"
+msgstr "Cms قائمة"
+
+#: Template/CmsmenusPermission/view.ctp:36
+msgid "Usergroup"
+msgstr "مجموعات المستخدمين"
+
+#: Template/Cmsplugins/add.ctp:10
+#: Template/Cmsplugins/edit.ctp:15
+#: Template/Cmsplugins/view.ctp:7
+#: Template/Cmsplugintypes/add.ctp:11
+#: Template/Cmsplugintypes/edit.ctp:16
+#: Template/Cmsplugintypes/index.ctp:6
+#: Template/Cmsplugintypes/view.ctp:9
+#: Template/PackagesCmsplugins/add.ctp:13
+#: Template/PackagesCmsplugins/edit.ctp:18
+#: Template/PackagesCmsplugins/index.ctp:8
+#: Template/PackagesCmsplugins/view.ctp:11
+msgid "List Cmsplugins"
+msgstr "Cms قائمة الإضافات"
+
+#: Template/Cmsplugins/add.ctp:23
+msgid "Add Cmsplugin"
+msgstr "Cms إضافة مكون"
+
+#: Template/Cmsplugins/edit.ctp:28
+#: Template/Cmsplugins/view.ctp:5
+msgid "Edit Cmsplugin"
+msgstr "Cmsplugin تصحيح"
+
+#: Template/Cmsplugins/index.ctp:5
+#: Template/Cmsplugins/view.ctp:8
+#: Template/Cmsplugintypes/add.ctp:12
+#: Template/Cmsplugintypes/edit.ctp:17
+#: Template/Cmsplugintypes/index.ctp:7
+#: Template/Cmsplugintypes/view.ctp:10
+#: Template/PackagesCmsplugins/add.ctp:14
+#: Template/PackagesCmsplugins/edit.ctp:19
+#: Template/PackagesCmsplugins/index.ctp:9
+#: Template/PackagesCmsplugins/view.ctp:12
+msgid "New Cmsplugin"
+msgstr "Cmsplugin جديدة"
+
+#: Template/Cmsplugins/view.ctp:6
+msgid "Delete Cmsplugin"
+msgstr "Cmsplugin حذف "
+
+#: Template/Cmsplugins/view.ctp:32
+msgid "Cmsplugintype Id"
+msgstr "Cmsplugintype هوية شخصية"
+
+#: Template/Cmsplugintypes/add.ctp:10
+#: Template/Cmsplugintypes/edit.ctp:15
+#: Template/Cmsplugintypes/view.ctp:7
+#: Template/PackagesCmsplugintypes/add.ctp:13
+#: Template/PackagesCmsplugintypes/edit.ctp:18
+#: Template/PackagesCmsplugintypes/index.ctp:8
+#: Template/PackagesCmsplugintypes/view.ctp:11
+msgid "List Cmsplugintypes"
+msgstr "Cmsplugintype قائمة"
+
+#: Template/Cmsplugintypes/add.ctp:25
+msgid "Add Cmsplugintype"
+msgstr"Cmsplugintype إضافة "
+
+#: Template/Cmsplugintypes/edit.ctp:30
+#: Template/Cmsplugintypes/view.ctp:5
+msgid "Edit Cmsplugintype"
+msgstr "Cmsplugintype تصحيح "
+
+#: Template/Cmsplugintypes/index.ctp:5
+#: Template/Cmsplugintypes/view.ctp:8
+#: Template/PackagesCmsplugintypes/add.ctp:14
+#: Template/PackagesCmsplugintypes/edit.ctp:19
+#: Template/PackagesCmsplugintypes/index.ctp:9
+#: Template/PackagesCmsplugintypes/view.ctp:12
+msgid "New Cmsplugintype"
+msgstr "Cmsplugintype تصحيح "
+
+#: Template/Cmsplugintypes/view.ctp:6
+msgid "Delete Cmsplugintype"
+msgstr "Cmsplugintype  حذف"
+
+#: Template/Cmsplugintypes/view.ctp:30
+msgid "Plugin Name"
+msgstr " اسم البرنامج المساعد"
+
+#: Template/Cmsplugintypes/view.ctp:32
+msgid "Plugin Value"
+msgstr " قيمة البرنامج المساعد"
+
+#: Template/Cmsplugintypes/view.ctp:34
+msgid "Plugin Type"
+msgstr " نوع البرنامج المساعد"
+
+#: Template/Cmsplugintypes/view.ctp:38
+msgid "Template Refs"
+msgstr " قالب الإحالات"
+
+#: Template/Cmsplugintypes/view.ctp:44
+msgid "Setup Required"
+msgstr " الإعداد مطلوب"
+
+#: Template/Dashboards/index.ctp:9
+#: Template/Element/Layout/Default/header.ctp:50
+msgid "Profile"
+msgstr " الملف الشخصي"
+
+#: Template/Dashboards/index.ctp:19;139
+#: Template/Feedback/index.ctp:11
+msgid "Contact Person"
+msgstr " الشخص الذي يمكن الاتصال به"
+
+#: Template/Dashboards/index.ctp:23;140
+#: Template/Feedback/index.ctp:15
+#: Template/Users/signup.ctp:7
+msgid "Email"
+msgstr " البريد الإلكتروني"
+
+#: Template/Dashboards/index.ctp:27
+msgid "Phone No."
+msgstr " رقم الهاتف"
+
+#: Template/Dashboards/index.ctp:38
+msgid "Update"
+msgstr " تحديث"
+
+#: Template/Dashboards/index.ctp:49
+msgid "Total Available Keycode"
+msgstr " إجمالي المتاحة كود"
+
+#: Template/Dashboards/index.ctp:58
+msgid "Total Keycode Transfer"
+msgstr " المجموع نقل رمز"
+
+#: Template/Dashboards/index.ctp:67
+#: Template/Packages/view.ctp:20
+msgid "Total Reseller"
+msgstr " مجموع الموزع"
+
+#: Template/Dashboards/index.ctp:76
+msgid "Available Keycode"
+msgstr "المتاحة رمز المفتاح"
+
+#: Template/Dashboards/index.ctp:77
+msgid "{0}"
+msgstr "{0}"
+
+#: Template/Dashboards/index.ctp:83
+msgid "{0} total devices"
+msgstr " مجموع الأجهزة {0} "
+
+#: Template/Dashboards/index.ctp:95
+msgid "Latest Transfer"
+msgstr " آخر نقل"
+
+#: Template/Dashboards/index.ctp:103
+msgid "Date"
+msgstr " تاريخ"
+
+#: Template/Dashboards/index.ctp:105
+msgid "Order No."
+msgstr " رقم الطلب"
+
+#: Template/Dashboards/index.ctp:106
+msgid "Total Transfer"
+msgstr " نقل المجموع"
+
+#: Template/Dashboards/index.ctp:141
+#: Template/ProductKeyBatches/view.ctp:20
+msgid "Total Keycode"
+msgstr "رمز المفتاح  مجموع"
+
+#: Template/DeviceLocations/add.ctp:7
+msgid "Add Device Location"
+msgstr " إضافة موقع الجهاز"
+
+#: Template/DeviceLocations/edit.ctp:7
+msgid "Edit Device Location"
+msgstr " تحرير موقع الجهاز"
+
+#: Template/DeviceLocations/view.ctp:14
+msgid "Building"
+msgstr " بناء"
+
+#: Template/DeviceLocations/view.ctp:16
+msgid "Road"
+msgstr " الطريق"
+
+#: Template/DeviceLocations/view.ctp:18
+msgid "District"
+msgstr " منطقة"
+
+#: Template/DeviceLocations/view.ctp:22
+msgid "State"
+msgstr " حالة"
+
+#: Template/DeviceLocations/view.ctp:28
+msgid "Longitude"
+msgstr " خط الطول"
+
+#: Template/DeviceLocations/view.ctp:30
+msgid "Latitude"
+msgstr " خط العرض"
+
+#: Template/DeviceStatusLogs/view.ctp:15
+#: Template/DeviceStatuses/view.ctp:14
+#: Template/ProductKeys/view.ctp:22
+#: Template/ProductKeysLogs/view.ctp:22
+#: Template/RemoteCommands/view.ctp:14
+msgid "Device"
+msgstr " جهاز"
+
+#: Template/DeviceStatusLogs/view.ctp:19
+#: Template/DeviceStatuses/view.ctp:18
+msgid "Version No"
+msgstr " نسخة رقم"
+
+#: Template/DeviceStatusLogs/view.ctp:21
+#: Template/DeviceStatuses/view.ctp:20
+msgid "Remote Ip"
+msgstr " الملكية الفكرية عن بعد"
+
+#: Template/DeviceStatusLogs/view.ctp:23
+#: Template/DeviceStatuses/view.ctp:22
+msgid "Local Ip"
+msgstr " المحلية ايب"
+
+#: Template/DeviceStatusLogs/view.ctp:27
+#: Template/DeviceStatuses/view.ctp:26
+#: Template/Devices/view.ctp:32
+msgid "Channel Id"
+msgstr " معرف القناة"
+
+#: Template/DeviceStatusLogs/view.ctp:29;42
+#: Template/DeviceStatuses/view.ctp:28
+#: Template/Devices/status.ctp:37
+msgid "Last Update"
+msgstr " اخر تحديث"
+
+#: Template/DeviceStatusLogs/view.ctp:31;41
+#: Template/DeviceStatuses/view.ctp:30
+msgid "Log Time"
+msgstr " تسجيل وقت"
+
+#: Template/DeviceStatusLogs/view.ctp:43
+#: Template/Devices/status.ctp:36
+msgid "Sync Status"
+msgstr " حالة المزامنة"
+
+#: Template/Devices/add.ctp:13
+#: Template/Devices/add_multiple.ctp:9
+msgid "Add Device"
+msgstr " اضف جهاز"
+
+#: Template/Devices/add.ctp:18
+#: Template/Devices/add_multiple.ctp:17
+#: Template/Devices/edit.ctp:19
+msgid "MAC Address"
+msgstr " عنوان ماك"
+
+#: Template/Devices/add.ctp:20
+#: Template/Devices/edit.ctp:20
+msgid "E.g. FMT46WM001 or SKU Number"
+msgstr " SKU  رقم أو FMT46WM001 مثلا "
+
+#: Template/Devices/add.ctp:21
+#: Template/Devices/edit.ctp:21
+msgid "Android ID"
+msgstr " Android  معرف"
+
+#: Template/Devices/add.ctp:34
+#: Template/Devices/edit.ctp:35
+msgid "My Location"
+msgstr " موقعي"
+
+#: Template/Devices/add_multiple.ctp:18
+msgid "Ref Code / Tag ID"
+msgstr " الرقم المرجعي / معرف البطاقة"
+
+#: Template/Devices/add_multiple.ctp:19
+#: Template/Devices/view.ctp:26
+#: Template/PageSlots/view.ctp:30
+#: Template/PageTemplates/view.ctp:17
+#: Template/Templates/view.ctp:32
+msgid "Orientation"
+msgstr " اتجاه"
+
+#: Template/Devices/add_multiple.ctp:41
+msgid "Copy & Paste from Excel app. Format: MAC_ADDRESS, REF_NUMBER, ORIENTATION, APPROVAL STATUS"
+msgstr " رقم المرجع ،الخطاب ، وضع الموافقة MAC ، التنسيق: عنوان.Excel نسخ ولصق من تطبيق "
+
+#: Template/Devices/add_multiple.ctp:41
+msgid "Multiple MAC Addresses File"
+msgstr " متعددة MAC ملف عناوين "
+
+#: Template/Devices/add_multiple.ctp:56
+msgid "Uploaded data confirmed correct"
+msgstr " وأكد البيانات التي تم تحميلها الصحيح"
+
+#: Template/Devices/approval.ctp:5
+msgid "Devices Pending Approval"
+msgstr " الأجهزة في انتظار الموافقة"
+
+#: Template/Devices/edit.ctp:13
+msgid "Edit Device"
+msgstr " تحرير الجهاز"
+
+#: Template/Devices/index.ctp:47;48;49
+#: Template/Devices/status.ctp:46;47
+msgid "Not assigned"
+msgstr " غيرمعتمد"
+
+#: Template/Devices/index.ctp:79
+#: Template/Devices/status.ctp:74
+msgid "No devices under  selected reseller."
+msgstr " لا توجد بيانات حتى الآن"
+
+#: Template/Devices/status.ctp:49
+msgid "No data yet"
+msgstr " لا توجد بيانات حتى الآن"
+
+#: Template/Devices/view.ctp:20
+msgid "Android Serial No"
+msgstr " رقم المسلسل"
+
+#: Template/Devices/view.ctp:22
+msgid "Os Version"
+msgstr " Os  الإصدار "
+
+#: Template/Devices/view.ctp:24
+msgid "Chipset"
+msgstr " شرائح"
+
+#: Template/Devices/view.ctp:30
+msgid "Client Id"
+msgstr " معرف العميل"
+
+#: Template/Devices/view.ctp:34
+msgid "Approval Status"
+msgstr " حالة القبول"
+
+#: Template/Element/Flash/default.ctp:10
+msgid "Info"
+msgstr " معلومات"
+
+#: Template/Element/Flash/error.ctp:3
+msgid "Alert!"
+msgstr " محزر"
+
+#: Template/Element/Flash/success.ctp:3
+msgid "Ok!"
+msgstr " حسنا"
+
+#: Template/Element/Layout/Default/header.ctp:29
+msgid "Member since"
+msgstr " عضو منذ"
+
+#: Template/Element/Layout/Default/header.ctp:53
+msgid "Sign out"
+msgstr " خروج"
+
+#: Template/Feedback/add.ctp:12
+#: Template/Feedback/index.ctp:19
+msgid "Add Feedback"
+msgstr " أضف ملاحظات"
+
+#: Template/Feedback/edit.ctp:12
+msgid "Edit Feedback"
+msgstr " تحرير التعليق"
+
+#: Template/Feedback/view.ctp:14
+msgid "Feedback"
+msgstr " ردود الفعل"
+
+#: Template/Feedback/view.ctp:16
+#: Template/ProductKeyBatches/view.ctp:16
+#: Template/Subscriptions/view.ctp:40
+msgid "User"
+msgstr " المستعمل"
+
+#: Template/Layout/default.ctp:103
+msgid "Home"
+msgstr " الصفحة الرئيسية"
+
+#: Template/MasterResellerSubscriptions/add.ctp:12
+msgid "Add Master Reseller Subscription"
+msgstr " إضافة اشتراك موزع رئيسي"
+
+#: Template/MasterResellerSubscriptions/edit.ctp:12
+msgid "Edit Master Reseller Subscription"
+msgstr " تحرير اشتراك موزع رئيسي"
+
+#: Template/MasterResellerSubscriptions/index.ctp:93
+msgid "No master reseller subscription under  selected reseller."
+msgstr " لا يوجد اشتراك رئيسي للموزع بموجب مورد محدد"
+
+#: Template/Menus/add.ctp:5;8
+#: Template/Menus/edit.ctp:10;13
+#: Template/Menus/view.ctp:7;11
+msgid "List Menus"
+msgstr " قائمة القوائم"
+
+#: Template/Menus/add.ctp:9
+#: Template/Menus/edit.ctp:14
+#: Template/Menus/index.ctp:5
+#: Template/Menus/view.ctp:8;12
+msgid "New Menu"
+msgstr " قائمة جديدة"
+
+#: Template/Menus/add.ctp:20
+msgid "Add Menu"
+msgstr " أضف قائمة"
+
+#: Template/Menus/edit.ctp:25
+#: Template/Menus/view.ctp:5
+msgid "Edit Menu"
+msgstr " عدل القائمة"
+
+#: Template/Menus/view.ctp:6
+msgid "Delete Menu"
+msgstr " حذف القائمة"
+
+#: Template/Menus/view.ctp:32
+msgid "Label"
+msgstr " ضع الكلمة المناسبة"
+
+#: Template/Menus/view.ctp:36
+msgid "Controller"
+msgstr " مراقب"
+
+#: Template/Menus/view.ctp:38
+#: Template/Plugins/view.ctp:34
+msgid "Action"
+msgstr " عمل"
+
+#: Template/Menus/view.ctp:42
+msgid "Parent Id"
+msgstr " معرف الأصل"
+
+#: Template/News/add.ctp:8
+msgid "Add News"
+msgstr " إضافة الأخبار"
+
+#: Template/News/edit.ctp:7
+msgid "Edit News"
+msgstr " تحرير الأخبار"
+
+#: Template/News/view.ctp:14
+msgid "Title"
+msgstr " عنوان"
+
+#: Template/NotificationEmailTemplates/add.ctp:7
+msgid "Add Notification Email Template"
+msgstr " إضافة قالب إعلام البريد الإلكتروني"
+
+#: Template/NotificationEmailTemplates/edit.ctp:8
+msgid "Edit Notification Email Template"
+msgstr " تحرير قالب إعلام البريد الإلكتروني"
+
+#: Template/NotificationEmailTemplates/view.ctp:14
+#: Template/NotificationLogs/view.ctp:37
+msgid "Notification Type"
+msgstr " نوع إعلام"
+
+#: Template/NotificationEmailTemplates/view.ctp:16
+#: Template/NotificationLogs/view.ctp:31
+msgid "Subject"
+msgstr "موضوع"
+
+#: Template/NotificationEmailTemplates/view.ctp:24
+#: Template/NotificationLogs/view.ctp:33
+msgid "Message"
+msgstr " رسالة"
+
+#: Template/NotificationLogs/add.ctp:5
+#: Template/NotificationLogs/edit.ctp:10
+#: Template/NotificationLogs/view.ctp:7
+msgid "List Notifications"
+msgstr " قائمة الإخطارات"
+
+#: Template/NotificationLogs/add.ctp:6
+#: Template/NotificationLogs/edit.ctp:11
+#: Template/NotificationLogs/view.ctp:9
+#: Template/Subscriptions/add.ctp:12
+#: Template/Subscriptions/edit.ctp:17
+#: Template/Subscriptions/index.ctp:12
+#: Template/Subscriptions/view.ctp:15
+msgid "List Users"
+msgstr " قائمة المستخدمين"
+
+#: Template/NotificationLogs/add.ctp:7
+#: Template/NotificationLogs/edit.ctp:12
+#: Template/NotificationLogs/view.ctp:10
+#: Template/Subscriptions/add.ctp:13
+#: Template/Subscriptions/edit.ctp:18
+#: Template/Subscriptions/index.ctp:13
+#: Template/Subscriptions/view.ctp:16
+msgid "New User"
+msgstr " مستخدم جديد"
+
+#: Template/NotificationLogs/add.ctp:18
+msgid "Add Notification"
+msgstr " إضافة الإخطار"
+
+#: Template/NotificationLogs/edit.ctp:23
+#: Template/NotificationLogs/view.ctp:5
+msgid "Edit Notification"
+msgstr " تحرير الإخطار"
+
+#: Template/NotificationLogs/view.ctp:6
+msgid "Delete Notification"
+msgstr " حذف الإخطار"
+
+#: Template/NotificationLogs/view.ctp:8
+msgid "New Notification"
+msgstr " إخطار جديد"
+
+#: Template/NotificationLogs/view.ctp:28
+msgid "To"
+msgstr " إلى"
+
+#: Template/Packages/add.ctp:12
+#: Template/Packages/add.php:12
+msgid "Add Package"
+msgstr " إضافة حزمة"
+
+#: Template/Packages/edit.ctp:12
+#: Template/Packages/edit.php:12
+msgid "Edit Package"
+msgstr " تحرير الحزمة"
+
+#: Template/Packages/view.ctp:14
+msgid "Client Type"
+msgstr " نوع العميل"
+
+#: Template/Packages/view.ctp:23
+msgid "Total Client"
+msgstr " مجموع العملاء"
+
+#: Template/Packages/view.ctp:25;35
+msgid "Package Name"
+msgstr " اسم الحزمة"
+
+#: Template/Packages/view.ctp:29;39
+msgid "Price"
+msgstr " السعر"
+
+#: Template/PackagesCmsmenus/add.ctp:10
+#: Template/PackagesCmsmenus/edit.ctp:15
+#: Template/PackagesCmsmenus/view.ctp:7
+msgid "List Packages Cmsmenus"
+msgstr "Cmsmenus  قائمة الحزم "
+
+#: Template/PackagesCmsmenus/add.ctp:25
+msgid "Add Packages Cmsmenu"
+msgstr "Cmsmenu  إضافة حزم"
+
+#: Template/PackagesCmsmenus/edit.ctp:30
+#: Template/PackagesCmsmenus/view.ctp:5
+msgid "Edit Packages Cmsmenu"
+msgstr "Cmsmenu  تحرير الحزم"
+
+#: Template/PackagesCmsmenus/index.ctp:5
+#: Template/PackagesCmsmenus/view.ctp:8
+msgid "New Packages Cmsmenu"
+msgstr "Cmsmenu  حزم جديدة "
+
+#: Template/PackagesCmsmenus/view.ctp:6
+msgid "Delete Packages Cmsmenu"
+msgstr "Cmsmenu  حذف الحزم"
+
+#: Template/PackagesCmsplugins/add.ctp:10
+#: Template/PackagesCmsplugins/edit.ctp:15
+#: Template/PackagesCmsplugins/view.ctp:7
+msgid "List Packages Cmsplugins"
+msgstr " CMS  قائمة الحزم  نوع البرنامج المساعد"
+
+#: Template/PackagesCmsplugins/add.ctp:25
+msgid "Add Packages Cmsplugin"
+msgstr " CMS  نوع البرنامج المساعد إضافة حزم "
+
+#: Template/PackagesCmsplugins/edit.ctp:30
+#: Template/PackagesCmsplugins/view.ctp:5
+msgid "Edit Packages Cmsplugin"
+msgstr " CMS  نوع البرنامج المساعد تحرير الحزم "
+
+#: Template/PackagesCmsplugins/index.ctp:5
+#: Template/PackagesCmsplugins/view.ctp:8
+msgid "New Packages Cmsplugin"
+msgstr " CMS  نوع البرنامج المساعد حزم جديدة "
+
+#: Template/PackagesCmsplugins/view.ctp:6
+msgid "Delete Packages Cmsplugin"
+msgstr " CMS  نوع البرنامج المساعد حذف الحزم "
+
+#: Template/PackagesCmsplugins/view.ctp:32
+msgid "Cmsplugin"
+msgstr " CMS  نوع البرنامج المساعد "
+
+#: Template/PackagesCmsplugintypes/add.ctp:10
+#: Template/PackagesCmsplugintypes/edit.ctp:15
+#: Template/PackagesCmsplugintypes/view.ctp:7
+msgid "List Packages Cmsplugintypes"
+msgstr " CMS  نوع البرنامج المساعد قائمة الحزم "
+
+#: Template/PackagesCmsplugintypes/add.ctp:25
+msgid "Add Packages Cmsplugintype"
+msgstr " CMS إضافة حزم نوع البرنامج المساعد "
+
+#: Template/PackagesCmsplugintypes/edit.ctp:30
+#: Template/PackagesCmsplugintypes/view.ctp:5
+msgid "Edit Packages Cmsplugintype"
+msgstr " CMS تحرير الحزم نوع البرنامج المساعد "
+
+#: Template/PackagesCmsplugintypes/index.ctp:5
+#: Template/PackagesCmsplugintypes/view.ctp:8
+msgid "New Packages Cmsplugintype"
+msgstr "CMS  نوع البرنامج المساعد حزم جديدة"
+
+#: Template/PackagesCmsplugintypes/view.ctp:6
+msgid "Delete Packages Cmsplugintype"
+msgstr "CMS  نوع البرنامج المساعد حذف الحزم "
+
+#: Template/PackagesCmsplugintypes/view.ctp:32
+msgid "Cmsplugintype"
+msgstr "CMS  نوع البرنامج المساعد "
+
+#: Template/PackagesSlottextstyles/add.ctp:10
+#: Template/PackagesSlottextstyles/edit.ctp:15
+#: Template/PackagesSlottextstyles/view.ctp:7
+msgid "List Packages Slottextstyles"
+msgstr " حزم قائمة أنماط النص فتحة"
+
+#: Template/PackagesSlottextstyles/add.ctp:13
+#: Template/PackagesSlottextstyles/edit.ctp:18
+#: Template/PackagesSlottextstyles/index.ctp:8
+#: Template/PackagesSlottextstyles/view.ctp:11
+#: Template/Slottextstyles/add.ctp:10
+#: Template/Slottextstyles/edit.ctp:15
+#: Template/Slottextstyles/view.ctp:7
+msgid "List Slottextstyles"
+msgstr " قائمة أنماط النص فتحة"
+
+#: Template/PackagesSlottextstyles/add.ctp:14
+#: Template/PackagesSlottextstyles/edit.ctp:19
+#: Template/PackagesSlottextstyles/index.ctp:9
+#: Template/PackagesSlottextstyles/view.ctp:12
+#: Template/Slottextstyles/index.ctp:5
+#: Template/Slottextstyles/view.ctp:8
+msgid "New Slottextstyle"
+msgstr " نمط النص فتحة جديدة"
+
+#: Template/PackagesSlottextstyles/add.ctp:25
+msgid "Add Packages Slottextstyle"
+msgstr " إضافة حزم النص نمط النص"
+
+#: Template/PackagesSlottextstyles/edit.ctp:30
+#: Template/PackagesSlottextstyles/view.ctp:5
+msgid "Edit Packages Slottextstyle"
+msgstr " تحرير حزم النص نمط النص"
+
+#: Template/PackagesSlottextstyles/index.ctp:5
+#: Template/PackagesSlottextstyles/view.ctp:8
+msgid "New Packages Slottextstyle"
+msgstr " الحزم الجديدة نمط النص فتحة"
+
+#: Template/PackagesSlottextstyles/view.ctp:6
+msgid "Delete Packages Slottextstyle"
+msgstr " حذف نمط النص حزم الحزم"
+
+#: Template/PackagesSlottextstyles/view.ctp:32
+msgid "Slottextstyle"
+msgstr " نمط النص فتحة"
+
+#: Template/PackagesSlottypes/add.ctp:10
+#: Template/PackagesSlottypes/edit.ctp:15
+#: Template/PackagesSlottypes/view.ctp:7
+msgid "List Packages Slottypes"
+msgstr " قائمة الحزم أنواع الفتحات"
+
+#: Template/PackagesSlottypes/add.ctp:13
+#: Template/PackagesSlottypes/edit.ctp:18
+#: Template/PackagesSlottypes/index.ctp:8
+#: Template/PackagesSlottypes/view.ctp:11
+#: Template/Slottypes/add.ctp:10
+#: Template/Slottypes/edit.ctp:15
+#: Template/Slottypes/view.ctp:7
+msgid "List Slottypes"
+msgstr " قائمة أنواع الفتحات"
+
+#: Template/PackagesSlottypes/add.ctp:14
+#: Template/PackagesSlottypes/edit.ctp:19
+#: Template/PackagesSlottypes/index.ctp:9
+#: Template/PackagesSlottypes/view.ctp:12
+#: Template/Slottypes/index.ctp:5
+#: Template/Slottypes/view.ctp:8
+msgid "New Slottype"
+msgstr " نوع فتحة جديدة"
+
+#: Template/PackagesSlottypes/add.ctp:25
+msgid "Add Packages Slottype"
+msgstr " إضافة حزم فتحة نوع"
+
+#: Template/PackagesSlottypes/edit.ctp:30
+#: Template/PackagesSlottypes/view.ctp:5
+msgid "Edit Packages Slottype"
+msgstr " تحرير الحزم نوع الفتحة"
+
+#: Template/PackagesSlottypes/index.ctp:5
+#: Template/PackagesSlottypes/view.ctp:8
+msgid "New Packages Slottype"
+msgstr " حزم فتحة جديدة نوع"
+
+#: Template/PackagesSlottypes/view.ctp:6
+msgid "Delete Packages Slottype"
+msgstr " حذف الحزم نوع الفتحة"
+
+#: Template/PackagesSlottypes/view.ctp:32
+msgid "Slottype"
+msgstr " نوع الفتحة"
+
+#: Template/PackagesTemplates/add.ctp:10
+#: Template/PackagesTemplates/edit.ctp:15
+#: Template/PackagesTemplates/view.ctp:7
+msgid "List Packages Templates"
+msgstr " قائمة الحزم قوالب"
+
+#: Template/PackagesTemplates/add.ctp:13
+#: Template/PackagesTemplates/edit.ctp:18
+#: Template/PackagesTemplates/index.ctp:8
+#: Template/PackagesTemplates/view.ctp:11
+#: Template/Templates/add.ctp:10
+#: Template/Templates/edit.ctp:15
+#: Template/Templates/view.ctp:7
+msgid "List Templates"
+msgstr " قائمة القوالب"
+
+#: Template/PackagesTemplates/add.ctp:14
+#: Template/PackagesTemplates/edit.ctp:19
+#: Template/PackagesTemplates/index.ctp:9
+#: Template/PackagesTemplates/view.ctp:12
+#: Template/Templates/index.ctp:5
+#: Template/Templates/view.ctp:8
+msgid "New Template"
+msgstr " قالب جديد"
+
+#: Template/PackagesTemplates/add.ctp:25
+msgid "Add Packages Template"
+msgstr " إضافة قالب الحزم"
+
+#: Template/PackagesTemplates/edit.ctp:30
+#: Template/PackagesTemplates/view.ctp:5
+msgid "Edit Packages Template"
+msgstr " تحرير قالب الحزم"
+
+#: Template/PackagesTemplates/index.ctp:5
+#: Template/PackagesTemplates/view.ctp:8
+msgid "New Packages Template"
+msgstr " حزم الحزم الجديدة"
+
+#: Template/PackagesTemplates/view.ctp:6
+msgid "Delete Packages Template"
+msgstr " حذف قالب الحزم"
+
+#: Template/PackagesTemplates/view.ctp:32
+#: Template/PageTemplatesClients/assign.ctp:16
+msgid "Template"
+msgstr " قالب"
+
+#: Template/PageSlots/add.ctp:5
+#: Template/PageSlots/edit.ctp:10
+#: Template/PageSlots/view.ctp:7
+msgid "List Page Slots"
+msgstr " قائمة فتحات الصفحة"
+
+#: Template/PageSlots/add.ctp:6
+#: Template/PageSlots/edit.ctp:11
+#: Template/PageSlots/index.ctp:6
+#: Template/PageSlots/view.ctp:9
+#: Template/PageTemplatesClients/add.ctp:6
+#: Template/PageTemplatesClients/edit.ctp:11
+#: Template/PageTemplatesClients/index.ctp:6
+#: Template/PageTemplatesClients/view.ctp:9
+msgid "List Page Templates"
+msgstr " قائمة قوالب الصفحة"
+
+#: Template/PageSlots/add.ctp:7
+#: Template/PageSlots/edit.ctp:12
+#: Template/PageSlots/index.ctp:7
+#: Template/PageSlots/view.ctp:10
+#: Template/PageTemplatesClients/add.ctp:7
+#: Template/PageTemplatesClients/edit.ctp:12
+#: Template/PageTemplatesClients/index.ctp:7
+#: Template/PageTemplatesClients/view.ctp:10
+msgid "New Page Template"
+msgstr " قالب صفحة جديد"
+
+#: Template/PageSlots/add.ctp:18
+msgid "Add Page Slot"
+msgstr " إضافة فتحة الصفحة"
+
+#: Template/PageSlots/edit.ctp:23
+#: Template/PageSlots/view.ctp:5
+msgid "Edit Page Slot"
+msgstr " تحرير فتحة الصفحة"
+
+#: Template/PageSlots/index.ctp:5
+#: Template/PageSlots/view.ctp:8
+msgid "New Page Slot"
+msgstr " فتحة صفحة جديدة"
+
+#: Template/PageSlots/view.ctp:6
+msgid "Delete Page Slot"
+msgstr " حذف فتحة الصفحة"
+
+#: Template/PageSlots/view.ctp:28
+msgid "Slot Code"
+msgstr " رمز فتحة"
+
+#: Template/PageSlots/view.ctp:32
+msgid "Slot Height"
+msgstr " فتحة الارتفاع"
+
+#: Template/PageSlots/view.ctp:34
+msgid "Slot Width"
+msgstr " فتحة العرض"
+
+#: Template/PageSlots/view.ctp:36
+msgid "Group"
+msgstr " مجموعة"
+
+#: Template/PageSlots/view.ctp:40
+msgid "Slot Display Type"
+msgstr " فتحه نوع العرض"
+
+#: Template/PageSlots/view.ctp:46
+msgid "Slot X"
+msgstr " X فتحة "
+
+#: Template/PageSlots/view.ctp:48
+msgid "Slot Y"
+msgstr "Y فتحة"
+
+#: Template/PageSlots/view.ctp:50
+msgid "Multiple Status"
+msgstr " حالة متعددة"
+
+#: Template/PageSlots/view.ctp:54
+#: Template/PageTemplates/view.ctp:25
+#: Template/Slottextstyles/view.ctp:58
+#: Template/Slottypes/view.ctp:36
+#: Template/Templates/view.ctp:46
+#: Template/Usergroups/view.ctp:38
+msgid "User Created"
+msgstr " خلق المستخدم"
+
+#: Template/PageSlots/view.ctp:56
+#: Template/PageTemplates/view.ctp:27
+#: Template/Templates/view.ctp:48
+#: Template/Usergroups/view.ctp:36
+msgid "User Modified"
+msgstr " تعديل المستخدم"
+
+#: Template/PageTemplates/add.ctp:7
+msgid "Add Page Template"
+msgstr " إضافة قالب الصفحة"
+
+#: Template/PageTemplates/edit.ctp:13
+msgid "Edit Page Template"
+msgstr " تحرير قالب الصفحة"
+
+#: Template/PageTemplates/edit.ctp:23
+msgid "Page Name :"
+msgstr " اسم الصفحة"
+
+#: Template/PageTemplates/edit.ctp:25
+msgid "Orientation :"
+msgstr " اتجاه"
+
+#: Template/PageTemplates/edit.ctp:27
+msgid "Remark :"
+msgstr " تعليق"
+
+#: Template/PageTemplates/view.ctp:15
+msgid "Page Name"
+msgstr " اسم الصفحة"
+
+#: Template/PageTemplates/view.ctp:19
+#: Template/Templates/view.ctp:34
+msgid "Adv Status"
+msgstr "الوضع المتقدم"
+
+#: Template/PageTemplates/view.ctp:33
+#: Template/Templates/view.ctp:54
+msgid "Is Dynamic"
+msgstr "ديناميكي"
+
+#: Template/PageTemplates/view.ctp:34
+#: Template/Templates/view.ctp:55
+msgid "Yes"
+msgstr " نعم فعلا"
+
+#: Template/PageTemplatesClients/add.ctp:5
+#: Template/PageTemplatesClients/edit.ctp:10
+#: Template/PageTemplatesClients/view.ctp:7
+msgid "List Page Templates Clients"
+msgstr " قائمة عملاء قوالب الصفحة"
+
+#: Template/PageTemplatesClients/add.ctp:20
+msgid "Add Page Templates Client"
+msgstr "إضافة عميل قوالب الصفحة"
+
+#: Template/PageTemplatesClients/assign.ctp:10
+msgid "Assign Page Template"
+msgstr " تخصيص قالب الصفحة"
+
+#: Template/PageTemplatesClients/edit.ctp:25
+#: Template/PageTemplatesClients/view.ctp:5
+msgid "Edit Page Templates Client"
+msgstr " تحرير عميل قوالب الصفحة"
+
+#: Template/PageTemplatesClients/index.ctp:5
+#: Template/PageTemplatesClients/view.ctp:8
+msgid "New Page Templates Client"
+msgstr " عميل قوالب صفحة جديدة"
+
+#: Template/PageTemplatesClients/view.ctp:6
+msgid "Delete Page Templates Client"
+msgstr " حذف عميل قوالب الصفحة"
+
+#: Template/Plugins/add.ctp:5
+#: Template/Plugins/edit.ctp:10
+#: Template/Plugins/view.ctp:7
+msgid "List Plugins"
+msgstr " قائمة الإضافات"
+
+#: Template/Plugins/add.ctp:18
+msgid "Add Plugin"
+msgstr " إضافة البرنامج المساعد"
+
+#: Template/Plugins/edit.ctp:23
+#: Template/Plugins/view.ctp:5
+msgid "Edit Plugin"
+msgstr " تحرير البرنامج المساعد"
+
+#: Template/Plugins/index.ctp:5
+#: Template/Plugins/view.ctp:8
+msgid "New Plugin"
+msgstr " البرنامج المساعد الجديد"
+
+#: Template/Plugins/view.ctp:6
+msgid "Delete Plugin"
+msgstr " حذف البرنامج المساعد"
+
+#: Template/Plugins/view.ctp:32
+msgid "Type"
+msgstr " نوع"
+
+#: Template/Plugins/view.ctp:36
+#: Template/RemoteCommands/view.ctp:18
+msgid "Parameters"
+msgstr " المعلمات"
+
+
+
+#: Template/Plugins/view.ctp:40
+msgid "Parameter Count"
+msgstr " عدد المعلمات"
+
+#: Template/ProductKeyBatches/add.ctp:7
+msgid "Generate Product Key"
+msgstr " توليد مفتاح المنتج"
+
+#: Template/ProductKeyBatches/add.ctp:45
+#: Template/ProductKeyBatches/add_batch.ctp:45
+#: Template/ProductKeyBatches/edit.ctp:20
+#: Template/ProductKeyBatches/view.ctp:24
+#: Template/ProductKeys/add.ctp:18
+#: Template/ProductKeys/edit.ctp:22
+msgid "Expired Date"
+msgstr " منتهي الصلاحية"
+
+#: Template/ProductKeyBatches/add.ctp:54
+#: Template/ProductKeyBatches/add_batch.ctp:54
+msgid "Generate"
+msgstr " توفير"
+
+#: Template/ProductKeyBatches/add_batch.ctp:7
+msgid "Generate Keycode"
+msgstr " توليد رمز المفتاح"
+
+#: Template/ProductKeyBatches/edit.ctp:7
+msgid "Edit Keycode Batch"
+msgstr " تحرير رمز المفتاح دفعة"
+
+#: Template/ProductKeyPackages/add.ctp:10
+#: Template/ProductKeysLogs/add.ctp:21
+#: Template/ProductKeysLogs/edit.ctp:26
+msgid "List Product Key Packages"
+msgstr " قائمة حزم مفتاح المنتج"
+
+
+
+
+#: Template/ProductKeyPackages/add.ctp:11
+#: Template/ProductKeySubscriptions/edit.ctp:16
+#: Template/TransfersDetail/add.ctp:13
+#: Template/TransfersDetail/edit.ctp:18
+#: Template/TransfersDetail/view.ctp:11
+msgid "List Product Keys"
+msgstr " قائمة مفاتيح المنتج"
+
+#: Template/ProductKeyPackages/add.ctp:12
+#: Template/ProductKeySubscriptions/edit.ctp:17
+#: Template/TransfersDetail/add.ctp:14
+#: Template/TransfersDetail/edit.ctp:19
+#: Template/TransfersDetail/view.ctp:12
+msgid "New Product Key"
+msgstr " مفتاح المنتج الجديد"
+
+#: Template/ProductKeyPackages/add.ctp:27
+msgid "Add Product Key Package"
+msgstr " إضافة حزمة مفتاح المنتج"
+
+#: Template/ProductKeySubscriptions/add.ctp:12
+msgid "Add Product Key Subscription"
+msgstr " إضافة اشتراك مفتاح المنتج"
+
+#: Template/ProductKeySubscriptions/edit.ctp:15
+#: Template/ProductKeysLogs/add.ctp:19
+#: Template/ProductKeysLogs/edit.ctp:24
+msgid "List Product Key Subscriptions"
+msgstr " قائمة الاشتراكات مفتاح المنتج"
+
+#: Template/ProductKeySubscriptions/edit.ctp:18
+#: Template/Subscriptions/add.ctp:10
+#: Template/Subscriptions/edit.ctp:15
+#: Template/Subscriptions/index.ctp:10
+#: Template/Subscriptions/view.ctp:13
+msgid "List Subscription Types"
+msgstr " قائمة أنواع الاشتراك"
+
+#: Template/ProductKeySubscriptions/edit.ctp:19
+#: Template/Subscriptions/add.ctp:11
+#: Template/Subscriptions/edit.ctp:16
+#: Template/Subscriptions/index.ctp:11
+#: Template/Subscriptions/view.ctp:14
+msgid "New Subscription Type"
+msgstr " نوع اشتراك جديد"
+
+#: Template/ProductKeySubscriptions/edit.ctp:30
+msgid "Edit Product Key Subscription"
+msgstr " تحرير الاشتراك مفتاح المنتج"
+
+#: Template/ProductKeySubscriptions/expiry_key.ctp:66
+#: Template/ProductKeys/transfer_productkey_.ctp:139
+msgid "Account"
+msgstr " الحساب"
+
+#: Template/ProductKeySubscriptions/expiry_key.ctp:76
+#: Template/ProductKeys/assign_productkey.ctp:98
+#: Template/ProductKeys/index.ctp:54
+msgid "Register Status"
+msgstr " حالة التسجيل"
+
+#: Template/ProductKeySubscriptions/expiry_key.ctp:185
+msgid "No keycode subscription under  selected reseller."
+msgstr " لا يوجد اشتراك رمز مفتاح تحت البائع المحدد"
+
+#: Template/ProductKeySubscriptions/index.ctp:77
+#: Template/ProductKeys/assign_productkey.ctp:78
+#: Template/ProductKeys/batch_reseller.ctp:3
+#: Template/ProductKeys/index.ctp:34
+msgid "Batch Name"
+msgstr " اسم الدفعة"
+
+#: Template/ProductKeySubscriptions/index.ctp:119
+msgid "Renew Subscription"
+msgstr " تجديد الاشتراك"
+
+#: Template/ProductKeySubscriptions/index.ctp:207
+msgid "No product key subscription under  selected reseller."
+msgstr " لا يوجد اشتراك بمفتاح المنتج تحت موزع محدد"
+
+#: Template/ProductKeySubscriptions/view.ctp:16
+#: Template/SubscriptionResellers/view.ctp:18
+#: Template/Subscriptions/view.ctp:38
+msgid "Subscription Type"
+msgstr " نوع الاشتراك"
+
+#: Template/ProductKeys/add.ctp:7
+#: Template/ProductKeys/add_keycode.ctp:20
+msgid "Add Product Key"
+msgstr " إضافة مفتاح المنتج"
+
+#: Template/ProductKeys/add_keycode.ctp:39
+msgid "Add more"
+msgstr " أضف المزيد"
+
+#: Template/ProductKeys/add_productkey.ctp:8
+msgid "Transfer Keycode Confirmation"
+msgstr " نقل تأكيد رمز المفتاح"
+
+#: Template/ProductKeys/add_productkey.ctp:53
+msgid "Confirm"
+msgstr " تؤكد"
+
+#: Template/ProductKeys/assign_productkey.ctp:124
+msgid "Assign Product Key"
+msgstr " تعيين مفتاح المنتج"
+
+#: Template/ProductKeys/assign_productkey.ctp:189
+msgid "No product keys available under selected reseller."
+msgstr " لا توجد مفاتيح المنتجات المتاحة تحت موزع المحدد"
+
+#: Template/ProductKeys/edit.ctp:7
+msgid "Edit Keycode"
+msgstr " تحرير رمز المفتاح"
+
+#: Template/ProductKeys/index.ctp:136
+msgid "No product keys under  selected reseller."
+msgstr " لا توجد مفاتيح منتجات ضمن المُورّد المحدد"
+
+#: Template/ProductKeys/transfer_productkey_.ctp:76
+msgid "Total keycode to transfer"
+msgstr " مجموع رمز المفتاح لنقل"
+
+#: Template/ProductKeys/transfer_productkey_.ctp:82
+msgid "TRANSFER KEYCODE"
+msgstr " نقل رمز مفتاح"
+
+#: Template/ProductKeys/transfer_productkey_.ctp:122
+msgid "No keycode available."
+msgstr " لا يوجد كود متاح"
+
+#: Template/ProductKeys/transfer_productkey_.ctp:178
+msgid "No keycode available under selected account."
+msgstr " لا يتوفر رمز أساسي تحت الحساب المحدد"
+
+#: Template/ProductKeys/view.ctp:14
+msgid "Keycode Batch"
+msgstr " دفعة رمز المفتاح "
+
+#: Template/ProductKeys/view_keylist.ctp:33
+msgid "Activate Status"
+msgstr " تنشيط الحالة"
+
+#: Template/ProductKeys/view_keylist.ctp:68
+msgid "Transaction Log"
+msgstr " سجل المعاملات"
+
+#: Template/ProductKeys/view_keylist.ctp:129
+msgid "No keycode under  selected reseller."
+msgstr " لا يوجد رمز رئيسي تحت البائع المحدد"
+
+#: Template/ProductKeysLogs/add.ctp:10
+#: Template/ProductKeysLogs/edit.ctp:15
+msgid "List Product Keys Logs"
+msgstr " قائمة سجلات مفاتيح المنتج"
+
+#: Template/ProductKeysLogs/add.ctp:11
+#: Template/ProductKeysLogs/edit.ctp:16
+msgid "List Product Key Batches"
+msgstr " قائمة المنتج دفعات قائمة"
+
+#: Template/ProductKeysLogs/add.ctp:12
+#: Template/ProductKeysLogs/edit.ctp:17
+msgid "New Product Key Batch"
+msgstr " دفعة مفتاح المنتج الجديد"
+
+#: Template/ProductKeysLogs/add.ctp:13
+#: Template/ProductKeysLogs/edit.ctp:18
+#: Template/Subscriptions/add.ctp:8
+#: Template/Subscriptions/edit.ctp:13
+#: Template/Subscriptions/index.ctp:8
+#: Template/Subscriptions/view.ctp:11
+#: Template/Transfers/add.ctp:11
+#: Template/Transfers/edit.ctp:16
+#: Template/Transfers/view.ctp:9
+msgid "List Resellers"
+msgstr " قائمة الموزعين"
+
+#: Template/ProductKeysLogs/add.ctp:14
+#: Template/ProductKeysLogs/edit.ctp:19
+#: Template/Subscriptions/add.ctp:9
+#: Template/Subscriptions/edit.ctp:14
+#: Template/Subscriptions/index.ctp:9
+#: Template/Subscriptions/view.ctp:12
+#: Template/Transfers/add.ctp:12
+#: Template/Transfers/edit.ctp:17
+#: Template/Transfers/view.ctp:10
+msgid "New Reseller"
+msgstr " موزع جديد"
+
+#: Template/ProductKeysLogs/add.ctp:17
+#: Template/ProductKeysLogs/edit.ctp:22
+msgid "List Devices"
+msgstr " قائمة الأجهزة"
+
+#: Template/ProductKeysLogs/add.ctp:18
+#: Template/ProductKeysLogs/edit.ctp:23
+msgid "New Device"
+msgstr " جهاز جديد"
+
+#: Template/ProductKeysLogs/add.ctp:20
+#: Template/ProductKeysLogs/edit.ctp:25
+msgid "New Product Key Subscription"
+msgstr " اشتراك مفتاح منتج جديد"
+
+#: Template/ProductKeysLogs/add.ctp:22
+#: Template/ProductKeysLogs/edit.ctp:27
+msgid "New Product Key Package"
+msgstr " حزمة مفتاح المنتج الجديد"
+
+#: Template/ProductKeysLogs/add.ctp:33
+msgid "Add Product Keys Log"
+msgstr " إضافة سجل مفاتيح المنتج"
+
+#: Template/ProductKeysLogs/edit.ctp:38
+msgid "Edit Product Keys Log"
+msgstr " تحرير سجل مفاتيح المنتج"
+
+#: Template/ProductKeysLogs/view.ctp:14
+msgid "Product Key Batch"
+msgstr " دفعة مفتاح المنتج"
+
+#: Template/ProductKeysLogs/view.ctp:16
+msgid "Productkey"
+msgstr " مفتاح المنتج"
+
+#: Template/ProductKeysLogs/view.ctp:24
+msgid "Status Description"
+msgstr " وصف الحالة"
+
+#: Template/ProductKeysLogs/view.ctp:34
+msgid "Expiry Date"
+msgstr " تاريخ الانتهاء"
+
+#: Template/RemoteCommands/add.ctp:7
+msgid "Add Remote Command"
+msgstr " إضافة القيادة عن بعد"
+
+#: Template/RemoteCommands/edit.ctp:7
+msgid "Edit Remote Command"
+msgstr " تحرير القيادة عن بعد"
+
+#: Template/RemoteCommands/view.ctp:16
+msgid "Remote Command Type"
+msgstr " نوع القيادة عن بعد"
+
+#: Template/ResellerSubscriptions/add.ctp:12
+msgid "Add Reseller Subscription"
+msgstr " إضافة اشتراك الموزع "
+
+#: Template/ResellerSubscriptions/edit.ctp:12
+msgid "Edit Reseller Subscription"
+msgstr " تحرير اشتراك الموزع"
+
+#: Template/ResellerSubscriptions/index.ctp:93
+msgid "No reseller subscription under  selected reseller."
+msgstr " لا يوجد اشتراك للموزع بموجب موزع محدد"
+
+#: Template/Resellers/add.ctp:13
+#: Template/Resellers/resellers.ctp:10
+msgid "Upline"
+msgstr " بلين"
+
+#: Template/Resellers/resellers.ctp:10
+msgid "All"
+msgstr " الكل"
+
+#: Template/Slottextstyles/add.ctp:23
+msgid "Add Slottextstyle"
+msgstr " Slottextstyle  إضافة"
+
+#: Template/Slottextstyles/edit.ctp:28
+#: Template/Slottextstyles/view.ctp:5
+msgid "Edit Slottextstyle"
+msgstr " Slottextstyle  تحرير "
+
+#: Template/Slottextstyles/view.ctp:6
+msgid "Delete Slottextstyle"
+msgstr " Slottextstyle  حذف "
+
+#: Template/Slottextstyles/view.ctp:30
+msgid "Text Style"
+msgstr " نمط النص "
+
+#: Template/Slottextstyles/view.ctp:32
+msgid "Text Color"
+msgstr " لون الخط"
+
+#: Template/Slottextstyles/view.ctp:34
+msgid "Shadow Color"
+msgstr " لون الظل"
+
+#: Template/Slottextstyles/view.ctp:36
+msgid "Font Face"
+msgstr " وجه الخط"
+
+#: Template/Slottextstyles/view.ctp:38
+msgid "Gravity"
+msgstr " الجاذبية"
+
+#: Template/Slottextstyles/view.ctp:42
+msgid "Text Size"
+msgstr " حجم الخط"
+
+#: Template/Slottextstyles/view.ctp:44
+msgid "Shadow Dx"
+msgstr " Dx  الظل "
+
+#: Template/Slottextstyles/view.ctp:46
+msgid "Shadow Dy"
+msgstr "  DYالظل "
+
+#: Template/Slottextstyles/view.ctp:48
+msgid "Shadow Radius"
+msgstr " الظل دائرة نصف قطرها"
+
+#: Template/Slottextstyles/view.ctp:50
+msgid "Max Width"
+msgstr " ماكس العرض"
+
+#: Template/Slottextstyles/view.ctp:52
+msgid "Max Height"
+msgstr " اقصى ارتفاع"
+
+#: Template/Slottextstyles/view.ctp:54
+msgid "Pos X"
+msgstr " المركز العاشر"
+
+#: Template/Slottextstyles/view.ctp:56
+msgid "Pos Y"
+msgstr " Pos Y "
+
+#: Template/Slottypes/add.ctp:23
+msgid "Add Slottype"
+msgstr " أضف سلوتيب "
+
+#: Template/Slottypes/edit.ctp:28
+#: Template/Slottypes/view.ctp:5
+msgid "Edit Slottype"
+msgstr " Slottype تحرير "
+
+#: Template/Slottypes/view.ctp:6
+msgid "Delete Slottype"
+msgstr " Slottype  حذف  "
+
+#: Template/SubscriptionPackageClients/add.ctp:7
+msgid "Add Subscription Package Client"
+msgstr " إضافة عميل حزمة الاشتراك"
+
+#: Template/SubscriptionPackageClients/edit.ctp:8
+msgid "Edit Subscription Package Client"
+msgstr " تحرير عميل حزمة الاشتراك"
+
+#: Template/SubscriptionPackageResellers/add.ctp:7
+msgid "Add Subscription Package Reseller"
+msgstr " إضافة موزع حزمة الاشتراك"
+
+#: Template/SubscriptionPackageResellers/edit.ctp:7
+msgid "Edit Subscription Package Reseller"
+msgstr " تحرير الاشتراك حزمة موزع"
+
+#: Template/SubscriptionResellers/add.ctp:7
+msgid "Add Subscription Reseller"
+msgstr " إضافة موزع الاشتراك"
+
+#: Template/SubscriptionResellers/edit.ctp:7
+msgid "Edit Subscription Reseller"
+msgstr " تحرير موزع الاشتراك"
+
+#: Template/SubscriptionResellers/view.ctp:16
+msgid "Subscription Package Reseller"
+msgstr " حزمة الاشتراك الاشتراك"
+
+#: Template/Subscriptions/add.ctp:5
+#: Template/Subscriptions/edit.ctp:10
+#: Template/Subscriptions/view.ctp:7
+msgid "List Subscriptions"
+msgstr " قائمة الاشتراكات"
+
+#: Template/Subscriptions/add.ctp:24
+msgid "Add Subscription"
+msgstr " إضافة اشتراك"
+
+#: Template/Subscriptions/edit.ctp:29
+#: Template/Subscriptions/view.ctp:5
+msgid "Edit Subscription"
+msgstr " تحرير الاشتراك"
+
+#: Template/Subscriptions/index.ctp:5
+#: Template/Subscriptions/view.ctp:8
+msgid "New Subscription"
+msgstr " اشتراك جديد"
+
+#: Template/Subscriptions/view.ctp:6
+msgid "Delete Subscription"
+msgstr " حذف الاشتراك"
+
+#: Template/Templates/add.ctp:23
+msgid "Add Template"
+msgstr " إضافة قالب"
+
+#: Template/Templates/edit.ctp:28
+#: Template/Templates/view.ctp:5
+msgid "Edit Template"
+msgstr " تحرير القالب"
+
+#: Template/Templates/view.ctp:6
+msgid "Delete Template"
+msgstr " حذف القالب"
+
+#: Template/Templates/view.ctp:28
+msgid "Plugin Ref"
+msgstr " البرنامج المساعد المرجع"
+
+#: Template/Templates/view.ctp:40
+msgid "Is Sub Page"
+msgstr " هل الصفحة الفرعية"
+
+#: Template/Templates/view.ctp:42
+msgid "Width"
+msgstr " عرض"
+
+#: Template/Templates/view.ctp:44
+msgid "Height"
+msgstr " ارتفاع"
+
+#: Template/Transfers/add.ctp:10
+#: Template/Transfers/edit.ctp:15
+#: Template/Transfers/view.ctp:7
+#: Template/TransfersDetail/add.ctp:11
+#: Template/TransfersDetail/edit.ctp:16
+#: Template/TransfersDetail/view.ctp:9
+msgid "List Transfers"
+msgstr " نقل قائمة"
+
+#: Template/Transfers/add.ctp:13
+#: Template/Transfers/edit.ctp:18
+#: Template/Transfers/view.ctp:11
+#: Template/TransfersDetail/add.ctp:10
+#: Template/TransfersDetail/edit.ctp:15
+#: Template/TransfersDetail/view.ctp:7
+msgid "List Transfer Detail"
+msgstr " قائمة نقل التفاصيل"
+
+#: Template/Transfers/add.ctp:14
+#: Template/Transfers/edit.ctp:19
+#: Template/Transfers/view.ctp:12
+#: Template/TransfersDetail/view.ctp:8
+msgid "New Transfer Detail"
+msgstr " نقل جديد التفاصيل"
+
+#: Template/Transfers/add.ctp:25
+msgid "Add Transfer"
+msgstr " إضافة نقل"
+
+#: Template/Transfers/edit.ctp:30
+#: Template/Transfers/view.ctp:5
+msgid "Edit Transfer"
+msgstr " تحرير نقل"
+
+#: Template/Transfers/index.ctp:137
+msgid "View Detail"
+msgstr " عرض التفاصيل"
+
+#: Template/Transfers/index.ctp:151
+msgid "X"
+msgstr " X "
+
+#: Template/Transfers/index.ctp:194
+msgid "No transfer transaction under this reseller."
+msgstr " لا توجد معاملة تحويل بموجب هذا المورد"
+
+#: Template/Transfers/view.ctp:6
+msgid "Delete Transfer"
+msgstr " حذف نقل"
+
+#: Template/Transfers/view.ctp:8
+#: Template/TransfersDetail/add.ctp:12
+#: Template/TransfersDetail/edit.ctp:17
+#: Template/TransfersDetail/view.ctp:10
+msgid "New Transfer"
+msgstr " نقل جديد"
+
+#: Template/Transfers/view.ctp:30
+msgid "Order No"
+msgstr " رقم الطلب"
+
+#: Template/Transfers/view.ctp:40
+msgid "Transfer Date"
+msgstr " تاريخ التحويل"
+
+#: Template/TransfersDetail/add.ctp:25
+msgid "Add Transfer Detail"
+msgstr " إضافة نقل التفاصيل"
+
+#: Template/TransfersDetail/edit.ctp:30
+#: Template/TransfersDetail/view.ctp:5
+msgid "Edit Transfer Detail"
+msgstr " تحرير نقل التفاصيل"
+
+#: Template/TransfersDetail/view.ctp:6
+msgid "Delete Transfer Detail"
+msgstr " حذف نقل التفاصيل"
+
+#: Template/TransfersDetail/view.ctp:30
+msgid "Transfer"
+msgstr " نقل"
+
+#: Template/Usergroups/add.ctp:23
+msgid "Add Usergroup"
+msgstr " إضافة مجموعة مستخدمين"
+
+#: Template/Usergroups/edit.ctp:28
+#: Template/Usergroups/view.ctp:5
+msgid "Edit Usergroup"
+msgstr " تحرير مجموعة المستخدم"
+
+#: Template/Usergroups/view.ctp:6
+msgid "Delete Usergroup"
+msgstr " حذف مجموعة المستخدم"
+
+#: Template/Usergroups/view.ctp:30
+msgid "Ref Keyword"
+msgstr " المرجع الكلمة"
+
+#: Template/Usergroups/view.ctp:34
+msgid "Ref Group"
+msgstr " المرجع المجموعة"
+
+#: Template/Users/add.ctp:7
+msgid "Add User"
+msgstr " إضافة مستخدم"
+
+#: Template/Users/confirm_reset_password.ctp:4
+#: Template/Users/login.ctp:53
+msgid "Reset Password"
+msgstr " إعادة تعيين كلمة المرور"
+
+#: Template/Users/confirm_reset_password.ctp:10
+msgid "Enter new password for <strong>{0}</strong>"
+msgstr  “<strong>{0}</strong> أدخل كلمة مرور جديدة لـ "
+
+#: Template/Users/confirm_reset_password.ctp:17
+msgid "New Password"
+msgstr " كلمة السر الجديدة"
+
+#: Template/Users/confirm_reset_password.ctp:27
+#: Template/Users/signup.ctp:24
+msgid "Repeat Password"
+msgstr "اعد كلمة السر"
+
+#: Template/Users/confirm_reset_password.ctp:33;44
+#: Template/Users/reset_password.ctp:24
+#: Template/Users/signup.ctp:30
+msgid "Sign-in"
+msgstr " تسجيل الدخول"
+
+#: Template/Users/confirm_reset_password.ctp:36
+#: Template/Users/reset_password.ctp:15
+msgid "Reset"
+msgstr " إعادة تعيين"
+
+#: Template/Users/edit.ctp:10
+msgid "Edit User"
+msgstr " تحرير العضو "
+
+#: Template/Users/edit.ctp:24
+msgid "Enter fullname"
+msgstr "أدخل الاسم الكامل "
+
+#: Template/Users/edit.ctp:25
+msgid "Enter e-mail"
+msgstr " أدخل البريد الإلكتروني"
+
+#: Template/Users/edit.ctp:26
+msgid "Enter new password"
+msgstr " أدخل كلمة مرور جديدة"
+
+#: Template/Users/edit.ctp:27
+msgid "Enter password confirmation"
+msgstr " أدخل تأكيد كلمة المرور"
+
+#: Template/Users/list_by_reseller_client.ctp:115
+#: Template/Users/resellers.ctp:60
+msgid "Downline Reseller"
+msgstr  “Downline  موزع"
+
+#: Template/Users/login.ctp:1
+msgid "Sign in to start your session"
+msgstr " تسجيل الدخول لبدء الجلسة"
+
+#: Template/Users/login.ctp:7
+#: Template/Users/reset_password.ctp:8
+#: Template/Users/view.ctp:14
+msgid "E-mail"
+msgstr " البريد الإلكتروني"
+
+#: Template/Users/login.ctp:16
+#: Template/Users/signup.ctp:15
+msgid "Password"
+msgstr " كلمه السر"
+
+#: Template/Users/login.ctp:28
+msgid "Remember Me"
+msgstr " تذكرنى"
+
+#: Template/Users/login.ctp:45
+msgid "Sign In"
+msgstr " تسجيل الدخول"
+
+#: Template/Users/login.ctp:53
+msgid "Register a new membership"
+msgstr " تسجيل عضوية جديدة"
+
+#: Template/Users/master_resellers.ctp:5
+msgid "Master Reseller"
+msgstr " ماجستير الموزع"
+
+#: Template/Users/reset_password.ctp:2
+msgid "Fill in e-mail address for your account."
+msgstr " ملء عنوان البريد الإلكتروني لحسابك"
+
+#: Template/Users/signup.ctp:1
+msgid "Sign up to login"
+msgstr " الاشتراك في تسجيل الدخول"
+
+#: Template/Users/signup.ctp:33
+msgid "Sign up"
+msgstr " سجل"
+
+#: Template/Versions/add.ctp:10
+msgid "List Versions"
+msgstr " قائمة الإصدارات"
+
+#: Template/Versions/add.ctp:21
+msgid "Add Version"
+msgstr " إضافة نسخة"
+
+#: Template/Versions/edit.ctp:12
+msgid "Edit Version"
+msgstr " تحرير الإصدار"
+
+#: Template/Versions/view.ctp:14
+msgid "Branch"
+msgstr " فرع شجرة"
+
+#: Template/Versions/view.ctp:16
+msgid "Version Number"
+msgstr " رقم الإصدار"
+
+#: Template/Error/error400.ctp:33
+#: Template/Error/error500.ctp:35
+msgid "Error"
+msgstr " خطأ"
+
+#: Template/Error/error400.ctp:35
+msgid "The requested address %s was not found on this server."
+msgstr " لم يتم العثور على العنوان المطلوب على هذا الخادم "
+
+#: Template/Error/error500.ctp:33
+msgid "An Internal Error Has Occurred"
+msgstr " حدث خطأ داخلي"
+
+msgid "Dashboard"
+msgstr " لوحة القيادة"
+
+msgid "Dashboards"
+msgstr " لوحات"
+
+msgid "MAIN NAVIGATION"
+msgstr " الملاحة الرئيسية"
+
+msgid "Version {0}"
+msgstr "{0} الإصدار"
+
+msgid "Copyright &copy; {0} <a target="_blank" href="{1}">{2}</a></strong>. All rights reserved."
+msgstr " حقوق الطبع والنشر & نسخة; {0} <a الهدف ="_ فراغ" href="{1}">{2}</a></ قوي >. جميع الحقوق محفوظة."
+
+#: Template/Dashboards/index.ctp:95
+msgid "Latest Transfer"
+msgstr " آخر نقل"
+
+#: Template/Dashboards/index.ctp:106
+msgid "Total Transfer"
+msgstr " نقل المجموع"
+
+#: Template/Dashboards/index.ctp:141
+msgid "Total Keycode"
+msgstr "رمز المفتاح مجموع"
+
+#: Template/Dashboards/index.ctp:27
+msgid "Phone No."
+msgstr " رقم الهاتف"
+
+#: Template/Dashboards/index.ctp:58
+msgid "Total Keycode Transfer"
+msgstr " المجموع نقل رمز"
+
+#: Template/Dashboards/index.ctp:38
+msgid "Update"
+msgstr " تحديث"
+
+#: Template/Dashboards/index.ctp:38
+msgid "Update"
+msgstr " تحديث"
+
+#: Template/Account/index.ctp:37
+msgid "End User"
+msgstr " المستخدم النهائي"
+
+#: Template/Account/index.ctp:58
+msgid "View"
+msgstr " رأي"
+
+#: Template/Account/end_user.ctp:14
+msgid "Phone"
+msgstr " هاتف"
+
+msgid "Can\'t read? Reload"
+msgstr " لا تستطيع القراءة؟ إعادة تحميل"
+
+msgid "<p>Enter security code shown above:</p>"
+msgstr "</p>  أدخل رمز الحماية الموضح أعلاه<p>"
+
+msgid "<p>Answer Simple Math</p>"
+msgstr "</p> أجب على الرياضيات البسيطة <p>"
+
+msgid "Add Feedback"
+msgstr " أضف ملاحظات"
+
+msgid "Activate Status"
+msgstr " تنشيط الحالة"
+
+# -- export to CSV format
+msgid "Export"
+msgstr " تصدير"
+
+msgid "Total Record"
+msgstr " مجموع السجل"
+
+msgid "Expiry"
+msgstr " انقضاء"
+
+msgid "View Logs"
+msgstr " عرض السجلات"
+
+msgid "Status Description"
+msgstr " وصف الحالة"
+
+msgid "Expired"
+msgstr " منتهية الصلاحية"
+
+msgid "Keycode Subscription"
+msgstr " اشتراك رمز المفتاح"
+
+msgid "Total Transfer"
+msgstr " نقل المجموع"
+
+msgid "Available key"
+msgstr " مفتاح متاح"
+
+msgid "Add more"
+msgstr " أضف المزيد"
+
+msgid "Transfers"
+msgstr " نقل"
+
+msgid "Total All Transfered Keycode"
+msgstr " مجموع جميع المفاتيح المنقولة"
+
+msgid "View Detail"
+msgstr " عرض التفاصيل"
+
+msgid "Verify Your Code"
+msgstr " تحقق من كودك"
+
+msgid "Verification Code"
+msgstr " شيفرة التأكيد"
+
+msgid "Set Password"
+msgstr " ضبط كلمة السر"
+
+msgid "Re-confirm Password"
+msgstr " أعد تأكيد كلمة المرور"
+
+msgid "Verify"
+msgstr " التحقق"
+
+msgid "Add Account"
+msgstr " إضافة حساب"
+
+msgid "List Account"
+msgstr " قائمة الحساب"
+
+msgid "Resend Email"
+msgstr " إعادة إرسال البريد الإلكتروني"
+
+msgid "View"
+msgstr " رأي"
+
+msgid "No end user under selected account."
+msgstr " لا يوجد مستخدم نهائي تحت الحساب المحدد"
+
+msgid "Email has been resend."
+msgstr " تم إعادة إرسال البريد الإلكتروني"
+
+msgid "Email could not send. Please, try again."
+msgstr " البريد الإلكتروني لا يمكن أن ترسل. حاول مرة اخرى"
+
+msgid "Invalid user."
+msgstr " مستخدم غير صالح"
+
+msgid "Password not match. Please, try again."
+msgstr " كلمة السر ليست جيدة. حاول مرة اخرى"
+
+msgid "The user cannot be save. Please, try again."
+msgstr " لا يمكن حفظ المستخدم. حاول مرة اخرى"
+
+msgid "Successfully reset password."
+msgstr " إعادة تعيين كلمة المرور بنجاح"
+
+msgid "This reseller has been verified."
+msgstr " تم التحقق من هذا المورد"
+
+msgid "The code cannot be verified. Please, try again."
+msgstr " لا يمكن التحقق من الكود. حاول مرة اخرى"
+
+msgid "Language"
+msgstr " لغة"
+
+msgid "Reconfirm Email"
+msgstr " إعادة تأكيد البريد الإلكتروني"
+
+msgid "Add KMS Account"
+msgstr "KMS إضافة حساب"
+
+msgid "List KMS Account"
+msgstr "KMS قائمة حساب"
+
+msgid "KMS Account"
+msgstr " KMS حساب"
+
+msgid "CMP Account"
+msgstr " CMP حساب"
+
+msgid "IBS Management"
+msgstr " IBS إدارة "
+
+msgid "List CMP"
+msgstr " CMP قائمة"
+
+msgid "Create CMP"
+msgstr " CMP إنشاء"
+
+msgid "Keycode Type"
+msgstr " نوع رمز المفتاح"
+
+msgid "Add New Client (CMP)"
+msgstr " (CMP) إضافة عميل جديد "
+
+msgid "View Keycodes"
+msgstr " عرض رموز المفاتيح"
+
+msgid "Total CMP"
+msgstr "CMP إجمالي "
+
+msgid "Update Profile"
+msgstr " تحديث الملف"
+
+msgid "Latest Keycodes"
+msgstr " أحدث رموز المفاتيح"
+
+msgid "Latest Clients (CMP)"
+msgstr " (CMP) أحدث العملاء "
+
+msgid "Expiry Duration"
+msgstr " مدة الصلاحية"
+
+msgid "CMP Details"
+msgstr "CMP تفاصيل "
+
+msgid "Login Information"
+msgstr " معلومات تسجيل الدخول"
+
+msgid "Login Name"
+msgstr " اسم الدخول"
+
+msgid "Wechat Id"
+msgstr "Wechat معرف"
+
+msgid "Succesfully assign key."
+msgstr " تعيين المفتاح بنجاح"
+
+msgid "CMP Name"
+msgstr "CMP اسم"
+
+msgid "Keycode List"
+msgstr " قائمة رمز المفتاح"
+
+msgid "CMP Status"
+msgstr "CMP حالة"
+
+msgid "Add Keycode"
+msgstr "رمز المفتاح أضف"
+
+msgid "View CMP"
+msgstr "CMP عرض"
+
+msgid "Selected key"
+msgstr " المفتاح المحدد"
+
+msgid "i3D Login Information"
+msgstr " i3D معلومات تسجيل الدخول "
+
+msgid "CMP Code"
+msgstr " CMP رمز "
+
+msgid "Person Incharge"
+msgstr " الشخص المسؤول"
+
+msgid "PIC Name"
+msgstr " اسم PIC"
+
+
+
+msgid "Keycode Management"
+msgstr "إدارة رمز المفتاح"
+
+msgid "My Keycode"
+msgstr "بلدي رمز المفتاح"
+
+msgid "Expiry Keycode"
+msgstr "رمز المفتاح انتهاء الصلاحية"
+
+msgid "Add New Keycode"
+msgstr "أضف رمز مفتاح جديد"
+
+msgid "Transferred Keycode"
+msgstr "نقل رمز المفتاح"
+
+msgid "Client List"
+msgstr "قائمة العملاء"
+
+msgid "Request Keycode"
+msgstr "طلب رمز المفتاح"
+
+msgid "CMP Management"
+msgstr "CMP إدارة"
+
+msgid "List User"
+msgstr "قائمة المستخدم"
+
+msgid "List Users (Reseller)"
+msgstr "قائمة المستخدمين (موزع)"
+
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+msgid "Users"
+msgstr "المستخدم"
+ 
+msgid "Roles"
+msgstr "الأدوار"
+
+msgid "Resellers"
+msgstr "موزع"
+
+msgid "Account Type"
+msgstr "نوع الحساب"
+
+msgid "Skip Activation"
+msgstr "تخطي التنشيط"
+
+msgid "Kms Creation Level"
+msgstr "KMS مستوى الخلق"
+
+msgid "Unlimited"
+msgstr "غير محدود"
+
+msgid "Not Available"
+msgstr "غير متوفر"
+
+msgid "1 Level"
+msgstr "1 مستوى"
+
+msgid "2 Level"
+msgstr "2 مستوى"
+
+msgid "3 Level"
+msgstr "3 مستوى"
+
+msgid "4 Level"
+msgstr "4 مستوى"
+
+msgid "5 Level"
+msgstr "5 مستوى"
+
+
+msgid "6 Level"
+msgstr "6 مستوى"
+
+msgid "7 Level"
+msgstr "7 مستوى"
+
+msgid "8 Level"
+msgstr "8 مستوى"
+
+msgid "9 Level"
+msgstr "9 مستوى"
+
+
+msgid "10 Level"
+msgstr "10 مستوى"
+
+msgid "NEW"
+msgstr "الجديد"
+
+msgid "ACTIVE"
+msgstr "نشيط"
+
+msgid "DEACTIVATE"
+msgstr "عطل"
+
+msgid "All"
+msgstr "الكل"
+
+msgid "1 Day"
+msgstr "يوم 1"
+
+msgid "1 Days"
+msgstr "يوم 1"
+
+msgid "7 Day"
+msgstr "يوم 7"
+
+msgid "7 Days"
+msgstr "يوم 7"
+
+msgid "1 Month"
+msgstr "1 شهر"
+
+msgid "3 Months"
+msgstr "3 شهر"
+
+
+msgid "6 Months"
+msgstr "6 شهر"
+
+msgid "1 Year"
+msgstr "1 سنة"
+
+msgid "1 year"
+msgstr "1 سنة"
+
+msgid "2 years"
+msgstr "2 سنة"
+
+msgid "3 years"
+msgstr "3 سنة"
+
+msgid "5 years"
+msgstr "5 سنة"
+
+msgid "5 Years"
+msgstr "5 سنة"
+
+msgid "--Please Select--"
+msgstr "الرجاء اختيار"
+
+msgid "From"
+msgstr "من عند"
+
+msgid "Total Transferred"
+msgstr "المجموع المحول"
+
+msgid "CMS URL"
+msgstr "CMS رابط"
+
+msgid "Total Request"
+msgstr "إجمالي الطلب"
+
+msgid "Clients"
+msgstr "العملاء"
+
+msgid "View All"
+msgstr "عرض الكل"
+
+msgid "2 Years"
+msgstr "2 سنة"
+
+msgid "3 Years"
+msgstr "3 سنة"
+
+msgid "PENDING"
+msgstr "قيد الانتظار"
+
+msgid "Resend Creation"
+msgstr "إعادة إنشاء الخلق"
+
+msgid "Total Keycode : "
+msgstr "إجمالي رمز المفتاح:"
+
+msgid "Chinese Simplified"
+msgstr "الصينية المبسطة"
+
+msgid "Chinese Traditional"
+msgstr "تقاليد صينية"
+
+msgid "English"
+msgstr "الإنجليزية"

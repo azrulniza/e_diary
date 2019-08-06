@@ -1,0 +1,24 @@
+div.actions {
+    border-left: 5px solid #374850;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    padding: 10px 10px;
+}
+
+div.actions .side-nav { margin-bottom: 0; padding-left: 0; }
+div.actions .side-nav li a { color: #FFFFFF; }
+
+#dataTables-devices td.error { background: #ffb2b2}
+
+form label span.mark-required { color: red }
+
+.content .info-box-number a { color: white }
+
+.dashboard-news .news-icon { display: table; width: 50px; height: 50px;}
+.dashboard-news .news-icon i { display: table-cell; vertical-align: top; text-align: center }
+
+.dashboard-news .chat .item>.message { margin-top: -50px }
+
+.dashboard-news p > small { padding-top: 3px; }
+
+.dashboard#map-1 { height: 360px}

@@ -1,0 +1,9 @@
+.page-node-slot-content { border: 1px solid black; box-sizing: border-box;
+                                  display: table;text-align: center ;
+        }
+        .page-node-slot-content .info { vertical-align:middle;
+                                        display: table-cell; }
+        .slot-code-title { font-weight: bold; font-size: 25px; color: #666666}
+        
+        .very-small { font-size: 10px }
+        .very-small .slot-code-title { font-size: 12px }

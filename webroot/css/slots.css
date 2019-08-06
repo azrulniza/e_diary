@@ -1,0 +1,72 @@
+.row { display: table; }
+    .cols { display: table-cell;  padding: 50px; 
+            vertical-align: top;}
+
+
+    /* mobile phone */
+    @media all and (max-width: 768px) {
+        .row { display: block }
+        .cols { display: block}
+    }
+
+
+    .ui-dialog, .ui-button-text { font-family: Arial, sans-serif }
+    #template {
+        border: 1px solid black;
+        position: relative;
+        box-sizing: border-box;
+
+    }
+
+    .slot-code-title { 
+        font-weight: bold; 
+        font-size: 20px; 
+        color: #666666; 
+        margin: 0; padding: 0}
+
+    .slot { 
+        border: 1px solid black; 
+        box-sizing: border-box;
+        position: absolute;     
+        display: block;
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden
+
+    }
+
+
+    .slot .info-holder {  
+        display: table; 
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .slot .info { 
+        vertical-align:middle;
+        display: table-cell; 
+        margin: 0;
+        padding: 0;
+        font-size: 11px;
+        color: #666666;
+    }
+
+    .slot .info-small, .slot .info-small .slot-code-title {
+        font-size: 10px;
+    }
+
+    .slot .info-medium{
+        font-size: 10px;
+    }
+    .slot .info-medium .slot-code-title  { font-size: 11px;}
+
+    .slot .info p {        
+        margin: 0;
+        padding: 0;
+    }
+
+    .highlighted { background-color: #ffffd0 !important }
+
+    #slots-table td { text-align: center }
+    #slots-table td span { display: inline-block}

@@ -39,9 +39,7 @@ class UsersController extends AppController
     public function index()
     {
 
-        $currentUser = $this->Users->find()->contain(['Clients'])->where(['Users.id' => $this->Auth->user()['id']])->first();
-
-        //debug($currentUser);
+        $currentUser = $this->Users->find()->where(['Users.id' => $this->Auth->user()['id']])->first();
 
         $query = $this->Users->find()->order(['Users.id' => 'DESC']);
 
@@ -71,53 +69,18 @@ class UsersController extends AppController
             // debug("is reseller");
 			debug($this->Auth->user());
             $currentUser = $this->Users->find()
-                ->contain(['Resellers.Clients.Users', 'Resellers.Users', 'Resellers.DownlineResellers.Users', 'Resellers.DownlineResellers.Clients.Users'])
                 ->where(['Users.id' => $this->Auth->user()['id']])
                 ->first();
 
-            //   return;
 
-            /*     $query->contain(['Roles', 'Resellers', 'Clients']);
-
-              $query->matching('Roles', function ($q) {
-              return $q->where(['Roles.id' => RESELLER]);
-              });
-
-              $query->matching('Resellers', function ($q) use ($currentUser){
-              return $q->where(['Resellers.id IN' => Hash::extract($currentUser->resellers, '{n}.id')]);
-              });
-
-              $query2 = $this->Users->find();
-              $query2->contain(['Roles', 'Resellers', 'Clients']);
-              $query2->matching('Roles', function ($q) {
-              return $q->where(['Roles.id' => CLIENT]);
-              });
-
-              $query2->matching('Clients', function ($q) use ($currentUser) {
-              return $q->where(['Clients.reseller_id IN' => Hash::extract($currentUser->resellers, '{n}.id')]);
-              }); */
-
-            //$query->unionAll($query2);
-
-
-            $resellers = $currentUser->resellers;
-
-            //$users = $this->paginate($query);
-
-            $this->set(compact('resellers'));
             $this->set('_serialize', ['users']);
             $this->render('list_by_reseller_client');
         } else if ($this->AuthUser->hasRole(MASTER_RESELLER)) {
 
             $currentUser = $this->Users->find()
-                ->contain(['Resellers.Clients.Users', 'Resellers.Users', 'Resellers.DownlineResellers.Users', 'Resellers.DownlineResellers.Clients.Users'])
                 ->where(['Users.id' => $this->Auth->user()['id']])
                 ->first();
 
-            $resellers = $currentUser->resellers;
-
-            //$users = $this->paginate($query);
-            $this->set(compact('resellers'));
             $this->set('_serialize', ['users']);
             $this->render('list_by_reseller_client');
         }
@@ -126,16 +89,11 @@ class UsersController extends AppController
          */ else if ($this->AuthUser->hasRole(CLIENT)) {
 
             $currentUser = $this->Users->find()
-                ->contain(['Clients'])
                 ->where(['Users.id' => $this->Auth->user()['id']])
                 ->first();
 
             $query->matching('Roles', function ($q) {
                 return $q->where(['Roles.id IN' => [CLIENT]]);
-            });
-
-            $query->matching('Clients', function ($q) use ($currentUser) {
-                return $q->where(['Clients.id IN' => Hash::extract($currentUser->clients, '{n}.id')]);
             });
         }
 
@@ -152,8 +110,6 @@ class UsersController extends AppController
      */
     public function signup()
     {
-		$this->loadModel('Oems');
-		$oem = $this->Oems->find()->first();
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -165,7 +121,7 @@ class UsersController extends AppController
                 $this->Flash->error(__('The signup could not be processed. Please, try again.'));
             }
         }
-        $this->set(compact('user','oem'));
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
         $this->viewBuilder()->layout('public');
     }
@@ -246,8 +202,6 @@ class UsersController extends AppController
         }
         $this->viewBuilder()->layout('public'); */
 		$this->loadComponent('Captcha.Captcha');
-		$this->loadModel('Oems');
-		$oem = $this->Oems->find()->first();
 		
 		if ($this->request->is('post')) {
 			$this->Users->setCaptcha('<captcha>', $this->Captcha->getCode('<captcha>'));
@@ -320,7 +274,6 @@ class UsersController extends AppController
             
         }
         $this->viewBuilder()->layout('public');
-		$this->set(compact('oem'));
     }
 
 	public function autologin()
@@ -408,7 +361,6 @@ class UsersController extends AppController
             2 => __('Pending activation'),
             3 => __('Pending update profile'),
             4 => __('Password reset requested')];
-		$this->loadModel('Resellers');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -424,82 +376,27 @@ class UsersController extends AppController
         }
        if ($this->AuthUser->hasRole(SUPER_ADMIN) OR $this->AuthUser->hasRole(SYSTEM_ADMIN)) {
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
-			$resellers = $this->Users->Resellers->find('list', ['limit' => 200])->where(['Resellers.reseller_type_id !='=> 3]);
-			$clients = $this->Users->Clients->find('list', ['limit' => 200]);
 
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(MASTER_RESELLER))){
 			//roles
 			$role=array(1,2,3,8);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 
-			//reseller
-			$uid = $this->Auth->user()['id'];
-			//get parent/master reseller
-			 $users =  $this->Resellers->find()->contain(['Users']);
-					
-					 $users->matching('Users', function ($q) use ($uid) {
-						return $q->where(['user_id IN' => $uid]);
-					}); 
-			
-			foreach($users as $key=>$user)
-			{
-				$parent_id =$user['id'];
-			}
-			$resellers = $this->Resellers->find()->where(['parent_id' => $parent_id])->orWhere(['id' => $parent_id]);
-			$reseller_id=[];
-			foreach($resellers as $listKey=>$resellrs)
-			{
-				$reseller_id[] =$resellrs['id'];
-			}
-
-			$resellers = $this->Users->Resellers->find('list')->where(['Resellers.id IN'=>$reseller_id,'Resellers.reseller_type_id !='=> 3]);
-
-			//client
-			$clients = $this->Users->Clients->find('list')->where(['reseller_id IN'=>$reseller_id]);;
 		}else if($this->AuthUser->hasRole(RESELLER)){
 			//roles
 			$role=array(1,2,3,4);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 
-			//reseller
-			$uid = $this->Auth->user()['id'];
-			//get parent/master reseller
-			$users_resellers =  $this->Resellers->find()->contain(['Users']);
-					
-					 $users_resellers->matching('Users', function ($q) use ($uid) {
-						return $q->where(['user_id IN' => $uid]);
-					}); 	
-			foreach($users_resellers as $listKey=>$resellers)
-			{
-				$reseller_id =$resellers['id'];
-			}
-			$resellers = $this->Resellers->find()->where(['parent_id' => $reseller_id])->orWhere(['id' => $reseller_id]);
-			$reseller_id=[];
-			foreach($resellers as $listKey=>$resellrs)
-			{
-				$reseller_id[] =$resellrs['id'];
-			}
-			$resellers = $this->Users->Resellers->find('list')->where(['Resellers.id IN'=>$reseller_id,'Resellers.reseller_type_id !='=> 3]);
-			//client
-			$clients = $this->Users->Clients->find('list')->where(['Clients.reseller_id IN'=>$reseller_id]);
 
 		}else if ($this->AuthUser->hasRole(CLIENT)) {
 
             // only client
             $roles = $this->Users->Roles->find('list')->where(['id IN' => [CLIENT]]);
 
-            // only to what this accout has access to
-            $resellers->matching('Users', function ($q) use ($currentUserId) {
-                return $q->where(['Users.id' => $currentUserId]);
-            });
-
-            $clients->matching('Users', function ($q) use ($currentUserId) {
-                return $q->where(['Users.id' => $currentUserId]);
-            });
         }
 
         $userStatus = $this->userStatus;
-        $this->set(compact('user', 'roles', 'resellers', 'clients', 'userStatus'));
+        $this->set(compact('user', 'roles', 'userStatus'));
         $this->set('_serialize', ['user']);
     }
 
@@ -747,7 +644,6 @@ class UsersController extends AppController
 
     public function reset_password($lang)
     {
-		$oems =$this->loadModel('Oems');
 		
         $success = false;
         $user = $this->Users->newEntity();
@@ -769,7 +665,6 @@ class UsersController extends AppController
 			$language_id=1;
 		}
 		
-		$oem = $this->Oems->find()->first();
         if ($this->request->is('post')) {
             $user = $this->Users->find()->contain(['Resellers.UplineResellers.Users'])->where(['email' => $this->request->data['email']])->first();
             if ($user != null) {	
@@ -921,9 +816,7 @@ class UsersController extends AppController
 	
 	public function verify()
     {
-		$this->loadModel('Oems');
 		$this->loadModel('Resellers');
-		$oem = $this->Oems->find()->first();
 		
 		$data = $this->request->query('param');
 		$data = base64_decode($data);	
@@ -992,13 +885,10 @@ class UsersController extends AppController
 			
 		}
 		$this->viewBuilder()->layout('verify');
-		$this->set(compact('oem'));
     }
 	
 	public function verify_reset()
     {
-		$this->loadModel('Oems');
-		$oem = $this->Oems->find()->first();
 		
 		$data = $this->request->query('param');
 		$data = base64_decode($data);	
@@ -1057,6 +947,5 @@ class UsersController extends AppController
 			}
 		}
 		$this->viewBuilder()->layout('verify_reset');
-		$this->set(compact('oem'));
     }
 }

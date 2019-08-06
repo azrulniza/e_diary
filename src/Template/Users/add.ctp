@@ -15,7 +15,6 @@
                         echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false]);
                         echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus]);
                         echo $this->Form->input('roles._ids', ['options' => $roles, 'multiple' => 'checkbox']);
-                        echo $this->Form->input('resellers._ids', ['options' => $resellers, 'multiple' => 'checkbox']);
                         //echo $this->Form->input('clients._ids', ['options' => $clients, 'multiple' => 'checkbox']);
                         ?>
                     </div>

@@ -93,7 +93,7 @@ return [
          */
         '_cake_core_' => [
             'className' => 'Apc',
-            'prefix' => 'rs_stg_core_',
+            'prefix' => 'ed_stg_core_',
             'path' => CACHE . 'persistent/',
             'serialize' => true,
             'duration' => '+62 minutes'
@@ -106,7 +106,7 @@ return [
          */
         '_cake_model_' => [
             'className' => 'Apc',
-            'prefix' => 'rs_myapp_cake_model_',
+            'prefix' => 'ed_myapp_cake_model_',
             'path' => CACHE . 'models/',
             'serialize' => true,
             'duration' => '+62 minutes'
@@ -129,7 +129,7 @@ return [
          */
         '_cake_core_' => [
             'className' => 'File',
-            'prefix' => 'rs_myapp_cake_core_',
+            'prefix' => 'ed_myapp_cake_core_',
             'path' => CACHE . 'persistent/',
             'serialize' => true,
             'duration' => '+2 minutes',
@@ -142,7 +142,7 @@ return [
          */
         '_cake_model_' => [
             'className' => 'File',
-            'prefix' => 'rs_myapp_cake_model_',
+            'prefix' => 'ed_myapp_cake_model_',
             'path' => CACHE . 'models/',
             'serialize' => true,
             'duration' => '+2 minutes',
@@ -176,7 +176,7 @@ return [
      *   `'skipLog' => ['Cake\Network\Exception\NotFoundException', 'Cake\Network\Exception\UnauthorizedException']`
      */
     'Error' => [
-        'errorLevel' => E_ALL & ~E_DEPRECATED,
+        'errorLevel' => E_ALL & ~E_USER_DEPRECATED,
         'exceptionRenderer' => 'Cake\Error\ExceptionRenderer',
         'skipLog' => [],
         'log' => true,

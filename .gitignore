@@ -1,6 +1,2 @@
 .DS_Store
-/vendor/*
-/config/routes.php
-/config/acl.ini
-/tmp/*
-/logs/*
+

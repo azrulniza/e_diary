@@ -49,7 +49,7 @@ if (isset($title)) {
     //   (1.4) AdminLTE 2.3.0
     echo $this->Html->css('adminlte/adminlte.min');
     //   (1.5) AdminLTE 2.3.0 Skins
-    echo $this->Html->css('adminlte/skins/skin-blue.min');
+    echo $this->Html->css('adminlte/skins/skin-green.min');
 
     // (2) Customs
     //   (2.1) Global
@@ -92,7 +92,7 @@ if (isset($title)) {
     echo $this->fetch('script');
     ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
             <?php //if(Configure::read('mobile-previews')) echo $this->element('Dev/mobile-previews') ?>

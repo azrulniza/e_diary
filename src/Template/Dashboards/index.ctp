@@ -1,52 +1,51 @@
 <?php
-$this->Html->script('dashboard', ['block' => 'script']);
+$this->Html->script('dashboard');
 
 ?>
-
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$('#listdepartment').change(function(){
+			var id = $(this).val();
+			$.ajax({
+				type : "POST",
+				url  : getAppVars('basepath').basePath + 'dashboards/getUsersByDepartment' + '?id=' + id, //pass query string to server
+				success: function(data){
+						console.log(data);
+			}});
+		});
+	});
+	
+	$( document ).ready(function() {
+		
+		$(".expiry").change(function(){
+		var id = $(this).val();
+		var package_id = $(".package").val();
+		$.ajax({
+			type : "POST",
+			url  : getAppVars('basepath').basePath + 'product_keys/getExpiryKeycode' + '?id=' + id + '&package_id=' + package_id, //pass query string to server
+			success: function(data){
+				$("input[name='total_key']").val(data);
+				$(".keys").html('<?php echo __('Available key'). " : "?>' + data);
+			}});
+		});
+	});
+	
+</script>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h2 class="box-title"><?= __('Profile') ?></h2>
+				<?php
+                    echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control','options' => $departments, 'empty'=>__('All'),'style'=>'width:40%']);
+				?>				
+				<?php
+                    echo $this->Form->input('department', ['label' => __('Users'), 'type'=>'select', 'onchange'=>'leaveChange(this.value)','id'=>'listuser','class' => 'form-control','options' => $users, 'empty'=>__('All'),'style'=>'width:40%']);
+				?>
             </div>
             <div class="box-body">
-                <table class="table table-bordered table-striped">							
-                    <tr> 
-                        <td width="30%"><h5><strong><?= __('Company Name') ?></strong></h5></td>
-                        <td><h5><?= $reseller->company_name ?></h5></td> 
-                    </tr>
-                    <tr> 
-                        <td><h5><strong><?= __('Contact Person') ?></strong></h5></td>
-                        <td><h5><?= $user->name ?></h5></td> 
-                    </tr>
-                    <tr> 
-                        <td><h5><strong><?= __('Email') ?></strong></h5></td>
-                        <td><h5><?= $user->email ?></h5></td> 
-                    </tr>
-                    <tr> 
-                        <td><h5><strong><?= __('Phone No.') ?></strong></h5></td>
-                        <td><h5><?= $reseller->phone_number ?></h5></td> 
-                    </tr>
-                    <tr> 
-                        <td><h5><strong><?= __('Address') ?></strong></h5></td>
-                        <td><h5><?= $reseller->address ?></h5></td> 
-                    </tr>
-                </table>
+
             </div>
             <div class="box-footer">
-
-                <?php //if ($reseller->cmp_management == 1): ?>
-                    <div class="btn-group">
-
-                        <?= $this->Html->link(__('Add New Client (CMP)'), ['controller' => 'Clients', 'action' => 'add'], ['class' => 'btn btn-success pull-left'], array('style' => 'color:black !important;')) ?>
-                        <?= $this->Html->link(__('View Keycodes'), ['controller' => 'ProductKeys', 'action' => 'oem_keylist'], ['class' => 'btn btn-primary pull-left'], array('style' => 'color:black !important;')) ?>
-
-                    </div>
-                <?php //endif; ?>
-
-                <?= $this->Html->link(__('Update Profile'), ['controller' => 'Resellers', 'action' => 'edit', $reseller->id], ['class' => 'btn btn-default pull-right'], array('style' => 'color:black !important;')) ?>
-				<br>
-				<br>
             </div>
         </div>
     </div>

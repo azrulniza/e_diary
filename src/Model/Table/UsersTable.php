@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Model\Table;
 
-use App\Model\Entity\User;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -11,44 +9,80 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \App\Model\Table\AttendanceLogsTable|\Cake\ORM\Association\HasMany $AttendanceLogs
+ * @property \App\Model\Table\AttendancesTable|\Cake\ORM\Association\HasMany $Attendances
+ * @property \App\Model\Table\UserCardsTable|\Cake\ORM\Association\HasMany $UserCards
+ * @property \App\Model\Table\UserCardsLogsTable|\Cake\ORM\Association\HasMany $UserCardsLogs
+ * @property \App\Model\Table\UserLeavesTable|\Cake\ORM\Association\HasMany $UserLeaves
+ * @property \App\Model\Table\UserLeavesLogsTable|\Cake\ORM\Association\HasMany $UserLeavesLogs
+ * @property \App\Model\Table\UserLoginLogsTable|\Cake\ORM\Association\HasMany $UserLoginLogs
+ * @property \App\Model\Table\UserOrganizationsTable|\Cake\ORM\Association\HasMany $UserOrganizations
+ * @property \App\Model\Table\UserRoleLogsTable|\Cake\ORM\Association\HasMany $UserRoleLogs
+ * @property \App\Model\Table\RolesTable|\Cake\ORM\Association\BelongsToMany $Roles
+ *
+ * @method \App\Model\Entity\User get($primaryKey, $options = [])
+ * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\User saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
  */
-class UsersTable extends Table {
-
+class UsersTable extends Table
+{
     /**
      * Initialize method
      *
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config) {
+    public function initialize(array $config)
+    {
         parent::initialize($config);
 
-        $this->table('users');
-        $this->displayField('name');
-        $this->primaryKey('id');
-
-        $this->addBehavior('Timestamp');
+        $this->setTable('users');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
+		
+		$this->addBehavior('Timestamp');
 		$this->addBehavior('Captcha.Captcha', ['field'=>'<captcha>']);
 
-        $this->belongsTo('Departments', [
-            'foreignKey' => 'department_id'
+/* 
+        $this->hasMany('AttendanceLogs', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Attendances', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('UserCards', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('UserCardsLogs', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('UserLeaves', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('UserLeavesLogs', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('UserLoginLogs', [
+            'foreignKey' => 'user_id'
+        ]);
+
+        $this->hasMany('UserRoleLogs', [
+            'foreignKey' => 'user_id'
+        ]); */       
+        $this->hasMany('Organizations', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'organization_id',
+            'joinTable' => 'user_organizations'
         ]);
         $this->belongsToMany('Roles', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'role_id',
             'joinTable' => 'users_roles'
-        ]);
-
-        $this->belongsToMany('Clients', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'client_id',
-            'joinTable' => 'users_clients'
-        ]);
-
-        $this->belongsToMany('Resellers', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'reseller_id',
-            'joinTable' => 'users_resellers'
         ]);
     }
 
@@ -58,33 +92,17 @@ class UsersTable extends Table {
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator) {
-        $validator
+    public function validationDefault(Validator $validator)
+    {
+		$validator
                 ->add('id', 'valid', ['rule' => 'numeric'])
                 ->allowEmpty('id', 'create');
-
-        $validator
-                ->requirePresence('password', 'create')
-                ->notEmpty('password')
-                ->allowEmpty('password', 'update');
-
-        $validator
-                ->requirePresence('status', 'create')
-                ->notEmpty('status');
-
-        $validator
-                ->add('confirm_password', 'compareWith', [
-                    'rule' => ['compareWith', 'password'],
-                    'message' => 'Passwords not equal.'
-        ])
-                ->allowEmpty('confirm_password', 'update');
 
         $validator
                 ->add('email', 'valid', ['rule' => 'email'])
                 ->requirePresence('email', 'create')
                 ->notEmpty('email')
                 ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table', 'message' => __('Sorry. The email address you entered is already in use.')]);
-				
 		$validator
                 ->add('reconfirm_email', 'compareWith', [
                     'rule' => ['compareWith', 'email'],
@@ -92,23 +110,38 @@ class UsersTable extends Table {
 				])
 				->requirePresence('email', 'create')
                 ->notEmpty('reconfirm_email');
+				
+		$validator
+				->requirePresence('password', 'create')
+				->notEmpty('password')
+				->allowEmpty('password', 'update');
 
-        /* $validator->requirePresence('roles', 'create')
-                ->requirePresence('roles', 'update')
-                ->notEmpty('email');
-
-        $validator->add('roles', 'custom', [
-            'rule' => function($value, $context) {
-                return (!empty($value['_ids']) && is_array($value['_ids']));
-            },
-            'message' => 'Please assign a role to user.'
-        ]); */
+		$validator
+                ->add('confirm_password', 'compareWith', [
+                    'rule' => ['compareWith', 'password'],
+                    'message' => 'Passwords not equal.'
+        ])
+                ->allowEmpty('confirm_password', 'update');
+				
+        $validator
+            ->allowEmptyString('name');
 
         $validator
-                ->allowEmpty('name');
+            ->allowEmptyString('ic_number');
 
         $validator
-                ->allowEmpty('reset_password_key');
+            ->allowEmptyString('phone');
+
+        $validator
+            ->integer('report_to')
+            ->allowEmptyString('report_to');
+
+        $validator
+            ->allowEmptyString('reset_password_key');
+
+        $validator
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         return $validator;
     }
@@ -120,21 +153,9 @@ class UsersTable extends Table {
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules) {
+    public function buildRules(RulesChecker $rules)
+    {
         $rules->add($rules->isUnique(['email']));
-        //$rules->add($rules->existsIn(['role_id'], 'Roles'));
-        $rules->add($rules->existsIn(['department_id'], 'Departments'));
         return $rules;
     }
-	
-	public function generateRandomString($length = 16) {
-		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$charactersLength = strlen($characters);
-		$randomString = '';
-		for ($i = 0; $i < $length; $i++) {
-			$randomString .= $characters[rand(0, $charactersLength - 1)];
-		}
-		return $randomString;
-	}
-
 }

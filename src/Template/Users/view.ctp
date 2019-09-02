@@ -11,14 +11,16 @@
                     </div>
                     <div class="box-body">
                         <dl class="dl-horizontal">
-                            <dt><?= __('E-mail') ?></dt>
+                            <dt><?= __('Email') ?></dt>
                             <dd><?= h($user->email) ?></dd>
                             <dt><?= __('Name') ?></dt>
                             <dd><?= h($user->name) ?></dd>
-                            <dt><?= __('Date Created') ?></dt>
-                            <dd><?= h($user->date_created) ?></dd>
-                            <dt><?= __('Date Modified') ?></dt>
-                            <dd><?= h($user->date_modified) ?></dd>
+                            <dt><?= __('Id') ?></dt>
+                            <dd><?= $this->Number->format($user->id) ?></dd>
+                            <dt><?= __('Ic Number') ?></dt>
+                            <dd><?= h($user->ic_number) ?></dd>
+                            <dt><?= __('Phone') ?></dt>
+                            <dd><?= h($user->phone) ?></dd>
                         </dl>
                     </div>
                 </div>

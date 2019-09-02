@@ -362,8 +362,8 @@ CREATE TABLE IF NOT EXISTS `user_login_logs` (
 /*!40000 ALTER TABLE `user_login_logs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_login_logs` ENABLE KEYS */;
 
--- Dumping structure for table e_diary.user_organizations
-CREATE TABLE IF NOT EXISTS `user_organizations` (
+-- Dumping structure for table e_diary.users_organizations
+CREATE TABLE IF NOT EXISTS `users_organizations` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `organization_id` int(11) NOT NULL,
@@ -372,11 +372,11 @@ CREATE TABLE IF NOT EXISTS `user_organizations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table e_diary.user_organizations: ~0 rows (approximately)
-/*!40000 ALTER TABLE `user_organizations` DISABLE KEYS */;
-INSERT INTO `user_organizations` (`id`, `user_id`, `organization_id`, `cdate`, `mdate`) VALUES
+-- Dumping data for table e_diary.users_organizations: ~0 rows (approximately)
+/*!40000 ALTER TABLE `users_organizations` DISABLE KEYS */;
+INSERT INTO `users_organizations` (`id`, `user_id`, `organization_id`, `cdate`, `mdate`) VALUES
 	(1, 4, 2, '2019-09-01 09:22:56', '2019-09-01 09:22:56');
-/*!40000 ALTER TABLE `user_organizations` ENABLE KEYS */;
+/*!40000 ALTER TABLE `users_organizations` ENABLE KEYS */;
 
 -- Dumping structure for table e_diary.user_role_logs
 CREATE TABLE IF NOT EXISTS `user_role_logs` (

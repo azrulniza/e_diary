@@ -9,15 +9,15 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\AttendanceLogsTable|\Cake\ORM\Association\HasMany $AttendanceLogs
- * @property \App\Model\Table\AttendancesTable|\Cake\ORM\Association\HasMany $Attendances
- * @property \App\Model\Table\UserCardsTable|\Cake\ORM\Association\HasMany $UserCards
- * @property \App\Model\Table\UserCardsLogsTable|\Cake\ORM\Association\HasMany $UserCardsLogs
- * @property \App\Model\Table\UserLeavesTable|\Cake\ORM\Association\HasMany $UserLeaves
- * @property \App\Model\Table\UserLeavesLogsTable|\Cake\ORM\Association\HasMany $UserLeavesLogs
- * @property \App\Model\Table\UserLoginLogsTable|\Cake\ORM\Association\HasMany $UserLoginLogs
- * @property \App\Model\Table\UserOrganizationsTable|\Cake\ORM\Association\HasMany $UserOrganizations
- * @property \App\Model\Table\UserRoleLogsTable|\Cake\ORM\Association\HasMany $UserRoleLogs
+ * @property |\Cake\ORM\Association\HasMany $AttendanceLogs
+ * @property |\Cake\ORM\Association\HasMany $Attendances
+ * @property |\Cake\ORM\Association\HasMany $UserCards
+ * @property |\Cake\ORM\Association\HasMany $UserCardsLogs
+ * @property |\Cake\ORM\Association\HasMany $UserLeaves
+ * @property |\Cake\ORM\Association\HasMany $UserLeavesLogs
+ * @property |\Cake\ORM\Association\HasMany $UserLoginLogs
+ * @property |\Cake\ORM\Association\HasMany $UserRoleLogs
+ * @property \App\Model\Table\OrganizationsTable|\Cake\ORM\Association\BelongsToMany $Organizations
  * @property \App\Model\Table\RolesTable|\Cake\ORM\Association\BelongsToMany $Roles
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
@@ -48,7 +48,6 @@ class UsersTable extends Table
 		$this->addBehavior('Timestamp');
 		$this->addBehavior('Captcha.Captcha', ['field'=>'<captcha>']);
 
-/* 
         $this->hasMany('AttendanceLogs', [
             'foreignKey' => 'user_id'
         ]);
@@ -70,14 +69,13 @@ class UsersTable extends Table
         $this->hasMany('UserLoginLogs', [
             'foreignKey' => 'user_id'
         ]);
-
         $this->hasMany('UserRoleLogs', [
             'foreignKey' => 'user_id'
-        ]); */       
-        $this->hasMany('Organizations', [
+        ]);
+        $this->belongsToMany('Organizations', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'organization_id',
-            'joinTable' => 'user_organizations'
+            'joinTable' => 'users_organizations'
         ]);
         $this->belongsToMany('Roles', [
             'foreignKey' => 'user_id',

@@ -16,8 +16,8 @@
                         echo $this->Form->input('ic_number', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('report_to', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $reportTo]);
-                        echo $this->Form->input('department', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $departments, 'value'=>$selected_dept]);
-                        echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus]);
+						echo $this->Form->input('organizations._ids', ['class' => 'form-control','options' => $organizations]);                        
+						echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus]);
 						echo $this->Form->input('roles._ids', ['options' => $roles,'multiple' => 'checkbox']);
                         ?>
                     </div>

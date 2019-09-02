@@ -86,8 +86,6 @@ class UsersController extends AppController
      */
     public function add()
     {
-		$this->loadModel('UserOrganizations');
-		$this->loadModel('Organizations');
 		$this->userStatus = [
             1 => __('Active'),
             0 => __('Disabled'),
@@ -97,27 +95,20 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-			$now = \Cake\I18n\Time::now();
-            $user->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
-            $user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+			//var_dump($user);die();
             if ($this->Users->save($user)) {
-				$user_id = $this->Users->save($user)->id;
-				$userDept = $this->UserOrganizations->newEntity();
-				$userDept->user_id = $user_id;
-				$userDept->organization_id = $_POST['department'];
-				$userDept->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
-				$userDept->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
-				$this->UserOrganizations->save($userDept);
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-		
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
-
+			$reportTo = $this->Users->find('list');/* ->contain('Roles');
+			$reportTo->matching('Roles', function ($q) {
+                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+            }) */
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
 			$role=array(1);
@@ -127,16 +118,15 @@ class UsersController extends AppController
 			//roles
 			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
-
+			$reportTo = $this->Users->find('list')->contain('Roles');
+			$reportTo->matching('Roles', function ($q) {
+					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+				});
 
 		}
-		$departments = $this->Organizations->find('list')->where(['status'=> 1]);
-		$reportTo = $this->Users->find('list')->contain('Roles');
-		$reportTo->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
-            });
+        $organizations = $this->Users->Organizations->find('list', ['limit' => 200]);
 		$userStatus = $this->userStatus;
-        $this->set(compact('user', 'roles', 'userStatus', 'reportTo','departments'));
+        $this->set(compact('user', 'organizations', 'userStatus', 'reportTo', 'roles'));
 		$this->set('_serialize', ['user']);
     }
 
@@ -149,28 +139,18 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-		$this->loadModel('UserOrganizations');
-		$this->loadModel('Organizations');
         $user = $this->Users->get($id, [
-            'contain' => ['Roles']
+            'contain' => ['Organizations', 'Roles']
         ]);
-		//var_dump($this->Users->find()->contain(['Organizations.UserOrganizations'])->toArray());die();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-			//var_dump($user);die();
             if ($this->Users->save($user)) {
-				$query = $this->UserOrganizations->query();
-				$query->update()
-					->set(['organization_id' => $_POST['department']])
-					->where(['user_id' => $id])
-					->execute();
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-				
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
 
@@ -186,14 +166,13 @@ class UsersController extends AppController
 
 
 		}
-		$departments = $this->Organizations->find('list')->where(['status'=> 1]);
+        $organizations = $this->Users->Organizations->find('list', ['limit' => 200]);
 		$reportTo = $this->Users->find('list')->contain('Roles');
 		$reportTo->matching('Roles', function ($q) {
                 return $q->where(['Roles.id IN' => [SUPERVISOR]]);
             });
 		$userStatus = $this->userStatus;
-		$selected_dept = $this->UserOrganizations->find()->where(['user_id'=> $id])->first()->organization_id;
-        $this->set(compact('user', 'roles','departments','reportTo','userStatus','selected_dept'));
+        $this->set(compact('user', 'organizations', 'roles', 'reportTo','userStatus'));
     }
 
     /**

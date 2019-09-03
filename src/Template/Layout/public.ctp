@@ -55,7 +55,7 @@
                     <?= $this->Flash->render() ?>
                     <?= $this->fetch('content') ?>
                 </div><!-- /.login-box-body -->
-                <div>
+                <div align="center">
                     <?php
                     $langs = \Cake\Core\Configure::read('Languages');
                     $first = true;

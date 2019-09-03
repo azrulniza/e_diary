@@ -41,16 +41,16 @@
 </div>
 <br>
 
-<div class="col-xs-12">
-        <button type="submit" class="btn btn-primary btn-block btn-flat"><?= __('Sign In') ?></button>
-    </div><!-- /.col -->
+<div class="col-md-12">
+        <button type="submit" class="btn btn-success btn-block btn-flat"><?= __('Sign In') ?></button><br/>
+</div><!-- /.col -->
 	
 
 <?= $this->Form->end() ?>
 	
 	
 	
-<?= $this->Html->link( __('Register a new membership'), '/users/signup' ) ?> | <?= $this->Html->link( __('Reset Password'), '/users/reset_password' ) ?>	
+<?= $this->Html->link( __('Forgot Password?'), '/users/reset_password' ) ?>	
 	
 	
     

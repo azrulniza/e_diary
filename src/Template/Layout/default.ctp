@@ -139,7 +139,7 @@ if (isset($title)) {
                 <?=__('Version {0}', ['1.0.0'])?>
             </div>
             <strong>
-					<?=__('Copyright &copy; {0} <a target="_blank" href="{1}">{2}</a></strong>. All rights reserved.', [date('Y'),'http://www.m3online.com', 'M3 Online'])?>
+					<?=__('Copyright &copy; {0} <a target="_blank" href="{1}">{2}</a></strong>. All rights reserved.', [date('Y'),'https://www.forestry.gov.my/', 'JPSM'])?>
 					
 					
         </footer>

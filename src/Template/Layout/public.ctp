@@ -5,11 +5,9 @@
         <title>
             <?= $this->fetch('title') ?>
         </title>
-		<?php if($oem->oem_logo !=null){
-			echo $this->Html->meta ( 'favicon.ico', '/files/oem/'.$oem->oem_logo, array ('type' => 'icon') );
-		}else{?>
-		  <?= $this->Html->meta('icon') ?>
-		<?php }?>
+		<?php
+			echo $this->Html->meta ( 'favicon.ico', '/files/ediary_favi.png', array ('type' => 'icon') );
+		?>
       
         <?= $this->fetch('meta') ?>
         <!-- Tell the browser to be responsive to screen width -->
@@ -50,13 +48,14 @@
         <section class="content">
             <div class="login-box">
                 <div class="login-logo">
-						<b>e-Diary</b><br />
+						<!--<b>e-Diary</b><br />-->
+                        <?php echo $this->Html->image('/files/ediary.png');?>
                 </div><!-- /.login-logo -->
                 <div class="login-box-body">
                     <?= $this->Flash->render() ?>
                     <?= $this->fetch('content') ?>
                 </div><!-- /.login-box-body -->
-                <div>
+                <div align="center">
                     <?php
                     $langs = \Cake\Core\Configure::read('Languages');
                     $first = true;

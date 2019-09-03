@@ -26,6 +26,22 @@
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <!-- User Account: style can be found in dropdown.less -->
+			<li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                  <?php echo __('Language') ?> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <?php
+                    $langs = \Cake\Core\Configure::read('Languages');
+                    $first = true;
+                    ?>
+
+                    <?php foreach ($langs as $ref => $lang): ?>
+                        <div class="box-body"><?= $this->Html->link($lang, ['controller' => 'Lang', 'action' => 'switch_to', $ref]) ?></div>
+                        <?php $first = false ?>
+                    <?php endforeach; ?>
+                </ul>
+              </li>
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="hidden-xs"><?= $logged['email'] ?></span>

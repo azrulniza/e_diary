@@ -12,8 +12,6 @@
                                 <th><?= $this->Paginator->sort('address') ?></th>
                                 <th><?= $this->Paginator->sort('phone') ?></th>
                                 <th><?= $this->Paginator->sort('email') ?></th>
-                                <th><?= $this->Paginator->sort('cdate') ?></th>
-                                <th><?= $this->Paginator->sort('mdate') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
@@ -26,8 +24,6 @@
                                 <td><?= h($organization->address) ?></td>
                                 <td><?= $this->Number->format($organization->phone) ?></td>
                                 <td><?= h($organization->email) ?></td>
-                                <td><?= h($organization->cdate) ?></td>
-                                <td><?= h($organization->mdate) ?></td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $organization->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>

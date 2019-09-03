@@ -265,4 +265,39 @@ class UsersController extends AppController
     {
         return $this->redirect($this->Auth->logout());
     }
+	
+	public function reset_password($lang)
+    {
+        $success = false;
+        $user = $this->Users->newEntity();
+		
+		$langs = \Cake\Core\Configure::read('Languages');
+		$session = $this->request->session();
+		if(isset($langs[$lang])){
+            $session->write('Config.language', $lang);
+            I18n::locale($lang);
+			//$this->redirect('/users/verify_reset?switch_to='.$lang.'&user_id='.$user_id);
+        }
+        if($lang == 'en'){
+			$language_id=1;
+		}else if($lang == 'cn_CN'){
+			$language_id=2;
+		}else if($lang == 'cn_ZH'){
+			$language_id=3;
+		}else{
+			$language_id=1;
+		}
+		
+        if ($this->request->is('post')) {
+            $user = $this->Users->find()->where(['email' => $this->request->data['email']])->first();
+            if ($user != null) {
+				$this->Flash->success(__('Password reset instruction will be sent to e-mail address {0}.', [$user->email]));
+            }else{
+				$this->Flash->error(__('Email cannot be found. Please, try again.'));
+			}
+        }
+        $this->set(compact('user', 'success', 'oem'));
+        $this->set('_serialize', ['user']);
+        $this->viewBuilder()->layout('public_reset');
+    }
 }

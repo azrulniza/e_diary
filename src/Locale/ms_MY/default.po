@@ -977,8 +977,6 @@ msgstr "sebelum"
 #: Template/SubscriptionPackageResellers/index.ctp:39
 #: Template/SubscriptionResellers/index.ctp:55
 #: Template/Subscriptions/index.ctp:74 Template/Users/index.ctp:44
-msgid "next"
-msgstr ""
 
 #: Template/ClientCmses/index.ctp:78
 msgid "No client under cmses."
@@ -2400,7 +2398,65 @@ msgstr "Jumlah Pindahan"
 msgid "Forgot Password?"
 msgstr "Lupa kata laluan?"
 
+msgid "Can\'t read? Reload"
+msgstr "Sila muat semula"
 
+msgid "Enter security code shown above:"
+msgstr "Sila masukkan kod keselamatan di atas:"
 
+msgid "You are not authorized to access that location."
+msgstr "Anda tidak dibenarkan mengakses lokasi ini."
 
+msgid "ABSENT"
+msgstr "TIDAK HADIR"
 
+msgid "WORKING"
+msgstr "BEKERJA"
+
+msgid "NOTIFICATION"
+msgstr "NOTIFIKASI"
+
+msgid "TIME OFF"
+msgstr "TIME OFF"
+
+msgid "Settings"
+msgstr "Tetapan"
+
+msgid "Add Setting"
+msgstr "Tambah Tetapan"
+
+msgid "Staff Management"
+msgstr "Pengurusan Kakitangan"
+
+msgid "Add Staff"
+msgstr "Tambah Kakitangan"
+
+msgid "List Staff"
+msgstr "Senarai Kakitangan"
+
+msgid "Department"
+msgstr "Jabatan"
+
+msgid "Add Department"
+msgstr "Tambah Jabatan"
+
+msgid "List Department"
+msgstr "Senarai Jabatan"
+
+msgid "Ic Number"
+msgstr "No Kad Pengenalan"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Report To"
+msgstr "Melapor kepada"
+
+msgid "Email cannot be found. Please, try again."
+msgstr "Emel tidak dijumpai. Sila cuba lagi."
+
+msgid "Departments"
+msgstr "Jabatan"
+
+msgid "Staffs"
+msgstr "Kakitangan"

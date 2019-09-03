@@ -29,20 +29,44 @@ class DashboardsController extends AppController
      */
     public function index()
     {
+        $this->loadModel('Users');
+        $this->loadModel('Organizations');
         
-
+        $departmentSelected = $this->request->query('department');
+        $userSelected = $this->request->query('user');
         $userId = $this->AuthUser->id();
-
-
-
-        //get user details
-        //$user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
-
-
-        //$userRoles = $this->Users->Roles->initRolesChecker($user->roles);
-
-
-        $this->set(compact('user', 'userRoles'));
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+        
+        if ($userRoles->hasRole(['Master Admin'])) {
+          
+        }else  if ($userRoles->hasRole(['Supervisor'])) {
+          
+        }else  if ($userRoles->hasRole(['Admin'])) {
+            
+        }else{
+            
+        }
+        if($userSelected){
+            $user = $this->Users->find()->where(['id' => $userSelected])->first();
+        }
+        $users = $this->Users->find('list');
+        $departments = $this->Organizations->find('list');
+        $this->set(compact('user', 'userRoles','departments','users','departmentSelected','userSelected'));
         $this->set('_serialize', ['dashboard']);
+    }
+    
+    public function getUsers()
+    {
+        $this->loadModel('Users');
+        $department_id = $_GET['id'];
+        
+        $users = $this->Users->find()->contain(['Organizations']);
+        $users->matching('Organizations', function ($q) use ($department_id){
+                                            return $q->where(['Organizations.id ' => $department_id]);
+                                    });
+        $this->set(compact('users'));
+        $this->set('_serialize', ['users']);
+        $this->viewBuilder()->layout('ajax');
     }
 }

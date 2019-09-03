@@ -7,30 +7,35 @@
                     <table id="dataTables-users" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?php echo __('No.') ?></th> 
-                                <th><?= $this->Paginator->sort('name') ?></th>
+                                <th><?= $this->Paginator->sort('id') ?></th>
                                 <th><?= $this->Paginator->sort('email') ?></th>
-								<th><?= $this->Paginator->sort('status') ?></th>
-                                <th><?= $this->Paginator->sort('date_created') ?></th>
+                                <th><?= $this->Paginator->sort('password') ?></th>
+                                <th><?= $this->Paginator->sort('name') ?></th>
+                                <th><?= $this->Paginator->sort('ic_number') ?></th>
+                                <th><?= $this->Paginator->sort('phone') ?></th>
+                                <th><?= $this->Paginator->sort('report_to') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
-                        <?php $count = 1 ?>
-                        <?php foreach ($users as $key => $user): ?>
-                            <tr id="<?= $user->id; ?>">
-                                <td><?= $count ?></td>
-                                <td><?= h($user->name) ?></td>
+                        <?php (isset($this->request['url']['page'])) ? $count = $this->request['url']['page'] * $this->Paginator->param('perPage') : $count =  1 *$this->Paginator->param('perPage');?>
+
+                        <?php foreach ($users as $key => $user):?>
+                            <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
+                                <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= h($user->email) ?></td>
-								<td><?php if($user->status=='1'){ echo __('Active');}
-								else if($user->status=='0'){echo __('Disabled');}
-								else if($user->status=='2'){echo __('Pending activiation');}
-								else if($user->status=='3'){echo __('Pending update profile');}
-								else if($user->status=='4'){echo __('Password reset requested');}  ?></td>
-								<td><?php if($user->date_created){
-											echo h(date("d/m/Y H:i:s",strtotime($user->date_created)));
-												}
-											?></td>
+                                <td><?= h($user->password) ?></td>
+                                <td><?= h($user->name) ?></td>
+                                <td><?= h($user->ic_number) ?></td>
+                                <td><?= h($user->phone) ?></td>
+                                <td><?php foreach($reportTo as $key => $report_to): 
+											if($key == $user->report_to){
+												echo $report_to;
+											}
+									?>
+								
+								<?php endforeach; ?>
+								</td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $user->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>
@@ -39,7 +44,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        <?php $count++; endforeach ?>
+                        <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>

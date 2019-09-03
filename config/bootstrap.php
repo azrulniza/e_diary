@@ -143,7 +143,7 @@ if (!Configure::read('App.fullBaseUrl')) {
     unset($httpHost, $s);
 }
 
-Cache::config(Configure::consume('Cache'));
+Cache::setConfig(Configure::consume('Cache'));
 ConnectionManager::config(Configure::consume('Datasources'));
 Email::configTransport(Configure::consume('EmailTransport'));
 Email::config(Configure::consume('Email'));
@@ -222,11 +222,7 @@ Configure::load('templatesConfig','default');
 Configure::load('language', 'default');
 
 // see alias at table roles
-define('SUPER_ADMIN', 1);
-define('SYSTEM_ADMIN', 2);
-define('MASTER_RESELLER', 3);
-define('RESELLER', 4);
-define('CLIENT', 5);
-define('TECHNICAL', 6);
-define('CONTENT', 7);
-define('OEM', 8);
+define('MASTER_ADMIN', 1);
+define('SUPERVISOR', 2);
+define('ADMIN', 3);
+define('STAFF', 4);

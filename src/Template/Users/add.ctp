@@ -9,19 +9,21 @@
                 <div class="box-body">
                     <div class="form-group">
                         <?php
-                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('password', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false]);
+						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false]);
+                        echo $this->Form->input('ic_number', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('report_to', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $reportTo]);
+                        echo $this->Form->input('organizations._ids', ['label'=>'Department','class' => 'form-control','options' => $organizations,'multiple' => 'option']);
                         echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus]);
-						echo $this->Form->input('department_id', ['options' => $departments, 'empty' => __('-- Please Select --'), 'class' => 'form-control']);
                         echo $this->Form->input('roles._ids', ['options' => $roles, 'multiple' => 'checkbox']);
-                        //echo $this->Form->input('clients._ids', ['options' => $clients, 'multiple' => 'checkbox']);
                         ?>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+                    <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
                     <?= $this->Html->link(__('Cancel'), ['controller' => 'users'], ['class' => 'btn btn-warning']) ?>
                 </div>
             </div>

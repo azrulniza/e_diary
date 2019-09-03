@@ -33329,3 +33329,973 @@ Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
 
 
 
+2019-09-03 12:16:34 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Cache/Cache.php, line 179]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE/src/Cache/Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE/src/Cache/Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE/src/I18n/I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE/src/I18n/I18n.php, line 203
+__d - CORE/src/I18n/functions.php, line 88
+Cake\Controller\Component\AuthComponent::_setDefaults() - CORE/src/Controller/Component/AuthComponent.php, line 500
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 304
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Cache/Cache.php, line 179]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE/src/Cache/Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE/src/Cache/Cache.php, line 237
+Cake\Cache\Cache::read() - CORE/src/Cache/Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE/src/Database/Schema/CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE/src/ORM/Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE/src/ORM/Query.php, line 269
+Cake\ORM\Query::__construct() - CORE/src/ORM/Query.php, line 167
+Cake\ORM\Table::query() - CORE/src/ORM/Table.php, line 1776
+Cake\ORM\Table::find() - CORE/src/ORM/Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Inflector.php, line 575]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Inflector::singularize() - CORE/src/Utility/Inflector.php, line 575
+Cake\Utility\Inflector::classify() - CORE/src/Utility/Inflector.php, line 714
+Cake\ORM\Table::getEntityClass() - CORE/src/ORM/Table.php, line 788
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 186
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 1143
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 309
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 1088
+Cake\ORM\Query::toArray() - CORE/src/Datasource/QueryTrait.php, line 326
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 319
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/Helper/UrlHelper.php, line 169]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\View\Helper\UrlHelper::assetUrl() - CORE/src/View/Helper/UrlHelper.php, line 169
+Cake\View\Helper\UrlHelper::script() - CORE/src/View/Helper/UrlHelper.php, line 138
+Cake\View\Helper\HtmlHelper::script() - CORE/src/View/Helper/HtmlHelper.php, line 556
+include - APP/Template/Dashboards/index.ctp, line 2
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/Helper/UrlHelper.php, line 172]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\View\Helper\UrlHelper::assetUrl() - CORE/src/View/Helper/UrlHelper.php, line 172
+Cake\View\Helper\UrlHelper::script() - CORE/src/View/Helper/UrlHelper.php, line 138
+Cake\View\Helper\HtmlHelper::script() - CORE/src/View/Helper/HtmlHelper.php, line 556
+include - APP/Template/Dashboards/index.ctp, line 2
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/Helper/UrlHelper.php, line 187]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\View\Helper\UrlHelper::assetUrl() - CORE/src/View/Helper/UrlHelper.php, line 187
+Cake\View\Helper\UrlHelper::script() - CORE/src/View/Helper/UrlHelper.php, line 138
+Cake\View\Helper\HtmlHelper::script() - CORE/src/View/Helper/HtmlHelper.php, line 556
+include - APP/Template/Dashboards/index.ctp, line 2
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match_all() [<a href='https://secure.php.net/function.preg-match-all'>function.preg-match-all</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/StringTemplate.php, line 183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match_all - [internal], line ??
+Cake\View\StringTemplate::_compileTemplates() - CORE/src/View/StringTemplate.php, line 183
+Cake\View\StringTemplate::add() - CORE/src/View/StringTemplate.php, line 160
+Cake\View\Helper\HtmlHelper::templater() - CORE/src/View/StringTemplateTrait.php, line 112
+Cake\View\Helper\HtmlHelper::script() - CORE/src/View/Helper/HtmlHelper.php, line 566
+include - APP/Template/Dashboards/index.ctp, line 2
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/StringTemplate.php, line 318]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\View\StringTemplate::_formatAttribute() - CORE/src/View/StringTemplate.php, line 318
+Cake\View\StringTemplate::formatAttributes() - CORE/src/View/StringTemplate.php, line 291
+Cake\View\Helper\FormHelper::create() - CORE/src/View/Helper/FormHelper.php, line 515
+include - APP/Template/Dashboards/index.ctp, line 46
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Text.php, line 1183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Utility\Text::slug() - CORE/src/Utility/Text.php, line 1183
+Cake\View\Helper\FormHelper::_domId() - CORE/src/View/Helper/IdGeneratorTrait.php, line 96
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1172
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Text.php, line 1183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Utility\Text::slug() - CORE/src/Utility/Text.php, line 1183
+Cake\View\Helper\FormHelper::_domId() - CORE/src/View/Helper/IdGeneratorTrait.php, line 96
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1172
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Text.php, line 1183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Utility\Text::slug() - CORE/src/Utility/Text.php, line 1183
+Cake\View\Helper\FormHelper::_domId() - CORE/src/View/Helper/IdGeneratorTrait.php, line 96
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1172
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:34 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php, line 748]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\View\Helper\FormHelper::_secure() - CORE/src/View/Helper/FormHelper.php, line 748
+Cake\View\Helper\FormHelper::widget() - CORE/src/View/Helper/FormHelper.php, line 2890
+Cake\View\Helper\FormHelper::select() - CORE/src/View/Helper/FormHelper.php, line 2184
+Cake\View\Helper\FormHelper::_getInput() - CORE/src/View/Helper/FormHelper.php, line 1320
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1213
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Cache/Cache.php, line 179]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE/src/Cache/Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE/src/Cache/Cache.php, line 237
+Cake\I18n\I18n::translators() - CORE/src/I18n/I18n.php, line 79
+Cake\I18n\I18n::getTranslator() - CORE/src/I18n/I18n.php, line 203
+__d - CORE/src/I18n/functions.php, line 88
+Cake\Controller\Component\AuthComponent::_setDefaults() - CORE/src/Controller/Component/AuthComponent.php, line 500
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 304
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Routing/Router.php, line 912]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Routing\Router::normalize() - CORE/src/Routing/Router.php, line 912
+Cake\Controller\Component\AuthComponent::_isLoginAction() - CORE/src/Controller/Component/AuthComponent.php, line 445
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 310
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (2): preg_match() [<a href='https://secure.php.net/function.preg-match'>function.preg-match</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Hash.php, line 137]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_match - [internal], line ??
+Cake\Utility\Hash::extract() - CORE/src/Utility/Hash.php, line 137
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 363
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (512): Cache engine Cake\Cache\Engine\ApcuEngine is not properly configured. in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Cache/Cache.php, line 179]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+Cake\Cache\Cache::_buildEngine() - CORE/src/Cache/Cache.php, line 179
+Cake\Cache\Cache::engine() - CORE/src/Cache/Cache.php, line 237
+Cake\Cache\Cache::read() - CORE/src/Cache/Cache.php, line 379
+Cake\Database\Schema\CachedCollection::describe() - CORE/src/Database/Schema/CachedCollection.php, line 57
+Cake\ORM\Table::getSchema() - CORE/src/ORM/Table.php, line 560
+Cake\ORM\Query::addDefaultTypes() - CORE/src/ORM/Query.php, line 269
+Cake\ORM\Query::__construct() - CORE/src/ORM/Query.php, line 167
+Cake\ORM\Table::query() - CORE/src/ORM/Table.php, line 1776
+Cake\ORM\Table::find() - CORE/src/ORM/Table.php, line 1362
+TinyAuth\Auth\TinyAuthorize::_getAvailableRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 317
+TinyAuth\Auth\TinyAuthorize::_mapped() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 426
+TinyAuth\Auth\TinyAuthorize::_getUserRoles() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 365
+TinyAuth\Auth\TinyAuthorize::_check() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/AclTrait.php, line 121
+TinyAuth\Auth\TinyAuthorize::authorize() - ROOT/vendor/dereuromark/cakephp-tinyauth/src/Auth/TinyAuthorize.php, line 55
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 540
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 326
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 276
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 353
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 330
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 114
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 681
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 115
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Text.php, line 1183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Utility\Text::slug() - CORE/src/Utility/Text.php, line 1183
+Cake\View\Helper\FormHelper::_domId() - CORE/src/View/Helper/IdGeneratorTrait.php, line 96
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1172
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Text.php, line 1183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Utility\Text::slug() - CORE/src/Utility/Text.php, line 1183
+Cake\View\Helper\FormHelper::_domId() - CORE/src/View/Helper/IdGeneratorTrait.php, line 96
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1172
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/Utility/Text.php, line 1183]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\Utility\Text::slug() - CORE/src/Utility/Text.php, line 1183
+Cake\View\Helper\FormHelper::_domId() - CORE/src/View/Helper/IdGeneratorTrait.php, line 96
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1172
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+
+2019-09-03 12:16:50 Warning: Warning (2): preg_replace() [<a href='https://secure.php.net/function.preg-replace'>function.preg-replace</a>]: JIT compilation failed: no more memory in [/Applications/MAMP/htdocs/diary/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php, line 748]
+Request URL: /
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+preg_replace - [internal], line ??
+Cake\View\Helper\FormHelper::_secure() - CORE/src/View/Helper/FormHelper.php, line 748
+Cake\View\Helper\FormHelper::widget() - CORE/src/View/Helper/FormHelper.php, line 2890
+Cake\View\Helper\FormHelper::select() - CORE/src/View/Helper/FormHelper.php, line 2184
+Cake\View\Helper\FormHelper::_getInput() - CORE/src/View/Helper/FormHelper.php, line 1320
+Cake\View\Helper\FormHelper::control() - CORE/src/View/Helper/FormHelper.php, line 1213
+Cake\View\Helper\FormHelper::input() - CORE/src/View/Helper/FormHelper.php, line 1258
+include - APP/Template/Dashboards/index.ctp, line 50
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 1419
+Cake\View\View::_render() - CORE/src/View/View.php, line 1380
+Cake\View\View::render() - CORE/src/View/View.php, line 880
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 796
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 126
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 94
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 67
+[main] - ROOT/webroot/index.php, line 36
+
+
+

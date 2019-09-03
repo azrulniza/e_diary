@@ -42,7 +42,7 @@
 <br>
 
 <div class="col-xs-12">
-        <button type="submit" class="btn btn-primary btn-block btn-flat"><?= __('Sign In') ?></button>
+        <button type="submit" class="btn btn-success btn-block btn-flat"><?= __('Sign In') ?></button>
     </div><!-- /.col -->
 	
 

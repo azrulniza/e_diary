@@ -9,7 +9,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => false,
+    'debug' => true,
 
     /**
      * Configure basic information about the application.
@@ -264,16 +264,16 @@ return [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
-            'host' => '10.0.46.32',
+            'host' => 'localhost',
             /**
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
              */
             //'port' => 'nonstandard_port_number',
-            'username' => 'uaweRT3z',
-            'password' => '0&@a$nnMx5q',
-            'database' => 'i3d_reseller_staging_v12',
+            'username' => 'root',
+            'password' => 'root',
+            'database' => 'e_diary',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,

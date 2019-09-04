@@ -52,7 +52,11 @@ class DashboardsController extends AppController
         }
         $users = $this->Users->find('list');
         $departments = $this->Organizations->find('list');
-        $this->set(compact('user', 'userRoles','departments','users','departmentSelected','userSelected'));
+		$staff_absent = 2;
+		$staff_working = 10;
+		$notifications = 3;
+		$staff_timeoff = 1;
+        $this->set(compact('user', 'userRoles','departments','users','departmentSelected','userSelected','staff_absent','staff_working','notifications','staff_timeoff'));
         $this->set('_serialize', ['dashboard']);
     }
     

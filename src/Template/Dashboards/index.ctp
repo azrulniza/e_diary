@@ -22,21 +22,6 @@ $this->Html->script('dashboard');
 			}});
 		});
 	});
-	
-	$( document ).ready(function() {
-		
-		$(".expiry").change(function(){
-		var id = $(this).val();
-		var package_id = $(".package").val();
-		$.ajax({
-			type : "POST",
-			url  : getAppVars('basepath').basePath + 'product_keys/getExpiryKeycode' + '?id=' + id + '&package_id=' + package_id, //pass query string to server
-			success: function(data){
-				$("input[name='total_key']").val(data);
-				$(".keys").html('<?php echo __('Available key'). " : "?>' + data);
-			}});
-		});
-	});
 </script>
 <div class="row">
     <div class="col-md-12">
@@ -44,10 +29,10 @@ $this->Html->script('dashboard');
             <div class="box-body">
 			    <?php $this->Form->templates($form_templates['shortForm']); ?>
                 <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
-					<div class="form-group">
-					<?php if ($userRoles->hasRole(['Master Admin','Admin'])) :?>
+					<div class="form-group" style="padding-left:30%;">
+					<?php if ($userRoles->hasRole(['Master Admin'])) :?>
 						<?php
- 							echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
+ 							echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 						?>		
 					<?php endif; ?>
 					<?php if (!$userRoles->hasRole(['Staff'])) :?>

@@ -39,18 +39,19 @@ class DashboardsController extends AppController
         $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
         
         if ($userRoles->hasRole(['Master Admin'])) {
-          
+			$users = $this->Users->find('list');
         }else  if ($userRoles->hasRole(['Supervisor'])) {
-          
+			$users = $this->Users->find()->where(['report_to'=>$userId]);
+			foreach($users as $user){
+				$user_ids[] = $user->id;
+			}
+			$users = $this->Users->find('list')->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId]);
         }else  if ($userRoles->hasRole(['Admin'])) {
-            
-        }else{
-            
+            $users = $this->Users->find('list')->where(['report_to'=>$userId]);
         }
         if($userSelected){
             $user = $this->Users->find()->where(['id' => $userSelected])->first();
         }
-        $users = $this->Users->find('list');
         $departments = $this->Organizations->find('list');
 		$staff_absent = 2;
 		$staff_working = 10;
@@ -64,8 +65,20 @@ class DashboardsController extends AppController
     {
         $this->loadModel('Users');
         $department_id = $_GET['id'];
-        
-        $users = $this->Users->find()->contain(['Organizations']);
+        $userId = $this->AuthUser->id();
+		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		if ($userRoles->hasRole(['Master Admin'])) {
+			$users = $this->Users->find()->contain(['Organizations']);
+        }else  if ($userRoles->hasRole(['Supervisor'])) {
+			$users = $this->Users->find()->where(['report_to'=>$userId]);
+			foreach($users as $user){
+				$user_ids[] = $user->id;
+			}
+			$users = $this->Users->find()->contain(['Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId]);
+        }else if($userRoles->hasRole(['Admin'])){
+			$users = $this->Users->find()->contain(['Organizations'])->where(['report_to'=> $userId]);
+		}
         $users->matching('Organizations', function ($q) use ($department_id){
                                             return $q->where(['Organizations.id ' => $department_id]);
                                     });

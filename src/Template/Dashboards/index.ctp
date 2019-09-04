@@ -27,8 +27,8 @@ $this->Html->script('dashboard');
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-body">
-			    <?php //$this->Form->templates($form_templates['shortForm']); ?>
-                <?php //$this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
+			    <?php $this->Form->templates($form_templates['shortForm']); ?>
+                <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
 					<div class="form-group" style="padding-left:30%;">
 					<?php if ($userRoles->hasRole(['Master Admin'])) :?>
 						<?php
@@ -37,11 +37,11 @@ $this->Html->script('dashboard');
 					<?php endif; ?>
 					<?php if (!$userRoles->hasRole(['Staff'])) :?>
 						<?php
-							echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control','options' => $users, 'empty'=>__('All'),'value'=>$userSelected,'style'=>'width:40%']);
+							echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users, 'empty'=>__('All'),'value'=>$userSelected,'style'=>'width:40%']);
 						?>
 					<?php endif; ?>
 					</div>
-				<?php //$this->Form->end() ?>
+				<?= $this->Form->end() ?>
 							
 				<div class="col-md-3 col-sm-4 col-xs-8">
 					  <div class="small-box bg-aqua">

@@ -2428,16 +2428,16 @@ msgstr "Tambah Tetapan"
 msgid "Staff Management"
 msgstr "Pengurusan Kakitangan"
 
-msgid "Add Staff"
-msgstr "Tambah Kakitangan"
+msgid "Create User"
+msgstr "Tambah Pengguna"
 
-msgid "List Staff"
-msgstr "Senarai Kakitangan"
+msgid "List User"
+msgstr "Senarai Pengguna"
 
 msgid "Department"
 msgstr "Jabatan"
 
-msgid "Add Department"
+msgid "Create Department"
 msgstr "Tambah Jabatan"
 
 msgid "List Department"
@@ -2460,3 +2460,21 @@ msgstr "Jabatan"
 
 msgid "Staffs"
 msgstr "Kakitangan"
+
+msgid "Time Off"
+msgstr ""
+
+msgid "Create Time Off"
+msgstr ""
+
+msgid "List Time Off"
+msgstr ""
+
+msgid "Attendance"
+msgstr "Kedatangan"
+
+msgid "List Attendance"
+msgstr "Senarai Kedatangan"
+
+msgid "Reports"
+msgstr "Laporan"

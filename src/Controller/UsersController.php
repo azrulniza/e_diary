@@ -46,12 +46,14 @@ class UsersController extends AppController
         }else if ($this->AuthUser->hasRole(SUPERVISOR)) {
 
             $query->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [STAFF], 'Users.id !=' => 1]);
+                return $q->where(['Roles.id IN' => [STAFF,ADMIN], 'Users.id !=' => 1]);
             });
 
         }else if ($this->AuthUser->hasRole(ADMIN)) {
 
-
+			$query->matching('Roles', function ($q) {
+                return $q->where(['Roles.id IN' => [STAFF], 'Users.id !=' => 1]);
+            });
         }
 		foreach($query as $user){
 			$heads = $this->Users->find()->where(['id'=> $user->report_to]);
@@ -88,10 +90,7 @@ class UsersController extends AppController
     {
 		$this->userStatus = [
             1 => __('Active'),
-            0 => __('Disabled'),
-            2 => __('Pending activation'),
-            3 => __('Pending update profile'),
-            4 => __('Password reset requested')];
+            0 => __('Disabled')];
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -111,16 +110,16 @@ class UsersController extends AppController
             }) */
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
-			$role=array(1);
+			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 
 		}else if($this->AuthUser->hasRole(ADMIN)){
 			//roles
-			$role=array(1,2);
+			$role=array(1,2,3);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			$reportTo = $this->Users->find('list')->contain('Roles');
 			$reportTo->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+					return $q->where(['Roles.id IN' => [STAFF]]);
 				});
 
 		}
@@ -143,6 +142,9 @@ class UsersController extends AppController
             'contain' => ['Organizations', 'Roles']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			 if($this->request->data['new_password']){
+                $this->request->data['password']  = $this->request->data['new_password'];
+            }
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -156,12 +158,12 @@ class UsersController extends AppController
 
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
-			$role=array(1);
+			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 
 		}else if($this->AuthUser->hasRole(ADMIN)){
 			//roles
-			$role=array(1,2);
+			$role=array(1,2,3);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 
 

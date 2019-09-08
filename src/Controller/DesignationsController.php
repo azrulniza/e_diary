@@ -19,6 +19,9 @@ class DesignationsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Organizations']
+        ];
         $designations = $this->paginate($this->Designations);
 
         $this->set(compact('designations'));
@@ -34,7 +37,7 @@ class DesignationsController extends AppController
     public function view($id = null)
     {
         $designation = $this->Designations->get($id, [
-            'contain' => ['UserDesignations']
+            'contain' => ['Organizations', 'UserDesignations']
         ]);
 
         $this->set('designation', $designation);
@@ -57,7 +60,8 @@ class DesignationsController extends AppController
             }
             $this->Flash->error(__('The designation could not be saved. Please, try again.'));
         }
-        $this->set(compact('designation'));
+        $organizations = $this->Designations->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('designation', 'organizations'));
     }
 
     /**
@@ -81,7 +85,8 @@ class DesignationsController extends AppController
             }
             $this->Flash->error(__('The designation could not be saved. Please, try again.'));
         }
-        $this->set(compact('designation'));
+        $organizations = $this->Designations->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('designation', 'organizations'));
     }
 
     /**

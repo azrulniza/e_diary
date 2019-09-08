@@ -7,8 +7,8 @@
 				
 				$('#img_prev')
 					.attr('src', e.target.result)
-					.width(200)
-					.height(200)
+					.width(100)
+					.height(100)
 					.show();
 				$('#none_prev').hide();
 			};
@@ -31,7 +31,7 @@
 							<div class="input file">
 								<label for="image">
 									<img id="img_prev" class="img-circle" src="#" style="display:none;"/>
-									<i id="none_prev" class="fa fa-user fa-4x" aria-hidden="true"></i>
+									<i id="none_prev" class="fa fa-user fa-5x" aria-hidden="true"></i>
 								</label>
 								<input type="file" name="image" class="form-control" id="image" style="width:40%;" onchange="readURL(this);">
 							</div>
@@ -45,6 +45,7 @@
 						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);                        
                         echo $this->Form->input('report_to', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;']);
                         echo $this->Form->input('organizations._ids', ['label'=>__('Department'),'class' => 'form-control','options' => $organizations,'multiple' => false,'style'=>'width:50%;']);
+						echo $this->Form->input('designations._ids', ['class' => 'form-control','options' => $designations,'multiple' => false,'style'=>'width:50%;']);
                         echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);
                         echo $this->Form->input('roles._ids', ['options' => $roles, 'multiple' => 'checkbox','style'=>'width:50%;']);
                         ?>

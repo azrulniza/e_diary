@@ -9,8 +9,9 @@
                 <div class="box-body">
                     <div class="form-group">
                         <?php
-                        echo $this->Form->input('gred', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('gred', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('organization_id', ['options' => $organizations, 'empty' => __("--Please Select--"), 'class' => 'form-control']);
                         ?>
                     </div>
                 </div>

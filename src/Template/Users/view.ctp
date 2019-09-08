@@ -3,7 +3,11 @@
         <div class="users view info-box">
             <div class="box box-info">
                 <span class="info-box-icon bg-aqua">
-                    <i class="fa fa-user"></i>
+                    <?php if($user->image != null) :?>
+						<img id="prev_image" class="img-circle" style="width:100px;height:100px;" src="<?php echo $this->Url->build( '/' ).$user->image; ?>"/>
+					<?php else: ?>
+						<i class="fa fa-user"></i>
+					<?php endif; ?>
                 </span>
                 <div class="info-box-content">
                     <div class="box-header">
@@ -15,8 +19,6 @@
                             <dd><?= h($user->email) ?></dd>
                             <dt><?= __('Name') ?></dt>
                             <dd><?= h($user->name) ?></dd>
-                            <dt><?= __('Id') ?></dt>
-                            <dd><?= $this->Number->format($user->id) ?></dd>
                             <dt><?= __('Ic Number') ?></dt>
                             <dd><?= h($user->ic_number) ?></dd>
                             <dt><?= __('Phone') ?></dt>

@@ -11,10 +11,12 @@
                     </div>
                     <div class="box-body">
                         <dl class="dl-horizontal">
-                            <dt><?= __('Gred') ?></dt>
-                            <dd><?= h($designation->gred) ?></dd>
                             <dt><?= __('Name') ?></dt>
                             <dd><?= h($designation->name) ?></dd>
+                            <dt><?= __('Gred') ?></dt>
+                            <dd><?= h($designation->gred) ?></dd>
+                            <dt><?= __('Organization') ?></dt>
+                            <dd><?= $designation->has('organization') ? $this->Html->link($designation->organization->name, ['controller' => 'Organizations', 'action' => 'view', $designation->organization->id]) : '' ?></dd>
                         </dl>
                     </div>
                 </div>

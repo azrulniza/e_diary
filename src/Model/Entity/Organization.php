@@ -15,7 +15,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $mdate
  * @property int|null $status
  *
- * @property \App\Model\Entity\UserOrganization[] $user_organizations
+ * @property \App\Model\Entity\User[] $users
  */
 class Organization extends Entity
 {
@@ -36,6 +36,6 @@ class Organization extends Entity
         'cdate' => true,
         'mdate' => true,
         'status' => true,
-        'user_organizations' => true
+        'users' => true
     ];
 }

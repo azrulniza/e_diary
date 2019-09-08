@@ -69,19 +69,16 @@ class DashboardsController extends AppController
 		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
         $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
 		if ($userRoles->hasRole(['Master Admin'])) {
-			$users = $this->Users->find()->contain(['Organizations']);
+			$users = $this->Users->find();
         }else  if ($userRoles->hasRole(['Supervisor'])) {
 			$users = $this->Users->find()->where(['report_to'=>$userId]);
 			foreach($users as $user){
 				$user_ids[] = $user->id;
 			}
-			$users = $this->Users->find()->contain(['Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId]);
+			$users = $this->Users->find()->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId]);
         }else if($userRoles->hasRole(['Admin'])){
 			$users = $this->Users->find()->contain(['Organizations'])->where(['report_to'=> $userId]);
 		}
-        $users->matching('Organizations', function ($q) use ($department_id){
-                                            return $q->where(['Organizations.id ' => $department_id]);
-                                    });
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
         $this->viewBuilder()->layout('ajax');

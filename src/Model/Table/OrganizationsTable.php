@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Organizations Model
  *
- * @property |\Cake\ORM\Association\BelongsToMany $Users
+ * @property |\Cake\ORM\Association\HasMany $UserOrganizations
  *
  * @method \App\Model\Entity\Organization get($primaryKey, $options = [])
  * @method \App\Model\Entity\Organization newEntity($data = null, array $options = [])
@@ -36,10 +36,8 @@ class OrganizationsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsToMany('Users', [
-            'foreignKey' => 'organization_id',
-            'targetForeignKey' => 'user_id',
-            'joinTable' => 'users_organizations'
+        $this->hasMany('UserOrganizations', [
+            'foreignKey' => 'organization_id'
         ]);
     }
 

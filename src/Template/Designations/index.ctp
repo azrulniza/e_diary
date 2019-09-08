@@ -8,8 +8,9 @@
                         <thead>
                             <tr>
                                 <th><?= $this->Paginator->sort('id') ?></th>
-                                <th><?= $this->Paginator->sort('gred') ?></th>
                                 <th><?= $this->Paginator->sort('name') ?></th>
+                                <th><?= $this->Paginator->sort('gred') ?></th>
+                                <th><?= $this->Paginator->sort('organization_id') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
@@ -18,8 +19,11 @@
                         <?php foreach ($designations as $key => $designation): ?>
                             <tr id="<?= $designation->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $this->Number->format($designation->id) ?></td>
-                                <td><?= h($designation->gred) ?></td>
                                 <td><?= h($designation->name) ?></td>
+                                <td><?= h($designation->gred) ?></td>
+                                <td>
+                                    <?= $designation->has('organization') ? $this->Html->link($designation->organization->name, ['controller' => 'Organizations', 'action' => 'view', $designation->organization->id]) : '' ?>
+                                </td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $designation->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>

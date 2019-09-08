@@ -60,7 +60,10 @@ class UsersTable extends Table
         $this->hasMany('UserCardsLogs', [
             'foreignKey' => 'user_id'
         ]);
-		$this->hasMany('UserDesignations', [
+        $this->hasMany('UserDesignations', [
+            'foreignKey' => 'user_id'
+        ]);
+		$this->hasMany('UserOrganizations', [
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('UserLeaves', [
@@ -74,11 +77,6 @@ class UsersTable extends Table
         ]);
         $this->hasMany('UserRoleLogs', [
             'foreignKey' => 'user_id'
-        ]);
-        $this->belongsToMany('Organizations', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'organization_id',
-            'joinTable' => 'users_organizations'
         ]);
         $this->belongsToMany('Roles', [
             'foreignKey' => 'user_id',

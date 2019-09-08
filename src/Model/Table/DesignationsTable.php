@@ -9,12 +9,13 @@ use Cake\Validation\Validator;
 /**
  * Designations Model
  *
- * @property \App\Model\Table\UserDesignationsTable|\Cake\ORM\Association\HasMany $UserDesignations
+ * @property &\Cake\ORM\Association\BelongsTo $Organizations
+ * @property \App\Model\Table\UserDesignationsTable&\Cake\ORM\Association\HasMany $UserDesignations
  *
  * @method \App\Model\Entity\Designation get($primaryKey, $options = [])
  * @method \App\Model\Entity\Designation newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Designation[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Designation|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Designation|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Designation saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Designation patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Designation[] patchEntities($entities, array $data, array $options = [])
@@ -36,6 +37,9 @@ class DesignationsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->belongsTo('Organizations', [
+            'foreignKey' => 'organization_id'
+        ]);
         $this->hasMany('UserDesignations', [
             'foreignKey' => 'designation_id'
         ]);
@@ -54,14 +58,14 @@ class DesignationsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->scalar('gred')
-            ->maxLength('gred', 255)
-            ->notEmptyString('gred');
-
-        $validator
             ->scalar('name')
             ->maxLength('name', 255)
             ->notEmptyString('name');
+
+        $validator
+            ->scalar('gred')
+            ->maxLength('gred', 255)
+            ->notEmptyString('gred');
 
         $validator
             ->dateTime('cdate')
@@ -72,5 +76,19 @@ class DesignationsTable extends Table
             ->allowEmptyDateTime('mdate');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
+
+        return $rules;
     }
 }

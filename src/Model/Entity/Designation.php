@@ -7,8 +7,9 @@ use Cake\ORM\Entity;
  * Designation Entity
  *
  * @property int $id
- * @property string $gred
  * @property string $name
+ * @property string $gred
+ * @property int|null $organization_id
  * @property \Cake\I18n\Time|null $cdate
  * @property \Cake\I18n\Time|null $mdate
  *
@@ -26,8 +27,9 @@ class Designation extends Entity
      * @var array
      */
     protected $_accessible = [
-        'gred' => true,
         'name' => true,
+        'gred' => true,
+        'organization_id' => true,
         'cdate' => true,
         'mdate' => true,
         'user_designations' => true

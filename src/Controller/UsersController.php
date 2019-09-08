@@ -91,13 +91,23 @@ class UsersController extends AppController
 		$this->userStatus = [
             1 => __('Active'),
             0 => __('Disabled')];
+		$this->loadModel('UsersOrganizations');
+		$this->loadModel('Organizations');
+		
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-			//var_dump($user);die();
+			$now = \Cake\I18n\Time::now();
             if ($this->Users->save($user)) {
+				$user_id = $this->Users->save($user)->id;
+				$userDept = $this->UsersOrganizations->newEntity();
+				$userDept->user_id = $user_id;
+				$userDept->organization_id = $_POST['department'];
+				$userDept->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+				$userDept->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+				$this->UsersOrganizations->save($userDept);
+				
                 $this->Flash->success(__('The user has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));

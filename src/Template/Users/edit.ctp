@@ -48,10 +48,16 @@
                         echo $this->Form->input('confirm_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter password confirmation'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false]);
                         echo $this->Form->input('ic_number', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true]);
                         echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('report_to', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $reportTo]);
-						echo $this->Form->input('organization', ['class' => 'form-control','options' => $organizations,'value'=>$selected_dept]);
-                        echo $this->Form->input('designation', ['class' => 'form-control','options' => $designations,'value'=>$selected_designation]);                        
-						echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus]);
+						if ($userRoles->hasRole(['Master Admin'])) :
+							echo $this->Form->input('report_to', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $reportTo]);						
+							echo $this->Form->input('organization', ['class' => 'form-control','options' => $organizations,'value'=>$selected_dept]);
+						else :
+							echo $this->Form->hidden('organization',['value'=>$selected_dept]);
+						endif;
+                        echo $this->Form->input('designation', ['class' => 'form-control','options' => $designations,'value'=>$selected_designation]);  
+                        if ($userRoles->hasRole(['Master Admin'])) :						
+							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus]);
+						endif;
 						echo $this->Form->input('roles._ids', ['options' => $roles,'multiple' => 'checkbox']);
                         ?>
                     </div>

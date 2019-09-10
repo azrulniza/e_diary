@@ -44,34 +44,57 @@ class UsersController extends AppController
 		if($search_name){
 			$search_name = trim($search_name," ");
 		}
+		$userId = $this->Auth->user()['id'];
 		$organizationSelected = $this->request->query('organization');
-		$currentUser = $this->Users->find()->contain(['Roles'])->where(['Users.id' => $this->Auth->user()['id']])->limit(1)->first();
+		$currentUser = $this->Users->find()->contain(['Roles'])->where(['Users.id' => $userId])->limit(1)->first();
         
 		//get roles
-		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => $this->Auth->user()['id']])->limit(1)->first();
+		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => $userId])->limit(1)->first();
 		$userRoles = $this->Users->Roles->initRolesChecker($user->roles);
 		if ($this->AuthUser->hasRole(MASTER_ADMIN)) {
 			if($organizationSelected != null){
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
+				if($search_name != null){
+					$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
 								return $q->where(['UserOrganizations.organization_id'=>$organizationSelected]);
 						})
-				->autoFields(true);
+					->autoFields(true)
+					->where(['Users.name LIKE '=>"%$search_name%"])
+					->where(['Users.status'=>1]);
+				}else{
+					$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
+								return $q->where(['UserOrganizations.organization_id'=>$organizationSelected]);
+						})
+					->autoFields(true)->where(['Users.status'=>1]);
+				}
+			}else if($search_name != null){
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.name LIKE'=>"%$search_name%"])->where(['Users.status'=>1]);
 			}else{
-				$query = $this->Users->find()->order(['Users.name' => 'ASC'])->contain('Roles')->where(['Users.status'=>1]);
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.status'=>1]);
 			}
         }else if ($this->AuthUser->hasRole(SUPERVISOR)) {
-			$query = $this->Users->find()->order(['Users.id' => 'DESC'])->contain('Roles');
-            $query->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [STAFF,ADMIN], 'Users.id !=' => 1]);
-            });
-
+			$users = $this->Users->find()->where(['report_to'=>$userId]);
+			foreach($users as $user){
+				$user_ids[] = $user->id;
+			}
+			if($search_name != null){
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.name LIKE '=>"%$search_name%"])->where(['Users.status'=>1]);
+			}else{
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.status'=>1]);
+			}
+			
         }else if ($this->AuthUser->hasRole(ADMIN)) {
-			$query = $this->Users->find()->order(['Users.id' => 'DESC'])->contain('Roles');
-			$query->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [STAFF], 'Users.id !=' => 1]);
-            });
+			$users = $this->Users->find()->where(['report_to'=>$userId]);
+			foreach($users as $user){
+				$user_ids[] = $user->id;
+			}
+			if($search_name != null){
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.name LIKE '=>"%$search_name%"])->where(['Users.status'=>1]);
+			}else{
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.status'=>1]);
+			}
+			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.status'=>1]);
         }else if ($this->AuthUser->hasRole(STAFF)) {
-			$query = $this->Users->find()->order(['Users.id' => 'DESC'])->contain('Roles')->where(['id'=>$currentUser->id,'Users.status'=>1]);
+			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$currentUser->id,'Users.status'=>1]);
 		}
 		foreach($query as $user){
 			$heads = $this->Users->find()->where(['id'=> $user->report_to]);
@@ -81,7 +104,7 @@ class UsersController extends AppController
 		}
 		$organizations = $this->Organizations->find('list', ['limit' => 200]);
         $users = $this->paginate($query);
-        $this->set(compact('users','reportTo','organizations','organizationSelected','userRoles'));
+        $this->set(compact('users','reportTo','organizations','organizationSelected','userRoles','search_name'));
     }
 
     /**
@@ -116,6 +139,8 @@ class UsersController extends AppController
 		$this->loadModel('Designations');
 		$userId = $this->AuthUser->id();
         $user = $this->Users->newEntity();
+		$user_role = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+		$userRoles = $this->Users->Roles->initRolesChecker($user_role->roles);
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();
@@ -192,14 +217,9 @@ class UsersController extends AppController
 			//roles
 			$role=array(1,2,3);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
-			$reportTo = $this->Users->find('list')->contain('Roles');
-			$reportTo->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [STAFF]]);
-				});
-
 		}
 		$userStatus = $this->userStatus;
-        $this->set(compact('user', 'organizations','designations', 'userStatus', 'reportTo', 'roles'));
+        $this->set(compact('user', 'organizations','designations', 'userStatus', 'reportTo', 'roles','userRoles'));
 		$this->set('_serialize', ['user']);
     }
 
@@ -219,6 +239,10 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => ['UserDesignations', 'UserOrganizations', 'Roles']
         ]);
+		$userId = $this->AuthUser->id();
+		$user_role = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+		$userRoles = $this->Users->Roles->initRolesChecker($user_role->roles);
+		$user_dept = $this->UserOrganizations->find()->where(['user_id'=> $userId])->first()->organization_id;
         if ($this->request->is(['patch', 'post', 'put'])) {
 			 if($this->request->data['new_password']){
                 $this->request->data['password']  = $this->request->data['new_password'];
@@ -268,7 +292,7 @@ class UsersController extends AppController
 				}else{
 					$userDept = $this->UserOrganizations->newEntity();
 					$userDept->user_id = $id;
-					$userDept->organization_id = $_POST['department'];
+					$userDept->organization_id = $_POST['organization'];
 					$userDept->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 					$userDept->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 					$this->UserOrganizations->save($userDept);
@@ -296,29 +320,29 @@ class UsersController extends AppController
         }
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
-
+			$designations = $this->Designations->find('list', ['limit' => 200]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
 			$role=array(1);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
-
+			
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=> $user_dept]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		}else if($this->AuthUser->hasRole(ADMIN)){
 			//roles
 			$role=array(1,2,3);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
-
-
+			
+			$designations = $this->Designations->find('list', ['limit' => 200]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		}
-        $designations = $this->Designations->find('list', ['limit' => 200]);
-        $organizations = $this->Organizations->find('list', ['limit' => 200]);
 		$reportTo = $this->Users->find('list')->contain('Roles');
-		$reportTo->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
-            });
 		$userStatus = $this->userStatus;
 		$selected_dept = $this->UserOrganizations->find()->where(['user_id'=> $id])->first()->organization_id;
 		$selected_designation = $this->UserDesignations->find()->where(['user_id'=> $id])->first()->designation_id;
-        $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation'));
+		$selected_reportTo = $this->Users->find()->where(['id'=> $id])->first()->report_to;
+        $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo'));
     }
 
     /**
@@ -344,6 +368,7 @@ class UsersController extends AppController
 	 public function login()
     {
 		$this->loadComponent('Captcha.Captcha');
+		$this->loadModel('UserLoginLogs');
 		
 		if ($this->request->is('post')) {
 			$this->Users->setCaptcha('<captcha>', $this->Captcha->getCode('<captcha>'));
@@ -357,41 +382,14 @@ class UsersController extends AppController
 					$currentUser = $this->Users->find()->contain(['Roles'])->where(['Users.id' => $user['id']])->first();
 
 					$user['Roles'] = $currentUser->roles;
-					//debug($user);die();
+					//var_dump($user);die();
 					$this->Auth->setUser($user);
 					
-					
-					$email = $this->request->query('email');
-					$key = $this->request->query('key');
-					$code = $this->request->query('code');
-					
-					if($email!=null && $code!=null){
-						$currentUser = $this->Users->find()->contain(['Roles'])->where(['Users.email' => $email])->first();
-				
-						$user_id=$currentUser->id;
-						$user_email=$currentUser->email;
-						$user_name=$currentUser->name;
-						
-						$users = $this->Users->find()->where(['id' => $user_id])->first();
-						
-						$this->Users->validator()->remove('roles');
-						$this->Users->patchEntity($users, $this->request->data);
+					$userLogins = $this->UserLoginLogs->newEntity();
+					$userLogins->user_id = $user['id'];
+					$userLogins->ip_address = $this->Users->get_client_ip();
+					$this->UserLoginLogs->save($userLogins);
 
-
-						if ($this->Users->save($users)) {
-							
-							$success = true;
-							
-							$users = $this->Auth->identify();
-							$users['Roles'] = $currentUser->roles;
-							$this->Auth->setUser($users);
-							return $this->redirect($this->Auth->redirectUrl());
-						} else {
-							$this->redirect('/users/login?');
-						}
-										
-					}
-		
 					return $this->redirect($this->Auth->redirectUrl());
 				} else {
 					$this->Flash->error(
@@ -446,4 +444,19 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
         $this->viewBuilder()->layout('public_reset');
     }
+	
+	public function getDesignation()
+	{
+		$this->loadModel('Designations');
+		$department_id = $_GET['id'];
+        $userId = $this->AuthUser->id();
+		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+		$userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		if ($userRoles->hasRole(['Master Admin'])) {
+			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id]);
+        }
+		$this->set(compact('designations'));
+        $this->set('_serialize', ['designations']);
+        $this->viewBuilder()->layout('ajax');
+	}
 }

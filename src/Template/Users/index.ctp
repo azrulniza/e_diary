@@ -4,15 +4,15 @@
             <div class="box-header">
 			<?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
 					<?php $this->Form->templates($form_templates['shortForm']); ?>
-                    <?= $this->Form->create('list',['type' => 'GET']) ?>
+                    <?= $this->Form->create('list',['type' => 'GET','autocomplete' => 'off']) ?>
 					
-					<?php
+					<?php if($userRoles->hasRole(['Master Admin'])):
                     echo $this->Form->input('organization', ['label' => __('Department'), 'type'=>'select','id'=>'listorganization','class' => 'form-control','options' => $organizations, 'empty'=>'All', 'value' => $organizationSelected]); echo "<br><br><br>";
-					?>
+					endif; ?>
 					
 					<?php
-                    echo $this->Form->input('search', ['label' => __('Name'), 'type'=>'text','class' => 'form-control','style'=>'width:345px; height:32px;']);
-					?><br>
+                    echo $this->Form->input('search', ['label' => __('Name'),'id'=>'myInput', 'type'=>'text','class' => 'form-control','style'=>'width:345px; height:32px;','value' => $search_name]);
+					?><br><br>
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="search"></label>
 						<div class="col-md-10"><button class="btn btn-primary" type="submit"><?php echo __('Search') ;?></button></div>
@@ -20,12 +20,13 @@
 					<?= $this->Form->end() ?>
 			<?php endif; ?>
 			</div>
+			<?php if ($users->count() > 0){ ?>
             <div class="box-body">
                 <div class="users index dataTable_wrapper table-responsive">
                     <table id="dataTables-users" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('id') ?></th>
+                                <th><?= $this->Paginator->sort('no') ?></th>
                                 <th><?= $this->Paginator->sort('email') ?></th>
                                 <th><?= $this->Paginator->sort('name') ?></th>
                                 <th><?= $this->Paginator->sort('department') ?></th>
@@ -37,13 +38,13 @@
                         <tbody class="ui-sortable">
                         <?php (isset($this->request['url']['page'])) ? $count = $this->request['url']['page'] * $this->Paginator->param('perPage') : $count =  1 *$this->Paginator->param('perPage');?>
 
-                        <?php foreach ($users as $key => $user): //var_dump($user);?>
+                        <?php foreach ($users as $key => $user): ?>
                             <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= h($user->email) ?></td>
                                 <td><?= h($user->name) ?></td>
-                                <td><?= h($user->organization) ?></td>
-                                <td><?= h($user->designation) ?></td>
+                                <td><?= h($user->user_organizations[0]->organization->name) ?></td>
+                                <td><?= h($user->user_designations[0]->designation->name) ?></td>
                                 <td><?php foreach($reportTo as $key => $report_to): 
 											if($key == $user->report_to){
 												echo $report_to;
@@ -75,6 +76,12 @@
                     <p><?= $this->Paginator->counter() ?></p>
                 </div>
             </div>
+			<?php }else {?>
+                    <div class="box-body">
+                        <?php echo __('No user found.') ?>
+                    </div>
+
+            <?php } ?>
         </div>
     </div>
 </div>

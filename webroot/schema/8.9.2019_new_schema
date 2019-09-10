@@ -35,14 +35,16 @@ ADD `leave_type_id` INT(11) DEFAULT NULL;
 ALTER TABLE user_leaves_logs
 ADD `remark` VARCHAR(255) DEFAULT NULL;
 
-CREATE TABLE `designations` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`gred` VARCHAR(255) NOT NULL DEFAULT '',
-	`name` VARCHAR(255) NOT NULL DEFAULT '',
-	`cdate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-	`mdate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`id`)
-)
+-- Dumping structure for table e_diary.designations
+CREATE TABLE IF NOT EXISTS `designations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `gred` varchar(255) NOT NULL DEFAULT '',
+  `organization_id` int(11) DEFAULT NULL,
+  `cdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `mdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user_designations` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -56,3 +58,5 @@ CREATE TABLE `user_designations` (
 INSERT INTO `menus` (`id`, `menu_group_id`, `parent_id`, `ordering`, `icon`, `label`, `description`, `controller`, `action`) VALUES (16, 1, 0, 7, '', 'Designation', 'User Designation', 'Designations', '');
 INSERT INTO `menus` (`id`, `menu_group_id`, `parent_id`, `ordering`, `icon`, `label`, `description`, `controller`, `action`) VALUES (17, 1, 16, 1, 'fa-circle', 'Add Designation', 'Add new Designation', 'Designations', 'add');
 INSERT INTO `menus` (`id`, `menu_group_id`, `parent_id`, `ordering`, `icon`, `label`, `description`, `controller`, `action`) VALUES (18, 1, 16, 2, 'fa-circle', 'List Designation', 'List Designation', 'Designations', 'index');
+
+RENAME `users_organizations` TO `user_organization`;

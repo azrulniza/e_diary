@@ -180,14 +180,14 @@ class UsersController extends AppController
 				$user_id = $this->Users->save($user)->id;
 				$userDept = $this->UserOrganizations->newEntity();
 				$userDept->user_id = $user_id;
-				$userDept->organization_id = $_POST['department'];
+				$userDept->organization_id = $this->request->data['organization'];
 				$userDept->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$userDept->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$this->UserOrganizations->save($userDept);
 				
 				$userDesg = $this->UserDesignations->newEntity();
 				$userDesg->user_id = $user_id;
-				$userDesg->designation_id = $_POST['designation'];
+				$userDesg->designation_id = $this->request->data['designation'];
 				$userDesg->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$userDesg->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$this->UserDesignations->save($userDesg);
@@ -283,7 +283,8 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
 				$now = \Cake\I18n\Time::now();
 				$chk_org = $this->UserOrganizations->find()->where(['user_id'=>$id])->first()->user_id;
-				if($chk_org){
+				if($_POST['organization']){
+					if($chk_org){
 					$query = $this->UserOrganizations->query();
 					$query->update()
 						->set(['organization_id' => $_POST['organization']])
@@ -297,7 +298,9 @@ class UsersController extends AppController
 					$userDept->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 					$this->UserOrganizations->save($userDept);
 				}
+				}
 				$chk_desg = $this->UserDesignations->find()->where(['user_id'=>$id])->first()->user_id;
+				if($_POST['designation']){
 				if($chk_desg){
 					$query = $this->UserDesignations->query();
 					$query->update()
@@ -312,16 +315,27 @@ class UsersController extends AppController
 					$userDesg->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 					$this->UserDesignations->save($userDesg);
 				}
+				}
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+		$selected_dept = $this->UserOrganizations->find()->where(['user_id'=> $id])->first()->organization_id;
+		$selected_designation = $this->UserDesignations->find()->where(['user_id'=> $id])->first()->designation_id;
+		$selected_reportTo = $this->Users->find()->where(['id'=> $id])->first()->report_to;
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
-			$designations = $this->Designations->find('list', ['limit' => 200]);
+			
 			$organizations = $this->Organizations->find('list', ['limit' => 200]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept]);
+			$reportTo = $this->Users->find('list')->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
+			return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);});
+			
+			$reportTo->matching('Roles', function ($q) {
+					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+				});
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
 			$role=array(1);
@@ -337,11 +351,7 @@ class UsersController extends AppController
 			$designations = $this->Designations->find('list', ['limit' => 200]);
 			$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		}
-		$reportTo = $this->Users->find('list')->contain('Roles');
 		$userStatus = $this->userStatus;
-		$selected_dept = $this->UserOrganizations->find()->where(['user_id'=> $id])->first()->organization_id;
-		$selected_designation = $this->UserDesignations->find()->where(['user_id'=> $id])->first()->designation_id;
-		$selected_reportTo = $this->Users->find()->where(['id'=> $id])->first()->report_to;
         $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo'));
     }
 
@@ -445,7 +455,7 @@ class UsersController extends AppController
         $this->viewBuilder()->layout('public_reset');
     }
 	
-	public function getDesignation()
+	public function getDetails()
 	{
 		$this->loadModel('Designations');
 		$department_id = $_GET['id'];
@@ -455,8 +465,15 @@ class UsersController extends AppController
 		if ($userRoles->hasRole(['Master Admin'])) {
 			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id]);
         }
-		$this->set(compact('designations'));
-        $this->set('_serialize', ['designations']);
+		$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
+		return $q->where(['UserOrganizations.organization_id'=>$department_id]);});
+		
+		$users->matching('Roles', function ($q) {
+                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+            });
+
+		$this->set(compact('designations','users'));
+        $this->set('_serialize', ['designations','users']);
         $this->viewBuilder()->layout('ajax');
 	}
 }

@@ -21,7 +21,7 @@
 			var id = $(this).val();
 			$.ajax({
 				type : "POST",
-				url  : getAppVars('basepath').basePath + 'users/getDesignation' + '?id=' + id, //pass query string to server
+				url  : getAppVars('basepath').basePath + 'users/getDetails' + '?id=' + id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
 						console.log(data);
@@ -31,6 +31,14 @@
 						$.each(data.designations, function(i, p) {
 							console.log(p);
 							$('#listdesignation').append($('<option></option>').val(p.id).html(p.name));
+						});				
+						
+						$("#listuser").empty();
+						$('#listuser').append($('<option value>--Please Select--</option>'));
+													
+						$.each(data.users, function(i, p) {
+							console.log(p);
+							$('#listuser').append($('<option></option>').val(p.id).html(p.name));
 						});
 			}});
 		});
@@ -56,19 +64,19 @@
 							</div>
 						</center>
                         <?php
-						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
+						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
 						echo $this->Form->input('ic_number', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
-						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
+						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('password', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
-						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);                        
-                        echo $this->Form->input('report_to', ['class' => 'form-control','placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;']);
-                        echo $this->Form->input('organizations._ids', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;']);
-						echo $this->Form->input('designations._ids', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;']);
+						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;','required'=>true]);                        
                         if ($userRoles->hasRole(['Master Admin'])) :
+							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
+							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
+							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true]);							
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);
+							echo $this->Form->input('roles._ids', ['options' => $roles, 'multiple' => 'checkbox','style'=>'width:50%;']);
 						endif;
-                        echo $this->Form->input('roles._ids', ['options' => $roles, 'multiple' => 'checkbox','style'=>'width:50%;']);
                         ?>
                     </div>
                 </div>

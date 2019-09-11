@@ -59,6 +59,13 @@ class UserOrganizationsTable extends Table
             ->nonNegativeInteger('id')
             ->allowEmptyString('id', null, 'create');
 
+        $validator
+            ->dateTime('cdate')
+            ->notEmptyDateTime('cdate');
+
+        $validator
+            ->dateTime('mdate')
+            ->notEmptyDateTime('mdate');
 
         return $validator;
     }

@@ -60,6 +60,12 @@ class UsersTable extends Table
         $this->hasMany('UserCardsLogs', [
             'foreignKey' => 'user_id'
         ]);
+        $this->hasMany('UserDesignations', [
+            'foreignKey' => 'user_id'
+        ]);
+		$this->hasMany('UserOrganizations', [
+            'foreignKey' => 'user_id'
+        ]);
         $this->hasMany('UserLeaves', [
             'foreignKey' => 'user_id'
         ]);
@@ -71,11 +77,6 @@ class UsersTable extends Table
         ]);
         $this->hasMany('UserRoleLogs', [
             'foreignKey' => 'user_id'
-        ]);
-        $this->belongsToMany('Organizations', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'organization_id',
-            'joinTable' => 'users_organizations'
         ]);
         $this->belongsToMany('Roles', [
             'foreignKey' => 'user_id',
@@ -125,8 +126,11 @@ class UsersTable extends Table
             ->allowEmptyString('name');
 
         $validator
-            ->allowEmptyString('ic_number');
-
+            ->allowEmptyString('ic_number')
+			->add('ic_number', 'valid', ['rule' => 'numeric'])
+                ->requirePresence('ic_number', 'create')
+                ->notEmpty('ic_number')
+                ->add('ic_number', 'unique', ['rule' => 'validateUnique', 'provider' => 'table', 'message' => __('Sorry. IC already exist')]);
         $validator
             ->allowEmptyString('phone');
 
@@ -154,6 +158,26 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
+		$rules->add($rules->isUnique(['ic_number']));
         return $rules;
     }
+	public function get_client_ip() {
+		$ipaddress = '';
+		if (isset($_SERVER['HTTP_CLIENT_IP']))
+			$ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+		else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+			$ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		else if(isset($_SERVER['HTTP_X_FORWARDED']))
+			$ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+		else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+			$ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+		else if(isset($_SERVER['HTTP_FORWARDED']))
+			$ipaddress = $_SERVER['HTTP_FORWARDED'];
+		else if(isset($_SERVER['REMOTE_ADDR']))
+			$ipaddress = $_SERVER['REMOTE_ADDR'];
+		else
+			$ipaddress = 'UNKNOWN';
+		
+		return $ipaddress;
+	}
 }

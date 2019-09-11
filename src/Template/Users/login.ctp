@@ -1,10 +1,10 @@
 <p class="login-box-msg"><?= __('Sign in to start your session') ?></p>
 <?= $this->Form->create() ?>
 <div class="form-group has-feedback">
-    <?= $this->Form->input('email', [
+    <?= $this->Form->input('ic_number', [
         'label' => false,
         'class' => 'form-control',
-        'placeholder' => __('E-mail'),
+        'placeholder' => __('Identity Card No.'),
         'required' => true
     ]) ?>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

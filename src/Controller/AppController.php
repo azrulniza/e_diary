@@ -53,7 +53,7 @@ class AppController extends Controller {
         $this->loadComponent('Auth', [
             'authenticate' => [
                 'Form' => [
-                    'fields' => ['username' => 'email']
+                    'fields' => ['username' => 'ic_number']
                 ]
             ],
             'authorize' => [

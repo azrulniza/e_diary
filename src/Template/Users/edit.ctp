@@ -80,7 +80,9 @@
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_designation]); 
 							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;']);						
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);
-							echo $this->Form->input('roles._ids', ['options' => $roles,'multiple' => 'checkbox','style'=>'width:50%;']);
+						endif;
+						if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
+							echo $this->Form->input('role', ['class' => 'form-control','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','required'=>true,'value'=> $selected_role]);
 						endif;
                         ?>
                     </div>

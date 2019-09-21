@@ -135,6 +135,7 @@ class UsersController extends AppController
             0 => __('Disabled')];
 		$this->loadModel('UserOrganizations');
 		$this->loadModel('UserDesignations');
+		$this->loadModel('UsersRoles');
 		$this->loadModel('Organizations');
 		$this->loadModel('Designations');
 		$userId = $this->AuthUser->id();
@@ -192,6 +193,13 @@ class UsersController extends AppController
 				$userDesg->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$this->UserDesignations->save($userDesg);
 				
+				$userRole = $this->UsersRoles->newEntity();
+				$userRole->user_id = $id;
+				$userRole->role_id = $_POST['role'];
+				$userRole->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+				$userRole->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+				$this->UsersRoles->save($userRole);
+				
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }
@@ -207,7 +215,7 @@ class UsersController extends AppController
 			$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
-			$role=array(1);
+			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			$organization = $this->UserOrganizations->find()->where(['user_id'=>$userId])->first()->organization_id;
 	        
@@ -233,6 +241,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
 		$this->loadModel('UserOrganizations');
+		$this->loadModel('UsersRoles');
 		$this->loadModel('Organizations');
 		$this->loadModel('Designations');
 		$this->loadModel('UserDesignations');
@@ -316,12 +325,30 @@ class UsersController extends AppController
 					$this->UserDesignations->save($userDesg);
 				}
 				}
+				$chk_role = $this->UsersRoles->find()->where(['user_id'=> $id])->first()->user_id;
+				if($_POST['role']){
+					if($chk_role){
+						$query = $this->UsersRoles->query();
+						$query->update()
+							->set(['role_id' => $_POST['role']])
+							->where(['user_id' => $id])
+							->execute();
+					}else{
+						$userRole = $this->UsersRoles->newEntity();
+						$userRole->user_id = $id;
+						$userRole->role_id = $_POST['role'];
+						$userRole->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+						$userRole->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+						$this->UsersRoles->save($userRole);
+					}
+				}
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+		$selected_role = $this->UsersRoles->find()->where(['user_id'=> $id])->first()->role_id;
 		$selected_dept = $this->UserOrganizations->find()->where(['user_id'=> $id])->first()->organization_id;
 		$selected_designation = $this->UserDesignations->find()->where(['user_id'=> $id])->first()->designation_id;
 		$selected_reportTo = $this->Users->find()->where(['id'=> $id])->first()->report_to;
@@ -338,7 +365,7 @@ class UsersController extends AppController
 				});
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
-			$role=array(1);
+			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=> $user_dept]);
@@ -352,7 +379,7 @@ class UsersController extends AppController
 			$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		}
 		$userStatus = $this->userStatus;
-        $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo'));
+        $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo','selected_role'));
     }
 
     /**

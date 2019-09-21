@@ -9,10 +9,10 @@
                 <div class="box-body">
                     <div class="form-group">
                         <?php
-                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('address', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->input('address', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
                         ?>
                     </div>
                 </div>

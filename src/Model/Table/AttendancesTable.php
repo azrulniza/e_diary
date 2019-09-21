@@ -78,11 +78,11 @@ class AttendancesTable extends Table
 
         $validator
             ->dateTime('cdate')
-            ->notEmptyDateTime('cdate');
+            ->allowEmptyDateTime('cdate');
 
         $validator
             ->dateTime('mdate')
-            ->notEmptyDateTime('mdate');
+            ->allowEmptyDateTime('mdate');
 
         $validator
             ->integer('status')

@@ -1,9 +1,29 @@
+
 <div class="row">
     <div class="col-xs-10">
         <div class="box box-default">
             <div class="box-header"></div>
             <div class="box-body">
                 <div class="attendances index dataTable_wrapper table-responsive">
+                    <h4><?php echo __("Summary Attendance for today, ").$today_date;?></h4>
+                    <?php if($userRoles->hasRole(['Master Admin'])) :?>
+
+                        <table id="addTable" class="table-condensed" style="table-layout: auto;">
+                                <tbody>
+
+                                    <tr>
+                                        <td align="left"><label for="product-key"><?php echo $this->Form->label('Department');?></label></td>
+                                        <td>    
+                                            <?= $this->Form->create('list',['type' => 'GET','autocomplete' => 'off','method'=>'POST']) ?>
+                                            
+                                            <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('-- All --'), 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected]); ?>
+                                             <?= $this->Form->end() ?>
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                    <?php endif; ?>
                     <table id="dataTables-attendances" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -24,10 +44,10 @@
         
                         <?php foreach ($attendances as $attendance): ?>
                             
-                            <tr id="<?= $attendance['id']; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
+                            <tr id="<?= $attendance['attendance_id']; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $this->Number->format($count) ?></td>
                                 <td>
-                                    <?= $attendance['username']?>
+                                    <?= $attendance['username'];?>
                                 </td>   
                                 <td><?= $attendance['organization_name'] ?></td>
                                 <td>
@@ -38,7 +58,7 @@
                                         $color='green';
                                     }
                                     ?>
-                                    <p style="color:<?php echo $color;?>"><?= $attendance['attendance_codes_name'] ?></p>
+                                    <p style="color:<?php echo $color;?>"><?= $attendance['attendance_code_name'] ?></p>
                                 </td>
                                 <td><?php if($attendance['in']!=""){
                                      $date_in=date_create($attendance['in']);
@@ -57,9 +77,9 @@
                                <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
                                     <td class="actions">
                                         <div class="btn-group">
-                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $attendance->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>
-                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'edit', $attendance->id], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-success btn-xs']) ?>
-                                            <?= $this->Form->postLink($this->Html->tag('i', '', ['class' => 'fa fa-trash']), ['action' => 'delete', $attendance->id], ['escape' => false, 'title' => __('Delete'), 'class' => 'btn btn-danger btn-xs', 'confirm' => __('Are you sure you want to delete this {0}?', 'attendance')]) ?>
+                                            
+                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'update', $attendance['user_id']], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>'Update']) ?>
+                        
                                         </div>
                                     </td>
                                 <?php endif; ?>

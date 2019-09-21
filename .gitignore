@@ -5,3 +5,4 @@ composer.lock
 /tmp/*
 /logs/*
 /vendor
+/webroot/files/*

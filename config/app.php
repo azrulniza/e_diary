@@ -9,7 +9,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => true,
+    'debug' => false,
 
     /**
      * Configure basic information about the application.
@@ -278,9 +278,9 @@ return [
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
              */
-            'port' => '8889',
+            'port' => '3306',
             'username' => 'root',
-            'password' => 'root',
+            'password' => '',
             'database' => 'e_diary',
             'encoding' => 'utf8',
             'timezone' => 'UTC',

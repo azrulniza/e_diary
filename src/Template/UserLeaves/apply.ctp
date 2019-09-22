@@ -51,20 +51,30 @@
                     <?php //print_r($last_id);?>
                     <?php //echo $last_id;?>
                     <div class="form-group">
-                        <?php if($userRoles->hasRole(['Master Admin'])) :?>
+                        
                              <table id="addTable" class="table-condensed" style="table-layout: auto;">
                                 <tbody>
 
                                     <tr>
+                                        <?php if($userRoles->hasRole(['Master Admin'])) :?>
                                         <td align="left"><label for="deparment"><?php echo $this->Form->label('Department');?></label></td>
                                         <td>    
                                             <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected]); ?>
                                              
                                         </td>
+                                        <?php endif; ?>
+                                        <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
                                         <td align="left"><label for="staff"><?php echo $this->Form->label('Staff');?></label></td>
                                         <td>    
                                             <?php echo $this->Form->input('staff', ['label'=>false,'options' => $list_user, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$staffSelected]); ?>
                                         </td>
+                                        <?php endif; ?>
+                                        <?php if($userRoles->hasRole(['Staff'])) :?>
+                                            <?php 
+                                                echo $this->Form->input('department', ['type'=>'hidden', 'class' => 'form-control', 'value' => $user_organization_id]);
+                                                echo $this->Form->input('staff', ['type'=>'hidden','class' => 'form-control', 'value' => $user_id]); 
+                                            ?>
+                                        <?php endif; ?>
                                     </tr>
                                     
                                     <tr>
@@ -110,7 +120,7 @@
 
                                 </tbody>
                             </table>
-                        <?php endif; ?>
+                        
                        
                     </div>
                 </div>

@@ -135,7 +135,7 @@ class UserLeavesController extends AppController
             $stmt_sql_leave = $conn->execute($sql_leave);
             $userLeaves = $stmt_sql_leave->fetchAll('assoc');
         }
-
+        
         $this->set(compact('userLeaves', 'list_organization','list_user','list_status','staffSelected','organizationSelected','statusSelected','userRoles'));
     }
 

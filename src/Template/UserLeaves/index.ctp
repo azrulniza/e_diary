@@ -77,7 +77,7 @@
                                 <td><?= h($userLeave['date_apply']) ?></td>
                                 <td><?= h($userLeave['start_time']) ?></td>
                                 <td><?= h($userLeave['end_time']) ?></td>
-                                <td><?= h($userLeave['leave_status_name']) ?></td>
+                                <td><h4><span class="label label-<?php if($userLeave['leave_status_id']==1){echo "warning";}elseif($userLeave['leave_status_id']==2){echo "success";}elseif($userLeave['leave_status_id']==3){echo "danger";}elseif($userLeave['leave_status_id']==4){echo "default";}    ?>"><?= h($userLeave['leave_status_name']) ?></span></h4></td>
                                 <td class="actions">
                                         <div class="btn-group">
                                             
@@ -91,7 +91,7 @@
                     </table>
                 </div>
             </div>
-            <div class="box-footer">
+            <!--<div class="box-footer">
                 <div class="paginator">
                     <ul class="pagination">
                         <?= $this->Paginator->prev('< ' . __('previous')) ?>
@@ -100,7 +100,7 @@
                     </ul>
                     <p><?= $this->Paginator->counter() ?></p>
                 </div>
-            </div>
+            </div>-->   
         </div>
     </div>
 </div>

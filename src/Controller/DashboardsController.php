@@ -83,4 +83,30 @@ class DashboardsController extends AppController
         $this->set('_serialize', ['users']);
         $this->viewBuilder()->layout('ajax');
     }
+
+    public function getDetails()
+    {
+        $this->loadModel('Users');
+        $this->loadModel('UserLeaves');
+        $this->loadModel('UserLeavesLogs');
+        $this->loadModel('LeaveTypes');
+        $this->loadModel('LeaveStatus');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+
+        $department_id = $_GET['id'];
+
+        $userId = $this->AuthUser->id();
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+        if ($userRoles->hasRole(['Master Admin'])) {
+             $users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
+        return $q->where(['UserOrganizations.organization_id'=>$department_id])->where(['Users.status'=>1]);});
+        }
+       
+        
+        $this->set(compact('users'));
+        $this->set('_serialize', ['users']);
+        $this->viewBuilder()->layout('ajax');
+    }
 }

@@ -8,7 +8,8 @@ $this->Html->script('dashboard');
 			var id = $(this).val();
 			$.ajax({
 				type : "POST",
-				url  : getAppVars('basepath').basePath + 'dashboards/getUsers' + '?id=' + id, //pass query string to server
+				//url  : getAppVars('basepath').basePath + 'dashboards/getUsers' + '?id=' + id, //pass query string to server
+				url  : getAppVars('basepath').basePath + 'dashboards/getDetails' + '?id=' + id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
 						console.log(data);
@@ -27,21 +28,35 @@ $this->Html->script('dashboard');
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-body">
-			    <?php $this->Form->templates($form_templates['shortForm']); ?>
-                <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
-					<div class="form-group" style="padding-left:30%;">
-					<?php if ($userRoles->hasRole(['Master Admin'])) :?>
-						<?php
- 							echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
-						?>		
-					<?php endif; ?>
-					<?php if (!$userRoles->hasRole(['Staff'])) :?>
-						<?php
-							echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users, 'empty'=>__('All'),'value'=>$userSelected,'style'=>'width:40%']);
-						?>
-					<?php endif; ?>
-					</div>
-				<?= $this->Form->end() ?>
+			    <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
+				<table id="addTable" class="table-condensed" style="table-layout: auto;">
+                    <tbody>
+                        <tr>
+                            <?php if($userRoles->hasRole(['Master Admin'])) :?>
+                            <td align="left"><label for="department"><?php echo $this->Form->label('Department');?></label></td>
+                            <td>    
+                               
+                                
+                                <?php echo $this->Form->input('department', ['label'=>false,'options' => $departments, 'empty' => __('-- All --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$departmentSelected]); ?>
+                                 
+                            </td>
+                            <?php endif; ?>
+                            <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
+                            <td align="left"><label for="staff"><?php echo $this->Form->label('Staff');?></label></td>
+                            <td>                                             
+                                
+                                <?php echo $this->Form->input('user', ['label'=>false,'options' => $users, 'empty' => __('-- All --'), 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$userSelected]); ?>
+                                 
+                            </td>
+                            <?php endif; ?>
+                            
+                        </tr>
+                       <tr>
+                           <td></td>
+                       </tr>
+                    </tbody>
+                </table>
+                <?= $this->Form->end() ?>
 							
 				<div class="col-md-3 col-sm-4 col-xs-8">
 					  <div class="small-box bg-aqua">

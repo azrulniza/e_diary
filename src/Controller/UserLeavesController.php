@@ -62,19 +62,30 @@ class UserLeavesController extends AppController
                 JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` 
                 JOIN organizations ON organizations.id = user_organizations.`organization_id`";
 
-            if(!empty($organizationSelected) AND !empty($staffSelected) AND !empty($statusSelected)){
-                $sql_leave .= " WHERE organizations.id=$organizationSelected AND users.id=$staffSelected AND leave_status.id=$statusSelected";
+            if(!empty($organizationSelected) AND !empty($staffSelected) AND !empty($statusSelected)){ // all selected
+                $sql_leave .= " WHERE organizations.id=$organizationSelected AND users.id=$staffSelected AND user_leaves.leave_status_id=$statusSelected";
             
-            }else if(empty($organizationSelected) AND !empty($staffSelected) AND !empty($statusSelected)){
-                $sql_leave .= " WHERE users.id=$staffSelected AND leave_status.id=$statusSelected";
-               
-            }else if(!empty($organizationSelected) AND empty($staffSelected) AND !empty($statusSelected)){
-                $sql_leave .= " WHERE organizations.id=$organizationSelected AND leave_status.id=$statusSelected";
+            }else if(!empty($organizationSelected) AND empty($staffSelected) AND empty($statusSelected)){ // organization only
+                $sql_leave .= " WHERE organizations.id=$organizationSelected";
                 
-            }else if(empty($organizationSelected) AND empty($staffSelected) AND !empty($statusSelected)){
+            }else if(!empty($organizationSelected) AND empty($staffSelected) AND !empty($statusSelected)){ // organization & status
+                $sql_leave .= " WHERE organizations.id=$organizationSelected AND user_leaves.leave_status_id=$statusSelected";
+                
+            }else if(!empty($organizationSelected) AND !empty($staffSelected) AND empty($statusSelected)){ //organization & staff
+                $sql_leave .= " WHERE organizations.id=$organizationSelected AND users.id=$staffSelected";
+                
+            }else if(empty($organizationSelected) AND !empty($staffSelected) AND empty($statusSelected)){ // staff
+                $sql_leave .= " WHERE users.id=$staffSelected";
+                
+            }else if(empty($organizationSelected) AND !empty($staffSelected) AND !empty($statusSelected)){ // staff & status
+                $sql_leave .= " WHERE users.id=$staffSelected AND user_leaves.leave_status_id=$statusSelected";
+               
+            }else if(empty($organizationSelected) AND empty($staffSelected) AND !empty($statusSelected)){ // status
                 $sql_leave .= " WHERE leave_status.id=$statusSelected";
                 
             }
+
+
             $sql_leave .=" ORDER BY user_leaves.cdate desc";
             $stmt_sql_leave = $conn->execute($sql_leave);
             $userLeaves = $stmt_sql_leave->fetchAll('assoc');
@@ -199,28 +210,105 @@ class UserLeavesController extends AppController
             }
             
             if($data['leave_type']==1){//personal matters
-                
+                //end date, default same day with date start
+                $date_end= $date;
+
                 //from_time
                 $from_time=$data['from_time']['hour'].':'.$data['from_time']['minute'];
                 $from_date_time=$date.' '.$from_time;
-                
-                //to_time
+
+                 //to_time
                 $to_time=$data['to_time']['hour'].':'.$data['to_time']['minute'];
                 $to_date_time=$date.' '.$to_time;
+                
+                $from_day = date('l',strtotime($from_date_time)); //eg : Monday
 
-                $datetime1 = date_create($from_date_time);
-                $datetime2 = date_create($to_date_time);
-                $interval = date_diff($datetime1, $datetime2);
-                $time_off_period= $interval->format("%H:%I:%S"); 
+                if($from_day!="Friday"){ //normal lunch hour : 1pm-2pm
 
-                $time_off_period_arr= explode(':', $time_off_period);
-                $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
+                    if($data['from_time']['hour'] <= 13 AND $data['to_time']['hour'] >= 14 ){
+                        $time_from_count1 = date_create($from_date_time);
+                        $time_from_count2 = date_create($date.' 13:00');
+                        $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                        $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
 
-                if($time_off_period_in_minute > 240){
-                    $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                    $error=true;
+                        $time_from_count_arr= explode(':', $time_from_count_period);
+                        $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+
+
+                        $time_to_count1 = date_create($date.' 14:00');
+                        $time_to_count2 = date_create($to_date_time);
+                        $interval_time_to = date_diff($time_to_count1, $time_to_count2);
+                        $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
+
+                        $time_to_count_arr= explode(':', $time_to_count_period);
+                        $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
+
+                        $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
+                        if($total_time_off_hour > 240){
+                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $error=true;
+                        }
+                    }else{
+                        $datetime1 = date_create($from_date_time);
+                        $datetime2 = date_create($to_date_time);
+                        $interval = date_diff($datetime1, $datetime2);
+                        $time_off_period= $interval->format("%H:%I:%S"); 
+
+                        $time_off_period_arr= explode(':', $time_off_period);
+                        $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
+
+                        if($time_off_period_in_minute > 240){
+                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $error=true;
+                        }
+                    }
+                    
+
+                }else{// Friday special lunch hour : 12.15pm-2.45pm
+
+                    if($data['from_time']['hour'] <= 12 AND $data['from_time']['minute'] <= 15  ){
+                        $time_from_count1 = date_create($from_date_time);
+                        $time_from_count2 = date_create($date.' 12:15');
+                        $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                        $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
+
+                        $time_from_count_arr= explode(':', $time_from_count_period);
+                        $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+
+
+                        $time_to_count1 = date_create($date.' 14:45');
+                        $time_to_count2 = date_create($to_date_time);
+                        $interval_time_to = date_diff($time_to_count1, $time_to_count2);
+                        $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
+
+                        $time_to_count_arr= explode(':', $time_to_count_period);
+                        $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
+
+                        $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
+                        if($total_time_off_hour > 240){
+                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $error=true;
+                        }
+
+                    }else{
+                        $datetime1 = date_create($from_date_time);
+                        $datetime2 = date_create($to_date_time);
+                        $interval = date_diff($datetime1, $datetime2);
+                        $time_off_period= $interval->format("%H:%I:%S"); 
+
+                        $time_off_period_arr= explode(':', $time_off_period);
+                        $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
+
+                        if($time_off_period_in_minute > 240){
+                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $error=true;
+                        }
+                    }
                 }
+                              
 
+            }else{
+                 $date_end= $data['date_end']['year'].'-'.$data['date_end']['month'].'-'.$data['date_end']['day'];
             }
 
             //check if got attahcement
@@ -269,7 +357,7 @@ class UserLeavesController extends AppController
             $userLeave->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
             $userLeave->leave_type_id = $data['leave_type'];*/
             if(!$error){
-                $sql="INSERT INTO `user_leaves` (user_id,date_apply,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES (".$data['staff'].","."'".$date."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
+                $sql="INSERT INTO `user_leaves` (user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES (".$data['staff'].","."'".$date."'".","."'".$date_end."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
             
                 $stmt = $conn->execute($sql);
                 
@@ -294,7 +382,7 @@ class UserLeavesController extends AppController
 
 
                     //insert log
-                    $sql="INSERT INTO `user_leaves_logs` (user_id,date_apply,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES (".$data['staff'].","."'".$date."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
+                    $sql="INSERT INTO `user_leaves_logs` (user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES (".$data['staff'].","."'".$date."'".","."'".$date_end."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
                 
                     $stmt = $conn->execute($sql);
                     $this->Flash->success(__('Successfully apply time off.'));
@@ -309,7 +397,7 @@ class UserLeavesController extends AppController
         $leaveStatuses = $this->UserLeaves->LeaveStatus->find('list', ['limit' => 200]);
         $leaveTypes = $this->UserLeaves->LeaveTypes->find('list', ['limit' => 200]);
 
-        $this->set(compact('userLeave', 'list_user', 'leaveStatuses', 'leaveTypes','userRoles', 'list_organization','staffSelected', 'last_id','user_organization_id','user_id'));
+        $this->set(compact('from_day','userLeave', 'list_user', 'leaveStatuses', 'leaveTypes','userRoles', 'list_organization','staffSelected', 'last_id','user_organization_id','user_id','total_time_off_hour'));
     }
 
     public function getDetails()

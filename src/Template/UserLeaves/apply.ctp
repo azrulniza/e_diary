@@ -29,11 +29,19 @@
                 $('#input_from_time').show();
                 $('#label_to_time').show();
                 $('#input_to_time').show();
+
+                $('#label_end_date').hide();
+                $('#input_end_date').hide();
+
             }else{
                 $('#label_from_time').hide();
                 $('#input_from_time').hide();
                 $('#label_to_time').hide();
                 $('#input_to_time').hide();
+
+                $('#label_end_date').show();
+                $('#input_end_date').show();
+                
             }
         });
     });
@@ -49,7 +57,7 @@
                 </div>
                 <div class="box-body">
                     <?php //print_r($last_id);?>
-                    <?php //echo $last_id;?>
+                    <?php //echo $total_time_off_hour . $from_day;?>
                     <div class="form-group">
                         
                              <table id="addTable" class="table-condensed" style="table-layout: auto;">
@@ -59,14 +67,14 @@
                                         <?php if($userRoles->hasRole(['Master Admin'])) :?>
                                         <td align="left"><label for="deparment"><?php echo $this->Form->label('Department');?></label></td>
                                         <td>    
-                                            <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected]); ?>
+                                            <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected,'required'=>true,]); ?>
                                              
                                         </td>
                                         <?php endif; ?>
                                         <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
                                         <td align="left"><label for="staff"><?php echo $this->Form->label('Staff');?></label></td>
                                         <td>    
-                                            <?php echo $this->Form->input('staff', ['label'=>false,'options' => $list_user, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$staffSelected]); ?>
+                                            <?php echo $this->Form->input('staff', ['label'=>false,'options' => $list_user, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$staffSelected,'required'=>true,]); ?>
                                         </td>
                                         <?php endif; ?>
                                         <?php if($userRoles->hasRole(['Staff'])) :?>
@@ -77,19 +85,29 @@
                                         <?php endif; ?>
                                     </tr>
                                     
-                                    <tr>
-                                        <td align="left"><label for="date"><?php echo $this->Form->label('Date');?></label></td>
-                                        <td>
-                                          <?php echo $this->Form->input('apply_date', ['type' => 'date','label'=>false,'class' => 'form-control', 'placeholder' => __('Enter ...')]); ?>
-                                        </td>
-                                    </tr>
-                                   
+
                                     <tr>
                                         <td align="left"><label for="date"><?php echo $this->Form->label('Leave Type');?></label></td>
                                         <td>
                                           <?php echo $this->Form->input('leave_type', ['required'=>true,'label'=>false,'options' => $leaveTypes, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'leavetype', 'value'=>$leaveTypeSelected]); ?>
                                         </td>
                                     </tr>
+
+                                    <tr>
+                                        <td align="left"><label for="date"><?php echo $this->Form->label('Date Start');?></label></td>
+                                        <td>
+                                          <?php echo $this->Form->input('apply_date', ['type' => 'date','label'=>false,'class' => 'form-control', 'placeholder' => __('Enter ...')]); ?>
+                                        </td>
+                                    </tr>
+                                   
+
+                                    <tr>
+                                        <td align="left" style='display:none' id='label_end_date'><label for="date"><?php echo $this->Form->label('Date End');?></label></td>
+                                        <td style='display:none' id='input_end_date'>
+                                          <?php echo $this->Form->input('date_end', ['type' => 'date','label'=>false,'class' => 'form-control', 'placeholder' => __('Enter ...')]); ?>
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <td align="left" style='display:none' id='label_from_time'><label for="date"><?php echo $this->Form->label('Time From');?></label></td>
                                         <td style='display:none' id='input_from_time'>

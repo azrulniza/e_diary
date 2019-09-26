@@ -25,7 +25,7 @@ $(function () {
                 .done(function (data) {
                     $("section.content").html(data);
 
-                    location.hash = url;
+                    location.hash = "";
                 });
     });
     

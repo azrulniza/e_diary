@@ -49,7 +49,8 @@
                                 <th><?= __('Date Request') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Time Off Details') ?></th>
-                                <th><?= __('Date Time Off') ?></th>
+                                <th><?= __('Date Start') ?></th>
+                                <th><?= __('Date End') ?></th>
                                 <th><?= __('Time Off From') ?></th>
                                 <th><?= __('Time Off To') ?></th>
                                 <th><?= __('Status') ?></th>
@@ -59,7 +60,7 @@
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
-                        <?php //print_r($userLeaves);?>
+                        <?php //echo $sql_leave;?>
                         <?php $count = 0 ?>
                         <?php foreach ($userLeaves as $userLeave): ?>
                             <tr id="<?= $userLeaves['id']; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
@@ -74,7 +75,8 @@
                                     <?php    }
                                     ?>
                                 </td>
-                                <td><?= h($userLeave['date_apply']) ?></td>
+                                <td><?= h($userLeave['date_start']) ?></td>
+                                <td><?= h($userLeave['date_end']) ?></td>
                                 <td><?= h($userLeave['start_time']) ?></td>
                                 <td><?= h($userLeave['end_time']) ?></td>
                                 <td><h4><span class="label label-<?php if($userLeave['leave_status_id']==1){echo "warning";}elseif($userLeave['leave_status_id']==2){echo "success";}elseif($userLeave['leave_status_id']==3){echo "danger";}elseif($userLeave['leave_status_id']==4){echo "default";}    ?>"><?= h($userLeave['leave_status_name']) ?></span></h4></td>

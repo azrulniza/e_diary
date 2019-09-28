@@ -4,20 +4,19 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Organization Entity
+ * SettingEmail Entity
  *
  * @property int $id
  * @property string|null $name
- * @property string|null $description
- * @property int|null $create_by
- * @property \Cake\I18n\Time|null $cdate
- * @property \Cake\I18n\Time $mdate
+ * @property string|null $en_subject
+ * @property string|null $my_subject
+ * @property string|null $en_body
+ * @property string|null $my_body
  * @property int|null $status
- *
- * @property \App\Model\Entity\Designation[] $designations
- * @property \App\Model\Entity\UserOrganization[] $user_organizations
+ * @property \Cake\I18n\Time|null $cdate
+ * @property \Cake\I18n\Time|null $mdate
  */
-class Organization extends Entity
+class SettingEmail extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -30,12 +29,12 @@ class Organization extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'description' => true,
-        'create_by' => true,
-        'cdate' => true,
-        'mdate' => true,
+        'en_subject' => true,
+        'my_subject' => true,
+        'en_body' => true,
+        'my_body' => true,
         'status' => true,
-        'designations' => true,
-        'user_organizations' => true
+        'cdate' => true,
+        'mdate' => true
     ];
 }

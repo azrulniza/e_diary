@@ -9,9 +9,8 @@
                             <tr>
                                 <th><?= $this->Paginator->sort('id') ?></th>
                                 <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('address') ?></th>
-                                <th><?= $this->Paginator->sort('phone') ?></th>
-                                <th><?= $this->Paginator->sort('email') ?></th>
+                                <th><?= $this->Paginator->sort('description') ?></th>
+                                <th><?= $this->Paginator->sort('status') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
@@ -21,9 +20,8 @@
                             <tr id="<?= $organization->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $this->Number->format($organization->id) ?></td>
                                 <td><?= h($organization->name) ?></td>
-                                <td><?= h($organization->address) ?></td>
-                                <td><?= $this->Number->format($organization->phone) ?></td>
-                                <td><?= h($organization->email) ?></td>
+                                <td><?= h($organization->description) ?></td>
+                                <td><?= $organization->status == 1 ? 'ACTIVE' : 'DISABLE' ; ?></td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $organization->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>

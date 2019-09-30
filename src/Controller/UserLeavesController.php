@@ -374,6 +374,12 @@ class UserLeavesController extends AppController
                        $organization_id= $user_organization_id;
                     }
                     
+
+                    //get time off apply email template
+
+
+                    //if email template exist, send notification to supervisor
+
                     $sql_supervisor = "SELECT users.* FROM users JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=2 AND `user_organizations`.`organization_id`=$organization_id UNION SELECT users.* FROM users JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=1";
                     $stmt_sql_supervisor = $conn->execute($sql_supervisor);
                     $get_supervisor = $stmt_sql_supervisor->fetchAll('assoc');
@@ -382,7 +388,7 @@ class UserLeavesController extends AppController
 
 
                     //insert log
-                    $sql="INSERT INTO `user_leaves_logs` (user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES (".$data['staff'].","."'".$date."'".","."'".$date_end."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
+                    $sql="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES ($last_id,".$data['staff'].","."'".$date."'".","."'".$date_end."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
                 
                     $stmt = $conn->execute($sql);
                     $this->Flash->success(__('Successfully apply time off.'));
@@ -545,6 +551,258 @@ class UserLeavesController extends AppController
             $this->Flash->error(__('The user leave could not be deleted. Please, try again.'));
         }
 
+        return $this->redirect(['action' => 'index']);
+    }
+
+
+    public function cancel($id = null)
+    {
+        $this->set('title', __('Time Off'));
+
+        $this->loadModel('Users');
+        $this->loadModel('UserLeaves');
+        $this->loadModel('UserLeavesLogs');
+        $this->loadModel('LeaveTypes');
+        $this->loadModel('LeaveStatus');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+
+        $conn = ConnectionManager::get('default');
+
+        $today_date = date('d-m-Y');    
+        $user_id = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$user_id"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+
+        $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$user_id"])->limit(1)->first();
+        $user_organization_id=$usersOrganization->organization_id;
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+            $sql_leave_update ="UPDATE user_leaves SET leave_status_id='4', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$id";
+            
+            if ($conn->execute($sql_leave_update)) {
+                //get user_leaves detail
+                $sql_leave="SELECT * FROM user_leaves WHERE id=$id";
+                $stmt_sql_leave=$conn->execute($sql_leave);
+                $get_sql_leave= $stmt_sql_leave->fetch('assoc');
+
+                //insert into user_leave_log
+                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id, modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
+                $stmt = $conn->execute($sql_leave_log);
+
+                //get time off cancel email template
+
+
+                //if template exist, send email to supervisor
+
+                //get supervisor
+                $sql_supervisor = "SELECT users.* FROM users JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=2 AND `user_organizations`.`organization_id`=$user_organization_id UNION SELECT users.* FROM users JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=1";
+                    $stmt_sql_supervisor = $conn->execute($sql_supervisor);
+                    $get_supervisor = $stmt_sql_supervisor->fetchAll('assoc');
+
+
+                //sent notification email to supervisor
+
+
+                $this->Flash->success(__('The time off has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+        }
+        
+        return $this->redirect(['action' => 'index']);
+    }
+
+
+    public function approve($id = null)
+    {
+        $this->set('title', __('Time Off'));
+
+        $this->loadModel('Users');
+        $this->loadModel('UserLeaves');
+        $this->loadModel('UserLeavesLogs');
+        $this->loadModel('LeaveTypes');
+        $this->loadModel('LeaveStatus');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+
+        $conn = ConnectionManager::get('default');
+
+        $today_date = date('d-m-Y');    
+        $user_id = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$user_id"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+            $sql_leave_update ="UPDATE user_leaves SET leave_status_id='2', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$id";
+            
+            if ($conn->execute($sql_leave_update)) {
+                //get user_leaves detail
+                $sql_leave="SELECT * FROM user_leaves WHERE id=$id";
+                $stmt_sql_leave=$conn->execute($sql_leave);
+                $get_sql_leave= $stmt_sql_leave->fetch('assoc');
+
+                //insert into user_leave_log
+                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].", $user_id)";
+                $stmt = $conn->execute($sql_leave_log);
+
+                //get time off approve email template
+
+
+                //if template exist, send email to staff
+
+                //get staff
+                $sql_staff = "SELECT * FROM users WHERE `id`=".$get_sql_leave['user_id'];
+                $stmt_sql_staff = $conn->execute($sql_staff);
+                $get_staff = $stmt_sql_staff->fetch('assoc');
+
+
+                //sent notification email to staff
+
+
+                $this->Flash->success(__('The time off has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+        }
+        
+        return $this->redirect(['action' => 'index']);
+    }
+
+
+    public function void($id = null)
+    {
+        $this->set('title', __('Time Off'));
+
+        $this->loadModel('Users');
+        $this->loadModel('UserLeaves');
+        $this->loadModel('UserLeavesLogs');
+        $this->loadModel('LeaveTypes');
+        $this->loadModel('LeaveStatus');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+
+        $conn = ConnectionManager::get('default');
+
+        $today_date = date('d-m-Y');    
+        $user_id = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$user_id"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+
+
+        $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$user_id"])->limit(1)->first();
+        $user_organization_id=$usersOrganization->organization_id;
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+            $sql_leave_update ="UPDATE user_leaves SET leave_status_id='5', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$id";
+            
+            if ($conn->execute($sql_leave_update)) {
+                //get user_leaves detail
+                $sql_leave="SELECT * FROM user_leaves WHERE id=$id";
+                $stmt_sql_leave=$conn->execute($sql_leave);
+                $get_sql_leave= $stmt_sql_leave->fetch('assoc');
+
+                //insert into user_leave_log
+                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
+                $stmt = $conn->execute($sql_leave_log);
+
+                //get time off void email template
+
+
+                //if template exist, send email to supervisor
+
+                //get staff
+                $sql_staff = "SELECT * FROM users WHERE `id`=".$get_sql_leave['user_id'];
+                $stmt_sql_staff = $conn->execute($sql_staff);
+                $get_staff = $stmt_sql_staff->fetch('assoc');
+
+
+                //sent notification email to staff
+
+
+                $this->Flash->success(__('The time off has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+        }
+        
+        return $this->redirect(['action' => 'index']);
+    }
+
+    public function reject($id = null)
+    {
+        $this->set('title', __('Time Off'));
+
+        $this->loadModel('Users');
+        $this->loadModel('UserLeaves');
+        $this->loadModel('UserLeavesLogs');
+        $this->loadModel('LeaveTypes');
+        $this->loadModel('LeaveStatus');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+
+        $conn = ConnectionManager::get('default');
+
+        $today_date = date('d-m-Y');    
+        $user_id = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$user_id"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+
+            $data = $this->request->data;
+            $error = false;
+            //date apply
+            $remark= $data['remark'];
+            $leave_id= $data['user_leave_id'];
+            $user_id= $data['user_id'];
+
+            $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+            $sql_leave_update ="UPDATE user_leaves SET leave_status_id='3', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$leave_id";
+            
+            if ($conn->execute($sql_leave_update)) {
+                //get user_leaves detail
+                $sql_leave="SELECT * FROM user_leaves WHERE id=$leave_id";
+                $stmt_sql_leave=$conn->execute($sql_leave);
+                $get_sql_leave= $stmt_sql_leave->fetch('assoc');
+
+                //insert into user_leave_log
+                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($leave_id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
+                $stmt = $conn->execute($sql_leave_log);
+
+                //get time off approve email template
+
+
+                //if template exist, send email to staff
+
+                //get staff
+                $sql_staff = "SELECT * FROM users WHERE `id`=".$user_id;
+                $stmt_sql_staff = $conn->execute($sql_staff);
+                $get_staff = $stmt_sql_staff->fetch('assoc');
+
+
+                //sent notification email to staff
+
+
+                $this->Flash->success(__('The time off has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+        }
+        
         return $this->redirect(['action' => 'index']);
     }
 }

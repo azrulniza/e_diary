@@ -138,10 +138,27 @@ class UsersController extends AppController
 		$this->loadModel('UsersRoles');
 		$this->loadModel('Organizations');
 		$this->loadModel('Designations');
+		$this->loadModel('SettingEmails');
 		$userId = $this->AuthUser->id();
         $user = $this->Users->newEntity();
 		$user_role = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
 		$userRoles = $this->Users->Roles->initRolesChecker($user_role->roles);
+		
+		$emailTemplates = $this->SettingEmails->find()->where(['id'=>1])->first();
+		$session = $this->request->session()->read('Config.language');
+		if(isset($session) AND $session == 'ms_MY'){
+			$emailTemp_subject = $emailTemplates->my_subject;
+			$emailTemp_body = $emailTemplates->my_body;
+		}else{
+			$emailTemp_subject = $emailTemplates->en_subject;
+			$emailTemp_body = $emailTemplates->en_body;
+		}
+		// $emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_subject);
+		// $emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_body);
+		// $subject = __($emailTemp_subject,'yana','112233','961214115210');
+		// $body = __($this->Text->autoParagraph($emailTemp_body),'yana','112233','961214115210');
+		// var_dump($subject);
+		// var_dump($body);
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();

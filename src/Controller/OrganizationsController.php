@@ -52,6 +52,7 @@ class OrganizationsController extends AppController
 			$now = \Cake\I18n\Time::now();
             $user->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
             $user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+            $organization->create_by = $this->Auth->user()['id'];
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
 
@@ -59,7 +60,11 @@ class OrganizationsController extends AppController
             }
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
         }
-        $this->set(compact('organization'));
+		$status = [
+            1 => __('Active'),
+            0 => __('Disable')
+		];
+        $this->set(compact('organization','status'));
     }
 
     /**
@@ -74,6 +79,8 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $organization = $this->Organizations->patchEntity($organization, $this->request->getData());
+			$now = \Cake\I18n\Time::now();
+            $user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
 
@@ -81,7 +88,11 @@ class OrganizationsController extends AppController
             }
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
         }
-        $this->set(compact('organization'));
+		$status = [
+            1 => __('Active'),
+            0 => __('Disable')
+		];
+        $this->set(compact('organization','status'));
     }
 
     /**

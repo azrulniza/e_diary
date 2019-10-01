@@ -1,0 +1,80 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.1.36-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win32
+-- HeidiSQL Version:             10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Dumping structure for table e_diary.organizations
+CREATE TABLE IF NOT EXISTS `organizations` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `cdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `mdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table e_diary.organizations: ~2 rows (approximately)
+/*!40000 ALTER TABLE `organizations` DISABLE KEYS */;
+INSERT INTO `organizations` (`id`, `name`, `description`, `create_by`, `cdate`, `mdate`, `status`) VALUES
+	(1, 'Jabatan Rekod', 'Rekod', 1, '2019-08-31 22:41:11', '2019-09-29 01:49:43', 1),
+	(2, 'Jabatan Pengurusan Kakitangan', 'Kakitangan', 1, '2019-08-31 23:29:53', '2019-09-29 01:49:46', 1);
+/*!40000 ALTER TABLE `organizations` ENABLE KEYS */;
+
+-- Dumping structure for table e_diary.setting_attendances_reasons
+CREATE TABLE IF NOT EXISTS `setting_attendances_reasons` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `cdate` timestamp NULL DEFAULT NULL,
+  `mdate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table e_diary.setting_attendances_reasons: ~0 rows (approximately)
+/*!40000 ALTER TABLE `setting_attendances_reasons` DISABLE KEYS */;
+INSERT INTO `setting_attendances_reasons` (`id`, `name`, `description`, `status`, `cdate`, `mdate`) VALUES
+	(1, 'test1', 'test', 0, '2019-09-29 12:26:00', '2019-09-29 12:28:02');
+/*!40000 ALTER TABLE `setting_attendances_reasons` ENABLE KEYS */;
+
+-- Dumping structure for table e_diary.setting_emails
+CREATE TABLE IF NOT EXISTS `setting_emails` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `en_subject` text,
+  `my_subject` text,
+  `en_body` text,
+  `my_body` text,
+  `status` int(11) DEFAULT NULL,
+  `cdate` timestamp NULL DEFAULT NULL,
+  `mdate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table e_diary.setting_emails: ~3 rows (approximately)
+/*!40000 ALTER TABLE `setting_emails` DISABLE KEYS */;
+INSERT INTO `setting_emails` (`id`, `name`, `en_subject`, `my_subject`, `en_body`, `my_body`, `status`, `cdate`, `mdate`) VALUES
+	(1, 'Create User', 'Welcome [USER_NAME] to JPSM!', 'Welcome [USER_NAME] to JPSM!', 'Hi [USER_NAME],\r\n\r\nYour account has been created at JPSM websites.\r\nPlease login using login details below\r\n\r\nIC Number : [IC_NUMBER]\r\nPassword : [PASSWORD]\r\n\r\nRegards, JPSM', 'Hi [USER_NAME],\r\n\r\nYour account has been created at JPSM websites.\r\nPlease login using login details below\r\n\r\nIC Number : [IC_NUMBER]\r\nPassword : [PASSWORD]\r\n\r\nRegards, JPSM', 1, '2019-09-29 02:45:37', '2019-09-29 02:45:39'),
+	(2, 'Forgot Password', 'Welcome [USER_NAME] to JPSM!', 'Welcome [USER_NAME] to JPSM!', 'Hi [USER_NAME],\r\n\r\nYour account has been created at JPSM websites.\r\nPlease login using login details below\r\n\r\nIC Number : [IC_NUMBER]\r\nPassword : [PASSWORD]\r\n\r\nRegards, JPSM', 'Hi [USER_NAME],\r\n\r\nYour account has been created at JPSM websites.\r\nPlease login using login details below\r\n\r\nIC Number : [IC_NUMBER]\r\nPassword : [PASSWORD]\r\n\r\nRegards, JPSM', 1, '2019-09-29 02:45:39', '2019-09-29 02:45:40'),
+	(3, 'Apply Time Off', 'Welcome [USER_NAME] to JPSM!', 'Welcome [USER_NAME] to JPSM!', 'Hi [USER_NAME],\r\n\r\nYour account has been created at JPSM websites.\r\nPlease login using login details below\r\n\r\nIC Number : [IC_NUMBER]\r\nPassword : [PASSWORD]\r\n\r\nRegards, JPSM', 'Hi [USER_NAME],\r\n\r\nYour account has been created at JPSM websites.\r\nPlease login using login details below\r\n\r\nIC Number : [IC_NUMBER]\r\nPassword : [PASSWORD]\r\n\r\nRegards, JPSM', 1, '2019-09-29 02:45:41', '2019-09-29 02:45:42');
+/*!40000 ALTER TABLE `setting_emails` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+INSERT INTO `menus` (`id`, `menu_group_id`, `parent_id`, `ordering`, `icon`, `label`, `description`, `controller`, `action`) VALUES (25, 1, 8, 1, 'fa fa-cog', 'Email Template', NULL, 'SettingEmails', 'index');
+INSERT INTO `menus` (`id`, `menu_group_id`, `parent_id`, `ordering`, `icon`, `label`, `description`, `controller`, `action`) VALUES (26, 1, 8, 2, 'fa fa-cog', 'Attendance Reasons', NULL, 'SettingAttendancesReasons', 'index');
+
+

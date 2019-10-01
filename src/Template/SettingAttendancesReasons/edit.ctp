@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="organizations form">
-            <?= $this->Form->create($organization, ['role' => 'form']) ?>
+        <div class="settingAttendancesReasons form">
+            <?= $this->Form->create($settingAttendancesReason, ['role' => 'form']) ?>
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('Edit Department') ?></h3>
+                    <h3 class="box-title"><?= __('Edit Setting Attendances Reason') ?></h3>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="box-footer">
                     <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-success']) ?>
-                    <?= $this->Html->link(__('Cancel'), ['controller' => 'organizations'], ['class' => 'btn btn-warning']) ?>
+                    <?= $this->Html->link(__('Cancel'), ['controller' => 'settingAttendancesReasons'], ['class' => 'btn btn-warning']) ?>
                 </div>
             </div>
             <?= $this->Form->end() ?>

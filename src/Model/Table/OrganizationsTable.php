@@ -9,7 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Organizations Model
  *
- * @property |\Cake\ORM\Association\HasMany $UserOrganizations
+ * @property \App\Model\Table\DesignationsTable|\Cake\ORM\Association\HasMany $Designations
+ * @property \App\Model\Table\UserOrganizationsTable|\Cake\ORM\Association\HasMany $UserOrganizations
  *
  * @method \App\Model\Entity\Organization get($primaryKey, $options = [])
  * @method \App\Model\Entity\Organization newEntity($data = null, array $options = [])
@@ -36,6 +37,9 @@ class OrganizationsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->hasMany('Designations', [
+            'foreignKey' => 'organization_id'
+        ]);
         $this->hasMany('UserOrganizations', [
             'foreignKey' => 'organization_id'
         ]);
@@ -59,17 +63,13 @@ class OrganizationsTable extends Table
             ->allowEmptyString('name');
 
         $validator
-            ->scalar('address')
-            ->maxLength('address', 255)
-            ->allowEmptyString('address');
+            ->scalar('description')
+            ->maxLength('description', 255)
+            ->allowEmptyString('description');
 
         $validator
-            ->integer('phone')
-            ->allowEmptyString('phone');
-
-        $validator
-            ->email('email')
-            ->allowEmptyString('email');
+            ->integer('create_by')
+            ->allowEmptyString('create_by');
 
         $validator
             ->dateTime('cdate')
@@ -84,19 +84,5 @@ class OrganizationsTable extends Table
             ->allowEmptyString('status');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->isUnique(['email']));
-
-        return $rules;
     }
 }

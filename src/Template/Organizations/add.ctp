@@ -4,15 +4,14 @@
             <?= $this->Form->create($organization, ['role' => 'form']) ?>
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('Add Department') ?></h3>
+                    <h3 class="box-title"><?= __('Add Organization') ?></h3>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
-                        echo $this->Form->input('address', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
-                        echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
-                        echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->input('description', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+						echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $status,'required'=>true]);
                         ?>
                     </div>
                 </div>

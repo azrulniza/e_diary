@@ -8,11 +8,11 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string|null $name
- * @property string|null $en_subject
- * @property string|null $my_subject
- * @property string|null $en_body
- * @property string|null $my_body
+ * @property string|null $subject
+ * @property string|null $body
  * @property int|null $status
+ * @property int|null $email_type_id
+ * @property int|null $language_id
  * @property \Cake\I18n\Time|null $cdate
  * @property \Cake\I18n\Time|null $mdate
  */
@@ -29,11 +29,11 @@ class SettingEmail extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'en_subject' => true,
-        'my_subject' => true,
-        'en_body' => true,
-        'my_body' => true,
+        'subject' => true,
+        'body' => true,
         'status' => true,
+        'email_type_id' => true,
+        'language_id' => true,
         'cdate' => true,
         'mdate' => true
     ];

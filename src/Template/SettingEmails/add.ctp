@@ -1,5 +1,20 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\SettingEmail $settingEmail
+ */
+?>
 <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-12">
+        <div class="actions">
+            <ul class="side-nav btn-group">
+                <li class="btn btn-info btn-sm"><?= $this->Html->link(__('List Setting Emails'), ['action' => 'index']) ?></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
         <div class="settingEmails form">
             <?= $this->Form->create($settingEmail, ['role' => 'form']) ?>
             <div class="box box-primary">
@@ -10,11 +25,11 @@
                     <div class="form-group">
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('en_subject', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('my_subject', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('en_body', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('my_body', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('subject', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('body', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('email_type_id', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('language_id', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('cdate', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('mdate', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         ?>

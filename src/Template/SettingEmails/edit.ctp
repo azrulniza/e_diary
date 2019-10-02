@@ -10,28 +10,11 @@
                     <div class="form-group">
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'readonly'=>true]);
-						?>
-						<br>
-						<div class="form-group">
-							<fieldset>
-								<legend><?= __('Email Template - English') ?></legend>
-								<?php
-									echo $this->Form->input('en_subject', ['label'=>__('Subject'), 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'style'=>'width:50%;height:100px;','required'=>true]);
-									echo $this->Form->input('en_body', ['label'=>__('Body'), 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'style'=>'width:50%;','required'=>true]);
-								?>
-							</fieldset>
-						</div>
-						<br>
-						<div class="form-group">
-							<fieldset>
-								<legend><?= __('Email Template - Malay') ?></legend>
-								<?php
-									echo $this->Form->input('my_subject', ['label'=>__('Subject'), 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'style'=>'width:50%;height:100px;','required'=>true]);
-									echo $this->Form->input('my_body', ['label'=>__('Body'), 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'style'=>'width:50%;','required'=>true]);
-								?>
-							</fieldset>
-						</div>
-						<p><i><b>Note:</b><br>This email template must consist [USER_NAME],[PASSWORD],[IC_NUMBER]</i></p>
+                        echo $this->Form->input('subject', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->input('body', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->hidden('email_type_id', ['value'=>$email_type_id]);
+                        echo $this->Form->hidden('language_id', ['value'=>$language_id]);
+                        ?>
                     </div>
                 </div>
                 <div class="box-footer">

@@ -9,6 +9,9 @@ use Cake\Validation\Validator;
 /**
  * SettingEmails Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $EmailTypes
+ * @property |\Cake\ORM\Association\BelongsTo $Languages
+ *
  * @method \App\Model\Entity\SettingEmail get($primaryKey, $options = [])
  * @method \App\Model\Entity\SettingEmail newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\SettingEmail[] newEntities(array $data, array $options = [])
@@ -33,6 +36,10 @@ class SettingEmailsTable extends Table
         $this->setTable('setting_emails');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('Languages', [
+            'foreignKey' => 'language_id'
+        ]);
     }
 
     /**
@@ -53,20 +60,12 @@ class SettingEmailsTable extends Table
             ->allowEmptyString('name');
 
         $validator
-            ->scalar('en_subject')
-            ->allowEmptyString('en_subject');
+            ->scalar('subject')
+            ->allowEmptyString('subject');
 
         $validator
-            ->scalar('my_subject')
-            ->allowEmptyString('my_subject');
-
-        $validator
-            ->scalar('en_body')
-            ->allowEmptyString('en_body');
-
-        $validator
-            ->scalar('my_body')
-            ->allowEmptyString('my_body');
+            ->scalar('body')
+            ->allowEmptyString('body');
 
         $validator
             ->integer('status')
@@ -81,5 +80,17 @@ class SettingEmailsTable extends Table
             ->allowEmptyDateTime('mdate');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        return $rules;
     }
 }

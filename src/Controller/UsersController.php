@@ -18,6 +18,11 @@ use Cake\Core\Configure;
  */
 class UsersController extends AppController
 {
+	public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
 	private $userStatus;
 
     public function __construct(\Cake\Network\Request $request = null, \Cake\Network\Response $response = null, $name = null, $eventManager = null, $components = null)
@@ -119,7 +124,12 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => ['Roles']
         ]);
-
+		$this->viewBuilder()->options([
+            'pdfConfig' => [
+                'orientation' => 'portrait',
+                'filename' => 'User.pdf'
+            ]
+        ]);
         $this->set('user', $user);
     }
 
@@ -144,21 +154,6 @@ class UsersController extends AppController
 		$user_role = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
 		$userRoles = $this->Users->Roles->initRolesChecker($user_role->roles);
 		
-		$emailTemplates = $this->SettingEmails->find()->where(['id'=>1])->first();
-		$session = $this->request->session()->read('Config.language');
-		if(isset($session) AND $session == 'ms_MY'){
-			$emailTemp_subject = $emailTemplates->my_subject;
-			$emailTemp_body = $emailTemplates->my_body;
-		}else{
-			$emailTemp_subject = $emailTemplates->en_subject;
-			$emailTemp_body = $emailTemplates->en_body;
-		}
-		// $emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_subject);
-		// $emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_body);
-		// $subject = __($emailTemp_subject,'yana','112233','961214115210');
-		// $body = __($this->Text->autoParagraph($emailTemp_body),'yana','112233','961214115210');
-		// var_dump($subject);
-		// var_dump($body);
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();
@@ -217,6 +212,33 @@ class UsersController extends AppController
 				$userRole->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$this->UsersRoles->save($userRole);
 				
+				$language_id = $this->getLanguageId();
+				$emailTemplates = $this->SettingEmails->find()->where(['email_type_id'=>1,'language_id'=>$language_id])->first();
+				$emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->subject);
+				$emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->body);
+				$subject = __(nl2br($emailTemp_subject),'yana','112233','990109115678');
+				$body = __(nl2br($emailTemp_body),'yana','112233','990109115678');
+
+				try {
+					$email = new Email();
+
+					// Use a named transport already configured using Email::configTransport()
+					$email->transport('default');
+
+					// Use a constructed object.
+					//$transport = new DebugTransport();
+					//$email->transport($transport);
+					/* $email 
+						->emailFormat('html')
+						->to('officialnordiyanah@gmail.com', 'yana')
+						->setSubject('yana')
+						->send('yana'); */
+					//var_dump($email);
+				}catch(\Exception $e){
+					var_dump($e->getMessage());
+					$this->Flash->error(__('Email could not send. Please, try again.'));
+				}
+
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }
@@ -478,17 +500,17 @@ class UsersController extends AppController
         }
         if($lang == 'en'){
 			$language_id=1;
-		}else if($lang == 'cn_CN'){
-			$language_id=2;
-		}else if($lang == 'cn_ZH'){
-			$language_id=3;
 		}else{
-			$language_id=1;
+			$language_id=2;
 		}
 		
         if ($this->request->is('post')) {
             $user = $this->Users->find()->where(['email' => $this->request->data['email']])->first();
             if ($user != null) {
+				$arr_verify = array( 'user_id' => $user->id, 'language_id' => $language_id);
+				$data = json_encode($arr_verify);
+				$verify_url = Router::url('/', true).'users/verify_reset?param='.base64_encode($data);
+				
 				$this->Flash->success(__('Password reset instruction will be sent to e-mail address {0}.', [$user->email]));
             }else{
 				$this->Flash->error(__('Email cannot be found. Please, try again.'));
@@ -519,5 +541,15 @@ class UsersController extends AppController
 		$this->set(compact('designations','users'));
         $this->set('_serialize', ['designations','users']);
         $this->viewBuilder()->layout('ajax');
+	}
+	
+	public function getLanguageId(){
+		$session = $this->request->session()->read('Config.language');
+		if(isset($session) AND $session == 'ms_MY'){
+			$language_id=2;
+		}else{
+			$language_id=1;
+		}
+		return $language_id;
 	}
 }

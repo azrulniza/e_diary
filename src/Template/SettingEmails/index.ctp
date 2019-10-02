@@ -7,7 +7,7 @@
                     <table id="dataTables-settingEmails" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('No') ?></th>
+                                <th><?= $this->Paginator->sort('no') ?></th>
                                 <th><?= $this->Paginator->sort('name') ?></th>
                                 <th><?= $this->Paginator->sort('#') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
@@ -17,16 +17,14 @@
                         <?php $count = 0 ?>
                         <?php foreach ($settingEmails as $key => $settingEmail): ?>
                             <tr id="<?= $settingEmail->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
-                                <td><?= $count ?>.</td>
+                                <td><?= $count ?></td>
                                 <td><?= h($settingEmail->name) ?></td>
-                                <td><?= isset($settingEmail->my_body) ? __('Malay').'&nbsp;<i class="fa fa-check-circle" aria-hidden="true" text-success></i>': ''  ?>
-									<br>
-									<?= isset($settingEmail->en_body) ? __('English').'&nbsp;<i class="fa fa-check-circle" aria-hidden="true" text-success></i>': ''  ?>
+                                <td><?= $this->Html->link('English', ['controller' => 'SettingEmails', 'action' => 'edit', $settingEmail->email_type_id , 1])?><br>
+								<?= $this->Html->link('Malay', ['controller' => 'SettingEmails', 'action' => 'edit', $settingEmail->email_type_id , 2])?>
 								</td>
                                 <td class="actions">
                                     <div class="btn-group">
-                                        <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $settingEmail->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>
-                                        <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'edit', $settingEmail->id], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-success btn-xs']) ?>
+                                        <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $settingEmail->email_type_id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>
                                     </div>
                                 </td>
                             </tr>

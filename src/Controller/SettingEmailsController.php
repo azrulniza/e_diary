@@ -19,7 +19,8 @@ class SettingEmailsController extends AppController
      */
     public function index()
     {
-        $settingEmails = $this->paginate($this->SettingEmails);
+		$emails = $this->SettingEmails->find()->group('email_type_id');
+        $settingEmails = $this->paginate($emails);
 
         $this->set(compact('settingEmails'));
     }
@@ -31,13 +32,18 @@ class SettingEmailsController extends AppController
      * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($email_type_id = null)
     {
-        $settingEmail = $this->SettingEmails->get($id, [
+		$englishiId = $this->SettingEmails->find()->where(['email_type_id'=> $email_type_id,'language_id'=>1])->first()->id;
+		$malayId = $this->SettingEmails->find()->where(['email_type_id'=> $email_type_id,'language_id'=>2])->first()->id;
+        $settingEmailEnglish = $this->SettingEmails->get($englishiId, [
+            'contain' => []
+        ]);
+        $settingEmailMalay = $this->SettingEmails->get($malayId, [
             'contain' => []
         ]);
 
-        $this->set('settingEmail', $settingEmail);
+        $this->set(compact('settingEmail','settingEmailEnglish','settingEmailMalay'));
     }
 
     /**
@@ -67,8 +73,9 @@ class SettingEmailsController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit($email_type_id = null,$language_id = null)
     {
+		$id = $this->SettingEmails->find()->where(['email_type_id'=> $email_type_id, 'language_id'=> $language_id])->first()->id;
         $settingEmail = $this->SettingEmails->get($id, [
             'contain' => []
         ]);
@@ -81,7 +88,7 @@ class SettingEmailsController extends AppController
             }
             $this->Flash->error(__('The setting email could not be saved. Please, try again.'));
         }
-        $this->set(compact('settingEmail'));
+        $this->set(compact('settingEmail','email_type_id','language_id'));
     }
 
     /**

@@ -4,6 +4,7 @@ return [
     'plugins' => [
         'AdminLTEBakeOverride' => $baseDir . '/plugins/AdminLTEBakeOverride/',
         'Bake' => $baseDir . '/vendor/cakephp/bake/',
+        'CakePdf' => $baseDir . '/vendor/friendsofcake/cakepdf/',
         'Captcha' => $baseDir . '/plugins/Captcha/',
         'DebugKit' => $baseDir . '/vendor/cakephp/debug_kit/',
         'Migrations' => $baseDir . '/vendor/cakephp/migrations/',

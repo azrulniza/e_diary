@@ -25,6 +25,7 @@
                             <dd><?= h($user->phone) ?></dd>
                         </dl>
                     </div>
+					<?= $this->Html->link(__('Export to PDF'), ['action' => 'view', $user->id, '_ext' => 'pdf']); ?>
                 </div>
             </div>
         </div>

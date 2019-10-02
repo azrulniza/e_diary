@@ -18,6 +18,11 @@ use Cake\Core\Configure;
  */
 class UsersController extends AppController
 {
+	public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
 	private $userStatus;
 
     public function __construct(\Cake\Network\Request $request = null, \Cake\Network\Response $response = null, $name = null, $eventManager = null, $components = null)
@@ -119,7 +124,12 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => ['Roles']
         ]);
-
+		$this->viewBuilder()->options([
+            'pdfConfig' => [
+                'orientation' => 'portrait',
+                'filename' => 'User_' . $id . '.pdf'
+            ]
+        ]);
         $this->set('user', $user);
     }
 
@@ -153,12 +163,31 @@ class UsersController extends AppController
 			$emailTemp_subject = $emailTemplates->en_subject;
 			$emailTemp_body = $emailTemplates->en_body;
 		}
-		// $emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_subject);
-		// $emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_body);
-		// $subject = __($emailTemp_subject,'yana','112233','961214115210');
-		// $body = __($this->Text->autoParagraph($emailTemp_body),'yana','112233','961214115210');
-		// var_dump($subject);
-		// var_dump($body);
+		$emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_subject);
+		$emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_body);
+		$subject = __($emailTemp_subject,'yana','112233','990109115678');
+		$body = __(nl2br($emailTemp_body),'yana','112233','990109115678');
+		
+		try {
+			$email = new Email();
+
+			// Use a named transport already configured using Email::configTransport()
+			$email->transport('default');
+
+			// Use a constructed object.
+			//$transport = new DebugTransport();
+			//$email->transport($transport);
+			$email 
+				->emailFormat('html')
+				->to('officialnordiyanah@gmail.com', 'yana')
+				->setSubject('yana')
+				->send('yana');
+			var_dump($email);
+		}catch(\Exception $e){
+			var_dump($e->getMessage());
+			$this->Flash->error(__('Email could not send. Please, try again.'));
+		}
+		
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();
@@ -217,6 +246,39 @@ class UsersController extends AppController
 				$userRole->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$this->UsersRoles->save($userRole);
 				
+				$emailTemplates = $this->SettingEmails->find()->where(['id'=>1])->first();
+				$session = $this->request->session()->read('Config.language');
+				if(isset($session) AND $session == 'ms_MY'){
+					$emailTemp_subject = $emailTemplates->my_subject;
+					$emailTemp_body = $emailTemplates->my_body;
+				}else{
+					$emailTemp_subject = $emailTemplates->en_subject;
+					$emailTemp_body = $emailTemplates->en_body;
+				}
+				$emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_subject);
+				$emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemp_body);
+				$subject = __($emailTemp_subject,$user->name,$this->request->data['password'],$user->ic_number);
+				$body = __($emailTemp_body,$user->name,$this->request->data['password'],$user->ic_number);
+				
+				try {
+					$email = new Email();
+
+					// Use a named transport already configured using Email::configTransport()
+					$email->transport('default');
+
+					// Use a constructed object.
+					//$transport = new DebugTransport();
+					//$email->transport($transport);
+					$email
+						->emailFormat('html')
+						->to($user->email, $user->name)
+						->subject(nl2br($subject))
+						->send(nl2br($body));
+					debug($email);
+				}catch(\Exception $e){
+					$this->Flash->error(__('Email could not send. Please, try again.'));
+				}
+
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }

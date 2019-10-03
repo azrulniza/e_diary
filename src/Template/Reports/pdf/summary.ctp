@@ -3,49 +3,6 @@
         <div class="box box-info">
             <div class="box-header"></div>
             <div class="box-body">
-				<?php $this->Form->templates($form_templates['shortForm']); ?>
-					<?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
-						<!--<div class="form-group">
-						<?php if ($userRoles->hasRole(['Master Admin','Admin'])) :?>
-							<?php
-								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
-							?>		
-						<?php endif; ?>-->
-							
-						<?php								
-							  $month = array(
-							  '01' => 'January', 
-							  '02' => 'Fabruary', 
-							  '03' => 'March', 
-							  '04' => 'April', 
-							  '05' => 'May', 
-							  '06' => 'June', 
-							  '07' => 'July', 
-							  '08' => 'August', 
-							  '09' => 'September', 
-							  '10' => 'October', 
-							  '11' => 'November', 
-							  '12' => 'December');
-							echo $this->Form->input(
-								'att_month',
-								['label' => __('Attendance Month'),
-								'type' => 'select',
-								'id' => 'attmonth',
-								'class' => 'form-control autosubmit','style'=>'width:40%',
-								'options' => $month, 
-								'default' => '08',
-								'value'=>$monthselected,'style'=>'width:40%']
-							);
-						?>
-						</div>
-				<a href="exportExcelSummary?att_month=<?= $monthselected;?>" class="btn btn-default pull-right">
-					<span class="glyphicon glyphicon-download-alt"> </span> 
-					<?php echo __('Export to Excel') ?>
-				</a>
-					
-				<?= $this->Html->link(__('Export to PDF'), ['action' => 'summary', '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
-
-				<br/><br/>
                 <div class="reports index dataTable_wrapper table-responsive">
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>

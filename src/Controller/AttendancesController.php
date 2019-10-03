@@ -202,6 +202,9 @@ class AttendancesController extends AppController
 
     public function clock_in()
     {
+        //manual db connection
+        $conn = ConnectionManager::get('default');
+
         // Create from a string datetime.
         $today_date = date('d-m-Y');
 
@@ -209,6 +212,7 @@ class AttendancesController extends AppController
         $this->loadModel('Attendances');
         $this->loadModel('AttendanceLogs');
         $this->loadModel('Organizations');
+        $this->loadModel('SettingAttendancesReasons');
         
         $departmentSelected = $this->request->query('department');
         $staffSelected = $this->request->query('staff');
@@ -248,6 +252,12 @@ class AttendancesController extends AppController
             $attendance->pic = $userPIC;
             $action=$data['action'];
             $user_id=$data['user_id'];
+            $reason=$data['reason'];
+            $remark=$data['remark'];
+
+            $attendance->setting_attendances_reason_id=$reason;
+            $attendance->remarks=$remark;
+            $attendance->attendance_type_id=2;
 
             if($action=='in'){
                 $attendance->status=1;
@@ -267,12 +277,46 @@ class AttendancesController extends AppController
                     $attendance_log->user_id=$user_id;
                     $attendance_log->attendance_code_id=1;
                     $attendance_log->pic=$userPIC;
+                    $attendance_log->setting_attendances_reason_id=$reason;
+                    $attendance_log->remarks=$remark;
+                    $attendance_log->attendance_type_id=2;
                     $attendance_log->cdate=$cdate;
                     $attendance_log->mdate=$cdate;
 
                     $this->AttendanceLogs->save($attendance_log);
 
+
+                    //insert into user_card
+                    $start_clockin_time = date("HH:mm", strtotime("07:30"));
+                    $end_clockin_time = date("HH:mm", strtotime("09:00"));
+
+                    $start_clockout_time = date("HH:mm", strtotime("04:30"));
+                    $end_clockout_time = date("HH:mm", strtotime("06:00"));
+
+                    if (date('HH:mm', strtotime($cdate)) >= $start_clockin_time AND date('HH:mm', strtotime($cdate)) <= $end_clockin_time) {
+                        // card yellow (normal clock in)
+                        $card="2";
+                    }else{
+                        // card red (late clock in)
+                        $card="3";
+
+                    }
+
+                    $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                    $sql="INSERT INTO `user_cards` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+            
+                    $stmt = $conn->execute($sql);
+
+
+                    //insert into user_card_log
+                    $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                    $sql_log="INSERT INTO `user_cards_logs` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+            
+                    $stmt_log = $conn->execute($sql_log);
+
                     $this->Flash->success(__('Successfully clockin.'));
+
+
                 }else if($action=='out'){
 
                     $attendanceLogTable = TableRegistry::get('AttendanceLogs');
@@ -282,6 +326,9 @@ class AttendancesController extends AppController
                     $attendance_log->attendance_code_id=2;
                     $attendance_log->pic=$userPIC;
                     $attendance_log->status=2;
+                    $attendance_log->setting_attendances_reason_id=$reason;
+                    $attendance_log->remarks=$remark;
+                    $attendance_log->attendance_type_id=2;
                     $attendance_log->cdate=$cdate;
                     $attendance_log->mdate=$cdate;
 
@@ -299,14 +346,17 @@ class AttendancesController extends AppController
         $users = $this->Attendances->Users->find('list', ['limit' => 200]);
         $attendanceCodes = $this->Attendances->AttendanceCodes->find('list', ['limit' => 200]);
 
-       
+        $SettingAttendancesReasons = $this->SettingAttendancesReasons->find('list')->Where(['status'=>1]);
         
 
-        $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user'));
+        $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','SettingAttendancesReasons'));
     }
 
     public function update($id = null)
     {
+        //manual db connection
+        $conn = ConnectionManager::get('default');
+
         // Create from a string datetime.
         $today_date = date('d-m-Y');
 
@@ -314,6 +364,7 @@ class AttendancesController extends AppController
         $this->loadModel('Attendances');
         $this->loadModel('AttendanceLogs');
         $this->loadModel('Organizations');
+        $this->loadModel('SettingAttendancesReasons');
         
         
         $userPIC = $this->AuthUser->id();
@@ -340,6 +391,12 @@ class AttendancesController extends AppController
             $attendance->pic = $userPIC;
             $action=$data['action'];
             $user_id=$data['user_id'];
+            $reason=$data['reason'];
+            $remark=$data['remark'];
+
+            $attendance->setting_attendances_reason_id=$reason;
+            $attendance->remarks=$remark;
+            $attendance->attendance_type_id=2;
 
             if($action=='in'){
                 $attendance->status=1;
@@ -358,12 +415,42 @@ class AttendancesController extends AppController
                     $attendance_log->id=$attendance_id;
                     $attendance_log->user_id=$user_id;
                     $attendance_log->attendance_code_id=1;
+                    $attendance_log->setting_attendances_reason_id=$reason;
+                    $attendance_log->remarks=$remark;
+                    $attendance_log->attendance_type_id=2;
                     $attendance_log->pic=$userPIC;
                     $attendance_log->cdate=$cdate;
                     $attendance_log->mdate=$cdate;
 
                     $this->AttendanceLogs->save($attendance_log);
 
+                    //insert into user_card
+                    $start_clockin_time = date("HH:mm", strtotime("07:30"));
+                    $end_clockin_time = date("HH:mm", strtotime("09:00"));
+
+                    $start_clockout_time = date("HH:mm", strtotime("04:30"));
+                    $end_clockout_time = date("HH:mm", strtotime("06:00"));
+
+                    if (date('HH:mm', strtotime($cdate)) >= $start_clockin_time AND date('HH:mm', strtotime($cdate)) <= $end_clockin_time) {
+                        // card yellow (normal clock in)
+                        $card="2";
+                    }else{
+                        // card red (late clock in)
+                        $card="3";
+
+                    }
+
+                    $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                    $sql="INSERT INTO `user_cards` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+            
+                    $stmt = $conn->execute($sql);
+
+
+                    //insert into user_card_log
+                    $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                    $sql_log="INSERT INTO `user_cards_logs` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+            
+                    $stmt_log = $conn->execute($sql_log);
                     $this->Flash->success(__('Successfully clockin.'));
                 }else if($action=='out'){
 
@@ -378,9 +465,9 @@ class AttendancesController extends AppController
                     $attendance_log->mdate=$cdate;
 
                     $this->AttendanceLogs->save($attendance_log);
-
-
+                    
                     $this->Flash->success(__('Successfully clockout.'));
+
                 }
                 
 
@@ -390,11 +477,9 @@ class AttendancesController extends AppController
         }
         $users = $this->Attendances->Users->find('list', ['limit' => 200]);
         $attendanceCodes = $this->Attendances->AttendanceCodes->find('list', ['limit' => 200]);
-
-       
-        
-
-        $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','user_pic'));
+        $SettingAttendancesReasons = $this->SettingAttendancesReasons->find('list')->Where(['status'=>1]);
+    
+        $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','user_pic','SettingAttendancesReasons'));
     }
 
     public function add()

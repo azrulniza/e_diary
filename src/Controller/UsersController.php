@@ -489,6 +489,7 @@ class UsersController extends AppController
 	public function reset_password($lang)
     {
         $success = false;
+		$this->loadModel('SettingEmails');
         $user = $this->Users->newEntity();
 		
 		$langs = \Cake\Core\Configure::read('Languages');
@@ -498,10 +499,10 @@ class UsersController extends AppController
             I18n::locale($lang);
 			//$this->redirect('/users/verify_reset?switch_to='.$lang.'&user_id='.$user_id);
         }
-        if($lang == 'en'){
-			$language_id=1;
-		}else{
+        if($lang == 'ms_MY'){
 			$language_id=2;
+		}else{
+			$language_id=1;
 		}
 		
         if ($this->request->is('post')) {
@@ -511,16 +512,83 @@ class UsersController extends AppController
 				$data = json_encode($arr_verify);
 				$verify_url = Router::url('/', true).'users/verify_reset?param='.base64_encode($data);
 				
+				$emailTemplates = $this->SettingEmails->find()->where(['email_type_id'=>2,'language_id'=>$language_id])->first();
+				$emailTemp_subject = str_replace(array('[USER_NAME]', '[URL_LINK]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->subject);
+				$emailTemp_body = str_replace(array('[USER_NAME]', '[URL_LINK]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->body);
+				$subject = __(nl2br($emailTemp_subject),'yana',$verify_url,'990109115678');
+				$body = __(nl2br($emailTemp_body),'yana',$verify_url,'990109115678');
+				
 				$this->Flash->success(__('Password reset instruction will be sent to e-mail address {0}.', [$user->email]));
             }else{
 				$this->Flash->error(__('Email cannot be found. Please, try again.'));
 			}
         }
-        $this->set(compact('user', 'success', 'oem'));
+        $this->set(compact('user', 'success'));
         $this->set('_serialize', ['user']);
         $this->viewBuilder()->layout('public_reset');
     }
 	
+	public function verify_reset()
+    {
+		$data = $this->request->query('param');
+		$data = base64_decode($data);	
+		$data = json_decode($data);
+
+		$language_id = $data->language_id;
+		$user_id = $data->user_id;
+		if($language_id == 1){
+			$lang = 'en';
+		}else if($language_id == 2){
+			$lang = 'ms_MY';
+		}
+		
+		$session = $this->request->session();
+        
+        $langs = \Cake\Core\Configure::read('Languages');
+        
+        if(isset($langs[$lang])){
+            $session->write('Config.language', $lang);
+            I18n::locale($lang);
+			$this->redirect('/users/verify_reset?switch_to='.$lang.'&param1='.$this->request->query('param'));
+        }
+        else{
+            //@TODO correctly display error
+            $this->viewBuilder()->layout('Element/Flash/error');
+        }
+		if ($this->request->is('post')) {
+			
+			$data = $this->request->data['param1'];
+			$data = base64_decode($data);	
+			$data = json_decode($data);
+		
+			$user_id = $data->user_id;
+			$lang =  $this->request->query('switch_to');
+			
+			if($this->Users->exists(['id' => $user_id])){
+				if($this->request->data['password'] === $this->request->data['confirm_password'])
+				{
+					$user=$this->Users->get($user_id);
+					$user->password = $this->request->data['password'];
+					if ($this->Users->save($user)) {
+						
+						$session->write('Config.language', $lang);
+						$this->Flash->success(__('Successfully reset password.'));
+						return $this->redirect('/users/login');
+						
+					}else{
+						$this->Flash->error(__('The user cannot be save. Please, try again.'));
+					}
+					
+				}else{
+					$this->Flash->error(__('Password not match. Please, try again.'));
+				}
+			}else{
+				$this->Flash->error(__('Invalid user.'));
+			}
+		}
+		$this->viewBuilder()->layout('verify_reset');
+		$this->set(compact('language_id'));
+    }
 	public function getDetails()
 	{
 		$this->loadModel('Designations');

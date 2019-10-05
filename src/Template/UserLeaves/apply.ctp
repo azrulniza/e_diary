@@ -144,7 +144,7 @@
                 </div>
                 <div class="box-footer">
                     <?= $this->Form->button(__('Apply'), ['class'=>'btn btn-primary']) ?>
-                    <?= $this->Html->link(__('Cancel'), ['controller' => 'designations'], ['class' => 'btn btn-warning']) ?>
+                    <?= $this->Html->link(__('Cancel'), ['controller' => 'user_leaves'], ['class' => 'btn btn-warning']) ?>
                 </div>
             </div>
             <?= $this->Form->end() ?>

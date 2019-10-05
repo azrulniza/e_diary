@@ -31,7 +31,8 @@
             <?= $this->Form->create($attendance, ['role' => 'form']) ?>
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <?php //print_r($has_attend);?>
+                    <?php //print_r($SettingAttendancesReasons);
+                    //echo $cur_time;?>
                     <?php if($has_attend->status==1){ $action="out"?>
                         <?php $date = strtotime($has_attend->cdate);
                             $clock_in_time=date('H:i:s', $date);
@@ -51,13 +52,13 @@
                     <?php } ?>
                     
                 </div>
-                <div align="center" class="box-body">
-                    <h3> 
+                <div class="box-body">
+                    <h3 align="center"> 
                         <?php
                              echo __("Hi") ." ". $user->name;
                         ?>
                     </h3>
-                    <div>
+                    <div align="center">
                         <?php if($action=="out"){?>
 
                             <h5><?php echo __("Clocked in for ") . $hour. " ".__("Hour"). " " . $minute ." ".__("Minute") . " " . $second . " " .__("Second");?></h5>
@@ -65,18 +66,18 @@
                             <?php echo __("Get started today! Click to clock in"); ?>
                         <?php }?>
                     </div><br/> 
-                    <div class="well">
+                    <div align="center" class="well">
                         <h4><b><?php echo $today_date; ?></b></h4>
                         <h4><b id="txt"></b></h4>
                     </div>
                    
-                    <div class="form-group">
+                    <div align="center" class="form-group">
                         <?php
                         echo $this->Form->input('user_id', ['type'=>'hidden','value' => $user->id]);
                         echo $this->Form->input('action', ['type'=>'hidden','value' => $action]);
-                        /*echo $this->Form->input('attendance_code_id', ['options' => $attendanceCodes, 'class' => 'form-control']);
-                        echo $this->Form->input('ip_address', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
-                        echo $this->Form->input('gps_lat', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        echo $this->Form->input('reason', ['style'=>'width:50%;','required'=>true,'id'=>'reason','options' => $SettingAttendancesReasons, 'class' => 'form-control','empty' => __('-- Please Select --')]);
+                        echo $this->Form->input('remark', ['style'=>'width:50%;','type'=>'textarea','class' => 'form-control', 'placeholder' => __('Enter ...')]);
+                        /*echo $this->Form->input('gps_lat', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('gps_lng', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('pic', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         echo $this->Form->input('cdate', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);

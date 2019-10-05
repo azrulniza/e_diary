@@ -6,6 +6,7 @@
             <div class="box-body">
                 <div class="attendances index dataTable_wrapper table-responsive">
                     <h4><?php echo __("Summary Attendance for today, ").$today_date;?></h4>
+                    <?php //print_r($attendance_in)?>
                     <?php if($userRoles->hasRole(['Master Admin'])) :?>
 
                         <table id="addTable" class="table-condensed" style="table-layout: auto;">
@@ -33,6 +34,7 @@
                                 <th><?= __('Status') ?></th>
                                 <th><?= __('In') ?></th>
                                 <th><?= __('Out') ?></th>
+                                <th><?= __('Card') ?></th>
                                 <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
                                     <th class="actions"><?= __('Actions') ?></th>
                                 <?php endif; ?>
@@ -62,7 +64,7 @@
                                 </td>
                                 <td><?php if($attendance['in']!=""){
                                      $date_in=date_create($attendance['in']);
-                                echo date_format($date_in,"H:i a");
+                                     echo date_format($date_in,"H:i a");
                                      
                                 }
                                
@@ -73,13 +75,24 @@
                                 }
                                 
                                 ?></td>
-                               
+                               <td><?php if($attendance['card']!=""){ ?>
+                                        
+                                       <b style="color:<?php echo $attendance['card']?>"><span class="fa fa-square"></span></b> <?= $attendance['card'] ?>
+                                       
+                                <?php } ?>
+                                
+                                </td>
                                <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
                                     <td class="actions">
                                         <div class="btn-group">
                                             
-                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'update', $attendance['user_id']], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>'Update']) ?>
+                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'update', $attendance['user_id']], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>'Update']) ?>                    
                         
+                                        </div>
+                                        <div class="btn-group">
+                                            
+                                              <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-exchange']), ['action' => 'change_card', $attendance['card_id']], ['escape' => false, 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>'Change Card Status']) ?>
+                                               
                                         </div>
                                     </td>
                                 <?php endif; ?>

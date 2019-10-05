@@ -33,7 +33,8 @@ class AttendancesController extends AppController
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
         $this->loadModel('Designations');
-
+        $this->loadModel('UserCards');
+        $this->loadModel('Cards');
 
         $today_date = date('d-m-Y');    
         $userPIC = $this->AuthUser->id();
@@ -90,6 +91,12 @@ class AttendancesController extends AppController
                     $attendance_in['status']=2;
                     $attendance_in['attendance_code_name']="Absent";
                 }
+
+
+                $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
+                $attendance_in['card']=$user_card->card->name;
+                $attendance_in['card_id']=$user_card->id;
+
                 $attendance_in['out']=$has_out->cdate;
 
                 $attendances[$attendance_in['user_id']]=$attendance_in;
@@ -136,6 +143,11 @@ class AttendancesController extends AppController
                 }
                 $attendance_in['out']=$has_out->cdate;
 
+                //User Card
+                $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
+                $attendance_in['card']=$user_card->card->name;
+                $attendance_in['card_id']=$user_card->id;
+
                 $attendances[$attendance_in['user_id']]=$attendance_in;
             }
         }elseif ($userRoles->hasRole(['Staff'])) {
@@ -171,11 +183,16 @@ class AttendancesController extends AppController
                 }
                 $attendance_in['out']=$has_out->cdate;
 
+                //User Card
+                $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
+                $attendance_in['card']=$user_card->card->name;
+                $attendance_in['card_id']=$user_card->id;
+
                 $attendances[$attendance_in['user_id']]=$attendance_in;
             }
         }
         
-        $this->set(compact('attendances','userRoles','attendance_in','today_date','list_organization','list_user','organizationSelected'));
+        $this->set(compact('attendances','userRoles','attendance_in','today_date','list_organization','list_user','organizationSelected','user_card'));
     }
 
     /**
@@ -287,13 +304,13 @@ class AttendancesController extends AppController
 
 
                     //insert into user_card
-                    $start_clockin_time = date("HH:mm", strtotime("07:30"));
-                    $end_clockin_time = date("HH:mm", strtotime("09:00"));
+                    $start_clockin_time = date("H:i", strtotime("07:30"));
+                    $end_clockin_time = date("H:i", strtotime("09:00"));
 
-                    $start_clockout_time = date("HH:mm", strtotime("04:30"));
-                    $end_clockout_time = date("HH:mm", strtotime("06:00"));
+                    $start_clockout_time = date("H:i", strtotime("16:30"));
+                    $end_clockout_time = date("H:i", strtotime("18:00"));
 
-                    if (date('HH:mm', strtotime($cdate)) >= $start_clockin_time AND date('HH:mm', strtotime($cdate)) <= $end_clockin_time) {
+                    if (date('H:i', strtotime($cdate)) >= $start_clockin_time AND date('H:i', strtotime($cdate)) <= $end_clockin_time) {
                         // card yellow (normal clock in)
                         $card="2";
                     }else{
@@ -301,7 +318,6 @@ class AttendancesController extends AppController
                         $card="3";
 
                     }
-
                     $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
                     $sql="INSERT INTO `user_cards` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
             
@@ -425,13 +441,13 @@ class AttendancesController extends AppController
                     $this->AttendanceLogs->save($attendance_log);
 
                     //insert into user_card
-                    $start_clockin_time = date("HH:mm", strtotime("07:30"));
-                    $end_clockin_time = date("HH:mm", strtotime("09:00"));
+                    $start_clockin_time = date("H:i", strtotime("07:30"));
+                    $end_clockin_time = date("H:i", strtotime("09:00"));
 
-                    $start_clockout_time = date("HH:mm", strtotime("04:30"));
-                    $end_clockout_time = date("HH:mm", strtotime("06:00"));
+                    $start_clockout_time = date("H:i", strtotime("16:30"));
+                    $end_clockout_time = date("H:i", strtotime("18:00"));
 
-                    if (date('HH:mm', strtotime($cdate)) >= $start_clockin_time AND date('HH:mm', strtotime($cdate)) <= $end_clockin_time) {
+                    if (date('H:i', strtotime($cdate)) >= $start_clockin_time AND date('H:i', strtotime($cdate)) <= $end_clockin_time) {
                         // card yellow (normal clock in)
                         $card="2";
                     }else{
@@ -481,6 +497,76 @@ class AttendancesController extends AppController
     
         $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','user_pic','SettingAttendancesReasons'));
     }
+
+
+    public function change_card($id = null)
+    { //update card color
+
+        //manual db connection
+        $conn = ConnectionManager::get('default');
+
+        $this->loadModel('Users');
+        $this->loadModel('Attendances');
+        $this->loadModel('AttendanceLogs');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+        $this->loadModel('Designations');
+        $this->loadModel('UserCards');
+        $this->loadModel('Cards');
+
+        $today_date = date('d-m-Y');    
+        $userPIC = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userPIC"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+        $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$userPIC"])->limit(1)->first();
+        $user_organization_id=$usersOrganization->organization_id;
+        
+        //User Card
+        $user_card = $this->UserCards->find('all')->contain(['Cards','Users'])->where(['UserCards.id'=>$id])->limit(1)->first();
+        
+        // Card
+        $cards = $this->Cards->find('list');
+
+
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $user_id = $data['user'];
+            $card_id = $data['card'];
+            $card_status_id = $data['card_color'];
+            $remark = $data['remark'];
+            //$attendance_id = $data['attendance'];
+
+            if($user_id!=0 AND $card_id!=""){
+                $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+                $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+
+                //User Card
+                $card_log = $this->UserCards->find('all')->where(['id'=>$card_id])->limit(1)->first();
+                 //insert into user_card_log
+                $sql_log="INSERT INTO `user_cards_logs` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$card_log['user_id'].","."'".$card_log['card_id']."'".","."'".$card_log['pic']."'".","."'".$card_log['status']."'".","."'".$card_log['cdate']."'".","."'".$card_log['cdate']."')";
+            
+                $stmt_log = $conn->execute($sql_log);
+
+                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=$card_status_id, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user_id AND card_id=$card_id";
+                $stmt = $conn->execute($sql_update);
+
+
+               
+
+                $this->Flash->success(__('Successfully update card status.'));
+
+                return $this->redirect(['action' => 'index']);
+            }else{
+                $this->Flash->error(__('The card status could not be saved. Please, try again.'));
+            }
+            
+        }
+        
+        $this->set(compact('user_card','cards'));
+    }
+
 
     public function add()
     {

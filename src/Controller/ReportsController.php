@@ -93,16 +93,13 @@ class ReportsController extends AppController
 			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 			WHERE Users.status = 1";
 		
-		if ($userRoles->hasRole(['Master Admin'])) {
+		if ($userRoles->hasRole(['Admin','Staff'])) {
 			$userSelected 		= $userId;
 			$departmentSelected = $deptId;
-        }else  if ($userRoles->hasRole(['Admin'])) {
-            $userSelected 		= $userId;
-            $departmentSelected = $deptId;
         }
 		
 		if ($departmentSelected){
-			$sql .= " AND Uorganization.id = '".$departmentSelected."'";
+			$sql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
 		}
 		if ($userSelected){
 			$sql .= " AND Users.id = '".$userSelected."'";
@@ -180,16 +177,13 @@ class ReportsController extends AppController
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 				WHERE Users.status = 1";
 		
-		if ($userRoles->hasRole(['Master Admin'])) {
+		if ($userRoles->hasRole(['Admin','Staff'])) {
 			$userSelected 		= $userId;
 			$departmentSelected = $deptId;
-        }else  if ($userRoles->hasRole(['Admin'])) {
-            $userSelected 		= $userId;
-            $departmentSelected = $deptId;
         }
 		
 		if ($departmentSelected){
-			$weeklysql .= " AND Uorganization.id = '".$departmentSelected."'";
+			$weeklysql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
 		}
 		if ($userSelected){
 			$weeklysql .= " AND Users.id = '".$userSelected."'";			
@@ -274,17 +268,14 @@ class ReportsController extends AppController
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Master Admin'])) {
+		if ($userRoles->hasRole(['Admin','Staff'])) {
 			$userSelected 		= $userId;
 			$departmentSelected = $deptId;
-        }else  if ($userRoles->hasRole(['Admin'])) {
-            $userSelected 		= $userId;
-            $departmentSelected = $deptId;
         }
 		
 		
 		if ($departmentSelected){
-			$monthlysql .= " AND UserOrganization.id = '".$departmentSelected."'";
+			$monthlysql .= " AND UserOrganization.organization_id = '".$departmentSelected."'";
 		}
 		if ($userSelected){
 			$monthlysql .= " AND Users.id = '".$userSelected."'";
@@ -604,7 +595,7 @@ class ReportsController extends AppController
 			WHERE Users.status = 1";
 		
 		if ($departmentSelected){
-			$sql .= " AND Uorganization.id = '".$departmentSelected."'";
+			$sql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
 		}
 		if ($userSelected){
 			$sql .= " AND Users.id = '".$userSelected."'";
@@ -748,7 +739,7 @@ class ReportsController extends AppController
 				WHERE Users.status = 1";
 		
 		if ($departmentSelected){
-			$weeklysql .= " AND Uorganization.id = '".$departmentSelected."'";
+			$weeklysql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
 		}
 		if ($userSelected){
 			$weeklysql .= " AND Users.id = '".$userSelected."'";			
@@ -861,7 +852,7 @@ class ReportsController extends AppController
 				WHERE Users.status = 1";
 		
 		if ($departmentSelected){
-			$monthlysql .= " AND UserOrganization.id = '".$departmentSelected."'";
+			$monthlysql .= " AND UserOrganization.organization_id = '".$departmentSelected."'";
 		}
 		if ($userSelected){
 			$monthlysql .= " AND Users.id = '".$userSelected."'";
@@ -1477,7 +1468,348 @@ class ReportsController extends AppController
 		$this->set(compact('data'));
 		$this->render('pdf');
     }
+	
+	 public function daily_tf()
+    {
+       
+		$Users = TableRegistry::get('Users');
+		$Users = TableRegistry::getTableLocator()->get('Users');
+		$departments = TableRegistry::get('Organizations');
+		$departments = TableRegistry::getTableLocator()->get('Organizations');
+		$dateselected = $this->request->query['date_attendance'];
+		$leaveTypeselected = $this->request->query['leaveType'];
+		$departmentSelected = $this->request->query('department');
+        $userSelected = $this->request->query('user');
+        $filterSelected = $this->request->query('filterby');
+		$userId = $this->AuthUser->id();
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		$users = $this->Users->find('list');
+        $departments = $this->Organizations->find('list');
 		
+		//department session
+		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
+		$this->set('resultDepartment',$sqldepartment);
+		$deptId = $resultDepartment[0]['organization_id'];
+		
+		$tempYear	= date("Y");
+		$tempMonth	= date("m");
+		$tempDay 	= date("d");
+		
+		if ($dateselected){
+			$tempYear	=date("Y",strtotime($dateselected));
+			$tempMonth	=date("m",strtotime($dateselected));
+			$tempDay	=date("d",strtotime($dateselected));
+		} else {
+			$dateselected = date( 'Y-m-d');
+		}
+		
+		
+		$dailytfsql = "SELECT ul.*,u.name as user_name,lt.name as leave_type,ls.name as leave_status,Organization.name as organization_name
+				FROM user_leaves ul
+				LEFT JOIN users u ON ul.user_id = u.id
+				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
+				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= '".$dateselected."'
+				AND DATE_FORMAT(ul.date_end, '%Y-%m-%d') >= '".$dateselected."'";
+		
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		
+		if ($departmentSelected){
+			$dailytfsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		}
+		if ($userSelected){
+			$dailytfsql .= " AND u.id = '".$userSelected."'";
+		}
+		if ($leaveTypeselected){
+			$dailytfsql .= " AND lt.id = '".$leaveTypeselected."'";
+		} 
+		$dailytfsql .= " ORDER BY u.name";
+		
+		$connection = ConnectionManager::get('default');
+		$dailytfresults = $connection->execute($dailytfsql)->fetchAll('assoc');
+		
+		$this->viewBuilder()->options([
+            'pdfConfig' => [
+                'orientation' => 'landscape',
+                'filename' => 'DailyTimeOffReport.pdf'
+            ]
+        ]);
+
+		$this->set('result',$dailytfresults);
+        $this->set(compact('result','sql','dateselected', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected','leaveTypeselected'));
+		$this->set('_serialize', ['report']);
+    }
+	public function exportExcelDailytf()
+    {
+		$dateselected = $this->request->query['date_attendance'];
+		$departmentSelected = $this->request->query['department'];
+		$userSelected = $this->request->query['user'];
+		$leaveTypeselected = $this->request->query('leaveType');
+		
+		if ($dateselected){
+			
+		} else {
+			$dateselected = date( 'Y-m-d');
+		}
+		
+		$dailytfsql = "SELECT ul.*,u.name as user_name,lt.name as leave_type,ls.name as leave_status,Organization.name as organization_name
+				FROM user_leaves ul
+				LEFT JOIN users u ON ul.user_id = u.id
+				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
+				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= '".$dateselected."'
+				AND DATE_FORMAT(ul.date_end, '%Y-%m-%d') >= '".$dateselected."'";
+				
+		if ($departmentSelected){
+			$dailytfsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		}
+		if ($userSelected){
+			$dailytfsql .= " AND u.id = '".$userSelected."'";
+		}
+		if ($leaveTypeselected){
+			$dailytfsql .= " AND lt.id = '".$leaveTypeselected."'";
+		} 
+		$dailytfsql .= " ORDER BY u.name";
+		
+		$connection = ConnectionManager::get('default');
+		$results = $connection->execute($dailytfsql)->fetchAll('assoc');
+		
+		
+		//start to export
+		if ($departmentSelected){
+			$outputdepartment = $results[0]['organization_name'];
+		}else{
+			$outputdepartment = 'All';
+		}
+		if ($userSelected){
+			$outputuser = $results[0]['user_name'];
+		}else{
+			$outputuser = 'All';
+		}
+		if ($leaveTypeselected){
+			$outputleavetype = $results[0]['leave_type'];
+		}else{
+			$outputleavetype = 'All';
+		}
+		
+		$file_date=date('dMY');
+		$file_fullname = $file_date.'_DailyTimeOffReport';
+		$now = \Cake\I18n\Time::now();
+		header('Content-type: text/csv');
+		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
+		$output= fopen('php://output', 'w');
+		//output header
+		fputcsv($output,array('Report Type', 'Daily Time Off'));
+		
+		fputcsv($output,array('Date',$dateselected));
+		fputcsv($output,array('Department',$outputdepartment));
+		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array('Leave Type',$outputleavetype));
+		fputcsv($output,array(''));
+		
+		//output column headings
+		fputcsv($output, array('Bil', 'Name', 'Leave Type', 'Leave Date', 'Leave Time', 'Leave Status', 'Reason'));
+		$count_no=1;
+
+		$totalyellow = 0;
+		$totalred = 0;
+		$totalgreen = 0;
+		
+		foreach ($results as $key => $user){
+			$leaveTime = 'Start Time : '.$user['start_time'].' || '.'End Time : '.$user['end_time'];
+			$leaveDate = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
+			
+			$data[]=$count_no .','.$user['user_name'] .','.$user['leave_type'].','.$leaveDate.','.$leaveTime.','.$user['leave_status'].','.$user['reason'];
+			$count_no++;	
+
+		}	
+		$size=count($data);
+		$count=0;
+		
+		while($count<$size){
+			fputcsv($output, explode(',', $data[$count]));
+			$count++;
+		}
+		
+			
+		
+		fclose($output); die();
+	}
+	public function staff_tf()
+    {
+       
+		$Users = TableRegistry::get('Users');
+		$Users = TableRegistry::getTableLocator()->get('Users');
+		$departments = TableRegistry::get('Organizations');
+		$departments = TableRegistry::getTableLocator()->get('Organizations');
+		$leaveTypeselected = $this->request->query['leaveType'];
+		$departmentSelected = $this->request->query('department');
+        $userSelected = $this->request->query('user');
+        $filterSelected = $this->request->query('filterby');
+		$userId = $this->AuthUser->id();
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		$users = $this->Users->find('list');
+        $departments = $this->Organizations->find('list');
+		$connection = ConnectionManager::get('default');
+		
+		//department session
+		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
+		$resultDepartments = $connection->execute($sqldepartment)->fetchAll('assoc');
+		
+		$deptId = $resultDepartments[0]['organization_id'];
+		
+		
+		$stafftfsql = "SELECT ul.*,u.name as user_name,lt.name as leave_type,ls.name as leave_status,Organization.name as organization_name
+				FROM user_leaves ul
+				LEFT JOIN users u ON ul.user_id = u.id
+				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
+				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE u.status = 1";
+		
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		
+		if ($departmentSelected && $userSelected!=$userId){
+			$stafftfsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		} else if ($userSelected!=$userId) {
+			$stafftfsql .= " AND Uorganization.organization_id = '".$deptId."'";
+			$departmentSelected = $deptId;			
+		} else {
+			$departmentSelected = $deptId;
+		}
+		if ($userSelected){
+			$stafftfsql .= " AND u.id = '".$userSelected."'";
+		} else {
+			$stafftfsql .= " AND u.id = '".$userId."'";
+			$userSelected = $userId;
+		}
+		if ($leaveTypeselected){
+			$stafftfsql .= " AND lt.id = '".$leaveTypeselected."'";
+		} 
+		$stafftfsql .= " ORDER BY u.name";
+		
+		
+		$stafftfresults = $connection->execute($stafftfsql)->fetchAll('assoc');
+		
+		$this->viewBuilder()->options([
+            'pdfConfig' => [
+                'orientation' => 'landscape',
+                'filename' => 'DailyTimeOffReport.pdf'
+            ]
+        ]);
+
+		$this->set('result',$stafftfresults);
+        $this->set(compact('result','stafftfsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected','leaveTypeselected'));
+		$this->set('_serialize', ['report']);
+    }
+	public function exportExcelStafftf()
+    {
+		$departmentSelected = $this->request->query['department'];
+		$userSelected = $this->request->query['user'];
+		$leaveTypeselected = $this->request->query('leaveType');
+		
+		if ($dateselected){
+			
+		} else {
+			$dateselected = date( 'Y-m-d');
+		}
+		
+		$stafftfsql = "SELECT ul.*,u.name as user_name,lt.name as leave_type,ls.name as leave_status,Organization.name as organization_name
+				FROM user_leaves ul
+				LEFT JOIN users u ON ul.user_id = u.id
+				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
+				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE u.status = 1";
+				
+		if ($departmentSelected){
+			$stafftfsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		}
+		if ($userSelected){
+			$stafftfsql .= " AND u.id = '".$userSelected."'";
+		}
+		if ($leaveTypeselected){
+			$stafftfsql .= " AND lt.id = '".$leaveTypeselected."'";
+		} 
+		$stafftfsql .= " ORDER BY u.name";
+		
+		$connection = ConnectionManager::get('default');
+		$results = $connection->execute($stafftfsql)->fetchAll('assoc');
+		
+		
+		//start to export
+		if ($departmentSelected){
+			$outputdepartment = $results[0]['organization_name'];
+		}else{
+			$outputdepartment = 'All';
+		}
+		if ($userSelected){
+			$outputuser = $results[0]['user_name'];
+		}else{
+			$outputuser = 'All';
+		}
+		if ($leaveTypeselected){
+			$outputleavetype = $results[0]['leave_type'];
+		}else{
+			$outputleavetype = 'All';
+		}
+		
+		$file_date=date('dMY');
+		$file_fullname = $file_date.'_StaffTimeOffReport';
+		$now = \Cake\I18n\Time::now();
+		header('Content-type: text/csv');
+		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
+		$output= fopen('php://output', 'w');
+		//output header
+		fputcsv($output,array('Report Type', 'Staff Time Off'));
+		
+		fputcsv($output,array('Department',$outputdepartment));
+		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array('Leave Type',$outputleavetype));
+		fputcsv($output,array(''));
+		
+		//output column headings
+		fputcsv($output, array('Bil',  'Leave Type', 'Leave Date', 'Leave Time', 'Leave Status', 'Reason'));
+		$count_no=1;
+
+		$totalyellow = 0;
+		$totalred = 0;
+		$totalgreen = 0;
+		
+		foreach ($results as $key => $user){
+			$leaveTime = 'Start Time : '.$user['start_time'].' || '.'End Time : '.$user['end_time'];
+			$leaveDate = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
+			
+			$data[]=$count_no .','.$user['leave_type'].','.$leaveDate.','.$leaveTime.','.$user['leave_status'].','.$user['reason'];
+			$count_no++;	
+
+		}	
+		$size=count($data);
+		$count=0;
+		
+		while($count<$size){
+			fputcsv($output, explode(',', $data[$count]));
+			$count++;
+		}
+		
+			
+		
+		fclose($output); die();
+	}	
    
 }
  

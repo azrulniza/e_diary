@@ -117,6 +117,9 @@ class UserLeavesController extends AppController
             }else if(!empty($staffSelected) AND empty($statusSelected)){
                 $sql_leave .= " WHERE organizations.id=$user_organization_id AND users.id=$staffSelected";
                 
+            }else if(empty($staffSelected) AND empty($statusSelected)){
+                $sql_leave .= " WHERE organizations.id=$user_organization_id";
+                
             }
             $sql_leave .=" ORDER BY user_leaves.cdate desc";
             $stmt_sql_leave = $conn->execute($sql_leave);

@@ -19,12 +19,27 @@ class DesignationsController extends AppController
      */
     public function index()
     {
+		$this->loadModel('Users');
+		$this->loadModel('Organizations');
+		$userId = $this->Auth->user()['id'];
+		$organizationSelected = $this->request->query('organization');
+		$currentUser = $this->Users->find()->contain(['Roles'])->where(['Users.id' => $userId])->limit(1)->first();
+        
+		//get roles
+		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => $userId])->limit(1)->first();
+		$userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		
         $this->paginate = [
             'contain' => ['Organizations']
         ];
-        $designations = $this->paginate($this->Designations);
+		$organizations = $this->Organizations->find('list', ['limit' => 200]);
+		if($organizationSelected != null){
+			$designations = $this->paginate($this->Designations->find()->where(['organization_id'=>$organizationSelected]));
+		}else{
+			$designations = $this->paginate($this->Designations);
+		}
 
-        $this->set(compact('designations'));
+        $this->set(compact('designations','organizationSelected','userRoles','organizations'));
     }
 
     /**
@@ -98,13 +113,20 @@ class DesignationsController extends AppController
      */
     public function delete($id = null)
     {
+		$this->loadModel('UserDesignations');
         $this->request->allowMethod(['post', 'delete']);
         $designation = $this->Designations->get($id);
-        if ($this->Designations->delete($designation)) {
-            $this->Flash->success(__('The designation has been deleted.'));
-        } else {
-            $this->Flash->error(__('The designation could not be deleted. Please, try again.'));
-        }
+		
+		if($this->UserDesignations->find()->where(['designation_id'=>$id])->first() != null){
+			$this->Flash->error(__('Designation already in used. The designation could not be deleted.'));
+		}else{
+			$designation->status = 0;
+			if ($this->Designations->save($designation)) {
+				$this->Flash->success(__('The designation has been deleted.'));
+			} else {
+				$this->Flash->error(__('The designation could not be deleted. Please, try again.'));
+			}
+		}
 
         return $this->redirect(['action' => 'index']);
     }

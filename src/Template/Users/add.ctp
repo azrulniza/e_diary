@@ -42,6 +42,16 @@
 						});
 			}});
 		});
+		$('#listrole').change(function(){
+			var id = $(this).val();
+			if(id == 2 || id == 1){
+				$("#listuser").hide();
+				$("label[for='listuser']").hide();
+			}else{
+				$("#listuser").show();
+				$("label[for='listuser']").show();				
+			}
+		});
 	});
 </script>
 <div class="row">
@@ -65,17 +75,17 @@
 						</center>
                         <?php
 						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
-						echo $this->Form->input('ic_number', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
+						echo $this->Form->input('ic_number', ['pattern'=>'[0-9]{12,12}','title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
 						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('password', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
 						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;','required'=>true]);                        
                         if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
+							echo $this->Form->input('role', ['class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true]);
 							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
-							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true]);							
+							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>array('0'=>__('--Please Select--')),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true]);							
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;','required'=>true]);
-							echo $this->Form->input('role', ['class' => 'form-control','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','required'=>true]);
 						endif;
                         ?>
                     </div>

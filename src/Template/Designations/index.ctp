@@ -1,13 +1,28 @@
 <div class="row">
     <div class="col-xs-10">
         <div class="box box-info">
-            <div class="box-header"></div>
+            <div class="box-header">
+				<?php if($userRoles->hasRole(['Master Admin'])) :?>
+					<?php $this->Form->templates($form_templates['shortForm']); ?>
+                    <?= $this->Form->create('list',['type' => 'GET','autocomplete' => 'off']) ?>
+					
+					<?php if($userRoles->hasRole(['Master Admin'])):
+                    echo $this->Form->input('organization', ['label' => __('Department'), 'type'=>'select','id'=>'listorganization','class' => 'form-control autosubmit','options' => $organizations, 'empty'=>'All', 'value' => $organizationSelected]); echo "<br><br><br>";
+					endif; ?>
+					<br><br>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="search"></label>
+						<div class="col-md-10"><button class="btn btn-primary" type="submit"><?php echo __('Search') ;?></button></div>
+					</div>
+					<?= $this->Form->end() ?>
+			<?php endif; ?>
+			</div>
             <div class="box-body">
                 <div class="designations index dataTable_wrapper table-responsive">
                     <table id="dataTables-designations" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('id') ?></th>
+                                <th><?= $this->Paginator->sort('No') ?></th>
                                 <th><?= $this->Paginator->sort('name') ?></th>
                                 <th><?= $this->Paginator->sort('gred') ?></th>
                                 <th><?= $this->Paginator->sort('organization_id') ?></th>
@@ -18,7 +33,7 @@
                         <?php $count = 0 ?>
                         <?php foreach ($designations as $key => $designation): ?>
                             <tr id="<?= $designation->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
-                                <td><?= $this->Number->format($designation->id) ?></td>
+                                <td><?= $count ?></td>
                                 <td><?= h($designation->name) ?></td>
                                 <td><?= h($designation->gred) ?></td>
                                 <td>

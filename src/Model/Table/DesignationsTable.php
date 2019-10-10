@@ -9,13 +9,13 @@ use Cake\Validation\Validator;
 /**
  * Designations Model
  *
- * @property &\Cake\ORM\Association\BelongsTo $Organizations
- * @property \App\Model\Table\UserDesignationsTable&\Cake\ORM\Association\HasMany $UserDesignations
+ * @property \App\Model\Table\OrganizationsTable|\Cake\ORM\Association\BelongsTo $Organizations
+ * @property \App\Model\Table\UserDesignationsTable|\Cake\ORM\Association\HasMany $UserDesignations
  *
  * @method \App\Model\Entity\Designation get($primaryKey, $options = [])
  * @method \App\Model\Entity\Designation newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Designation[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Designation|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Designation|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Designation saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Designation patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Designation[] patchEntities($entities, array $data, array $options = [])
@@ -66,6 +66,10 @@ class DesignationsTable extends Table
             ->scalar('gred')
             ->maxLength('gred', 255)
             ->notEmptyString('gred');
+
+        $validator
+            ->integer('status')
+            ->allowEmptyString('status');
 
         $validator
             ->dateTime('cdate')

@@ -10,9 +10,11 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $gred
  * @property int|null $organization_id
+ * @property int|null $status
  * @property \Cake\I18n\Time|null $cdate
  * @property \Cake\I18n\Time|null $mdate
  *
+ * @property \App\Model\Entity\Organization $organization
  * @property \App\Model\Entity\UserDesignation[] $user_designations
  */
 class Designation extends Entity
@@ -30,8 +32,10 @@ class Designation extends Entity
         'name' => true,
         'gred' => true,
         'organization_id' => true,
+        'status' => true,
         'cdate' => true,
         'mdate' => true,
+        'organization' => true,
         'user_designations' => true
     ];
 }

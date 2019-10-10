@@ -20,7 +20,7 @@ class OrganizationsController extends AppController
     public function index()
     {
 		$this->set('title', __('Departments'));
-        $organizations = $this->paginate($this->Organizations);
+        $organizations = $this->paginate($this->Organizations->find()->where(['status'=>1]));
 
         $this->set(compact('organizations'));
     }
@@ -104,14 +104,20 @@ class OrganizationsController extends AppController
      */
     public function delete($id = null)
     {
+		$this->loadModel('UserOrganizations');
         $this->request->allowMethod(['post', 'delete']);
         $organization = $this->Organizations->get($id);
-        if ($this->Organizations->delete($organization)) {
-            $this->Flash->success(__('The organization has been deleted.'));
-        } else {
-            $this->Flash->error(__('The organization could not be deleted. Please, try again.'));
-        }
-
+		
+		if($this->UserOrganizations->find()->where(['organization_id'=>$id])->first() != null){
+			$this->Flash->error(__('Organization already in used. The organization could not be deleted.'));
+		}else{
+			$organization->status = 0;
+			if ($this->Organizations->save($organization)) {
+				$this->Flash->success(__('The organization has been deleted.'));
+			} else {
+				$this->Flash->error(__('The organization could not be deleted. Please, try again.'));
+			}
+		}
         return $this->redirect(['action' => 'index']);
     }
 }

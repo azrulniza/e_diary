@@ -146,6 +146,7 @@ class UsersController extends AppController
 		$this->loadModel('UserOrganizations');
 		$this->loadModel('UserDesignations');
 		$this->loadModel('UsersRoles');
+		$this->loadModel('UsersLogs');
 		$this->loadModel('Organizations');
 		$this->loadModel('Designations');
 		$this->loadModel('SettingEmails');
@@ -157,6 +158,8 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();
+			$user->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');
@@ -188,8 +191,14 @@ class UsersController extends AppController
 			}/* else{
 				$this->Flash->error(__('Image is required. Please, try again.'));
 			} */
-				
+	
             if ($this->Users->save($user)) {
+				
+				$user_logs = $this->UsersLogs->find()->where(['ic_number'=>$user->ic_number])->first();
+				if($user_logs){
+					$user_logs->status = 0;
+					$this->UsersLogs->save($user_logs);
+				}
 				$user_id = $this->Users->save($user)->id;
 				$userDept = $this->UserOrganizations->newEntity();
 				$userDept->user_id = $user_id;
@@ -206,8 +215,8 @@ class UsersController extends AppController
 				$this->UserDesignations->save($userDesg);
 				
 				$userRole = $this->UsersRoles->newEntity();
-				$userRole->user_id = $id;
-				$userRole->role_id = $_POST['role'];
+				$userRole->user_id = $user_id;
+				$userRole->role_id = $this->request->data['role'];
 				$userRole->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$userRole->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 				$this->UsersRoles->save($userRole);
@@ -250,16 +259,16 @@ class UsersController extends AppController
 			$reportTo->matching('Roles', function ($q) {
                 return $q->where(['Roles.id IN' => [SUPERVISOR]]);
             }) */
-			$designations = $this->Designations->find('list', ['limit' => 200]);
-			$organizations = $this->Organizations->find('list', ['limit' => 200]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['status'=>1]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
 			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			$organization = $this->UserOrganizations->find()->where(['user_id'=>$userId])->first()->organization_id;
 	        
-			$designations = $this->Designations->find('list', ['limit' => 200]);
-			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['id'=>$organization]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['status'=>1]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['id'=>$organization])->orWhere(['status'=>1]);
 		}else if($this->AuthUser->hasRole(ADMIN)){
 			//roles
 			$role=array(1,2,3);
@@ -297,6 +306,7 @@ class UsersController extends AppController
             }
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();
+			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');
@@ -394,8 +404,8 @@ class UsersController extends AppController
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
 			
-			$organizations = $this->Organizations->find('list', ['limit' => 200]);
-			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->orWhere(['status'=>1]);
 			$reportTo = $this->Users->find('list')->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
 			return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);});
 			
@@ -407,15 +417,15 @@ class UsersController extends AppController
 			$role=array(1,2);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			
-			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=> $user_dept]);
-			$organizations = $this->Organizations->find('list', ['limit' => 200]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=> $user_dept])->orWhere(['status'=>1]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 		}else if($this->AuthUser->hasRole(ADMIN)){
 			//roles
 			$role=array(1,2,3);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			
-			$designations = $this->Designations->find('list', ['limit' => 200]);
-			$organizations = $this->Organizations->find('list', ['limit' => 200]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['status'=>1]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 		}
 		$userStatus = $this->userStatus;
         $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo','selected_role'));
@@ -430,10 +440,27 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+		$this->loadModel('UsersLogs');
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
-        $user->status = 0;
-		if ($this->Users->save($user)) {
+		$now = \Cake\I18n\Time::now();
+
+		$user_logs = $this->UsersLogs->newEntity();
+		$user_logs->user_id = $id;
+		$user_logs->email = $user->email;
+		$user_logs->password = $user->password;
+		$user_logs->name = $user->name;
+		$user_logs->ic_number = $user->ic_number;
+		$user_logs->phone = $user->phone;
+		$user_logs->report_to = $user->report_to;
+		$user_logs->reset_password_key = $user->reset_password_key;
+		$user_logs->status = $user->status;
+		$user_logs->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+		$user_logs->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+		$user_logs->image = $user->image;
+		
+		if ($this->UsersLogs->save($user_logs)) {
+			$this->Users->delete($user);
 			$this->Flash->success(__('The user has been delete.'));
 		} else {
 			$this->Flash->error(__('The user could not be deleted. Please, try again.'));
@@ -445,6 +472,7 @@ class UsersController extends AppController
     {
 		$this->loadComponent('Captcha.Captcha');
 		$this->loadModel('UserLoginLogs');
+		$this->loadModel('UsersLogs');
 		
 		if ($this->request->is('post')) {
 			$this->Users->setCaptcha('<captcha>', $this->Captcha->getCode('<captcha>'));
@@ -468,9 +496,19 @@ class UsersController extends AppController
 
 					return $this->redirect($this->Auth->redirectUrl());
 				} else {
-					$this->Flash->error(
+					if($this->UsersLogs->find()->where(['ic_number'=>$this->request->data['ic_number'],'status'=>1])->first() != null){
+						$this->Flash->error(
+							__('Your account has been disabled.'), 'default', [], 'auth'
+						);
+					}else if($this->Users->find()->where(['ic_number'=>$this->request->data['ic_number']])->first() != null){
+						$this->Flash->error(
 						__('Email or password is incorrect'), 'default', [], 'auth'
-					);
+						);
+					}else{
+						$this->Flash->error(
+						__('Invalid user'), 'default', [], 'auth'
+						);
+					}
 				}
 			}else{
 				$this->Flash->error(
@@ -603,7 +641,7 @@ class UsersController extends AppController
 		return $q->where(['UserOrganizations.organization_id'=>$department_id]);});
 		
 		$users->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                return $q->where(['Roles.id NOT IN' => [STAFF]]);
             });
 
 		$this->set(compact('designations','users'));

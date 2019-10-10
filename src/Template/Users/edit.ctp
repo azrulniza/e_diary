@@ -43,6 +43,20 @@
 						});
 			}});
 		});
+		$('#listrole').change(function(){
+			var id = $(this).val();
+			if(id == 2 || id == 1){
+				$("#listuser").hide();
+				$("label[for='listuser']").hide();
+			}else{
+				$("#listuser").show();
+				$("label[for='listuser']").show();				
+			}
+		});
+		if($( "#listrole" ).val() == 2 || $( "#listrole" ).val() == 1){
+			$("#listuser").hide();
+			$("label[for='listuser']").hide();
+		}
 	});
 </script><div class="row">
     <div class="col-xs-10">
@@ -70,19 +84,19 @@
 						</center>
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
-						echo $this->Form->input('ic_number', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
+						echo $this->Form->input('ic_number', ['pattern'=>'[0-9]{12,12}','title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
 						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
                         echo $this->Form->input('new_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter new password'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);
                         echo $this->Form->input('confirm_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter password confirmation'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);
+						if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
+							echo $this->Form->input('role', ['class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true,'value'=> $selected_role]);
+						endif;
 						if ($userRoles->hasRole(['Master Admin'])) :
 							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_dept]);
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_designation]); 
 							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;']);						
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);
-						endif;
-						if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
-							echo $this->Form->input('role', ['class' => 'form-control','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','required'=>true,'value'=> $selected_role]);
 						endif;
                         ?>
                     </div>

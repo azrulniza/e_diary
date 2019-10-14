@@ -1,18 +1,10 @@
 <!-- Logo -->
 <a href="<?= $this->Url->build( '/' ) ?>" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-	<?php if($oem->short_name !=null){?>
-		<span class="logo-mini"><?php echo $oem->short_name ;?></span>
-	<?php }else{?>
 		<span class="logo-mini"><b>eD</b></span>
-	<?php } ?>
     
     <!-- logo for regular state and mobile devices -->
-	<?php if($oem->name !=null){?>
-		<span class="logo-lg"><?php echo $oem->name;?></span>
-	<?php }else{?>
 		<span class="logo-lg"><b>e-Diary</b></span>
-	<?php } ?>
    
 </a>
 

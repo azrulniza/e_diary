@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.16",
-        "cakephp/cakephp": "~3.2",
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
@@ -15,10 +14,11 @@
         "ifsnop/mysqldump-php": "^2.7",
         "friendsofcake/cakepdf": "^3.5",
         "dompdf/dompdf": "^0.8.3"
+        "cakephp/cakephp": "~3.2"
     },
     "require-dev": {
         "psy/psysh": "@stable",
-        "cakephp/debug_kit": "~3.0",
+        "cakephp/debug_kit": "~3.15",
         "cakephp/bake": "~1.0",
         "xety/cake3-upload": "1.*"
     },

@@ -110,7 +110,7 @@ class HasMany extends Association
      */
     public function setSaveStrategy($strategy)
     {
-        if (!in_array($strategy, [self::SAVE_APPEND, self::SAVE_REPLACE])) {
+        if (!in_array($strategy, [self::SAVE_APPEND, self::SAVE_REPLACE], true)) {
             $msg = sprintf('Invalid save strategy "%s"', $strategy);
             throw new InvalidArgumentException($msg);
         }
@@ -374,6 +374,7 @@ class HasMany extends Association
         $conditions = [
             'OR' => (new Collection($targetEntities))
                 ->map(function ($entity) use ($targetPrimaryKey) {
+                    /** @var \Cake\Datasource\EntityInterface $entity */
                     return $entity->extract($targetPrimaryKey);
                 })
                 ->toList()
@@ -476,6 +477,7 @@ class HasMany extends Association
         $exclusions = new Collection($remainingEntities);
         $exclusions = $exclusions->map(
             function ($ent) use ($primaryKey) {
+                /** @var \Cake\Datasource\EntityInterface $ent */
                 return $ent->extract($primaryKey);
             }
         )

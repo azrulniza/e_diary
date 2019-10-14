@@ -276,17 +276,17 @@
     },
     {
         "name": "cakephp/cakephp",
-        "version": "3.8.1",
-        "version_normalized": "3.8.1.0",
+        "version": "3.8.3",
+        "version_normalized": "3.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/cakephp/cakephp.git",
-            "reference": "faefcba4cb332d6abfe3f2693346e805ef6e3857"
+            "reference": "705b43b70e87ec226a6b37099013de1003a17c17"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/cakephp/cakephp/zipball/faefcba4cb332d6abfe3f2693346e805ef6e3857",
-            "reference": "faefcba4cb332d6abfe3f2693346e805ef6e3857",
+            "url": "https://api.github.com/repos/cakephp/cakephp/zipball/705b43b70e87ec226a6b37099013de1003a17c17",
+            "reference": "705b43b70e87ec226a6b37099013de1003a17c17",
             "shasum": ""
         },
         "require": {
@@ -327,7 +327,7 @@
             "ext-openssl": "To use Security::encrypt() or have secure CSRF token generation.",
             "lib-ICU": "The intl PHP library, to use Text::transliterate() or Text::slug()"
         },
-        "time": "2019-07-13T02:43:53+00:00",
+        "time": "2019-08-31T02:05:56+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -426,17 +426,17 @@
     },
     {
         "name": "cakephp/debug_kit",
-        "version": "3.19.0",
-        "version_normalized": "3.19.0.0",
+        "version": "3.20.2",
+        "version_normalized": "3.20.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/cakephp/debug_kit.git",
-            "reference": "e2d856ed7c504b80354038b22d6f342c13ac5145"
+            "reference": "0ea1b56978e3f9a5c5c3091b4e1732c1446fae7d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/e2d856ed7c504b80354038b22d6f342c13ac5145",
-            "reference": "e2d856ed7c504b80354038b22d6f342c13ac5145",
+            "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/0ea1b56978e3f9a5c5c3091b4e1732c1446fae7d",
+            "reference": "0ea1b56978e3f9a5c5c3091b4e1732c1446fae7d",
             "shasum": ""
         },
         "require": {
@@ -454,7 +454,7 @@
         "suggest": {
             "ext-pdo_sqlite": "DebugKit needs to store panel data in a database. SQLite is simple and easy to use."
         },
-        "time": "2019-05-31T13:45:08+00:00",
+        "time": "2019-08-27T00:17:02+00:00",
         "type": "cakephp-plugin",
         "installation-source": "dist",
         "autoload": {
@@ -470,8 +470,8 @@
         "authors": [
             {
                 "name": "Mark Story",
-                "homepage": "http://mark-story.com",
-                "role": "Author"
+                "role": "Author",
+                "homepage": "http://mark-story.com"
             },
             {
                 "name": "CakePHP Community",

@@ -629,7 +629,7 @@ class ReportsController extends AppController
 		
 		fputcsv($output,array('Date',$dateselected));
 		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array("Staff's Name",$outputuser));
 		fputcsv($output,array(''));
 		
 		//output column headings
@@ -775,7 +775,7 @@ class ReportsController extends AppController
 		
 		fputcsv($output,array('Date',$thisweekStart.' To '.$thisweekEnd));
 		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array("Staff's Name",$outputuser));
 		fputcsv($output,array(''));
 		
 		//output column headings
@@ -889,7 +889,7 @@ class ReportsController extends AppController
 		
 		fputcsv($output,array('Month',$monthselected));
 		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array("Staff's Name",$outputuser));
 		fputcsv($output,array(''));
 		
 		//output column headings
@@ -1351,115 +1351,6 @@ class ReportsController extends AppController
 		
 		fclose($output); die();
     }
-	
-	public function pdfDaily1()
-    {
-		$dateselected = $this->request->query['date_attendance'];
-		$departmentSelected = $this->request->query['department'];
-		$userSelected = $this->request->query['user'];
-		
-		
-		$tempYear	= date("Y");
-		$tempMonth	= date("m");
-		$tempDay 	= date("d");
-		
-		if ($dateselected){
-			$tempYear	=date("Y",strtotime($dateselected));
-			$tempMonth	=date("m",strtotime($dateselected));
-			$tempDay	=date("d",strtotime($dateselected));
-		} else {
-			$dateselected = date( 'Y-m-d');
-		}
-		
-		$sql = "SELECT Users.*, Attendances.cdate as att_date,Attendances.attn_time, Attendances.attn_remarks, Orgatype.name as organization_name
-			FROM users Users
-			LEFT JOIN (
-			SELECT Attendances.cdate,Attendances.status,Attendances.user_id, 
-			GROUP_CONCAT(DISTINCT Attendances.cdate SEPARATOR '||') AS attn_time,
-			GROUP_CONCAT(DISTINCT Attendances.remarks SEPARATOR ',') AS attn_remarks
-			FROM attendances Attendances 
-			WHERE year(Attendances.cdate) = '".$tempYear."'
-			AND month(Attendances.cdate) = '".$tempMonth."'
-			AND day(Attendances.cdate) = '".$tempDay."'
-			GROUP BY Attendances.user_id
-			)Attendances ON Users.id = Attendances.user_id
-			LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id			
-			LEFT JOIN organizations Orgatype ON Uorganization.organization_id=Orgatype.id
-			WHERE Users.status = 1";
-		
-		if ($departmentSelected){
-			$sql .= " AND Uorganization.id = '".$departmentSelected."'";
-		}
-		if ($userSelected){
-			$sql .= " AND Users.id = '".$userSelected."'";
-		}
-		$sql .= " ORDER BY Users.name";
-		
-		$connection = ConnectionManager::get('default');
-		$results = $connection->execute($sql)->fetchAll('assoc');
-		
-		
-		//start to export
-		if ($departmentSelected){
-			$outputdepartment = $results[0]['organization_name'];
-		}else{
-			$outputdepartment = 'All';
-		}
-		if ($userSelected){
-			$outputuser = $results[0]['name'];
-		}else{
-			$outputuser = 'All';
-		}
-		
-		$file_date=date('dMY');
-		$file_fullname = $file_date.'_DailyReport';
-		$now = \Cake\I18n\Time::now();
-		$afile_path = "../webroot/files";
-		if(is_dir($afile_path)==false) {
-			mkdir($afile_path, 0777);
-		}
-
-
-		$filepath = $afile_path.'/'.$file_fullname.'.pdf';
-
-		//save file to the server
-		file_put_contents($filepath, $attachment);
-		header('Content-Type: application/pdf');
-		header("Content-Transfer-Encoding: Binary");
-		header("Content-disposition: attachment; filename= ".$filename.".pdf");
-		readfile($filepath);
-
-		$output= fopen('php://output', 'w');
-		//output header
-		fputs($output,array('Report Type', 'Daily'));
-		
-		fputs($output,array('Date',$dateselected));
-		fputs($output,array('Department',$outputdepartment));
-		fputs($output,array('User',$outputuser));
-		fputs($output,array(''));
-		
-		//output column headings
-		fputs($output, array('Bil', 'Name', 'Card No', 'In Time', 'Out Time', 'Remarks'));
-		$count_no=1;
-
-		foreach ($results as $key => $user){
-			$result = explode("||",$user['attn_time']);
-			
-			$data[]=$count_no .','.$user['name'] .','.$user['card_no'].','.$result[0].','.$result[1].','.$user['attn_remarks'];
-			$count_no++;	
-		}		
-		$size=count($data);
-		$count=0;
-		
-		while($count<$size){
-			fputs($output, explode(',', $data[$count]));
-			$count++;
-		}
-		
-			
-		
-		fclose($output); die();
-	}
 	public function pdf(){
 		App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
 		$this->layout = 'pdf'; //this will use the pdf.ctp layout
@@ -1611,7 +1502,7 @@ class ReportsController extends AppController
 		
 		fputcsv($output,array('Date',$dateselected));
 		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array("Staff's Name",$outputuser));
 		fputcsv($output,array('Leave Type',$outputleavetype));
 		fputcsv($output,array(''));
 		
@@ -1653,6 +1544,7 @@ class ReportsController extends AppController
 		$leaveTypeselected = $this->request->query['leaveType'];
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
+		$monthselected = $this->request->query('att_month');
         $filterSelected = $this->request->query('filterby');
 		$userId = $this->AuthUser->id();
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
@@ -1667,6 +1559,11 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
+		//month
+		if ($monthselected){
+			$thismonthStart	=date("Y-".$monthselected."-01");
+			$thismonthEnd	=date("Y-".$monthselected."-t");
+		} 
 		
 		$stafftfsql = "SELECT ul.*,u.name as user_name,lt.name as leave_type,ls.name as leave_status,Organization.name as organization_name
 				FROM user_leaves ul
@@ -1681,6 +1578,11 @@ class ReportsController extends AppController
 			$userSelected 		= $userId;
 			$departmentSelected = $deptId;
         }
+		
+		if($monthselected){
+			$stafftfsql .= " AND (MONTH(ul.date_start) = '".$monthselected."'
+							OR MONTH(ul.date_end) = '".$monthselected."')";
+		}
 		
 		if ($departmentSelected && $userSelected!=$userId){
 			$stafftfsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
@@ -1712,7 +1614,7 @@ class ReportsController extends AppController
         ]);
 
 		$this->set('result',$stafftfresults);
-        $this->set(compact('result','stafftfsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected','leaveTypeselected'));
+        $this->set(compact('result','stafftfsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','userSelected','leaveTypeselected'));
 		$this->set('_serialize', ['report']);
     }
 	public function exportExcelStafftf()
@@ -1720,6 +1622,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query['department'];
 		$userSelected = $this->request->query['user'];
 		$leaveTypeselected = $this->request->query('leaveType');
+		$monthselected = $this->request->query('att_month');
 		
 		if ($dateselected){
 			
@@ -1745,6 +1648,10 @@ class ReportsController extends AppController
 		if ($leaveTypeselected){
 			$stafftfsql .= " AND lt.id = '".$leaveTypeselected."'";
 		} 
+		if($monthselected){
+			$stafftfsql .= " AND (MONTH(ul.date_start) = '".$monthselected."'
+							OR MONTH(ul.date_end) = '".$monthselected."')";
+		}
 		$stafftfsql .= " ORDER BY u.name";
 		
 		$connection = ConnectionManager::get('default');
@@ -1767,6 +1674,11 @@ class ReportsController extends AppController
 		}else{
 			$outputleavetype = 'All';
 		}
+		if ($monthselected){
+			$outputmonth = $monthselected;
+		}else{
+			$outputmonth = 'All';
+		}
 		
 		$file_date=date('dMY');
 		$file_fullname = $file_date.'_StaffTimeOffReport';
@@ -1778,12 +1690,13 @@ class ReportsController extends AppController
 		fputcsv($output,array('Report Type', 'Staff Time Off'));
 		
 		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array('User',$outputuser));
+		fputcsv($output,array("Staff's Name",$outputuser));
+		fputcsv($output,array('Month',$outputmonth));
 		fputcsv($output,array('Leave Type',$outputleavetype));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil',  'Leave Type', 'Leave Date', 'Leave Time', 'Leave Status', 'Reason'));
+		fputcsv($output, array('Bil',  'Leave Type', 'Leave Date', 'Leave Time', 'Leave Status', 'Reason', 'Total Hour'));
 		$count_no=1;
 
 		$totalyellow = 0;
@@ -1794,10 +1707,56 @@ class ReportsController extends AppController
 			$leaveTime = 'Start Time : '.$user['start_time'].' || '.'End Time : '.$user['end_time'];
 			$leaveDate = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
 			
-			$data[]=$count_no .','.$user['leave_type'].','.$leaveDate.','.$leaveTime.','.$user['leave_status'].','.$user['reason'];
+			//calculate total hour
+			$dateend = $user['date_end'].' '.$user['end_time'].':00';
+			$datestart = $user['date_start'].' '.$user['start_time'].':00';
+			$dateDiff = strtotime($dateend)-strtotime($datestart);
+			
+			$totalhourOutput='';
+			if($dateDiff >= 2592000){
+				$M = floor($dateDiff/2592000);
+				$totalhourOutput.= $M.'Month ';
+			}
+			if($dateDiff >= 86400){
+				$d = floor(($dateDiff%2592000)/86400);
+				$totalhourOutput.= $d.'Day ';
+			}
+			if($dateDiff >= 3600){
+				$h = floor(($dateDiff%86400)/3600);
+				$totalhourOutput.= $h.'Hours ';
+			}
+			if($dateDiff >= 60){
+				$m = floor(($dateDiff%3600)/60);
+				$totalhourOutput.= $m.'Minutes ';
+			}
+			
+			$grandTotaldateDiff += $dateDiff;
+			
+			
+			$data[]=$count_no .','.$user['leave_type'].','.$leaveDate.','.$leaveTime.','.$user['leave_status'].','.$user['reason'].','.$totalhourOutput;
 			$count_no++;	
 
-		}	
+		}
+		if($grandTotaldateDiff >= 2592000){
+			$M = floor($grandTotaldateDiff/2592000);
+			$gtotalhourOutput.= $M.'Month ';
+		}
+		if($grandTotaldateDiff >= 86400){
+			$d = floor(($grandTotaldateDiff%2592000)/86400);
+			$gtotalhourOutput.= $d.'Day ';
+		}
+		if($grandTotaldateDiff >= 3600){
+			$h = floor(($grandTotaldateDiff%86400)/3600);
+			$gtotalhourOutput.= $h.'Hours ';
+		}
+		if($grandTotaldateDiff >= 60){
+			$m = floor(($grandTotaldateDiff%3600)/60);
+			$gtotalhourOutput.= $m.'Minutes ';
+		}		
+		$data[]=',,,,,'.'Grand Total Hours'.','.$gtotalhourOutput;
+		$count_no++;	
+
+		
 		$size=count($data);
 		$count=0;
 		
@@ -1809,7 +1768,357 @@ class ReportsController extends AppController
 			
 		
 		fclose($output); die();
-	}	
+	}
+	public function late_in()
+    {
+       
+		$Users = TableRegistry::get('Users');
+		$Users = TableRegistry::getTableLocator()->get('Users');
+		$departments = TableRegistry::get('Organizations');
+		$departments = TableRegistry::getTableLocator()->get('Organizations');
+		
+		$leaveTypeselected = $this->request->query['leaveType'];
+		$departmentSelected = $this->request->query('department');
+        $userSelected = $this->request->query('user');
+		$monthselected = $this->request->query('att_month');
+		
+		$userId = $this->AuthUser->id();
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		$users = $this->Users->find('list');
+        $departments = $this->Organizations->find('list');
+		$connection = ConnectionManager::get('default');
+		
+		//department session
+		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
+		$resultDepartments = $connection->execute($sqldepartment)->fetchAll('assoc');
+		
+		$deptId = $resultDepartments[0]['organization_id'];
+		
+		//month
+		if ($monthselected){
+			$thismonthStart	=date("Y-".$monthselected."-01");
+			$thismonthEnd	=date("Y-".$monthselected."-t");
+		} 
+		
+		$lateinsql = "SELECT attn.*,u.name as user_name,Organization.name as organization_name
+				FROM attendances attn
+				LEFT JOIN users u ON attn.user_id = u.id
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE u.status = 1 AND attn.status=1 AND DATE_FORMAT(attn.cdate, '%H:%i:%s')>='09:00:00'";
+		
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		
+		if($monthselected){
+			$lateinsql .= " AND MONTH(attn.cdate) = '".$monthselected."'";
+		}
+		
+		if ($departmentSelected){
+			$lateinsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		} 
+	
+		if ($userSelected){
+			$lateinsql .= " AND u.id = '".$userSelected."'";
+		}
+		$lateinsql .= " ORDER BY u.name";
+		
+		
+		$stafftfresults = $connection->execute($lateinsql)->fetchAll('assoc');
+		
+		$this->viewBuilder()->options([
+            'pdfConfig' => [
+                'orientation' => 'landscape',
+                'filename' => 'StaffLateInReport.pdf'
+            ]
+        ]);
+
+		$this->set('result',$stafftfresults);
+        $this->set(compact('result','lateinsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','userSelected','leaveTypeselected'));
+		$this->set('_serialize', ['report']);
+    }	
+	public function exportExcelLatein()
+    {
+		$departmentSelected = $this->request->query['department'];
+		$userSelected = $this->request->query['user'];
+		$monthselected = $this->request->query('att_month');
+		
+		if ($dateselected){
+			
+		} else {
+			$dateselected = date( 'Y-m-d');
+		}
+		
+		$lateinsql = "SELECT attn.*,u.name as user_name,Organization.name as organization_name
+				FROM attendances attn
+				LEFT JOIN users u ON attn.user_id = u.id
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE u.status = 1 AND attn.status=1 AND DATE_FORMAT(attn.cdate, '%H:%i:%s')>='09:00:00'";
+		if($monthselected){
+			$lateinsql .= " AND MONTH(attn.cdate) = '".$monthselected."'";
+		}
+		
+		if ($departmentSelected){
+			$lateinsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		} 
+	
+		if ($userSelected){
+			$lateinsql .= " AND u.id = '".$userSelected."'";
+		}
+		$lateinsql .= " ORDER BY u.name";
+		
+		
+		$connection = ConnectionManager::get('default');
+		$results = $connection->execute($lateinsql)->fetchAll('assoc');
+		
+		
+		//start to export
+		if ($departmentSelected){
+			$outputdepartment = $results[0]['organization_name'];
+		}else{
+			$outputdepartment = 'All';
+		}
+		if ($userSelected){
+			$outputuser = $results[0]['user_name'];
+		}else{
+			$outputuser = 'All';
+		}
+		if ($monthselected){
+			$outputmonth = $monthselected;
+		}else{
+			$outputmonth = 'All';
+		}
+		
+		$file_date=date('dMY');
+		$file_fullname = $file_date.'_LateInReport';
+		$now = \Cake\I18n\Time::now();
+		header('Content-type: text/csv');
+		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
+		$output= fopen('php://output', 'w');
+		//output header
+		fputcsv($output,array('Report Type', 'Late In Report'));
+		
+		fputcsv($output,array('Department',$outputdepartment));
+		fputcsv($output,array("Staff's Name",$outputuser));
+		fputcsv($output,array('Month',$outputmonth));
+		fputcsv($output,array(''));
+		
+		//output column headings
+		fputcsv($output, array('Bil', 'Name', 'Date', 'In Time'));
+		$count_no=1;
+
+		
+		foreach ($results as $key => $user){			
+			
+			$data[]=$count_no .','.$user['user_name'].','.date('Y-m-d',strtotime($user['cdate'])).','. date('H:i:s',strtotime($user['cdate']));
+			$count_no++;	
+
+		}
+		
+		$size=count($data);
+		$count=0;
+		
+		while($count<$size){
+			fputcsv($output, explode(',', $data[$count]));
+			$count++;
+		}
+		
+			
+		
+		fclose($output); die();
+	}
+	public function working_hour()
+    {
+       
+		$Users = TableRegistry::get('Users');
+		$Users = TableRegistry::getTableLocator()->get('Users');
+		$departments = TableRegistry::get('Organizations');
+		$departments = TableRegistry::getTableLocator()->get('Organizations');
+		
+		$departmentSelected = $this->request->query('department');
+        $userSelected = $this->request->query('user');
+		$monthselected = $this->request->query('att_month');		
+        $filterSelected = $this->request->query('filterby');
+		
+		$userId = $this->AuthUser->id();
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+		$users = $this->Users->find('list');
+        $departments = $this->Organizations->find('list');
+		$connection = ConnectionManager::get('default');
+		
+		//department session
+		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
+		$resultDepartments = $connection->execute($sqldepartment)->fetchAll('assoc');
+		
+		$deptId = $resultDepartments[0]['organization_id'];
+		
+		//month
+		if ($monthselected){
+			$lastDateMonth = date('Y-'.$monthselected.'-t');
+			$lastDayMonth = date('t',strtotime($lastDateMonth));
+		} else {
+			$monthselected = date('m');
+			$lastDateMonth = date('Y-'.$monthselected.'-t');
+			$lastDayMonth = date('t',strtotime($lastDateMonth));
+		}
+		
+		$workinghoursql = "SELECT attn.*,u.name as user_name,Organization.name as organization_name,
+				GROUP_CONCAT(DISTINCT attn.cdate SEPARATOR '||') AS attn_time
+				FROM attendances attn
+				LEFT JOIN users u ON attn.user_id = u.id
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE u.status = 1";
+		
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		
+		if($monthselected){
+			$workinghoursql .= " AND MONTH(attn.cdate) = '".$monthselected."' ";
+		}
+		
+		if ($departmentSelected && $userSelected!=$userId){
+			$workinghoursql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		} else if ($userSelected!=$userId) {
+			$workinghoursql .= " AND Uorganization.organization_id = '".$deptId."'";
+			$departmentSelected = $deptId;			
+		} else {
+			$departmentSelected = $deptId;
+		}
+		if ($userSelected){
+			$workinghoursql .= " AND u.id = '".$userSelected."'";
+		} else {
+			$workinghoursql .= " AND u.id = '".$userId."'";
+			$userSelected = $userId;
+		}
+		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.name";		
+		
+		$workinghourresults = $connection->execute($workinghoursql)->fetchAll('assoc');
+		
+		$this->viewBuilder()->options([
+            'pdfConfig' => [
+                'orientation' => 'landscape',
+                'filename' => 'StaffWorkingHourReport.pdf'
+            ]
+        ]);
+
+		$this->set('result',$workinghourresults);
+        $this->set(compact('result','workinghoursql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','lastDayMonth','userSelected','filterSelected'));
+		$this->set('_serialize', ['report']);
+    }
+	public function exportExcelworkinghour()
+    {
+		$departmentSelected = $this->request->query['department'];
+		$userSelected = $this->request->query['user'];
+		$monthselected = $this->request->query('att_month');
+		
+		if ($monthselected){
+			$lastDateMonth = date('Y-'.$monthselected.'-t');
+			$lastDayMonth = date('t',strtotime($lastDateMonth));
+		}
+		
+		$workinghoursql = "SELECT attn.*,u.name as user_name,Organization.name as organization_name,
+				GROUP_CONCAT(DISTINCT attn.cdate SEPARATOR '||') AS attn_time
+				FROM attendances attn
+				LEFT JOIN users u ON attn.user_id = u.id
+				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
+				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+				WHERE u.status = 1";
+		if($monthselected){
+			$workinghoursql .= " AND MONTH(attn.cdate) = '".$monthselected."' ";
+		}
+		if ($departmentSelected){
+			$workinghoursql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+		}
+		if ($userSelected){
+			$workinghoursql .= " AND u.id = '".$userSelected."'";
+		}
+		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.name";	
+		
+		$connection = ConnectionManager::get('default');
+		$results = $connection->execute($workinghoursql)->fetchAll('assoc');
+		
+		
+		//start to export
+		if ($departmentSelected){
+			$outputdepartment = $results[0]['organization_name'];
+		}else{
+			$outputdepartment = 'All';
+		}
+		if ($userSelected){
+			$outputuser = $results[0]['user_name'];
+		}else{
+			$outputuser = 'All';
+		}
+		
+		$file_date=date('dMY');
+		$file_fullname = $file_date.'_LateInReport';
+		$now = \Cake\I18n\Time::now();
+		header('Content-type: text/csv');
+		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
+		$output= fopen('php://output', 'w');
+		//output header
+		fputcsv($output,array('Report Type', 'Late In Report'));
+		
+		fputcsv($output,array('Department',print_r($results)));
+		fputcsv($output,array("Staff's Name",$outputuser));
+		fputcsv($output,array('Month',$monthselected));
+		fputcsv($output,array(''));
+		
+		//output column headings
+		fputcsv($output, array('Bil', 'Date', 'In Time', 'Out Time', 'Total Hours'));
+		$count_no=1;
+		foreach ($results as $key => $user){			
+			$results = explode("||",$user['attn_time']);
+			
+			$diff = strtotime($results[1]) - strtotime($results[0]);
+			$hours = $diff / ( 60 * 60 );
+			$latestDate = date('Y-m-d',strtotime($results[0]));
+			
+			if ($hours > 0){
+				$thours = round($hours, 2). ' Hours';
+			} else {
+				$thours = '';
+			}
+			
+			$arr_data[date('Y-m-d',strtotime($results[0]))]['in_time'] = date('H:i:s',strtotime($results[0]));
+			$arr_data[date('Y-m-d',strtotime($results[0]))]['out_time'] = date('H:i:s',strtotime($results[1]));
+			$arr_data[date('Y-m-d',strtotime($results[0]))]['total_hour'] = $thours;
+		}
+		for($daymonth=1;$daymonth<=$lastDayMonth;$daymonth++){
+			if ($daymonth<10){
+				$daymonth = '0'.$daymonth;
+			}
+			$currentDate = date('Y-'.$monthselected.'-'.$daymonth);
+			$daynow = date('l', strtotime($currentDate));
+			if(isset($arr_data[$currentDate])){ 
+				$sub = ','.$arr_data[$currentDate1]['in_time'].','.$arr_data[$currentDate]['out_time'].','.$arr_data[$currentDate]['total_hour'];
+			}
+			$data[] = $count_no.','.$currentDate.' ('.$daynow.')'.$sub;
+			
+			
+			$count_no++;
+		}
+		
+		$size=count($data);
+		$count=0;
+		
+		while($count<$size){
+			fputcsv($output, explode(',', $data[$count]));
+			$count++;
+		}
+		
+			
+		
+		fclose($output); die();
+	}
    
 }
  

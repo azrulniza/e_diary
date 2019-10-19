@@ -15,13 +15,13 @@
 					}else{
 						$outputuser = 'All';
 					}
-					if ($leaveTypeselected){
-						$outputleavetype = $result[0]['leave_type'];
+					if ($monthselected){
+						$outputmonth = $monthselected;
 					}else{
-						$outputleavetype = 'All';
+						$outputmonth = 'All';
 					}
 					?>
-					<strong>Daily Time Off Report</strong><br><br>
+					<strong>Late In Report</strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
                             <td><?= 'Department'; ?></td>
@@ -34,14 +34,9 @@
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Date'; ?></td>
-							<td><?= ':'; ?></td>	
-                            <td><?= $dateselected; ?></td>
-						</tr>
-						<tr>
-                            <td><?= 'Leave type'; ?></td>
-							<td><?= ':'; ?></td>	
-                            <td><?= $outputleavetype; ?></td>
+                            <td><?= 'Month'; ?></td>
+							<td><?= ':'; ?></td>
+                            <td><?= $outputmonth; ?></td>
 						</tr>
 					</table>
 					<br><br>
@@ -51,33 +46,19 @@
                             <tr>
                                 <th><?= 'Bil' ?></th>
                                 <th><?= 'Name' ?></th>
-                                <th><?= 'Leave Type' ?></th>
-                                <th><?= 'Leave Date' ?></th>
-                                <th><?= 'Leave Time' ?></th>
-                                <th><?= 'Leave Status' ?></th>
-                                <th><?= 'Reason' ?></th>
+                                <th><?= 'Date' ?></th>
+                                <th><?= 'In Time' ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
                         <?php (isset($this->request['url']['page'])) ? $count = $this->request['url']['page'] * $this->Paginator->param('perPage') : $count =  1 *$this->Paginator->param('perPage');?>
 
-                        <?php 
-						foreach ($result as $key => $user):
-						
-							if($user['date_start'] == $user['date_end']){
-								$leave_date = date('Y-m-d',$user['date_start']);
-							} else {
-							$leave_date = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
-							}
-						?>
-                            <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
+                        <?php foreach ($result as $key => $user):?>
+							<tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['user_name'] ?></td>
-                                <td><?= $user['leave_type'] ?></td>
-                                <td><?= $leave_date ?></td>								
-                                <td><?= 'Start Time : '.$user['start_time'].'<br>'.'End Time : '.$user['end_time'] ?></td>
-                                <td><?= $user['leave_status'] ?></td>
-                                <td><?= $user['reason'] ?></td>
+                                <td><?= date('Y-m-d',strtotime($user['cdate'])) ?></td>								
+                                <td><?= date('H:i:s',strtotime($user['cdate'])) ?></td>
                             </tr>
                         <?php endforeach ?>
 							

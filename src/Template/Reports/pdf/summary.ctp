@@ -6,6 +6,7 @@
                 <div class="reports index dataTable_wrapper table-responsive">
                     <div class="reports index dataTable_wrapper table-responsive">
 					
+					<strong>Monthly Summary Attendance Report</strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
                             <td><?= 'Month'; ?></td>
@@ -14,7 +15,7 @@
 						</tr>
 					</table>
 					<br><br>
-                    <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
+					 <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
 						<thead>
                             <tr>
                                 <th rowspan=2><center><?= 'Bil'; ?></center><br/></th>

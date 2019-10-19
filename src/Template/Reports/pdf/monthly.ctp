@@ -16,6 +16,7 @@
 						$outputuser = 'All';
 					}
 					?>
+					<strong>Monthly Attendance Report</strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
                             <td><?= 'Department'; ?></td>
@@ -23,7 +24,7 @@
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'User'; ?></td>
+                            <td><?= "Staff's Name"; ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>

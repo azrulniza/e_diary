@@ -5,11 +5,7 @@
         <title>
             <?= $this->fetch('title') ?>
         </title>
-        <?php if($oem->oem_logo !=null){
-			echo $this->Html->meta ( 'favicon.ico', '/files/oem/'.$oem->oem_logo, array ('type' => 'icon') );
-		}else{?>
 		  <?= $this->Html->meta('icon') ?>
-		<?php }?>
         <?= $this->fetch('meta') ?>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -49,15 +45,7 @@
         <section class="content">
             <div class="login-box">
                 <div class="login-logo">
-					<?php if($oem->oem_logo !=null){?>
-						<?php echo $this->Html->image('/files/oem/'.$oem->oem_logo);?>
-					<?php } ?>
-					
-					<?php if($oem->name !=null){?>
-						<b><?php echo $oem->name;?></b><br />
-					<?php }else{?>
-						<b>i3</b>Display<br />
-					<?php } ?>
+                        <?php echo $this->Html->image('/files/ediary.png');?>
                 </div><!-- /.login-logo -->
                 <div class="login-box-body">
                     <?= $this->Flash->render() ?>

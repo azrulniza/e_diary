@@ -5,11 +5,7 @@
         <title>
             <?= $this->fetch('title') ?>
         </title>
-        <?php if($oem->oem_logo !=null){
-			echo $this->Html->meta ( 'favicon.ico', '/files/oem/'.$oem->oem_logo, array ('type' => 'icon') );
-		}else{?>
 		  <?= $this->Html->meta('icon') ?>
-		<?php }?>
         <?= $this->fetch('meta') ?>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

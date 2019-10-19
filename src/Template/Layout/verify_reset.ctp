@@ -49,15 +49,7 @@
         <section class="content">
             <div class="login-box">
                 <div class="login-logo">
-					<?php if($oem->oem_logo !=null){?>
-						<?php echo $this->Html->image('/files/oem/'.$oem->oem_logo);?>
-					<?php } ?>
-					
-					<?php if($oem->name !=null){?>
-						<b><?php echo $oem->name;?></b><br />
-					<?php }else{?>
-						<b>i3</b>Display<br />
-					<?php } ?>
+                        <?php echo $this->Html->image('/files/ediary.png');?>
                 </div><!-- /.login-logo -->
                 <div class="login-box-body">
                     <?= $this->Flash->render() ?>

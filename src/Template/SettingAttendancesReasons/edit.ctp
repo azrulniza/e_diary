@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-10">
         <div class="settingAttendancesReasons form">
             <?= $this->Form->create($settingAttendancesReason, ['role' => 'form']) ?>
-            <div class="box box-success">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Edit Setting Attendances Reason') ?></h3>
                 </div>

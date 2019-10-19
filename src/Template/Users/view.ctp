@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-10">
         <div class="users view info-box">
-            <div class="box box-info">
+            <div class="box box-default">
                 <span class="info-box-icon" style="background:transparent">
                     <?php if($user->image != null) :?>
 						<img id="prev_image" class="img-circle" style="width:100px;height:100px;" src="<?php echo $this->Url->build( '/' ).$user->image; ?>"/>

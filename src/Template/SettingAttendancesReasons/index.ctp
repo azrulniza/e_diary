@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
+        <div class="box box-deafult">
             <div class="box-header"></div>
             <div class="box-body">
                 <div class="settingAttendancesReasons index dataTable_wrapper table-responsive">
                     <table id="dataTables-settingAttendancesReasons" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('No') ?></th>
-                                <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('description') ?></th>
-                                <th><?= $this->Paginator->sort('status') ?></th>
+                                <th><?= __('No') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Description') ?></th>
+                                <th><?= __('Status') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>

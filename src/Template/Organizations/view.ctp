@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="organizations view info-box">
-            <div class="box box-info">
-                <span class="info-box-icon bg-aqua">
+            <div class="box box-default">
+                <span class="info-box-icon bg-default">
                     <i class="fa fa-organization"></i>
                 </span>
                 <div class="info-box-content">

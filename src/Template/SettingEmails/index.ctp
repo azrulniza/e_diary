@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
+        <div class="box box-default">
             <div class="box-header"></div>
             <div class="box-body">
                 <div class="settingEmails index dataTable_wrapper table-responsive">
                     <table id="dataTables-settingEmails" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('no') ?></th>
-                                <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('#') ?></th>
+                                <th><?= __('No') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Email') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>

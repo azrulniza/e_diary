@@ -19,6 +19,7 @@ class SettingEmailsController extends AppController
      */
     public function index()
     {
+        $this->set('title', __('Setting Emails'));
 		$emails = $this->SettingEmails->find()->group('email_type_id');
         $settingEmails = $this->paginate($emails);
 
@@ -34,6 +35,7 @@ class SettingEmailsController extends AppController
      */
     public function view($email_type_id = null)
     {
+        $this->set('title', __('Setting Emails'));
 		$englishiId = $this->SettingEmails->find()->where(['email_type_id'=> $email_type_id,'language_id'=>1])->first()->id;
 		$malayId = $this->SettingEmails->find()->where(['email_type_id'=> $email_type_id,'language_id'=>2])->first()->id;
         $settingEmailEnglish = $this->SettingEmails->get($englishiId, [
@@ -53,6 +55,7 @@ class SettingEmailsController extends AppController
      */
     public function add()
     {
+        $this->set('title', __('Setting Emails'));
         $settingEmail = $this->SettingEmails->newEntity();
         if ($this->request->is('post')) {
             $settingEmail = $this->SettingEmails->patchEntity($settingEmail, $this->request->getData());
@@ -75,6 +78,7 @@ class SettingEmailsController extends AppController
      */
     public function edit($email_type_id = null,$language_id = null)
     {
+        $this->set('title', __('Setting Emails'));
 		$id = $this->SettingEmails->find()->where(['email_type_id'=> $email_type_id, 'language_id'=> $language_id])->first()->id;
         $settingEmail = $this->SettingEmails->get($id, [
             'contain' => []
@@ -100,6 +104,7 @@ class SettingEmailsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->set('title', __('Setting Emails'));
         $this->request->allowMethod(['post', 'delete']);
         $settingEmail = $this->SettingEmails->get($id);
         if ($this->SettingEmails->delete($settingEmail)) {

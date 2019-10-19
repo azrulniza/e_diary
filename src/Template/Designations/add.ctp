@@ -2,7 +2,7 @@
     <div class="col-xs-10">
         <div class="designations form">
             <?= $this->Form->create($designation, ['role' => 'form']) ?>
-            <div class="box box-primary">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Add Designation') ?></h3>
                 </div>

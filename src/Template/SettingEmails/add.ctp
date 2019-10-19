@@ -5,7 +5,7 @@
  */
 ?>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-10">
         <div class="actions">
             <ul class="side-nav btn-group">
                 <li class="btn btn-info btn-sm"><?= $this->Html->link(__('List Setting Emails'), ['action' => 'index']) ?></li>
@@ -17,7 +17,7 @@
     <div class="col-xs-12">
         <div class="settingEmails form">
             <?= $this->Form->create($settingEmail, ['role' => 'form']) ?>
-            <div class="box box-primary">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Add Setting Email') ?></h3>
                 </div>

@@ -58,7 +58,7 @@
     <div class="col-xs-10">
         <div class="users form">
             <?= $this->Form->create($user, ['role' => 'form','enctype'=>'multipart/form-data']) ?>
-            <div class="box box-primary">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Add User') ?></h3>
                 </div>

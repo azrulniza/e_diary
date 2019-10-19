@@ -1,6 +1,6 @@
 
 <div class="row">
-    <div class="col-xs-10">
+    <div class="col-xs-12">
         <div class="box box-default">
             <div class="box-header"></div>
             <div class="box-body">

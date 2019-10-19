@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-10">
         <div class="settingEmails view info-box">
-            <div class="box box-info">
-                <span class="info-box-icon bg-aqua">
+            <div class="box box-deafult">
+                <span class="info-box-icon bg-default">
                     <i class="fa fa-settingEmail"></i>
                 </span>
                 <div class="info-box-content">

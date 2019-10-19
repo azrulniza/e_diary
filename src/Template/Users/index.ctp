@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
+        <div class="box box-default">
             <div class="box-header">
 			<?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
 					<?php $this->Form->templates($form_templates['shortForm']); ?>
@@ -26,12 +26,12 @@
                     <table id="dataTables-users" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('no') ?></th>
-                                <th><?= $this->Paginator->sort('email') ?></th>
-                                <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('department') ?></th>
-                                <th><?= $this->Paginator->sort('designation') ?></th>
-                                <th><?= $this->Paginator->sort('report_to') ?></th>
+                                <th><?= __('No') ?></th>
+                                <th><?= __('Email') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Department') ?></th>
+                                <th><?= __('Designation') ?></th>
+                                <th><?= __('Report To') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>

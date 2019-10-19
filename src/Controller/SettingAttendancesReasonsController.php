@@ -19,6 +19,7 @@ class SettingAttendancesReasonsController extends AppController
      */
     public function index()
     {
+        $this->set('title', __('Setting Attendances Reasons'));
         $settingAttendancesReasons = $this->paginate($this->SettingAttendancesReasons);
 
         $this->set(compact('settingAttendancesReasons'));
@@ -33,6 +34,7 @@ class SettingAttendancesReasonsController extends AppController
      */
     public function view($id = null)
     {
+        $this->set('title', __('Setting Attendances Reasons'));
         $settingAttendancesReason = $this->SettingAttendancesReasons->get($id, [
             'contain' => []
         ]);
@@ -47,6 +49,7 @@ class SettingAttendancesReasonsController extends AppController
      */
     public function add()
     {
+        $this->set('title', __('Setting Attendances Reasons'));
         $settingAttendancesReason = $this->SettingAttendancesReasons->newEntity();
         if ($this->request->is('post')) {
             $settingAttendancesReason = $this->SettingAttendancesReasons->patchEntity($settingAttendancesReason, $this->request->getData());
@@ -76,6 +79,7 @@ class SettingAttendancesReasonsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->set('title', __('Setting Attendances Reasons'));
         $settingAttendancesReason = $this->SettingAttendancesReasons->get($id, [
             'contain' => []
         ]);
@@ -106,6 +110,7 @@ class SettingAttendancesReasonsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->set('title', __('Setting Attendances Reasons'));
         $this->request->allowMethod(['post', 'delete']);
         $settingAttendancesReason = $this->SettingAttendancesReasons->get($id);
         if ($this->SettingAttendancesReasons->delete($settingAttendancesReason)) {

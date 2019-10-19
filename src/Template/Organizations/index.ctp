@@ -1,24 +1,24 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
+        <div class="box box-default">
             <div class="box-header"></div>
             <div class="box-body">
                 <div class="organizations index dataTable_wrapper table-responsive">
                     <table id="dataTables-organizations" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('id') ?></th>
-                                <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('description') ?></th>
-                                <th><?= $this->Paginator->sort('status') ?></th>
+                                <th><?= __('No') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Description') ?></th>
+                                <th><?= __('Status') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
-                        <?php $count = 0 ?>
+                        <?php $count = 0; ?>
                         <?php foreach ($organizations as $key => $organization): ?>
                             <tr id="<?= $organization->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
-                                <td><?= $this->Number->format($organization->id) ?></td>
+                                <td><?= $count ?></td>
                                 <td><?= h($organization->name) ?></td>
                                 <td><?= h($organization->description) ?></td>
                                 <td><?= $organization->status == 1 ? 'ACTIVE' : 'DISABLE' ; ?></td>

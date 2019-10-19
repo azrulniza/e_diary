@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-10">
         <div class="departments form">
             <?= $this->Form->create($department, ['role' => 'form']) ?>
             <div class="box box-primary">

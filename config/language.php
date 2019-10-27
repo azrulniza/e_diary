@@ -3,7 +3,7 @@
 $config = [
     'Languages' => [
         'en' => 'English',
-        'ms_MY' => 'Malay',
+        'ms_MY' => 'Bahasa Melayu',
         
     ]
 ];

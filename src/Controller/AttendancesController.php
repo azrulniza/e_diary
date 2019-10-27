@@ -50,21 +50,21 @@ class AttendancesController extends AppController
            
             if(!empty($organizationSelected)){
                 $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
-                Users 
-                JOIN user_organizations ON user_organizations.`user_id`=`users`.id
-                JOIN `user_designations`ON `user_designations`.`user_id`=`users`.id
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=Users.`id`
+                JOIN `user_designations`ON `user_designations`.`user_id`=Users.`id`
                 RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
                 JOIN organizations ON `organizations`.id = designations.`organization_id`
-                WHERE `organizations`.id=$organizationSelected AND users.`status`=1 ORDER BY `users`.name ASC"; 
+                WHERE `organizations`.id=$organizationSelected AND Users.`status`=1 ORDER BY Users.`name` ASC"; 
 
             }else{
                 $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
-                Users 
-                JOIN user_organizations ON user_organizations.`user_id`=`users`.id
-                JOIN `user_designations`ON `user_designations`.`user_id`=`users`.id
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=Users.`id`
+                JOIN `user_designations`ON `user_designations`.`user_id`=Users.`id`
                 RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
                 JOIN organizations ON `organizations`.id = designations.`organization_id`
-                WHERE users.`status`=1 ORDER BY `users`.name ASC"; 
+                WHERE Users.`status`=1 ORDER BY Users.`name` ASC"; 
             }
             $stmt = $conn->execute($sql);
             $attendances_in = $stmt->fetchAll('assoc');
@@ -112,12 +112,12 @@ class AttendancesController extends AppController
                 JOIN attendance_codes ON attendance_codes.`id`=attendances.`attendance_code_id`
                 WHERE organizations.`id`=$user_organization_id AND DATE(`attendances`.cdate)=CURDATE()";*/
               $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
-                Users 
-                JOIN user_organizations ON user_organizations.`user_id`=`users`.id
-                JOIN `user_designations`ON `user_designations`.`user_id`=`users`.id
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=`Users`.id
+                JOIN `user_designations`ON `user_designations`.`user_id`=`Users`.id
                 RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
                 JOIN organizations ON `organizations`.id = designations.`organization_id`
-                WHERE organizations.`id`=$user_organization_id AND users.`status`=1";  
+                WHERE organizations.`id`=$user_organization_id AND Users.`status`=1";  
             $stmt = $conn->execute($sql);
             $attendances_in = $stmt->fetchAll('assoc');
 
@@ -152,12 +152,12 @@ class AttendancesController extends AppController
             }
         }elseif ($userRoles->hasRole(['Staff'])) {
            $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
-                Users 
-                JOIN user_organizations ON user_organizations.`user_id`=`users`.id
-                JOIN `user_designations`ON `user_designations`.`user_id`=`users`.id
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=Users.`id`
+                JOIN `user_designations`ON `user_designations`.`user_id`=Users.`id`
                 RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
                 JOIN organizations ON `organizations`.id = designations.`organization_id`
-                WHERE organizations.`id`=$user_organization_id AND users.`status`=1";  
+                WHERE organizations.`id`=$user_organization_id AND Users.`status`=1";  
             $stmt = $conn->execute($sql);
             $attendances_in = $stmt->fetchAll('assoc');
 

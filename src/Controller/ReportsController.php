@@ -161,11 +161,11 @@ class ReportsController extends AppController
 				WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thisweekStart."'
 				AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
 				AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-				AND status = 1 
+				AND Attendances.status = 1 
 				GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN (
-					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,cards.name as card_colour
+					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
 					from user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE  DATE_FORMAT(Ucards.cdate, '%Y-%m-%d')>='".$thisweekStart."'
@@ -245,16 +245,16 @@ class ReportsController extends AppController
 				LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = Users.id				
 				LEFT JOIN organizations Organization ON UserOrganization.organization_id = Organization.id
 				LEFT JOIN (
-				SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id
-				FROM attendances Attendances 
-				WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thismonthStart."'
-				AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thismonthEnd."'
-				AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-				AND status = 1 
-				GROUP BY Attendances.user_id
+					SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id
+					FROM attendances Attendances 
+					WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thismonthStart."'
+					AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thismonthEnd."'
+					AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
+					AND Attendances.status = 1 
+					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN ( 
-					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,cards.name as card_colour
+					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
 					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."'
@@ -361,7 +361,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 55 
 							GROUP BY Attendances.user_id";
 		$totallate55results = $connection->execute($totallate55sql)->fetchAll('assoc');
@@ -405,7 +405,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 48 AND d.gred<=54
 							GROUP BY Attendances.user_id";
 		$totallate4854results = $connection->execute($totallate4854sql)->fetchAll('assoc');
@@ -449,7 +449,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 41 AND d.gred<=44
 							GROUP BY Attendances.user_id";
 		$totallate4144results = $connection->execute($totallate4144sql)->fetchAll('assoc');
@@ -493,7 +493,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>'09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 17 AND d.gred<=40
 							GROUP BY Attendances.user_id";
 		$totallate1740results = $connection->execute($totallate1740sql)->fetchAll('assoc');
@@ -537,7 +537,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 1 AND d.gred<=16
 							GROUP BY Attendances.user_id";
 		$totallate116results = $connection->execute($totallate116sql)->fetchAll('assoc');
@@ -723,11 +723,11 @@ class ReportsController extends AppController
 				WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thisweekStart."'
 				AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
 				AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-				AND status = 1 
+				AND Attendances.status = 1 
 				GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN (
-					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,cards.name as card_colour
+					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
 					from user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE  DATE_FORMAT(Ucards.cdate, '%Y-%m-%d')>='".$thisweekStart."'
@@ -838,11 +838,11 @@ class ReportsController extends AppController
 				WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thismonthStart."'
 				AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thismonthEnd."'
 				AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-				AND status = 1 
+				AND Attendances.status = 1 
 				GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN ( 
-					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,cards.name as card_colour
+					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
 					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."'
@@ -984,7 +984,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 55 
 							GROUP BY Attendances.user_id";
 		$totallate55results = $connection->execute($totallate55sql)->fetchAll('assoc');
@@ -1026,7 +1026,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 48 AND d.gred<=54
 							GROUP BY Attendances.user_id";
 		$totallate4854results = $connection->execute($totallate4854sql)->fetchAll('assoc');
@@ -1068,7 +1068,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 41 AND d.gred<=44
 							GROUP BY Attendances.user_id";
 		$totallate4144results = $connection->execute($totallate4144sql)->fetchAll('assoc');
@@ -1110,7 +1110,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>'09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 17 AND d.gred<=40
 							GROUP BY Attendances.user_id";
 		$totallate1740results = $connection->execute($totallate1740sql)->fetchAll('assoc');
@@ -1154,7 +1154,7 @@ class ReportsController extends AppController
 							LEFT JOIN designations d ON d.id= ud.designation_id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-							AND status = 1 
+							AND Attendances.status = 1 
 							AND d.gred >= 1 AND d.gred<=16
 							GROUP BY Attendances.user_id";
 		$totallate116results = $connection->execute($totallate116sql)->fetchAll('assoc');
@@ -1985,9 +1985,9 @@ class ReportsController extends AppController
 		}
 		
 		if ($departmentSelected && $userSelected!=$userId){
-			$workinghoursql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
+			//$workinghoursql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
 		} else if ($userSelected!=$userId) {
-			$workinghoursql .= " AND Uorganization.organization_id = '".$deptId."'";
+			//$workinghoursql .= " AND Uorganization.organization_id = '".$deptId."'";
 			$departmentSelected = $deptId;			
 		} else {
 			$departmentSelected = $deptId;
@@ -2034,9 +2034,6 @@ class ReportsController extends AppController
 		if($monthselected){
 			$workinghoursql .= " AND MONTH(attn.cdate) = '".$monthselected."' ";
 		}
-		if ($departmentSelected){
-			$workinghoursql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
-		}
 		if ($userSelected){
 			$workinghoursql .= " AND u.id = '".$userSelected."'";
 		}
@@ -2059,15 +2056,15 @@ class ReportsController extends AppController
 		}
 		
 		$file_date=date('dMY');
-		$file_fullname = $file_date.'_LateInReport';
+		$file_fullname = $file_date.'_WorkingHourReport';
 		$now = \Cake\I18n\Time::now();
 		header('Content-type: text/csv');
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Late In Report'));
+		fputcsv($output,array('Report Type', 'Working Hour Report'));
 		
-		fputcsv($output,array('Department',print_r($results)));
+		fputcsv($output,array('Department',$outputdepartment));
 		fputcsv($output,array("Staff's Name",$outputuser));
 		fputcsv($output,array('Month',$monthselected));
 		fputcsv($output,array(''));
@@ -2098,8 +2095,11 @@ class ReportsController extends AppController
 			}
 			$currentDate = date('Y-'.$monthselected.'-'.$daymonth);
 			$daynow = date('l', strtotime($currentDate));
+			
 			if(isset($arr_data[$currentDate])){ 
-				$sub = ','.$arr_data[$currentDate1]['in_time'].','.$arr_data[$currentDate]['out_time'].','.$arr_data[$currentDate]['total_hour'];
+				$sub = ','.$arr_data[$currentDate]['in_time'].','.$arr_data[$currentDate]['out_time'].','.$arr_data[$currentDate]['total_hour'];
+			} else{
+				$sub = ',,,';
 			}
 			$data[] = $count_no.','.$currentDate.' ('.$daynow.')'.$sub;
 			

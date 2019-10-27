@@ -7,6 +7,11 @@ use Cake\ORM\Query;
 use Cake\ORM\Table;
 use Cake\Datasource\ConnectionManager;
 use \Datetime;
+use Cake\Core\Configure;
+use Cake\Mailer\Email;
+use Cake\Utility\Hash;
+use Cake\I18n\I18n;
+use Cake\ORM\TableRegistry;
 /**
  * UserLeaves Controller
  *
@@ -21,8 +26,25 @@ class UserLeavesController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+    public function getLanguageId(){
+        $session = $this->request->session()->read('Config.language');
+        if(isset($session) AND $session == 'en'){
+            $language_id=1;
+        }else{
+            $language_id=2;
+        }
+        return $language_id;
+    }
+
     public function index()
     {
+        
         $this->set('title', __('Time Off'));
         /*$this->paginate = [
             'contain' => ['Users', 'LeaveStatus', 'LeaveTypes']
@@ -34,6 +56,7 @@ class UserLeavesController extends AppController
         $this->loadModel('LeaveStatus');
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
+
 
         $conn = ConnectionManager::get('default');
 
@@ -149,7 +172,7 @@ class UserLeavesController extends AppController
             $stmt_sql_leave = $conn->execute($sql_leave);
             $userLeaves = $stmt_sql_leave->fetchAll('assoc');
         }
-        
+                
         $this->set(compact('userLeaves', 'list_organization','list_user','list_status','staffSelected','organizationSelected','statusSelected','userRoles'));
     }
 
@@ -167,6 +190,9 @@ class UserLeavesController extends AppController
         $this->loadModel('LeaveStatus');
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
+        $this->loadModel('SettingEmails');
+        $this->loadModel('Designations');
+        $this->loadModel('UserDesignations');
         
 
         $today_date = date('d-m-Y');    
@@ -213,6 +239,7 @@ class UserLeavesController extends AppController
             }
             
             if($data['leave_type']==1){//personal matters
+
                 //end date, default same day with date start
                 $date_end= $date;
 
@@ -226,92 +253,100 @@ class UserLeavesController extends AppController
                 
                 $from_day = date('l',strtotime($from_date_time)); //eg : Monday
 
-                if($from_day!="Friday"){ //normal lunch hour : 1pm-2pm
+                if($from_date_time > $to_date_time){
+                    $this->Flash->error(__('Start Time cannot be grather End time'));
+                    $error=true;
+                }else{
 
-                    if($data['from_time']['hour'] <= 13 AND $data['to_time']['hour'] >= 14 ){
-                        $time_from_count1 = date_create($from_date_time);
-                        $time_from_count2 = date_create($date.' 13:00');
-                        $interval_time_from = date_diff($time_from_count1, $time_from_count2);
-                        $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
+                    if($from_day!="Friday"){ //normal lunch hour : 1pm-2pm
 
-                        $time_from_count_arr= explode(':', $time_from_count_period);
-                        $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+                        if($data['from_time']['hour'] <= 13 AND $data['to_time']['hour'] >= 14 ){
+                            $time_from_count1 = date_create($from_date_time);
+                            $time_from_count2 = date_create($date.' 13:00');
+                            $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                            $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
+
+                            $time_from_count_arr= explode(':', $time_from_count_period);
+                            $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
 
 
-                        $time_to_count1 = date_create($date.' 14:00');
-                        $time_to_count2 = date_create($to_date_time);
-                        $interval_time_to = date_diff($time_to_count1, $time_to_count2);
-                        $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
+                            $time_to_count1 = date_create($date.' 14:00');
+                            $time_to_count2 = date_create($to_date_time);
+                            $interval_time_to = date_diff($time_to_count1, $time_to_count2);
+                            $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
 
-                        $time_to_count_arr= explode(':', $time_to_count_period);
-                        $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
+                            $time_to_count_arr= explode(':', $time_to_count_period);
+                            $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
 
-                        $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
-                        if($total_time_off_hour > 240){
-                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                            $error=true;
+                            $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
+                            if($total_time_off_hour > 240){
+                                $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                                $error=true;
+                            }
+                        }else{
+                            $datetime1 = date_create($from_date_time);
+                            $datetime2 = date_create($to_date_time);
+                            $interval = date_diff($datetime1, $datetime2);
+                            $time_off_period= $interval->format("%H:%I:%S"); 
+
+                            $time_off_period_arr= explode(':', $time_off_period);
+                            $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
+
+                            if($time_off_period_in_minute > 240){
+                                $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                                $error=true;
+                            }
                         }
-                    }else{
-                        $datetime1 = date_create($from_date_time);
-                        $datetime2 = date_create($to_date_time);
-                        $interval = date_diff($datetime1, $datetime2);
-                        $time_off_period= $interval->format("%H:%I:%S"); 
+                        
 
-                        $time_off_period_arr= explode(':', $time_off_period);
-                        $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
+                    }else{// Friday special lunch hour : 12.15pm-2.45pm
 
-                        if($time_off_period_in_minute > 240){
-                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                            $error=true;
-                        }
-                    }
-                    
+                        if(($data['from_time']['hour'] <= 12 AND $data['from_time']['minute'] >= 15) OR ($data['to_time']['hour'] <= 14 AND $data['to_time']['minute'] >= 45)){
+                            $time_from_count1 = date_create($from_date_time);
+                            $time_from_count2 = date_create($date.' 12:15');
+                            $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                            $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
 
-                }else{// Friday special lunch hour : 12.15pm-2.45pm
-
-                    if($data['from_time']['hour'] <= 12 AND $data['from_time']['minute'] <= 15  ){
-                        $time_from_count1 = date_create($from_date_time);
-                        $time_from_count2 = date_create($date.' 12:15');
-                        $interval_time_from = date_diff($time_from_count1, $time_from_count2);
-                        $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
-
-                        $time_from_count_arr= explode(':', $time_from_count_period);
-                        $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+                            $time_from_count_arr= explode(':', $time_from_count_period);
+                            $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
 
 
-                        $time_to_count1 = date_create($date.' 14:45');
-                        $time_to_count2 = date_create($to_date_time);
-                        $interval_time_to = date_diff($time_to_count1, $time_to_count2);
-                        $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
+                            $time_to_count1 = date_create($date.' 14:45');
+                            $time_to_count2 = date_create($to_date_time);
+                            $interval_time_to = date_diff($time_to_count1, $time_to_count2);
+                            $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
 
-                        $time_to_count_arr= explode(':', $time_to_count_period);
-                        $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
+                            $time_to_count_arr= explode(':', $time_to_count_period);
+                            $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
 
-                        $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
-                        if($total_time_off_hour > 240){
-                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                            $error=true;
-                        }
+                            $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
+                            if($total_time_off_hour > 240){
+                                $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                                $error=true;
+                            }
 
-                    }else{
-                        $datetime1 = date_create($from_date_time);
-                        $datetime2 = date_create($to_date_time);
-                        $interval = date_diff($datetime1, $datetime2);
-                        $time_off_period= $interval->format("%H:%I:%S"); 
+                        }else{
+                            $datetime1 = date_create($from_date_time);
+                            $datetime2 = date_create($to_date_time);
+                            $interval = date_diff($datetime1, $datetime2);
+                            $time_off_period= $interval->format("%H:%I:%S"); 
 
-                        $time_off_period_arr= explode(':', $time_off_period);
-                        $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
+                            $time_off_period_arr= explode(':', $time_off_period);
+                            $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
 
-                        if($time_off_period_in_minute > 240){
-                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                            $error=true;
+                            if($time_off_period_in_minute > 240){
+                                $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                                $error=true;
+                            }
                         }
                     }
                 }
+                
                               
 
             }else{
-                 $date_end= $data['date_end']['year'].'-'.$data['date_end']['month'].'-'.$data['date_end']['day'];
+                
+                $date_end= $data['date_end']['year'].'-'.$data['date_end']['month'].'-'.$data['date_end']['day'];
             }
 
             //check if got attahcement
@@ -350,15 +385,7 @@ class UserLeavesController extends AppController
                 $filename = $uploadPath.$fileName;
             }
 
-            /*$userLeave->user_id = $data['staff'];
-            $userLeave->date_apply = $date;
-            $userLeave->start_time = $from_time;
-            $userLeave->end_time = $to_time;
-            $userLeave->reason = $data['remark'];
-            $userLeave->pic = $user_id;
-            $userLeave->leave_status_id = 1;
-            $userLeave->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
-            $userLeave->leave_type_id = $data['leave_type'];*/
+        
             if(!$error){
                 $sql="INSERT INTO `user_leaves` (user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id) VALUES (".$data['staff'].","."'".$date."'".","."'".$date_end."'".","."'".$from_time."'".","."'".$to_time."'".","."'".$data['remark']."'".","."'".$filename."'".",".$user_id.",1,"."'".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."'".",".$data['leave_type'].")";
             
@@ -377,15 +404,74 @@ class UserLeavesController extends AppController
                        $organization_id= $user_organization_id;
                     }
                     
-
                     //get time off apply email template
+                    $language_id = $this->getLanguageId();
+
+                    $staff_detail = $this->Users->find('all')->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$data['staff']])->limit(1)->first();
+                    
+                    $staff_department=$staff_detail->user_organizations[0]->organization->name;
+                    $staff_organization_id=$staff_detail->user_organizations[0]->organization_id;
+                    $staff_designation=$staff_detail->user_designations[0]->designation->name;
+                    $staff_email=$staff_detail->email;
+                    $staff_name=$staff_detail->name;
+
+                    //get all master admin
+                    $user_master=array();            
+                    $user_master= $this->Users->find()->contain(['Roles'])->innerJoinWith('UsersRoles.Roles' , function($q){return $q->where(['UsersRoles.role_id'=>1]);});
+                    foreach ($user_master as $user) {
+                        $email_master[] = $user['email'];
+                    }
+
+                    if($data['leave_type']==1){//personal matters
+                        $time_off_type="Personal matters";
+                    }elseif ($data['leave_type']==2) {
+                        $time_off_type="Work Affairs";
+                    }
 
 
+                    $emailTemplates = $this->SettingEmails->find('all')->where(['email_type_id'=>3,'language_id'=>$language_id])->first();
+                    $emailTemp_subject =  $emailTemplates->subject;
+                    $emailTemp_body = str_replace(array('[STAFF_NAME]', '[DEPARTMENT]', '[DESIGNATION]', '[TIME_OFF_TYPE]', '[TIME_OFF_REASON]', '[TIME_OFF_DATE_START]', '[TIME_OFF_DATE_END]', '[TIME_OFF_TIME_START]', '[TIME_OFF_TIME_END]'), array('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}'), $emailTemplates->body);
+                    $subject = __(nl2br($emailTemp_subject));
+                    $body = __(nl2br($emailTemp_body),$staff_name,$staff_department,$staff_designation,$time_off_type, $data['remark'], $date, $date_end, $from_time, $to_time);
+
+
+                    //get all supervisor
+                    $reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+                
+                    $reportTo->matching('Roles', function ($q) {
+                        return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                    });
+                
+                    $supervisor_email=array();
+                    foreach ($reportTo as $key ) {
+                        $supervisor_email[] = $key['email'];
+                    }
+
+                    //notify supervisor, email
+                    try {
+                        $email = new Email();
+
+                        // Use a named transport already configured using Email::configTransport()
+                        $email->transport('default');
+
+                        // Use a constructed object.
+                        $email 
+                            ->emailFormat('html')
+                            ->to($supervisor_email)
+                            ->cc($email_master)
+                            ->subject($subject)
+                            ->send($body);
+                        
+
+                    }catch(\Exception $e){
+                        $this->Flash->error(__('Unable to send email'));
+                    
+                    }
                     //if email template exist, send notification to supervisor
-
-                    $sql_supervisor = "SELECT users.* FROM users JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=2 AND `user_organizations`.`organization_id`=$organization_id UNION SELECT users.* FROM users JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=1";
+                    /*$sql_supervisor = "SELECT users.* FROM users JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=2 AND `user_organizations`.`organization_id`=$organization_id UNION SELECT users.* FROM users JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=1";
                     $stmt_sql_supervisor = $conn->execute($sql_supervisor);
-                    $get_supervisor = $stmt_sql_supervisor->fetchAll('assoc');
+                    $get_supervisor = $stmt_sql_supervisor->fetchAll('assoc');*/
 
                     //notify supervisor, email
 
@@ -569,6 +655,9 @@ class UserLeavesController extends AppController
         $this->loadModel('LeaveStatus');
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
+        $this->loadModel('SettingEmails');
+        $this->loadModel('Designations');
+        $this->loadModel('UserDesignations');
 
         $conn = ConnectionManager::get('default');
 
@@ -586,28 +675,80 @@ class UserLeavesController extends AppController
             $sql_leave_update ="UPDATE user_leaves SET leave_status_id='4', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$id";
             
             if ($conn->execute($sql_leave_update)) {
-                //get user_leaves detail
-                $sql_leave="SELECT * FROM user_leaves WHERE id=$id";
-                $stmt_sql_leave=$conn->execute($sql_leave);
-                $get_sql_leave= $stmt_sql_leave->fetch('assoc');
+                    //get language
+                    $language_id = $this->getLanguageId();
 
-                //insert into user_leave_log
-                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id, modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
-                $stmt = $conn->execute($sql_leave_log);
+                    //get user details
+                    $staff_detail = $this->Users->find('all')->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$user_id])->limit(1)->first();
+                    
+                    $staff_department=$staff_detail->user_organizations[0]->organization->name;
+                    $staff_organization_id=$staff_detail->user_organizations[0]->organization_id;
+                    $staff_designation=$staff_detail->user_designations[0]->designation->name;
+                    $staff_email=$staff_detail->email;
+                    $staff_name=$staff_detail->name;
 
-                //get time off cancel email template
+                    //get all master admin
+                    $user_master=array();            
+                    $user_master= $this->Users->find()->contain(['Roles'])->innerJoinWith('UsersRoles.Roles' , function($q){return $q->where(['UsersRoles.role_id'=>1]);});
+                    foreach ($user_master as $user) {
+                        $email_master[] = $user['email'];
+                    }
+
+                    //get user_leaves detail
+                    $sql_leave="SELECT * FROM user_leaves WHERE id=$id";
+                    $stmt_sql_leave=$conn->execute($sql_leave);
+                    $get_sql_leave= $stmt_sql_leave->fetch('assoc');
+
+                    //insert into user_leave_log
+                    $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id, modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
+                     $stmt = $conn->execute($sql_leave_log);
+
+                    if($get_sql_leave['leave_type_id']==1){//personal matters
+                        $time_off_type="Personal matters";
+                    }elseif ($get_sql_leave['leave_type_id']==2) {
+                        $time_off_type="Work Affairs";
+                    }
+
+                    //get time off cancel email template
+                    $emailTemplates = $this->SettingEmails->find('all')->where(['email_type_id'=>7,'language_id'=>$language_id])->first();
+                    $emailTemp_subject =  $emailTemplates->subject;
+                    $emailTemp_body = str_replace(array('[STAFF_NAME]', '[DEPARTMENT]', '[DESIGNATION]', '[TIME_OFF_TYPE]', '[TIME_OFF_REASON]', '[TIME_OFF_DATE_START]', '[TIME_OFF_DATE_END]', '[TIME_OFF_TIME_START]', '[TIME_OFF_TIME_END]'), array('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}'), $emailTemplates->body);
+                    $subject = __(nl2br($emailTemp_subject));
+                    $body = __(nl2br($emailTemp_body),$staff_name,$staff_department,$staff_designation,$time_off_type, $time_off_type['reason'], $get_sql_leave['date_start'], $get_sql_leave['date_end'], $get_sql_leave['start_time'], $get_sql_leave['end_time']);
 
 
-                //if template exist, send email to supervisor
+                    //get all supervisor
+                    $reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+                
+                    $reportTo->matching('Roles', function ($q) {
+                        return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                    });
+                
+                    $supervisor_email=array();
+                    foreach ($reportTo as $key ) {
+                        $supervisor_email[] = $key['email'];
+                    }
 
-                //get supervisor
-                $sql_supervisor = "SELECT users.* FROM users JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=2 AND `user_organizations`.`organization_id`=$user_organization_id UNION SELECT users.* FROM users JOIN `users_roles` ON `users_roles`.`user_id`=`users`.`id` WHERE `users_roles`.`role_id`=1";
-                    $stmt_sql_supervisor = $conn->execute($sql_supervisor);
-                    $get_supervisor = $stmt_sql_supervisor->fetchAll('assoc');
+                    //notify supervisor, email
+                    try {
+                        $email = new Email();
 
+                        // Use a named transport already configured using Email::configTransport()
+                        $email->transport('default');
 
-                //sent notification email to supervisor
+                        // Use a constructed object.
+                        $email 
+                            ->emailFormat('html')
+                            ->to($supervisor_email)
+                            ->cc($email_master)
+                            ->subject($subject)
+                            ->send($body);
+                        
 
+                    }catch(\Exception $e){
+                        $this->Flash->error(__('Unable to send email'));
+                    
+                    }
 
                 $this->Flash->success(__('The time off has been saved.'));
 
@@ -631,6 +772,9 @@ class UserLeavesController extends AppController
         $this->loadModel('LeaveStatus');
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
+        $this->loadModel('SettingEmails');
+        $this->loadModel('Designations');
+        $this->loadModel('UserDesignations');
 
         $conn = ConnectionManager::get('default');
 
@@ -655,18 +799,72 @@ class UserLeavesController extends AppController
                 $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].", $user_id)";
                 $stmt = $conn->execute($sql_leave_log);
 
+                //get language
+                $language_id = $this->getLanguageId();
+
+                //get user details
+                $staff_detail = $this->Users->find('all')->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$get_sql_leave['user_id']])->limit(1)->first();
+                
+                $staff_department=$staff_detail->user_organizations[0]->organization->name;
+                $staff_organization_id=$staff_detail->user_organizations[0]->organization_id;
+                $staff_designation=$staff_detail->user_designations[0]->designation->name;
+                $staff_email=$staff_detail->email;
+                $staff_name=$staff_detail->name;
+
+                //get all master admin
+                $user_master=array();            
+                $user_master= $this->Users->find()->contain(['Roles'])->innerJoinWith('UsersRoles.Roles' , function($q){return $q->where(['UsersRoles.role_id'=>1]);});
+                foreach ($user_master as $user) {
+                    $email_master[] = $user['email'];
+                }
+
+
+                if($get_sql_leave['leave_type_id']==1){//personal matters
+                    $time_off_type="Personal matters";
+                }elseif ($get_sql_leave['leave_type_id']==2) {
+                    $time_off_type="Work Affairs";
+                }
+
                 //get time off approve email template
+                $emailTemplates = $this->SettingEmails->find('all')->where(['email_type_id'=>4,'language_id'=>$language_id])->first();
+                $emailTemp_subject =  $emailTemplates->subject;
+                $emailTemp_body = str_replace(array('[STAFF_NAME]', '[DEPARTMENT]', '[DESIGNATION]', '[TIME_OFF_TYPE]', '[TIME_OFF_REASON]', '[TIME_OFF_DATE_START]', '[TIME_OFF_DATE_END]', '[TIME_OFF_TIME_START]', '[TIME_OFF_TIME_END]'), array('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}'), $emailTemplates->body);
+                $subject = __(nl2br($emailTemp_subject));
+                $body = __(nl2br($emailTemp_body),$staff_name,$staff_department,$staff_designation,$time_off_type, $time_off_type['reason'], $get_sql_leave['date_start'], $get_sql_leave['date_end'], $get_sql_leave['start_time'], $get_sql_leave['end_time']);
 
 
-                //if template exist, send email to staff
+                //get all supervisor
+                $reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+            
+                $reportTo->matching('Roles', function ($q) {
+                    return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                });
+            
+                $supervisor_email=array();
+                foreach ($reportTo as $key ) {
+                    $supervisor_email[] = $key['email'];
+                }
 
-                //get staff
-                $sql_staff = "SELECT * FROM users WHERE `id`=".$get_sql_leave['user_id'];
-                $stmt_sql_staff = $conn->execute($sql_staff);
-                $get_staff = $stmt_sql_staff->fetch('assoc');
+                //notify supervisor, email
+                try {
+                    $email = new Email();
 
+                    // Use a named transport already configured using Email::configTransport()
+                    $email->transport('default');
 
-                //sent notification email to staff
+                    // Use a constructed object.
+                    $email 
+                        ->emailFormat('html')
+                        ->to($staff_email)
+                        ->cc($email_master)
+                        ->subject($subject)
+                        ->send($body);
+                    
+
+                }catch(\Exception $e){
+                    $this->Flash->error(__('Unable to send email'));
+                
+                }
 
 
                 $this->Flash->success(__('The time off has been saved.'));
@@ -691,6 +889,9 @@ class UserLeavesController extends AppController
         $this->loadModel('LeaveStatus');
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
+        $this->loadModel('SettingEmails');
+        $this->loadModel('Designations');
+        $this->loadModel('UserDesignations');
 
         $conn = ConnectionManager::get('default');
 
@@ -709,24 +910,82 @@ class UserLeavesController extends AppController
             $sql_leave_update ="UPDATE user_leaves SET leave_status_id='5', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$id";
             
             if ($conn->execute($sql_leave_update)) {
-                //get user_leaves detail
+                
+                 //get user_leaves detail
                 $sql_leave="SELECT * FROM user_leaves WHERE id=$id";
                 $stmt_sql_leave=$conn->execute($sql_leave);
                 $get_sql_leave= $stmt_sql_leave->fetch('assoc');
 
                 //insert into user_leave_log
-                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
+                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].", $user_id)";
                 $stmt = $conn->execute($sql_leave_log);
+               
+                //get language
+                $language_id = $this->getLanguageId();
+
+                //get user details
+                $staff_detail = $this->Users->find('all')->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$get_sql_leave['user_id']])->limit(1)->first();
+                
+                $staff_department=$staff_detail->user_organizations[0]->organization->name;
+                $staff_organization_id=$staff_detail->user_organizations[0]->organization_id;
+                $staff_designation=$staff_detail->user_designations[0]->designation->name;
+                $staff_email=$staff_detail->email;
+                $staff_name=$staff_detail->name;
+
+                //get all master admin
+                $user_master=array();            
+                $user_master= $this->Users->find()->contain(['Roles'])->innerJoinWith('UsersRoles.Roles' , function($q){return $q->where(['UsersRoles.role_id'=>1]);});
+                foreach ($user_master as $user) {
+                    $email_master[] = $user['email'];
+                }
+
+
+                if($get_sql_leave['leave_type_id']==1){//personal matters
+                    $time_off_type="Personal matters";
+                }elseif ($get_sql_leave['leave_type_id']==2) {
+                    $time_off_type="Work Affairs";
+                }
 
                 //get time off void email template
+                $emailTemplates = $this->SettingEmails->find('all')->where(['email_type_id'=>6,'language_id'=>$language_id])->first();
+                $emailTemp_subject =  $emailTemplates->subject;
+                $emailTemp_body = str_replace(array('[STAFF_NAME]', '[DEPARTMENT]', '[DESIGNATION]', '[TIME_OFF_TYPE]', '[TIME_OFF_REASON]', '[TIME_OFF_DATE_START]', '[TIME_OFF_DATE_END]', '[TIME_OFF_TIME_START]', '[TIME_OFF_TIME_END]','[REMARK]'), array('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}', '{9}'), $emailTemplates->body);
+                $subject = __(nl2br($emailTemp_subject));
+                $body = __(nl2br($emailTemp_body),$staff_name,$staff_department,$staff_designation,$time_off_type, $time_off_type['reason'], $get_sql_leave['date_start'], $get_sql_leave['date_end'], $get_sql_leave['start_time'], $get_sql_leave['end_time'],$get_sql_leave['remark']);
 
 
-                //if template exist, send email to supervisor
+                //get all supervisor
+                $reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+            
+                $reportTo->matching('Roles', function ($q) {
+                    return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                });
+            
+                $supervisor_email=array();
+                foreach ($reportTo as $key ) {
+                    $supervisor_email[] = $key['email'];
+                }
 
-                //get staff
-                $sql_staff = "SELECT * FROM users WHERE `id`=".$get_sql_leave['user_id'];
-                $stmt_sql_staff = $conn->execute($sql_staff);
-                $get_staff = $stmt_sql_staff->fetch('assoc');
+                //notify supervisor, email
+                try {
+                    $email = new Email();
+
+                    // Use a named transport already configured using Email::configTransport()
+                    $email->transport('default');
+
+                    // Use a constructed object.
+                    $email 
+                        ->emailFormat('html')
+                        ->to($supervisor_email)
+                        ->cc($email_master)
+                        ->subject($subject)
+                        ->send($body);
+                    
+
+                }catch(\Exception $e){
+                    $this->Flash->error(__('Unable to send email'));
+                
+                }
 
 
                 //sent notification email to staff
@@ -753,6 +1012,9 @@ class UserLeavesController extends AppController
         $this->loadModel('LeaveStatus');
         $this->loadModel('Organizations');
         $this->loadModel('UserOrganizations');
+        $this->loadModel('SettingEmails');
+        $this->loadModel('Designations');
+        $this->loadModel('UserDesignations');
 
         $conn = ConnectionManager::get('default');
 
@@ -773,7 +1035,7 @@ class UserLeavesController extends AppController
             $user_id= $data['user_id'];
 
             $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
-            $sql_leave_update ="UPDATE user_leaves SET leave_status_id='3', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', modified_by=$user_id WHERE id=$leave_id";
+            $sql_leave_update ="UPDATE user_leaves SET leave_status_id='3', mdate='".$now->i18nFormat('yyyy-MM-dd HH:mm:ss')."', remark='$remark', modified_by=$user_id WHERE id=$leave_id";
             
             if ($conn->execute($sql_leave_update)) {
                 //get user_leaves detail
@@ -782,22 +1044,75 @@ class UserLeavesController extends AppController
                 $get_sql_leave= $stmt_sql_leave->fetch('assoc');
 
                 //insert into user_leave_log
-                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,cdate,leave_type_id,modified_by) VALUES ($leave_id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
+                $sql_leave_log="INSERT INTO `user_leaves_logs` (user_leave_id,user_id,date_start,date_end,start_time,end_time,reason,filename,pic,leave_status_id,remark,cdate,leave_type_id,modified_by) VALUES ($leave_id,".$get_sql_leave['user_id'].","."'".$get_sql_leave['date_start']."'".","."'".$get_sql_leave['date_end']."'".","."'".$get_sql_leave['start_time']."'".","."'".$get_sql_leave['end_time']."'".","."'".$get_sql_leave['reason']."'".","."'".$get_sql_leave['filename']."'".",".$get_sql_leave['pic'].",".$get_sql_leave['leave_status_id'].","."'".$get_sql_leave['remark']."'".","."'".$get_sql_leave['cdate']."'".",".$get_sql_leave['leave_type_id'].",$user_id)";
                 $stmt = $conn->execute($sql_leave_log);
 
-                //get time off approve email template
+                //get language
+                $language_id = $this->getLanguageId();
+
+                //get user details
+                $staff_detail = $this->Users->find('all')->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$get_sql_leave['user_id']])->limit(1)->first();
+                
+                $staff_department=$staff_detail->user_organizations[0]->organization->name;
+                $staff_organization_id=$staff_detail->user_organizations[0]->organization_id;
+                $staff_designation=$staff_detail->user_designations[0]->designation->name;
+                $staff_email=$staff_detail->email;
+                $staff_name=$staff_detail->name;
+
+                //get all master admin
+                $user_master=array();            
+                $user_master= $this->Users->find()->contain(['Roles'])->innerJoinWith('UsersRoles.Roles' , function($q){return $q->where(['UsersRoles.role_id'=>1]);});
+                foreach ($user_master as $user) {
+                    $email_master[] = $user['email'];
+                }
 
 
-                //if template exist, send email to staff
+                if($get_sql_leave['leave_type_id']==1){//personal matters
+                    $time_off_type="Personal matters";
+                }elseif ($get_sql_leave['leave_type_id']==2) {
+                    $time_off_type="Work Affairs";
+                }
 
-                //get staff
-                $sql_staff = "SELECT * FROM users WHERE `id`=".$user_id;
-                $stmt_sql_staff = $conn->execute($sql_staff);
-                $get_staff = $stmt_sql_staff->fetch('assoc');
+                //get time off rejected email template
+                $emailTemplates = $this->SettingEmails->find('all')->where(['email_type_id'=>5,'language_id'=>$language_id])->first();
+                $emailTemp_subject =  $emailTemplates->subject;
+                $emailTemp_body = str_replace(array('[STAFF_NAME]', '[DEPARTMENT]', '[DESIGNATION]', '[TIME_OFF_TYPE]', '[TIME_OFF_REASON]', '[TIME_OFF_DATE_START]', '[TIME_OFF_DATE_END]', '[TIME_OFF_TIME_START]', '[TIME_OFF_TIME_END]','[REMARK]'), array('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}', '{9}'), $emailTemplates->body);
+                $subject = __(nl2br($emailTemp_subject));
+                $body = __(nl2br($emailTemp_body),$staff_name,$staff_department,$staff_designation,$time_off_type, $time_off_type['reason'], $get_sql_leave['date_start'], $get_sql_leave['date_end'], $get_sql_leave['start_time'], $get_sql_leave['end_time'],$get_sql_leave['remark']);
 
 
-                //sent notification email to staff
+                //get all supervisor
+                $reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+            
+                $reportTo->matching('Roles', function ($q) {
+                    return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                });
+            
+                $supervisor_email=array();
+                foreach ($reportTo as $key ) {
+                    $supervisor_email[] = $key['email'];
+                }
 
+                //notify supervisor, email
+                try {
+                    $email = new Email();
+
+                    // Use a named transport already configured using Email::configTransport()
+                    $email->transport('default');
+
+                    // Use a constructed object.
+                    $email 
+                        ->emailFormat('html')
+                        ->to($staff_email)
+                        ->cc($email_master)
+                        ->subject($subject)
+                        ->send($body);
+                    
+
+                }catch(\Exception $e){
+                    $this->Flash->error(__('Unable to send email'));
+                
+                }
 
                 $this->Flash->success(__('The time off has been saved.'));
 

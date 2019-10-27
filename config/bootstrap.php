@@ -97,7 +97,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * Set the default locale. This controls how dates, number and currency is
  * formatted and sets the default language to use for translations.
  */
-ini_set('intl.default_locale', 'en_US');
+ini_set('intl.default_locale', 'ms_MY');
 
 /**
  * Override default date format
@@ -198,7 +198,9 @@ Plugin::load('Captcha', ['routes' => true, 'autoload' => true]);
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system
 if (Configure::read('debug')) {
-    Plugin::load('DebugKit', ['bootstrap' => true]);
+    //Plugin::load('DebugKit', ['bootstrap' => true]);    
+    Configure::write('DebugKit.forceEnable', true);
+    Plugin::load('DebugKit');
 }
 
 /**
@@ -230,7 +232,7 @@ define('STAFF', 4);
 Plugin::load('CakePdf', ['bootstrap' => true, 'routes' => true]);
 Configure::write('CakePdf', [
     'engine' => [
-        'className' => 'CakePdf.dompdf',
+        'className' => 'CakePdf.DomPdf',
         // 'binary' => '/usr/local/bin/wkhtmltopdf', // Si estas en Mac OS X / Linux
         //'binary' => 'C:\\Progra~1\\wkhtmltopdf\\bin\\wkhtmltopdf.exe',
         'options' => [

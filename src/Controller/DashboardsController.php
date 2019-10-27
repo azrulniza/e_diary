@@ -325,7 +325,7 @@ class DashboardsController extends AppController
         }else  if ($userRoles->hasRole(['Staff'])) {
 
             // count user late attendance for current month
-                $sql_count_user_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND MONTH(attendances.`cdate`) = MONTH(CURRENT_DATE()) AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00' AND attendances.user_id=$userSelected";
+                $sql_count_user_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND MONTH(attendances.`cdate`) = MONTH(CURRENT_DATE()) AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00' AND attendances.user_id=$userId";
                 $stmt_sql_count_user_late= $conn->execute($sql_count_user_late);
                 $count_user_total_late= $stmt_sql_count_user_late->fetch('assoc');
                 $user_total_late_month = $count_user_total_late['total_late'];
@@ -363,7 +363,7 @@ class DashboardsController extends AppController
 
 
         //for graph late in
-        /*$thisYear = date('Y');
+        $thisYear = date('Y');
         $thisMonth = date('m');
         if ($userRoles->hasRole(['Admin','Supervisor'])){
             $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$userId"])->limit(1)->first();
@@ -378,9 +378,11 @@ class DashboardsController extends AppController
                     LEFT JOIN user_organizations uo on uo.user_id = u.id
                     WHERE DATE_FORMAT(attn.cdate, '%H:%i:%s')>'09:00:00' AND YEAR(attn.cdate)='".$thisYear."'
                     AND attn.status=1";
-        if($departmentSelected){
-            $lateCanvasSql .= " AND uo.organization_id='".$departmentSelected."'";
-        }
+        if($userSelected){
+            $lateCanvasSql .= " AND attn.user_id='".$userSelected."'";
+        } else {
+            $lateCanvasSql .= " AND attn.user_id='".$userId."'";
+		}
        
         $lateCanvasSql .= " GROUP BY MONTH(attn.cdate)";
         $stmt_sql_lateCanvas= $conn->execute($lateCanvasSql);
@@ -394,33 +396,31 @@ class DashboardsController extends AppController
                     LEFT JOIN user_organizations uo on uo.user_id = u.id
                     WHERE DATE_FORMAT(attn.cdate, '%H:%i:%s')<='09:00:00' AND YEAR(attn.cdate)='".$thisYear."'
                     AND attn.status=1";
-        if($departmentSelected){
-            $normalCanvasSql .= " AND uo.organization_id='".$departmentSelected."'";
-        }
+        if($userSelected){
+            $normalCanvasSql .= " AND attn.user_id='".$userSelected."'";
+        } else {
+            $normalCanvasSql .= " AND attn.user_id='".$userId."'";
+		}
        
         $normalCanvasSql .= " GROUP BY MONTH(attn.cdate)";
         $stmt_sql_normalCanvas= $conn->execute($normalCanvasSql);
         $count_normalCanvas= $stmt_sql_normalCanvas->fetchAll('assoc');
         $this->set('Normalresult',$count_normalCanvas);
-*/
-        
-        //for time in grapf
 
-        $inTimeCanvasSql = "select attn.* 
+		//for all staff time in
+		$inTimeDeptCanvasSql = "SELECT attn.* 
                         FROM attendances attn
-                        WHERE status =1 AND MONTH(attn.cdate)= '".$thisMonth."'";
-        if($userSelected){
-            $inTimeCanvasSql .= " AND attn.user_id='".$userSelected."'";
-        } else {
-            $inTimeCanvasSql .= " AND attn.user_id='".$userId."'";
+						LEFT JOIN user_organizations uo ON attn.user_id = uo.user_id
+                        WHERE status =1 AND DATE_FORMAT(attn.cdate, '%Y-%m-%d')=CURDATE()";
+        if($departmentSelected){
+            $inTimeDeptCanvasSql .= " AND uo.organization_id='".$departmentSelected."'";
         }
-       
-        $stmt_sql_inTimeCanvas= $conn->execute($inTimeCanvasSql);
-        $count_inTimeCanvas= $stmt_sql_inTimeCanvas->fetchAll('assoc');
-        $this->set('inTimeresult',$count_inTimeCanvas);
-       
-
-        $this->set(compact('user', 'Lateresult','Normalresult','inTimeresult','inTimeCanvasSql','userRoles','departments','users','departmentSelected','userSelected','staff_absent','staff_working','notifications','staff_timeoff','total_late','total_pending','total_attend_month','total_absent_month','total_time_off_month','user_total_late_month','totalStaff'));
+		$inTimeDeptCanvasSql .= " ORDER BY attn.cdate";
+        $stmt_sql_inTimeDeptCanvas= $conn->execute($inTimeDeptCanvasSql);
+        $count_inTimeDeptCanvas= $stmt_sql_inTimeDeptCanvas->fetchAll('assoc');
+        $this->set('inTimeDeptresult',$count_inTimeDeptCanvas);
+		
+        $this->set(compact('user', 'Lateresult','Normalresult','inTimeDeptresult','userRoles','departments','users','departmentSelected','userSelected','staff_absent','staff_working','notifications','staff_timeoff','total_late','total_pending','total_attend_month','total_absent_month','total_time_off_month','user_total_late_month','totalStaff'));
         $this->set('_serialize', ['dashboard']);
     }
     

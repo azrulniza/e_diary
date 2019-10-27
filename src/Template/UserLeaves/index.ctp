@@ -40,8 +40,7 @@
                                    </tr>
                                 </tbody>
                             </table>
-                             <?= $this->Form->end() ?>                   
-
+                             <?= $this->Form->end() ?> 
                     <table id="dataTables-userLeave" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -68,7 +67,8 @@
                                 <td><?php $str_date=explode(" ", $userLeave['cdate']); echo $str_date[0];?></td>
                                 <td><?= h($userLeave['user_name']) ?></td>
                                 <td><b><?= h($userLeave['leave_type_name']) ?></b><br/><?= h($userLeave['reason']) ?><br/>
-                                    <?php 
+
+                                    <?php                                       
                                         if(!empty($userLeave['filename'])){ ?>
                                             <a href="<?php echo $this->Url->build( '/' ).$userLeave['filename']?>" target="__blank"><?php $str=explode("/",$userLeave['filename']); echo $str[4];?></a>
 
@@ -83,7 +83,11 @@
                                     
                                     <?= h($userLeave['leave_status_name']) ?>
                                      </b>
+                                    <?php if(!empty($userLeave['remark'])){ ?>
 
+                                        <br/><?= h($userLeave['remark']) ?><br/>
+                                        
+                                    <?php } ?>
                                 </td>
                                 <td class="actions">
                                     <div class="btn-group">

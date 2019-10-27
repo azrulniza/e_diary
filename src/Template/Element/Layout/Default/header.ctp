@@ -1,10 +1,46 @@
 <!-- Logo -->
-<a href="<?= $this->Url->build( '/' ) ?>" class="logo">
+	<div class="navbar navbar-static-top" style='text-align: center;margin-left: 0px;background-color:white'>
+	<table border=1 width='100%'>
+	<?php
+        
+        echo $this->Html->link( 
+            $this->Html->image('/files/Capture5.png',array('height' => '100', 'width' => '700')),
+                array(
+                    'controller' => '', 
+                    'action' => 'index'
+                ), array('escape' => false)
+        );
+    ?>
+	<!--<font color="black" style="margin-right:1000px;">
+					<h3><center>Sistem Pengurusan Kehadiran JPSM</center></h3>
+					<h2><center>Jabatan Perhutanan Semenanjung Malaysia</center></h2>
+					<h4><center>(E-Diary)</center></h4>
+				</font>-->
+		<!--<tr>
+			<td width='40%' >
+				<img src="files/jpsmLogo.jpg" alt="logo" height="130" width="140">
+				
+				<img src="files/Capture.png" alt="logo" height="80" width="400"></td>
+				
+			</td>
+		</tr>-->
+	</table>
+	
+	</div>
+<a href="<?= $this->Url->build( '/' ) ?>" class="logo" >
     <!-- mini logo for sidebar mini 50x50 pixels -->
+	<?php if($oem->short_name !=null){?>
+		<span class="logo-mini"><?php echo $oem->short_name ;?></span>
+	<?php }else{?>
 		<span class="logo-mini"><b>eD</b></span>
+	<?php } ?>
     
     <!-- logo for regular state and mobile devices -->
-		<span class="logo-lg"><b>e-Diary</b></span>
+	<?php if($oem->name !=null){?>
+		<span class="logo-lg"><?php echo $oem->name;?></span>
+	<?php }else{?>
+		<span class="logo-lg" ><b>e-Diary</b></span>
+	<?php } ?>
    
 </a>
 
@@ -15,8 +51,12 @@
         <span class="sr-only">Toggle navigation</span>
     </a>
     <!-- Navbar Right Menu -->
+	
+
     <div class="navbar-custom-menu">
+		
         <ul class="nav navbar-nav">
+			
             <!-- User Account: style can be found in dropdown.less -->
 			<li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">

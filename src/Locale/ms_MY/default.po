@@ -2009,7 +2009,7 @@ msgstr "Ingat saya"
 
 #: Template/Users/login.ctp:33
 msgid "Sign In"
-msgstr "Daftar Masuk"
+msgstr "Log Masuk"
 
 #: Template/Users/login.ctp:45
 msgid "Register a new membership"
@@ -2468,7 +2468,7 @@ msgid "Create Time Off"
 msgstr ""
 
 msgid "List Time Off"
-msgstr ""
+msgstr "Senarai Time Off"
 
 msgid "Attendance"
 msgstr "Kedatangan"
@@ -2478,3 +2478,90 @@ msgstr "Senarai Kedatangan"
 
 msgid "Reports"
 msgstr "Laporan"
+
+
+
+
+#Menu JPSM 25/10/2019
+
+msgid "Staff Management"
+msgstr "Pengurusan Kakitangan"
+
+msgid "View dashboard"
+msgstr "Lihat papan pemuka"
+
+msgid "Add new user"
+msgstr "Tambah pengguna baru"
+
+msgid "View users list"
+msgstr "Lihat senarai pengguna"
+
+msgid "View department list"
+msgstr "Lihat senarai jabatan"
+
+msgid "Add new department"
+msgstr "Tambah jabatan baru"
+
+msgid "Time Off module"
+msgstr "Modul Time Off"
+
+msgid "Add new time off"
+msgstr "Tambah Time Off baru"
+
+msgid "Apply Time Off"
+msgstr "Mohon Time Off"
+
+msgid "Attendance module"
+msgstr "Modul kehadiran"
+
+msgid "List Attendance"
+msgstr "Senarai kehadiran"
+
+msgid "Report module"
+msgstr "Modul Laporan"
+
+msgid "User Designation"
+msgstr "Jawatan Pengguna"
+
+msgid "Add new Designation"
+msgstr "Tambah Jawatan baru"
+
+msgid "List Designation"
+msgstr "Senarai Jawatan"
+
+msgid "Clock In Out"
+msgstr "Masa Keluar Masuk"
+
+msgid "Weekly Report"
+msgstr "Laporan Mingguan"
+
+msgid "Daily Report"
+msgstr "Laporan Harian"
+
+msgid "Monthly Report"
+msgstr "Laporan Bulanan"
+
+msgid "Monthly Summary Report"
+msgstr "Laporan Ringkasan Bulanan"
+
+msgid "Email Template"
+msgstr "Templat E-mel"
+
+msgid "Attendance Reasons"
+msgstr "Alasan Kehadiran"
+
+msgid "Daily Time Off"
+msgstr "Time Off Harian"
+
+msgid "Staff Time Off"
+msgstr "Time Off Kakitangan"
+
+msgid "Staff Working Hour"
+msgstr "Waktu Bekerja Kakitangan"
+
+msgid "User Manual"
+msgstr "Panduan pengguna"
+
+msgid "Download"
+msgstr "Muat turun"
+

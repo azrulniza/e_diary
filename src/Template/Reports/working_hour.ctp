@@ -43,11 +43,11 @@
 							
 					</div>
 				<?= $this->Form->end() ?>
-				<!--<a href="exportExcelworkinghour?department=<?= $departmentSelected;?>&
+				<a href="exportExcelworkinghour?department=<?= $departmentSelected;?>&
 					user=<?= $userSelected;?>&att_month=<?= $monthselected;?>" class="btn btn-default pull-right">
 						<span class="glyphicon glyphicon-download-alt"> </span> 
 						<?php echo __('Export to Excel') ?>
-					</a>-->
+					</a>
 					<?= $this->Html->link(__('Export to PDF'), ['action' => 'working_hour','department' => $departmentSelected,
 						'user' => $userSelected,'att_month' => $monthselected, 
 						'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
@@ -67,7 +67,6 @@
                         <?php (isset($this->request['url']['page'])) ? $count = $this->request['url']['page'] * $this->Paginator->param('perPage') : $count =  1 *$this->Paginator->param('perPage');?>
 
                         <?php 
-						
 						for($daymonth=01;$daymonth<=$lastDayMonth;$daymonth++){
 							if ($daymonth<10){
 								$daymonth = '0'.$daymonth;

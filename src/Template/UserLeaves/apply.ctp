@@ -21,6 +21,25 @@
         });
     });
     $(document ).ready(function() {
+        var type =$('#leavetype').val();
+        if(type==1){
+            $('#label_from_time').show();
+            $('#input_from_time').show();
+            $('#label_to_time').show();
+            $('#input_to_time').show();
+
+            $('#label_end_date').hide();
+            $('#input_end_date').hide();
+        }else{
+            $('#label_from_time').hide();
+            $('#input_from_time').hide();
+            $('#label_to_time').hide();
+            $('#input_to_time').hide();
+
+            $('#label_end_date').show();
+            $('#input_end_date').show();
+        }
+
         $('#leavetype').change(function(){
             var id = $(this).val();
             

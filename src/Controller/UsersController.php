@@ -107,6 +107,7 @@ class UsersController extends AppController
 				$reportTo[$head->id] = $head->name;
 			}
 		}
+		
 		$organizations = $this->Organizations->find('list', ['limit' => 200]);
         $users = $this->paginate($query);
         $this->set(compact('users','reportTo','organizations','organizationSelected','userRoles','search_name'));
@@ -651,11 +652,20 @@ class UsersController extends AppController
 	
 	public function getLanguageId(){
 		$session = $this->request->session()->read('Config.language');
-		if(isset($session) AND $session == 'ms_MY'){
-			$language_id=2;
-		}else{
+		if(isset($session) AND $session == 'en'){
 			$language_id=1;
+		}else{
+			$language_id=2;
 		}
 		return $language_id;
+	}
+
+	public function download() { 
+	       $file_path = 'files'.DS.'eDiary_User_Manual_v1.0.pdf';
+		    $this->response->file($file_path, array(
+		        'download' => true,
+		        'name' => 'eDiary_User_Manual.pdf',
+		    ));
+		    return $this->response;
 	}
 }

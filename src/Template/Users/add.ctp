@@ -19,17 +19,23 @@
 	$(document ).ready(function() {
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
+			if($( "#listdepartment" ).val() < 1){
+				$("#listdesignation").prop('disabled',true);
+				$("#listuser").prop('disabled',true);
+			}else{
+				$("#listdesignation").prop('disabled',false);
+			}
 			$.ajax({
 				type : "POST",
 				url  : getAppVars('basepath').basePath + 'users/getDetails' + '?id=' + id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
-						console.log(data);
+						//console.log(data);
 						$("#listdesignation").empty();
 						$('#listdesignation').append($('<option value>--Please Select--</option>'));
 													
 						$.each(data.designations, function(i, p) {
-							console.log(p);
+							//console.log(p);
 							$('#listdesignation').append($('<option></option>').val(p.id).html(p.name));
 						});				
 						
@@ -37,16 +43,25 @@
 						$('#listuser').append($('<option value>--Please Select--</option>'));
 													
 						$.each(data.users, function(i, p) {
-							console.log(p);
+							//console.log(p);
 							$('#listuser').append($('<option></option>').val(p.id).html(p.name));
 						});
 			}});
+		});
+		$('#listdesignation').change(function(){
+			if($( "#listdesignation" ).val() < 1){
+				$("#listuser").prop('disabled',true);
+				$( "#listuser" ).val('');
+			}else{
+				$("#listuser").prop('disabled',false);
+			}
 		});
 		$('#listrole').change(function(){
 			var id = $(this).val();
 			if(id == 2 || id == 1){
 				$("#listuser").hide();
 				$("label[for='listuser']").hide();
+				$("#listuser").prop('required',false);
 			}else{
 				$("#listuser").show();
 				$("label[for='listuser']").show();				
@@ -72,6 +87,9 @@
 								</label>
 								<input type="file" name="image" class="form-control" id="image" style="width:40%;" onchange="readURL(this);">
 							</div>
+							<span class="instruction"><?php echo __('Image file type: '); ?><strong>JPG</strong> <?php echo __('or'); ?><strong> PNG</strong> <?php echo __('only'); ?><br/>
+                                <?php echo __('Maximum file size:') ?><strong> <?php echo __('1MB') ?></strong>
+                            </span>
 						</center>
                         <?php
 						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
@@ -83,8 +101,8 @@
                         if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
 							echo $this->Form->input('role', ['class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true]);
 							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
-							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
-							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>array('0'=>__('--Please Select--')),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true]);							
+							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','required'=>true,'disabled'=>true]);
+							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>array('0'=>__('--Please Select--')),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'disabled'=>true]);							
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;','required'=>true]);
 						endif;
                         ?>

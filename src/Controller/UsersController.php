@@ -525,7 +525,7 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 	
-	public function reset_password($lang)
+	public function reset_password($lang = null)
     {
         $success = false;
 		$this->loadModel('SettingEmails');
@@ -533,6 +533,7 @@ class UsersController extends AppController
 		
 		$langs = \Cake\Core\Configure::read('Languages');
 		$session = $this->request->session();
+
 		if(isset($langs[$lang])){
             $session->write('Config.language', $lang);
             I18n::locale($lang);

@@ -80,24 +80,32 @@ class AttendancesController extends AppController
                 $attendance_in['attendance_id']=$has_in->id;
 
                 $attendance_in['in']=$has_in->cdate;
-                if($has_out->status == 2){
-                    $attendance_in['status']=$has_out->status;
-                    $attendance_in['attendance_code_name']=$has_out->attendance_code->name;
-                }else if($has_in->status == 1){
-                    $attendance_in['status']=$has_in->status;
-                    $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
+				
+				//cater for 2kali clock in
+				$attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+				
+				if($attendance->status == 1){
+					$attendance_in['in']=$attendance->cdate;
+					$attendance_in['status']=$attendance->status;
+					$attendance_in['attendance_code_name']=$attendance->attendance_code->name;
+				}else{
+					if($has_in->status == 1 AND $has_out->status != 2){
+						$attendance_in['status']=$has_in->status;
+						$attendance_in['attendance_code_name']=$has_in->attendance_code->name;
 
-                }else{
-                    $attendance_in['status']=2;
-                    $attendance_in['attendance_code_name']="Absent";
-                }
-
+					}else if($has_out->status == 2){
+						$attendance_in['status']=$has_out->status;
+						$attendance_in['attendance_code_name']=$has_out->attendance_code->name;
+					}else{
+						$attendance_in['status']=2;
+						$attendance_in['attendance_code_name']="Absent";
+					}
+					$attendance_in['out']=$has_out->cdate;
+				}
 
                 $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
                 $attendance_in['card']=$user_card->card->name;
                 $attendance_in['card_id']=$user_card->id;
-
-                $attendance_in['out']=$has_out->cdate;
 
                 $attendances[$attendance_in['user_id']]=$attendance_in;
             }
@@ -128,21 +136,29 @@ class AttendancesController extends AppController
 
                 $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
                 $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
+				
+				//cater for 2kali clock in
+				$attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+				
+				if($attendance->status == 1){
+					$attendance_in['in']=$attendance->cdate;
+					$attendance_in['status']=$attendance->status;
+					$attendance_in['attendance_code_name']=$attendance->attendance_code->name;
+				}else{
+					$attendance_in['in']=$has_in->cdate;
+					if($has_in->status == 1 AND $has_out->status != 2){
+						$attendance_in['status']=$has_in->status;
+						$attendance_in['attendance_code_name']=$has_in->attendance_code->name;
 
-                $attendance_in['in']=$has_in->cdate;
-                if($has_in->status == 1){
-                    $attendance_in['status']=$has_in->status;
-                    $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
-
-                }else if($has_out->status == 2){
-                    $attendance_in['status']=$has_out->status;
-                    $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
-                }else{
-                    $attendance_in['status']=2;
-                    $attendance_in['attendance_code_name']="Absent";
-                }
-                $attendance_in['out']=$has_out->cdate;
-
+					}else if($has_out->status == 2){
+						$attendance_in['status']=$has_out->status;
+						$attendance_in['attendance_code_name']=$has_out->attendance_code->name;
+					}else{
+						$attendance_in['status']=2;
+						$attendance_in['attendance_code_name']="Absent";
+					}
+					$attendance_in['out']=$has_out->cdate;
+				}
                 //User Card
                 $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
                 $attendance_in['card']=$user_card->card->name;
@@ -170,19 +186,28 @@ class AttendancesController extends AppController
                 $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
 
                 $attendance_in['in']=$has_in->cdate;
-                if($has_in->status == 1){
-                    $attendance_in['status']=$has_in->status;
-                    $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
+				
+				//cater for 2kali clock in
+				$attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+				
+				if($attendance->status == 1){
+					$attendance_in['in']=$attendance->cdate;
+					$attendance_in['status']=$attendance->status;
+					$attendance_in['attendance_code_name']=$attendance->attendance_code->name;
+				}else{
+					if($has_in->status == 1 AND $has_out->status != 2){
+						$attendance_in['status']=$has_in->status;
+						$attendance_in['attendance_code_name']=$has_in->attendance_code->name;
 
-                }else if($has_out->status == 2){
-                    $attendance_in['status']=$has_out->status;
-                    $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
-                }else{
-                    $attendance_in['status']=2;
-                    $attendance_in['attendance_code_name']="Absent";
-                }
-                $attendance_in['out']=$has_out->cdate;
-
+					}else if($has_out->status == 2){
+						$attendance_in['status']=$has_out->status;
+						$attendance_in['attendance_code_name']=$has_out->attendance_code->name;
+					}else{
+						$attendance_in['status']=2;
+						$attendance_in['attendance_code_name']="Absent";
+					}
+					$attendance_in['out']=$has_out->cdate;
+				}
                 //User Card
                 $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
                 $attendance_in['card']=$user_card->card->name;

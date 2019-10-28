@@ -80,9 +80,23 @@ class DashboardsController extends AppController
 
                 // count user attendance in current month
                 $sql_count_user_attendance="SELECT COUNT(*) AS total_attend from  attendances JOIN users ON users.id=attendances.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` Where `attendance_code_id`=1 AND MONTH(attendances.cdate) = MONTH(CURRENT_DATE()) AND attendances.user_id=$userSelected";
-                $stmt_sql_count_user_attendance= $conn->execute($sql_count_user_attendance);
-                $count_user_attendance = $stmt_sql_count_user_attendance->fetch('assoc');
-                $total_attend_month = $count_user_attendance['total_attend'];
+				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
+				$total_attend=0;
+				$past_date = '';
+				foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())']);	
+					foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->attendance_code_id == 1){
+								$total_attend++;
+							}
+						}
+					}
+					
+				}
+                $total_attend_month = $total_attend;
 
                 //count pending
                 $sql_pending = "SELECT COUNT(*) AS total_pending from  user_leaves JOIN users ON users.id=user_leaves.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE user_leaves.leave_status_id=1 AND organizations.id=$departmentSelected";
@@ -109,10 +123,20 @@ class DashboardsController extends AppController
                 $count_all_user=$stmt_sql_result['total_staff'];
 
                 //count attendance
-                $sql_count_attendance="SELECT count(users.id) AS total_attend FROM users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` LEFT JOIN attendances ON attendances.`user_id` = users.id WHERE users_roles.id != 1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$departmentSelected AND users.id=$userSelected";
-                $stmt = $conn->execute($sql_count_attendance);
-                $total_attend = $stmt->fetch('assoc');
-                $staff_working = $total_attend['total_attend'];
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})
+						->autoFields(true)->where(['Users.status'=>1]);
+				$total_attend=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances->status == 1){
+						$total_attend++;
+					}
+				}
+                $staff_working = $total_attend;
                 $staff_absent=$count_all_user-$staff_working;
 
             }else if(!empty($departmentSelected) AND empty($userSelected)){
@@ -143,10 +167,20 @@ class DashboardsController extends AppController
                 $count_all_user=$stmt_sql_result['total_staff'];
                 
                 //count attendance
-                $sql_count_attendance="SELECT count(users.id) AS total_attend FROM users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` LEFT JOIN attendances ON attendances.`user_id` = users.id WHERE users_roles.id != 1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$departmentSelected";
-                $stmt = $conn->execute($sql_count_attendance);
-                $total_attend = $stmt->fetch('assoc');
-                $staff_working = $total_attend['total_attend'];
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})
+						->autoFields(true)->where(['Users.status'=>1]);
+				$total_attend=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances->status == 1){
+						$total_attend++;
+					}
+				}
+                $staff_working = $total_attend;
                 $staff_absent=$count_all_user-$staff_working;
 
             }else if(empty($departmentSelected) AND !empty($userSelected)){
@@ -172,10 +206,23 @@ class DashboardsController extends AppController
                 $total_absent_month = $count_user_absent['total_absent'];
 
                 // count user attendance in current month
-                $sql_count_user_attendance="SELECT COUNT(*) AS total_attend from  attendances JOIN users ON users.id=attendances.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` Where `attendance_code_id`=1 AND MONTH(attendances.cdate) = MONTH(CURRENT_DATE()) AND attendances.user_id=$userSelected";
-                $stmt_sql_count_user_attendance= $conn->execute($sql_count_user_attendance);
-                $count_user_attendance = $stmt_sql_count_user_attendance->fetch('assoc');
-                $total_attend_month = $count_user_attendance['total_attend'];
+				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
+				$total_attend=0;
+				$past_date = '';
+				foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())']);	
+					foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->attendance_code_id == 1){
+								$total_attend++;
+							}
+						}
+					}
+					
+				}
+                $total_attend_month = $total_attend;
 
                 //count pending
                 $sql_pending = "SELECT COUNT(*) AS total_pending from  user_leaves JOIN users ON users.id=user_leaves.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE user_leaves.leave_status_id=1 AND organizations.id=$user_organization_id";
@@ -203,10 +250,20 @@ class DashboardsController extends AppController
 
 
                 //count attendance
-                $sql_count_attendance="SELECT count(users.id) AS total_attend FROM users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` LEFT JOIN attendances ON attendances.`user_id` = users.id WHERE users_roles.id != 1 AND DATE(attendances.cdate)=CURDATE() AND users.id=$userSelected";
-                $stmt = $conn->execute($sql_count_attendance);
-                $total_attend = $stmt->fetch('assoc');
-                $staff_working = $total_attend['total_attend'];
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
+						})
+						->autoFields(true)->where(['Users.status'=>1]);
+				$total_attend=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances->status == 1){
+						$total_attend++;
+					}
+				}
+                $staff_working = $total_attend;
                 $staff_absent=$count_all_user-$staff_working;
 
             }else if(empty($departmentSelected) AND empty($userSelected)){
@@ -233,10 +290,18 @@ class DashboardsController extends AppController
                 $count_all_user=$this->Users->find()->where(['status'=>'1'])->innerJoinWith('Roles' , function($q){ return $q->where(['Roles.id !='=>'1']);})->count();
 
                 //count attendance
-                $sql_count_attendance="SELECT count(users.id) AS total_attend FROM users JOIN users_roles ON users.`id`=users_roles.`user_id` LEFT JOIN attendances ON attendances.`user_id` = users.id WHERE users_roles.id != 1 AND DATE(attendances.cdate)=CURDATE() AND users.status=1";
-                $stmt = $conn->execute($sql_count_attendance);
-                $total_attend = $stmt->fetch('assoc');
-                $staff_working = $total_attend['total_attend'];
+				$all_user = $this->Users->find()->contain(['UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})
+						->autoFields(true)->where(['Users.status'=>1]);
+				$total_attend=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances->status == 1){
+						$total_attend++;
+					}
+				}
+                $staff_working = $total_attend;
                 $staff_absent=$count_all_user-$staff_working;
 
                 $totalStaff = $staff_absent + $staff_timeoff + $staff_working;
@@ -271,10 +336,23 @@ class DashboardsController extends AppController
                 $total_absent_month = $count_user_absent['total_absent'];
 
                 // count user attendance in current month
-                $sql_count_user_attendance="SELECT COUNT(*) AS total_attend from  attendances JOIN users ON users.id=attendances.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` Where `attendance_code_id`=1 AND MONTH(attendances.cdate) = MONTH(CURRENT_DATE()) AND attendances.user_id=$userSelected";
-                $stmt_sql_count_user_attendance= $conn->execute($sql_count_user_attendance);
-                $count_user_attendance = $stmt_sql_count_user_attendance->fetch('assoc');
-                $total_attend_month = $count_user_attendance['total_attend'];
+				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
+				$total_attend=0;
+				$past_date = '';
+				foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())']);	
+					foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->attendance_code_id == 1){
+								$total_attend++;
+							}
+						}
+					}
+					
+				}
+                $total_attend_month = $total_attend;
             }
 
             //count pending
@@ -311,10 +389,20 @@ class DashboardsController extends AppController
             $count_all_user=$stmt_sql_result['total_staff'];
             
             //count attendance
-            $sql_count_attendance="SELECT count(users.id) AS total_attend FROM users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` LEFT JOIN attendances ON attendances.`user_id` = users.id WHERE users_roles.id != 1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$user_organization_id";
-            $stmt = $conn->execute($sql_count_attendance);
-            $total_attend = $stmt->fetch('assoc');
-            $staff_working = $total_attend['total_attend'];
+			$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+								return $q->where(['UsersRoles.role_id !='=>1]);
+						})
+					->autoFields(true)->where(['Users.status'=>1]);
+			$total_attend=0;
+			foreach($all_user as $user){
+				$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+				if($attendances->status == 1){
+					$total_attend++;
+				}
+			}
+            $staff_working = $total_attend;
             $staff_absent=$count_all_user-$staff_working;
 
 			/*foreach($users as $user){
@@ -343,10 +431,24 @@ class DashboardsController extends AppController
                 $total_absent_month = $count_user_absent['total_absent'];
 
             // count user attendance in current month
-            $sql_count_user_attendance="SELECT COUNT(*) AS total_attend from  attendances JOIN users ON users.id=attendances.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` Where `attendance_code_id`=1 AND MONTH(attendances.cdate) = MONTH(CURRENT_DATE()) AND attendances.user_id=$userId";
-            $stmt_sql_count_user_attendance= $conn->execute($sql_count_user_attendance);
-            $count_user_attendance = $stmt_sql_count_user_attendance->fetch('assoc');
-            $total_attend_month = $count_user_attendance['total_attend'];
+            	$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userId]);
+				$total_attend=0;
+				$past_date = '';
+				foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())']);	
+					foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->attendance_code_id == 1){
+								$total_attend++;
+							}
+						}
+					}
+					
+				}
+            $total_attend_month = $total_attend;
+
         }
 
 

@@ -48,6 +48,7 @@
 			if(id == 2 || id == 1){
 				$("#listuser").hide();
 				$("label[for='listuser']").hide();
+				$("#listuser").prop('required',false);
 			}else{
 				$("#listuser").show();
 				$("label[for='listuser']").show();				
@@ -56,6 +57,7 @@
 		if($( "#listrole" ).val() == 2 || $( "#listrole" ).val() == 1){
 			$("#listuser").hide();
 			$("label[for='listuser']").hide();
+			$("#listuser").prop('required',false);
 		}
 	});
 </script><div class="row">
@@ -81,6 +83,9 @@
 								<input type="file" name="image" class="form-control" id="image" style="width:40%;" onchange="readURL(this);">
 								<input type="hidden" name="previous_image" value="<?php echo $user->image ;?>">
 							</div>
+							<span class="instruction"><?php echo __('Image file type: '); ?><strong>JPG</strong> <?php echo __('or'); ?><strong> PNG</strong> <?php echo __('only'); ?><br/>
+                                <?php echo __('Maximum file size:') ?><strong> <?php echo __('1MB') ?></strong>
+                            </span>
 						</center>
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
@@ -95,7 +100,7 @@
 						if ($userRoles->hasRole(['Master Admin'])) :
 							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_dept]);
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_designation]); 
-							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;']);						
+							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'value'=>$selected_reportTo]);						
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);
 						endif;
                         ?>

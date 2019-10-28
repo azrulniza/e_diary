@@ -411,7 +411,7 @@ class UsersController extends AppController
 			return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);});
 			
 			$reportTo->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+					return $q->where(['Roles.id IN' => [SUPERVISOR,ADMIN]]);
 				});
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles

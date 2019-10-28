@@ -63,15 +63,18 @@
                                     <p style="color:<?php echo $color;?>"><?= $attendance['attendance_code_name'] ?></p>
                                 </td>
                                 <td><?php if($attendance['in']!=""){
-                                     $date_in=date_create($attendance['in']);
-                                     echo date_format($date_in,"H:i a");
+                                    //echo $attendance['in'];
+                                    // echo $date_in=date_create($attendance['in']);
+                                   //echo $date_in = date_create_from_format('d/m/Y:H:i:s', $attendance['in']);
+                                   
+                                    echo date_format($attendance['in'],"H:i a");
                                      
                                 }
                                
                                 ?></td>
                                 <td><?php if($attendance['out']!=""){
-                                    $date_out=date_create($attendance['out']);
-                                        echo date_format($date_out,"H:i a");
+                                    //$date_out=date_create($attendance['out']);
+                                        echo date_format($attendance['out'],"H:i a");
                                 }
                                 
                                 ?></td>

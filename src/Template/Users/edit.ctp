@@ -49,6 +49,7 @@
 				$("#listuser").hide();
 				$("label[for='listuser']").hide();
 				$("#listuser").prop('required',false);
+				$("#listuser").val(1);
 			}else{
 				$("#listuser").show();
 				$("label[for='listuser']").show();				
@@ -58,6 +59,8 @@
 			$("#listuser").hide();
 			$("label[for='listuser']").hide();
 			$("#listuser").prop('required',false);
+			$("#listuser").val(1);
+			console.log($("#listuser"));
 		}
 	});
 </script><div class="row">

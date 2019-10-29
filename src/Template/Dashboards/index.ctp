@@ -217,7 +217,7 @@ $this->Html->script('dashboard');
                         <tr>
                            
                             <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
-                            <td align="left"><label for="staff"><?php echo $this->Form->label('Staff');?></label></td>
+                            <td align="left"><label for="staff"><?php echo $this->Form->label(__('Staffs'));?></label></td>
                             <td>                                             
                                 
                                 <?php echo $this->Form->input('user', ['label'=>false,'options' => $users, 'empty' => __('-- All --'), 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$userSelected]); ?>

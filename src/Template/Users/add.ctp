@@ -40,7 +40,7 @@
 						});				
 						
 						$("#listuser").empty();
-						$('#listuser').append($('<option value>--Please Select--</option>'));
+						$('#listuser').append($('<option value=0>--Please Select--</option>'));
 													
 						$.each(data.users, function(i, p) {
 							//console.log(p);
@@ -61,7 +61,7 @@
 			if(id == 2 || id == 1){
 				$("#listuser").hide();
 				$("label[for='listuser']").hide();
-				$("#listuser").prop('required',false);
+				$("#listuser").val(0);
 			}else{
 				$("#listuser").show();
 				$("label[for='listuser']").show();				

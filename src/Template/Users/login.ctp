@@ -4,7 +4,7 @@
     <?= $this->Form->input('ic_number', [
         'label' => false,
         'class' => 'form-control',
-        'placeholder' => __('Identity Card No.'),
+        'placeholder' => __('Identity Card No'),
         'required' => true
     ]) ?>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

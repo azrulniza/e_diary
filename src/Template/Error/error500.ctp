@@ -30,8 +30,9 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
-<h2><?= __d('cake', 'An Internal Error Has Occurred') ?></h2>
+<h2><?= __d('cake', __('Oops..something when wrong')) ?></h2>
 <p class="error">
-    <strong><?= __d('cake', 'Error') ?>: </strong>
-    <?= h($message) ?>
+    <strong><?= __d('cake', __("Something when wrong and we couldn't complete your request. Please contact admin for assistance.")) ?> </strong><br>
+    <?= __d('cake', 'Error') ?> :
+    <?= h('500 Internal Error Has Occurred') ?>
 </p>

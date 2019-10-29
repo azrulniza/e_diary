@@ -160,6 +160,13 @@ class UsersController extends AppController
 			$now = \Cake\I18n\Time::now();
 			$user->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+			
+			if($this->request->data['role'] == 2){
+				$master_admin_user = $this->Users->find()->contain(['Roles'])->matching('Roles', function ($q) {
+					return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);
+				})->first();
+				$user->report_to = $master_admin_user->id;
+			}
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');
@@ -225,9 +232,21 @@ class UsersController extends AppController
 				$emailTemplates = $this->SettingEmails->find()->where(['email_type_id'=>1,'language_id'=>$language_id])->first();
 				$emailTemp_subject = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->subject);
 				$emailTemp_body = str_replace(array('[USER_NAME]', '[PASSWORD]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->body);
-				$subject = __(nl2br($emailTemp_subject),'yana','112233','990109115678');
-				$body = __(nl2br($emailTemp_body),'yana','112233','990109115678');
-
+				$subject = __(nl2br($emailTemp_subject),$user->name,$this->request->data['password'],$user->ic_number);
+				$body = __(nl2br($emailTemp_body),$user->name,$this->request->data['password'],$user->ic_number);
+				
+				//get all supervisor
+				$staff_organization_id = $this->request->data['organization'];
+				$reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+			
+				$reportTo->matching('Roles', function ($q) {
+					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+				});
+			
+				$supervisor_email=array();
+				foreach ($reportTo as $key ) {
+					$supervisor_email[] = $key['email'];
+				}
 				try {
 					$email = new Email();
 
@@ -235,16 +254,13 @@ class UsersController extends AppController
 					$email->transport('default');
 
 					// Use a constructed object.
-					//$transport = new DebugTransport();
-					//$email->transport($transport);
-					/* $email 
+					$email 
 						->emailFormat('html')
-						->to('officialnordiyanah@gmail.com', 'yana')
-						->setSubject('yana')
-						->send('yana'); */
-					//var_dump($email);
+						->to($user->email)
+						->cc($supervisor_email)
+						->subject($subject)
+						->send($body);
 				}catch(\Exception $e){
-					var_dump($e->getMessage());
 					$this->Flash->error(__('Email could not send. Please, try again.'));
 				}
 
@@ -307,6 +323,13 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
 			$now = \Cake\I18n\Time::now();
 			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+			
+			if($this->request->data['role'] == 2){
+				$master_admin_user = $this->Users->find()->contain(['Roles'])->matching('Roles', function ($q) {
+					return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);
+				})->first();
+				$user->report_to = $master_admin_user->id;
+			}
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');
@@ -557,6 +580,22 @@ class UsersController extends AppController
 				$subject = __(nl2br($emailTemp_subject),'yana',$verify_url,'990109115678');
 				$body = __(nl2br($emailTemp_body),'yana',$verify_url,'990109115678');
 				
+				try {
+					$email = new Email();
+
+					// Use a named transport already configured using Email::configTransport()
+					$email->transport('default');
+
+					// Use a constructed object.
+					$email 
+						->emailFormat('html')
+						->to($user->email)
+						->subject($subject)
+						->send($body);
+				}catch(\Exception $e){
+					$this->Flash->error(__('Email could not send. Please, try again.'));
+				}
+				
 				$this->Flash->success(__('Password reset instruction will be sent to e-mail address {0}.', [$user->email]));
             }else{
 				$this->Flash->error(__('Email cannot be found. Please, try again.'));
@@ -642,7 +681,7 @@ class UsersController extends AppController
 		return $q->where(['UserOrganizations.organization_id'=>$department_id]);});
 		
 		$users->matching('Roles', function ($q) {
-                return $q->where(['Roles.id NOT IN' => [STAFF]]);
+                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
             });
 
 		$this->set(compact('designations','users'));

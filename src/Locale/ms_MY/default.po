@@ -2922,3 +2922,6 @@ msgstr "Tetapkan Kata Laluan"
 
 msgid "Verify"
 msgstr "Sahkan"
+
+msgid "NORMAL ATTENDANCE"
+msgstr "KEDATANGAN NORMAL"

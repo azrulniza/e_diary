@@ -2,7 +2,7 @@
     <div class="col-xs-10">
         <div class="settingEmails view info-box">
             <div class="box box-deafult">
-                <span class="info-box-icon bg-default">
+                <span class="">
                     <i class="fa fa-settingEmail"></i>
                 </span>
                 <div class="info-box-content">

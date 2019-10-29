@@ -61,8 +61,7 @@ class OrganizationsController extends AppController
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
         }
 		$status = [
-            1 => __('Active'),
-            0 => __('Disable')
+            1 => __('Active')
 		];
         $this->set(compact('organization','status'));
     }

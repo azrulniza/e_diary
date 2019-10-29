@@ -64,8 +64,7 @@ class SettingAttendancesReasonsController extends AppController
             $this->Flash->error(__('The setting attendances reason could not be saved. Please, try again.'));
         }
 		$status = [
-            1 => __('Active'),
-            0 => __('Disable')
+            1 => __('Active')
 		];
         $this->set(compact('settingAttendancesReason','status'));
     }

@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <div class="organizations view info-box">
             <div class="box box-default">
-                <span class="info-box-icon bg-default">
+                <span class="">
                     <i class="fa fa-organization"></i>
                 </span>
                 <div class="info-box-content">
@@ -16,7 +16,7 @@
                             <dt><?= __('Description') ?></dt>
                             <dd><?= h($organization->description) ?></dd>
                             <dt><?= __('Status') ?></dt>
-                            <dd><?= $organization->status == 1 ? __('ACTIVE') : __('DISABLE'); ?></dd>
+                            <dd><?= $organization->status == 1 ? __('Active') : __('Disable'); ?></dd>
                         </dl>
                     </div>
                 </div>

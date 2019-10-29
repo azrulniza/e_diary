@@ -142,8 +142,7 @@ class UsersController extends AppController
     public function add()
     {
 		$this->userStatus = [
-            1 => __('Active'),
-            0 => __('Disabled')];
+            1 => __('Active')];
 		$this->loadModel('UserOrganizations');
 		$this->loadModel('UserDesignations');
 		$this->loadModel('UsersRoles');

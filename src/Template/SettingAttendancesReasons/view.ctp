@@ -2,7 +2,7 @@
     <div class="col-xs-10">
         <div class="settingAttendancesReasons view info-box">
             <div class="box box-default">
-                <span class="info-box-icon bg-default">
+                <span class="">
                     <i class="fa fa-settingAttendancesReason"></i>
                 </span>
                 <div class="info-box-content">
@@ -16,7 +16,7 @@
                             <dt><?= __('Description') ?></dt>
                             <dd><?= h($settingAttendancesReason->description) ?></dd>
                             <dt><?= __('Status') ?></dt>
-                            <dd><?= $settingAttendancesReason->status == 1 ? __('ACTIVE') : __('DISABLE'); ?></dd>
+                            <dd><?= $settingAttendancesReason->status == 1 ? __('Active') : __('Disable'); ?></dd>
                     </div>
                 </div>
             </div>

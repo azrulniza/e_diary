@@ -34,9 +34,9 @@ class DesignationsController extends AppController
         ];
 		$organizations = $this->Organizations->find('list', ['limit' => 200]);
 		if($organizationSelected != null){
-			$designations = $this->paginate($this->Designations->find()->where(['organization_id'=>$organizationSelected]));
+			$designations = $this->paginate($this->Designations->find()->where(['organization_id'=>$organizationSelected,'Designations.status'=>1]));
 		}else{
-			$designations = $this->paginate($this->Designations);
+			$designations = $this->paginate($this->Designations->find()->where(['Designations.status'=>1]));
 		}
 
         $this->set(compact('designations','organizationSelected','userRoles','organizations'));

@@ -21,7 +21,7 @@
                                 <td><?= $count ?></td>
                                 <td><?= h($organization->name) ?></td>
                                 <td><?= h($organization->description) ?></td>
-                                <td><?= $organization->status == 1 ? 'ACTIVE' : 'DISABLE' ; ?></td>
+                                <td><?= $organization->status == 1 ? __('Active') : __('Disable') ; ?></td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $organization->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>

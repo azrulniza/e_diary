@@ -61,7 +61,7 @@
                     
                 </div>
                 <div class="box-footer">
-                    <?= $this->Form->input('card', ['type'=>'hidden', 'class' => 'form-control', 'value' => $user_card['card_id']]); ?>
+                    <?= $this->Form->input('card', ['type'=>'hidden', 'class' => 'form-control', 'value' => $user_card['id']]); ?>
                     <?= $this->Form->input('user', ['type'=>'hidden', 'class' => 'form-control', 'value' => $user_card['user_id']]); ?>
                     <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
                     <?= $this->Html->link(__('Cancel'), ['controller' => 'attendances'], ['class' => 'btn btn-warning']) ?>

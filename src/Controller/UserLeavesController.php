@@ -300,45 +300,29 @@ class UserLeavesController extends AppController
                         
 
                     }else{// Friday special lunch hour : 12.15pm-2.45pm
+                        $startDate1 = $from_date_time;
+                        $endDate1 = $to_date_time;
+                        $startDate2 = $date.' 12:15';
+                        $endDate2 = $date.' 14:45';
 
-                        if(($data['from_time']['hour'] <= 12 AND $data['from_time']['minute'] >= 15) OR ($data['to_time']['hour'] <= 14 AND $data['to_time']['minute'] >= 45)){
-                            $time_from_count1 = date_create($from_date_time);
-                            $time_from_count2 = date_create($date.' 12:15');
-                            $interval_time_from = date_diff($time_from_count1, $time_from_count2);
-                            $time_from_count_period= $interval_time_from->format("%H:%I:%S"); 
+                        //calculate time overlape in lunch hour
+                        $overlapeTime = $this->UserLeaves->overlapInMinutes($startDate1, $endDate1, $startDate2, $endDate2); 
 
-                            $time_from_count_arr= explode(':', $time_from_count_period);
-                            $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+                        //calculate total apply time
+                        $time_from_count1 = date_create($from_date_time);
+                        $time_from_count2 = date_create($to_date_time);
+                        $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                        $time_from_count_period= $interval_time_from->format("%H:%I:%S");
+                        $time_from_count_arr= explode(':', $time_from_count_period);
+                        $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
 
-
-                            $time_to_count1 = date_create($date.' 14:45');
-                            $time_to_count2 = date_create($to_date_time);
-                            $interval_time_to = date_diff($time_to_count1, $time_to_count2);
-                            $time_to_count_period= $interval_time_to->format("%H:%I:%S"); 
-
-                            $time_to_count_arr= explode(':', $time_to_count_period);
-                            $time_to_count_in_minute = ($time_to_count_arr[0] * 60.0 + $time_to_count_arr[1] * 1.0);
-
-                            $total_time_off_hour=$time_from_count_in_minute + $time_to_count_in_minute;
-                            if($total_time_off_hour > 240){
-                                $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                                $error=true;
-                            }
-
-                        }else{
-                            $datetime1 = date_create($from_date_time);
-                            $datetime2 = date_create($to_date_time);
-                            $interval = date_diff($datetime1, $datetime2);
-                            $time_off_period= $interval->format("%H:%I:%S"); 
-
-                            $time_off_period_arr= explode(':', $time_off_period);
-                            $time_off_period_in_minute = ($time_off_period_arr[0] * 60.0 + $time_off_period_arr[1] * 1.0);
-
-                            if($time_off_period_in_minute > 240){
-                                $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
-                                $error=true;
-                            }
-                        }
+                        $total_time_off_hour=$time_from_count_in_minute - $overlapeTime;
+                       
+                        if($total_time_off_hour > 240){
+                            $this->Flash->error(__($total_time_off_hour.'Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $error=true;
+                        }                        
+                       
                     }
                 }
                 

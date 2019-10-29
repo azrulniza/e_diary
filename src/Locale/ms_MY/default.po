@@ -2565,3 +2565,360 @@ msgstr "Panduan pengguna"
 msgid "Download"
 msgstr "Muat turun"
 
+
+
+# JPSM 29/10/2019 -- Attendance
+msgid "Change Card Status"
+msgstr "Tukar Status Kad"
+
+msgid "Clock In"
+msgstr "Jam Masuk"
+
+msgid "Card Status"
+msgstr "Status Kad"
+
+msgid "Clock Out"
+msgstr "Jam Keluar"
+
+msgid "Clocked in for"
+msgstr "Telah Jam Masuk untuk"
+
+msgid "Hi"
+msgstr "Hai"
+
+msgid "Hour"
+msgstr "Jam"
+
+msgid "Minute"
+msgstr "Minit"
+
+msgid "Second"
+msgstr "Saat"
+
+msgid "Get started today! Click to clock in"
+msgstr "Mulakan hari ini! Klik untuk jam masuk"
+
+msgid "Edit Attendance"
+msgstr "Kemaskini Kedatangan"
+
+msgid "Are you sure you want to delete this {0}?"
+msgstr "Adakah anda pasti untuk memadamkannya?"
+
+msgid "Summary Attendance for today, "
+msgstr "Ringkasan kedatangan hari ini, "
+
+msgid "-- All --"
+msgstr "-- Semua --"
+
+msgid "In"
+msgstr "Masuk"
+
+msgid "Out"
+msgstr "Keluar"
+
+msgid "Card"
+msgstr "Kad"
+
+msgid "Attendance Code"
+msgstr "Kod Kehadiran"
+
+msgid "Ip Address"
+msgstr "Alamat Ip"
+
+# JPSM 29/10/2019 -- Dashboard
+msgid "Today Summary"
+msgstr "Ringkasan Hari ini"
+
+msgid "LATE ATTENDANCE"
+msgstr "KEDATANGAN LEWAT"
+
+msgid "PENDING APPROVAL"
+msgstr "MENUNGGU KELULUSAN"
+
+msgid "Month Summary"
+msgstr "Ringkasan Bulan ini"
+
+# JPSM 29/10/2019 -- Departments
+msgid "Add Department"
+msgstr "Tambah Jabatan"
+
+msgid "Edit Department"
+msgstr "Kemaskini Jabatan"
+
+# JPSM 29/10/2019 -- Designation
+msgid "Add Designation"
+msgstr "Tambah Jawatan"
+
+msgid "Edit Designation"
+msgstr "Kemaskini Jawatan"
+
+msgid "Grade"
+msgstr "Gred"
+
+# JPSM 29/10/2019 -- Layout
+msgid "MAIN NAVIGATION"
+msgstr "NAVIGASI UTAMA"
+
+# JPSM 29/10/2019 -- Report
+msgid "Leave Type"
+msgstr "Jenis Cuti"
+
+msgid "Personal Matters"
+msgstr "Hal Peribadi"
+
+msgid "Work Affairs"
+msgstr "Hal Ehwal Kerja"
+
+msgid "Export to Excel"
+msgstr "Eksport ke Excel"
+
+msgid "Export to PDF"
+msgstr "Eksport ke PDF"
+
+msgid "Leave Date"
+msgstr "Tarikh Cuti"
+
+msgid "Leave Time"
+msgstr "Masa Cuti"
+
+msgid "Reason"
+msgstr "Alasan"
+
+msgid "Leave Status"
+msgstr "Status Cuti"
+
+msgid "Filter by"
+msgstr "Ditapis mengikut"
+
+msgid "Late In (After 9)"
+msgstr "Lewat (Selepas Jam 9)"
+
+msgid "Early Out (Before 9 Total Hour)"
+msgstr "Keluar Awal (Tidak Mencukupi 9 Jam)"
+
+msgid "Card No."
+msgstr "Nombor Kad"
+
+msgid "In Time"
+msgstr "Masa Masuk"
+
+msgid "Out Time"
+msgstr "Masa Keluar"
+
+msgid "Remarks"
+msgstr "Kenyataan"
+
+msgid "Total Hour"
+msgstr "Jumlah Jam"
+
+msgid "Attendance Month"
+msgstr "Bulan Kehadiran"
+
+msgid "Total Late"
+msgstr "Jumlah Lewat"
+
+msgid "Officer Approval"
+msgstr "Kelulusan Pengawai"
+
+msgid "Card Colour"
+msgstr "Warna Kad"
+
+msgid "January"
+msgstr "Januari"
+
+msgid "February"
+msgstr "Februari"
+
+msgid "March"
+msgstr "Mac"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mei"
+
+msgid "June"
+msgstr "Jun"
+
+msgid "July"
+msgstr "Julai"
+
+msgid "August"
+msgstr "Ogos"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Desember"
+
+msgid "Total Officer"
+msgstr "Jumlah Pengawai"
+
+msgid "Officer Group"
+msgstr "Kumpulan Pengawai"
+
+msgid "Three late in a month (total officer)"
+msgstr "Tiga kali lewat dalam sebulan (jumlah pengawai)"
+
+msgid "Yellow"
+msgstr "Kuning"
+
+msgid "Green"
+msgstr "Hijau"
+
+msgid "Red"
+msgstr "Merah"
+
+msgid "Higher Management Group"
+msgstr "Kumpulan Pengurusan Tertinggi"
+
+msgid "Professional Management Group (Grade 48-54)"
+msgstr "Kumpulan Pengurusan Profesional (Gred 48-54)"
+
+msgid "Professional Management Group (Grade 41-44)"
+msgstr "Kumpulan Pengurusan Profesional (Gred 41-44)"
+
+msgid "Executing Group (Grade 17-40)"
+msgstr "Kumpulan Pelaksana (Gred 17-40)"
+
+msgid "Executing Group (Grade 1-16)"
+msgstr "Kumpulan Pelaksana (Gred 1-16)"
+
+msgid "Date Attendance"
+msgstr "Tarikh Kedatangan"
+
+msgid "Red card in a week"
+msgstr "Kad merah dalam seminggu"
+
+msgid "Card colour for end week"
+msgstr "Warna kad di akhir minggu"
+
+msgid "Total Officer That Hold Red Cards"
+msgstr "Jumlah Pengawai yang Memegang Kad Merah"
+
+msgid "Total Officer That Hold Green Cards"
+msgstr "Jumlah Pengawai yang Memegang Kad Hijau"
+
+msgid "Start Time : "
+msgstr "Masa Mula : "
+
+msgid "End Time : "
+msgstr "Masa Tamat : "
+
+msgid "yes"
+msgstr "ya"
+
+msgid "Grand Total"
+msgstr "Jumlah Keseluruhan"
+
+msgid "Month"
+msgstr "Bulan"
+
+msgid "Day"
+msgstr "Hari"
+
+msgid "Staff's Name"
+msgstr "Nama Kakitangan"
+
+msgid "Date Range"
+msgstr "Julat Tarikh"
+
+msgid "to"
+msgstr "Sehingga"
+
+msgid "Monthly Attendance Report"
+msgstr "Laporan Kehadiran Bulanan"
+
+msgid "Staff Working Hour Report"
+msgstr "Laporan Waktu Bekerja"
+
+msgid "Weekly Attendance Report"
+msgstr "Laporan Kehadiran Mingguan"
+
+msgid "Monthly Summary Attendance Report"
+msgstr "Ringkasan Laporan Kehadiran Bulanan"
+
+msgid "Staff Time Off Report"
+msgstr ""
+
+msgid "Late In Report"
+msgstr "Laporan Kehadiran Lewat"
+
+msgid "Daily Attendance Report"
+msgstr "Laporan Kehadiran Harian"
+
+# JPSM 29/10/2019 -- SettingAttendancesReason
+msgid "Add Setting Attendances Reason"
+msgstr "Tambah Tatapan untuk Alasan Kehadiran"
+
+msgid "Edit Setting Attendances Reason"
+msgstr "Kemaskini Tatapan untuk Alasan Kehadiran"
+
+# JPSM 29/10/2019 -- SettingAEmail
+msgid "Edit Setting Email"
+msgstr "Kemaskini Tatapan E-mel"
+
+msgid "Template: "
+msgstr "Templat: "
+
+msgid "Email Template - English"
+msgstr "E-mel Templat - English"
+
+msgid "Body"
+msgstr "Isi"
+
+# JPSM 29/10/2019 -- SettingAEmail
+msgid "User Id"
+msgstr "Id Pengguna"
+
+# JPSM 29/10/2019 -- UserLeaves
+msgid "Card Id"
+msgstr "Id Kad"
+
+msgid "Date Request"
+msgstr "Tarikh Mohon"
+
+msgid "Date Start"
+msgstr "Tarikh Mula"
+
+msgid "Date End"
+msgstr "Tarikh Tamat"
+
+msgid "Void"
+msgstr "Tidak Sah"
+
+msgid "Close"
+msgstr "Tutup"
+
+msgid "Approve"
+msgstr "Lulus"
+
+msgid "Reject"
+msgstr "Ditolak"
+
+msgid "Designation"
+msgstr "Jawatan"
+
+# JPSM 29/10/2019 -- User
+msgid "Identity Card No"
+msgstr "Nombor Kad Pengenalan"
+
+msgid "Parameter not valid"
+msgstr "Parameter tidak sah"
+
+msgid "Re-confirm Password"
+msgstr "Sahkan Kata Laluan"
+
+msgid "Set Password"
+msgstr "Tetapkan Kata Laluan"
+
+msgid "Verify"
+msgstr "Sahkan"

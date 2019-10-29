@@ -129,17 +129,22 @@ $this->Html->script('dashboard');
 				<!------------------------DEPARTMENT GRAPH START-------------------------->
 				<?php 	
 					//for normal 
+				
 					foreach ($inTimeDeptresult as $index => $value){					
 						$index1 = $index + 1;
-						$arr_implodeinTimeDeptData[] = '['.date("H.i",strtotime($value['cdate'])).','.$index1.']';
+						$curentTime = date("H.i",strtotime($value['cdate']));
+						$curentTime1 = ltrim($curentTime,0);
+						$curentTime2 = number_format((float)$curentTime1,2,'.','');
+						$arr_implodeinTimeDeptData[] = '['.$curentTime2.','.$index1.']';
 					}			
-					
 					$implodeinTimeDeptData = implode(", ",$arr_implodeinTimeDeptData);
+					//echo $implodeinTimeDeptData = implode(", ",ltrim($arr_implodeinTimeDeptData,0));
 				
 				?>
+				<?php echo $this->Html->script('/js/loader'); ?>
 				<div class="col-md-6 col-sm-4 col-xs-8">
 					<!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
-					<?php echo $this->Html->script('/js/loader'); ?>
+					
 					<div id="chart_div" style="width: 550px; height: 300px;"></div>
 					<script>
 						google.charts.load('current', {packages: ['corechart', 'line']});
@@ -149,20 +154,19 @@ $this->Html->script('dashboard');
 							  var data = new google.visualization.DataTable();
 							  data.addColumn('number', 'Time In');
 							  data.addColumn('number', 'Staff');
-
 							  data.addRows([<?php echo $implodeinTimeDeptData;?>]);
 
 							  var options = {
 								hAxis: {
 								  title: 'Hour',
-								   minValue: 7, 
-								   maxValue: 11
+								   minValue: 6.0, 
+								   maxValue: 12.0
 								  
 								},
 								vAxis: {
 								  title: 'Total Staff',
 								  minValue: 0,
-								  maxValue: 1000
+								  maxValue: 50
 								},
 								colors: ['#a52714', '#097138']
 							  };

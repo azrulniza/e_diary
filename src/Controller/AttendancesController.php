@@ -568,13 +568,19 @@ class AttendancesController extends AppController
                 $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 
                 //User Card
-                $card_log = $this->UserCards->find('all')->where(['id'=>$card_id])->limit(1)->first();
-                 //insert into user_card_log
-                $sql_log="INSERT INTO `user_cards_logs` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$card_log['user_id'].","."'".$card_log['card_id']."'".","."'".$card_log['pic']."'".","."'".$card_log['status']."'".","."'".$card_log['cdate']."'".","."'".$card_log['cdate']."')";
+                //$card_log = $this->UserCards->find('all')->where(['id'=>$card_id])->limit(1)->first();
+                $sql_card="SELECT * FROM user_cards WHERE id=$card_id"; 
+                $stmt = $conn->execute($sql_card);
+                $card_log = $stmt->fetch('assoc');
+
+                $date=$card_log['cdate'];
+
+                //insert into user_card_log
+                $sql_log="INSERT INTO `user_cards_logs` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$card_log['user_id'].","."'".$card_log['card_id']."'".","."'".$card_log['pic']."'".","."'".$card_log['status']."'".","."'".$date."'".","."'".$date."')";
             
                 $stmt_log = $conn->execute($sql_log);
 
-                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=$card_status_id, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user_id AND card_id=$card_id";
+                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=$card_status_id, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user_id AND id=$card_id"; 
                 $stmt = $conn->execute($sql_update);
 
 

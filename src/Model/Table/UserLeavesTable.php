@@ -127,4 +127,24 @@ class UserleavesTable extends Table
 
         return $rules;
     }
+
+    public function overlapInMinutes($startDate1, $endDate1, $startDate2, $endDate2)
+    {
+        // Figure out which is the later start time
+        $lastStart = $startDate1 >= $startDate2 ? $startDate1 : $startDate2;
+        // Convert that to an integer
+        $lastStart = strtotime($lastStart);
+
+        // Figure out which is the earlier end time
+        $firstEnd = $endDate1 <= $endDate2 ? $endDate1 : $endDate2;
+        // Convert that to an integer
+        $firstEnd = strtotime($firstEnd);
+
+        // Subtract the two, divide by 60 to convert seconds to minutes, and round down
+        $overlap = floor( ($firstEnd - $lastStart) / 60 );
+
+        // If the answer is greater than 0 use it.
+        // If not, there is no overlap.
+        return $overlap > 0 ? $overlap : 0;
+    }
 }

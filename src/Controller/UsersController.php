@@ -661,7 +661,7 @@ class UsersController extends AppController
 					$this->Flash->error(__('Password not match. Please, try again.'));
 				}
 			}else{
-				$this->Flash->error(__('Invalid user.'));
+				$this->Flash->error(__('Invalid user'));
 			}
 		}
 		$this->viewBuilder()->layout('verify_reset');

@@ -610,12 +610,12 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $results[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $results[0]['name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		
 		$file_date=date('dMY');
@@ -625,15 +625,15 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Daily'));
+		fputcsv($output,array(__('Report Type'), __('Daily Reports')));
 		
-		fputcsv($output,array('Date',$dateselected));
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
+		fputcsv($output,array(__('Date'),$dateselected));
+		fputcsv($output,array(__('Department'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Name', 'Card No', 'In Time', 'Out Time', 'Remarks', 'Total Hour'));
+		fputcsv($output, array(__('Bil'), __('Name'), __('Card No.'), __('In Time'), __('Out Time'), __('Remarks'), __('Total Hour')));
 		$count_no=1;
 
 		$totalyellow = 0;
@@ -680,11 +680,11 @@ class ReportsController extends AppController
 			}
 		}	
 		$total_officer = $count_no - 1;
-		$data[]=',,,,,'.'Total Officer'.','.$total_officer;		
+		$data[]=',,,,,'.__('Total Officer').','.$total_officer;		
 		$count_no++;
-		$data[]=',,,,,'.'Total Officer That Hold Red Cards'.','.$totalred;	
+		$data[]=',,,,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
 		$count_no++;		
-		$data[]=',,,,,'.'Total Officer That Hold Green Cards'.','.$totalgreen;		
+		$data[]=',,,,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
 		$count_no++;
 		
 		$size=count($data);
@@ -756,12 +756,12 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $weeklyresults[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $weeklyresults[0]['name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		
 		$file_date=date('dMY');
@@ -771,15 +771,15 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Weekly'));
+		fputcsv($output,array(__('Report Type'), __('Weekly Reports')));
 		
-		fputcsv($output,array('Date',$thisweekStart.' To '.$thisweekEnd));
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
+		fputcsv($output,array(__('Date'),$thisweekStart.' To '.$thisweekEnd));
+		fputcsv($output,array(__('Departments'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Name', 'Card No', 'red card in a week', 'red card in a week'));
+		fputcsv($output, array(__('Bil'), __('Name'),__( 'Card No.'), __('Red card in a week'), __('Card colour for end week')));
 		$count_no=1;
 		
 		$totalyellow = 0;
@@ -795,11 +795,11 @@ class ReportsController extends AppController
 		}
 		$data[]=',,,,,';
 		$total_officer = $count_no - 1;
-		$data[]=',,,'.'Total Officer'.','.$total_officer;		
+		$data[]=',,,'.__('Total Officer').','.$total_officer;		
 		$count_no++;
-		$data[]=',,,'.'Total Officer That Hold Red Cards'.','.$totalred;	
+		$data[]=',,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
 		$count_no++;		
-		$data[]=',,,'.'Total Officer That Hold Green Cards'.','.$totalgreen;		
+		$data[]=',,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
 		$count_no++;
 		
 		$size=count($data);
@@ -868,12 +868,12 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $monthlyresults[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $monthlyresults[0]['name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		
 		
@@ -885,15 +885,15 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Monthly'));
+		fputcsv($output,array(__('Report Type'), __('Monthly Reports')));
 		
-		fputcsv($output,array('Month',$monthselected));
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
+		fputcsv($output,array(__('Month'),$monthselected));
+		fputcsv($output,array(__('Department'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Name', 'Grade', 'Card No', 'Total Late', 'Officer Approval', 'Card Colour', 'Remarks'));
+		fputcsv($output, array(__('Bil'), __('Name'), __('Grade'), __('Card No.'), __('Total Late'), __('Officer Approval'), __('Card Colour'), __('Remarks')));
 		$count_no=1;
 		
 		$totalyellow = 0;
@@ -915,13 +915,13 @@ class ReportsController extends AppController
 		}		
 		$data[]=',,,,,,,,';
 		$total_officer = $count_no - 1;
-		$data[]=',,,,,,'.'Total Officer'.','.$total_officer;		
+		$data[]=',,,,,,'.__('Total Officer').','.$total_officer;		
 		$count_no++;
-		$data[]=',,,,,,'.'Total Officer Late More Than 3 Times'.','.$total3times;	
+		$data[]=',,,,,,'.__('Total Officer Late More Than 3 Times').','.$total3times;	
 		$count_no++;
-		$data[]=',,,,,,'.'Total Officer That Hold Red Cards'.','.$totalred;	
+		$data[]=',,,,,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
 		$count_no++;		
-		$data[]=',,,,,,'.'Total Officer That Hold Green Cards'.','.$totalgreen;		
+		$data[]=',,,,,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
 		$count_no++;
 		
 		$size=count($data);
@@ -1302,28 +1302,28 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Monthly Summary'));
+		fputcsv($output,array(__('Report Type'), __('Monthly Summary Reports')));
 		
-		fputcsv($output,array('Month',$monthselected));
+		fputcsv($output,array(__('Month'),$monthselected));
 		fputcsv($output,array(''));
 		
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Officer Group', 'Total Officer', '','Card Colour','' ,'Three late in a month (total officer)', 'Remarks'));
-		fputcsv($output, array('', '', '', 'Yellow', 'Green',  'Red',''));
+		fputcsv($output, array(__('Bil'), __('Officer Group'), __('Total Officer'), '',__('Card Colour'),'' ,__('Three late in a month (total officer)'), __('Remarks')));
+		fputcsv($output, array('', '', '', __('Yellow'), __('Green'),  __('Red'),''));
 		
 		$count_no=1;
 
 		
-		$data[]=$count_no .','.'Higher Management Group'.','.$grade55results[0]['total_officer'] .','.$totalStaffYellow55 .','.$totalStaffGreen55.','.$totalStaffRed55.','.$totalLateOfficer55.','.$count55late[0]['remarks'];
+		$data[]=$count_no .','.__('Higher Management Group').','.$grade55results[0]['total_officer'] .','.$totalStaffYellow55 .','.$totalStaffGreen55.','.$totalStaffRed55.','.$totalLateOfficer55.','.$count55late[0]['remarks'];
 		$count_no++;
-		$data[]=$count_no .','.'Professional Management Group (Grade 48-54)'.','.$grade4854results[0]['total_officer'] .','.$totalStaffYellow4854 .','.$totalStaffGreen4854.','.$totalStaffRed4854.','.$totalLateOfficer4854.','.$count4854late[0]['remarks'];
+		$data[]=$count_no .','.__('Professional Management Group (Grade 48-54)').','.$grade4854results[0]['total_officer'] .','.$totalStaffYellow4854 .','.$totalStaffGreen4854.','.$totalStaffRed4854.','.$totalLateOfficer4854.','.$count4854late[0]['remarks'];
 		$count_no++;
-		$data[]=$count_no .','.'Professional Management Group (Grade 41-44)'.','.$grade4144results[0]['total_officer'] .','.$totalStaffYellow4144 .','.$totalStaffGreen4144.','.$totalStaffRed4144.','.$totalLateOfficer4144.','.$count4144late[0]['remarks'];
+		$data[]=$count_no .','.__('Professional Management Group (Grade 41-44)').','.$grade4144results[0]['total_officer'] .','.$totalStaffYellow4144 .','.$totalStaffGreen4144.','.$totalStaffRed4144.','.$totalLateOfficer4144.','.$count4144late[0]['remarks'];
 		$count_no++;
-		$data[]=$count_no .','.'Executing Group (Grade 17-40)'.','.$grade1740results[0]['total_officer'] .','.$totalStaffYellow1740 .','.$totalStaffGreen1740.','.$totalStaffRed1740.','.$totalLateOfficer1740.','.$count1740late[0]['remarks'];
+		$data[]=$count_no .','.__('Executing Group (Grade 17-40)').','.$grade1740results[0]['total_officer'] .','.$totalStaffYellow1740 .','.$totalStaffGreen1740.','.$totalStaffRed1740.','.$totalLateOfficer1740.','.$count1740late[0]['remarks'];
 		$count_no++;
-		$data[]=$count_no .','.'Executing Group (Grade 1-16)'.','.$grade116results[0]['total_officer'] .','.$totalStaffYellow116 .','.$totalStaffGreen116.','.$totalStaffRed116.','.$totalLateOfficer116.','.$count116late[0]['remarks'];
+		$data[]=$count_no .','.__('Executing Group (Grade 1-16)').','.$grade116results[0]['total_officer'] .','.$totalStaffYellow116 .','.$totalStaffGreen116.','.$totalStaffRed116.','.$totalLateOfficer116.','.$count116late[0]['remarks'];
 		$count_no++;	
 			
 		//grand total count
@@ -1338,7 +1338,7 @@ class ReportsController extends AppController
 		$gtotal3times = $totalLateOfficer55 + $totalLateOfficer4854 + $totalLateOfficer4144 + $totalLateOfficer1740 + $totalLateOfficer116;
 			
 		$data[]=',,,,,,,';
-		$data[]=','.'Grand Total'.','.$gtotalstaff.','.$gtotalyellow.','.$gtotalgreen.','.$gtotalred.','.$gtotal3times;
+		$data[]=','.__('Grand Total').','.$gtotalstaff.','.$gtotalyellow.','.$gtotalgreen.','.$gtotalred.','.$gtotal3times;
 		$size=count($data);
 		$count=0;
 		
@@ -1478,17 +1478,17 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $results[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $results[0]['user_name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		if ($leaveTypeselected){
 			$outputleavetype = $results[0]['leave_type'];
 		}else{
-			$outputleavetype = 'All';
+			$outputleavetype = __('All');
 		}
 		
 		$file_date=date('dMY');
@@ -1498,16 +1498,16 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Daily Time Off'));
+		fputcsv($output,array(__('Report Type'), __('Daily Time Off')));
 		
-		fputcsv($output,array('Date',$dateselected));
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
-		fputcsv($output,array('Leave Type',$outputleavetype));
+		fputcsv($output,array(__('Date'),$dateselected));
+		fputcsv($output,array(__('Department'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
+		fputcsv($output,array(__('Leave Type'),$outputleavetype));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Name', 'Leave Type', 'Leave Date', 'Leave Time', 'Leave Status', 'Reason'));
+		fputcsv($output, array(__('Bil'), __('Name'), __('Leave Type'), __('Leave Date'), __('Leave Time'), __('Leave Status'), __('Reason')));
 		$count_no=1;
 
 		$totalyellow = 0;
@@ -1515,7 +1515,7 @@ class ReportsController extends AppController
 		$totalgreen = 0;
 		
 		foreach ($results as $key => $user){
-			$leaveTime = 'Start Time : '.$user['start_time'].' || '.'End Time : '.$user['end_time'];
+			$leaveTime = __('Start Time : ').$user['start_time'].' || '.__('End Time : ').$user['end_time'];
 			$leaveDate = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
 			
 			$data[]=$count_no .','.$user['user_name'] .','.$user['leave_type'].','.$leaveDate.','.$leaveTime.','.$user['leave_status'].','.$user['reason'];
@@ -1662,22 +1662,22 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $results[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $results[0]['user_name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		if ($leaveTypeselected){
 			$outputleavetype = $results[0]['leave_type'];
 		}else{
-			$outputleavetype = 'All';
+			$outputleavetype = __('All');
 		}
 		if ($monthselected){
 			$outputmonth = $monthselected;
 		}else{
-			$outputmonth = 'All';
+			$outputmonth = __('All');
 		}
 		
 		$file_date=date('dMY');
@@ -1687,16 +1687,16 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Staff Time Off'));
+		fputcsv($output,array(__('Report Type'), __('Staff Time Off')));
 		
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
-		fputcsv($output,array('Month',$outputmonth));
-		fputcsv($output,array('Leave Type',$outputleavetype));
+		fputcsv($output,array(__('Department'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
+		fputcsv($output,array(__('Month'),$outputmonth));
+		fputcsv($output,array(__('Leave Type'),$outputleavetype));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil',  'Leave Type', 'Leave Date', 'Leave Time', 'Leave Status', 'Reason', 'Total Hour'));
+		fputcsv($output, array(__('Bil'),  __('Leave Type'), __('Leave Date'), __('Leave Time'), __('Leave Status'), __('Reason'), __('Total Hour')));
 		$count_no=1;
 
 		$totalyellow = 0;
@@ -1704,7 +1704,7 @@ class ReportsController extends AppController
 		$totalgreen = 0;
 		
 		foreach ($results as $key => $user){
-			$leaveTime = 'Start Time : '.$user['start_time'].' || '.'End Time : '.$user['end_time'];
+			$leaveTime = __('Start Time : ').$user['start_time'].' || '.__('End Time : ').$user['end_time'];
 			$leaveDate = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
 			
 			//calculate total hour
@@ -1715,19 +1715,19 @@ class ReportsController extends AppController
 			$totalhourOutput='';
 			if($dateDiff >= 2592000){
 				$M = floor($dateDiff/2592000);
-				$totalhourOutput.= $M.'Month ';
+				$totalhourOutput.= $M.__('Month').' ';
 			}
 			if($dateDiff >= 86400){
 				$d = floor(($dateDiff%2592000)/86400);
-				$totalhourOutput.= $d.'Day ';
+				$totalhourOutput.= $d.__('Day').' ';
 			}
 			if($dateDiff >= 3600){
 				$h = floor(($dateDiff%86400)/3600);
-				$totalhourOutput.= $h.'Hours ';
+				$totalhourOutput.= $h.__('Hour').' ';
 			}
 			if($dateDiff >= 60){
 				$m = floor(($dateDiff%3600)/60);
-				$totalhourOutput.= $m.'Minutes ';
+				$totalhourOutput.= $m.__('Minute').' ';
 			}
 			
 			$grandTotaldateDiff += $dateDiff;
@@ -1739,21 +1739,21 @@ class ReportsController extends AppController
 		}
 		if($grandTotaldateDiff >= 2592000){
 			$M = floor($grandTotaldateDiff/2592000);
-			$gtotalhourOutput.= $M.'Month ';
+			$gtotalhourOutput.= $M.__('Month').' ';
 		}
 		if($grandTotaldateDiff >= 86400){
 			$d = floor(($grandTotaldateDiff%2592000)/86400);
-			$gtotalhourOutput.= $d.'Day ';
+			$gtotalhourOutput.= $d.__('Day').' ';
 		}
 		if($grandTotaldateDiff >= 3600){
 			$h = floor(($grandTotaldateDiff%86400)/3600);
-			$gtotalhourOutput.= $h.'Hours ';
+			$gtotalhourOutput.= $h.__('Hour').' ';
 		}
 		if($grandTotaldateDiff >= 60){
 			$m = floor(($grandTotaldateDiff%3600)/60);
-			$gtotalhourOutput.= $m.'Minutes ';
+			$gtotalhourOutput.= $m.__('Minute').' ';
 		}		
-		$data[]=',,,,,'.'Grand Total Hours'.','.$gtotalhourOutput;
+		$data[]=',,,,,'.__('Grand Total').','.$gtotalhourOutput;
 		$count_no++;	
 
 		
@@ -1880,17 +1880,17 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $results[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $results[0]['user_name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		if ($monthselected){
 			$outputmonth = $monthselected;
 		}else{
-			$outputmonth = 'All';
+			$outputmonth = __('All');
 		}
 		
 		$file_date=date('dMY');
@@ -1900,15 +1900,15 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Late In Report'));
+		fputcsv($output,array(__('Report Type'), __('Late In Report')));
 		
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
-		fputcsv($output,array('Month',$outputmonth));
+		fputcsv($output,array(__('Department'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
+		fputcsv($output,array(__('Month'),$outputmonth));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Name', 'Date', 'In Time'));
+		fputcsv($output, array(__('Bil'), __('Name'), __('Date'), __('In Time')));
 		$count_no=1;
 
 		
@@ -2047,12 +2047,12 @@ class ReportsController extends AppController
 		if ($departmentSelected){
 			$outputdepartment = $results[0]['organization_name'];
 		}else{
-			$outputdepartment = 'All';
+			$outputdepartment = __('All');
 		}
 		if ($userSelected){
 			$outputuser = $results[0]['user_name'];
 		}else{
-			$outputuser = 'All';
+			$outputuser = __('All');
 		}
 		
 		$file_date=date('dMY');
@@ -2062,15 +2062,15 @@ class ReportsController extends AppController
 		header('Content-Disposition: attachment; filename="'.$file_fullname.'.csv"');
 		$output= fopen('php://output', 'w');
 		//output header
-		fputcsv($output,array('Report Type', 'Working Hour Report'));
+		fputcsv($output,array(__('Report Type'), __('Staff Working Hour')));
 		
-		fputcsv($output,array('Department',$outputdepartment));
-		fputcsv($output,array("Staff's Name",$outputuser));
-		fputcsv($output,array('Month',$monthselected));
+		fputcsv($output,array(__('Department'),$outputdepartment));
+		fputcsv($output,array(__("Staff's Name"),$outputuser));
+		fputcsv($output,array(__('Month'),$monthselected));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array('Bil', 'Date', 'In Time', 'Out Time', 'Total Hours'));
+		fputcsv($output, array(__('Bil'), __('Date'), __('In Time'), __('Out Time'), __('Total Hours')));
 		$count_no=1;
 		foreach ($results as $key => $user){			
 			$results = explode("||",$user['attn_time']);
@@ -2080,7 +2080,7 @@ class ReportsController extends AppController
 			$latestDate = date('Y-m-d',strtotime($results[0]));
 			
 			if ($hours > 0){
-				$thours = round($hours, 2). ' Hours';
+				$thours = round($hours, 2). __('Hour');
 			} else {
 				$thours = '';
 			}

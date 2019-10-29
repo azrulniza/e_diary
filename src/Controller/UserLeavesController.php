@@ -565,11 +565,11 @@ class UserLeavesController extends AppController
         if ($this->request->is('post')) {
             $userLeave = $this->UserLeaves->patchEntity($userLeave, $this->request->getData());
             if ($this->UserLeaves->save($userLeave)) {
-                $this->Flash->success(__('The user leave has been saved.'));
+                $this->Flash->success(__('Time off has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user leave could not be saved. Please, try again.'));
+            $this->Flash->error(__('Time off could not be saved. Please, try again.'));
         }
         $list_user = $this->UserLeaves->Users->find('list');
         $leaveStatuses = $this->UserLeaves->LeaveStatus->find('list', ['limit' => 200]);
@@ -734,11 +734,11 @@ class UserLeavesController extends AppController
                     
                     }
 
-                $this->Flash->success(__('The time off has been saved.'));
+                $this->Flash->success(__('Time off has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+            $this->Flash->error(__('Time off could not be saved. Please, try again.'));
         }
         
         return $this->redirect(['action' => 'index']);
@@ -851,11 +851,11 @@ class UserLeavesController extends AppController
                 }
 
 
-                $this->Flash->success(__('The time off has been saved.'));
+                $this->Flash->success(__('Time off has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+            $this->Flash->error(__('Time off could not be saved. Please, try again.'));
         }
         
         return $this->redirect(['action' => 'index']);
@@ -975,11 +975,11 @@ class UserLeavesController extends AppController
                 //sent notification email to staff
 
 
-                $this->Flash->success(__('The time off has been saved.'));
+                $this->Flash->success(__('Time off has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+            $this->Flash->error(__('Time off could not be saved. Please, try again.'));
         }
         
         return $this->redirect(['action' => 'index']);
@@ -1098,11 +1098,11 @@ class UserLeavesController extends AppController
                 
                 }
 
-                $this->Flash->success(__('The time off has been saved.'));
+                $this->Flash->success(__('Time off has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The time off could not be saved. Please, try again.'));
+            $this->Flash->error(__('Time off could not be saved. Please, try again.'));
         }
         
         return $this->redirect(['action' => 'index']);

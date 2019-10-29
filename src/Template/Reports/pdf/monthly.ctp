@@ -8,28 +8,28 @@
 					if ($departmentSelected){
 						$outputdepartment = $monthlyresult[0]['organization_name'];
 					}else{
-						$outputdepartment = 'All';
+						$outputdepartment = __('All');
 					}
 					if ($userSelected){
 						$outputuser = $monthlyresult[0]['name'];
 					}else{
-						$outputuser = 'All';
+						$outputuser = __('All');
 					}
 					?>
-					<strong>Monthly Attendance Report</strong><br><br>
+					<strong><?= __('Monthly Attendance Report') ?></strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Department'; ?></td>
+                            <td><?= __('Department'); ?></td>
                             <td><?= ':'; ?></td>
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= "Staff's Name"; ?></td>
+                            <td><?= __("Staff's Name"); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Month'; ?></td>
+                            <td><?= __('Month'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $monthselected; ?></td>
 						</tr>
@@ -38,14 +38,14 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= 'Bil'; ?></th>
-                                <th><?= 'Name'; ?></th>
-                                <th><?= 'Grade'; ?></th>
-                                <th><?= 'Card No.'; ?></th>
-                                <th><?= 'Total Late'; ?></th>
-                                <th><?= 'Officer Approval'; ?></th>
-                                <th><?= 'Card Colour'; ?></th>
-                                <th><?= 'Remarks'; ?></th>
+                                <th><?= __('Bil'); ?></th>
+                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Grade'); ?></th>
+                                <th><?= __('Card No.'); ?></th>
+                                <th><?= __('Total Late'); ?></th>
+                                <th><?= __('Officer Approval'); ?></th>
+                                <th><?= __('Card Colour'); ?></th>
+                                <th><?= __('Remarks'); ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -76,23 +76,23 @@
                             </tr>
                         <?php endforeach ?>
 							<tr>
-								<td colspan='5'><b><?= 'Total Officer'?></b></td>
+								<td colspan='5'><b><?= __('Total Officer')?></b></td>
 								<td colspan='3'><b><?= $count?></b></td>
 							</tr>
 							<tr>
-								<td colspan='5'><b><?= 'Total Officer Late More Than 3 Times'?></b></td>
+								<td colspan='5'><b><?= __('Total Officer Late More Than 3 Times')?></b></td>
 								<td colspan='3'><b><?= $total3times?></b></td>
 							</tr>
 							<!--<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Yellow Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Yellow Cards')?></b></td>
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
 							<tr>
-								<td colspan='5'><b><?= 'Total Officer That Hold Red Cards'?></b></td>
+								<td colspan='5'><b><?= __('Total Officer That Hold Red Cards')?></b></td>
 								<td colspan='3'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
-								<td colspan='5'><b><?= 'Total Officer That Hold Green Cards'?></b></td>
+								<td colspan='5'><b><?= __('Total Officer That Hold Green Cards')?></b></td>
 								<td colspan='3'><b><?= $totalgreen?></b></td>
 							</tr>
                         </tbody>

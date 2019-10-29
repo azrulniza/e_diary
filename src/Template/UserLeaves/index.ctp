@@ -89,6 +89,7 @@
                                         
                                     <?php } ?>
                                 </td>
+                                
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?php if($userLeave['leave_status_id']==1){

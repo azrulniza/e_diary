@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header"></div>
+            <div class="box-header with-border">
+				<h3 class="box-title"><?= __('Staff Working Hour') ?></h3>
+			</div>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 				
@@ -18,18 +20,18 @@
 						<?php endif; ?>
 						<?php								
 							  $month = array(
-							  '01' => 'January', 
-							  '02' => 'Fabruary', 
-							  '03' => 'March', 
-							  '04' => 'April', 
-							  '05' => 'May', 
-							  '06' => 'June', 
-							  '07' => 'July', 
-							  '08' => 'August', 
-							  '09' => 'September', 
-							  '10' => 'October', 
-							  '11' => 'November', 
-							  '12' => 'December');
+							  '01' => __('January'), 
+							  '02' => __('February'), 
+							  '03' => __('March'), 
+							  '04' => __('April'), 
+							  '05' => __('May'), 
+							  '06' => __('June'), 
+							  '07' => __('July'), 
+							  '08' => __('August'), 
+							  '09' => __('September'), 
+							  '10' => __('October'), 
+							  '11' => __('November'), 
+							  '12' => __('December'));
 							echo $this->Form->input(
 								'att_month',
 								['label' => __('Attendance Month'),
@@ -56,11 +58,11 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('Bil') ?></th>
-                                <th><?= $this->Paginator->sort('Date') ?></th>
-                                <th><?= $this->Paginator->sort('In Time') ?></th>
-                                <th><?= $this->Paginator->sort('Out Time') ?></th>
-                                <th><?= $this->Paginator->sort('Total Hours') ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('In Time') ?></th>
+                                <th><?= __('Out Time') ?></th>
+                                <th><?= __('Total Hour') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -97,7 +99,7 @@
 											if($hours<9){
 												echo "<font color='red'>";
 											}
-											echo round($hours, 2). ' Hours';} else { } ?></td>
+											echo round($hours, 2). __('Hour');} else { } ?></td>
 									<?php } ?>
 								<?php endforeach ?>
 								<?php if($latestDate != $currentDate){
@@ -107,8 +109,8 @@
 							</tr>
                         <?php }?>
 							<tr>
-                                <td colspan='4' align='right'><strong><?= 'Grand Total Hour'?></strong></td>
-								<td><strong><?php $ghours = $grandtotaldiff / ( 60 * 60 ); echo round($ghours, 2). ' Hours'; ?></strong></td>
+                                <td colspan='4' align='right'><strong><?= __('Grand Total') ?></strong></td>
+								<td><strong><?php $ghours = $grandtotaldiff / ( 60 * 60 ); echo round($ghours, 2). __('Hour'); ?></strong></td>
                                
                             </tr>
                         </tbody>

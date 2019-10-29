@@ -152,19 +152,19 @@ $this->Html->script('dashboard');
 
 						function drawLineColors() {
 							  var data = new google.visualization.DataTable();
-							  data.addColumn('number', 'Time In');
-							  data.addColumn('number', 'Staff');
+							  data.addColumn('number', '<?php echo __('Time In');?>');
+							  data.addColumn('number', '<?php echo __('Staff');?>');
 							  data.addRows([<?php echo $implodeinTimeDeptData;?>]);
 
 							  var options = {
 								hAxis: {
-								  title: 'Hour',
+								  title: '<?php echo __('Hour');?>',
 								   minValue: 6.0, 
 								   maxValue: 12.0
 								  
 								},
 								vAxis: {
-								  title: 'Total Staff',
+								  title: '<?php echo __('Total Staff');?>',
 								  minValue: 0,
 								  maxValue: 50
 								},
@@ -187,13 +187,13 @@ $this->Html->script('dashboard');
 					  function drawChart() {
 						var data = google.visualization.arrayToDataTable([
 						  ['Task', 'Hours per Day'],
-						  ['Total Late',     <?php echo $total_late?>],
-						  ['Absent',      <?php echo $staff_absent;?>],
-						  ['Working',  <?php echo $staff_working;?>]
+						  ['<?php echo __('Late');?>',     <?php echo $total_late?>],
+						  ['<?php echo __('Absent');?>',      <?php echo $staff_absent;?>],
+						  ['<?php echo __('Working');?>',  <?php echo $staff_working;?>]
 						]);
 
 						var options = {
-						  title: 'Today Summary',
+						  title: '<?php echo __('Today Attendance Summary');?>',
 						  pieHole: 0.4,
 						};
 
@@ -291,7 +291,7 @@ $this->Html->script('dashboard');
 				</div>
 
 			<!--DEPARTMENT GRAPH--->
-				<div class="col-md-12 col-sm-4 col-xs-8">
+				<div class="col-md-10 col-sm-4 col-xs-8">
 					<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>-->
 					<?php echo $this->Html->script('/js/Chart.min'); ?>
 					<!--<script type="text/javascript" src="jscript/graph.js"></script>-->
@@ -341,14 +341,14 @@ $this->Html->script('dashboard');
 							labels: dates,
 							datasets: [
 							{
-								label: 'Late',
+								label: '<?php echo __('Late');?>',
 								data: dataPack1,
 											backgroundColor: "#512DA8",
 											hoverBackgroundColor: "#7E57C2",
 											hoverBorderWidth: 0
 							},
 							{
-								label: 'Normal',
+								label: '<?php echo __('Normal');?>',
 								data: dataPack2,
 											backgroundColor: "#FFA000",
 											hoverBackgroundColor: "#FFCA28",
@@ -360,6 +360,7 @@ $this->Html->script('dashboard');
 								animation: {
 								duration: 10,
 							},
+
 							tooltips: {
 										mode: 'label',
 							  callbacks: {
@@ -374,6 +375,7 @@ $this->Html->script('dashboard');
 								min: 0,
 								max: 31,
 								gridLines: { display: false },
+
 								}],
 							  yAxes: [{ 
 								stacked: true, 

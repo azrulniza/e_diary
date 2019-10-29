@@ -70,7 +70,7 @@ class DashboardsController extends AppController
 						foreach($attendances as $attendance){
 						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
 							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
-							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+							if($attendance->cdate->format('H:i:s') > '09:00:00'){
 								$total_late++;
 							}
 						}
@@ -142,7 +142,7 @@ class DashboardsController extends AppController
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
 					if($attendances != null ){
-						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+						if($attendances->cdate->format('H:i:s') > '09:00:00'){
 							$total_late++;
 						}
 					}
@@ -190,7 +190,7 @@ class DashboardsController extends AppController
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
 					if($attendances != null ){
-						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+						if($attendances->cdate->format('H:i:s') > '09:00:00'){
 							$total_late++;
 						}
 					}
@@ -234,7 +234,7 @@ class DashboardsController extends AppController
 						foreach($attendances as $attendance){
 						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
 							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
-							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+							if($attendance->cdate->format('H:i:s') >'09:00:00'){
 								$total_late++;
 							}
 						}
@@ -305,7 +305,7 @@ class DashboardsController extends AppController
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
 					if($attendances != null ){
-						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+						if($attendances->cdate->format('H:i:s') > '09:00:00'){
 							$total_late++;
 						}
 					}
@@ -352,7 +352,7 @@ class DashboardsController extends AppController
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
 					if($attendances != null ){
-						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+						if($attendances->cdate->format('H:i:s') > '09:00:00'){
 							$total_late++;
 						}
 					}
@@ -402,7 +402,7 @@ class DashboardsController extends AppController
 						foreach($attendances as $attendance){
 						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
 							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
-							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+							if($attendance->cdate->format('H:i:s') > '09:00:00'){
 								$total_late++;
 							}
 						}
@@ -476,7 +476,7 @@ class DashboardsController extends AppController
 			foreach($all_user as $user){
 				$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
 				if($attendances != null ){
-					if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+					if($attendances->cdate->format('H:i:s') > '09:00:00'){
 						$total_late++;
 					}
 				}
@@ -524,7 +524,7 @@ class DashboardsController extends AppController
 						foreach($attendances as $attendance){
 						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
 							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
-							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+							if($attendance->cdate->format('H:i:s') > '09:00:00'){
 								$total_late++;
 							}
 						}
@@ -602,7 +602,7 @@ class DashboardsController extends AppController
         }
         $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$userId"])->limit(1)->first();
             $user_organization_id=$usersOrganization->organization_id;
-        $lateCanvasSql = "SELECT COUNT(attn.id) as totalLate,u.name,MONTH(attn.cdate) as monthcanvas
+        $lateCanvasSql = "SELECT COUNT(DISTINCT(DAY(attn.cdate))) as totalLate,u.name,MONTH(attn.cdate) as monthcanvas
                     FROM attendances attn
                     LEFT JOIN users u ON u.id=attn.user_id
                     LEFT JOIN user_organizations uo on uo.user_id = u.id
@@ -620,7 +620,7 @@ class DashboardsController extends AppController
         $this->set('Lateresult',$count_lateCanvas);
         
         //for normal late in
-        $normalCanvasSql = "SELECT COUNT(attn.id) as totalLate,u.name,MONTH(attn.cdate) as monthcanvas
+        $normalCanvasSql = "SELECT COUNT(DISTINCT(DAY(attn.cdate))) as totalLate,u.name,MONTH(attn.cdate) as monthcanvas
                     FROM attendances attn
                     LEFT JOIN users u ON u.id=attn.user_id
                     LEFT JOIN user_organizations uo on uo.user_id = u.id

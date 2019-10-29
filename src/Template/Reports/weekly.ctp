@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header"></div>
+            <div class="box-header with-border">
+				<h3 class="box-title"><?= __('Weekly Reports') ?></h3>
+			</div>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 					<?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
@@ -10,7 +12,7 @@
 							$control_html = 
 								$this->Form->input(
 								  'date_attendance', [
-									'label' => 'Date Attendance',
+									'label' => __('Date Attendance'),
 									'type' => 'text',
 									'id' => 'dateattendance',
 									'class' => 'form-control autosubmit',
@@ -59,11 +61,11 @@
                         </thead>
 						<thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('Bil') ?></th>
-                                <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('card no.') ?></th>
-                                <th><?= $this->Paginator->sort('red card in a week') ?></th>
-                                <th><?= $this->Paginator->sort('card colour for end week') ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Card No.') ?></th>
+                                <th><?= __('Red card in a week') ?></th>
+                                <th><?= __('Card colour for end week') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -90,7 +92,7 @@
 							
                         <?php endforeach ?>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer') ?></b></td>
 								<td colspan='3'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
@@ -98,11 +100,11 @@
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Red Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards') ?></b></td>
 								<td colspan='3'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Green Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards') ?></b></td>
 								<td colspan='3'><b><?= $totalgreen?></b></td>
 							</tr>
                         </tbody>

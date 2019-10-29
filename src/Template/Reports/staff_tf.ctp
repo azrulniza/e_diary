@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header"></div>
+           <div class="box-header with-border">
+				<h3 class="box-title"><?= __('Staff Time Off') ?></h3>
+			</div>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 				
@@ -18,18 +20,18 @@
 						<?php endif; ?>
 						<?php								
 							  $month = array(
-							  '01' => 'January', 
-							  '02' => 'Fabruary', 
-							  '03' => 'March', 
-							  '04' => 'April', 
-							  '05' => 'May', 
-							  '06' => 'June', 
-							  '07' => 'July', 
-							  '08' => 'August', 
-							  '09' => 'September', 
-							  '10' => 'October', 
-							  '11' => 'November', 
-							  '12' => 'December');
+							  '01' => __('January'), 
+							  '02' => __('February'), 
+							  '03' => __('March'), 
+							  '04' => __('April'), 
+							  '05' => __('May'), 
+							  '06' => __('June'), 
+							  '07' => __('July'), 
+							  '08' => __('August'), 
+							  '09' => __('September'), 
+							  '10' => __('October'), 
+							  '11' => __('November'), 
+							  '12' => __('December'));
 							echo $this->Form->input(
 								'att_month',
 								['label' => __('Attendance Month'),
@@ -72,13 +74,13 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('Bil') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Type') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Date') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Time') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Status') ?></th>
-                                <th><?= $this->Paginator->sort('Reason') ?></th>
-                                <th><?= $this->Paginator->sort('Total Hours') ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Leave Type') ?></th>
+                                <th><?= __('Leave Date') ?></th>
+                                <th><?= __('Leave Time') ?></th>
+                                <th><?= __('Leave Status') ?></th>
+                                <th><?= __('Reason') ?></th>
+                                <th><?= __('Total Hour') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -102,19 +104,19 @@
 							$totalhourOutput='';
 							if($dateDiff >= 2592000){
 								$M = floor($dateDiff/2592000);
-								$totalhourOutput.= $M.'Month ';
+								$totalhourOutput.= $M.__('Month').' ';
 							}
 							if($dateDiff >= 86400){
 								$d = floor(($dateDiff%2592000)/86400);
-								$totalhourOutput.= $d.'Day ';
+								$totalhourOutput.= $d.__('Day').' ';
 							}
 							if($dateDiff >= 3600){
 								$h = floor(($dateDiff%86400)/3600);
-								$totalhourOutput.= $h.'Hours ';
+								$totalhourOutput.= $h.__('Hour').' ';
 							}
 							if($dateDiff >= 60){
 								$m = floor(($dateDiff%3600)/60);
-								$totalhourOutput.= $m.'Minutes ';
+								$totalhourOutput.= $m.__('Minute').' ';
 							}
 							
 							
@@ -124,31 +126,31 @@
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['leave_type'] ?></td>
                                 <td><?= $leave_date ?></td>								
-                                <td><?= 'Start Time : '.$user['start_time'].'<br>'.'End Time : '.$user['end_time'] ?></td>
+                                <td><?= __('Start Time : ').$user['start_time'].'<br>'.__('End Time : ').$user['end_time'] ?></td>
                                 <td><?= $user['leave_status'] ?></td>
                                 <td><?= $user['reason'] ?></td>
                                 <td><?= $totalhourOutput ?></td>
                             </tr>
                         <?php endforeach ?>
 							<tr>
-                                <td colspan='6' align='right'><strong><?= 'Grand Total Hour'?></strong></td>
+                                <td colspan='6' align='right'><strong><?= __('Grand Total')?></strong></td>
                                 <td><strong>
 									<?php
 										if($grandTotaldateDiff >= 2592000){
 											$M = floor($grandTotaldateDiff/2592000);
-											$gtotalhourOutput.= $M.'Month ';
+											$gtotalhourOutput.= $M.__('Month').' ';
 										}
 										if($grandTotaldateDiff >= 86400){
 											$d = floor(($grandTotaldateDiff%2592000)/86400);
-											$gtotalhourOutput.= $d.'Day ';
+											$gtotalhourOutput.= $d.__('Day').' ';
 										}
 										if($grandTotaldateDiff >= 3600){
 											$h = floor(($grandTotaldateDiff%86400)/3600);
-											$gtotalhourOutput.= $h.'Hours ';
+											$gtotalhourOutput.= $h.__('Hour').' ';
 										}
 										if($grandTotaldateDiff >= 60){
 											$m = floor(($grandTotaldateDiff%3600)/60);
-											$gtotalhourOutput.= $m.'Minutes ';
+											$gtotalhourOutput.= $m.__('Minute').' ';
 										}
 										echo $gtotalhourOutput;
 									?>

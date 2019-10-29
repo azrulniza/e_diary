@@ -6,10 +6,10 @@
                 <div class="reports index dataTable_wrapper table-responsive">
                     <div class="reports index dataTable_wrapper table-responsive">
 					
-					<strong>Monthly Summary Attendance Report</strong><br><br>
+					<strong><?= __('Monthly Summary Attendance Report') ?></strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Month'; ?></td>
+                            <td><?= __('Month'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $monthselected; ?></td>
 						</tr>
@@ -18,24 +18,24 @@
 					 <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
 						<thead>
                             <tr>
-                                <th rowspan=2><center><?= 'Bil'; ?></center><br/></th>
-                                <th rowspan=2><center><?= 'Officer Group'; ?></center><br/></th>
-                                <th rowspan=2><center><?= 'Total Officer'; ?></center><br/></th>
-                                <th colspan=3><center><?= 'Card Colour'; ?></center></th>
-                                <th rowspan=2><center><?= 'Three late in a month (total officer)'; ?></center><br/></th>
-                                <th rowspan=2><center><?= 'Remarks'; ?></center><br/></th>
+                                <th rowspan=2><center><?= __('Bil'); ?></center><br/></th>
+                                <th rowspan=2><center><?= __('Officer Group'); ?></center><br/></th>
+                                <th rowspan=2><center><?= __('Total Officer'); ?></center><br/></th>
+                                <th colspan=3><center><?= __('Card Colour'); ?></center></th>
+                                <th rowspan=2><center><?= __('Three late in a month (total officer)'); ?></center><br/></th>
+                                <th rowspan=2><center><?= __('Remarks'); ?></center><br/></th>
                             </tr>
 							<tr>
-                                <th><center><?= 'Yellow'; ?></center></th>
-                                <th><center><?= 'Green'; ?></center></th>
-                                <th><center><?= 'Red'; ?></center></th>
+                                <th><center><?= __('Yellow'); ?></center></th>
+                                <th><center><?= __('Green'); ?></center></th>
+                                <th><center><?= __('Red'); ?></center></th>
                             </tr>
                         </thead>
 						
                         <tbody class="ui-sortable">
 							<tr class="even">
 								<td><?= '1'; ?></td>
-								<td><?= 'Higher Management Group' ?></td>
+								<td><?= __('Higher Management Group') ?></td>
 								<td align='center'><?= $grade55result[0]['total_officer']; ?></td>
 								<td align='center'><?php if ($grade55result[0]['yellow'] > 0){ echo $grade55result[0]['yellow']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade55result[0]['green'] > 0){ echo $grade55result[0]['green']; }else{ echo '-'; } ?></td>
@@ -54,7 +54,7 @@
 							</tr>
 							<tr class="even">
 								<td><?= '2'; ?></td>
-								<td><?= 'Professional Management Group (Grade 48-54)' ?></td>
+								<td><?= __('Professional Management Group (Grade 48-54)') ?></td>
 								<td align='center'><?= $grade4854result[0]['total_officer']; ?></td>
 								<td align='center'><?php if ($grade4854result[0]['yellow'] > 0){ echo $grade4854result[0]['yellow']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade4854result[0]['green'] > 0){ echo $grade4854result[0]['green']; }else{ echo '-'; } ?></td>
@@ -73,7 +73,7 @@
 							</tr>
 							<tr class="odd">
 								<td><?= '3'; ?></td>
-								<td><?= 'Professional Management Group (Grade 41-44)' ?></td>
+								<td><?= __('Professional Management Group (Grade 41-44)') ?></td>
 								<td align='center'><?= $grade4144result[0]['total_officer']; ?></td>
 								<td align='center'><?php if ($grade4144result[0]['yellow'] > 0){ echo $grade4144result[0]['yellow']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade4144result[0]['green'] > 0){ echo $grade4144result[0]['green']; }else{ echo '-'; } ?></td>
@@ -92,7 +92,7 @@
 							</tr>
 							<tr class="even">
 								<td><?= '4'; ?></td>
-								<td><?= 'Executing Group (Grade 17-40)' ?></td>
+								<td><?= __('Executing Group (Grade 17-40)') ?></td>
 								<td align='center'><?= $grade1740result[0]['total_officer']; ?></td>
 								<td align='center'><?php if ($grade1740result[0]['yellow'] > 0){ echo $grade1740result[0]['yellow']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade1740result[0]['green'] > 0){ echo $grade1740result[0]['green']; }else{ echo '-'; } ?></td>
@@ -113,7 +113,7 @@
 							</tr>
 							<tr class="odd">
 								<td><?= '5'; ?></td>
-								<td><?= 'Executing Group (Grade 1-16)' ?></td>
+								<td><?= __('Executing Group (Grade 1-16)') ?></td>
 								<td align='center'><?= $grade116result[0]['total_officer']; ?></td>
 								<td align='center'><?php if ($grade116result[0]['yellow'] > 0){ echo $grade116result[0]['yellow']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade116result[0]['green'] > 0){ echo $grade116result[0]['green']; }else{ echo '-'; } ?></td>
@@ -142,7 +142,7 @@
 									
 									$gtotal3times = $count116late + $count1740late + $count4144late + $count4854late + $count55late;
 								?>
-								<td align='center' colspan='2'><b><?= 'Grand Total'?></b></td>
+								<td align='center' colspan='2'><b><?= __('Grand Total') ?></b></td>
 								<td align='center'><b><?= $gtotalstaff ?></b></td>
 								<td align='center'><b><?= $gtotalyellow ?></b></td>
 								<td align='center'><b><?= $gtotalgreen ?></b></td>

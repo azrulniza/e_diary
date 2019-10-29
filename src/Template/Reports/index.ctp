@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header"></div>
+            <div class="box-header with-border">
+				<h3 class="box-title"><?= __('Daily Reports') ?></h3>
+			</div>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 				
@@ -40,7 +42,7 @@
 							?>
 						<?php endif; ?>
 							<?php
-								$filteroption = ['1'=>'Late In (After 9)','2'=>'Early Out (Before 9 Total Hour)','3'=>'Absent'];
+								$filteroption = ['1'=>__('Late In (After 9)'),'2'=>__('Early Out (Before 9 Total Hour)'),'3'=>__('Absent')];
 								echo $this->Form->input('filterby',['label' => __('Filter by'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $filteroption, 'empty'=>__('All'),'value'=>$filterSelected,'style'=>'width:40%']);
 							?>
 					</div>
@@ -58,13 +60,13 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('Bil') ?></th>
-                                <th><?= $this->Paginator->sort('name') ?></th>
-                                <th><?= $this->Paginator->sort('card no.') ?></th>
-                                <th><?= $this->Paginator->sort('in time') ?></th>
-                                <th><?= $this->Paginator->sort('out time') ?></th>
-                                <th><?= $this->Paginator->sort('remarks') ?></th>
-                                <th><?= $this->Paginator->sort('total hour') ?></th>
+                             <th><?= __('Bil') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Card No.') ?></th>
+                                <th><?= __('In Time') ?></th>
+                                <th><?= __('Out Time') ?></th>
+                                <th><?= __('Remarks') ?></th>
+                                <th><?= __('Total Hour') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -119,19 +121,19 @@
 						<?php } ?>
                         <?php endforeach ?>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer')?></b></td>
 								<td colspan='3'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Yellow Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Yellow Cards')?></b></td>
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Red Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards')?></b></td>
 								<td colspan='3'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Green Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards')?></b></td>
 								<td colspan='3'><b><?= $totalgreen?></b></td>
 							</tr>
                         </tbody>

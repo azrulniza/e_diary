@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header"></div>
+            <div class="box-header with-border">
+				<h3 class="box-title"><?= __('Daily Time Off') ?></h3>
+			</div>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 				
@@ -11,7 +13,7 @@
 							$control_html = 
 								$this->Form->input(
 								  'date_attendance', [
-									'label' => 'Date Attendance',
+									'label' => __('Date Attendance'),
 									'type' => 'text',
 									'id' => 'dateattendance',
 									'class' => 'form-control autosubmit',
@@ -39,8 +41,8 @@
 						<?php endif; ?>
 						<?php								
 							  $leaveType = array(
-							  '1' => 'Personal Matters',
-							  '2' => 'Work Affairs');
+							  '1' => __('Personal Matters'),
+							  '2' => __('Work Affairs'));
 							echo $this->Form->input(
 								'leaveType',
 								['label' => __('Leave Type'),
@@ -68,13 +70,13 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('Bil') ?></th>
-                                <th><?= $this->Paginator->sort('Name') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Type') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Date') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Time') ?></th>
-                                <th><?= $this->Paginator->sort('Leave Status') ?></th>
-                                <th><?= $this->Paginator->sort('Reason') ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Leave Type') ?></th>
+                                <th><?= __('Leave Date') ?></th>
+                                <th><?= __('Leave Time') ?></th>
+                                <th><?= __('Leave Status') ?></th>
+                                <th><?= __('Reason') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -95,7 +97,7 @@
                                 <td><?= $user['user_name'] ?></td>
                                 <td><?= $user['leave_type'] ?></td>
                                 <td><?= $leave_date ?></td>								
-                                <td><?= 'Start Time : '.$user['start_time'].'<br>'.'End Time : '.$user['end_time'] ?></td>
+                                <td><?= __('Start Time : ').$user['start_time'].'<br>'.__('End Time : ').$user['end_time'] ?></td>
                                 <td><?= $user['leave_status'] ?></td>
                                 <td><?= $user['reason'] ?></td>
                             </tr>

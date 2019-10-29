@@ -8,38 +8,38 @@
 					if ($departmentSelected){
 						$outputdepartment = $result[0]['organization_name'];
 					}else{
-						$outputdepartment = 'All';
+						$outputdepartment = __('All');
 					}
 					if ($userSelected){
 						$outputuser = $result[0]['user_name'];
 					}else{
-						$outputuser = 'All';
+						$outputuser = __('All');
 					}
 					if ($leaveTypeselected){
 						$outputleavetype = $result[0]['leave_type'];
 					}else{
-						$outputleavetype = 'All';
+						$outputleavetype = __('All');
 					}
 					?>
 					<strong>Daily Time Off Report</strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Department'; ?></td>
+                            <td><?= __('Departments'); ?></td>
                             <td><?= ':'; ?></td>
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= "Staff's Name"; ?></td>
+                            <td><?= __("Staff's Name"); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Date'; ?></td>
+                            <td><?= __('Date'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $dateselected; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Leave type'; ?></td>
+                            <td><?= __('Leave Type'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $outputleavetype; ?></td>
 						</tr>
@@ -49,13 +49,13 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= 'Bil' ?></th>
-                                <th><?= 'Name' ?></th>
-                                <th><?= 'Leave Type' ?></th>
-                                <th><?= 'Leave Date' ?></th>
-                                <th><?= 'Leave Time' ?></th>
-                                <th><?= 'Leave Status' ?></th>
-                                <th><?= 'Reason' ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Leave Type') ?></th>
+                                <th><?= __('Leave Date') ?></th>
+                                <th><?= __('Leave Time') ?></th>
+                                <th><?= __('Leave Status') ?></th>
+                                <th><?= __('Reason') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -75,7 +75,7 @@
                                 <td><?= $user['user_name'] ?></td>
                                 <td><?= $user['leave_type'] ?></td>
                                 <td><?= $leave_date ?></td>								
-                                <td><?= 'Start Time : '.$user['start_time'].'<br>'.'End Time : '.$user['end_time'] ?></td>
+                                <td><?= __('Start Time : ').$user['start_time'].'<br>'.__('End Time : ').$user['end_time'] ?></td>
                                 <td><?= $user['leave_status'] ?></td>
                                 <td><?= $user['reason'] ?></td>
                             </tr>

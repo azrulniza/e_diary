@@ -8,28 +8,28 @@
 					if ($departmentSelected){
 						$outputdepartment = $result[0]['organization_name'];
 					}else{
-						$outputdepartment = 'All';
+						$outputdepartment = __('All');
 					}
 					if ($userSelected){
 						$outputuser = $result[0]['name'];
 					}else{
-						$outputuser = 'All';
+						$outputuser = __('All');
 					}
 					?>
-					<strong>Daily Attendance Report</strong><br><br>
+					<strong><?= __('Daily Attendance Report')?></strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Department'; ?></td>
+                            <td><?= __('Departments'); ?></td>
                             <td><?= ':'; ?></td>
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= "Staff's Name"; ?></td>
+                            <td><?= __("Staff's Name"); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Date'; ?></td>
+                            <td><?= __('Date'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $dateselected; ?></td>
 						</tr>
@@ -39,13 +39,13 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= 'Bil'; ?></th>
-                                <th><?= 'name'; ?></th>
-                                <th><?= 'card no.'; ?></th>
-                                <th><?= 'in time'; ?></th>
-                                <th><?= 'out time'; ?></th>
-                                <th><?= 'remarks'; ?></th>
-                                <th><?= 'total hour'; ?></th>
+                                <th><?= __('Bil'); ?></th>
+                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Card No.'); ?></th>
+                                <th><?= __('In Time'); ?></th>
+                                <th><?= __('Out Time'); ?></th>
+                                <th><?= __('Remarks'); ?></th>
+                                <th><?= __('Total Hour'); ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -100,7 +100,7 @@
 						<?php } ?>
                         <?php endforeach ?>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer)')?></b></td>
 								<td colspan='3'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
@@ -108,11 +108,11 @@
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Red Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards')?></b></td>
 								<td colspan='3'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Green Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards')?></b></td>
 								<td colspan='3'><b><?= $totalgreen?></b></td>
 							</tr>
                         </tbody>

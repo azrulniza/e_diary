@@ -5,7 +5,8 @@
         'label' => false,
         'class' => 'form-control',
         'placeholder' => __('Identity Card No'),
-        'required' => true
+        'required' => true,
+        'title' => __('Please fill out this field')
     ]) ?>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 </div>
@@ -14,7 +15,8 @@
         'label' => false,
         'class' => 'form-control',
         'placeholder' => __('Password'),
-        'required' => true
+        'required' => true,
+        'title' => __('Please fill out this field')
     ]) ?>
     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 </div>

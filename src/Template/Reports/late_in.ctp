@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header"></div>
+            <div class="box-header with-border">
+				<h3 class="box-title"><?= __('Staff Late In') ?></h3>
+			</div>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 				
@@ -18,18 +20,18 @@
 						<?php endif; ?>
 						<?php								
 							  $month = array(
-							  '01' => 'January', 
-							  '02' => 'Fabruary', 
-							  '03' => 'March', 
-							  '04' => 'April', 
-							  '05' => 'May', 
-							  '06' => 'June', 
-							  '07' => 'July', 
-							  '08' => 'August', 
-							  '09' => 'September', 
-							  '10' => 'October', 
-							  '11' => 'November', 
-							  '12' => 'December');
+							  '01' => __('January'), 
+							  '02' => __('February'), 
+							  '03' => __('March'), 
+							  '04' => __('April'), 
+							  '05' => __('May'), 
+							  '06' => __('June'), 
+							  '07' => __('July'), 
+							  '08' => __('August'), 
+							  '09' => __('September'), 
+							  '10' => __('October'), 
+							  '11' => __('November'), 
+							  '12' => __('December'));
 							echo $this->Form->input(
 								'att_month',
 								['label' => __('Attendance Month'),
@@ -58,10 +60,10 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('Bil') ?></th>
-                                <th><?= $this->Paginator->sort('Name') ?></th>
-                                <th><?= $this->Paginator->sort('Date') ?></th>
-                                <th><?= $this->Paginator->sort('In Time') ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('In Time') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">

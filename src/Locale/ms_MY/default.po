@@ -2538,7 +2538,13 @@ msgstr "Laporan Mingguan"
 msgid "Daily Report"
 msgstr "Laporan Harian"
 
+msgid "Daily Reports"
+msgstr "Laporan Harian"
+
 msgid "Monthly Report"
+msgstr "Laporan Bulanan"
+
+msgid "Monthly Reports"
 msgstr "Laporan Bulanan"
 
 msgid "Monthly Summary Report"
@@ -2625,6 +2631,23 @@ msgstr "Kod Kehadiran"
 msgid "Ip Address"
 msgstr "Alamat Ip"
 
+msgid "Successfully clockin."
+msgstr "Berjaya jam masuk"
+
+msgid "Successfully clockout."
+msgstr "Berjaya jam keluar"
+
+msgid "The attendance could not be saved. Please, try again."
+msgstr "Kehadiran tidak berjaya disimpan. Sila cuba lagi."
+
+msgid "Successfully update card status."
+msgstr "Berjaya mengubahsuai kad status"
+
+msgid "The card status could not be saved. Please, try again."
+msgstr "Kad status tidak berjaya disimpan. Sila cuba lagi"
+
+
+
 # JPSM 29/10/2019 -- Dashboard
 msgid "Today Summary"
 msgstr "Ringkasan Hari ini"
@@ -2635,8 +2658,31 @@ msgstr "KEDATANGAN LEWAT"
 msgid "PENDING APPROVAL"
 msgstr "MENUNGGU KELULUSAN"
 
+msgid "NORMAL ATTENDANCE"
+msgstr "KEDATANGAN NORMAL"
+
 msgid "Month Summary"
 msgstr "Ringkasan Bulan ini"
+
+msgid "Total Staff"
+msgstr "Jumlah Kakitangan"
+
+msgid "Staff"
+msgstr "Kakitangan"
+
+msgid "Today Attendance Summary"
+msgstr "Ringkasan Kehadiran Hari Ini"
+
+msgid "Absent"
+msgstr "Tidak Hadir"
+
+msgid "Late"
+msgstr "Lewat"
+
+msgid "Working"
+msgstr "Bekerja"
+
+
 
 # JPSM 29/10/2019 -- Departments
 msgid "Add Department"
@@ -2644,6 +2690,36 @@ msgstr "Tambah Jabatan"
 
 msgid "Edit Department"
 msgstr "Kemaskini Jabatan"
+
+msgid "The department could not be saved. Please, try again."
+msgstr "Jabatan tidak berjaya disimpan. Sila cuba lagi"
+
+msgid "The department has been saved."
+msgstr "Jabatan telah berjaya disimpan."
+
+msgid "The department has been deleted."
+msgstr "Jabatan telah berjaya dipadam."
+
+msgid "The department could not be deleted. Please, try again."
+msgstr "Jabatan tidak telah berjaya dipadam. Sila cuba lagi"
+
+msgid "The organization has been saved."
+msgstr "Jabatan telah berjaya disimpan"
+
+msgid "The organization could not be saved. Please, try again."
+msgstr "Jabatan tidak berjaya dismpan. Sila cuba lagi"
+
+msgid "Organization already in used. The organization could not be deleted."
+msgstr "Jabatan telah digunakan. Jawatan tidak boleh dihapuskan."
+
+msgid "The organization has been deleted."
+msgstr "Jabatan telah berjaya dihapuskan"
+
+msgid "The organization could not be deleted. Please, try again.."
+msgstr "Jabatan tidak berjaya dihapuskan. Sila cuba lagi"
+
+
+
 
 # JPSM 29/10/2019 -- Designation
 msgid "Add Designation"
@@ -2655,9 +2731,30 @@ msgstr "Kemaskini Jawatan"
 msgid "Grade"
 msgstr "Gred"
 
+msgid "The designation has been saved."
+msgstr "Jawatan telah berjaya disimpan"
+
+msgid "The designation could not be saved. Please, try again."
+msgstr "Jawatan tidak berjaya dismpan. Sila cuba lagi"
+
+msgid "Designation already in used. The designation could not be deleted."
+msgstr "Jawatan telah digunakan. Jawatan tidak boleh dihapuskan."
+
+msgid "The designation has been deleted."
+msgstr "Jawatan telah berjaya dihapuskan"
+
+msgid "The designation could not be deleted. Please, try again."
+msgstr "Jawatan tidak berjaya dihapuskan. Sila cuba lagi"
+
+
+
+
+
 # JPSM 29/10/2019 -- Layout
 msgid "MAIN NAVIGATION"
 msgstr "NAVIGASI UTAMA"
+
+
 
 # JPSM 29/10/2019 -- Report
 msgid "Leave Type"
@@ -2855,12 +2952,70 @@ msgstr "Laporan Kehadiran Lewat"
 msgid "Daily Attendance Report"
 msgstr "Laporan Kehadiran Harian"
 
+msgid "Monthly Reports"
+msgstr "Laporan Bulanan"
+
+msgid "Staff Working Hour"
+msgstr "Laporan Waktu Bekerja"
+
+msgid "Daily Time Off"
+msgstr "Time Off Harian"
+
+msgid "Daily Reports"
+msgstr "Laporan Harian"
+
+msgid "Staff Late In"
+msgstr "Pekerja Lewat"
+
+msgid "Staff Time Off"
+msgstr "Time off Pekerja"
+
+msgid "Monthly Summary Reports"
+msgstr "Ringkasan Laporan Bulanan"
+
+msgid "Weekly Reports"
+msgstr "Laporan Mingguan"
+
+msgid "Report Type"
+msgstr "Jenis Laporan"
+
+msgid "Total Officer Late More Than 3 Times"
+msgstr "Jumlah Pegawai Lewat Lebih 3 Kali"
+
+msgid "Pending"
+msgstr "Tertangguh"
+
+
+
+
+
+
+
+
+
+
 # JPSM 29/10/2019 -- SettingAttendancesReason
 msgid "Add Setting Attendances Reason"
-msgstr "Tambah Tatapan untuk Alasan Kehadiran"
+msgstr "Tambah Tetapan untuk Alasan Kehadiran"
 
 msgid "Edit Setting Attendances Reason"
-msgstr "Kemaskini Tatapan untuk Alasan Kehadiran"
+msgstr "Kemaskini Tetapan untuk Alasan Kehadiran"
+
+msgid "The setting attendances reason has been saved."
+msgstr "Tetapan untuk Alasan Kehadiran berjaya disimpan"
+
+msgid "The setting attendances reason could not be saved. Please, try again."
+msgstr "Tetapan untuk Alasan Kehadiran tidak berjaya disimpan. Sila cuba lagi"
+
+msgid "The setting attendances reason has been deleted."
+msgstr "Tetapan untuk Alasan Kehadiran telah dihapuskan"
+
+msgid "The setting attendances reason could not be deleted. Please, try again."
+msgstr "Tetapan untuk Alasan Kehadiran tidak berjaya dihapuskan. Sila cuba lagi"
+
+
+
+
 
 # JPSM 29/10/2019 -- SettingAEmail
 msgid "Edit Setting Email"
@@ -2875,9 +3030,24 @@ msgstr "E-mel Templat - English"
 msgid "Body"
 msgstr "Isi"
 
-# JPSM 29/10/2019 -- SettingAEmail
 msgid "User Id"
 msgstr "Id Pengguna"
+
+msgid "The setting email has been saved."
+msgstr "Tetapan email telah berjaya disimpan"
+
+msgid "The setting email could not be saved. Please, try again."
+msgstr "Tetapan email tidak berjaya disimpan. Sila cuba lagi"
+
+msgid "The setting email has been deleted."
+msgstr "Tetapan email berjaya dihapuskan"
+
+msgid "The setting email could not be deleted. Please, try again."
+msgstr "Tetapan email tidak berjaya dihapuskan. Sila cuba lagi"
+
+
+
+
 
 # JPSM 29/10/2019 -- UserLeaves
 msgid "Card Id"
@@ -2907,6 +3077,83 @@ msgstr "Ditolak"
 msgid "Designation"
 msgstr "Jawatan"
 
+msgid "Reject Time Off Application"
+msgstr "Tolak Permohonan Time Off"
+
+msgid "Time Off From"
+msgstr "Masa Bermula"
+
+msgid "Time Off To"
+msgstr "Masa Berakhir"
+
+msgid "Time Off Details"
+msgstr "Butiran Permohonan"
+
+msgid "Are you sure you want to APPROVE this leave application {0}?"
+msgstr "Adakah anda pasti untuk meluluskan permohonan time off {0}?"
+
+msgid "Are you sure you want to CANCEL this leave application {0}?"
+msgstr "Adakah anda pasti untuk membatalkan permohonan time off {0}?"
+
+msgid "Are you sure you want to VOID this leave application {0}?"
+msgstr "Adakah anda pasti untuk menarik semula permohonan time off {0}?"
+
+msgid "Date apply cannot be back dated. Please, try again."
+msgstr "Tarikh permohonan tidak dibenarkan. Sila memohon semula"
+
+msgid "Start Time cannot be grather End time"
+msgstr "Masa bermula tidak dibenarkan lebih dari masa tamat"
+
+msgid "Personal matters time off only 4 hours maximum. Please, try again."
+msgstr "Masa maksimum time off untuk urusan peribadi hanya 4 jam. Sila memohon semula"
+
+msgid "Unable to upload file, please try again."
+msgstr "Tidak dapat memuat naik fail, sila cuba lagi."
+
+msgid "Exceeds file limit.Please upload image less than 5MB"
+msgstr "Melebihi had fail. Sila muat naik imej kurang daripada 5MB"
+
+msgid "Unable to upload file, JPG, JPEG & PNG file only allowed."
+msgstr "Tidak dapat memuat naik fail, JPG, JPEG & file PNG hanya dibenarkan."
+
+msgid "Successfully apply time off."
+msgstr "Berjaya memohon time off"
+
+msgid "Time off has been saved."
+msgstr "Time off telah berjaya disimpan"
+
+msgid "Time off could not be saved. Please, try again."
+msgstr "Time off tidak berjaya disimpan. Sila cuba lagi"
+
+msgid "Successfully apply time off."
+msgstr "Berjaya memohon time off"
+
+msgid "Unable to send email"
+msgstr "Gagal menghantar email"
+
+msgid "Upload Attachment"
+msgstr "Muat naik Lampiran"
+
+msgid "Apply"
+msgstr "Mohon"
+
+msgid "The user card has been saved."
+msgstr "Kad Pengguna telah berjaya disimpan"
+
+msgid "The user card could not be saved. Please, try again."
+msgstr "Kad Pengguna tidak berjaya disimpan. Sila cuba lagi"
+
+msgid "The user card has been deleted."
+msgstr "Kad Pengguna telah dihapuskan"
+
+msgid "The user card could not be deleted. Please, try again."
+msgstr "Kad Pengguna tidak berjaya dihapuskan. Sila cuba lagi"
+
+
+
+
+
+
 # JPSM 29/10/2019 -- User
 msgid "Identity Card No"
 msgstr "Nombor Kad Pengenalan"
@@ -2923,5 +3170,42 @@ msgstr "Tetapkan Kata Laluan"
 msgid "Verify"
 msgstr "Sahkan"
 
-msgid "NORMAL ATTENDANCE"
-msgstr "KEDATANGAN NORMAL"
+msgid "Exceeds file limit.Please upload image less than 1MB"
+msgstr "Melebihi had fail. Sila muat naik imej kurang daripada 1MB"
+
+msgid "Email could not send. Please, try again."
+msgstr "Email tidak berjaya dihantar. Sila cuba lagi"
+
+msgid "The user has been saved."
+msgstr "Pengguna telah disimpan."
+
+msgid "The user could not be saved. Please, try again."
+msgstr "Pengguna tidak dapat disimpan. Sila cuba lagi."
+
+msgid "The user has been delete."
+msgstr "Pengguna telah berjaya dihapuskan"
+
+msgid "Your account has been disabled."
+msgstr "Akaun anda telah dilumpuhkan."
+
+msgid "Email or password is incorrect"
+msgstr "Email atau kata laluan anda tidak betul"
+
+msgid "Invalid user"
+msgstr "Pengguna tidak sah"
+
+msgid "Captcha Validation False"
+msgstr "Pengesahan Captcha tidak sah"
+
+msgid "Password reset instruction will be sent to e-mail address {0}."
+msgstr "Arahan penetapan semula kata laluan akan dihantar ke alamat e-mel {0}."
+
+msgid "Captcha Validation False"
+msgstr "Pengesahan Captcha tidak sah"
+
+msgid "The user cannot be save. Please, try again."
+msgstr "Pengguna tidak berjaya disimpan. Sila cuba lagi"
+
+msgid "Password not match. Please, try again."
+msgstr "Kata laluan tidak sah. Sila cuba lagi"
+

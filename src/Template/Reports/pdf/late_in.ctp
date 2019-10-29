@@ -8,33 +8,33 @@
 					if ($departmentSelected){
 						$outputdepartment = $result[0]['organization_name'];
 					}else{
-						$outputdepartment = 'All';
+						$outputdepartment = __('All');
 					}
 					if ($userSelected){
 						$outputuser = $result[0]['user_name'];
 					}else{
-						$outputuser = 'All';
+						$outputuser = __('All');
 					}
 					if ($monthselected){
 						$outputmonth = $monthselected;
 					}else{
-						$outputmonth = 'All';
+						$outputmonth = __('All');
 					}
 					?>
-					<strong>Late In Report</strong><br><br>
+					<strong><?= __('Late In Report')?></strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Department'; ?></td>
+                            <td><?= __('Departments'); ?></td>
                             <td><?= ':'; ?></td>
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= "Staff's Name"; ?></td>
+                            <td><?= __("Staff's Name"); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Month'; ?></td>
+                            <td><?= __('Month'); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputmonth; ?></td>
 						</tr>
@@ -44,10 +44,10 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= 'Bil' ?></th>
-                                <th><?= 'Name' ?></th>
-                                <th><?= 'Date' ?></th>
-                                <th><?= 'In Time' ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('In Time') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">

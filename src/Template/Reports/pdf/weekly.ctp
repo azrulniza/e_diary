@@ -8,41 +8,41 @@
 					if ($departmentSelected){
 						$outputdepartment = $weeklyresult[0]['organization_name'];
 					}else{
-						$outputdepartment = 'All';
+						$outputdepartment = __('All');
 					}
 					if ($userSelected){
 						$outputuser = $weeklyresult[0]['name'];
 					}else{
-						$outputuser = 'All';
+						$outputuser = __('All');
 					}
 					?>
-					<strong>Weekly Attendance Report</strong><br><br>
+					<strong><?= __('Weekly Attendance Report')?></strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Department'; ?></td>
+                            <td><?= __('Departments'); ?></td>
                             <td><?= ':'; ?></td>
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= "Staff's Name"; ?></td>
+                            <td><?= __("Staff's Name"); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Date Range'; ?></td>
+                            <td><?= __('Date Range'); ?></td>
 							<td><?= ':'; ?></td>	
-                            <td><?= $thisweekStart.' to '.$thisweekEnd; ?></td>
+                            <td><?= $thisweekStart.' '. __('to') .' '.$thisweekEnd; ?></td>
 						</tr>
 					</table>
 					<br><br>
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
 						<thead>
                             <tr>
-                                <th><?= 'Bil'; ?></th>
-                                <th><?= 'name'; ?></th>
-                                <th><?= 'card no.'; ?></th>
-                                <th><?= 'red card in a week'; ?></th>
-                                <th><?= 'card colour for end week'; ?></th>
+                                <th><?= __('Bil'); ?></th>
+                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Card No.'); ?></th>
+                                <th><?= __('Red card in a week'); ?></th>
+                                <th><?= __('Card colour for end week'); ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -69,7 +69,7 @@
 							
                         <?php endforeach ?>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer')?></b></td>
 								<td colspan='1'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
@@ -77,11 +77,11 @@
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Red Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards')?></b></td>
 								<td colspan='1'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
-								<td colspan='4'><b><?= 'Total Officer That Hold Green Cards'?></b></td>
+								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards')?></b></td>
 								<td colspan='1'><b><?= $totalgreen?></b></td>
 							</tr>
                         </tbody>

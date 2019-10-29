@@ -8,43 +8,43 @@
 					if ($departmentSelected){
 						$outputdepartment = $result[0]['organization_name'];
 					}else{
-						$outputdepartment = 'All';
+						$outputdepartment = __('All');
 					}
 					if ($userSelected){
 						$outputuser = $result[0]['user_name'];
 					}else{
-						$outputuser = 'All';
+						$outputuser = __('All');
 					}
 					if ($monthselected){
 						$outputmonth = $monthselected;
 					}else{
-						$outputmonth = 'All';
+						$outputmonth = __('All');
 					}
 					if ($leaveTypeselected){
 						$outputleavetype = $result[0]['leave_type'];
 					}else{
-						$outputleavetype = 'All';
+						$outputleavetype = __('All');
 					}
 					?>
-					<strong>Staff Time Off Report</strong><br><br>
+					<strong><?= __('Staff Time Off Report')?></strong><br><br>
 					<table id="dataTables-reports"  width='40%'>
 						<tr>
-                            <td><?= 'Department'; ?></td>
+                            <td><?= __('Departments'); ?></td>
                             <td><?= ':'; ?></td>
                             <td><?= $outputdepartment; ?></td>
 						</tr>
 						<tr>
-                            <td><?= "Staff's Name"; ?></td>
+                            <td><?= __("Staff's Name"); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputuser; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Month'; ?></td>
+                            <td><?= __('Month'); ?></td>
 							<td><?= ':'; ?></td>
                             <td><?= $outputmonth; ?></td>
 						</tr>
 						<tr>
-                            <td><?= 'Leave type'; ?></td>
+                            <td><?= __('Leave type'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $outputleavetype; ?></td>
 						</tr>
@@ -54,13 +54,13 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= 'Bil' ?></th>
-                                <th><?= 'Leave Type' ?></th>
-                                <th><?= 'Leave Date' ?></th>
-                                <th><?= 'Leave Time' ?></th>
-                                <th><?= 'Leave Status' ?></th>
-                                <th><?= 'Reason' ?></th>
-                                <th><?= 'Total Hours' ?></th>
+                                <th><?= __('Bil') ?></th>
+                                <th><?= __('Leave Type') ?></th>
+                                <th><?= __('Leave Date') ?></th>
+                                <th><?= __('Leave Time') ?></th>
+                                <th><?= __('Leave Status') ?></th>
+                                <th><?= __('Reason') ?></th>
+                                <th><?= __('Total Hours') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -83,19 +83,19 @@
 							$totalhourOutput='';
 							if($dateDiff >= 2592000){
 								$M = floor($dateDiff/2592000);
-								$totalhourOutput.= $M.'Month ';
+								$totalhourOutput.= $M.__('Month').' ';
 							}
 							if($dateDiff >= 86400){
 								$d = floor(($dateDiff%2592000)/86400);
-								$totalhourOutput.= $d.'Day ';
+								$totalhourOutput.= $d.__('Day').' ';
 							}
 							if($dateDiff >= 3600){
 								$h = floor(($dateDiff%86400)/3600);
-								$totalhourOutput.= $h.'Hours ';
+								$totalhourOutput.= $h.__('Hour');
 							}
 							if($dateDiff >= 60){
 								$m = floor(($dateDiff%3600)/60);
-								$totalhourOutput.= $m.'Minutes ';
+								$totalhourOutput.= $m.__('Minute').' ';
 							}
 							
 							$grandTotaldateDiff += $dateDiff;
@@ -104,31 +104,31 @@
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['leave_type'] ?></td>
                                 <td><?= $leave_date ?></td>								
-                                <td><?= 'Start Time : '.$user['start_time'].'<br>'.'End Time : '.$user['end_time'] ?></td>
+                                <td><?= __('Start Time : ').$user['start_time'].'<br>'.__('End Time : ').$user['end_time'] ?></td>
                                 <td><?= $user['leave_status'] ?></td>
                                 <td><?= $user['reason'] ?></td>
 								<td><?= $totalhourOutput ?></td>
                             </tr>
                         <?php endforeach ?>
 							<tr>
-                                <td colspan='6' align='right'><strong><?= 'Grand Total Hour'?></strong></td>
+                                <td colspan='6' align='right'><strong><?= __('Grand Total')?></strong></td>
                                 <td><strong>
 									<?php
 										if($grandTotaldateDiff >= 2592000){
 											$M = floor($grandTotaldateDiff/2592000);
-											$gtotalhourOutput.= $M.'Month ';
+											$gtotalhourOutput.= $M.__('Month').' ';
 										}
 										if($grandTotaldateDiff >= 86400){
 											$d = floor(($grandTotaldateDiff%2592000)/86400);
-											$gtotalhourOutput.= $d.'Day ';
+											$gtotalhourOutput.= $d.__('Day').' ';
 										}
 										if($grandTotaldateDiff >= 3600){
 											$h = floor(($grandTotaldateDiff%86400)/3600);
-											$gtotalhourOutput.= $h.'Hours ';
+											$gtotalhourOutput.= $h.__('Hour').' ';
 										}
 										if($grandTotaldateDiff >= 60){
 											$m = floor(($grandTotaldateDiff%3600)/60);
-											$gtotalhourOutput.= $m.'Minutes ';
+											$gtotalhourOutput.= $m.__('Minute').' ';
 										}
 										echo $gtotalhourOutput;
 									?>

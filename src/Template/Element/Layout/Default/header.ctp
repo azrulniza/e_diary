@@ -69,7 +69,8 @@
                     ?>
 
                     <?php foreach ($langs as $ref => $lang): ?>
-                        <div class="box-body"><?= $this->Html->link($lang, ['controller' => 'Lang', 'action' => 'switch_to', $ref]) ?></div>
+                        <div class="box-body"><?= $this->Html->link($lang, ['controller' => 'Lang', 'action' => 'switch_to',"cont" => $this->request->controller,
+                      "act" => $this->request->action, $ref]) ?></div>
                         <?php $first = false ?>
                     <?php endforeach; ?>
                 </ul>

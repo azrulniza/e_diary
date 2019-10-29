@@ -21,11 +21,16 @@ class LangController extends AppController
         $session = $this->request->session();
         
         $langs = \Cake\Core\Configure::read('Languages');
+
+        $cont=$this->request->query('cont');
+        $act=$this->request->query('act');
         
         if(isset($langs[$lang])){
             $session->write('Config.language', $lang);
             I18n::locale($lang);
-            $this->redirect('/');
+            //$this->redirect('/');
+        
+            return $this->redirect(['controller'=>$cont,'action' => $act]);
         }
         else{
             //@TODO correctly display error

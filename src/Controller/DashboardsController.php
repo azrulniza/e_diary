@@ -52,6 +52,7 @@ class DashboardsController extends AppController
         $total_absent_month=0;
         $total_time_off_month=0;
         $user_total_late_month=0;
+        $user_total_normal_month=0;
 
         if ($userRoles->hasRole(['Master Admin'])) {
             //list all user except master admin
@@ -59,13 +60,40 @@ class DashboardsController extends AppController
 
             
             if(!empty($departmentSelected) AND !empty($userSelected)){
-
+				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
                 // count user late attendance for current month
-                $sql_count_user_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND MONTH(attendances.`cdate`) = MONTH(CURRENT_DATE()) AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00' AND attendances.user_id=$userSelected";
-                $stmt_sql_count_user_late= $conn->execute($sql_count_user_late);
-                $count_user_total_late= $stmt_sql_count_user_late->fetch('assoc');
-                $user_total_late_month = $count_user_total_late['total_late'];
+				$total_late=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+								$total_late++;
+							}
+						}
+					}
+				}
+                $user_total_late_month = $total_late;
 
+				// count user normal attendance for current month
+				$total_normal=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') < '09:00:00'){
+								$total_normal++;
+							}
+						}
+					}
+				}
+                $user_total_normal_month = $total_normal;
+				
                 // count user time off for current month
                 $sql_count_user_timeoff="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (MONTH(ul.date_start) = MONTH(CURRENT_DATE()) OR MONTH(ul.date_end) = MONTH(CURRENT_DATE())) AND ul.user_id=$userSelected";
                 $stmt_sql_count_user_timeoff= $conn->execute($sql_count_user_timeoff);
@@ -80,8 +108,6 @@ class DashboardsController extends AppController
 
                 // count user attendance in current month
                 $sql_count_user_attendance="SELECT COUNT(*) AS total_attend from  attendances JOIN users ON users.id=attendances.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` Where `attendance_code_id`=1 AND MONTH(attendances.cdate) = MONTH(CURRENT_DATE()) AND attendances.user_id=$userSelected";
-				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
-					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
 				$total_attend=0;
 				$past_date = '';
 				foreach($curr_users as $user){
@@ -103,12 +129,24 @@ class DashboardsController extends AppController
                 $stmt_sql_pending= $conn->execute($sql_pending);
                 $count_pending= $stmt_sql_pending->fetch('assoc');
                 $total_pending = $count_pending['total_pending'];
-
+				
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})
+						->autoFields(true)->where(['Users.status'=>1]);
+						
                 // count late attendance
-                $sql_late = "SELECT COUNT(*) AS total_late from  attendances JOIN users ON users.id=attendances.`user_id`  JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE `attendance_code_id`=1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$departmentSelected AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00'";
-                $stmt_count_late= $conn->execute($sql_late);
-                $count_total_late= $stmt_count_late->fetch('assoc');
-                $total_late = $count_total_late['total_late'];
+                $total_late=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances != null ){
+						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+							$total_late++;
+						}
+					}
+				}
 
                 //count time off
                 $sql_count_time_off="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= CURDATE() AND DATE_FORMAT(ul.date_end, '%Y-%m-%d') >= CURDATE()) AND organizations.id=$userSelected";
@@ -123,12 +161,6 @@ class DashboardsController extends AppController
                 $count_all_user=$stmt_sql_result['total_staff'];
 
                 //count attendance
-				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
-								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
-						})->innerJoinWith('UsersRoles.Roles' , function($q) {
-									return $q->where(['UsersRoles.role_id !='=>1]);
-							})
-						->autoFields(true)->where(['Users.status'=>1]);
 				$total_attend=0;
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
@@ -138,9 +170,15 @@ class DashboardsController extends AppController
 				}
                 $staff_working = $total_attend;
                 $staff_absent=$count_all_user-$staff_working;
-
+				
             }else if(!empty($departmentSelected) AND empty($userSelected)){
-
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})
+						->autoFields(true)->where(['Users.status'=>1]);
+						
                 //count pending
                 $sql_pending = "SELECT COUNT(*) AS total_pending from  user_leaves JOIN users ON users.id=user_leaves.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE user_leaves.leave_status_id=1 AND organizations.id=$departmentSelected";
                 $stmt_sql_pending= $conn->execute($sql_pending);
@@ -148,10 +186,15 @@ class DashboardsController extends AppController
                 $total_pending = $count_pending['total_pending'];
 
                 // count late attendance
-                $sql_late = "SELECT COUNT(*) AS total_late from  attendances JOIN users ON users.id=attendances.`user_id`  JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE `attendance_code_id`=1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$departmentSelected AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00'";
-                $stmt_count_late= $conn->execute($sql_late);
-                $count_total_late= $stmt_count_late->fetch('assoc');
-                $total_late = $count_total_late['total_late'];
+                $total_late=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances != null ){
+						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+							$total_late++;
+						}
+					}
+				}
 
 
                 //count time off
@@ -167,12 +210,6 @@ class DashboardsController extends AppController
                 $count_all_user=$stmt_sql_result['total_staff'];
                 
                 //count attendance
-				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
-								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
-						})->innerJoinWith('UsersRoles.Roles' , function($q) {
-									return $q->where(['UsersRoles.role_id !='=>1]);
-							})
-						->autoFields(true)->where(['Users.status'=>1]);
 				$total_attend=0;
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
@@ -187,11 +224,39 @@ class DashboardsController extends AppController
                 $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$userSelected"])->limit(1)->first();
                 $user_organization_id=$usersOrganization->organization_id;
 
+				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
                 // count user late attendance for current month
-                $sql_count_user_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND MONTH(attendances.`cdate`) = MONTH(CURRENT_DATE()) AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00' AND attendances.user_id=$userSelected";
-                $stmt_sql_count_user_late= $conn->execute($sql_count_user_late);
-                $count_user_total_late= $stmt_sql_count_user_late->fetch('assoc');
-                $user_total_late_month = $count_user_total_late['total_late'];
+				$total_late=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+								$total_late++;
+							}
+						}
+					}
+				}
+                $user_total_late_month = $total_late;
+
+				// count user normal attendance for current month
+				$total_normal=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') < '09:00:00'){
+								$total_normal++;
+							}
+						}
+					}
+				}
+                $user_total_normal_month = $total_normal;
 
                 // count user time off for current month
                 $sql_count_user_timeoff="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (MONTH(ul.date_start) = MONTH(CURRENT_DATE()) OR MONTH(ul.date_end) = MONTH(CURRENT_DATE())) AND ul.user_id=$userSelected";
@@ -206,8 +271,6 @@ class DashboardsController extends AppController
                 $total_absent_month = $count_user_absent['total_absent'];
 
                 // count user attendance in current month
-				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
-					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
 				$total_attend=0;
 				$past_date = '';
 				foreach($curr_users as $user){
@@ -229,12 +292,24 @@ class DashboardsController extends AppController
                 $stmt_sql_pending= $conn->execute($sql_pending);
                 $count_pending= $stmt_sql_pending->fetch('assoc');
                 $total_pending = $count_pending['total_pending'];
-
+				
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
+						})
+						->autoFields(true)->where(['Users.status'=>1]);
+						
                 // count late attendance
-                $sql_late = "SELECT COUNT(*) AS total_late from  attendances JOIN users ON users.id=attendances.`user_id`  JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE `attendance_code_id`=1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$user_organization_id AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00'";
-                $stmt_count_late= $conn->execute($sql_late);
-                $count_total_late= $stmt_count_late->fetch('assoc');
-                $total_late = $count_total_late['total_late'];
+                $total_late=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances != null ){
+						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+							$total_late++;
+						}
+					}
+				}
 
                 //count time off
                 $sql_count_time_off="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= CURDATE() AND DATE_FORMAT(ul.date_end, '%Y-%m-%d') >= CURDATE()) AND organizations.id=$user_organization_id";
@@ -250,12 +325,6 @@ class DashboardsController extends AppController
 
 
                 //count attendance
-				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
-									return $q->where(['UsersRoles.role_id !='=>1]);
-							})->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
-								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
-						})
-						->autoFields(true)->where(['Users.status'=>1]);
 				$total_attend=0;
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
@@ -267,7 +336,11 @@ class DashboardsController extends AppController
                 $staff_absent=$count_all_user-$staff_working;
 
             }else if(empty($departmentSelected) AND empty($userSelected)){
-
+				$all_user = $this->Users->find()->contain(['UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
+								return $q->where(['UsersRoles.role_id !='=>1]);
+						})
+					->autoFields(true)->where(['Users.status'=>1]);
+						
                 //count pending
                 $sql_pending = "SELECT COUNT(*) AS total_pending from  user_leaves WHERE `leave_status_id`=1";
                 $stmt_sql_pending= $conn->execute($sql_pending);
@@ -275,10 +348,15 @@ class DashboardsController extends AppController
                 $total_pending = $count_pending['total_pending'];
 
                 // count late attendance
-                $sql_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND DATE(attendances.cdate)=CURDATE() AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00'";
-                $stmt_count_late= $conn->execute($sql_late);
-                $count_total_late= $stmt_count_late->fetch('assoc');
-                $total_late = $count_total_late['total_late'];
+                $total_late=0;
+				foreach($all_user as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+					if($attendances != null ){
+						if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+							$total_late++;
+						}
+					}
+				}
                 
                 //count time off
                 $sql_count_time_off="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul WHERE (DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= CURDATE() AND DATE_FORMAT(ul.date_end, '%Y-%m-%d') >= CURDATE())";
@@ -290,10 +368,6 @@ class DashboardsController extends AppController
                 $count_all_user=$this->Users->find()->where(['status'=>'1'])->innerJoinWith('Roles' , function($q){ return $q->where(['Roles.id !='=>'1']);})->count();
 
                 //count attendance
-				$all_user = $this->Users->find()->contain(['UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
-									return $q->where(['UsersRoles.role_id !='=>1]);
-							})
-						->autoFields(true)->where(['Users.status'=>1]);
 				$total_attend=0;
 				foreach($all_user as $user){
 					$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
@@ -317,11 +391,24 @@ class DashboardsController extends AppController
             return $q->where(['UserOrganizations.organization_id'=>$user_organization_id])->where(['Users.status'=>1]);});
 
             if(!empty($userSelected)){
+				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
+					
                 // count user late attendance for current month
-                $sql_count_user_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND MONTH(attendances.`cdate`) = MONTH(CURRENT_DATE()) AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00' AND attendances.user_id=$userSelected";
-                $stmt_sql_count_user_late= $conn->execute($sql_count_user_late);
-                $count_user_total_late= $stmt_sql_count_user_late->fetch('assoc');
-                $user_total_late_month = $count_user_total_late['total_late'];
+				$total_late=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+								$total_late++;
+							}
+						}
+					}
+				}
+                $user_total_late_month = $total_late;
 
                 // count user time off for current month
                 $sql_count_user_timeoff="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (MONTH(ul.date_start) = MONTH(CURRENT_DATE()) OR MONTH(ul.date_end) = MONTH(CURRENT_DATE())) AND ul.user_id=$userSelected";
@@ -336,8 +423,6 @@ class DashboardsController extends AppController
                 $total_absent_month = $count_user_absent['total_absent'];
 
                 // count user attendance in current month
-				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
-					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userSelected]);
 				$total_attend=0;
 				$past_date = '';
 				foreach($curr_users as $user){
@@ -353,8 +438,29 @@ class DashboardsController extends AppController
 					
 				}
                 $total_attend_month = $total_attend;
+				
+				// count user normal attendance for current month
+				$total_normal=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') < '09:00:00'){
+								$total_normal++;
+							}
+						}
+					}
+				}
+                $user_total_normal_month = $total_normal;
             }
-
+			$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+								return $q->where(['UsersRoles.role_id !='=>1]);
+						})
+					->autoFields(true)->where(['Users.status'=>1]);
             //count pending
             $sql_pending = "SELECT COUNT(*) AS total_pending from  user_leaves JOIN users ON users.id=user_leaves.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE user_leaves.leave_status_id=1 AND organizations.id=$user_organization_id";
             /*if(!empty($userSelected)){
@@ -365,13 +471,16 @@ class DashboardsController extends AppController
             $total_pending = $count_pending['total_pending'];
 
             // count late attendance
-            $sql_late = "SELECT COUNT(*) AS total_late from  attendances JOIN users ON users.id=attendances.`user_id`  JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE `attendance_code_id`=1 AND DATE(attendances.cdate)=CURDATE() AND organizations.id=$user_organization_id AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00'";
-            /*if(!empty($userSelected)){
-                $sql_late.=" AND attendances.user_id=$userSelected";
-            }*/
-            $stmt_count_late= $conn->execute($sql_late);
-            $count_total_late= $stmt_count_late->fetch('assoc');
-            $total_late = $count_total_late['total_late'];
+			$total_late=0;
+			$past_date = '';
+			foreach($all_user as $user){
+				$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
+				if($attendances != null ){
+					if($attendances->cdate->format('H:i:s') >= '09:00:00'){
+						$total_late++;
+					}
+				}
+			}
 
             //count time off
             $sql_count_time_off="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= CURDATE() AND DATE_FORMAT(ul.date_end, '%Y-%m-%d') >= CURDATE()) AND organizations.id=$user_organization_id";
@@ -389,12 +498,6 @@ class DashboardsController extends AppController
             $count_all_user=$stmt_sql_result['total_staff'];
             
             //count attendance
-			$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
-								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
-						})->innerJoinWith('UsersRoles.Roles' , function($q) {
-								return $q->where(['UsersRoles.role_id !='=>1]);
-						})
-					->autoFields(true)->where(['Users.status'=>1]);
 			$total_attend=0;
 			foreach($all_user as $user){
 				$attendances = $this->Attendances->find()->where(['user_id'=>$user->id,'DATE(cdate) = CURDATE()'])->order('cdate DESC')->first();
@@ -411,12 +514,23 @@ class DashboardsController extends AppController
 			$users = $this->Users->find('list')->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->order(['name' => 'ASC']);*/
 
         }else  if ($userRoles->hasRole(['Staff'])) {
-
+            	$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
+					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userId]);
             // count user late attendance for current month
-                $sql_count_user_late = "SELECT COUNT(*) AS total_late from  attendances WHERE `attendance_code_id`=1 AND MONTH(attendances.`cdate`) = MONTH(CURRENT_DATE()) AND DATE_FORMAT(attendances.cdate, '%H:%i:%s')>='09:00:00' AND attendances.user_id=$userId";
-                $stmt_sql_count_user_late= $conn->execute($sql_count_user_late);
-                $count_user_total_late= $stmt_sql_count_user_late->fetch('assoc');
-                $user_total_late_month = $count_user_total_late['total_late'];
+				$total_late=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') >= '09:00:00'){
+								$total_late++;
+							}
+						}
+					}
+				}
+                $user_total_late_month = $total_late;
 
             // count user time off for current month
                 $sql_count_user_timeoff="SELECT COUNT(*) AS total_time_off FROM `user_leaves` ul JOIN users ON users.id=ul.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id  JOIN organizations ON `organizations`.`id`= user_organizations.`organization_id` WHERE (MONTH(ul.date_start) = MONTH(CURRENT_DATE()) OR MONTH(ul.date_end) = MONTH(CURRENT_DATE())) AND ul.user_id=$userId";
@@ -431,8 +545,6 @@ class DashboardsController extends AppController
                 $total_absent_month = $count_user_absent['total_absent'];
 
             // count user attendance in current month
-            	$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
-					->autoFields(true)->where(['Users.status'=>1,'Users.id'=>$userId]);
 				$total_attend=0;
 				$past_date = '';
 				foreach($curr_users as $user){
@@ -447,7 +559,23 @@ class DashboardsController extends AppController
 					}
 					
 				}
-            $total_attend_month = $total_attend;
+				$total_attend_month = $total_attend;
+				
+			// count user normal attendance for current month
+				$total_normal=0;
+				$past_date = '';
+                foreach($curr_users as $user){
+					$attendances = $this->Attendances->find()->where(['attendance_code_id'=>1,'user_id'=>$user->id,'MONTH(cdate) = MONTH(CURRENT_DATE())'])->order(['cdate DESC']);
+						foreach($attendances as $attendance){
+						if(!in_array($attendance->cdate->format('Y-m-d'),$past_date)){
+							$past_date = explode(',',$attendance->cdate->format('Y-m-d'));
+							if($attendance->cdate->format('H:i:s') < '09:00:00'){
+								$total_normal++;
+							}
+						}
+					}
+				}
+                $user_total_normal_month = $total_normal;
 
         }
 
@@ -522,7 +650,7 @@ class DashboardsController extends AppController
         $count_inTimeDeptCanvas= $stmt_sql_inTimeDeptCanvas->fetchAll('assoc');
         $this->set('inTimeDeptresult',$count_inTimeDeptCanvas);
 		
-        $this->set(compact('user', 'Lateresult','Normalresult','inTimeDeptresult','userRoles','departments','users','departmentSelected','userSelected','staff_absent','staff_working','notifications','staff_timeoff','total_late','total_pending','total_attend_month','total_absent_month','total_time_off_month','user_total_late_month','totalStaff'));
+        $this->set(compact('user', 'Lateresult','Normalresult','inTimeDeptresult','userRoles','departments','users','departmentSelected','userSelected','staff_absent','staff_working','notifications','staff_timeoff','total_late','total_pending','total_attend_month','total_absent_month','total_time_off_month','user_total_late_month','totalStaff','user_total_normal_month'));
         $this->set('_serialize', ['dashboard']);
     }
     

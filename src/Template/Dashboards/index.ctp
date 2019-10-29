@@ -244,18 +244,6 @@ $this->Html->script('dashboard');
 							</div>
 						  </div>
 						</div>
-						<div class="col-md-3 col-sm-4 col-xs-8">
-							  <div style="pointer-events: none;" class="small-box bg-danger">
-								<div class="inner">
-								  <h3><?php echo $total_absent_month ?></h3>
-
-								  <p><?= __('ABSENT')?></p>
-								</div>
-								<div class="icon">
-								  <i class="ion ion-close-circled"></i>
-								</div>
-							  </div>
-						</div>
 
 						<div class="col-md-3 col-sm-6 col-xs-12">
 							  <div style="pointer-events: none;" class="small-box bg-info">
@@ -270,6 +258,19 @@ $this->Html->script('dashboard');
 							  </div>
 						</div>
 
+						<div class="col-md-3 col-sm-4 col-xs-8">
+							  <div style="pointer-events: none;" class="small-box bg-danger">
+								<div class="inner">
+								  <h3><?php echo $user_total_normal_month ?></h3>
+
+								  <p><?= __('NORMAL ATTENDANCE')?></p>
+								</div>
+								<div class="icon">
+								  <i class="ion ion-information-circled"></i>
+								</div>
+							  </div>
+						</div>
+						
 						<div class="col-md-3 col-sm-6 col-xs-12">
 							  <div style="pointer-events: none;" class="small-box bg-warning">
 								<div class="inner">

@@ -74,8 +74,8 @@ class AttendancesController extends AppController
             foreach($attendances_in as $attendance_in){
                 $attendances_std=new \stdClass();
 
-                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
-                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
+                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
 
                 $attendance_in['attendance_id']=$has_in->id;
 
@@ -134,8 +134,8 @@ class AttendancesController extends AppController
             foreach($attendances_in as $attendance_in){
                 $attendances_std=new \stdClass();
 
-                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
-                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
+                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
 				
 				//cater for 2kali clock in
 				$attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
@@ -182,8 +182,8 @@ class AttendancesController extends AppController
             foreach($attendances_in as $attendance_in){
                 $attendances_std=new \stdClass();
 
-                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
-                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->limit(1)->first();
+                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
 
                 $attendance_in['in']=$has_in->cdate;
 				

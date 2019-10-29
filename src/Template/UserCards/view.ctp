@@ -37,7 +37,7 @@
                             <dd><?= $this->Number->format($userCard->id) ?></dd>
                             <dt><?= __('Status') ?></dt>
                             <dd><?= $this->Number->format($userCard->status) ?></dd>
-                            <dt><?= __('Pic') ?></dt>
+                            <dt><?= __('pic') ?></dt>
                             <dd><?= $this->Number->format($userCard->pic) ?></dd>
                             <dt><?= __('Mdate') ?></dt>
                             <dd><?= h($userCard->mdate) ?></dd>

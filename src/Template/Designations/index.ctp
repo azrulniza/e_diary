@@ -24,7 +24,7 @@
                             <tr>
                                 <th><?= __('No') ?></th>
                                 <th><?= __('Name') ?></th>
-                                <th><?= __('Gred') ?></th>
+                                <th><?= __('Grade') ?></th>
                                 <th><?= __('Organization') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>

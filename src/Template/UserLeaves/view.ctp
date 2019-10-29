@@ -13,9 +13,9 @@
                         <dl class="dl-horizontal">
                             <dt><?= __('Name') ?></dt>
                             <dd><?= h($designation->name) ?></dd>
-                            <dt><?= __('Gred') ?></dt>
+                            <dt><?= __('Grade') ?></dt>
                             <dd><?= h($designation->gred) ?></dd>
-                            <dt><?= __('Organization') ?></dt>
+                            <dt><?= __('Departments') ?></dt>
                             <dd><?= $designation->has('organization') ? $this->Html->link($designation->organization->name, ['controller' => 'Organizations', 'action' => 'view', $designation->organization->id]) : '' ?></dd>
                         </dl>
                     </div>

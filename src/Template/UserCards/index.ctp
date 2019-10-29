@@ -20,13 +20,13 @@
                     <table id="dataTables-userCards" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= $this->Paginator->sort('id') ?></th>
-                                <th><?= $this->Paginator->sort('user_id') ?></th>
-                                <th><?= $this->Paginator->sort('card_id') ?></th>
-                                <th><?= $this->Paginator->sort('mdate') ?></th>
-                                <th><?= $this->Paginator->sort('cdate') ?></th>
-                                <th><?= $this->Paginator->sort('status') ?></th>
-                                <th><?= $this->Paginator->sort('pic') ?></th>
+                                <th><?= __('Id') ?></th>
+                                <th><?= __('User Id') ?></th>
+                                <th><?= __('Card Id') ?></th>
+                                <th><?= __('Mdate') ?></th>
+                                <th><?= __('Cdate') ?></th>
+                                <th><?= __('Status') ?></th>
+                                <th><?= __('pic') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>

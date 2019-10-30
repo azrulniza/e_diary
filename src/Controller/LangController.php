@@ -28,9 +28,11 @@ class LangController extends AppController
         if(isset($langs[$lang])){
             $session->write('Config.language', $lang);
             I18n::locale($lang);
-            //$this->redirect('/');
-        
-            return $this->redirect(['controller'=>$cont,'action' => $act]);
+			if (!$this->Auth->user()) {
+				return $this->redirect('/');
+			}else{
+				return $this->redirect(['controller'=>$cont,'action' => $act]);	
+			}
         }
         else{
             //@TODO correctly display error

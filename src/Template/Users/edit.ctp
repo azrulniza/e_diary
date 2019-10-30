@@ -1,4 +1,12 @@
 <script type="text/javascript">
+	function isNumber(evt) {
+		evt = (evt) ? evt : window.event;
+		var charCode = (evt.which) ? evt.which : evt.keyCode;
+		if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+			return false;
+		}
+		return true;
+	}
 	 function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -92,7 +100,7 @@
 						</center>
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
-						echo $this->Form->input('ic_number', ['pattern'=>'[0-9]{12,12}','title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
+						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
 						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
                         echo $this->Form->input('new_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter new password'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);

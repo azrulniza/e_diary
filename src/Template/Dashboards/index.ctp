@@ -8,8 +8,8 @@ $this->Html->script('dashboard');
 			var id = $(this).val();
 			$.ajax({
 				type : "POST",
-				//url  : getAppVars('basepath').basePath + 'dashboards/getUsers' + '?id=' + id, //pass query string to server
-				url  : getAppVars('basepath').basePath + 'dashboards/getDetails' + '?id=' + id, //pass query string to server
+				//url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'dashboards/getUsers' + '?id=' + id, //pass query string to server
+				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'dashboards/getDetails' + '?id=' + id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
 						console.log(data);

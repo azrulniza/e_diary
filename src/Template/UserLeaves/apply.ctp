@@ -4,7 +4,7 @@
             var id = $(this).val();
             $.ajax({
                 type : "POST",
-                url  : getAppVars('basepath').basePath + 'user_leaves/getDetails' + '?id=' + id, //pass query string to server
+                url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'user_leaves/getDetails' + '?id=' + id, //pass query string to server
                 success: function(data){
                         data = JSON.parse(data);
                         console.log(data);

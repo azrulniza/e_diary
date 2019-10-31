@@ -70,7 +70,7 @@
 
                                     <?php                                       
                                         if(!empty($userLeave['filename'])){ ?>
-                                            <a href="<?php echo $this->Url->build( '/' ).$userLeave['filename']?>" target="__blank"><?php $str=explode("/",$userLeave['filename']); echo $str[4];?></a>
+                                            <a href="<?php echo $this->Basepath->getBasePath().$userLeave['filename']?>" target="__blank"><?php $str=explode("/",$userLeave['filename']); echo $str[4];?></a>
 
                                     <?php    }
                                     ?>
@@ -120,7 +120,7 @@
                                                                     <dd><b><?= h($userLeave['leave_type_name']) ?></b><br/><?= h($userLeave['reason']) ?><br/>
                                                                         <?php 
                                                                             if(!empty($userLeave['filename'])){ ?>
-                                                                                <a href="<?php echo $this->Url->build( '/' ).$userLeave['filename']?>" target="__blank"><?php $str=explode("/",$userLeave['filename']); echo $str[4];?></a>
+                                                                                <a href="<?php echo $this->Basepath->getBasePath().$userLeave['filename']?>" target="__blank"><?php $str=explode("/",$userLeave['filename']); echo $str[4];?></a>
 
                                                                         <?php    }
                                                                         ?>

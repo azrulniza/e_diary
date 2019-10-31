@@ -44,6 +44,7 @@ class UsersController extends AppController
     public function index()
     {
 		$this->loadModel('Organizations');
+		$this->loadModel('UserOrganizations');
 		
 		$search_name = $this->request->query('search');
 		if($search_name){
@@ -76,28 +77,20 @@ class UsersController extends AppController
 			}else{
 				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.status'=>1]);
 			}
-        }else if ($this->AuthUser->hasRole(SUPERVISOR)) {
-			$users = $this->Users->find()->where(['report_to'=>$userId]);
-			foreach($users as $user){
-				$user_ids[] = $user->id;
-			}
+        }else if ($this->AuthUser->hasRole(SUPERVISOR) OR $this->AuthUser->hasRole(ADMIN)) {
+			$usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => $userId])->limit(1)->first();
+			$user_organization_id=$usersOrganization->organization_id;
+			
 			if($search_name != null){
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.name LIKE '=>"%$search_name%"])->where(['Users.status'=>1]);
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+					return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);})
+				->where(['Users.name LIKE '=>"%$search_name%"])->where(['Users.status'=>1]);
 			}else{
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.status'=>1]);
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+					return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);})
+				->where(['Users.status'=>1]);
 			}
 			
-        }else if ($this->AuthUser->hasRole(ADMIN)) {
-			$users = $this->Users->find()->where(['report_to'=>$userId]);
-			foreach($users as $user){
-				$user_ids[] = $user->id;
-			}
-			if($search_name != null){
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.name LIKE '=>"%$search_name%"])->where(['Users.status'=>1]);
-			}else{
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.status'=>1]);
-			}
-			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['report_to IN'=> $user_ids])->orWhere(['report_to'=>$userId])->where(['Users.status'=>1]);
         }else if ($this->AuthUser->hasRole(STAFF)) {
 			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$currentUser->id,'Users.status'=>1]);
 		}
@@ -437,7 +430,7 @@ class UsersController extends AppController
 				});
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
-			$role=array(1,2);
+			$role=array(1);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 			
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=> $user_dept])->orWhere(['status'=>1]);

@@ -86,7 +86,7 @@
 								<label for="image">
 									<img id="img_prev" class="img-circle" src="#" style="display:none;"/>
 									<?php if($user->image != null) :?>
-									<img id="prev_image" class="img-circle" style="width:100px;height:100px;" src="<?php echo $this->Url->build( '/' ).$user->image; ?>"/>
+									<img id="prev_image" class="img-circle" style="width:100px;height:100px;" src="<?php echo $this->Basepath->getBasePath().$user->image; ?>"/>
 									<?php else: ?>
 									<i id="none_prev" class="fa fa-user fa-5x" aria-hidden="true"></i>
 									<?php endif;?>

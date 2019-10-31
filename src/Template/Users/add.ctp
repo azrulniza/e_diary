@@ -35,7 +35,7 @@
 			}
 			$.ajax({
 				type : "POST",
-				url  : getAppVars('basepath').basePath + 'users/getDetails' + '?id=' + id, //pass query string to server
+				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
 						//console.log(data);

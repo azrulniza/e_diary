@@ -31,5 +31,7 @@ class AppView extends View
      */
     public function initialize()
     {
+        //$this->Basepath->getBasePath();
+        $this->loadHelper('Basepath');
     }
 }

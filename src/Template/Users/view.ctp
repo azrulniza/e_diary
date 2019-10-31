@@ -4,7 +4,7 @@
             <div class="box box-default">
                 <span class="info-box-icon" style="background:transparent">
                     <?php if($user->image != null) :?>
-						<img id="prev_image" class="img-circle" style="width:100px;height:100px;" src="<?php echo $this->Url->build( '/' ).$user->image; ?>"/>
+						<img id="prev_image" class="img-circle" style="width:100px;height:100px;" src="<?php echo $this->Basepath->getBasePath().$user->image; ?>"/>
 					<?php else: ?>
 						<i class="fa fa-user"></i>
 					<?php endif; ?>

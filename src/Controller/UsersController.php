@@ -60,39 +60,39 @@ class UsersController extends AppController
 		if ($this->AuthUser->hasRole(MASTER_ADMIN)) {
 			if($organizationSelected != null){
 				if($search_name != null){
-					$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
+					$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
 								return $q->where(['UserOrganizations.organization_id'=>$organizationSelected]);
 						})
 					->autoFields(true)
 					->where(['Users.name LIKE '=>"%$search_name%"])
 					->where(['Users.status'=>1]);
 				}else{
-					$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
+					$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($organizationSelected){
 								return $q->where(['UserOrganizations.organization_id'=>$organizationSelected]);
 						})
 					->autoFields(true)->where(['Users.status'=>1]);
 				}
 			}else if($search_name != null){
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.name LIKE'=>"%$search_name%"])->where(['Users.status'=>1]);
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.name LIKE'=>"%$search_name%"])->where(['Users.status'=>1]);
 			}else{
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.status'=>1]);
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.status'=>1]);
 			}
         }else if ($this->AuthUser->hasRole(SUPERVISOR) OR $this->AuthUser->hasRole(ADMIN)) {
 			$usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => $userId])->limit(1)->first();
 			$user_organization_id=$usersOrganization->organization_id;
 			
 			if($search_name != null){
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
 					return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);})
 				->where(['Users.name LIKE '=>"%$search_name%"])->where(['Users.status'=>1]);
 			}else{
-				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+				$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
 					return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);})
 				->where(['Users.status'=>1]);
 			}
 			
         }else if ($this->AuthUser->hasRole(STAFF)) {
-			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$currentUser->id,'Users.status'=>1]);
+			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$currentUser->id,'Users.status'=>1]);
 		}
 		foreach($query as $user){
 			$heads = $this->Users->find()->where(['id'=> $user->report_to]);
@@ -116,13 +116,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Roles']
-        ]);
-		$this->viewBuilder()->options([
-            'pdfConfig' => [
-                'orientation' => 'portrait',
-                'filename' => 'User.pdf'
-            ]
+            'contain' => ['Grades','Roles']
         ]);
         $this->set('user', $user);
     }
@@ -283,8 +277,9 @@ class UsersController extends AppController
 			$role=array(1,2,3);
 			$roles = $this->Users->Roles->find('list')->where(['Roles.id NOT IN'=>$role]);
 		}
+		$grades = $this->Users->Grades->find('list', ['limit' => 200])->where(['status'=>1]);
 		$userStatus = $this->userStatus;
-        $this->set(compact('user', 'organizations','designations', 'userStatus', 'reportTo', 'roles','userRoles'));
+        $this->set(compact('user', 'organizations','designations', 'userStatus', 'reportTo', 'roles','userRoles','grades'));
 		$this->set('_serialize', ['user']);
     }
 
@@ -303,7 +298,7 @@ class UsersController extends AppController
 		$this->loadModel('Designations');
 		$this->loadModel('UserDesignations');
         $user = $this->Users->get($id, [
-            'contain' => ['UserDesignations', 'UserOrganizations', 'Roles']
+            'contain' => ['Grades','UserDesignations', 'UserOrganizations', 'Roles']
         ]);
 		$userId = $this->AuthUser->id();
 		$user_role = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
@@ -444,7 +439,8 @@ class UsersController extends AppController
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 		}
 		$userStatus = $this->userStatus;
-        $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo','selected_role'));
+		$grades = $this->Users->Grades->find('list', ['limit' => 200])->where(['status'=>1]);
+        $this->set(compact('user', 'organizations','designations', 'roles', 'reportTo','userStatus','selected_dept','selected_designation','userRoles','selected_reportTo','selected_role','grades'));
     }
 
     /**

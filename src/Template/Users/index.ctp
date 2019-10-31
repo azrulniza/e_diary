@@ -30,6 +30,7 @@
                                 <th><?= __('Email') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Department') ?></th>
+                                <th><?= __('Grade') ?></th>
                                 <th><?= __('Designation') ?></th>
                                 <th><?= __('Report To') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
@@ -44,6 +45,7 @@
                                 <td><?= h($user->email) ?></td>
                                 <td><?= h($user->name) ?></td>
                                 <td><?= h($user->user_organizations[0]->organization->name) ?></td>
+                                <td><?= h($user->grade->name).$user->skim ; ?></td>
                                 <td><?= h($user->user_designations[0]->designation->name) ?></td>
                                 <td><?php foreach($reportTo as $key => $report_to): 
 											if($key == $user->report_to){

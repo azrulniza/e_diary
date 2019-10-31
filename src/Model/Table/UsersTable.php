@@ -48,6 +48,9 @@ class UsersTable extends Table
 		$this->addBehavior('Timestamp');
 		$this->addBehavior('Captcha.Captcha', ['field'=>'<captcha>']);
 
+        $this->belongsTo('Grades', [
+            'foreignKey' => 'grade_id'
+        ]);
         $this->hasMany('AttendanceLogs', [
             'foreignKey' => 'user_id'
         ]);
@@ -144,7 +147,10 @@ class UsersTable extends Table
         $validator
                 ->requirePresence('status', 'create')
                 ->notEmpty('status');
-
+				
+        $validator
+            ->integer('skim')
+            ->allowEmptyString('skim');
         return $validator;
     }
 
@@ -159,6 +165,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
 		$rules->add($rules->isUnique(['ic_number']));
+		$rules->add($rules->existsIn(['grade_id'], 'Grades'));
         return $rules;
     }
 	public function get_client_ip() {

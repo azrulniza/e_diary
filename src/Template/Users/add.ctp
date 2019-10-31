@@ -109,6 +109,18 @@
                         if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
 							echo $this->Form->input('role', ['class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true]);
 							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
+							echo $this->Form->label(__('Grade'));
+							echo '<span class="mark-required" style="color:red;"> * </span>';
+							echo '<div>';
+							echo '<div style="float: left;">';
+							echo $this->Form->input('grade_id', ['label'=>false,'class' => 'form-control','options' => $grades, 'empty'=>__('--Please Select--'), 'multiple' => false,'required'=>true]);
+							echo '</div>';
+							echo '<div></div>';
+							echo '<div style="float: left;">';
+							echo $this->Form->input('skim', ['label'=>false,'class' => 'form-control','style'=>'width:50%;', 'placeholder' => __('Enter ...'),'required'=>true]);
+							echo '</div>';
+							echo '<div style="clear: both;"></div>';
+							echo '</div>';
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','required'=>true,'disabled'=>true]);
 							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>array('0'=>__('--Please Select--')),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'disabled'=>true]);							
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;','required'=>true]);

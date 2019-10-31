@@ -19,6 +19,8 @@ class DesignationsController extends AppController
      */
     public function index()
     {
+        $this->set('title', __('Designations'));
+
 		$this->loadModel('Users');
 		$this->loadModel('Organizations');
 		$userId = $this->Auth->user()['id'];
@@ -51,6 +53,8 @@ class DesignationsController extends AppController
      */
     public function view($id = null)
     {
+        $this->set('title', __('Designations'));
+
         $designation = $this->Designations->get($id, [
             'contain' => ['Organizations', 'UserDesignations']
         ]);
@@ -65,6 +69,8 @@ class DesignationsController extends AppController
      */
     public function add()
     {
+        $this->set('title', __('Designations'));
+
         $designation = $this->Designations->newEntity();
         if ($this->request->is('post')) {
             $designation = $this->Designations->patchEntity($designation, $this->request->getData());
@@ -88,6 +94,8 @@ class DesignationsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->set('title', __('Designations'));
+
         $designation = $this->Designations->get($id, [
             'contain' => []
         ]);
@@ -113,6 +121,8 @@ class DesignationsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->set('title', __('Designations'));
+        
 		$this->loadModel('UserDesignations');
         $this->request->allowMethod(['post', 'delete']);
         $designation = $this->Designations->get($id);

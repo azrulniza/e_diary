@@ -34,6 +34,8 @@ class OrganizationsController extends AppController
      */
     public function view($id = null)
     {
+        $this->set('title', __('Departments'));
+
         $organization = $this->Organizations->get($id);
         $this->set('organization', $organization);
     }
@@ -75,6 +77,8 @@ class OrganizationsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->set('title', __('Departments'));
+
         $organization = $this->Organizations->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $organization = $this->Organizations->patchEntity($organization, $this->request->getData());
@@ -103,6 +107,8 @@ class OrganizationsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->set('title', __('Departments'));
+        
 		$this->loadModel('UserOrganizations');
         $this->request->allowMethod(['post', 'delete']);
         $organization = $this->Organizations->get($id);

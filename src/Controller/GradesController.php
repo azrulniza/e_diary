@@ -19,7 +19,9 @@ class GradesController extends AppController
      */
     public function index()
     {
-        $grades = $this->paginate($this->Grades);
+        $this->set('title', __('Grade'));
+
+        $grades = $this->paginate($this->Grades->find()->where(['status'=>1]));
 
         $this->set(compact('grades'));
     }
@@ -33,6 +35,8 @@ class GradesController extends AppController
      */
     public function view($id = null)
     {
+        $this->set('title', __('Grade'));
+
         $grade = $this->Grades->get($id, [
             'contain' => ['Users']
         ]);
@@ -47,6 +51,8 @@ class GradesController extends AppController
      */
     public function add()
     {
+        $this->set('title', __('Grade'));
+
         $grade = $this->Grades->newEntity();
         if ($this->request->is('post')) {
             $grade = $this->Grades->patchEntity($grade, $this->request->getData());
@@ -72,6 +78,8 @@ class GradesController extends AppController
      */
     public function edit($id = null)
     {
+        $this->set('title', __('Grade'));
+
         $grade = $this->Grades->get($id, [
             'contain' => []
         ]);
@@ -98,6 +106,7 @@ class GradesController extends AppController
      */
     public function delete($id = null)
     {
+        $this->set('title', __('Grade'));
 		$this->loadModel('Users');
         $this->request->allowMethod(['post', 'delete']);
         $grade = $this->Grades->get($id);

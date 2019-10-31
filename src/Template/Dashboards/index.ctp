@@ -343,8 +343,8 @@ $this->Html->script('dashboard');
 							{
 								label: '<?php echo __('Late');?>',
 								data: dataPack1,
-											backgroundColor: "#512DA8",
-											hoverBackgroundColor: "#7E57C2",
+											backgroundColor: "#CC0000",
+											hoverBackgroundColor: "#FF3232",
 											hoverBorderWidth: 0
 							},
 							{

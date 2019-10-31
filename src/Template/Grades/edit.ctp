@@ -2,7 +2,7 @@
     <div class="col-xs-10">
         <div class="grades form">
             <?= $this->Form->create($grade, ['role' => 'form']) ?>
-            <div class="box box-success">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Edit Grade') ?></h3>
                 </div>

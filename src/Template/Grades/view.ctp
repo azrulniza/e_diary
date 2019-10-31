@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-10">
         <div class="grades view info-box">
-            <div class="box box-info">
+            <div class="box box-default">
                 <span class="info-box-icon bg-aqua">
                     <i class="fa fa-grade"></i>
                 </span>

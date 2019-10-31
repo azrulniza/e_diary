@@ -8,6 +8,8 @@ use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 use App\Utility\Location;
 use Cake\Datasource\ConnectionManager;
+use Cake\Core\Configure;
+
 
 /**
  * Dashboard Controller
@@ -155,7 +157,7 @@ class DashboardsController extends AppController
                 $staff_timeoff = $total_time_off['total_time_off'];
 
                 //count all user
-                $sql="SELECT COUNT(*) AS total_staff From Users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$departmentSelected";
+                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$departmentSelected";
                 $stmt_sql = $conn->execute($sql);
                 $stmt_sql_result = $stmt_sql->fetch('assoc');
                 $count_all_user=$stmt_sql_result['total_staff'];
@@ -204,7 +206,7 @@ class DashboardsController extends AppController
                 $staff_timeoff = $total_time_off['total_time_off'];
 
                 //count all user
-                $sql="SELECT COUNT(*) AS total_staff From Users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$departmentSelected";
+                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$departmentSelected";
                 $stmt_sql = $conn->execute($sql);
                 $stmt_sql_result = $stmt_sql->fetch('assoc');
                 $count_all_user=$stmt_sql_result['total_staff'];
@@ -318,7 +320,7 @@ class DashboardsController extends AppController
                 $staff_timeoff = $total_time_off['total_time_off'];
 
                 //count all user
-                $sql="SELECT COUNT(*) AS total_staff From Users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$user_organization_id";
+                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$user_organization_id";
                 $stmt_sql = $conn->execute($sql);
                 $stmt_sql_result = $stmt_sql->fetch('assoc');
                 $count_all_user=$stmt_sql_result['total_staff'];
@@ -492,7 +494,7 @@ class DashboardsController extends AppController
             $staff_timeoff = $total_time_off['total_time_off'];
 
             //count all user
-            $sql="SELECT COUNT(*) AS total_staff From Users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$user_organization_id";
+            $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$user_organization_id";
             $stmt_sql = $conn->execute($sql);
             $stmt_sql_result = $stmt_sql->fetch('assoc');
             $count_all_user=$stmt_sql_result['total_staff'];

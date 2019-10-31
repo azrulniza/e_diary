@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <?php
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
-                        echo $this->Form->input('description', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
+                        echo $this->Form->input('description', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);
 						echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $status,'required'=>true]);
                         ?>
                     </div>

@@ -92,7 +92,7 @@ class UsersController extends AppController
 			}
 			
         }else if ($this->AuthUser->hasRole(STAFF)) {
-			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$currentUser->id,'Users.status'=>1]);
+			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.id'=>$currentUser->id,'Users.status'=>1]);
 		}
 
 		foreach($query as $user){

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-10">
-        <div class="box box-info">
+        <div class="box box-default">
             <div class="box-header"></div>
             <div class="box-body">
                 <div class="grades index dataTable_wrapper table-responsive">
@@ -21,7 +21,7 @@
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'edit', $grade->id], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-success btn-xs']) ?>
-                                        <?= $this->Form->postLink($this->Html->tag('i', '', ['class' => 'fa fa-trash']), ['action' => 'delete', $grade->id], ['escape' => false, 'title' => __('Delete'), 'class' => 'btn btn-danger btn-xs', 'confirm' => __('Are you sure you want to delete this {0}?', 'grade')]) ?>
+                                        <?= $this->Form->postLink($this->Html->tag('i', '', ['class' => 'fa fa-trash']), ['action' => 'delete', $grade->id], ['escape' => false, 'title' => __('Delete'), 'class' => 'btn btn-danger btn-xs', 'confirm' => __('Are you sure you want to delete this?')]) ?>
                                     </div>
                                 </td>
                             </tr>

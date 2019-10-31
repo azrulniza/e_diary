@@ -95,11 +95,11 @@
                                         <?php if($userLeave['leave_status_id']==1){
                                          
                                             if($userRoles->hasRole(['Staff'])){
-                                                echo $this->Form->postLink($this->Html->tag('i', __('Cancel')), ['action' => 'cancel', $userLeave['id']], ['escape' => false, 'title' => __('Cancel'), 'class' => 'btn btn-default btn-xs', 'data-toggle'=>'tooltip', 'confirm' => __('Are you sure you want to CANCEL this leave application {0}?', $userLeave['reason'])]);
+                                                echo $this->Form->postLink($this->Html->tag('i', __('Cancel')), ['action' => 'cancel', $userLeave['id']], ['escape' => false, 'title' => __('Cancel'), 'class' => 'btn btn-default btn-xs', 'data-toggle'=>'tooltip', 'confirm' => __('Are you sure you want to CANCEL this leave application?')]);
                                             }
 
                                             if($userRoles->hasRole(['Master Admin','Supervisor'])){
-                                                echo $this->Form->postLink($this->Html->tag('i', __('Approve')), ['action' => 'approve', $userLeave['id']], ['escape' => false, 'title' => __('Approve'), 'class' => 'btn btn-success btn-xs','data-toggle'=>'tooltip','confirm' => __('Are you sure you want to APPROVE this leave application {0}?', $userLeave['reason'])]);
+                                                echo $this->Form->postLink($this->Html->tag('i', __('Approve')), ['action' => 'approve', $userLeave['id']], ['escape' => false, 'title' => __('Approve'), 'class' => 'btn btn-success btn-xs','data-toggle'=>'tooltip','confirm' => __('Are you sure you want to APPROVE this leave application?')]);
 
                                                 //echo $this->Html->link($this->Html->tag('i', __('Reject')), ['action' => 'update', $userLeave['id']], ['escape' => false, 'title' => __('Reject'), 'class' => 'btn btn-danger btn-xs','data-toggle'=>'tooltip']);
                                                 echo $this->Html->link($this->Html->tag('i', __('Reject')), ['action' => '#modal-container-171766'.$userLeave['id']], ['escape' => false, 'title' => __('Reject'), 'class' => 'btn btn-danger btn-xs','data-toggle'=>'modal', 'role'=>'button']);
@@ -164,7 +164,7 @@
                                        
                                         <?php if($userLeave['leave_status_id']==2){
                                             if($userRoles->hasRole(['Master Admin','Supervisor','Staff'])){
-                                             echo $this->Form->postLink($this->Html->tag('i', __('Void')), ['action' => 'void', $userLeave['id']], ['escape' => false, 'title' => __('Void'), 'class' => 'btn btn-default btn-xs', 'data-toggle'=>'tooltip', 'confirm' => __('Are you sure you want to VOID this leave application {0}?', $userLeave['reason'])]);
+                                             echo $this->Form->postLink($this->Html->tag('i', __('Void')), ['action' => 'void', $userLeave['id']], ['escape' => false, 'title' => __('Void'), 'class' => 'btn btn-default btn-xs', 'data-toggle'=>'tooltip', 'confirm' => __('Are you sure you want to VOID this leave application?')]);
                                             }
 
                                         }?>

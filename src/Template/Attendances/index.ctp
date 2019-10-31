@@ -34,7 +34,7 @@
                                 <th><?= __('Status') ?></th>
                                 <th><?= __('In') ?></th>
                                 <th><?= __('Out') ?></th>
-                                <th><?= __('Card') ?></th>
+                                <th><?= __('Card Color') ?></th>
                                 <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
                                     <th class="actions"><?= __('Actions') ?></th>
                                 <?php endif; ?>
@@ -62,16 +62,14 @@
                                     ?>
                                     <p style="color:<?php echo $color;?>"><?= $attendance['attendance_code_name'] ?></p>
                                 </td>
-                                <td><?php if($attendance['in']!=""){
-                                    //echo $attendance['in'];
-                                    // echo $date_in=date_create($attendance['in']);
-                                   //echo $date_in = date_create_from_format('d/m/Y:H:i:s', $attendance['in']);
+                                <td><?php if($attendance['in']!=""){ ?>
+                                    
                                    
-                                    echo date_format($attendance['in'],"H:i a");
+                                    <p style="color:<?php echo $attendance['card']?>"><?php echo date_format($attendance['in'],"H:i a");?></p> 
+
                                      
-                                }
-                               
-                                ?></td>
+                                <?php } ?>
+                                </td>
                                 <td><?php if($attendance['out']!=""){
                                     //$date_out=date_create($attendance['out']);
                                         echo date_format($attendance['out'],"H:i a");
@@ -80,7 +78,7 @@
                                 ?></td>
                                <td><?php if($attendance['card']!=""){ ?>
                                         
-                                       <b style="color:<?php echo $attendance['card']?>"><span class="fa fa-square"></span></b> <?= $attendance['card'] ?>
+                                       <b style="color:yellow"><span class="fa fa-square"></span></b> <?= __('Yellow')?>
                                        
                                 <?php } ?>
                                 
@@ -89,13 +87,13 @@
                                     <td class="actions">
                                         <div class="btn-group">
                                             
-                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'update', $attendance['user_id']], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>'Update']) ?>                    
+                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-pencil']), ['action' => 'update', $attendance['user_id']], ['escape' => false, 'title' => __('Edit'), 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>__('Update Attendance')]) ?>                    
                         
                                         </div>
                                         <div class="btn-group">
-                                            
-                                              <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-exchange']), ['action' => 'change_card', $attendance['card_id']], ['escape' => false, 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>'Change Card Status']) ?>
-                                               
+                                            <?php if($attendance['in']!=""){?>
+                                              <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-exchange']), ['action' => 'change_card', $attendance['card_id']], ['escape' => false, 'class' => 'btn btn-default btn-xs','data-toggle'=>'tooltip','title'=>__('Change Card Status')]) ?>
+                                            <?php } ?>  
                                         </div>
                                     </td>
                                 <?php endif; ?>

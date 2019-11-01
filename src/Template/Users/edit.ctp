@@ -57,7 +57,6 @@
 				$("#listuser").hide();
 				$("label[for='listuser']").hide();
 				$("#listuser").prop('required',false);
-				$("#listuser").val(1);
 			}else{
 				$("#listuser").show();
 				$("label[for='listuser']").show();				
@@ -67,7 +66,6 @@
 			$("#listuser").hide();
 			$("label[for='listuser']").hide();
 			$("#listuser").prop('required',false);
-			$("#listuser").val(1);
 			console.log($("#listuser"));
 		}
 	});
@@ -98,7 +96,7 @@
                                 <?php echo __('Maximum file size:') ?><strong> <?php echo __('1MB') ?></strong>
                             </span>
 						</center>
-                        <?php
+                        <?php 
                         echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
 						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
@@ -118,7 +116,7 @@
 							echo '</div>';
 							echo '<div></div>';
 							echo '<div style="float: left;">';
-							echo $this->Form->input('skim', ['label'=>false,'class' => 'form-control','style'=>'width:50%;', 'placeholder' => __('Enter ...'),'required'=>true]);
+							echo $this->Form->input('skim', ['label'=>false,'class' => 'form-control','style'=>'width:50%;', 'min'=>1,'placeholder' => __('Enter ...'),'required'=>true]);
 							echo '</div>';
 							echo '<div style="clear: both;"></div>';
 							echo '</div>';

@@ -94,6 +94,7 @@ class UsersController extends AppController
         }else if ($this->AuthUser->hasRole(STAFF)) {
 			$query = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['id'=>$currentUser->id,'Users.status'=>1]);
 		}
+
 		foreach($query as $user){
 			$heads = $this->Users->find()->where(['id'=> $user->report_to]);
 			foreach($heads as $head){
@@ -417,11 +418,10 @@ class UsersController extends AppController
 			
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->orWhere(['status'=>1]);
-			$reportTo = $this->Users->find('list')->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
-			return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);});
-			
+			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'=> function($q) use($selected_dept){
+					return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);}])->where(['Users.status'=>1]);
 			$reportTo->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [SUPERVISOR,ADMIN]]);
+					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
 				});
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles

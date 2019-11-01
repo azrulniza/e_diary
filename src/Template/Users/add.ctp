@@ -27,12 +27,11 @@
 	$(document ).ready(function() {
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
-			if($( "#listdepartment" ).val() < 1){
-				$("#listdesignation").prop('disabled',true);
-				$("#listuser").prop('disabled',true);
-			}else{
-				$("#listdesignation").prop('disabled',false);
-			}
+			console.log(id);
+			
+			$("#listuser").prop('disabled',true);
+			$("#listdesignation").prop('disabled',false);
+			
 			$.ajax({
 				type : "POST",
 				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id, //pass query string to server
@@ -117,7 +116,7 @@
 							echo '</div>';
 							echo '<div></div>';
 							echo '<div style="float: left;">';
-							echo $this->Form->input('skim', ['label'=>false,'class' => 'form-control','style'=>'width:50%;', 'placeholder' => __('Enter ...'),'required'=>true]);
+							echo $this->Form->input('skim', ['label'=>false,'class' => 'form-control','style'=>'width:50%;', 'min'=>1,'placeholder' => __('Enter ...'),'required'=>true]);
 							echo '</div>';
 							echo '<div style="clear: both;"></div>';
 							echo '</div>';

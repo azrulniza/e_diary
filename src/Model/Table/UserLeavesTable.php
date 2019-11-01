@@ -34,7 +34,7 @@ class UserleavesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('userleaves');
+        $this->setTable('user_leaves');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 

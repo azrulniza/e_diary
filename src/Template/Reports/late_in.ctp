@@ -19,6 +19,21 @@
 							?>
 						<?php endif; ?>
 						<?php								
+							  for($year = 2019 ; $year <= date('Y',strtotime('+1 year')); $year++){
+								  $arr_year[$year] = $year;
+							  }
+							  
+							  echo $this->Form->input(
+								'att_year',
+								['label' => __('Attendance Year'),
+								'type' => 'select',
+								'id' => 'attyear',
+								'class' => 'form-control autosubmit','style'=>'width:40%',
+								'options' => $arr_year,
+								'value'=>$yearselected,'style'=>'width:40%']
+							);
+						?>
+						<?php								
 							  $month = array(
 							  '01' => __('January'), 
 							  '02' => __('February'), 
@@ -48,12 +63,12 @@
 					</div>
 				<?= $this->Form->end() ?>
 				<a href="exportExcelLatein?department=<?= $departmentSelected;?>&
-					user=<?= $userSelected;?>&att_month=<?= $monthselected;?>" class="btn btn-default pull-right">
+					user=<?= $userSelected;?>&att_month=<?= $monthselected;?>&att_year=<?= $yearselected;?>" class="btn btn-default pull-right">
 						<span class="glyphicon glyphicon-download-alt"> </span> 
 						<?php echo __('Export to Excel') ?>
 					</a>
 					<?= $this->Html->link(__('Export to PDF'), ['action' => 'late_in','department' => $departmentSelected,
-						'user' => $userSelected,'att_month' => $monthselected, 
+						'user' => $userSelected,'att_month' => $monthselected,'att_year' => $yearselected, 
 						'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
 					<br/><br/>
 					<div id='dvContainer'>

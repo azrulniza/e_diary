@@ -2997,8 +2997,8 @@ msgstr "Jumlah Pegawai Lewat Lebih 3 Kali"
 msgid "Pending"
 msgstr "Tertangguh"
 
-
-
+msgid "Attendance Year?"
+msgstr "Tahun Kehadiran"
 
 
 
@@ -3255,3 +3255,4 @@ msgstr "Kata laluan tidak sah. Sila cuba lagi"
 
 msgid "Are you sure you want to delete this?"
 msgstr "Adakah anda pasti untuk memadam rekod ini?"
+

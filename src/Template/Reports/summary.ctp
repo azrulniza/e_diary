@@ -13,7 +13,21 @@
 								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
 						<?php endif; ?>-->
-							
+						<?php								
+							  for($year = 2019 ; $year <= date('Y',strtotime('+1 year')); $year++){
+								  $arr_year[$year] = $year;
+							  }
+							  
+							  echo $this->Form->input(
+								'att_year',
+								['label' => __('Attendance Year'),
+								'type' => 'select',
+								'id' => 'attyear',
+								'class' => 'form-control autosubmit','style'=>'width:40%',
+								'options' => $arr_year,
+								'value'=>$yearselected,'style'=>'width:40%']
+							);
+						?>
 						<?php								
 							  $month = array(
 							  '01' => __('January'), 
@@ -40,12 +54,12 @@
 							);
 						?>
 						</div>
-				<a href="exportExcelSummary?att_month=<?= $monthselected;?>" class="btn btn-default pull-right">
+				<a href="exportExcelSummary?att_month=<?= $monthselected;?>&att_year=<?= $yearselected;?>" class="btn btn-default pull-right">
 					<span class="glyphicon glyphicon-download-alt"> </span> 
 					<?php echo __('Export to Excel') ?>
 				</a>
 					
-				<?= $this->Html->link(__('Export to PDF'), ['action' => 'summary','att_month' => $monthselected, '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+				<?= $this->Html->link(__('Export to PDF'), ['action' => 'summary','att_month' => $monthselected,'att_year' => $yearselected, '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
 
 				<br/><br/>
                 <div class="reports index dataTable_wrapper table-responsive">

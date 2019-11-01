@@ -38,6 +38,8 @@ class ReportsController extends AppController
      */
     public function index()
     {
+		$this->loadModel('Users');
+        $this->loadModel('UserOrganizations');
        
 		$Users = TableRegistry::get('Users');
 		$Users = TableRegistry::getTableLocator()->get('Users');
@@ -51,12 +53,19 @@ class ReportsController extends AppController
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
         $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
 		$users = $this->Users->find('list');
+		
         $departments = $this->Organizations->find('list');
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
+		
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
+		
 		
 		$tempYear	= date("Y");
 		$tempMonth	= date("m");
@@ -71,18 +80,40 @@ class ReportsController extends AppController
 		}
 		
 		
-		$sql = "SELECT Users.*, Attendances.cdate as att_date,Attendances.attn_time, Attendances.attn_remarks,UserCards.card_colour,Organization.name as organization_name
+		/* $sql = "SELECT Users.*, Attendances.cdate as att_date,Attendances.attn_time, Attendances.attn_remarks,UserCards.card_colour,Organization.name as organization_name
 			FROM users Users
 			LEFT JOIN (
 				SELECT Attendances.cdate,Attendances.status,Attendances.user_id, 
 				GROUP_CONCAT(DISTINCT Attendances.cdate SEPARATOR '||') AS attn_time,
 				GROUP_CONCAT(DISTINCT Attendances.remarks SEPARATOR ',') AS attn_remarks
 				FROM attendances Attendances 
-				WHERE year(Attendances.cdate) = '".$tempYear."'
-				AND month(Attendances.cdate) = '".$tempMonth."'
-				AND day(Attendances.cdate) = '".$tempDay."'
+				WHERE date(Attendances.cdate) = '".$dateselected."'
 				GROUP BY Attendances.user_id
 			)Attendances ON Users.id = Attendances.user_id
+			LEFT JOIN (
+				SELECT ucards.user_id,c.name as card_colour FROM user_cards ucards
+				LEFT JOIN cards c ON ucards.card_id=c.id 
+				WHERE date(ucards.cdate) = '".$dateselected."'
+				GROUP BY ucards.user_id
+			) UserCards ON UserCards.user_id = Users.id
+			LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id			
+			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
+			WHERE Users.status = 1"; */
+			
+		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name
+			FROM users Users
+			LEFT JOIN (
+				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks
+				FROM attendances Attendances 
+				WHERE date(Attendances.cdate) = '".$dateselected."' and Attendances.status=1
+				GROUP BY Attendances.user_id
+			)Attendances ON Users.id = Attendances.user_id
+			LEFT JOIN (
+				SELECT Attendances2.cdate as out_time,Attendances2.user_id
+				FROM attendances Attendances2 
+				WHERE date(Attendances2.cdate) = '".$dateselected."' and Attendances2.status=2
+				GROUP BY Attendances2.user_id
+			)Attendances2 ON Users.id = Attendances2.user_id
 			LEFT JOIN (
 				SELECT ucards.user_id,c.name as card_colour FROM user_cards ucards
 				LEFT JOIN cards c ON ucards.card_id=c.id 
@@ -104,7 +135,7 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$sql .= " AND Users.id = '".$userSelected."'";
 		}
-		$sql .= " ORDER BY Users.name";
+		$sql .= " ORDER BY Users.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$results = $connection->execute($sql)->fetchAll('assoc');
@@ -144,6 +175,15 @@ class ReportsController extends AppController
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
+		
+		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
+		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
+	    }
 		
 		if ($dateselected){
 			$thisweekStart	= date('Y-m-d', strtotime( 'monday this week',strtotime($dateselected)));
@@ -190,7 +230,7 @@ class ReportsController extends AppController
 		}
 		
 		$weeklysql .= " GROUP BY  Users.id
-				ORDER BY Users.name";
+				ORDER BY Users.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$weeklyresults = $connection->execute($weeklysql)->fetchAll('assoc');
@@ -217,6 +257,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
         $monthselected = $this->request->query('att_month');
+        $yearselected = $this->request->query('att_year');
 		
 		$userId = $this->AuthUser->id();
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
@@ -231,12 +272,22 @@ class ReportsController extends AppController
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
 		
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
 		
 		if ($monthselected){
 			$thismonthStart	=date("Y-".$monthselected."-1");
 			$thismonthEnd	=date("Y-".$monthselected."-t");
 		} else {
 			$monthselected	= date('m');
+		}
+		if ($yearselected){
+			$thismonthStart	=date($yearselected."-".$monthselected."-1");
+			$thismonthEnd	=date($yearselected."-".$monthselected."-t");
+		} else {
+			$yearselected	= date('Y');
 		}
 		
 		$monthlysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour,
@@ -258,6 +309,7 @@ class ReportsController extends AppController
 					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."'
+					AND DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."'
 					ORDER by cdate ASC
 					LIMIT 18446744073709551615 
 				)cardinfo ON cardinfo.user_id=Users.id 
@@ -280,7 +332,7 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$monthlysql .= " AND Users.id = '".$userSelected."'";
 		}
-		$monthlysql .= " GROUP BY Users.id ORDER BY Users.name";
+		$monthlysql .= " GROUP BY Users.id ORDER BY Users.card_no";
 				
 		$this->viewBuilder()->options([
             'pdfConfig' => [
@@ -291,7 +343,7 @@ class ReportsController extends AppController
 		$connection = ConnectionManager::get('default');
 		$monthlyresults = $connection->execute($monthlysql)->fetchAll('assoc');
 		$this->set('monthlyresult',$monthlyresults);
-        $this->set(compact('monthlyresult', 'monthlysql','monthselected','userRoles','departments','users','departmentSelected','userSelected'));
+        $this->set(compact('monthlyresult', 'monthlysql','monthselected','yearselected','userRoles','departments','users','departmentSelected','userSelected'));
         $this->set('_serialize', ['report']);
     }
 	
@@ -307,6 +359,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
         $monthselected = $this->request->query('att_month');
+        $yearselected = $this->request->query('att_year');
 		
 		$userId = $this->AuthUser->id();
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
@@ -323,222 +376,240 @@ class ReportsController extends AppController
 			$monthselected	= date('m');
 		}
 		
+		if ($yearselected){
+			$thismonthStart	=date($yearselected."-".$monthselected."-1");
+			$thismonthEnd	=date($yearselected."-".$monthselected."-t");
+		} else {
+			$yearselected	= date('Y');
+		}
+		
 		//result for grade 55 and above
-		$grade55sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade55sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND 
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."'
+							AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 55
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 55
+						ORDER BY u.id";
 		$grade55results = $connection->execute($grade55sql)->fetchAll('assoc');
 		$this->set('grade55result',$grade55results);
 		
 		$totallate55sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 55 
+							AND u.skim >= 55 
 							GROUP BY Attendances.user_id";
 		$totallate55results = $connection->execute($totallate55sql)->fetchAll('assoc');
 		$this->set('totallate55result',$totallate55results);
 		
 		//result for grade 48 to 54
-		$grade4854sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade4854sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 48 AND d.gred<=54
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 48 AND u.skim<=54
+						ORDER BY u.id";
 		$grade4854results = $connection->execute($grade4854sql)->fetchAll('assoc');
 		$this->set('grade4854result',$grade4854results);
 		
 		$totallate4854sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 48 AND d.gred<=54
+							AND u.skim >= 48 AND u.skim<=54
 							GROUP BY Attendances.user_id";
 		$totallate4854results = $connection->execute($totallate4854sql)->fetchAll('assoc');
 		$this->set('totallate4854result',$totallate4854results);
 		
 		//result for grade 41 to 44
-		$grade4144sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade4144sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 41 AND d.gred<=44
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 41 AND u.skim<=44
+						ORDER BY u.id";
 		$grade4144results = $connection->execute($grade4144sql)->fetchAll('assoc');
 		$this->set('grade4144result',$grade4144results);
 		
 		$totallate4144sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 41 AND d.gred<=44
+							AND u.skim >= 41 AND u.skim<=44
 							GROUP BY Attendances.user_id";
 		$totallate4144results = $connection->execute($totallate4144sql)->fetchAll('assoc');
 		$this->set('totallate4144result',$totallate4144results);
 		
 		//result for grade 17 to 40
-		$grade1740sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade1740sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND 
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id= Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 17 AND d.gred<=40
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 17 AND u.skim<=40
+						ORDER BY u.id";
 		$grade1740results = $connection->execute($grade1740sql)->fetchAll('assoc');
 		$this->set('grade1740result',$grade1740results);
 		
 		$totallate1740sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>'09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 17 AND d.gred<=40
+							AND u.skim >= 17 AND u.skim<=40
 							GROUP BY Attendances.user_id";
 		$totallate1740results = $connection->execute($totallate1740sql)->fetchAll('assoc');
 		$this->set('totallate1740result',$totallate1740results);
 		
 		//result for grade 1 to 16
-		$grade116sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade116sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 1 AND d.gred<=16
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 1 AND u.skim<=16
+						ORDER BY u.id";
 		$grade116results = $connection->execute($grade116sql)->fetchAll('assoc');
 		$this->set('grade116result',$grade116results);
 		
 		$totallate116sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id, 			
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 1 AND d.gred<=16
+							AND u.skim >= 1 AND u.skim<=16
 							GROUP BY Attendances.user_id";
 		$totallate116results = $connection->execute($totallate116sql)->fetchAll('assoc');
 		$this->set('totallate116result',$totallate116results);
@@ -550,7 +621,7 @@ class ReportsController extends AppController
             ]
         ]);
 		//connection to template
-        $this->set(compact('grade55result','grade4854result','grade4144result','grade1740result','grade116result', 'totallate55result','totallate4854result','totallate4144result','totallate1740result','totallate1740sql','totallate116result','monthselected','totallate4854sql','userRoles','departments','users','departmentSelected','userSelected'));
+        $this->set(compact('grade55result','grade4854result','grade4144result','grade1740result','grade116result', 'totallate55result','totallate4854result','totallate4144result','totallate1740result','totallate1740sql','totallate116result','monthselected','totallate4854sql','userRoles','departments','users','departmentSelected','userSelected','yearselected'));
         $this->set('_serialize', ['report']);
     }
 	public function exportExcelDaily()
@@ -573,25 +644,28 @@ class ReportsController extends AppController
 			$dateselected = date( 'Y-m-d');
 		}
 		
-		$sql = "SELECT Users.*, Attendances.cdate as att_date,Attendances.attn_time, Attendances.attn_remarks,UserCards.card_colour
+		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name
 			FROM users Users
 			LEFT JOIN (
-				SELECT Attendances.cdate,Attendances.status,Attendances.user_id, 
-				GROUP_CONCAT(DISTINCT Attendances.cdate SEPARATOR '||') AS attn_time,
-				GROUP_CONCAT(DISTINCT Attendances.remarks SEPARATOR ',') AS attn_remarks
+				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks
 				FROM attendances Attendances 
-				WHERE year(Attendances.cdate) = '".$tempYear."'
-				AND month(Attendances.cdate) = '".$tempMonth."'
-				AND day(Attendances.cdate) = '".$tempDay."'
+				WHERE date(Attendances.cdate) = '".$dateselected."' and Attendances.status=1
 				GROUP BY Attendances.user_id
 			)Attendances ON Users.id = Attendances.user_id
+			LEFT JOIN (
+				SELECT Attendances2.cdate as out_time,Attendances2.user_id
+				FROM attendances Attendances2 
+				WHERE date(Attendances2.cdate) = '".$dateselected."' and Attendances2.status=2
+				GROUP BY Attendances2.user_id
+			)Attendances2 ON Users.id = Attendances2.user_id
 			LEFT JOIN (
 				SELECT ucards.user_id,c.name as card_colour FROM user_cards ucards
 				LEFT JOIN cards c ON ucards.card_id=c.id 
 				WHERE date(ucards.cdate) = '".$dateselected."'
 				GROUP BY ucards.user_id
 			) UserCards ON UserCards.user_id = Users.id
-			LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id
+			LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id			
+			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 			WHERE Users.status = 1";
 		
 		if ($departmentSelected){
@@ -600,7 +674,7 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$sql .= " AND Users.id = '".$userSelected."'";
 		}
-		$sql .= " ORDER BY Users.name";
+		$sql .= " ORDER BY Users.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$results = $connection->execute($sql)->fetchAll('assoc');
@@ -646,23 +720,23 @@ class ReportsController extends AppController
 			$outtime = '';
 			
 			$result = explode("||",$user['attn_time']);
-			$diff = strtotime($result[1]) - strtotime($result[0]);
+			$diff = strtotime($user['out_time']) - strtotime($user['in_time']);
 			$hours = $diff / ( 60 * 60 );
 			
 			$showData = 1;
 			if($filterSelected == 1){
 				$showData = 0;
-				if(date('H:i:s',strtotime($result[0]))	 > date('H:i:s',strtotime('09:00:00'))){
+				if(date('H:i:s',strtotime($user['in_time']))	 > date('H:i:s',strtotime('09:00:00'))){
 					$showData = 1;
 				}
 			}if($filterSelected == 2){
 				$showData = 0;
-				if($user['attn_time'] != '' && $hours < '9'){
+				if($user['attn_date'] != '' && $hours < '9'){
 					$showData = 1;
 				}
 			}if($filterSelected == 3){
 				$showData = 0;
-				if($user['attn_time'] == ''){
+				if($user['attn_date'] == ''){
 					$showData = 1;
 				}
 			}
@@ -672,8 +746,8 @@ class ReportsController extends AppController
 				if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
 				if ($user['card_colour'] == 'Red'){ $totalred += 1;}
 				if($hours>0){ $totalhours = round($hours, 2);}
-				if ($result[0] !=''){ $intime = date('H:i:s',strtotime($result[0]));}
-				if ($result[1] !=''){ $outtime = date('H:i:s',strtotime($result[1]));}
+				if ($user['in_time'] !=''){ $intime = date('H:i:s',strtotime($user['in_time']));}
+				if ($user['out_time'] !=''){ $outtime = date('H:i:s',strtotime($user['out_time']));}
 				
 				$data[]=$count_no .','.$user['name'] .','.$user['card_no'].','.$intime.','.$outtime.','.$user['attn_remarks'].','.$totalhours;
 				$count_no++;	
@@ -746,7 +820,7 @@ class ReportsController extends AppController
 		}
 		
 		$weeklysql .= " GROUP BY  Users.id
-				ORDER BY Users.name";
+				ORDER BY Users.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$weeklyresults = $connection->execute($weeklysql)->fetchAll('assoc');
@@ -817,6 +891,7 @@ class ReportsController extends AppController
 	public function exportExcelMonthly()
     {
 		$monthselected = $this->request->query['att_month'];
+		$yearselected = $this->request->query['att_year'];
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
 		
@@ -826,7 +901,12 @@ class ReportsController extends AppController
 		} else {
 			$monthselected	= date('m');
 		}
-		
+		if ($yearselected){
+			$thismonthStart	=date($yearselected."-".$monthselected."-1");
+			$thismonthEnd	=date($yearselected."-".$monthselected."-t");
+		} else {
+			$yearselected	= date('m');
+		}
 		$monthlysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour,
 				cardinfo.remarks as card_remarks,cardinfo.cdate,Organization.name as organization_name
 				FROM users Users
@@ -846,6 +926,7 @@ class ReportsController extends AppController
 					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."'
+					AND DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."'
 					ORDER by cdate ASC
 					LIMIT 18446744073709551615 
 				)cardinfo ON cardinfo.user_id=Users.id 
@@ -857,7 +938,7 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$monthlysql .= " AND Users.id = '".$userSelected."'";
 		}
-		$monthlysql .= " GROUP BY Users.id ORDER BY Users.name";
+		$monthlysql .= " GROUP BY Users.id ORDER BY Users.card_no";
 				
 		
 		$connection = ConnectionManager::get('default');
@@ -941,221 +1022,236 @@ class ReportsController extends AppController
 		$connection = ConnectionManager::get('default');
 	
         $monthselected = $this->request->query('att_month');
+        $yearselected = $this->request->query('att_year');
 		
 		if ($monthselected){
 		} else {
 			$monthselected	= date('m');
 		}
+		if ($yearselected){
+		} else {
+			$yearselected	= date('Y');
+		}
 		
 		//result for grade 55 and above
-		$grade55sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade55sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND 
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 55
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 55
+						ORDER BY u.id";
 		$grade55results = $connection->execute($grade55sql)->fetchAll('assoc');
 		
 		$totallate55sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 55 
+							AND u.skim >= 55 
 							GROUP BY Attendances.user_id";
 		$totallate55results = $connection->execute($totallate55sql)->fetchAll('assoc');
 		
 		//result for grade 48 to 54
-		$grade4854sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade4854sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 48 AND d.gred<=54
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 48 AND u.skim<=54
+						ORDER BY u.id";
 		$grade4854results = $connection->execute($grade4854sql)->fetchAll('assoc');
 
 		$totallate4854sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 48 AND d.gred<=54
+							AND u.skim >= 48 AND u.skim<=54
 							GROUP BY Attendances.user_id";
 		$totallate4854results = $connection->execute($totallate4854sql)->fetchAll('assoc');
 		
 		//result for grade 41 to 44
-		$grade4144sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade4144sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 41 AND d.gred<=44
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 41 AND u.skim<=44
+						ORDER BY u.id";
 		$grade4144results = $connection->execute($grade4144sql)->fetchAll('assoc');
 		
 		$totallate4144sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 41 AND d.gred<=44
+							AND u.skim >= 41 AND u.skim<=44
 							GROUP BY Attendances.user_id";
 		$totallate4144results = $connection->execute($totallate4144sql)->fetchAll('assoc');
 		
 		//result for grade 17 to 40
-		$grade1740sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade1740sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 17 AND d.gred<=40
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 17 AND u.skim<=40
+						ORDER BY u.id";
 		$grade1740results = $connection->execute($grade1740sql)->fetchAll('assoc');
 		
 		$totallate1740sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND  YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>'09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 17 AND d.gred<=40
+							AND u.skim >= 17 AND u.skim<=40
 							GROUP BY Attendances.user_id";
 		$totallate1740results = $connection->execute($totallate1740sql)->fetchAll('assoc');
 
 		
 		//result for grade 1 to 16
-		$grade116sql = "SELECT count(ud.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
+		$grade116sql = "SELECT count(u.id) as total_officer,count(Ucards.green) as green,count(Ucards2.yellow) as yellow,
 						count(Ucards3.red) as red
-						FROM user_designations ud
-						LEFT JOIN designations d ON d.id= ud.designation_id
+						FROM users u
 						LEFT JOIN (
 							SELECT card_id AS green,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =1
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =1
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards ON ud.user_id = Ucards.user_id
+						)Ucards ON u.id = Ucards.user_id
 						LEFT JOIN (
 							SELECT card_id as yellow,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =2
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =2
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC	
-						)Ucards2 ON ud.user_id = Ucards2.user_id
+						)Ucards2 ON u.id = Ucards2.user_id
 						LEFT JOIN (
 							SELECT card_id as red,Ucards.user_id
 							FROM user_cards Ucards 
-							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND card_id =3
+							WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."' AND
+							DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."' AND card_id =3
 							GROUP BY Ucards.user_id
 							ORDER BY Ucards.cdate DESC
-						)Ucards3 ON ud.user_id = Ucards3.user_id
-						WHERE d.gred >= 1 AND d.gred<=16
-						ORDER BY ud.user_id";
+						)Ucards3 ON u.id = Ucards3.user_id
+						WHERE u.skim >= 1 AND u.skim<=16
+						ORDER BY u.id";
 		$grade116results = $connection->execute($grade116sql)->fetchAll('assoc');
 
 		
 		$totallate116sql = "SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id, 			
 							Attendances.remarks
 							FROM attendances Attendances 
-							LEFT JOIN user_designations ud ON Attendances.user_id= ud.user_id
-							LEFT JOIN designations d ON d.id= ud.designation_id
+							LEFT JOIN users u ON Attendances.user_id= u.id
 							WHERE MONTH(Attendances.cdate)= '".$monthselected."'
+							AND YEAR(Attendances.cdate)= '".$yearselected."'
 							AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
 							AND Attendances.status = 1 
-							AND d.gred >= 1 AND d.gred<=16
+							AND u.skim >= 1 AND u.skim<=16
 							GROUP BY Attendances.user_id";
 		$totallate116results = $connection->execute($totallate116sql)->fetchAll('assoc');
 		
@@ -1383,6 +1479,15 @@ class ReportsController extends AppController
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
 		
+		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
+		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
+	    }
+		
 		$tempYear	= date("Y");
 		$tempMonth	= date("m");
 		$tempDay 	= date("d");
@@ -1400,7 +1505,7 @@ class ReportsController extends AppController
 				FROM user_leaves ul
 				LEFT JOIN users u ON ul.user_id = u.id
 				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
-				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN leave_status ls ON ls.id = ul.leave_status_id
 				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 				WHERE DATE_FORMAT(ul.date_start, '%Y-%m-%d') <= '".$dateselected."'
@@ -1420,7 +1525,7 @@ class ReportsController extends AppController
 		if ($leaveTypeselected){
 			$dailytfsql .= " AND lt.id = '".$leaveTypeselected."'";
 		} 
-		$dailytfsql .= " ORDER BY u.name";
+		$dailytfsql .= " ORDER BY u.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$dailytfresults = $connection->execute($dailytfsql)->fetchAll('assoc');
@@ -1468,7 +1573,7 @@ class ReportsController extends AppController
 		if ($leaveTypeselected){
 			$dailytfsql .= " AND lt.id = '".$leaveTypeselected."'";
 		} 
-		$dailytfsql .= " ORDER BY u.name";
+		$dailytfsql .= " ORDER BY u.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$results = $connection->execute($dailytfsql)->fetchAll('assoc');
@@ -1545,6 +1650,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
 		$monthselected = $this->request->query('att_month');
+		$yearselected = $this->request->query('att_year');
         $filterSelected = $this->request->query('filterby');
 		$userId = $this->AuthUser->id();
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
@@ -1559,17 +1665,33 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
+		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
+		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
+	    }
+		
 		//month
+		if ($yearselected){
+			$thismonthStart	=date($yearselected."-m-1");
+			$thismonthEnd	=date($yearselected."-m-t");
+		} else {
+			$yearselected	= date('Y');
+		}
 		if ($monthselected){
-			$thismonthStart	=date("Y-".$monthselected."-01");
-			$thismonthEnd	=date("Y-".$monthselected."-t");
+			$thismonthStart	=date($yearselected."-".$monthselected."-01");
+			$thismonthEnd	=date($yearselected."-".$monthselected."-t");
 		} 
+		
 		
 		$stafftfsql = "SELECT ul.*,u.name as user_name,lt.name as leave_type,ls.name as leave_status,Organization.name as organization_name
 				FROM user_leaves ul
 				LEFT JOIN users u ON ul.user_id = u.id
 				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
-				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN leave_status ls ON ls.id = ul.leave_status_id
 				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 				WHERE u.status = 1";
@@ -1582,6 +1704,9 @@ class ReportsController extends AppController
 		if($monthselected){
 			$stafftfsql .= " AND (MONTH(ul.date_start) = '".$monthselected."'
 							OR MONTH(ul.date_end) = '".$monthselected."')";
+		}
+		if($yearselected){
+			$stafftfsql .= " AND YEAR(ul.date_start) = '".$yearselected."'";
 		}
 		
 		if ($departmentSelected && $userSelected!=$userId){
@@ -1601,7 +1726,7 @@ class ReportsController extends AppController
 		if ($leaveTypeselected){
 			$stafftfsql .= " AND lt.id = '".$leaveTypeselected."'";
 		} 
-		$stafftfsql .= " ORDER BY u.name";
+		$stafftfsql .= " ORDER BY u.card_no";
 		
 		
 		$stafftfresults = $connection->execute($stafftfsql)->fetchAll('assoc');
@@ -1614,7 +1739,7 @@ class ReportsController extends AppController
         ]);
 
 		$this->set('result',$stafftfresults);
-        $this->set(compact('result','stafftfsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','userSelected','leaveTypeselected'));
+        $this->set(compact('result','stafftfsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','userSelected','leaveTypeselected','yearselected'));
 		$this->set('_serialize', ['report']);
     }
 	public function exportExcelStafftf()
@@ -1623,9 +1748,9 @@ class ReportsController extends AppController
 		$userSelected = $this->request->query['user'];
 		$leaveTypeselected = $this->request->query('leaveType');
 		$monthselected = $this->request->query('att_month');
+		$yearselected = $this->request->query('att_year');
 		
-		if ($dateselected){
-			
+		if ($dateselected){			
 		} else {
 			$dateselected = date( 'Y-m-d');
 		}
@@ -1634,7 +1759,7 @@ class ReportsController extends AppController
 				FROM user_leaves ul
 				LEFT JOIN users u ON ul.user_id = u.id
 				LEFT JOIN leave_types lt ON lt.id = ul.leave_type_id
-				LEFT JOIN leave_status ls ON ls.id = ul.status
+				LEFT JOIN leave_status ls ON ls.id = ul.leave_status_id
 				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = u.id			
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 				WHERE u.status = 1";
@@ -1652,7 +1777,10 @@ class ReportsController extends AppController
 			$stafftfsql .= " AND (MONTH(ul.date_start) = '".$monthselected."'
 							OR MONTH(ul.date_end) = '".$monthselected."')";
 		}
-		$stafftfsql .= " ORDER BY u.name";
+		if($yearselected){
+			$stafftfsql .= " AND YEAR(ul.date_start) = '".$yearselected."'";
+		}
+		$stafftfsql .= " ORDER BY u.card_no";
 		
 		$connection = ConnectionManager::get('default');
 		$results = $connection->execute($stafftfsql)->fetchAll('assoc');
@@ -1781,6 +1909,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
 		$monthselected = $this->request->query('att_month');
+		$yearselected = $this->request->query('att_year');
 		
 		$userId = $this->AuthUser->id();
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
@@ -1795,10 +1924,25 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
+		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
+		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
+	    }
+		
 		//month
+		if ($yearselected){
+			$thismonthStart	=date($yearselected."-m-1");
+			$thismonthEnd	=date($yearselected."-m-t");
+		} else {
+			$yearselected	= date('Y');
+		}
 		if ($monthselected){
-			$thismonthStart	=date("Y-".$monthselected."-01");
-			$thismonthEnd	=date("Y-".$monthselected."-t");
+			$thismonthStart	=date($yearselected."-".$monthselected."-01");
+			$thismonthEnd	=date($yearselected."-".$monthselected."-t");
 		} 
 		
 		$lateinsql = "SELECT attn.*,u.name as user_name,Organization.name as organization_name
@@ -1816,6 +1960,9 @@ class ReportsController extends AppController
 		if($monthselected){
 			$lateinsql .= " AND MONTH(attn.cdate) = '".$monthselected."'";
 		}
+		if($yearselected){
+			$lateinsql .= " AND YEAR(attn.cdate) = '".$yearselected."'";
+		}
 		
 		if ($departmentSelected){
 			$lateinsql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
@@ -1824,7 +1971,7 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$lateinsql .= " AND u.id = '".$userSelected."'";
 		}
-		$lateinsql .= " ORDER BY u.name";
+		$lateinsql .= " ORDER BY u.card_no";
 		
 		
 		$stafftfresults = $connection->execute($lateinsql)->fetchAll('assoc');
@@ -1837,7 +1984,7 @@ class ReportsController extends AppController
         ]);
 
 		$this->set('result',$stafftfresults);
-        $this->set(compact('result','lateinsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','userSelected','leaveTypeselected'));
+        $this->set(compact('result','lateinsql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','userSelected','leaveTypeselected','yearselected'));
 		$this->set('_serialize', ['report']);
     }	
 	public function exportExcelLatein()
@@ -1845,6 +1992,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query['department'];
 		$userSelected = $this->request->query['user'];
 		$monthselected = $this->request->query('att_month');
+		$yearselected = $this->request->query('att_year');
 		
 		if ($dateselected){
 			
@@ -1860,6 +2008,8 @@ class ReportsController extends AppController
 				WHERE u.status = 1 AND attn.status=1 AND DATE_FORMAT(attn.cdate, '%H:%i:%s')>='09:00:00'";
 		if($monthselected){
 			$lateinsql .= " AND MONTH(attn.cdate) = '".$monthselected."'";
+		}if($yearselected){
+			$lateinsql .= " AND YEAR(attn.cdate) = '".$yearselected."'";
 		}
 		
 		if ($departmentSelected){
@@ -1869,7 +2019,7 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$lateinsql .= " AND u.id = '".$userSelected."'";
 		}
-		$lateinsql .= " ORDER BY u.name";
+		$lateinsql .= " ORDER BY u.card_no";
 		
 		
 		$connection = ConnectionManager::get('default');
@@ -1942,6 +2092,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query('department');
         $userSelected = $this->request->query('user');
 		$monthselected = $this->request->query('att_month');		
+		$yearselected = $this->request->query('att_year');		
         $filterSelected = $this->request->query('filterby');
 		
 		$userId = $this->AuthUser->id();
@@ -1957,13 +2108,28 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
+		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
+	    }
+		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
+		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
+            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
+	    }
+		
 		//month
+		if ($yearselected){
+			$thismonthStart	=date($yearselected."-m-1");
+			$thismonthEnd	=date($yearselected."-m-t");
+		} else {
+			$yearselected	= date('Y');
+		}
 		if ($monthselected){
-			$lastDateMonth = date('Y-'.$monthselected.'-t');
+			$lastDateMonth = date($yearselected.'-'.$monthselected.'-t');
 			$lastDayMonth = date('t',strtotime($lastDateMonth));
 		} else {
 			$monthselected = date('m');
-			$lastDateMonth = date('Y-'.$monthselected.'-t');
+			$lastDateMonth = date($yearselected.'-'.$monthselected.'-t');
 			$lastDayMonth = date('t',strtotime($lastDateMonth));
 		}
 		
@@ -1983,6 +2149,9 @@ class ReportsController extends AppController
 		if($monthselected){
 			$workinghoursql .= " AND MONTH(attn.cdate) = '".$monthselected."' ";
 		}
+		if($yearselected){
+			$workinghoursql .= " AND YEAR(attn.cdate) = '".$yearselected."' ";
+		}
 		
 		if ($departmentSelected && $userSelected!=$userId){
 			//$workinghoursql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
@@ -1998,7 +2167,7 @@ class ReportsController extends AppController
 			$workinghoursql .= " AND u.id = '".$userId."'";
 			$userSelected = $userId;
 		}
-		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.name";		
+		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.card_no";		
 		
 		$workinghourresults = $connection->execute($workinghoursql)->fetchAll('assoc');
 		
@@ -2010,7 +2179,7 @@ class ReportsController extends AppController
         ]);
 
 		$this->set('result',$workinghourresults);
-        $this->set(compact('result','workinghoursql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','lastDayMonth','userSelected','filterSelected'));
+        $this->set(compact('result','workinghoursql','sqldepartment','resultDepartment', 'userRoles','departments','users','filterSelected','departmentSelected','monthselected','lastDayMonth','userSelected','filterSelected','yearselected'));
 		$this->set('_serialize', ['report']);
     }
 	public function exportExcelworkinghour()
@@ -2018,6 +2187,7 @@ class ReportsController extends AppController
 		$departmentSelected = $this->request->query['department'];
 		$userSelected = $this->request->query['user'];
 		$monthselected = $this->request->query('att_month');
+		$yearselected = $this->request->query('att_year');
 		
 		if ($monthselected){
 			$lastDateMonth = date('Y-'.$monthselected.'-t');
@@ -2034,10 +2204,13 @@ class ReportsController extends AppController
 		if($monthselected){
 			$workinghoursql .= " AND MONTH(attn.cdate) = '".$monthselected."' ";
 		}
+		if($yearselected){
+			$workinghoursql .= " AND YEAR(attn.cdate) = '".$yearselected."' ";
+		}
 		if ($userSelected){
 			$workinghoursql .= " AND u.id = '".$userSelected."'";
 		}
-		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.name";	
+		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.card_no";	
 		
 		$connection = ConnectionManager::get('default');
 		$results = $connection->execute($workinghoursql)->fetchAll('assoc');

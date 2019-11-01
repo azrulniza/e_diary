@@ -61,24 +61,24 @@
 						
 						$result = explode("||",$user['attn_time']);
 						//count hour
-						$diff = strtotime($result[1]) - strtotime($result[0]);
+						$diff = strtotime($user['out_time']) - strtotime($user['in_time']);
 						$hours = $diff / ( 60 * 60 );
 						
 						//filtershow
 						$showData = 1;
 						if($filterSelected == 1){
 							$showData = 0;
-							if(date('H:i:s',strtotime($result[0]))	 > date('H:i:s',strtotime('09:00:00'))){
+							if(date('H:i:s',strtotime($user['in_time']))	 > date('H:i:s',strtotime('09:00:00'))){
 								$showData = 1;
 							}
 						}if($filterSelected == 2){
 							$showData = 0;
-							if($user['attn_time'] != '' && $hours < '9'){
+							if($user['attn_date'] != '' && $hours < '9'){
 								$showData = 1;
 							}
 						}if($filterSelected == 3){
 							$showData = 0;
-							if($user['attn_time'] == ''){
+							if($user['attn_date'] == ''){
 								$showData = 1;
 							}
 						}
@@ -92,8 +92,8 @@
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['name'] ?></td>
                                 <td><?= $user['card_no'] ?></td>
-                                <td><?php if ($result[0] !=''){ echo date('H:i:s',strtotime($result[0]));} ?></td>
-                                <td><?php if ($result[1] !=''){ echo date('H:i:s',strtotime($result[1]));} ?></td>
+                                <td><?php if ($user['in_time'] !=''){ echo date('H:i:s',strtotime($user['in_time']));} ?></td>
+                                <td><?php if ($user['out_time'] !=''){ echo date('H:i:s',strtotime($user['out_time']));} ?></td>
                                 <td><?= $user['attn_remarks'] ?></td>
                                 <td><?php if ($diff > 0){ echo round($hours, 2). ' Hours';} else { } ?></td>
                             </tr>

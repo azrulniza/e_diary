@@ -19,10 +19,23 @@
 							?>
 						<?php endif; ?>
 						<?php								
+							  for($year = 2019 ; $year <= date('Y',strtotime('+1 year')); $year++){
+								  $arr_year[$year] = $year;
+							  }
+							  
+							  echo $this->Form->input(
+								'att_year',
+								['label' => __('Attendance Year'),
+								'type' => 'select',
+								'id' => 'attyear',
+								'class' => 'form-control autosubmit','style'=>'width:40%',
+								'options' => $arr_year, 
+								'default' => '08',
+								'value'=>$yearselected,'style'=>'width:40%']
+							);
+						?><?php								
 							  $month = array(
-							'01' => __('January'), 
-
-
+							  '01' => __('January'), 
 							  '02' => __('February'), 
 							  '03' => __('March'), 
 							  '04' => __('April'), 
@@ -46,13 +59,13 @@
 							);
 						?>
 						</div>
-				<a href="exportExcelMonthly?department=<?= $departmentSelected;?>&user=<?= $userSelected;?>			&att_month=<?= $monthselected;?>" class="btn btn-default pull-right">
+				<a href="exportExcelMonthly?department=<?= $departmentSelected;?>&user=<?= $userSelected;?>	&att_month=<?= $monthselected;?>&att_year=<?= $yearselected;?>" class="btn btn-default pull-right">
 					<span class="glyphicon glyphicon-download-alt"> </span> 
 					<?php echo __('Export to Excel') ?>
 				</a>
 					
 				<?= $this->Html->link(__('Export to PDF'), ['action' => 'monthly','department' => $departmentSelected,
-						'user' => $userSelected,'att_month' => $monthselected, '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+						'user' => $userSelected,'att_month' => $monthselected,'att_year' => $yearselected, '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
 				<br/><br/>
 				
                 <div class="reports index dataTable_wrapper table-responsive">
@@ -93,7 +106,12 @@
                                 <td><?= $user['card_no'] ?></td>
                                 <td><?php if ($user['total_late']>0){ echo $user['total_late']; }else{ echo '-'; } ?></td>
                                 <td><?php if ($user['total_late']>0){ echo __('yes'); }else{ echo '-'; } ?></td>
-                                <td><?= $user['card_colour'] ?></td>
+                                <td>
+									<?php if ($user['card_colour']) {?>
+									<b style="color:<?= $user['card_colour'] ?>"><span class="fa fa-square"></span></b>
+									<?php } ?>
+									<?= $user['card_colour'] ?>
+								</td>
                                 <td><?= $user['card_remarks'] ?></td>
 
                             </tr>

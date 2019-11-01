@@ -2655,6 +2655,18 @@ msgstr "Berjaya mengubahsuai kad status"
 msgid "The card status could not be saved. Please, try again."
 msgstr "Kad status tidak berjaya disimpan. Sila cuba lagi"
 
+msgid "Click to clock out for "
+msgstr "Klik untuk jam keluar "
+
+msgid "Clocked in for "
+msgstr "Telah jam masuk untuk "
+
+msgid "Get started today! Click to clock in for "
+msgstr "Bermula hari ini! Klik jam masuk untuk"
+
+
+
+
 
 
 # JPSM 29/10/2019 -- Dashboard

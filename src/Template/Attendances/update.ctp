@@ -60,6 +60,7 @@
                     <div align="center">
                         <?php if($action=="out"){?>
 
+                            <?php echo __("Click to clock out for ") ?><b><?php echo $user->name;?></b>
                             <h5><?php echo __("Clocked in for ") . $hour. " ".__("Hour"). " " . $minute ." ".__("Minute") . " " . $second . " " .__("Second");?></h5>
                         <?php }else if($action=="in"){?>
                             <?php echo __("Get started today! Click to clock in for ") ?><b><?php echo $user->name;?></b>

@@ -2878,7 +2878,7 @@ msgid "November"
 msgstr "November"
 
 msgid "December"
-msgstr "Desember"
+msgstr "Disember"
 
 msgid "Total Officer"
 msgstr "Jumlah Pengawai"

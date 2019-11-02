@@ -5,7 +5,7 @@
 				<h3 class="box-title"><?= __('Daily Reports') ?></h3>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
-				
+				<?php echo 'intan'.$deptId;?>
                 <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
 					<div class="form-group">
 						<?php
@@ -30,7 +30,7 @@
 						  
 							echo $date_control;
 						?>
-						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
+						<?php if ($userRoles->hasRole(['Master Admin'])) :?>
 							<?php
 								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
@@ -93,7 +93,7 @@
 							}
 						}if($filterSelected == 2){
 							$showData = 0;
-							if($user['attn_date'] != '' && $hours < '9'){
+							if($user['out_time'] != '' && $hours < '9'){
 								$showData = 1;
 							}
 						}if($filterSelected == 3){

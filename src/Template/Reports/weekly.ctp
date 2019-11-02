@@ -30,7 +30,7 @@
 						  
 							echo $date_control;
 						?>
-						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
+						<?php if ($userRoles->hasRole(['Master Admin'])) :?>
 							<?php
 								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		

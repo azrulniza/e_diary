@@ -8,7 +8,7 @@
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 					<?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
 						<div class="form-group">
-						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
+						<?php if ($userRoles->hasRole(['Master Admin',])) :?>
 							<?php
 								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		

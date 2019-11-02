@@ -87,7 +87,7 @@
 						foreach ($result as $key => $user):
 						
 							if($user['date_start'] == $user['date_end']){
-								$leave_date = date('Y-m-d',$user['date_start']);
+								$leave_date = date('Y-m-d',strtotime($user['date_start']));
 							} else {
 							$leave_date = date('Y-m-d',strtotime($user['date_start'])).' To '.date('Y-m-d',strtotime($user['date_end']));
 							}

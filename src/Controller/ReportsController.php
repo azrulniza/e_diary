@@ -58,8 +58,18 @@ class ReportsController extends AppController
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
-		$this->set('resultDepartment',$sqldepartment);
-		$deptId = $resultDepartment[0]['organization_id'];
+		
+		$connection = ConnectionManager::get('default');
+		$resultsDepartment = $connection->execute($sqldepartment)->fetchAll('assoc');
+		$deptId = $resultsDepartment[0]['organization_id'];
+		
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		if ($userRoles->hasRole(['Supervisor'])) {
+			$departmentSelected = $deptId;
+        }
 		
 		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
@@ -124,10 +134,7 @@ class ReportsController extends AppController
 			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 			WHERE Users.status = 1";
 		
-		if ($userRoles->hasRole(['Admin','Staff'])) {
-			$userSelected 		= $userId;
-			$departmentSelected = $deptId;
-        }
+		
 		
 		if ($departmentSelected){
 			$sql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
@@ -137,7 +144,6 @@ class ReportsController extends AppController
 		}
 		$sql .= " ORDER BY Users.card_no";
 		
-		$connection = ConnectionManager::get('default');
 		$results = $connection->execute($sql)->fetchAll('assoc');
 		
 		$this->viewBuilder()->options([
@@ -148,7 +154,7 @@ class ReportsController extends AppController
         ]);
 
 		$this->set('result',$results);
-        $this->set(compact('result','sql','dateselected', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected'));
+        $this->set(compact('result','deptId','dateselected', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected'));
 		$this->set('_serialize', ['report']);
     }
 	
@@ -176,13 +182,17 @@ class ReportsController extends AppController
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		
+		if ($userRoles->hasRole(['Supervisor'])) {
+			$departmentSelected = $deptId;
+        }		
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
-	    }
-		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
-		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
-            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
 	    }
 		
 		if ($dateselected){
@@ -217,10 +227,7 @@ class ReportsController extends AppController
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 				WHERE Users.status = 1";
 		
-		if ($userRoles->hasRole(['Admin','Staff'])) {
-			$userSelected 		= $userId;
-			$departmentSelected = $deptId;
-        }
+		
 		
 		if ($departmentSelected){
 			$weeklysql .= " AND Uorganization.organization_id = '".$departmentSelected."'";
@@ -269,8 +276,18 @@ class ReportsController extends AppController
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
-		$this->set('resultDepartment',$sqldepartment);
-		$deptId = $resultDepartment[0]['organization_id'];
+		
+		$connection = ConnectionManager::get('default');
+		$resultsDepartment = $connection->execute($sqldepartment)->fetchAll('assoc');
+		$deptId = $resultsDepartment[0]['organization_id'];
+		
+		if ($userRoles->hasRole(['Admin','Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		if ($userRoles->hasRole(['Supervisor'])) {
+			$departmentSelected = $deptId;
+        }
 		
 		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
@@ -278,16 +295,20 @@ class ReportsController extends AppController
 	    }
 		
 		if ($monthselected){
-			$thismonthStart	=date("Y-".$monthselected."-1");
-			$thismonthEnd	=date("Y-".$monthselected."-t");
+			$thismonthStart1	=date("Y-".$monthselected."-01");
+			$thismonthEnd		=date("Y-".$monthselected."-t");
 		} else {
 			$monthselected	= date('m');
+			$thismonthStart	= date("Y-".$monthselected."-01");
+			$thismonthEnd	= date("Y-".$monthselected."-t");
 		}
 		if ($yearselected){
-			$thismonthStart	=date($yearselected."-".$monthselected."-1");
+			$thismonthStart	=date($yearselected."-".$monthselected."-01");
 			$thismonthEnd	=date($yearselected."-".$monthselected."-t");
 		} else {
 			$yearselected	= date('Y');
+			$thismonthStart	= date("Y-".$monthselected."-01");
+			$thismonthEnd	= date("Y-".$monthselected."-t");
 		}
 		
 		$monthlysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour,
@@ -320,10 +341,6 @@ class ReportsController extends AppController
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Admin','Staff'])) {
-			$userSelected 		= $userId;
-			$departmentSelected = $deptId;
-        }
 		
 		
 		if ($departmentSelected){

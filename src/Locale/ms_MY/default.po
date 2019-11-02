@@ -3009,9 +3009,14 @@ msgstr "Jumlah Pegawai Lewat Lebih 3 Kali"
 msgid "Pending"
 msgstr "Tertangguh"
 
-msgid "Attendance Year?"
+msgid "Attendance Year"
 msgstr "Tahun Kehadiran"
 
+msgid "Personal Matters"
+msgstr "Urusan Peribadi"
+
+msgid "Work Affairs"
+msgstr "Urusan Kerja"
 
 
 

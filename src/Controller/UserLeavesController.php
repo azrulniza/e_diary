@@ -193,8 +193,8 @@ class UserLeavesController extends AppController
         $this->loadModel('SettingEmails');
         $this->loadModel('Designations');
         $this->loadModel('UserDesignations');
-        
 
+        
         $today_date = date('d-m-Y');    
         $user_id = $this->AuthUser->id();
 
@@ -297,8 +297,39 @@ class UserLeavesController extends AppController
                                 $error=true;
                             }
                         }
-                        
 
+                        //cheking if already apply 4 hour on same date.
+                        $timeSameDate=$this->UserLeaves->find()->where(['date_start'=>$date])->where(['user_id'=>$data['staff']])->where(['leave_status_id IN'=>array(1,2)]);
+
+                        foreach ($timeSameDate as $timeSameDate_data) {
+                            $startDate1 = $timeSameDate_data->date_start.' '.$timeSameDate_data->start_time;
+                            $endDate1 = $timeSameDate_data->date_start.' '.$timeSameDate_data->end_time;
+                            $startDate2 = $timeSameDate_data->date_start.' 13:00';
+                            $endDate2 = $timeSameDate_data->date_start.' 14:00';
+
+                            //calculate time overlape in lunch hour
+                            $overlapeTime = $this->UserLeaves->overlapInMinutes($startDate1, $endDate1, $startDate2, $endDate2);
+
+                            //calculate total apply time
+                            $time_from_count1 = date_create($startDate1);
+                            $time_from_count2 = date_create($endDate1);
+                            $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                            $time_from_count_period= $interval_time_from->format("%H:%I:%S");
+                            $time_from_count_arr= explode(':', $time_from_count_period);
+                            $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+
+                            $total_time_in_minute+=$time_from_count_in_minute - $overlapeTime;
+                        
+                        }
+
+                        if($total_time_in_minute>240){
+                            $minuteToHour=$this->UserLeaves->convertToHoursMins($total_time_in_minute, '%02d'. __(' hours ') . '%02d'. __(' minutes'));
+                            $msg=__('Personal matters time off only 4 hours maximum. You already apply ') .$minuteToHour;
+                            $msg .=__(' time off on '.$date);
+                            $this->Flash->error($msg);
+                            $error=true;
+                        }
+                        
                     }else{// Friday special lunch hour : 12.15pm-2.45pm
                         $startDate1 = $from_date_time;
                         $endDate1 = $to_date_time;
@@ -319,7 +350,40 @@ class UserLeavesController extends AppController
                         $total_time_off_hour=$time_from_count_in_minute - $overlapeTime;
                        
                         if($total_time_off_hour > 240){
-                            $this->Flash->error(__($total_time_off_hour.'Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $this->Flash->error(__('Personal matters time off only 4 hours maximum. Please, try again.'));
+                            $error=true;
+                        }
+
+
+                        //cheking if already apply 4 hour on same date.
+                        $timeSameDate=$this->UserLeaves->find()->where(['date_start'=>$date])->where(['user_id'=>$data['staff']])->where(['leave_status_id IN'=>array(1,2)]);
+
+                        foreach ($timeSameDate as $timeSameDate_data) {
+                            $startDate1 = $timeSameDate_data->date_start.' '.$timeSameDate_data->start_time;
+                            $endDate1 = $timeSameDate_data->date_start.' '.$timeSameDate_data->end_time;
+                            $startDate2 = $timeSameDate_data->date_start.' 12:15';
+                            $endDate2 = $timeSameDate_data->date_start.' 14:45';
+
+                            //calculate time overlape in lunch hour
+                            $samedate_overlapeTime = $this->UserLeaves->overlapInMinutes($startDate1, $endDate1, $startDate2, $endDate2);
+
+                            //calculate total apply time
+                            $time_from_count1 = date_create($startDate1);
+                            $time_from_count2 = date_create($endDate1);
+                            $interval_time_from = date_diff($time_from_count1, $time_from_count2);
+                            $time_from_count_period= $interval_time_from->format("%H:%I:%S");
+                            $time_from_count_arr= explode(':', $time_from_count_period);
+                            $time_from_count_in_minute = ($time_from_count_arr[0] * 60.0 + $time_from_count_arr[1] * 1.0);
+
+                            $total_time_in_minute+=$time_from_count_in_minute - $samedate_overlapeTime;
+                        
+                        }
+
+                        if($total_time_in_minute>240){
+                            $minuteToHour=$this->UserLeaves->convertToHoursMins($total_time_in_minute, '%02d'. __(' hours ') . '%02d'. __(' minutes'));
+                            $msg=__('Personal matters time off only 4 hours maximum. You already apply ') .$minuteToHour;
+                            $msg .=__(' time off on '.$date);
+                            $this->Flash->error($msg);
                             $error=true;
                         }                        
                        

@@ -2662,7 +2662,7 @@ msgid "Clocked in for "
 msgstr "Telah jam masuk untuk "
 
 msgid "Get started today! Click to clock in for "
-msgstr "Bermula hari ini! Klik jam masuk untuk"
+msgstr "Bermula hari ini! Klik jam masuk untuk "
 
 
 
@@ -3119,6 +3119,12 @@ msgstr "Masa Bermula"
 msgid "Time Off To"
 msgstr "Masa Berakhir"
 
+msgid "Time From"
+msgstr "Masa Bermula"
+
+msgid "Time To"
+msgstr "Masa Berakhir"
+
 msgid "Time Off Details"
 msgstr "Butiran Permohonan"
 
@@ -3181,6 +3187,19 @@ msgstr "Kad Pengguna telah dihapuskan"
 
 msgid "The user card could not be deleted. Please, try again."
 msgstr "Kad Pengguna tidak berjaya dihapuskan. Sila cuba lagi"
+
+msgid " hours "
+msgstr " jam "
+
+msgid " minutes"
+msgstr " minit"
+
+msgid "Personal matters time off only 4 hours maximum. You already apply '"
+msgstr "Masa maksimum time off untuk urusan peribadi hanya 4 jam. Anda sudah pun memohon "
+
+msgid " time off on "
+msgstr " time off pada "
+
 
 
 

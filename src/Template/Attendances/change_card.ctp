@@ -24,9 +24,10 @@
                                     <tr>
                                         <td align="left"><b><?php echo __('Clock In');?></b></td>
                                         <td>    
-                                           <?php 
-                                            $t = strtotime($user_card['cdate']);
-                                            echo date('d-m-Y , H:i A',$t);
+                                           <?php //echo $user_card->cdate;
+                                            //$t = strtotime($user_card->cdate);
+                                            //echo date('d-m-Y , H:i A',$t);
+                                           echo date_format($user_card->cdate,"d-m-Y , H:i a");
                                            ?>
                                         </td>   
                                     </tr>
@@ -64,7 +65,7 @@
                     <?= $this->Form->input('card', ['type'=>'hidden', 'class' => 'form-control', 'value' => $user_card['id']]); ?>
                     <?= $this->Form->input('user', ['type'=>'hidden', 'class' => 'form-control', 'value' => $user_card['user_id']]); ?>
                     <?= $this->Form->button(__('Submit'), ['class'=>'btn btn-primary']) ?>
-                    <?= $this->Html->link(__('Cancel'), ['controller' => 'attendances'], ['class' => 'btn btn-warning']) ?>
+                    <?= $this->Html->link(__('Cancel'), ['controller' => 'attendances', 'action'=>'card'], ['class' => 'btn btn-warning']) ?>
                 </div>
             </div>
             <?= $this->Form->end() ?>

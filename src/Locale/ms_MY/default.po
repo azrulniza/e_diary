@@ -2664,6 +2664,12 @@ msgstr "Telah jam masuk untuk "
 msgid "Get started today! Click to clock in for "
 msgstr "Bermula hari ini! Klik jam masuk untuk "
 
+msgid "Attendance Card Color"
+msgstr "Warna Kad Kehadiran"
+
+msgid "Attendances"
+msgstr "Kehadiran"
+
 
 
 

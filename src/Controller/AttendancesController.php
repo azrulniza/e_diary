@@ -24,6 +24,8 @@ class AttendancesController extends AppController
      */
     public function index()
     {
+        $this->set('title', __('Attendances'));
+
         // my_connection is defined in your database config
         $conn = ConnectionManager::get('default');
 
@@ -219,6 +221,177 @@ class AttendancesController extends AppController
         
         $this->set(compact('attendances','userRoles','attendance_in','today_date','list_organization','list_user','organizationSelected','user_card'));
     }
+
+
+    public function card()
+    {
+        $this->set('title', __('Attendances'));
+
+        // my_connection is defined in your database config
+        $conn = ConnectionManager::get('default');
+
+        $this->loadModel('Users');
+        $this->loadModel('Attendances');
+        $this->loadModel('AttendanceLogs');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+        $this->loadModel('Designations');
+        $this->loadModel('UserCards');
+        $this->loadModel('Cards');
+
+        $today_date = date('d-m-Y');    
+        $userPIC = $this->AuthUser->id();
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userPIC"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+        $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$userPIC"])->limit(1)->first();
+        $user_organization_id=$usersOrganization->organization_id;
+
+        if ($userRoles->hasRole(['Master Admin'])) {
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+
+            if ($this->request->is('post')) {
+                $data = $this->request->data;
+                $dateSelected = $data['dateChoose'];
+                $organizationSelected = $data['department'];
+            }
+   
+            if (empty($dateSelected)){
+                $dateSelected = $this->request->query('dateChoose');
+                if (empty($dateSelected)){
+                    $dateSelected = date('Y-m-d');
+                }
+                
+            }
+
+            if(empty($organizationSelected)){
+                $organizationSelected = $this->request->query('department');
+            }
+            
+           
+            if(!empty($organizationSelected)){
+                $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=Users.`id`
+                JOIN `user_designations`ON `user_designations`.`user_id`=Users.`id`
+                RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
+                JOIN organizations ON `organizations`.id = designations.`organization_id`
+                WHERE `organizations`.id=$organizationSelected AND Users.`status`=1 ORDER BY Users.`name` ASC"; 
+
+            }else{
+                $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=Users.`id`
+                JOIN `user_designations`ON `user_designations`.`user_id`=Users.`id`
+                RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
+                JOIN organizations ON `organizations`.id = designations.`organization_id`
+                WHERE Users.`status`=1 ORDER BY Users.`name` ASC"; 
+            }
+            $stmt = $conn->execute($sql);
+            $attendances_in = $stmt->fetchAll('assoc');
+
+            $attendances=array();
+            
+            foreach($attendances_in as $attendance_in){
+                $attendances_std=new \stdClass();
+
+                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(['DATE(Attendances.cdate)'=>$dateSelected])->order('Attendances.cdate DESC')->limit(1)->first();
+                
+                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(['DATE(Attendances.cdate)'=>$dateSelected])->order('Attendances.cdate DESC')->limit(1)->first();
+
+                $attendance_in['attendance_id']=$has_in->id;
+
+                $attendance_in['in']=$has_in->cdate;
+                
+                //cater for 2kali clock in
+                $attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['DATE(Attendances.cdate)'=>$dateSelected])->order('Attendances.cdate DESC')->limit(1)->first();
+                
+                if($attendance->status == 1){
+                    $attendance_in['in']=$attendance->cdate;
+                    $attendance_in['status']=$attendance->status;
+                    $attendance_in['attendance_code_name']=$attendance->attendance_code->name;
+                }else{
+                    if($has_in->status == 1 AND $has_out->status != 2){
+                        $attendance_in['status']=$has_in->status;
+                        $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
+
+                    }else if($has_out->status == 2){
+                        $attendance_in['status']=$has_out->status;
+                        $attendance_in['attendance_code_name']=$has_out->attendance_code->name;
+                    }else{
+                        $attendance_in['status']=2;
+                        $attendance_in['attendance_code_name']="Absent";
+                    }
+                    $attendance_in['out']=$has_out->cdate;
+                }
+
+                $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)"=>$dateSelected])->limit(1)->first();
+                $attendance_in['card']=$user_card->card->name;
+                $attendance_in['card_id']=$user_card->id;
+
+                $attendances[$attendance_in['user_id']]=$attendance_in;
+            }
+        }elseif ($userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) {
+            /*$sql="SELECT Attendances.*, attendance_codes.`name` AS attendance_codes_name, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
+                Users 
+                JOIN user_organizations ON user_organizations.`user_id`=`users`.id
+                JOIN `user_designations`ON `user_designations`.`user_id`=`users`.id
+                JOIN `designations` ON `designations`.id=`user_designations`.designation_id
+                JOIN organizations ON `organizations`.id = designations.`organization_id`
+                RIGHT JOIN `attendances` ON attendances.`user_id`= `users`.id
+                JOIN attendance_codes ON attendance_codes.`id`=attendances.`attendance_code_id`
+                WHERE organizations.`id`=$user_organization_id AND DATE(`attendances`.cdate)=CURDATE()";*/
+              $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
+                users Users 
+                JOIN user_organizations ON user_organizations.`user_id`=`Users`.id
+                JOIN `user_designations`ON `user_designations`.`user_id`=`Users`.id
+                RIGHT JOIN `designations` ON `designations`.id=`user_designations`.designation_id
+                JOIN organizations ON `organizations`.id = designations.`organization_id`
+                WHERE organizations.`id`=$user_organization_id AND Users.`status`=1";  
+            $stmt = $conn->execute($sql);
+            $attendances_in = $stmt->fetchAll('assoc');
+
+            $attendances=array();
+            
+            foreach($attendances_in as $attendance_in){
+                $attendances_std=new \stdClass();
+
+                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+                
+                //cater for 2kali clock in
+                $attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(["DATE(Attendances.cdate)=CURDATE()"])->order('Attendances.cdate DESC')->limit(1)->first();
+                
+                if($attendance->status == 1){
+                    $attendance_in['in']=$attendance->cdate;
+                    $attendance_in['status']=$attendance->status;
+                    $attendance_in['attendance_code_name']=$attendance->attendance_code->name;
+                }else{
+                    $attendance_in['in']=$has_in->cdate;
+                    if($has_in->status == 1 AND $has_out->status != 2){
+                        $attendance_in['status']=$has_in->status;
+                        $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
+
+                    }else if($has_out->status == 2){
+                        $attendance_in['status']=$has_out->status;
+                        $attendance_in['attendance_code_name']=$has_out->attendance_code->name;
+                    }else{
+                        $attendance_in['status']=2;
+                        $attendance_in['attendance_code_name']="Absent";
+                    }
+                    $attendance_in['out']=$has_out->cdate;
+                }
+                //User Card
+                $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)=CURDATE()"])->limit(1)->first();
+                $attendance_in['card']=$user_card->card->name;
+                $attendance_in['card_id']=$user_card->id;
+
+                $attendances[$attendance_in['user_id']]=$attendance_in;
+            }
+        }
+        
+        $this->set(compact('dateSelected','attendances','userRoles','attendance_in','today_date','list_organization','list_user','organizationSelected','user_card'));
+    }
+
 
     /**
      * View method
@@ -588,7 +761,7 @@ class AttendancesController extends AppController
 
                 $this->Flash->success(__('Successfully update card status.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'card']);
             }else{
                 $this->Flash->error(__('The card status could not be saved. Please, try again.'));
             }

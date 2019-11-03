@@ -17,7 +17,7 @@
 					}
 					?>
 					<strong><?= __('Weekly Attendance Report')?></strong><br><br>
-					<table id="dataTables-reports"  width='40%'>
+					<table id="dataTables-reports"  width='50%'>
 						<tr>
                             <td><?= __('Departments'); ?></td>
                             <td><?= ':'; ?></td>
@@ -62,8 +62,8 @@
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['name'] ?></td>
                                 <td><?= $user['card_no'] ?></td>
-                                <td><?= $user['total_late'] ?></td>
-                                <td><?= $user['card_colour'] ?></td>
+                                <td><?php if($user['total_late'] >=3 ) {echo '1';} ?></td>
+                                <td><?= __($user['card_colour']) ?></td>
 
                             </tr>
 							

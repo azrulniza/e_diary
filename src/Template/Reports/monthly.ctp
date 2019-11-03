@@ -102,7 +102,7 @@
                             <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['name'] ?></td>
-                                <td><?= $user['grade'] ?></td>
+                                <td><?= $user['grade'].$user['skim'] ?></td>
                                 <td><?= $user['card_no'] ?></td>
                                 <td><?php if ($user['total_late']>0){ echo $user['total_late']; }else{ echo '-'; } ?></td>
                                 <td><?php if ($user['total_late']>0){ echo __('yes'); }else{ echo '-'; } ?></td>
@@ -110,7 +110,7 @@
 									<?php if ($user['card_colour']) {?>
 									<b style="color:<?= $user['card_colour'] ?>"><span class="fa fa-square"></span></b>
 									<?php } ?>
-									<?= $user['card_colour'] ?>
+									<?= __($user['card_colour']) ?>
 								</td>
                                 <td><?= $user['card_remarks'] ?></td>
 

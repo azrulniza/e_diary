@@ -85,12 +85,12 @@
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['name'] ?></td>
                                 <td><?= $user['card_no'] ?></td>
-                                <td><?= $user['total_late'] ?></td>
+                                <td><?php if($user['total_late'] >=3 ) {echo '1';} ?></td>
 								<td>
 									<?php if ($user['card_colour']) {?>
 									<b style="color:<?= $user['card_colour'] ?>"><span class="fa fa-square"></span></b>
 									<?php } ?>
-									<?= $user['card_colour'] ?>
+									<?= __($user['card_colour']) ?>
 								</td>
 
                             </tr>

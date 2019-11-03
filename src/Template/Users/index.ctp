@@ -33,6 +33,7 @@
                                 <th><?= __('Grade') ?></th>
                                 <th><?= __('Designation') ?></th>
                                 <th><?= __('Report To') ?></th>
+                                <th><?= __('Card No') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
@@ -55,6 +56,7 @@
 								
 								<?php endforeach; ?>
 								</td>
+                                <td><?= h($user->card_no) ; ?></td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-eye']), ['action' => 'view', $user->id], ['escape' => false, 'title' => __('View'), 'class' => 'btn btn-info btn-xs']) ?>

@@ -104,7 +104,7 @@
                         echo $this->Form->input('new_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter new password'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);
                         echo $this->Form->input('confirm_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter password confirmation'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);
 						if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
-							echo $this->Form->input('role', ['class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true,'value'=> $selected_role]);
+							echo $this->Form->input('role', ['label'=>__('Roles'),'class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true,'value'=> $selected_role]);
 						endif;
 						if ($userRoles->hasRole(['Master Admin'])) :
 							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_dept]);
@@ -121,7 +121,8 @@
 							echo '<div style="clear: both;"></div>';
 							echo '</div>';
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_designation]); 
-							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'value'=>$selected_reportTo]);						
+							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'value'=>$selected_reportTo]);		
+							echo $this->Form->input('card_no', ['label'=>__('Card No.'),'class' => 'form-control','style'=>'width:50%;', 'min'=>1, 'placeholder' => __('Enter ...'),'required'=>true]);								
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);
 						endif;
                         ?>

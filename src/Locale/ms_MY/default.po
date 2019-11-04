@@ -493,7 +493,7 @@ msgstr "Langganan Ejen tidak dapat disimpan. Sila cuba lagi."
 
 #: Controller/SubscriptionResellersController.php:199
 msgid "The subscription reseller has been deleted."
-msgstr "Langganan Ejen telah dihapuskan"
+msgstr "Langganan Ejen telah dilupuskan"
 
 #: Controller/SubscriptionResellersController.php:201
 msgid "The subscription reseller could not be deleted. Please, try again."
@@ -2650,7 +2650,7 @@ msgid "The attendance could not be saved. Please, try again."
 msgstr "Kehadiran tidak berjaya disimpan. Sila cuba lagi."
 
 msgid "Successfully update card status."
-msgstr "Berjaya mengubahsuai kad status"
+msgstr "Status Kad Kedatangan berjaya dikemaskini."
 
 msgid "The card status could not be saved. Please, try again."
 msgstr "Kad status tidak berjaya disimpan. Sila cuba lagi"
@@ -2713,31 +2713,31 @@ msgid "Edit Department"
 msgstr "Kemaskini Bahagian/Unit"
 
 msgid "The department could not be saved. Please, try again."
-msgstr "Bahagian/Unit tidak berjaya disimpan. Sila cuba lagi"
+msgstr "Maklumat Bahagian/Unit tidak berjaya disimpan. Sila cuba lagi."
 
 msgid "The department has been saved."
-msgstr "Bahagian/Unit telah berjaya disimpan."
+msgstr "Maklumat Bahagian/Unit telah berjaya disimpan."
 
 msgid "The department has been deleted."
 msgstr "Bahagian/Unit telah berjaya dipadam."
 
 msgid "The department could not be deleted. Please, try again."
-msgstr "Bahagian/Unit tidak telah berjaya dipadam. Sila cuba lagi"
+msgstr "Bahagian/Unit tidak telah berjaya dipadam. Sila cuba lagi."
 
 msgid "The organization has been saved."
-msgstr "Bahagian/Unit telah berjaya disimpan"
+msgstr "Maklumat Bahagian/Unit telah berjaya disimpan."
 
 msgid "The organization could not be saved. Please, try again."
-msgstr "Bahagian/Unit tidak berjaya dismpan. Sila cuba lagi"
+msgstr "Maklumat Bahagian/Unit tidak berjaya dismpan. Sila cuba lagi."
 
 msgid "Organization already in used. The organization could not be deleted."
-msgstr "Bahagian/Unit telah digunakan. Jawatan tidak boleh dihapuskan."
+msgstr "Bahagian/Unit telah digunakan. Jawatan tidak boleh dilupuskan."
 
 msgid "The organization has been deleted."
-msgstr "Bahagian/Unit telah berjaya dihapuskan"
+msgstr "Bahagian/Unit telah berjaya dilupuskan."
 
 msgid "The organization could not be deleted. Please, try again.."
-msgstr "Bahagian/Unit tidak berjaya dihapuskan. Sila cuba lagi"
+msgstr "Bahagian/Unit tidak berjaya dilupuskan. Sila cuba lagi."
 
 
 
@@ -2762,13 +2762,13 @@ msgid "The designation could not be saved. Please, try again."
 msgstr "Jawatan tidak berjaya dismpan. Sila cuba lagi"
 
 msgid "Designation already in used. The designation could not be deleted."
-msgstr "Jawatan telah digunakan. Jawatan tidak boleh dihapuskan."
+msgstr "Jawatan telah digunakan. Jawatan tidak boleh dilupuskan."
 
 msgid "The designation has been deleted."
-msgstr "Jawatan telah berjaya dihapuskan"
+msgstr "Jawatan telah berjaya dilupuskan"
 
 msgid "The designation could not be deleted. Please, try again."
-msgstr "Jawatan tidak berjaya dihapuskan. Sila cuba lagi"
+msgstr "Jawatan tidak berjaya dilupuskan. Sila cuba lagi"
 
 
 
@@ -3041,10 +3041,10 @@ msgid "The setting attendances reason could not be saved. Please, try again."
 msgstr "Tetapan untuk Alasan Kehadiran tidak berjaya disimpan. Sila cuba lagi"
 
 msgid "The setting attendances reason has been deleted."
-msgstr "Tetapan untuk Alasan Kehadiran telah dihapuskan"
+msgstr "Tetapan untuk Alasan Kehadiran telah dilupuskan"
 
 msgid "The setting attendances reason could not be deleted. Please, try again."
-msgstr "Tetapan untuk Alasan Kehadiran tidak berjaya dihapuskan. Sila cuba lagi"
+msgstr "Tetapan untuk Alasan Kehadiran tidak berjaya dilupuskan. Sila cuba lagi"
 
 
 
@@ -3067,16 +3067,16 @@ msgid "User Id"
 msgstr "Id Pengguna"
 
 msgid "The setting email has been saved."
-msgstr "Tetapan email telah berjaya disimpan"
+msgstr "Templat email telah berjaya dikemaskini."
 
 msgid "The setting email could not be saved. Please, try again."
-msgstr "Tetapan email tidak berjaya disimpan. Sila cuba lagi"
+msgstr "Tetapan email tidak berjaya dikemaskini. Sila cuba lagi."
 
 msgid "The setting email has been deleted."
-msgstr "Tetapan email berjaya dihapuskan"
+msgstr "Tetapan email berjaya dilupuskan"
 
 msgid "The setting email could not be deleted. Please, try again."
-msgstr "Tetapan email tidak berjaya dihapuskan. Sila cuba lagi"
+msgstr "Tetapan email tidak berjaya dilupuskan. Sila cuba lagi."
 
 
 
@@ -3156,16 +3156,19 @@ msgid "Unable to upload file, JPG, JPEG & PNG file only allowed."
 msgstr "Tidak dapat memuat naik fail, JPG, JPEG & file PNG hanya dibenarkan."
 
 msgid "Successfully apply time off."
-msgstr "Berjaya memohon time off"
+msgstr "Permohonan Time-Off telah berjaya dihantar"
 
 msgid "Time off has been saved."
-msgstr "Time off telah berjaya disimpan"
+msgstr "Permohonan time-off berjaya diluluskan."
+
+msgid "Time off has been rejected."
+msgstr "Permohonan time-off ditolak."
 
 msgid "Time off could not be saved. Please, try again."
 msgstr "Time off tidak berjaya disimpan. Sila cuba lagi"
 
 msgid "Successfully apply time off."
-msgstr "Berjaya memohon time off"
+msgstr "Permohonan Time-Off telah berjaya dihantar"
 
 msgid "Unable to send email"
 msgstr "Gagal menghantar email"
@@ -3183,10 +3186,10 @@ msgid "The user card could not be saved. Please, try again."
 msgstr "Kad Pengguna tidak berjaya disimpan. Sila cuba lagi"
 
 msgid "The user card has been deleted."
-msgstr "Kad Pengguna telah dihapuskan"
+msgstr "Kad Pengguna telah dilupuskan"
 
 msgid "The user card could not be deleted. Please, try again."
-msgstr "Kad Pengguna tidak berjaya dihapuskan. Sila cuba lagi"
+msgstr "Kad Pengguna tidak berjaya dilupuskan. Sila cuba lagi"
 
 msgid " hours "
 msgstr " jam "
@@ -3209,10 +3212,19 @@ msgstr " time off pada "
 msgid "Grade"
 msgstr "Gred"
 
+msgid "Grades"
+msgstr "Gred"
+
 msgid "Add Grade"
 msgstr "Tambah Gred"
 
 msgid "List Grade"
+msgstr "Senarai Gred"
+
+msgid "Add Grades"
+msgstr "Tambah Gred"
+
+msgid "List Grades"
 msgstr "Senarai Gred"
 
 msgid "The grade has been saved."
@@ -3222,13 +3234,13 @@ msgid "The grade could not be saved. Please, try again."
 msgstr "Gred tidak berjaya disimpan. Sila cuba lagi"
 
 msgid "Grade already in used. The grade could not be deleted."
-msgstr "Gred sudah sedang diguna. Gred tidak dapat dihapuskan"
+msgstr "Gred sudah sedang diguna. Gred tidak dapat dilupuskan"
 
 msgid "The grade has been deleted."
-msgstr "Gred telah dihapuskan"
+msgstr "Gred telah dilupuskan"
 
 msgid "The grade could not be deleted. Please, try again."
-msgstr "Gred tidak dapat dihapuskan. Sila cuba lagi"
+msgstr "Gred tidak dapat dilupuskan. Sila cuba lagi"
 
 
 
@@ -3263,7 +3275,7 @@ msgid "The user could not be saved. Please, try again."
 msgstr "Pengguna tidak dapat disimpan. Sila cuba lagi."
 
 msgid "The user has been delete."
-msgstr "Pengguna telah berjaya dihapuskan"
+msgstr "Pengguna telah berjaya dilupuskan"
 
 msgid "Your account has been disabled."
 msgstr "Akaun anda telah dilumpuhkan."
@@ -3292,3 +3304,50 @@ msgstr "Kata laluan tidak sah. Sila cuba lagi"
 msgid "Are you sure you want to delete this?"
 msgstr "Adakah anda pasti untuk memadam rekod ini?"
 
+msgid "Please fill out this field."
+msgstr "Sila isi medan ini."
+
+msgid "Are you sure you want to delete this designation?"
+msgstr "Adakah anda pasti untuk melupuskan jawatan ini?"
+
+msgid "The designation has been updated."
+msgstr "Maklumat jawatan telah dikemaskini."
+
+msgid "The designation could not be updated. Please, try again."
+msgstr "Maklumat jawatan tidak dapat dikemaskini. Sila cuba lagi"
+
+msgid "Image file type: "
+msgstr "Jenis imej fail: "
+
+msgid "only"
+msgstr "sahaja"
+
+msgid "or"
+msgstr "atau"
+
+msgid "Maximum file size:"
+msgstr "Maksimum saiz imej:"
+
+msgid "Sorry. IC already exist"
+msgstr "Maaf. No kad pengenalan sudah wujud"
+
+msgid "Passwords not equal."
+msgstr "Kata laluan yang dimasukkan tidak sama."
+
+msgid "Are you sure you want to delete this organization?"
+msgstr "Adakah anda pasti untuk melupuskan Bahagian/Unit ini?"
+
+msgid "Forgot Password"
+msgstr "Lupa Katalaluan"
+
+msgid "Time Off Approved"
+msgstr "Time Off Diluluskan"
+
+msgid "Time Off Rejected"
+msgstr "Time Off Ditolak"
+
+msgid "Time Off Void"
+msgstr "Time Off Tidak Sah"
+
+msgid "Email not equal."
+msgstr "Email yang dimasukkan tidak sama."

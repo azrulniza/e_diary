@@ -18,7 +18,7 @@
                         <?php foreach ($settingEmails as $key => $settingEmail): ?>
                             <tr id="<?= $settingEmail->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $count ?></td>
-                                <td><?= h($settingEmail->name) ?></td>
+                                <td><?= h(__($settingEmail->name)) ?></td>
                                 <td><?= $this->Html->link('English', ['controller' => 'SettingEmails', 'action' => 'edit', $settingEmail->email_type_id , 1])?><br>
 								<?= $this->Html->link('Malay', ['controller' => 'SettingEmails', 'action' => 'edit', $settingEmail->email_type_id , 2])?>
 								</td>

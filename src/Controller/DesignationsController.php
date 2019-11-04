@@ -81,7 +81,7 @@ class DesignationsController extends AppController
             }
             $this->Flash->error(__('The designation could not be saved. Please, try again.'));
         }
-        $organizations = $this->Designations->Organizations->find('list', ['limit' => 200]);
+        $organizations = $this->Designations->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
         $this->set(compact('designation', 'organizations'));
     }
 
@@ -102,11 +102,11 @@ class DesignationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $designation = $this->Designations->patchEntity($designation, $this->request->getData());
             if ($this->Designations->save($designation)) {
-                $this->Flash->success(__('The designation has been saved.'));
+                $this->Flash->success(__('The designation has been updated.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The designation could not be saved. Please, try again.'));
+            $this->Flash->error(__('The designation could not be updated. Please, try again.'));
         }
         $organizations = $this->Designations->Organizations->find('list', ['limit' => 200]);
         $this->set(compact('designation', 'organizations'));

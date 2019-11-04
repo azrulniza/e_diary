@@ -417,7 +417,7 @@ class UsersController extends AppController
 			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
 			
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
-			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->orWhere(['status'=>1]);
+			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->where(['status'=>1]);
 			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'=> function($q) use($selected_dept){
 					return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);}])->where(['Users.status'=>1]);
 			$reportTo->matching('Roles', function ($q) {
@@ -466,6 +466,9 @@ class UsersController extends AppController
 		$user_logs->phone = $user->phone;
 		$user_logs->report_to = $user->report_to;
 		$user_logs->reset_password_key = $user->reset_password_key;
+		$user_logs->card_no = $user->card_no;
+		$user_logs->grade_id = $user->grade_id;
+		$user_logs->skim = $user->skim;
 		$user_logs->status = $user->status;
 		$user_logs->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 		$user_logs->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');

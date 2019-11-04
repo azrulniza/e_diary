@@ -9,7 +9,7 @@
                 <div class="box-body">
                     <div class="form-group">
                         <?php
-                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'readonly'=>true]);
+                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'readonly'=>true,'value'=>__($settingEmail->name)]);
                         echo $this->Form->input('subject', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
                         echo $this->Form->input('body', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'required'=>true]);
                         echo $this->Form->hidden('email_type_id', ['value'=>$email_type_id]);

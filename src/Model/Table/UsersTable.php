@@ -108,7 +108,7 @@ class UsersTable extends Table
 		$validator
                 ->add('reconfirm_email', 'compareWith', [
                     'rule' => ['compareWith', 'email'],
-                    'message' => 'Email not equal.'
+                    'message' => __('Email not equal.')
 				])
 				->requirePresence('email', 'create')
                 ->notEmpty('reconfirm_email');
@@ -151,8 +151,13 @@ class UsersTable extends Table
         $validator
             ->integer('skim')
             ->allowEmptyString('skim');
+			
+		$validator
+            ->integer('card_no')
+            ->allowEmptyString('card_no');
+    
         return $validator;
-    }
+		}
 
     /**
      * Returns a rules checker object that will be used for validating

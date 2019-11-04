@@ -75,7 +75,11 @@ if (isset($title)) {
         function getAppVars(){
             return <?=  json_encode($appVars, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)?>;
         } 
-    
+		$(document ).ready(function() {
+			var required = "<?php echo __('Please fill out this field.'); ?>";
+			$("input[required], select[required]").attr("oninvalid", "this.setCustomValidity('"+ required +"')");
+			$("input[required], select[required]").attr("oninput", "setCustomValidity('')");
+		});
     </script>
     <?php
 

@@ -1162,7 +1162,7 @@ class UserLeavesController extends AppController
                 
                 }
 
-                $this->Flash->success(__('Time off has been saved.'));
+                $this->Flash->error(__('Time off has been rejected.'));
 
                 return $this->redirect(['action' => 'index']);
             }

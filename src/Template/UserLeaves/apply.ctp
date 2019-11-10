@@ -106,7 +106,7 @@
                                     
 
                                     <tr>
-                                        <td align="left"><label for="date"><?php echo $this->Form->label('Leave Type');?></label></td>
+                                        <td align="left"><label for="date"><?php echo $this->Form->label('Purpose');?></label></td>
                                         <td>
                                           <?php echo $this->Form->input('leave_type', ['required'=>true,'label'=>false,'options' => $leaveTypes, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'leavetype', 'value'=>$leaveTypeSelected]); ?>
                                         </td>

@@ -3024,6 +3024,9 @@ msgstr "Urusan Peribadi"
 msgid "Work Affairs"
 msgstr "Urusan Kerja"
 
+msgid "Purpose"
+msgstr "Tujuan"
+
 
 
 

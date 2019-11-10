@@ -230,7 +230,7 @@ class UserLeavesController extends AppController
             //date apply
             $date= $data['apply_date']['year'].'-'.$data['apply_date']['month'].'-'.$data['apply_date']['day'];
 
-            if($userRoles->hasRole(['Admin','Supervisor', 'Staff'])){ //check back dated application
+            if($userRoles->hasRole(['Supervisor', 'Staff'])){ //check back dated application
                 
                 if(strtotime($date) < (time()-(60*60*24)) ){
                     $this->Flash->error(__('Date apply cannot be back dated. Please, try again.'));
@@ -540,6 +540,20 @@ class UserLeavesController extends AppController
         $leaveStatuses = $this->UserLeaves->LeaveStatus->find('list', ['limit' => 200]);
         $leaveTypes = $this->UserLeaves->LeaveTypes->find('list', ['limit' => 200]);
 
+        $language_id = $this->getLanguageId();
+
+        if($language_id==2){ //Bahasa
+            $arrayType = array();
+            foreach ($leaveTypes as $key => $value) {
+                if($key==1){
+                    $arrayType[$key]="Urusan Peribadi";
+                }elseif($key==2){
+                    $arrayType[$key]="Urusan Kerja";
+                }
+                
+            }
+        }
+        $leaveTypes = $arrayType;
         $this->set(compact('from_day','userLeave', 'list_user', 'leaveStatuses', 'leaveTypes','userRoles', 'list_organization','staffSelected', 'last_id','user_organization_id','user_id','total_time_off_hour'));
     }
 

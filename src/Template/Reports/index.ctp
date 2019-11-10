@@ -5,7 +5,6 @@
 				<h3 class="box-title"><?= __('Daily Reports') ?></h3>
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
-				<?php echo 'intan'.$deptId;?>
                 <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
 					<div class="form-group">
 						<?php

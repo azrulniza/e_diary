@@ -552,8 +552,9 @@ class UserLeavesController extends AppController
                 }
                 
             }
+            $leaveTypes = $arrayType;
         }
-        $leaveTypes = $arrayType;
+       
         $this->set(compact('from_day','userLeave', 'list_user', 'leaveStatuses', 'leaveTypes','userRoles', 'list_organization','staffSelected', 'last_id','user_organization_id','user_id','total_time_off_hour'));
     }
 

@@ -75,7 +75,7 @@
                         <?php
                         echo $this->Form->input('user_id', ['type'=>'hidden','value' => $user->id]);
                         echo $this->Form->input('action', ['type'=>'hidden','value' => $action]);
-                        echo $this->Form->input('reason', ['style'=>'width:50%;','required'=>true,'id'=>'reason','options' => $SettingAttendancesReasons, 'class' => 'form-control','empty' => __('-- Please Select --')]);
+                        echo $this->Form->input('reason', ['style'=>'width:50%;','required'=>true,'id'=>'reason','options' => $SettingAttendancesReasons, 'class' => 'form-control','empty' => __('--Please Select--')]);
                         echo $this->Form->input('remark', ['style'=>'width:50%;','type'=>'textarea','class' => 'form-control', 'placeholder' => __('Enter ...')]);
                         /*echo $this->Form->input('attendance_code_id', ['options' => $attendanceCodes, 'class' => 'form-control']);
                         echo $this->Form->input('ip_address', ['class' => 'form-control', 'placeholder' => __('Enter ...')]);

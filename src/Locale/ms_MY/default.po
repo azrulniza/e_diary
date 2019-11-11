@@ -1683,13 +1683,6 @@ msgstr "Status Adv"
 msgid "Is Dynamic"
 msgstr "Dinamik"
 
-#: Template/PageTemplates/view.ctp:34
-msgid "Yes"
-msgstr "Betul"
-
-#: Template/PageTemplates/view.ctp:34
-msgid "No"
-msgstr "No"
 
 #: Template/PageTemplatesClients/add.ctp:5
 #: Template/PageTemplatesClients/edit.ctp:10
@@ -2670,6 +2663,34 @@ msgstr "Warna Kad Kehadiran"
 msgid "Attendances"
 msgstr "Kehadiran"
 
+msgid "Late Attendance Approval"
+msgstr "Kelulusan Kedatangan Lewat"
+
+msgid "New Application"
+msgstr "Permohonan Baru"
+
+msgid "Are you sure you want to REJECT this late attendance application?"
+msgstr "Adakah anda pasti untuk menolak permohonan ini?"
+
+msgid "Are you sure you want to APPROVE this late attendance application?"
+msgstr "Adakah anda pasti untuk meluluskan permohonan ini?"
+
+msgid "Absent"
+msgstr "Tidak Hadir"
+
+msgid "Working"
+msgstr "Bekerja"
+
+msgid "Superior Approval"
+msgstr "Mendapat Kelulusan"
+
+msgid "No"
+msgstr "Tidak"
+
+msgid "Yes"
+msgstr "Ya"
+
+
 
 
 
@@ -3027,6 +3048,14 @@ msgstr "Urusan Kerja"
 msgid "Purpose"
 msgstr "Tujuan"
 
+msgid "Late Remark"
+msgstr "Catatan Kelewatan"
+
+msgid "Successfully saved remark"
+msgstr "Catatan telah berjaya disimpan"
+
+msgid "Unsuccessfully save remark"
+msgstr "Catatan tidak berjaya disimpan"
 
 
 

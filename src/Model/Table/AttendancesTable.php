@@ -45,6 +45,11 @@ class AttendancesTable extends Table
             'foreignKey' => 'attendance_code_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->hasOne('AttendanceLates', [
+            'foreignKey' => 'attendance_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**

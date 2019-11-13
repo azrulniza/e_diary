@@ -104,7 +104,7 @@ class UsersController extends AppController
 		
 		$organizations = $this->Organizations->find('list', ['limit' => 200]);
         $users = $this->paginate($query);
-        $this->set(compact('users','reportTo','organizations','organizationSelected','userRoles','search_name'));
+        $this->set(compact('users','reportTo','organizations','organizationSelected','userRoles','search_name','currentUser'));
     }
 
     /**
@@ -149,12 +149,6 @@ class UsersController extends AppController
 			$user->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			
-			if($this->request->data['role'] == 2){
-				$master_admin_user = $this->Users->find()->contain(['Roles'])->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);
-				})->first();
-				$user->report_to = $master_admin_user->id;
-			}
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');
@@ -272,7 +266,7 @@ class UsersController extends AppController
 			$organization = $this->UserOrganizations->find()->where(['user_id'=>$userId])->first()->organization_id;
 	        
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['status'=>1]);
-			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['id'=>$organization])->orWhere(['status'=>1]);
+			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['id'=>$organization])->where(['status'=>1]);
 		}else if($this->AuthUser->hasRole(ADMIN)){
 			//roles
 			$role=array(1,2,3);
@@ -313,12 +307,6 @@ class UsersController extends AppController
 			$now = \Cake\I18n\Time::now();
 			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			
-			if($this->request->data['role'] == 2){
-				$master_admin_user = $this->Users->find()->contain(['Roles'])->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);
-				})->first();
-				$user->report_to = $master_admin_user->id;
-			}
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');
@@ -419,9 +407,9 @@ class UsersController extends AppController
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->where(['status'=>1]);
 			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'=> function($q) use($selected_dept){
-					return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);}])->where(['Users.status'=>1]);
+					return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);}])->where(['Users.status'=>1,'Users.id !='=>$id]);
 			$reportTo->matching('Roles', function ($q) {
-					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+					return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
 				});
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
@@ -667,15 +655,14 @@ class UsersController extends AppController
 		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
 		$userRoles = $this->Users->Roles->initRolesChecker($user->roles);
 		if ($userRoles->hasRole(['Master Admin'])) {
-			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id]);
+			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id])->where(['status'=>1]);
         }
 		$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
-		return $q->where(['UserOrganizations.organization_id'=>$department_id]);});
+		return $q->where(['UserOrganizations.organization_id'=>$department_id]);})->group(['Users.id']);
 		
 		$users->matching('Roles', function ($q) {
-                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+                return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
             });
-
 		$this->set(compact('designations','users'));
         $this->set('_serialize', ['designations','users']);
         $this->viewBuilder()->layout('ajax');

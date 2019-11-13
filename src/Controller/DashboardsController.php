@@ -58,7 +58,7 @@ class DashboardsController extends AppController
 
         if ($userRoles->hasRole(['Master Admin'])) {
             //list all user except master admin
-			$users = $this->Users->find('list')->where(['status'=>'1'])->order(['Users.name' => 'ASC'])->innerJoinWith('Roles' , function($q){ return $q->where(['Roles.id !='=>'1']);});
+			$users = $this->Users->find('list')->where(['status'=>'1'])->order(['Users.name' => 'ASC']);
 
             
             if(!empty($departmentSelected) AND !empty($userSelected)){
@@ -390,7 +390,7 @@ class DashboardsController extends AppController
             $user_organization_id=$usersOrganization->organization_id;
 
             $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
-            return $q->where(['UserOrganizations.organization_id'=>$user_organization_id])->where(['Users.status'=>1]);});
+            return $q->where(['UserOrganizations.organization_id'=>$user_organization_id])->where(['Users.status'=>1]);})->group(['Users.id']);
 
             if(!empty($userSelected)){
 				$curr_users = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])
@@ -586,7 +586,7 @@ class DashboardsController extends AppController
             $user = $this->Users->find()->where(['id' => $userSelected])->first();
         }
 
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 
 		//$staff_absent = 2;
 		//$staff_working = 10;
@@ -696,7 +696,7 @@ class DashboardsController extends AppController
         $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
         if ($userRoles->hasRole(['Master Admin'])) {
              $users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
-        return $q->where(['UserOrganizations.organization_id'=>$department_id])->where(['Users.status'=>1]);});
+        return $q->where(['UserOrganizations.organization_id'=>$department_id])->where(['Users.status'=>1]);})->group(['Users.id']);
         }
        
         

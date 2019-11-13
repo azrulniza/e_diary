@@ -28,6 +28,9 @@
 	$(document ).ready(function() {
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
+			
+			$("#listuser").prop('disabled',true);
+			$("#listdesignation").prop('disabled',false);
 			$.ajax({
 				type : "POST",
 				url  : getAppVars('basepath').basePath + 'users/getDetails' + '?id=' + id, //pass query string to server
@@ -35,7 +38,7 @@
 						data = JSON.parse(data);
 						console.log(data);
 						$("#listdesignation").empty();
-						$('#listdesignation').append($('<option value>--Please Select--</option>'));
+						$('#listdesignation').append($('<option value><?php echo __("--Please Select--") ?></option>'));
 													
 						$.each(data.designations, function(i, p) {
 							console.log(p);
@@ -43,7 +46,7 @@
 						});				
 						
 						$("#listuser").empty();
-						$('#listuser').append($('<option value>--Please Select--</option>'));
+						$('#listuser').append($('<option value><?php echo __("--Please Select--") ?></option>'));
 													
 						$.each(data.users, function(i, p) {
 							console.log(p);
@@ -51,23 +54,27 @@
 						});
 			}});
 		});
-		$('#listrole').change(function(){
-			var id = $(this).val();
-			if(id == 2 || id == 1){
-				$("#listuser").hide();
-				$("label[for='listuser']").hide();
-				$("#listuser").prop('required',false);
+/* 		$('#listrole').change(function(){
+			if($( "#listrole" ).val() < 1){
+				$("#listdepartment").prop('disabled',true);
 			}else{
-				$("#listuser").show();
-				$("label[for='listuser']").show();				
+				$("#listdepartment").prop('disabled',false);
+			}
+			$("#listdepartment" ).val('');
+			$("#listuser").prop('disabled',true);
+			$("#listdesignation").prop('disabled',true);
+			$("#listuser").val('');
+			$("#listdesignation").val('');
+
+		}); */
+		$('#listdesignation').change(function(){
+			if($( "#listdesignation" ).val() < 1){
+				$("#listuser").prop('disabled',true);
+				$( "#listuser" ).val('');
+			}else{
+				$("#listuser").prop('disabled',false);
 			}
 		});
-		if($( "#listrole" ).val() == 2 || $( "#listrole" ).val() == 1){
-			$("#listuser").hide();
-			$("label[for='listuser']").hide();
-			$("#listuser").prop('required',false);
-			console.log($("#listuser"));
-		}
 	});
 </script><div class="row">
     <div class="col-xs-10">

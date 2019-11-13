@@ -14,7 +14,7 @@ $this->Html->script('dashboard');
 						data = JSON.parse(data);
 						console.log(data);
 						$("#listuser").empty();
-						$('#listuser').append($('<option value>-- All --</option>'));
+						$('#listuser').append($('<option value><?php __("-- All --") ?></option>'));
 													
 						$.each(data.users, function(i, p) {
 							console.log(p);

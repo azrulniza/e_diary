@@ -27,19 +27,20 @@
 	$(document ).ready(function() {
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
-			console.log(id);
+			var role_id = $('#listrole').val();
+			//console.log('<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id + '&role_id=' + role_id);
 			
 			$("#listuser").prop('disabled',true);
 			$("#listdesignation").prop('disabled',false);
 			
 			$.ajax({
 				type : "POST",
-				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id, //pass query string to server
+				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id + '&role_id' + role_id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
 						//console.log(data);
 						$("#listdesignation").empty();
-						$('#listdesignation').append($('<option value>--Please Select--</option>'));
+						$('#listdesignation').append($('<option value><?php echo __("--Please Select--") ?></option>'));
 													
 						$.each(data.designations, function(i, p) {
 							//console.log(p);
@@ -47,7 +48,7 @@
 						});				
 						
 						$("#listuser").empty();
-						$('#listuser').append($('<option value=0>--Please Select--</option>'));
+						$('#listuser').append($('<option value><?php echo __("--Please Select--") ?></option>'));
 													
 						$.each(data.users, function(i, p) {
 							//console.log(p);
@@ -55,23 +56,25 @@
 						});
 			}});
 		});
+/* 		$('#listrole').change(function(){
+			if($( "#listrole" ).val() < 1){
+				$("#listdepartment").prop('disabled',true);
+			}else{
+				$("#listdepartment").prop('disabled',false);
+			}
+			$("#listdepartment" ).val('');
+			$("#listuser").prop('disabled',true);
+			$("#listdesignation").prop('disabled',true);
+			$("#listuser").val('');
+			$("#listdesignation").val('');
+
+		}); */
 		$('#listdesignation').change(function(){
 			if($( "#listdesignation" ).val() < 1){
 				$("#listuser").prop('disabled',true);
 				$( "#listuser" ).val('');
 			}else{
 				$("#listuser").prop('disabled',false);
-			}
-		});
-		$('#listrole').change(function(){
-			var id = $(this).val();
-			if(id == 2 || id == 1){
-				$("#listuser").hide();
-				$("label[for='listuser']").hide();
-				$("#listuser").val(0);
-			}else{
-				$("#listuser").show();
-				$("label[for='listuser']").show();				
 			}
 		});
 	});
@@ -100,9 +103,9 @@
 						</center>
                         <?php
 						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
-						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
+						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'minlength'=>12,'title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
-						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
+						echo $this->Form->input('phone', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'minlength'=>10,'class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('password', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
 						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;','required'=>true]);                        
                         if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
@@ -121,7 +124,7 @@
 							echo '<div style="clear: both;"></div>';
 							echo '</div>';
 							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','required'=>true,'disabled'=>true]);
-							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>array('0'=>__('--Please Select--')),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'disabled'=>true]);
+							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'disabled'=>true]);
 							echo $this->Form->input('card_no', ['label'=>__('Card No.'),'class' => 'form-control','style'=>'width:50%;', 'min'=>1, 'placeholder' => __('Enter ...'),'required'=>true]);							
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;','required'=>true]);
 						endif;

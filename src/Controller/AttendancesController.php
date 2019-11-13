@@ -304,6 +304,7 @@ class AttendancesController extends AppController
                 try{
                     if($this->AttendanceLates->save($attendanceLates)){                   
                         $this->Flash->success(__('Successfully saved remark'));
+                        return $this->redirect(['action' => 'index']);
                     }
                     
                 }catch(\Exception $e){               
@@ -340,6 +341,7 @@ class AttendancesController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+            $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 
             $data = $this->request->data;
 
@@ -355,6 +357,26 @@ class AttendancesController extends AppController
                 $attendanceLates->status=1;
                 $attendanceLates->mdate=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
                 if ($this->AttendanceLates->save($attendanceLates)) {
+
+                    $attendance = $this->Attendances->find()->where(['id'=>$attendance_late_exist->attendance_id])->limit(1)->first();
+                    $sql_card="SELECT * FROM user_cards WHERE user_id=".$attendance->user_id." AND cdate="."'".date_format($attendance->cdate,"Y-m-d H:i:s")."'"; 
+                    $stmt = $conn->execute($sql_card);
+                    $card_log = $stmt->fetch('assoc');
+            
+
+                    $date=$card_log['cdate'];
+                    $mdate=$card_log['mdate'];
+
+                    //insert into user_card_log
+                    $sql_log="INSERT INTO `user_cards_logs` (user_card_id,user_id,card_id,pic,status,cdate,mdate,remarks) VALUES (".$card_log['id'].",".$card_log['user_id'].","."'".$card_log['card_id']."'".","."'".$card_log['pic']."'".","."'".$card_log['status']."'".","."'".$date."'".","."'".$cur_date."'".","."'".$card_log['remarks']."'".")";
+                
+                    $stmt_log = $conn->execute($sql_log);
+
+                    $sql_update="UPDATE `user_cards` SET remarks='Mendapat Kelulusan', card_id=2, pic=$user_id, mdate='$cur_date' WHERE user_id=".$attendance->user_id." AND id=".$card_log['id']; 
+                    $stmt = $conn->execute($sql_update);
+
+
+
                     $this->Flash->success(__('Successfully saved'));
                     return $this->redirect(['action' => 'late_approval']);
                 }

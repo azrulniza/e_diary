@@ -3063,6 +3063,20 @@ msgstr "Catatan telah berjaya disimpan"
 msgid "Unsuccessfully save remark"
 msgstr "Catatan tidak berjaya disimpan"
 
+msgid "Total Late in a week"
+msgstr "Jumlah Lewat Dalam Seminggu"
+
+msgid "With Approval"
+msgstr "Kelulusan"
+
+msgid "Without Approval"
+msgstr "Tanpa Kelulusan"
+
+msgid "Late (With Approval)"
+msgstr "Lewat (Dengan Kelulusan)"
+
+
+
 
 
 

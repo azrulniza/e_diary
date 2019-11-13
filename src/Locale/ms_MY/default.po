@@ -2690,6 +2690,12 @@ msgstr "Tidak"
 msgid "Yes"
 msgstr "Ya"
 
+msgid "Change Card Color"
+msgstr "Tukar Warna Kad"
+
+msgid "Year"
+msgstr "Tahun"
+
 
 
 

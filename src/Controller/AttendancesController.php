@@ -130,6 +130,8 @@ class AttendancesController extends AppController
                 $attendance_in['card']=$user_card->card->name;
                 $attendance_in['card_id']=$user_card->id;
 
+                $user_cards = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["MONTH(UserCards.cdate)=MONTH(CURDATE())"])->where(["YEAR(UserCards.cdate)=YEAR(CURDATE())"]);
+                $attendance_in['user_cards']=$user_cards;
 
                 $attendance_late_remark = $this->AttendanceLates->find('all')->where(["attendance_id"=>$has_in->id])->limit(1)->first();
                 $attendance_in['late_remark_id']=$attendance_late_remark->id;
@@ -194,6 +196,9 @@ class AttendancesController extends AppController
                 $attendance_in['card']=$user_card->card->name;
                 $attendance_in['card_id']=$user_card->id;
 
+                $user_cards = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["MONTH(UserCards.cdate)=MONTH(CURDATE())"])->where(["YEAR(UserCards.cdate)=YEAR(CURDATE())"]);
+                $attendance_in['user_cards']=$user_cards;
+
                 $attendance_late_remark = $this->AttendanceLates->find('all')->where(["attendance_id"=>$has_in->id])->limit(1)->first();
                 $attendance_in['late_remark_id']=$attendance_late_remark->id;
                 $attendance_in['late_remark']=$attendance_late_remark->late_remark;
@@ -248,12 +253,14 @@ class AttendancesController extends AppController
                 $attendance_in['card']=$user_card->card->name;
                 $attendance_in['card_id']=$user_card->id;
 
+                $user_cards = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["MONTH(UserCards.cdate)=MONTH(CURDATE())"])->where(["YEAR(UserCards.cdate)=YEAR(CURDATE())"]);
+                $attendance_in['user_cards']=$user_cards;
 
                 $attendance_late_remark = $this->AttendanceLates->find('all')->where(["attendance_id"=>$has_in->id])->limit(1)->first();
                 $attendance_in['late_remark_id']=$attendance_late_remark->id;
                 $attendance_in['late_remark']=$attendance_late_remark->late_remark;
                 $attendance_in['late_remark_status']=$attendance_late_remark->status;
-                
+
 
                 $attendances[$attendance_in['user_id']]=$attendance_in;
             }
@@ -618,24 +625,42 @@ class AttendancesController extends AppController
 
         if ($userRoles->hasRole(['Master Admin'])) {
             $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+            
+           
+            $language_id = $this->getLanguageId();
+            if($language_id==2){ //Bahasa
+                $list_card = $this->Cards->find('list')->where(["status"=>1]);
 
-            if ($this->request->is('post')) {
-                $data = $this->request->data;
-                $dateSelected = $data['dateChoose'];
-                $organizationSelected = $data['department'];
-            }
-   
-            if (empty($dateSelected)){
-                $dateSelected = $this->request->query('dateChoose');
-                if (empty($dateSelected)){
-                    $dateSelected = date('Y-m-d');
+                $arrayColor = array();
+                foreach ($list_card as $key => $value) {
+                    if($key==1){
+                        $arrayColor[$key]="Hijau";
+                    }elseif($key==2){
+                        $arrayColor[$key]="Kuning";
+                    }elseif($key==3){
+                        $arrayColor[$key]="Merah";
+                    }
+                    
                 }
-                
+                $list_card  = $arrayColor;
+            }else{
+                $list_card = $this->Cards->find('list')->where(["status"=>1]);
             }
 
-            if(empty($organizationSelected)){
-                $organizationSelected = $this->request->query('department');
+            $cardselected = $this->request->query('card');
+            $organizationSelected = $this->request->query('department');
+            $yearselected = $this->request->query('att_year');
+            $monthselected = $this->request->query('att_month');
+   
+            
+            if (empty($yearselected)){
+                $yearselected = date('Y');
             }
+
+            if (empty($monthselected)){
+                $monthselected = date('m');
+            }
+               
             
            
             if(!empty($organizationSelected)){
@@ -664,52 +689,41 @@ class AttendancesController extends AppController
             foreach($attendances_in as $attendance_in){
                 $attendances_std=new \stdClass();
 
-                $has_in = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>1])->where(['DATE(Attendances.cdate)'=>$dateSelected])->order('Attendances.cdate DESC')->limit(1)->first();
                 
-                $has_out = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['Attendances.status'=>2])->where(['DATE(Attendances.cdate)'=>$dateSelected])->order('Attendances.cdate DESC')->limit(1)->first();
-
-                $attendance_in['attendance_id']=$has_in->id;
-
-                $attendance_in['in']=$has_in->cdate;
+                $user_cards = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["MONTH(UserCards.cdate)"=>"$monthselected"])->where(["YEAR(UserCards.cdate)"=>"$yearselected"]);
                 
-                //cater for 2kali clock in
-                $attendance = $this->Attendances->find('all')->contain(['AttendanceCodes'])->Where(['user_id'=>$attendance_in['user_id']])->where(['DATE(Attendances.cdate)'=>$dateSelected])->order('Attendances.cdate DESC')->limit(1)->first();
-                
-                if($attendance->status == 1){
-                    $attendance_in['in']=$attendance->cdate;
-                    $attendance_in['status']=$attendance->status;
-                    $attendance_in['attendance_code_name']=$attendance->attendance_code->name;
-                }else{
-                    if($has_in->status == 1 AND $has_out->status != 2){
-                        $attendance_in['status']=$has_in->status;
-                        $attendance_in['attendance_code_name']=$has_in->attendance_code->name;
-
-                    }else if($has_out->status == 2){
-                        $attendance_in['status']=$has_out->status;
-                        $attendance_in['attendance_code_name']=$has_out->attendance_code->name;
-                    }else{
-                        $attendance_in['status']=2;
-                        $attendance_in['attendance_code_name']="Absent";
-                    }
-                    $attendance_in['out']=$has_out->cdate;
-                }
-
-                $user_card = $this->UserCards->find('all')->contain(['Cards'])->where(['UserCards.user_id'=>$attendance_in['user_id']])->where(["DATE(UserCards.cdate)"=>$dateSelected])->limit(1)->first();
-                $attendance_in['card']=$user_card->card->name;
-                $attendance_in['card_id']=$user_card->id;
+                $attendance_in['user_cards']=$user_cards;
 
                 $attendances[$attendance_in['user_id']]=$attendance_in;
+
+                if(!empty($cardselected)){
+                    $count_red=0;
+
+                    foreach($user_cards as $data){
+                       if($data->card_id==3){
+                            $count_red++;
+                       }
+                    }
+
+                    if($cardselected==1){//hijau
+                        if($count_red <= 3){
+                            unset($attendances[$attendance_in['user_id']]); //remove array user with no green card
+                        }
+                    }else if($cardselected==3){//red
+                        if($count_red != 3){
+                            unset($attendances[$attendance_in['user_id']]); //remove array user with no red card
+                        }
+                    }else if($cardselected==2){//yellow
+                        if($count_red >= 3){
+                            unset($attendances[$attendance_in['user_id']]); //remove array user with no yellow card
+                        }
+                    }
+                    
+                }
+                
             }
         }elseif ($userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) {
-            /*$sql="SELECT Attendances.*, attendance_codes.`name` AS attendance_codes_name, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
-                Users 
-                JOIN user_organizations ON user_organizations.`user_id`=`users`.id
-                JOIN `user_designations`ON `user_designations`.`user_id`=`users`.id
-                JOIN `designations` ON `designations`.id=`user_designations`.designation_id
-                JOIN organizations ON `organizations`.id = designations.`organization_id`
-                RIGHT JOIN `attendances` ON attendances.`user_id`= `users`.id
-                JOIN attendance_codes ON attendance_codes.`id`=attendances.`attendance_code_id`
-                WHERE organizations.`id`=$user_organization_id AND DATE(`attendances`.cdate)=CURDATE()";*/
+            
               $sql="SELECT  Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM
                 users Users 
                 JOIN user_organizations ON user_organizations.`user_id`=`Users`.id
@@ -759,7 +773,7 @@ class AttendancesController extends AppController
             }
         }
         
-        $this->set(compact('dateSelected','attendances','userRoles','attendance_in','today_date','list_organization','list_user','organizationSelected','user_card'));
+        $this->set(compact('list_card','cardselected','yearselected','monthselected','attendances','userRoles','attendance_in','today_date','list_organization','list_user','organizationSelected','user_card'));
     }
 
 
@@ -1028,11 +1042,11 @@ class AttendancesController extends AppController
                     $sql="INSERT INTO `user_cards` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
             
                     $stmt = $conn->execute($sql);
-
+                    $last_id = $stmt->lastInsertId();
 
                     //insert into user_card_log
                     $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
-                    $sql_log="INSERT INTO `user_cards_logs` (user_id,card_id,pic,status,cdate,mdate) VALUES (".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+                    $sql_log="INSERT INTO `user_cards_logs` (user_card_id,user_id,card_id,pic,status,cdate,mdate) VALUES (".$last_id.",".$user_id.","."'".$card."'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
             
                     $stmt_log = $conn->execute($sql_log);
                     $this->Flash->success(__('Successfully clockin.'));
@@ -1080,6 +1094,74 @@ class AttendancesController extends AppController
         }
     
         $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','user_pic','SettingAttendancesReasons'));
+    }
+
+
+    public function change_card_month(){
+        // my_connection is defined in your database config
+        $conn = ConnectionManager::get('default');
+
+        $this->loadModel('Users');
+        $this->loadModel('Attendances');
+        $this->loadModel('AttendanceLates');
+        $this->loadModel('AttendanceLogs');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+        $this->loadModel('Designations');
+        $this->loadModel('UserCards');
+        $this->loadModel('Cards');
+
+        $today_date = date('d-m-Y');    
+        $userPIC = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userPIC"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+
+        if ($this->request->is('post')) {
+            $now = \Cake\I18n\Time::now("Asia/Kuala_Lumpur");
+            $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+
+            $data = $this->request->data;
+
+            //[card_color] => 3 [remark] => catatan [user_id] => 4 [card_ids] => 8 9 10 11 12 13 [month] => 11 [year] => 2019
+            $card_color = $data['card_color'];
+            $remark = $data['remark'];
+            $user = $data['user_id'];
+
+            //User Card
+            $user_card = $this->UserCards->find('all')->contain(['Cards','Users'])->where(['UserCards.id IN'=>explode(" ",$data['card_ids'])]);
+            
+            if(!empty($user_card)){
+                foreach ($user_card as $key) {
+                
+                    //$card = $this->UserCards->find()->where(['id'=>$key->id]);
+                    $card_id=$key->id;
+
+                    $sql_card="SELECT * FROM user_cards WHERE id=$card_id"; 
+                    $stmt = $conn->execute($sql_card);
+                    $card_log = $stmt->fetch('assoc');
+
+                    $date=$card_log['cdate'];
+                    $mdate=$card_log['mdate'];
+
+                    //insert into user_card_log
+                    $sql_log="INSERT INTO `user_cards_logs` (user_card_id,user_id,card_id,pic,status,cdate,mdate,remarks) VALUES (".$card_id.",".$card_log['user_id'].","."'".$card_log['card_id']."'".","."'".$card_log['pic']."'".","."'".$card_log['status']."'".","."'".$date."'".","."'".$mdate."'".","."'".$card_log['remarks']."'".")";
+                
+                    $stmt_log = $conn->execute($sql_log);
+
+                    $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=$card_color, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                    $stmt = $conn->execute($sql_update);
+                }
+                $this->Flash->success(__('Successfully update card status.'));
+
+                return $this->redirect(['action' => 'card']);
+            }else{
+                $this->Flash->error(__('The card status could not be saved. Please, try again.'));
+            }
+            
+        }
+
+        //return $this->redirect(['action' => 'late_approval']);
     }
 
 

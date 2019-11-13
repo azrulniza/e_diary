@@ -47,7 +47,14 @@
                         <?php $count = 0 ?>
         
                         <?php foreach ($attendances as $attendance): ?>
-                            
+                                
+                            <?php $count_red=0; foreach($attendance['user_cards'] as $data){
+                                   if($data->card_id==3){
+                                        $count_red++;
+                                   }
+                            }
+                            ?>
+
                             <tr id="<?= $attendance['attendance_id']; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $this->Number->format($count) ?></td>
                                 <td>
@@ -70,6 +77,9 @@
                                         $time_color="#000000";
                                     }else{
                                         $time_color=$attendance['card'];
+                                        if($time_color=='Yellow'){
+                                            $time_color="#000000";
+                                        }
                                     }?> 
                                     <p style="color:<?php echo $time_color?>"><?php echo date_format($attendance['in'],"H:i a");?></p> 
                                    
@@ -90,7 +100,17 @@
                                     } ?>
                                     
                                 </td> 
-                                <td></td>
+                                <td>
+                                    <?php
+                                        if($count_red==3){ ?>
+                                            <b style="color:red"><span style="border-radius:25%; border: 0.5px solid #000000; !important;" , class="fa fa-square"></span></b> <?= __('Red')?>
+
+                                        <?php }else if($count_red > 3){ ?>
+                                            <b style="color:green"><span style="border-radius:25%; border: 0.5px solid #000000; !important;" , class="fa fa-square"></span></b> <?= __('Green')?>
+                                        <?php }else{?>
+                                            <b style="color:yellow"><span style="border-radius:25%; border: 0.5px solid #000000; !important;" , class="fa fa-square"></span></b> <?= __('Yellow')?>
+                                        <?php } ?>
+                                </td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>

@@ -110,11 +110,12 @@ class ReportsController extends AppController
 			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 			WHERE Users.status = 1"; */
 			
-		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name
+		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name,Attendances.late_status,Attendances.late_remark,uleave.reason
 			FROM users Users
 			LEFT JOIN (
-				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks
+				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks,attn_late.status as late_status, attn_late.late_remark
 				FROM attendances Attendances 
+				LEFT JOIN attendance_lates attn_late ON attn_late.attendance_id=Attendances.id
 				WHERE date(Attendances.cdate) = '".$dateselected."' and Attendances.status=1
 				GROUP BY Attendances.user_id
 			)Attendances ON Users.id = Attendances.user_id
@@ -130,6 +131,14 @@ class ReportsController extends AppController
 				WHERE date(ucards.cdate) = '".$dateselected."'
 				GROUP BY ucards.user_id
 			) UserCards ON UserCards.user_id = Users.id
+			LEFT JOIN (
+				SELECT uleave.reason, uleave.user_id
+				FROM user_leaves uleave
+				WHERE date(uleave.date_start) <= '".$dateselected."' 
+				AND date(uleave.date_end) >= '".$dateselected."'
+				AND uleave.status = 1
+				GROUP BY uleave.user_id
+			) uleave ON uleave.user_id = Users.id
 			LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id			
 			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 			WHERE Users.status = 1";
@@ -154,7 +163,7 @@ class ReportsController extends AppController
         ]);
 
 		$this->set('result',$results);
-        $this->set(compact('result','deptId','dateselected', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected'));
+        $this->set(compact('result','deptId','sql','dateselected', 'userRoles','departments','users','filterSelected','departmentSelected','userSelected'));
 		$this->set('_serialize', ['report']);
     }
 	
@@ -206,16 +215,18 @@ class ReportsController extends AppController
 		}
 		
 		$weeklysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour, 
-				Organization.name as 	organization_name 
+				Organization.name as 	organization_name ,Attendances.approved_late
 				FROM users Users
 				LEFT JOIN (
-				SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id
-				FROM attendances Attendances 
-				WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thisweekStart."'
-				AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
-				AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-				AND Attendances.status = 1 
-				GROUP BY Attendances.user_id
+					SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
+					count(attn_late.status=1) as approved_late
+					FROM attendances Attendances 
+					LEFT JOIN attendance_lates attn_late ON attn_late.attendance_id=Attendances.id
+					WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thisweekStart."'
+					AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
+					AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
+					AND Attendances.status = 1 
+					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN (
 					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
@@ -314,14 +325,16 @@ class ReportsController extends AppController
 		}
 		
 		$monthlysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour,
-				cardinfo.remarks as card_remarks,cardinfo.cdate,Organization.name as organization_name,g.name as grade
+				cardinfo.remarks as card_remarks,cardinfo.cdate,Organization.name as organization_name,g.name as grade, Attendances.approved_late
 				FROM users Users
 				LEFT JOIN grades g ON g.id = Users.grade_id				
 				LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = Users.id				
 				LEFT JOIN organizations Organization ON UserOrganization.organization_id = Organization.id
 				LEFT JOIN (
-					SELECT count(DISTINCT(DAY(Attendances.cdate))) as total_late,Attendances.cdate,Attendances.user_id
+					SELECT count(DISTINCT(DAY(Attendances.cdate))) as total_late,Attendances.cdate,Attendances.user_id,
+					count(attn_late.status=1) as approved_late
 					FROM attendances Attendances 
+					LEFT JOIN attendance_lates attn_late ON attn_late.attendance_id=Attendances.id
 					WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thismonthStart."'
 					AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thismonthEnd."'
 					AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
@@ -672,11 +685,12 @@ class ReportsController extends AppController
 			$dateselected = date( 'Y-m-d');
 		}
 		
-		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name
+		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name,Attendances.late_status,Attendances.late_remark,uleave.reason
 			FROM users Users
 			LEFT JOIN (
-				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks
+				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks,attn_late.status as late_status, attn_late.late_remark
 				FROM attendances Attendances 
+				LEFT JOIN attendance_lates attn_late ON attn_late.attendance_id=Attendances.id
 				WHERE date(Attendances.cdate) = '".$dateselected."' and Attendances.status=1
 				GROUP BY Attendances.user_id
 			)Attendances ON Users.id = Attendances.user_id
@@ -692,6 +706,14 @@ class ReportsController extends AppController
 				WHERE date(ucards.cdate) = '".$dateselected."'
 				GROUP BY ucards.user_id
 			) UserCards ON UserCards.user_id = Users.id
+			LEFT JOIN (
+				SELECT uleave.reason, uleave.user_id
+				FROM user_leaves uleave
+				WHERE date(uleave.date_start) <= '".$dateselected."' 
+				AND date(uleave.date_end) >= '".$dateselected."'
+				AND uleave.status = 1
+				GROUP BY uleave.user_id
+			) uleave ON uleave.user_id = Users.id
 			LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id			
 			LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
 			WHERE Users.status = 1";
@@ -735,7 +757,7 @@ class ReportsController extends AppController
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array(__('Bil'), __('Name'), __('Card No.'), __('In Time'), __('Out Time'), __('Remarks'), __('Total Hour')));
+		fputcsv($output, array(__('Bil'), __('Name'), __('Card No.'), __('In Time'), __('Out Time'), __('Time Off'), __('Late (With Approval)'), __('Total Hour')));
 		$count_no=1;
 
 		$totalyellow = 0;
@@ -769,6 +791,15 @@ class ReportsController extends AppController
 				}
 			}
 			
+			if ($user['late_status'] != NULL){
+				$late_status_approval = __('yes');
+				if($user['late_status'] == '2' || $user['late_status']== '0'){
+					$late_status_approval = __('no');
+				}
+			} else {
+				$late_status_approval = '';
+			}
+			
 			if ($showData == 1){
 				if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
 				if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
@@ -777,7 +808,7 @@ class ReportsController extends AppController
 				if ($user['in_time'] !=''){ $intime = date('H:i:s',strtotime($user['in_time']));}
 				if ($user['out_time'] !=''){ $outtime = date('H:i:s',strtotime($user['out_time']));}
 				
-				$data[]=$count_no .','.$user['name'] .','.$user['card_no'].','.$intime.','.$outtime.','.$user['attn_remarks'].','.$totalhours;
+				$data[]=$count_no .','.$user['name'] .','.$user['card_no'].','.$intime.','.$outtime.','.$user['reason'].','.$late_status_approval.','.$totalhours;
 				$count_no++;	
 			}
 		}	
@@ -818,16 +849,18 @@ class ReportsController extends AppController
 		}
 		
 		$weeklysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour, 
-				Organization.name as 	organization_name 
+				Organization.name as 	organization_name ,Attendances.approved_late
 				FROM users Users
 				LEFT JOIN (
-				SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id
-				FROM attendances Attendances 
-				WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thisweekStart."'
-				AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
-				AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
-				AND Attendances.status = 1 
-				GROUP BY Attendances.user_id
+					SELECT count(Attendances.user_id) as total_late,Attendances.cdate,Attendances.user_id,
+					count(attn_late.status=1) as approved_late
+					FROM attendances Attendances 
+					LEFT JOIN attendance_lates attn_late ON attn_late.attendance_id=Attendances.id
+					WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thisweekStart."'
+					AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
+					AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
+					AND Attendances.status = 1 
+					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN (
 					SELECT Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
@@ -883,7 +916,7 @@ class ReportsController extends AppController
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array(__('Bil'), __('Name'),__( 'Card No.'), __('Red card in a week'), __('Card colour for end week')));
+		fputcsv($output, array(__('Bil'), __('Name'),__( 'Card No.'), __('Total Late in a week with approval'), __('Total Late in a week without approval'), __('Card colour for end week')));
 		$count_no=1;
 		
 		$totalyellow = 0;
@@ -894,7 +927,10 @@ class ReportsController extends AppController
 			if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
 			if ($user['card_colour'] == 'Red'){ $totalred += 1;}
 			if($user['total_late'] >=3 ) {$totalLate = '1';} else { $totalLate =''; }
-			$data[]=$count_no .','.$user['name'] .','.$user['card_no'].','.$totalLate.','.__($user['card_colour']);
+			$late_not_approved1 = $user['total_late'] - $user['approved_late'];
+			if($late_not_approved1 > 0) { $late_not_approved = $late_not_approved1;}
+			
+			$data[]=$count_no .','.$user['name'] .','.$user['card_no'].','.$user['approved_late'].','.$late_not_approved.','.__($user['card_colour']);
 			$count_no++;	
 		}
 		$data[]=',,,,,';
@@ -938,14 +974,16 @@ class ReportsController extends AppController
 			$yearselected	= date('m');
 		}
 		$monthlysql = "SELECT Users.*,Attendances.total_late,cardinfo.card_colour as card_colour,
-				cardinfo.remarks as card_remarks,cardinfo.cdate,Organization.name as organization_name,g.name as grade
+				cardinfo.remarks as card_remarks,cardinfo.cdate,Organization.name as organization_name,g.name as grade, Attendances.approved_late
 				FROM users Users
 				LEFT JOIN grades g ON g.id = Users.grade_id				
 				LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = Users.id				
 				LEFT JOIN organizations Organization ON UserOrganization.organization_id = Organization.id
 				LEFT JOIN (
-					SELECT count(DISTINCT(DAY(Attendances.cdate))) as total_late,Attendances.cdate,Attendances.user_id
+					SELECT count(DISTINCT(DAY(Attendances.cdate))) as total_late,Attendances.cdate,Attendances.user_id,
+					count(attn_late.status=1) as approved_late
 					FROM attendances Attendances 
+					LEFT JOIN attendance_lates attn_late ON attn_late.attendance_id=Attendances.id
 					WHERE  DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')>='".$thismonthStart."'
 					AND DATE_FORMAT(Attendances.cdate, '%Y-%m-%d')<='".$thismonthEnd."'
 					AND DATE_FORMAT(Attendances.cdate, '%H:%i:%s')>='09:00:00'
@@ -1006,7 +1044,7 @@ class ReportsController extends AppController
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array(__('Bil'), __('Name'), __('Grade'), __('Card No.'), __('Total Late'), __('Officer Approval'), __('Card Colour'), __('Remarks')));
+		fputcsv($output, array(__('Bil'), __('Name'), __('Grade'), __('Card No.'), __('Total Late'), __('With Officer Approval'),__('Without Officer Approval'), __('Card Colour'), __('Remarks')));
 		$count_no=1;
 		
 		$totalyellow = 0;
@@ -1021,9 +1059,11 @@ class ReportsController extends AppController
 			if ($user['total_late'] >= 3){$total3times += 1;}
 			
 			if ($user['total_late']>0){ $totalLate = $user['total_late']; }else{ $totalLate = '-';}
-			if ($user['total_late']>0){ $officerApproval = __('yes'); }else{ $officerApproval = '-'; }			
+			if ($user['total_late']>0){ $officerApproval = __('yes'); }else{ $officerApproval = '-'; }
+			$late_not_approved1 = $user['total_late'] - $user['approved_late'];			
+			if($late_not_approved1 > 0) { $late_not_approved = $late_not_approved1;}
 			
-			$data[]=$count_no .','.$user['name'] .','.$user['grade'].$user['skim'] .','.$user['card_no'].','.$totalLate.','.$officerApproval.','. __($user['card_colour']).','.$user['card_remarks'];
+			$data[]=$count_no .','.$user['name'] .','.$user['grade'].$user['skim'] .','.$user['card_no'].','.$totalLate.','.$user['approved_late'].','.$late_not_approved.','. __($user['card_colour']).','.$user['card_remarks'];
 			$count_no++;	
 		}		
 		$data[]=',,,,,,,,';

@@ -47,25 +47,30 @@
 					<span class="glyphicon glyphicon-download-alt"> </span> 
 					<?php echo __('Export to Excel') ?>
 				</a>
-					
-				<?= $this->Html->link(__('Export to PDF'), ['action' => 'weekly','department' => $departmentSelected,
-						'user' => $userSelected,'date_attendance' => $dateselected, '_ext' => 'pdf'], 
-						['class' => 'btn btn-default pull-right']) ?>
-				<br/><br/>
+				<?php if (!$userRoles->hasRole(['Staff'])) :?>
+					<?= $this->Html->link(__('Export to PDF'), ['action' => 'weekly','department' => $departmentSelected,
+							'user' => $userSelected,'date_attendance' => $dateselected, '_ext' => 'pdf'], 
+							['class' => 'btn btn-default pull-right']) ?>
+					<br/><br/>
+				<?php endif; ?>
                 <div class="reports index dataTable_wrapper table-responsive">
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th colspan='5'><?= 'Date from :'.$thisweekStart.' to '.$thisweekEnd ?></th>
+                                <th colspan='6'><?= 'Date from :'.$thisweekStart.' to '.$thisweekEnd ?></th>
 							</tr>
                         </thead>
 						<thead>
                             <tr>
-                                <th><?= __('Bil') ?></th>
-                                <th><?= __('Name') ?></th>
-                                <th><?= __('Card No.') ?></th>
-                                <th><?= __('Red card in a week') ?></th>
-                                <th><?= __('Card colour for end week') ?></th>
+                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Bil') ?></th>
+                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Name') ?></th>
+                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Card No.') ?></th>
+                                <th colspan=2 style='text-align: center;'><?= __('Total Late in a week') ?></th>
+                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Card colour for end week') ?></th>
+                            </tr>
+                            <tr>
+                                <th style='text-align: center;'><?= __('With Approval') ?></th>
+                                <th style='text-align: center;'><?= __('Without Approval') ?></th>
                             </tr>
                         </thead>
                         <tbody class="ui-sortable">
@@ -80,12 +85,16 @@
 						if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
 						if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
 						if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
+						
+						$late_not_approved = $user['total_late'] - $user['approved_late'];
 						?>
                             <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
-                                <td><?= $count-$this->Paginator->param('perPage')?></td>
+                                <td align='center'><?= $count-$this->Paginator->param('perPage')?></td>
                                 <td><?= $user['name'] ?></td>
-                                <td><?= $user['card_no'] ?></td>
-                                <td><?php if($user['total_late'] >=3 ) {echo '1';} ?></td>
+                                <td  align='center'><?= $user['card_no'] ?></td>
+                               <!--<td><?php if($user['total_late'] >=3 ) {echo '1';} ?></td>-->
+                                <td  align='center'><?php echo $user['approved_late'];?></td>
+                                <td  align='center'><?php if($late_not_approved > 0) {echo $late_not_approved;} ?></td>
 								<td>
 									<?php if ($user['card_colour']) {?>
 									<b style="color:<?= $user['card_colour'] ?>"><span class="fa fa-square"></span></b>

@@ -45,25 +45,28 @@
 							?>
 					</div>
 				<?= $this->Form->end() ?>
-				<a href="reports/exportExcelDaily?department=<?= $departmentSelected;?>&
-					user=<?= $userSelected;?>&date_attendance=<?= $dateselected;?>&filterby=<?= $filterSelected;?>" class="btn btn-default pull-right">
+					<a href="reports/exportExcelDaily?department=<?= $departmentSelected;?>&
+						user=<?= $userSelected;?>&date_attendance=<?= $dateselected;?>&filterby=<?= $filterSelected;?>" class="btn btn-default pull-right">
 						<span class="glyphicon glyphicon-download-alt"> </span> 
 						<?php echo __('Export to Excel') ?>
 					</a>
+					<?php if (!$userRoles->hasRole(['Staff'])) :?>
 					<?= $this->Html->link(__('Export to PDF'), ['action' => 'index','department' => $departmentSelected,
 						'user' => $userSelected,'date_attendance' => $dateselected,'filterby' => $filterSelected, 
 						'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+					<?php endif; ?>
 					<br/><br/>
 					<div id='dvContainer'>
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                             <th><?= __('Bil') ?></th>
+								<th><?= __('Bil') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Card No.') ?></th>
                                 <th><?= __('In Time') ?></th>
                                 <th><?= __('Out Time') ?></th>
-                                <th><?= __('Remarks') ?></th>
+                                <th><?= __('Time Off') ?></th>
+                                <th><?= __('Late (With Approval)') ?></th>
                                 <th><?= __('Total Hour') ?></th>
                             </tr>
                         </thead>
@@ -105,6 +108,16 @@
 						if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
 						if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
 						if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
+						
+						
+						if ($user['late_status'] != NULL){
+							$late_status_approval = __('yes');
+							if($user['late_status'] == '2' || $user['late_status']== '0'){
+								$late_status_approval = __('no');
+							}
+						} else {
+							$late_status_approval = '';
+						}
 						if($showData == 1) {
 						?>
                             <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
@@ -113,14 +126,16 @@
                                 <td><?= $user['card_no'] ?></td>
                                 <td><?php if ($user['in_time'] !=''){ echo date('H:i:s',strtotime($user['in_time']));} ?></td>
                                 <td><?php if ($user['out_time'] !=''){ echo date('H:i:s',strtotime($user['out_time']));} ?></td>
-                                <td><?= $user['attn_remarks'] ?></td>
+                                <td><?= $user['reason'] ?></td>
+                                <td><?= $late_status_approval ?></td>
+								
                                 <td><?php if ($diff > 0){ echo round($hours, 2). ' Hours';} else { } ?></td>
                             </tr>
 						<?php } ?>
                         <?php endforeach ?>
 							<tr>
 								<td colspan='4'><b><?= __('Total Officer')?></b></td>
-								<td colspan='3'><b><?= $count?></b></td>
+								<td colspan='4'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Yellow Cards')?></b></td>
@@ -128,11 +143,11 @@
 							</tr>-->
 							<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards')?></b></td>
-								<td colspan='3'><b><?= $totalred?></b></td>
+								<td colspan='4'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards')?></b></td>
-								<td colspan='3'><b><?= $totalgreen?></b></td>
+								<td colspan='4'><b><?= $totalgreen?></b></td>
 							</tr>
                         </tbody>
                     </table>

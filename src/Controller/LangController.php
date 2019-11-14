@@ -24,6 +24,7 @@ class LangController extends AppController
 
         $cont=$this->request->query('cont');
         $act=$this->request->query('act');
+        $id=$this->request->query('id');
         
         if(isset($langs[$lang])){
             $session->write('Config.language', $lang);
@@ -31,7 +32,7 @@ class LangController extends AppController
 			if (!$this->Auth->user()) {
 				return $this->redirect('/');
 			}else{
-				return $this->redirect(['controller'=>$cont,'action' => $act]);	
+				return $this->redirect(['controller'=>$cont,'action' => $act,$id]);	
 			}
         }
         else{

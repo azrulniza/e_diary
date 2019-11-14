@@ -77,6 +77,25 @@
 				$("#listuser").prop('disabled',false);
 			}
 		});
+		$('#ic-number').keyup(function(e) { 
+			if(this.value.length < 12){
+				this.setCustomValidity('<?php echo __("Please enter 12 digit identity card no.")?>');
+			}
+		});
+		$('#phone').keyup(function(e) { 
+			if(this.value.length < 10){
+				this.setCustomValidity('<?php echo __("Please enter phone number 10-12 digits.")?>');
+			}
+		});
+		$('#email').keyup(function(e) { 
+			if (this.value.indexOf('@') < 0)
+			{
+				this.setCustomValidity('<?php echo __("Please include an \'@\' in email address.")?>');
+			}else if (this.value.indexOf('.') < 0){
+				this.setCustomValidity('<?php echo __("Please include an \'.\' in email address.")?>');
+			}
+
+		});
 	});
 </script>
 <div class="row">
@@ -103,9 +122,9 @@
 						</center>
                         <?php
 						echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
-						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'minlength'=>12,'title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
+						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
-						echo $this->Form->input('phone', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'minlength'=>10,'class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
+						echo $this->Form->input('phone', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('password', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
 						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;','required'=>true]);                        
                         if ($userRoles->hasRole(['Master Admin','Supervisor'])) :

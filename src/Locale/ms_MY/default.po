@@ -3409,3 +3409,16 @@ msgstr "Time Off Tidak Sah"
 
 msgid "Email not equal."
 msgstr "Email yang dimasukkan tidak sama."
+
+msgid "Please enter 12 digit identity card no."
+msgstr "Sila masukkan nombor kad pengenalan 12 digit."
+
+msgid "Please enter phone number 10-12 digits."
+msgstr "Sila masukkan nombor telefon 10-12 digit."
+
+msgid "Please include an \'@\' in email address."
+msgstr "Sila sertakan \'@\' dalam alamat e-mel."
+
+msgid "Please include an \'.\' in email address."
+msgstr "Sila sertakan \'.\' dalam alamat e-mel."
+

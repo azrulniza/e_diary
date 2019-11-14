@@ -30,7 +30,12 @@ if (isset($title)) {
     <?= $this->fetch('meta') ?>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
+	<style>
+	input[type=text]
+	{
+		text-transform:capitalize;
+	}
+	</style>
     <?php
     /**
      *  CSS
@@ -75,10 +80,18 @@ if (isset($title)) {
         function getAppVars(){
             return <?=  json_encode($appVars, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)?>;
         } 
-		$(document ).ready(function() {
+		$(document ).ready(function(e) {
+						
 			var required = "<?php echo __('Please fill out this field.'); ?>";
 			$("input[required], select[required]").attr("oninvalid", "this.setCustomValidity('"+ required +"')");
 			$("input[required], select[required]").attr("oninput", "setCustomValidity('')");
+			
+			$('.box-body').on('input', ':text', function()
+			{ 
+				if($(this).attr('name') != 'ic_number'){
+					$(this).attr("oninput", "let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p)"); 
+				};
+			});
 		});
     </script>
     <?php

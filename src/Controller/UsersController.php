@@ -31,9 +31,7 @@ class UsersController extends AppController
 
         $this->userStatus = [
             1 => __('Active'),
-            0 => __('Disabled'),
-            2 => __('Pending activation'),
-            4 => __('Password reset requested')];
+            0 => __('Disabled')];
     }
 	
     /**

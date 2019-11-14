@@ -75,6 +75,14 @@
 				$("#listuser").prop('disabled',false);
 			}
 		});
+		$('#phone').keyup(function(e) { 
+			if(this.value.length < 10){
+				this.setCustomValidity('<?php echo __("Please enter phone number 10-12 digits.")?>');
+			}
+		});
+		if($('#phone').val().length < 10){
+				this.setCustomValidity('<?php echo __("Please enter phone number 10-12 digits.")?>');
+		}
 	});
 </script><div class="row">
     <div class="col-xs-10">
@@ -104,17 +112,17 @@
                             </span>
 						</center>
                         <?php 
-                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
-						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'title'=>'12-Digit IC Number','class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
+                        echo $this->Form->input('name', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
+						echo $this->Form->input('ic_number', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
                         echo $this->Form->input('email', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'disabled'=>true,'style'=>'width:50%;']);
-						echo $this->Form->input('phone', ['class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;']);
+						echo $this->Form->input('phone', ['onkeypress'=>'return isNumber(event)','maxlength'=>12,'class' => 'form-control', 'placeholder' => __('Enter ...'),'style'=>'width:50%;','required'=>true]);
                         echo $this->Form->input('new_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter new password'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);
                         echo $this->Form->input('confirm_password', ['class' => 'form-control', 'type'=>'password', 'placeholder' => __('Enter password confirmation'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;']);
 						if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
 							echo $this->Form->input('role', ['label'=>__('Roles'),'class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true,'value'=> $selected_role]);
 						endif;
 						if ($userRoles->hasRole(['Master Admin'])) :
-							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_dept]);
+							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_dept,'required'=>true]);
 							echo $this->Form->label(__('Grade'));
 							echo '<span class="mark-required" style="color:red;"> * </span>';
 							echo '<div>';
@@ -127,7 +135,7 @@
 							echo '</div>';
 							echo '<div style="clear: both;"></div>';
 							echo '</div>';
-							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_designation]); 
+							echo $this->Form->input('designation', ['class' => 'form-control','id'=>'listdesignation','empty'=>__('--Please Select--'),'options' => $designations,'multiple' => false,'style'=>'width:50%;','value'=>$selected_designation,'required'=>true]); 
 							echo $this->Form->input('report_to', ['class' => 'form-control','id'=>'listuser','empty'=>__('--Please Select--'),'placeholder' => __('Enter ...'), 'options' => $reportTo,'style'=>'width:50%;','required'=>true,'value'=>$selected_reportTo]);		
 							echo $this->Form->input('card_no', ['label'=>__('Card No.'),'class' => 'form-control','style'=>'width:50%;', 'min'=>1, 'placeholder' => __('Enter ...'),'required'=>true]);								
 							echo $this->Form->input('status', ['class' => 'form-control', 'placeholder' => __('Enter ...'), 'options' => $userStatus,'style'=>'width:50%;']);

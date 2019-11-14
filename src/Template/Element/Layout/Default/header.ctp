@@ -66,11 +66,16 @@
                     <?php
                     $langs = \Cake\Core\Configure::read('Languages');
                     $first = true;
+					if($this->request->action == 'edit'){
+						$id = $this->request->params['pass'][0];
+					}else{
+						$id = null;
+					}
                     ?>
 
                     <?php foreach ($langs as $ref => $lang): ?>
                         <div class="box-body"><?= $this->Html->link($lang, ['controller' => 'Lang', 'action' => 'switch_to',"cont" => $this->request->controller,
-                      "act" => $this->request->action, $ref]) ?></div>
+                      "act" => $this->request->action, $ref, "id" => $id]) ?></div>
                         <?php $first = false ?>
                     <?php endforeach; ?>
                 </ul>

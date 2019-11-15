@@ -287,6 +287,7 @@ class UsersController extends AppController
     {
 		$this->loadModel('UserOrganizations');
 		$this->loadModel('UsersRoles');
+		$this->loadModel('UserRoleLogs');
 		$this->loadModel('Organizations');
 		$this->loadModel('Designations');
 		$this->loadModel('UserDesignations');
@@ -372,14 +373,23 @@ class UsersController extends AppController
 					$this->UserDesignations->save($userDesg);
 				}
 				}
-				$chk_role = $this->UsersRoles->find()->where(['user_id'=> $id])->first()->user_id;
+				$chk_role = $this->UsersRoles->find()->where(['user_id'=> $id])->first();
 				if($_POST['role']){
 					if($chk_role){
-						$query = $this->UsersRoles->query();
-						$query->update()
-							->set(['role_id' => $_POST['role']])
-							->where(['user_id' => $id])
-							->execute();
+						if($chk_role->role_id != $_POST['role']){
+							$userRoleLogs = $this->UserRoleLogs->newEntity();
+							$userRoleLogs->user_id = $id;
+							$userRoleLogs->role_id = $chk_role->role_id;
+							$userRoleLogs->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+							$userRoleLogs->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+							$this->UserRoleLogs->save($userRoleLogs);
+							
+							$query = $this->UsersRoles->query();
+							$query->update()
+								->set(['role_id' => $_POST['role']])
+								->where(['user_id' => $id])
+								->execute();
+						}
 					}else{
 						$userRole = $this->UsersRoles->newEntity();
 						$userRole->user_id = $id;

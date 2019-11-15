@@ -90,9 +90,11 @@
 		$('#email').keyup(function(e) { 
 			if (this.value.indexOf('@') < 0)
 			{
-				this.setCustomValidity('<?php echo __("Please include an \'@\' in email address.")?>');
+				this.setCustomValidity("<?php echo __('Please include an \'@\' in email address.')?>");
 			}else if (this.value.indexOf('.') < 0){
-				this.setCustomValidity('<?php echo __("Please include an \'.\' in email address.")?>');
+				this.setCustomValidity("<?php echo __('Please include an \'.\' in email address.')?>");
+			}else if (this.value.slice(this.value.length - 1) == '.'){
+				this.setCustomValidity("<?php echo __('\'.\' cannot be used at last position.')?>");
 			}
 
 		});

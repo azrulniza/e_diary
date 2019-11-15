@@ -3422,3 +3422,5 @@ msgstr "Sila sertakan \'@\' dalam alamat e-mel."
 msgid "Please include an \'.\' in email address."
 msgstr "Sila sertakan \'.\' dalam alamat e-mel."
 
+msgid "\'.\' cannot be used at last position."
+msgstr " "

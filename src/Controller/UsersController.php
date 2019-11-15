@@ -659,18 +659,34 @@ class UsersController extends AppController
 	{
 		$this->loadModel('Designations');
 		$department_id = $_GET['id'];
+		$role_id = $_GET['role_id'];
         $userId = $this->AuthUser->id();
 		$user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
 		$userRoles = $this->Users->Roles->initRolesChecker($user->roles);
-		if ($userRoles->hasRole(['Master Admin'])) {
-			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id])->where(['status'=>1]);
-        }
-		$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
-		return $q->where(['UserOrganizations.organization_id'=>$department_id]);})->group(['Users.id']);
 		
-		$users->matching('Roles', function ($q) {
+		$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
+		return $q->where(['UserOrganizations.organization_id'=>$department_id]);})->where(['Users.status'=>1])->group(['Users.id']);
+		
+		if($role_id == 3 AND $role_id == 4){
+			$users->matching('Roles', function ($q) {
+                return $q->where(['Roles.id IN' => [SUPERVISOR]]);
+            });
+		}else{
+			$users->matching('Roles', function ($q) {
                 return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
             });
+		}
+		if ($userRoles->hasRole(['Master Admin'])) {
+			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id])->where(['status'=>1]);
+						
+			if(empty($users->first()) AND ($role_id == 1 OR $role_id == 2)){
+				$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->group(['Users.id']);
+			
+				$users->matching('Roles', function ($q) {
+						return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);
+					});
+			}
+        }
 		$this->set(compact('designations','users'));
         $this->set('_serialize', ['designations','users']);
         $this->viewBuilder()->layout('ajax');

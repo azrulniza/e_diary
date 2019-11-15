@@ -28,12 +28,13 @@
 	$(document ).ready(function() {
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
-			
+			var role_id = $('#listrole').val();
+
 			$("#listuser").prop('disabled',true);
 			$("#listdesignation").prop('disabled',false);
 			$.ajax({
 				type : "POST",
-				url  : getAppVars('basepath').basePath + 'users/getDetails' + '?id=' + id, //pass query string to server
+				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id + '&role_id=' + role_id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
 						console.log(data);
@@ -54,7 +55,7 @@
 						});
 			}});
 		});
-/* 		$('#listrole').change(function(){
+ 		$('#listrole').change(function(){
 			if($( "#listrole" ).val() < 1){
 				$("#listdepartment").prop('disabled',true);
 			}else{
@@ -66,7 +67,7 @@
 			$("#listuser").val('');
 			$("#listdesignation").val('');
 
-		}); */
+		});
 		$('#listdesignation').change(function(){
 			if($( "#listdesignation" ).val() < 1){
 				$("#listuser").prop('disabled',true);

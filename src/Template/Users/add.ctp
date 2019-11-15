@@ -28,17 +28,15 @@
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
 			var role_id = $('#listrole').val();
-			//console.log('<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id + '&role_id=' + role_id);
 			
 			$("#listuser").prop('disabled',true);
 			$("#listdesignation").prop('disabled',false);
-			
 			$.ajax({
 				type : "POST",
-				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id + '&role_id' + role_id, //pass query string to server
+				url  : '<?php echo $this->Basepath->getBasePath() ; ?>' + 'users/getDetails' + '?id=' + id + '&role_id=' + role_id, //pass query string to server
 				success: function(data){
 						data = JSON.parse(data);
-						//console.log(data);
+						console.log(data);
 						$("#listdesignation").empty();
 						$('#listdesignation').append($('<option value><?php echo __("--Please Select--") ?></option>'));
 													
@@ -56,7 +54,7 @@
 						});
 			}});
 		});
-/* 		$('#listrole').change(function(){
+ 		$('#listrole').change(function(){
 			if($( "#listrole" ).val() < 1){
 				$("#listdepartment").prop('disabled',true);
 			}else{
@@ -68,7 +66,7 @@
 			$("#listuser").val('');
 			$("#listdesignation").val('');
 
-		}); */
+		});
 		$('#listdesignation').change(function(){
 			if($( "#listdesignation" ).val() < 1){
 				$("#listuser").prop('disabled',true);
@@ -131,7 +129,7 @@
 						echo $this->Form->input('confirm_password', ['type'=>'password', 'class' => 'form-control', 'placeholder' => __('Enter ...'), 'autocomplete' => 'off', 'value'=>'', 'required'=>false,'style'=>'width:50%;','required'=>true]);                        
                         if ($userRoles->hasRole(['Master Admin','Supervisor'])) :
 							echo $this->Form->input('role', ['label'=>__('Roles'),'class' => 'form-control','id'=>'listrole','options' => $roles, 'multiple'=>false,'style'=>'width:50%;','empty'=>__('--Please Select--'),'required'=>true]);
-							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','required'=>true]);
+							echo $this->Form->input('organization', ['label'=>__('Department'),'id'=>'listdepartment','class' => 'form-control','empty'=>__('--Please Select--'),'options' => $organizations,'multiple' => false,'style'=>'width:50%;','required'=>true,'disabled'=>true]);
 							echo $this->Form->label(__('Grade'));
 							echo '<span class="mark-required" style="color:red;"> * </span>';
 							echo '<div>';

@@ -217,7 +217,7 @@ class UsersController extends AppController
 				
 				//get all supervisor
 				$staff_organization_id = $this->request->data['organization'];
-				$reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);});
+				$reportTo = $this->Users->find()->contain('Roles')->innerJoinWith('UserOrganizations.Organizations' , function($q) use($staff_organization_id){ return $q->where(['UserOrganizations.organization_id'=>$staff_organization_id]);})->where(['Users.status'=>1]);
 			
 				$reportTo->matching('Roles', function ($q) {
 					return $q->where(['Roles.id IN' => [SUPERVISOR]]);
@@ -414,11 +414,14 @@ class UsersController extends AppController
 			
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->where(['status'=>1]);
-			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'=> function($q) use($selected_dept){
-					return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);}])->where(['Users.status'=>1,'Users.id !='=>$id]);
+			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
+		return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);})->where(['Users.status'=>1,'Users.id !='=>$id])->orWhere(['Users.id'=>$selected_reportTo]);
 			$reportTo->matching('Roles', function ($q) {
 					return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
 				});
+			if(empty($reportTo->first()) AND ($selected_role == 1 OR $selected_role == 2)){
+				$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.id'=>$selected_reportTo]);
+			}
 		}else if($this->AuthUser->hasRole($this->AuthUser->hasRole(SUPERVISOR))){
 			//roles
 			$role=array(1);
@@ -565,8 +568,8 @@ class UsersController extends AppController
 				$emailTemplates = $this->SettingEmails->find()->where(['email_type_id'=>2,'language_id'=>$language_id])->first();
 				$emailTemp_subject = str_replace(array('[USER_NAME]', '[URL_LINK]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->subject);
 				$emailTemp_body = str_replace(array('[USER_NAME]', '[URL_LINK]', '[IC_NUMBER]'), array('{0}', '{1}', '{2}'), $emailTemplates->body);
-				$subject = __(nl2br($emailTemp_subject),'yana',$verify_url,'990109115678');
-				$body = __(nl2br($emailTemp_body),'yana',$verify_url,'990109115678');
+				$subject = __(nl2br($emailTemp_subject),$user->name,$verify_url,$user->ic_number);
+				$body = __(nl2br($emailTemp_body),$user->name,$verify_url,$user->ic_number);
 				
 				try {
 					$email = new Email();
@@ -680,7 +683,7 @@ class UsersController extends AppController
 			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id])->where(['status'=>1]);
 						
 			if(empty($users->first()) AND ($role_id == 1 OR $role_id == 2)){
-				$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->group(['Users.id']);
+				$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->where(['Users.status'=>1])->group(['Users.id']);
 			
 				$users->matching('Roles', function ($q) {
 						return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);

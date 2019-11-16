@@ -7,7 +7,7 @@
                     <table id="dataTables-settingAttendancesReasons" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= __('No') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Description') ?></th>
                                 <th><?= __('Status') ?></th>

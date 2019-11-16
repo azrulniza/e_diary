@@ -193,8 +193,9 @@ $this->Html->script('dashboard');
 						]);
 
 						var options = {
-						  title: '<?php echo __('Today Attendance Summary');?>',
-						  pieHole: 0.4,
+							colors: ['#f39c12','#dd4b39','#00a65a'],
+							title: '<?php echo __('Today Attendance Summary');?>',
+						        pieHole: 0.4,
 						};
 
 						var chart = new google.visualization.PieChart(document.getElementById('donutchart'));

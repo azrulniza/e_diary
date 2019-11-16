@@ -62,11 +62,11 @@
                         </thead>
 						<thead>
                             <tr>
-                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Bil') ?></th>
+                                <th rowspan=2 style='vertical-align: text-top;'><?= __('No.') ?></th>
                                 <th rowspan=2 style='vertical-align: text-top;'><?= __('Name') ?></th>
                                 <th rowspan=2 style='vertical-align: text-top;'><?= __('Card No.') ?></th>
                                 <th colspan=2 style='text-align: center;'><?= __('Total Late in a week') ?></th>
-                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Card colour for end week') ?></th>
+                               <!-- <th rowspan=2 style='vertical-align: text-top;'><?= __('Card colour for end week') ?></th>-->
                             </tr>
                             <tr>
                                 <th style='text-align: center;'><?= __('With Approval') ?></th>
@@ -82,6 +82,9 @@
 						$totalgreen = 0;
 						
 						foreach ($weeklyresult as $key => $user):
+						$user['card_colour'] = 'Yellow';
+						if($user['redcard'] == 3){ $user['card_colour'] = 'Red'; }
+						if($user['redcard'] > 3){ $user['card_colour'] = 'Green'; }
 						if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
 						if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
 						if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
@@ -95,12 +98,12 @@
                                <!--<td><?php if($user['total_late'] >=3 ) {echo '1';} ?></td>-->
                                 <td  align='center'><?php echo $user['approved_late'];?></td>
                                 <td  align='center'><?php if($late_not_approved > 0) {echo $late_not_approved;} ?></td>
-								<td>
+								<!--<td>
 									<?php if ($user['card_colour']) {?>
 									<b style="color:<?= $user['card_colour'] ?>"><span class="fa fa-square"></span></b>
 									<?php } ?>
 									<?= __($user['card_colour']) ?>
-								</td>
+								</td>-->
 
                             </tr>
 							

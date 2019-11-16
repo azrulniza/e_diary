@@ -38,7 +38,7 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th rowspan=2 style='vertical-align: text-top;'><?= __('Bil') ?></th>
+                                <th rowspan=2 style='vertical-align: text-top;'><?= __('No.') ?></th>
                                 <th rowspan=2 style='vertical-align: text-top;'><?= __('Name') ?></th>
                                 <th rowspan=2 style='vertical-align: text-top;'><?= __('Grade') ?></th>
                                 <th rowspan=2 style='vertical-align: text-top;'><?= __('Card No.') ?></th>
@@ -62,6 +62,9 @@
 						$total3times = 0;
 						
 						foreach ($monthlyresult as $key => $user):
+						$user['card_colour'] = 'Yellow';
+						if($user['redcard'] == 3){ $user['card_colour'] = 'Red'; }
+						if($user['redcard'] > 3){ $user['card_colour'] = 'Green'; }
 						if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
 						if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
 						if ($user['card_colour'] == 'Red'){ $totalred += 1;}	

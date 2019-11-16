@@ -45,7 +45,7 @@
 							  '2' => __('Work Affairs'));
 							echo $this->Form->input(
 								'leaveType',
-								['label' => __('Leave Type'),
+								['label' => __('Leave Type/Purpose'),
 								'type' => 'select',
 								'id' => 'attmonth',
 								'class' => 'form-control autosubmit','style'=>'width:40%',
@@ -62,20 +62,22 @@
 						<span class="glyphicon glyphicon-download-alt"> </span> 
 						<?php echo __('Export to Excel') ?>
 					</a>
-					<?= $this->Html->link(__('Export to PDF'), ['action' => 'daily_tf','department' => $departmentSelected,
-						'user' => $userSelected,'date_attendance' => $dateselected,'leaveType' => $leaveTypeselected, 
-						'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+					<?php if (!$userRoles->hasRole(['Staff'])) :?>
+						<?= $this->Html->link(__('Export to PDF'), ['action' => 'daily_tf','department' => $departmentSelected,
+							'user' => $userSelected,'date_attendance' => $dateselected,'leaveType' => $leaveTypeselected, 
+							'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+					<?php endif; ?>
 					<br/><br/>
 					<div id='dvContainer'>
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= __('Bil') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
-                                <th><?= __('Leave Type') ?></th>
-                                <th><?= __('Leave Date') ?></th>
-                                <th><?= __('Leave Time') ?></th>
-                                <th><?= __('Leave Status') ?></th>
+                                <th><?= __('Type') ?></th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('Time') ?></th>
+                                <th><?= __('Status') ?></th>
                                 <th><?= __('Reason') ?></th>
                             </tr>
                         </thead>

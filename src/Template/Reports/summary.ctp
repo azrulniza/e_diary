@@ -7,12 +7,12 @@
             <div class="box-body">
 				<?php $this->Form->templates($form_templates['shortForm']); ?>
 					<?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
-						<!--<div class="form-group">
+						<div class="form-group">
 						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
 							<?php
 								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
-						<?php endif; ?>-->
+						<?php endif; ?>
 						<?php								
 							  for($year = 2019 ; $year <= date('Y',strtotime('+1 year')); $year++){
 								  $arr_year[$year] = $year;
@@ -54,25 +54,23 @@
 							);
 						?>
 						</div>
-				<a href="exportExcelSummary?att_month=<?= $monthselected;?>&att_year=<?= $yearselected;?>" class="btn btn-default pull-right">
+				<a href="exportExcelSummary?att_month=<?= $monthselected;?>&att_year=<?= $yearselected;?>&department=<?= $departmentSelected;?>" class="btn btn-default pull-right">
 					<span class="glyphicon glyphicon-download-alt"> </span> 
 					<?php echo __('Export to Excel') ?>
 				</a>
-					
-				<?= $this->Html->link(__('Export to PDF'), ['action' => 'summary','att_month' => $monthselected,'att_year' => $yearselected, '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
-
+				<?php if (!$userRoles->hasRole(['Staff'])) :?>
+					<?= $this->Html->link(__('Export to PDF'), ['action' => 'summary','att_month' => $monthselected,'att_year' => $yearselected,'department' => $departmentSelected, '_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+				<?php endif; ?>
 				<br/><br/>
                 <div class="reports index dataTable_wrapper table-responsive">
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th rowspan=2><center><?= __('Bil') ?></center><br/></th>
+                                <th rowspan=2><center><?= __('No.') ?></center><br/></th>
                                 <th rowspan=2><center><?= __('Officer Group') ?></center><br/></th>
                                 <th rowspan=2><center><?= __('Total Officer') ?></center><br/></th>
                                 <th colspan=3><center><?= __('Card Colour') ?></center></th>
-                                <th rowspan=2><center><?= __('Three late in a month (total officer)') ?></center><br/></th>
-                                <th rowspan=2><center><?= __('Remarks') ?></center><br/></th>
-                            </tr>
+                                <th rowspan=2><center><?= __('Three late in a month (total officer)') ?></center><br/></th>	
 							<tr>
                                 <th><center><?= __('Yellow') ?></center></th>
                                 <th><center><?= __('Green') ?></center></th>
@@ -98,7 +96,6 @@
 										}
 									if ($count55late > 0){ echo $count55late; } else { echo '-'; }?>
 								</td>
-								<td><?= $count55late[0]['remarks'];?></td>
 							</tr>
 							<tr class="even">
 								<td><?= '2'; ?></td>
@@ -117,7 +114,6 @@
 										}
 									if ($count4854late > 0){ echo $count4854late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate4854result[0]['remarks'];?></td>
 							</tr>
 							<tr class="odd">
 								<td><?= '3'; ?></td>
@@ -136,7 +132,6 @@
 										}
 									if ($count4144late > 0){ echo $count4144late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate4144result[0]['remarks'];?></td>
 							</tr>
 							<tr class="even">
 								<td><?= '4'; ?></td>
@@ -157,7 +152,6 @@
 										}
 									if ($count1740late > 0){ echo $count1740late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate1740result[0]['remarks'];?></td>
 							</tr>
 							<tr class="odd">
 								<td><?= '5'; ?></td>
@@ -176,7 +170,6 @@
 										}
 									if ($count116late > 0){ echo $count116late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate116result[0]['remarks'];?></td>
 							</tr>
 							<tr>
 								<?php 
@@ -196,7 +189,6 @@
 								<td align='center'><b><?= $gtotalgreen ?></b></td>
 								<td align='center'><b><?= $gtotalred ?></b></td>
 								<td align='center'><b><?= $gtotal3times ?></b></td>
-								<td align='center'></td>
 							</tr>
             
                         </tbody>

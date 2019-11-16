@@ -26,7 +26,7 @@
                     <table id="dataTables-users" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= __('No') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Email') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Department') ?></th>

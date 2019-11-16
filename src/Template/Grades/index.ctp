@@ -7,7 +7,7 @@
                     <table id="dataTables-grades" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= __('No') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Grade') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>

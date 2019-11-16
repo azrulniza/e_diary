@@ -7,7 +7,7 @@
                     <table id="dataTables-settingEmails" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= __('No') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Email') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>

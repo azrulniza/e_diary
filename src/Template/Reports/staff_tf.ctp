@@ -12,10 +12,10 @@
 						
 						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
 							<?php
-								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'value'=>$departmentSelected,'style'=>'width:40%']);
+								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments,'empty'=>__('Please Select'), 'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
 							<?php
-								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users, 'value'=>$userSelected,'style'=>'width:40%']);
+								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users,'empty'=>__('Please Select'), 'value'=>$userSelected,'style'=>'width:40%']);
 							?>
 						<?php endif; ?>
 						<?php								
@@ -81,15 +81,17 @@
 						<span class="glyphicon glyphicon-download-alt"> </span> 
 						<?php echo __('Export to Excel') ?>
 					</a>
-					<?= $this->Html->link(__('Export to PDF'), ['action' => 'staff_tf','department' => $departmentSelected,
-						'user' => $userSelected,'att_month' => $monthselected,'att_year' => $yearselected,'leaveType' => $leaveTypeselected, 
-						'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+					<?php if (!$userRoles->hasRole(['Staff'])) :?> 	 
+						<?= $this->Html->link(__('Export to PDF'), ['action' => 'staff_tf','department' => $departmentSelected,
+							'user' => $userSelected,'att_month' => $monthselected,'att_year' => $yearselected,'leaveType' => $leaveTypeselected, 
+							'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
+					<?php endif; ?>
 					<br/><br/>
 					<div id='dvContainer'>
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th><?= __('Bil') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Leave Type') ?></th>
                                 <th><?= __('Leave Date') ?></th>
                                 <th><?= __('Leave Time') ?></th>

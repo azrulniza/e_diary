@@ -60,7 +60,7 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-								<th><?= __('Bil') ?></th>
+								<th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
                                 <th><?= __('Card No.') ?></th>
                                 <th><?= __('In Time') ?></th>

@@ -38,10 +38,12 @@
                    <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= __('Bil') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Date') ?></th>
                                 <th><?= __('In Time') ?></th>
                                 <th><?= __('Out Time') ?></th>
+                                <th><?= __('Time Off') ?></th>
+								<th><?= __('Late (With Approval)') ?></th>
                                 <th><?= __('Total Hour') ?></th>
                             </tr>
                         </thead>
@@ -71,10 +73,21 @@
 											$latestDate = date('Y-m-d',strtotime($results[0]));
 											
 											if ($diff > 0){ $grandtotaldiff+= $diff; }
+											
+											if ($user['late_status'] != NULL){
+											$late_status_approval = __('yes');
+											if($user['late_status'] == '2' || $user['late_status']== '0'){
+												$late_status_approval = __('no');
+											}
+											} else {
+												$late_status_approval = '';
+											}
 									?>
 								
 										<td><?php if($results[0] !=''){ echo date('H:i:s',strtotime($results[0]));} ?></td>
 										<td><?php if($results[1] !=''){ echo date('H:i:s',strtotime($results[1]));} ?></td>
+										<td><?php echo $user['reason'];?></td>
+										<td><?php echo $late_status_approval;?></td>
 										<td>
 										<?php if ($diff > 0){
 											if($hours<9){
@@ -84,13 +97,13 @@
 									<?php } ?>
 								<?php endforeach ?>
 								<?php if($latestDate != $currentDate){
-									echo '<td></td><td></td><td></td>';
+									echo '<td></td><td></td><td></td><td></td><td></td>';
 								 } 
 								 ?>
 							</tr>
                         <?php }?>
 							<tr>
-                                <td colspan='4' align='right'><strong><?= __('Grand Total')?></strong></td>
+                                <td colspan='6' align='right'><strong><?= __('Grand Total')?></strong></td>
 								<td><strong><?php $ghours = $grandtotaldiff / ( 60 * 60 ); echo round($ghours, 2). __('Hour'); ?></strong></td>
                                
                             </tr>

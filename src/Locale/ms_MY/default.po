@@ -2383,6 +2383,9 @@ msgstr "Lihat Terperinci"
 msgid "Total Transferred"
 msgstr "Jumlah Pindahan"
 
+msgid "No."
+msgstr "Bil."
+
 
 
 

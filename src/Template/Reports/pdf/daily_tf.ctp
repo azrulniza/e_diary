@@ -39,7 +39,7 @@
                             <td><?= $dateselected; ?></td>
 						</tr>
 						<tr>
-                            <td><?= __('Leave Type'); ?></td>
+                            <td><?= __('Leave Type/Purpose'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $outputleavetype; ?></td>
 						</tr>
@@ -49,12 +49,12 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= __('Bil') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
-                                <th><?= __('Leave Type') ?></th>
-                                <th><?= __('Leave Date') ?></th>
-                                <th><?= __('Leave Time') ?></th>
-                                <th><?= __('Leave Status') ?></th>
+                                <th><?= __('Type') ?></th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('Time') ?></th>
+                                <th><?= __('Status') ?></th>
                                 <th><?= __('Reason') ?></th>
                             </tr>
                         </thead>

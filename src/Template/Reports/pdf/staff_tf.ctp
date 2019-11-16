@@ -54,7 +54,7 @@
                     <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
                         <thead>
                             <tr>
-                                <th><?= __('Bil') ?></th>
+                                <th><?= __('No.') ?></th>
                                 <th><?= __('Leave Type') ?></th>
                                 <th><?= __('Leave Date') ?></th>
                                 <th><?= __('Leave Time') ?></th>

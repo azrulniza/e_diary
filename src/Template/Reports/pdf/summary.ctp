@@ -18,12 +18,11 @@
 					 <table id="dataTables-reports" border="1" style="border-collapse:collapse;" width='100%'>
 						<thead>
                             <tr>
-                                <th rowspan=2><center><?= __('Bil'); ?></center><br/></th>
+                                <th rowspan=2><center><?= __('No.'); ?></center><br/></th>
                                 <th rowspan=2><center><?= __('Officer Group'); ?></center><br/></th>
                                 <th rowspan=2><center><?= __('Total Officer'); ?></center><br/></th>
                                 <th colspan=3><center><?= __('Card Colour'); ?></center></th>
                                 <th rowspan=2><center><?= __('Three late in a month (total officer)'); ?></center><br/></th>
-                                <th rowspan=2><center><?= __('Remarks'); ?></center><br/></th>
                             </tr>
 							<tr>
                                 <th><center><?= __('Yellow'); ?></center></th>
@@ -50,7 +49,6 @@
 										}
 									if ($count55late > 0){ echo $count55late; } else { echo '-'; }?>
 								</td>
-								<td><?= $count55late[0]['remarks'];?></td>
 							</tr>
 							<tr class="even">
 								<td><?= '2'; ?></td>
@@ -69,7 +67,6 @@
 										}
 									if ($count4854late > 0){ echo $count4854late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate4854result[0]['remarks'];?></td>
 							</tr>
 							<tr class="odd">
 								<td><?= '3'; ?></td>
@@ -88,7 +85,6 @@
 										}
 									if ($count4144late > 0){ echo $count4144late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate4144result[0]['remarks'];?></td>
 							</tr>
 							<tr class="even">
 								<td><?= '4'; ?></td>
@@ -109,7 +105,6 @@
 										}
 									if ($count1740late > 0){ echo $count1740late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate1740result[0]['remarks'];?></td>
 							</tr>
 							<tr class="odd">
 								<td><?= '5'; ?></td>
@@ -128,7 +123,6 @@
 										}
 									if ($count116late > 0){ echo $count116late; } else { echo '-'; }?>
 								</td>
-								<td><?= $totallate116result[0]['remarks'];?></td>
 							</tr>
 							<tr>
 								<?php 
@@ -148,7 +142,6 @@
 								<td align='center'><b><?= $gtotalgreen ?></b></td>
 								<td align='center'><b><?= $gtotalred ?></b></td>
 								<td align='center'><b><?= $gtotal3times ?></b></td>
-								<td align='center'></td>
 							</tr>
             
                         </tbody>

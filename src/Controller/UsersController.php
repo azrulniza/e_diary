@@ -415,7 +415,7 @@ class UsersController extends AppController
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->where(['status'=>1]);
 			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
-		return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);})->where(['Users.status'=>1,'Users.id !='=>$id])->orWhere(['Users.id'=>$selected_reportTo]);
+		return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);})->where(['Users.status'=>1,'Users.id !='=>$id]);
 			$reportTo->matching('Roles', function ($q) {
 					return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
 				});

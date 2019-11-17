@@ -1544,11 +1544,11 @@ class ReportsController extends AppController
 		fputcsv($output,array(__('Date'),$dateselected));
 		fputcsv($output,array(__('Department'),$outputdepartment));
 		fputcsv($output,array(__("Staff's Name"),$outputuser));
-		fputcsv($output,array(__('Leave Type/Purpose'),$outputleavetype));
+		fputcsv($output,array(__('Purpose'),$outputleavetype));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array(__('No'), __('Name'), __('Type'), __('Date'), __('Time'), __('Status'), __('Reason')));
+		fputcsv($output, array(__('No'), __('Name'), __('Purpose'), __('Date'), __('Time'), __('Status'), __('Reason')));
 		$count_no=1;
 
 		$totalyellow = 0;
@@ -1759,11 +1759,11 @@ class ReportsController extends AppController
 		fputcsv($output,array(__('Department'),$outputdepartment));
 		fputcsv($output,array(__("Staff's Name"),$outputuser));
 		fputcsv($output,array(__('Month'),$outputmonth));
-		fputcsv($output,array(__('Leave Type'),$outputleavetype));
+		fputcsv($output,array(__('Purpose'),$outputleavetype));
 		fputcsv($output,array(''));
 		
 		//output column headings
-		fputcsv($output, array(__('No.'),  __('Leave Type'), __('Leave Date'), __('Leave Time'), __('Leave Status'), __('Reason'), __('Total Hour')));
+		fputcsv($output, array(__('No.'),  __('Purpose'), __('Leave Date'), __('Leave Time'), __('Leave Status'), __('Reason'), __('Total Hour')));
 		$count_no=1;
 
 		$totalyellow = 0;

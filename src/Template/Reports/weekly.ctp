@@ -57,7 +57,7 @@
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th colspan='6'><?= 'Date from :'.$thisweekStart.' to '.$thisweekEnd ?></th>
+                                <th colspan='6'><?= __('Date from :').$thisweekStart.__(' to ').$thisweekEnd ?></th>
 							</tr>
                         </thead>
 						<thead>

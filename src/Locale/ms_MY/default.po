@@ -1538,13 +1538,6 @@ msgstr "Mesej"
 msgid "List Notifications"
 msgstr "Senarai Pemberitahuan"
 
-#: Template/NotificationLogs/add.ctp:6 Template/NotificationLogs/edit.ctp:11
-#: Template/NotificationLogs/view.ctp:9 Template/Subscriptions/add.ctp:12
-#: Template/Subscriptions/edit.ctp:17 Template/Subscriptions/index.ctp:12
-#: Template/Subscriptions/view.ctp:15
-msgid "List Users"
-msgstr "Senarai Pengguna"
-
 #: Template/NotificationLogs/add.ctp:7 Template/NotificationLogs/edit.ctp:12
 #: Template/NotificationLogs/view.ctp:10 Template/Subscriptions/add.ctp:13
 #: Template/Subscriptions/edit.ctp:18 Template/Subscriptions/index.ctp:13
@@ -2284,9 +2277,6 @@ msgstr "Buat CMP"
 msgid "View Logs"
 msgstr "Lihat Log"
 
-msgid "List User"
-msgstr "Senarai Pengguna"
-
 msgid "List Users (Reseller)"
 msgstr "Senarai Pengguna (Ejen)"
 
@@ -2425,10 +2415,10 @@ msgid "Staff Management"
 msgstr "Pengurusan Kakitangan"
 
 msgid "Create User"
-msgstr "Tambah Pengguna"
+msgstr "Tambah Kakitangan"
 
 msgid "List User"
-msgstr "Senarai Pengguna"
+msgstr "Senarai Kakitangan"
 
 msgid "Department"
 msgstr "Bahagian/Unit"
@@ -3078,6 +3068,11 @@ msgstr "Tanpa Kelulusan"
 msgid "Late (With Approval)"
 msgstr "Lewat (Dengan Kelulusan)"
 
+msgid "Date from :"
+msgstr "Tarikh dari :"
+
+msgid " to "
+msgstr " hingga "
 
 
 

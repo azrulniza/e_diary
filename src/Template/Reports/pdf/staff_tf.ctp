@@ -44,7 +44,7 @@
                             <td><?= $outputmonth; ?></td>
 						</tr>
 						<tr>
-                            <td><?= __('Leave type'); ?></td>
+                            <td><?= __('Purpose'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $outputleavetype; ?></td>
 						</tr>
@@ -55,7 +55,7 @@
                         <thead>
                             <tr>
                                 <th><?= __('No.') ?></th>
-                                <th><?= __('Leave Type') ?></th>
+                                <th><?= __('Purpose') ?></th>
                                 <th><?= __('Leave Date') ?></th>
                                 <th><?= __('Leave Time') ?></th>
                                 <th><?= __('Leave Status') ?></th>

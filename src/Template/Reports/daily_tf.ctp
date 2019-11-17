@@ -45,7 +45,7 @@
 							  '2' => __('Work Affairs'));
 							echo $this->Form->input(
 								'leaveType',
-								['label' => __('Leave Type/Purpose'),
+								['label' => __('Purpose'),
 								'type' => 'select',
 								'id' => 'attmonth',
 								'class' => 'form-control autosubmit','style'=>'width:40%',
@@ -74,7 +74,7 @@
                             <tr>
                                 <th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
-                                <th><?= __('Type') ?></th>
+                                <th><?= __('Purpose') ?></th>
                                 <th><?= __('Date') ?></th>
                                 <th><?= __('Time') ?></th>
                                 <th><?= __('Status') ?></th>

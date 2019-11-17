@@ -39,7 +39,7 @@
                             <td><?= $dateselected; ?></td>
 						</tr>
 						<tr>
-                            <td><?= __('Leave Type/Purpose'); ?></td>
+                            <td><?= __('Purpose'); ?></td>
 							<td><?= ':'; ?></td>	
                             <td><?= $outputleavetype; ?></td>
 						</tr>
@@ -51,7 +51,7 @@
                             <tr>
                                 <th><?= __('No.') ?></th>
                                 <th><?= __('Name') ?></th>
-                                <th><?= __('Type') ?></th>
+                                <th><?= __('Purpose') ?></th>
                                 <th><?= __('Date') ?></th>
                                 <th><?= __('Time') ?></th>
                                 <th><?= __('Status') ?></th>

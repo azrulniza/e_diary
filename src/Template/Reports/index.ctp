@@ -11,7 +11,7 @@
 							$control_html = 
 								$this->Form->input(
 								  'date_attendance', [
-									'label' => 'Date Attendance',
+									'label' => __('Date Attendance'),
 									'type' => 'text',
 									'id' => 'dateattendance',
 									'class' => 'form-control autosubmit',

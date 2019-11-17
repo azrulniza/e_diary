@@ -7,7 +7,7 @@
                     <?= $this->Form->create('list',['type' => 'GET','autocomplete' => 'off']) ?>
 					
 					<?php if($userRoles->hasRole(['Master Admin'])):
-                    echo $this->Form->input('organization', ['label' => __('Department'), 'type'=>'select','id'=>'listorganization','class' => 'form-control autosubmit','options' => $organizations, 'empty'=>'All', 'value' => $organizationSelected]); echo "<br><br><br>";
+                    echo $this->Form->input('organization', ['label' => __('Department'), 'type'=>'select','id'=>'listorganization','class' => 'form-control autosubmit','options' => $organizations, 'empty'=>__('-- All --'), 'value' => $organizationSelected]); echo "<br><br><br>";
 					endif; ?>
 					
 					<?php
@@ -33,7 +33,7 @@
                                 <th><?= __('Grade') ?></th>
                                 <th><?= __('Designation') ?></th>
                                 <th><?= __('Report To') ?></th>
-                                <th><?= __('Card No') ?></th>
+                                <th><?= __('Card No.') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>

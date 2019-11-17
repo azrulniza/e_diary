@@ -3074,6 +3074,13 @@ msgstr "Tarikh dari :"
 msgid " to "
 msgstr " hingga "
 
+msgid "No Record"
+msgstr "Tiada Data"
+
+
+
+
+
 
 
 

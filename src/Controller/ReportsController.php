@@ -57,7 +57,7 @@ class ReportsController extends AppController
         'conditions' => array('Users.status' => '1')
 		));
 		
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
@@ -167,7 +167,7 @@ class ReportsController extends AppController
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
 		));
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		$thisweekStart	= date('Y-m-d', strtotime( 'sunday last week' ) );
 		$thisweekEnd	= date( 'Y-m-d', strtotime( 'saturday this week' ) );
 		
@@ -270,7 +270,7 @@ class ReportsController extends AppController
         $users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
 		));	
-		$departments = $this->Organizations->find('list');
+		$departments = $this->Organizations->find('list')->where(['status'=>1]);
 		$thismonthStart	= date('Y-m-1');
 		$thismonthEnd	= date( 'Y-m-t');
 		
@@ -377,7 +377,7 @@ class ReportsController extends AppController
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
         $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
 		$users = $this->Users->find('list');
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		$thismonthStart	= date('Y-m-01');
 		$thismonthEnd	= date( 'Y-m-t');
 		
@@ -1408,7 +1408,7 @@ class ReportsController extends AppController
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
 		));	
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
@@ -1595,7 +1595,7 @@ class ReportsController extends AppController
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
 		));	
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		$connection = ConnectionManager::get('default');
 		
 		//department session
@@ -1659,8 +1659,8 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$stafftfsql .= " AND u.id = '".$userSelected."'";
 		} else {
-			$stafftfsql .= " AND u.id = '".$userId."'";
-			$userSelected = $userId;
+			//$stafftfsql .= " AND u.id = '".$userId."'";
+			//$userSelected = $userId;
 		}
 		if ($leaveTypeselected){
 			$stafftfsql .= " AND lt.id = '".$leaveTypeselected."'";
@@ -1857,7 +1857,7 @@ class ReportsController extends AppController
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
 		));	
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		$connection = ConnectionManager::get('default');
 		
 		//department session
@@ -2044,7 +2044,7 @@ class ReportsController extends AppController
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
 		));	
-        $departments = $this->Organizations->find('list');
+        $departments = $this->Organizations->find('list')->where(['status'=>1]);
 		$connection = ConnectionManager::get('default');
 		
 		//department session
@@ -2053,13 +2053,17 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		if ($userRoles->hasRole(['Staff'])) {
+			$userSelected 		= $userId;
+			$departmentSelected = $deptId;
+        }
+		if ($userRoles->hasRole(['Admin','Supervisor'])) {
+			$departmentSelected = $deptId;
+        }
+		
+		if (($userRoles->hasRole(['Master Admin','Supervisor','Admin'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
-	    }
-		if ($userRoles->hasRole(['Supervisor']) && $deptId) {
-		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
-            return $q->where(['UserOrganizations.organization_id'=>$deptId])->where(['Users.status'=>1]);});
 	    }
 		
 		//month
@@ -2095,10 +2099,7 @@ class ReportsController extends AppController
 				) uleave ON DATE_FORMAT(uleave.date_start, '%Y-%m-%d') = DATE_FORMAT(attn.cdate, '%Y-%m-%d')
 				WHERE u.status = 1";
 		
-		if ($userRoles->hasRole(['Admin','Staff'])) {
-			$userSelected 		= $userId;
-			$departmentSelected = $deptId;
-        }
+
 		
 		if($monthselected){
 			$workinghoursql .= " AND MONTH(attn.cdate) = '".$monthselected."' ";
@@ -2118,8 +2119,8 @@ class ReportsController extends AppController
 		if ($userSelected){
 			$workinghoursql .= " AND u.id = '".$userSelected."'";
 		} else {
-			$workinghoursql .= " AND u.id = '".$userId."'";
-			$userSelected = $userId;
+			//$workinghoursql .= " AND u.id = '".$userId."'";
+			//$userSelected = $userId;
 		}
 		$workinghoursql .= " GROUP BY DATE_FORMAT(attn.cdate, '%Y-%m-%d')  ORDER BY u.card_no";		
 		

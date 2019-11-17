@@ -414,11 +414,15 @@ class UsersController extends AppController
 			
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1]);
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->where(['status'=>1]);
-			$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
-		return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);})->where(['Users.status'=>1,'Users.id !='=>$id]);
+			$reportTo = $this->Users->find('list')
+						->order(['Users.name' => 'ASC'])
+						->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'])
+						->innerJoinWith('UserOrganizations.Organizations' , function($q) use($selected_dept){
+							return $q->where(['UserOrganizations.organization_id'=>$selected_dept]);})
+						->where(['Users.status'=>1,'Users.id !='=>$id]);
 			$reportTo->matching('Roles', function ($q) {
 					return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
-				});
+				})->toArray();
 			if(empty($reportTo->first()) AND ($selected_role == 1 OR $selected_role == 2)){
 				$reportTo = $this->Users->find('list')->order(['Users.name' => 'ASC'])->contain(['Roles','Grades','UserDesignations.Designations','UserOrganizations.Organizations'])->where(['Users.id'=>$selected_reportTo]);
 			}
@@ -670,7 +674,7 @@ class UsersController extends AppController
 		$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($department_id){
 		return $q->where(['UserOrganizations.organization_id'=>$department_id]);})->where(['Users.status'=>1])->group(['Users.id']);
 		
-		if($role_id == 3 AND $role_id == 4){
+		if($role_id == 3 OR $role_id == 4){
 			$users->matching('Roles', function ($q) {
                 return $q->where(['Roles.id IN' => [SUPERVISOR]]);
             });
@@ -679,15 +683,17 @@ class UsersController extends AppController
                 return $q->where(['Roles.id IN' => [MASTER_ADMIN,SUPERVISOR]]);
             });
 		}
+		
 		if ($userRoles->hasRole(['Master Admin'])) {
 			$designations = $this->Designations->find('all')->where(['organization_id'=>$department_id])->where(['status'=>1]);
-						
+			
 			if(empty($users->first()) AND ($role_id == 1 OR $role_id == 2)){
 				$users = $this->Users->find('all')->order(['Users.name' => 'ASC'])->contain(['Roles'])->where(['Users.status'=>1])->group(['Users.id']);
 			
 				$users->matching('Roles', function ($q) {
 						return $q->where(['Roles.id IN' => [MASTER_ADMIN]]);
 					});
+					
 			}
         }
 		$this->set(compact('designations','users'));

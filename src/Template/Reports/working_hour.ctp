@@ -10,12 +10,14 @@
                 <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
 					<div class="form-group">
 						
-						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
+						<?php if ($userRoles->hasRole(['Master Admin'])) :?>
 							<?php
-								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments,'empty'=>__('Please Select'), 'value'=>$departmentSelected,'style'=>'width:40%']);
+								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments,'empty'=>__('-- Please Select --'), 'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
+						<?php endif; ?>
+						<?php if (!$userRoles->hasRole(['Staff'])) :?>
 							<?php
-								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users,'empty'=>__('Please Select'), 'value'=>$userSelected,'style'=>'width:40%']);
+								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users,'empty'=>__('-- Please Select --'), 'value'=>$userSelected,'style'=>'width:40%']);
 							?>
 						<?php endif; ?>
 						<?php								
@@ -70,6 +72,7 @@
 						'_ext' => 'pdf'], ['class' => 'btn btn-default pull-right']) ?>
 					<br/><br/>
 					<div id='dvContainer'>
+					
                     <table id="dataTables-reports" class="dataTable table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -82,6 +85,7 @@
                                 <th><?= __('Total Hour') ?></th>
                             </tr>
                         </thead>
+						<?php if ($userSelected){?>
                         <tbody class="ui-sortable">
                         <?php (isset($this->request['url']['page'])) ? $count = $this->request['url']['page'] * $this->Paginator->param('perPage') : $count =  1 *$this->Paginator->param('perPage');?>
 
@@ -143,8 +147,9 @@
                                
                             </tr>
                         </tbody>
-						
+					<?php } else { echo '<tbody class="ui-sortable"><tr><td colspan="7">'.__('No Record').'</td></tr></tbody>';}?>	
                     </table>
+					
 					</div>
                 </div>
             </div>

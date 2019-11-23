@@ -174,7 +174,9 @@ class DashboardsController extends AppController
             }else if(!empty($departmentSelected) AND empty($userSelected)){
 				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
 								return $q->where(['UserOrganizations.organization_id'=>$departmentSelected]);
-						})
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})
 						->autoFields(true)->where(['Users.status'=>1]);
 						
                 //count pending
@@ -202,7 +204,7 @@ class DashboardsController extends AppController
                 $staff_timeoff = $total_time_off['total_time_off'];
 
                 //count all user
-                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users.status=1 AND organizations.id=$departmentSelected";
+                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$departmentSelected";
                 $stmt_sql = $conn->execute($sql);
                 $stmt_sql_result = $stmt_sql->fetch('assoc');
                 $count_all_user=$stmt_sql_result['total_staff'];
@@ -291,7 +293,9 @@ class DashboardsController extends AppController
                 $count_pending= $stmt_sql_pending->fetch('assoc');
                 $total_pending = $count_pending['total_pending'];
 				
-				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
+				$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
+									return $q->where(['UsersRoles.role_id !='=>1]);
+							})->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
 								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
 						})
 						->autoFields(true)->where(['Users.status'=>1]);
@@ -314,7 +318,7 @@ class DashboardsController extends AppController
                 $staff_timeoff = $total_time_off['total_time_off'];
 
                 //count all user
-                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users.status=1 AND organizations.id=$user_organization_id";
+                $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$user_organization_id";
                 $stmt_sql = $conn->execute($sql);
                 $stmt_sql_result = $stmt_sql->fetch('assoc');
                 $count_all_user=$stmt_sql_result['total_staff'];
@@ -332,15 +336,17 @@ class DashboardsController extends AppController
                 $staff_absent=$count_all_user-$staff_working;
 
             }else if(empty($departmentSelected) AND empty($userSelected)){
-				$all_user = $this->Users->find()
-					->where(['Users.status'=>1]);
+				$all_user = $this->Users->find()->contain(['UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles' , function($q) {
+								return $q->where(['UsersRoles.role_id !='=>1]);
+						})
+					->autoFields(true)->where(['Users.status'=>1]);
 						
                 //count pending
                 $sql_pending = "SELECT COUNT(*) AS total_pending from  user_leaves WHERE `leave_status_id`=1";
                 $stmt_sql_pending= $conn->execute($sql_pending);
                 $count_pending= $stmt_sql_pending->fetch('assoc');
                 $total_pending = $count_pending['total_pending'];
-				
+
                 // count late attendance
                 $total_late=0;
 				foreach($all_user as $user){
@@ -359,7 +365,7 @@ class DashboardsController extends AppController
                 $staff_timeoff = $total_time_off['total_time_off'];
 
                 //count all user
-                $count_all_user=$this->Users->find()->where(['status'=>'1'])->count();
+                $count_all_user=$this->Users->find()->where(['status'=>'1'])->innerJoinWith('Roles' , function($q){ return $q->where(['Roles.id !='=>'1']);})->count();
 
                 //count attendance
 				$total_attend=0;
@@ -451,6 +457,8 @@ class DashboardsController extends AppController
             }
 			$all_user = $this->Users->find()->contain(['UserDesignations.Designations','UserOrganizations.Organizations','UsersRoles.Roles'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
 								return $q->where(['UserOrganizations.organization_id'=>$user_organization_id]);
+						})->innerJoinWith('UsersRoles.Roles' , function($q) {
+								return $q->where(['UsersRoles.role_id !='=>1]);
 						})
 					->autoFields(true)->where(['Users.status'=>1]);
             //count pending
@@ -484,7 +492,7 @@ class DashboardsController extends AppController
             $staff_timeoff = $total_time_off['total_time_off'];
 
             //count all user
-            $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users.status=1 AND organizations.id=$user_organization_id";
+            $sql="SELECT COUNT(*) AS total_staff From users JOIN users_roles ON users.`id`=users_roles.`user_id` JOIN user_organizations ON `user_organizations`.`user_id`=users.id JOIN organizations ON organizations.id = user_organizations.`organization_id` WHERE users_roles.id != 1 AND users.status=1 AND organizations.id=$user_organization_id";
             $stmt_sql = $conn->execute($sql);
             $stmt_sql_result = $stmt_sql->fetch('assoc');
             $count_all_user=$stmt_sql_result['total_staff'];

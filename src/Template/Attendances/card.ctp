@@ -10,18 +10,19 @@
                  
                     <?php //print_r($attendance_in); die;?>
                     <?php if($userRoles->hasRole(['Master Admin'])) :?>
-                
+                        <?= $this->Form->create('list',['type'=>'GET','autocomplete' => 'off', 'method'=>'POST']) ?>
                         <table id="addTable" class="table-condensed" style="table-layout: auto;">
                                 <tbody>
                                     <tr> 
                                         <td align="left"><label for="product-key"><?php echo $this->Form->label('Year');?></label></td>
                                         <td>    
-                                            <?= $this->Form->create('card',['type'=>'GET','autocomplete' => 'off', 'method'=>'POST']) ?>
+                                            
                                             <?php
                                                 for($year = date('Y') ; $year <= date('Y',strtotime('+3 year')); $year++){
                                                     $arr_year[$year] = $year;
                                                 }
-                                                $control_html = 
+                                                echo $this->Form->input('att_year', ['label'=>false,'options' => $arr_year, 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'att_year', 'value'=>$yearselected]); 
+                                                /*$control_html = 
                                                     $this->Form->input(
                                                       'att_year', [
                                                         'type' => 'select',
@@ -42,19 +43,20 @@
                                                 );
                                              
                                                 echo $date_control;
+
                                                 echo $this->Form->input('department', ['type'=>'hidden','class' => 'form-control', 'value' => $organizationSelected]);
                                                 echo $this->Form->input('att_month', ['type'=>'hidden','class' => 'form-control', 'value' => $monthselected]);
-                                                echo $this->Form->input('card', ['type'=>'hidden','class' => 'form-control', 'value' => $cardselected]);
+                                                echo $this->Form->input('card', ['type'=>'hidden','class' => 'form-control', 'value' => $cardselected]);*/
                                              ?>
                                             
-                                            <?= $this->Form->end() ?>
+                                           
                                         </td>
 
                                     </tr>
                                     <tr> 
                                         <td align="left"><label for="product-key"><?php echo $this->Form->label('Month');?></label></td>
                                         <td>    
-                                            <?= $this->Form->create('card',['type'=>'GET','autocomplete' => 'off', 'method'=>'POST']) ?>
+                                            
                                             <?php
                                                 $month = array(
                                                   '01' => __('January'), 
@@ -70,7 +72,8 @@
                                                   '11' => __('November'), 
                                                   '12' => __('December'));
 
-                                                $control_html = 
+                                                echo $this->Form->input('att_month', ['label'=>false,'options' => $month, 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'att_month', 'value'=>$monthselected]); 
+                                                /*$control_html = 
                                                     $this->Form->input(
                                                       'att_month', [
                                                         'type' => 'select',
@@ -93,11 +96,11 @@
                                                 echo $date_control;
                                                 echo $this->Form->input('department', ['type'=>'hidden','class' => 'form-control', 'value' => $organizationSelected]);
                                                 echo $this->Form->input('att_year', ['type'=>'hidden','class' => 'form-control', 'value' => $yearselected]);
-                                                echo $this->Form->input('card', ['type'=>'hidden','class' => 'form-control', 'value' => $cardselected]);
+                                                echo $this->Form->input('card', ['type'=>'hidden','class' => 'form-control', 'value' => $cardselected]);*/
 
                                              ?>
                                             
-                                            <?= $this->Form->end() ?>
+                                            
                                         </td>
 
                                     </tr>
@@ -106,12 +109,9 @@
                                         <td align="left"><label for="product-key"><?php echo $this->Form->label('Department');?></label></td>
                                         <td>    
                                             
-                                            <?= $this->Form->create('list',['type'=>'GET','autocomplete' => 'off', 'method'=>'POST']) ?>
+                                            
                                             <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('-- All --'), 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected]); ?>
-                                            <?php echo $this->Form->input('attyear', ['type'=>'hidden','class' => 'form-control', 'value' => $yearselected]); ?>
-                                            <?php echo $this->Form->input('att_month', ['type'=>'hidden','class' => 'form-control', 'value' => $monthselected]); ?>
-                                            <?php echo $this->Form->input('card', ['type'=>'hidden','class' => 'form-control', 'value' => $cardselected]); ?>
-                                             <?= $this->Form->end() ?>
+                                           
                                         </td>
                                     </tr>
 
@@ -119,18 +119,17 @@
                                         <td align="left"><label for="product-key"><?php echo $this->Form->label('Card');?></label></td>
                                         <td>    
                                             
-                                            <?= $this->Form->create('list',['type'=>'GET','autocomplete' => 'off', 'method'=>'POST']) ?>
+                                           
                                             <?php echo $this->Form->input('card', ['label'=>false,'options' => $list_card, 'empty' => __('-- All --'), 'class' => 'form-control autosubmit','style'=>'width:250px;', 'id'=>'listcard', 'value'=>$cardselected]); ?>
-                                            <?php echo $this->Form->input('attyear', ['type'=>'hidden','class' => 'form-control', 'value' => $yearselected]); ?>
-                                            <?php echo $this->Form->input('att_month', ['type'=>'hidden','class' => 'form-control', 'value' => $monthselected]); ?>
-                                            <?php echo $this->Form->input('att_month', ['type'=>'hidden','class' => 'form-control', 'value' => $organizationSelected]); ?>
-                                             <?= $this->Form->end() ?>
+                                            
+                                            
                                         </td>
                                     </tr>
                                 
                                    
                                 </tbody>
                             </table>
+                             <?= $this->Form->end() ?>
                     <?php endif; ?>
                     <table id="dataTables-attendances" class="dataTable table table-striped table-bordered">
                         <thead>
@@ -251,6 +250,7 @@
 
                                                                 <?php 
                                                                    
+                                                                    echo $this->Form->input('cur_color', ['type'=>'hidden', 'value'=>$current_card_color]);
                                                                     echo $this->Form->input('user_id', ['type'=>'hidden', 'value'=>$attendance['user_id']]);
                                                                     echo $this->Form->input('card_ids', ['type'=>'hidden', 'value'=>$array_card_id]);
                                                                     echo $this->Form->input('month', ['type'=>'hidden', 'value'=>$monthselected]);

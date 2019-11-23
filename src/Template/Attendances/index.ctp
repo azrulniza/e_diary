@@ -79,6 +79,8 @@
                                         $time_color=$attendance['card'];
                                         if($time_color=='Yellow'){
                                             $time_color="#000000";
+                                        }else if($time_color=='Green'){
+                                            $time_color="#000000";
                                         }
                                     }?> 
                                     <p style="color:<?php echo $time_color?>"><?php echo date_format($attendance['in'],"H:i a");?></p> 
@@ -120,9 +122,9 @@
                                     <?php if($attendance['in']!="" AND $attendance['card']=='Red' AND $attendance['late_remark_status']!='1'){?>
                                     <div class="btn-group">
                                         <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor','Staff'])) :?>
-                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-book','data-toggle'=>'tooltip','title' => __('Late Remark')]), ['action' => '#modal-container-171766'.$attendance['id']], ['escape' => false, 'class' => 'btn btn-default btn-xs','data-toggle'=>'modal']); ?>
+                                            <?= $this->Html->link($this->Html->tag('i', '', ['class' => 'fa fa-book','data-toggle'=>'tooltip','title' => __('Late Remark')]), ['action' => '#modal-container-171766'.$attendance['attendance_id']], ['escape' => false, 'class' => 'btn btn-default btn-xs','data-toggle'=>'modal']); ?>
 
-                                            <div class="modal fade" id="modal-container-171766<?php echo $attendance['id'];?>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="modal-container-171766<?php echo $attendance['attendance_id'];?>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -130,6 +132,7 @@
                                                                     <?= __('Late Remark'); ?>
                                                                 </h4> 
                                                             </div>
+                                                            <?php echo $this->Form->create(null, ['url' => ['controller' => 'Attendances', 'action' => 'index'] ]); ?>
                                                             <div class="modal-body">
                                                                 <dl class="dl-horizontal">
                                                                     <dt style='text-align:left;'><?= __('Name') ?></dt>
@@ -166,11 +169,12 @@
                                                             <div class="modal-footer">
                                                                  <?= $this->Form->button( __('Submit'), ['class'=>'btn btn-primary']) ?>
                                                                 
-                                                                 <?= $this->Form->end() ?>
+                                                                
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                                     <?= __('Close') ?>
                                                                 </button>
                                                             </div>
+                                                             <?= $this->Form->end() ?>
                                                         </div>
                                                         
                                                     </div>

@@ -1115,7 +1115,18 @@ class AttendancesController extends AppController
             $SettingAttendancesReasons = $arrayType;
         }
     
-        $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','user_pic','SettingAttendancesReasons'));
+        //added by intan
+
+       $forRealtime = "SELECT * FROM attendances WHERE user_id ='".$user['id']."' ORDER BY cdate DESC LIMIT 1";
+       $realResult = $conn->execute($forRealtime); 
+       $realData = $realResult->fetchAll('assoc');
+
+       foreach ($realData as $timerData){
+            $intime = $timerData['cdate'];
+       }
+       
+
+        $this->set(compact('attendance', 'users', 'attendanceCodes','today_date','has_attend','user','intime','user_pic','SettingAttendancesReasons'));
     }
 
 
@@ -1147,13 +1158,16 @@ class AttendancesController extends AppController
 
             //[card_color] => 3 [remark] => catatan [user_id] => 4 [card_ids] => 8 9 10 11 12 13 [month] => 11 [year] => 2019
             $card_color = $data['card_color'];
+            $cur_color = $data['cur_color'];
             $remark = $data['remark'];
             $user = $data['user_id'];
 
             //User Card
             $user_card = $this->UserCards->find('all')->contain(['Cards','Users'])->where(['UserCards.id IN'=>explode(" ",$data['card_ids'])]);
             
-            if(!empty($user_card)){
+            if(!empty($data['card_ids'])){
+
+                $count=0;
                 foreach ($user_card as $key) {
                 
                     //$card = $this->UserCards->find()->where(['id'=>$key->id]);
@@ -1171,18 +1185,90 @@ class AttendancesController extends AppController
                 
                     $stmt_log = $conn->execute($sql_log);
 
-                    $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=$card_color, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
-                    $stmt = $conn->execute($sql_update);
+                    if($card_color!=2){//yellow
+                        if($cur_color==1 && $card_color==3){ // if change green to red
+                            if($count<3){
+                                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=3, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                                $stmt = $conn->execute($sql_update);
+                            }elseif($count>=3){
+                                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=2, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                                $stmt = $conn->execute($sql_update);
+                            }
+                        }else if($cur_color==2 && $card_color==3){ // if change yellow to red
+                            if($count<3){
+                                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=3, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                                $stmt = $conn->execute($sql_update);
+                            }elseif($count >=3){
+                                $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=2, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                                $stmt = $conn->execute($sql_update);
+                            }
+                        }else if($cur_color==3 && $card_color==1){ // if change red to green
+                            
+                            $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=3, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                            $stmt = $conn->execute($sql_update);
+                            
+                        }else if($cur_color==2 && $card_color==1){ // if change yellow to green
+                            
+                            $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=3, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                            $stmt = $conn->execute($sql_update);
+                            
+                        }
+                        
+                        
+                    }else{
+                        $sql_update="UPDATE `user_cards` SET remarks='$remark', card_id=$card_color, pic=$userPIC, mdate='$cur_date' WHERE user_id=$user AND id=$card_id"; 
+                        $stmt = $conn->execute($sql_update);
+                    }
+                    $count++;
+                }
+
+                if($card_color==1){ //if change to green
+                    if($count < 4){
+                        $loop_size=4-$count;
+                        for($i=0; $i<$loop_size; $i++){
+                            $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                            $card=3;
+                            $sql="INSERT INTO `user_cards` (user_id,card_id,change_card_status,pic,status,cdate,mdate) VALUES (".$user.","."'".$card."'".","."'1'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+                    
+                            $stmt = $conn->execute($sql);
+                            $last_id = $stmt->lastInsertId();
+
+                            //insert into user_card_log
+                            $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                            $sql_log="INSERT INTO `user_cards_logs` (user_card_id,user_id,card_id,change_card_status,pic,status,cdate,mdate) VALUES (".$last_id.",".$user.","."'".$card."'".","."'1'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+                    
+                            $stmt_log = $conn->execute($sql_log);
+                        }
+                    }
+                }else if($card_color==3){ //if change to red
+                    if($count < 3){
+                        $loop_size=3-$count;
+                        for($j=0; $j<$loop_size; $j++){
+                            $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                            $card=3;
+                            $sql="INSERT INTO `user_cards` (user_id,card_id,change_card_status,pic,status,cdate,mdate) VALUES (".$user.","."'".$card."'".","."'1'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+                    
+                            $stmt = $conn->execute($sql);
+                            $last_id = $stmt->lastInsertId();
+
+                            //insert into user_card_log
+                            $cur_date=$now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+                            $sql_log="INSERT INTO `user_cards_logs` (user_card_id,user_id,card_id,change_card_status,pic,status,cdate,mdate) VALUES (".$last_id.",".$user.","."'".$card."'".","."'1'".","."'".$userPIC."'".","."'1'".","."'".$cur_date."'".","."'".$cur_date."')";
+                    
+                            $stmt_log = $conn->execute($sql_log);
+                        }
+                    }
                 }
                 $this->Flash->success(__('Successfully update card status.'));
 
                 return $this->redirect(['action' => 'card']);
             }else{
+
                 $this->Flash->error(__('The card status could not be saved. Please, try again.'));
             }
             
         }
-
+        return $this->redirect(['action' => 'card']);
         //return $this->redirect(['action' => 'late_approval']);
     }
 

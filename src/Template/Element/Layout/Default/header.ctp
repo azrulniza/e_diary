@@ -66,7 +66,7 @@
                     <?php
                     $langs = \Cake\Core\Configure::read('Languages');
                     $first = true;
-					if($this->request->action == 'edit' OR $this->request->action == 'view'){
+					if($this->request->action == 'edit' OR $this->request->action == 'view' OR $this->request->action == 'update'){
 						$id = $this->request->params['pass'][0];
 					}else{
 						$id = null;

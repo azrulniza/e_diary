@@ -117,11 +117,6 @@ msgid "Updated"
 msgstr "Dikemaskini"
 
 #: Controller/DeviceStatusLogsController.php:24
-#: Controller/DevicesController.php:29;30 Model/Entity/DeviceStatus.php:42
-msgid "Pending"
-msgstr "Tertangguh"
-
-#: Controller/DeviceStatusLogsController.php:24
 #: Controller/DevicesController.php:30 Model/Entity/DeviceStatus.php:43
 msgid "Offline"
 msgstr "Luar talian"
@@ -2454,7 +2449,13 @@ msgid "Create Time Off"
 msgstr ""
 
 msgid "List Time Off"
-msgstr "Senarai Time Off"
+msgstr "Senarai Time Off" 
+
+msgid "List Time Off Application"
+msgstr "Senarai Permohonan Time Off"
+
+msgid "Time Off Approval"
+msgstr "Kelulusan Time Off"
 
 msgid "Attendance"
 msgstr "Kedatangan"
@@ -2495,7 +2496,7 @@ msgid "Add new time off"
 msgstr "Tambah Time Off baru"
 
 msgid "Apply Time Off"
-msgstr "Mohon Time Off"
+msgstr "Memohon Time Off"
 
 msgid "Attendance module"
 msgstr "Modul kehadiran"
@@ -2645,7 +2646,7 @@ msgid "Click to clock out for "
 msgstr "Klik untuk jam keluar "
 
 msgid "Clocked in for "
-msgstr "Telah jam masuk untuk "
+msgstr "Telah bekerja untuk "
 
 msgid "Get started today! Click to clock in for "
 msgstr "Bermula hari ini! Klik jam masuk untuk "
@@ -2865,7 +2866,7 @@ msgid "Total Late"
 msgstr "Jumlah Lewat"
 
 msgid "Officer Approval"
-msgstr "Kelulusan Pengawai"
+msgstr "Kelulusan Pegawai"
 
 msgid "Card Colour"
 msgstr "Warna Kad"
@@ -2907,13 +2908,13 @@ msgid "December"
 msgstr "Disember"
 
 msgid "Total Officer"
-msgstr "Jumlah Pengawai"
+msgstr "Jumlah Pegawai"
 
 msgid "Officer Group"
-msgstr "Kumpulan Pengawai"
+msgstr "Kumpulan Pegawai"
 
 msgid "Three late in a month (total officer)"
-msgstr "Tiga kali lewat dalam sebulan (jumlah pengawai)"
+msgstr "Tiga kali lewat dalam sebulan (jumlah Pegawai)"
 
 msgid "Yellow"
 msgstr "Kuning"
@@ -2949,10 +2950,10 @@ msgid "Card colour for end week"
 msgstr "Warna kad di akhir minggu"
 
 msgid "Total Officer That Hold Red Cards"
-msgstr "Jumlah Pengawai yang Memegang Kad Merah"
+msgstr "Jumlah Pegawai yang Memegang Kad Merah"
 
 msgid "Total Officer That Hold Green Cards"
-msgstr "Jumlah Pengawai yang Memegang Kad Hijau"
+msgstr "Jumlah Pegawai yang Memegang Kad Hijau"
 
 msgid "Start Time : "
 msgstr "Masa Mula : "
@@ -3032,8 +3033,8 @@ msgstr "Jenis Laporan"
 msgid "Total Officer Late More Than 3 Times"
 msgstr "Jumlah Pegawai Lewat Lebih 3 Kali"
 
-msgid "Pending"
-msgstr "Tertangguh"
+msgid "Total Officer Late More Than 2 Times"
+msgstr "Jumlah Pegawai Lewat Lebih 2 Kali"
 
 msgid "Attendance Year"
 msgstr "Tahun Kehadiran"
@@ -3075,7 +3076,10 @@ msgid " to "
 msgstr " hingga "
 
 msgid "No Record"
-msgstr "Tiada Data"
+msgstr "Tiada rekod"
+
+msgid "no"
+msgstr "tidak"
 
 
 
@@ -3227,6 +3231,12 @@ msgstr "Permohonan time-off berjaya diluluskan."
 msgid "Time off has been rejected."
 msgstr "Permohonan time-off ditolak."
 
+msgid "Time off has been cancelled."
+msgstr "Permohonan time-off telah berjaya dibatalkan."
+
+msgid "Time off has been void."
+msgstr "Permohonan time-off telah berjaya ditarik semula."
+
 msgid "Time off could not be saved. Please, try again."
 msgstr "Time off tidak berjaya disimpan. Sila cuba lagi"
 
@@ -3266,6 +3276,20 @@ msgstr "Masa maksimum time off untuk urusan peribadi hanya 4 jam. Anda sudah pun
 msgid " time off on "
 msgstr " time off pada "
 
+msgid "Pending"
+msgstr "Menunggu Kelulusan"
+
+msgid "Approved"
+msgstr "Lulus"
+
+msgid "Rejected"
+msgstr "Ditolak"
+
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+msgid "Void"
+msgstr "Tidak Sah"
 
 
 

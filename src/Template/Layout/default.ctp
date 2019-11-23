@@ -31,10 +31,6 @@ if (isset($title)) {
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<style>
-	input[type=text]
-	{
-		text-transform:capitalize;
-	}
 	</style>
     <?php
     /**
@@ -85,11 +81,13 @@ if (isset($title)) {
 			var required = "<?php echo __('Please fill out this field.'); ?>";
 			$("input[required], select[required]").attr("oninvalid", "this.setCustomValidity('"+ required +"')");
 			$("input[required], select[required]").attr("oninput", "setCustomValidity('')");
+			$("input[type='text']").attr("oninput", "let p = this.selectionStart; let q = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(p, q)");
+			$("form").attr("autocomplete", "off");
 			
 			$('.box-body').on('input', ':text', function()
 			{ 
 				if($(this).attr('name') != 'ic_number'){
-					$(this).attr("oninput", "let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p)"); 
+					$(this).attr("oninput", "let p = this.selectionStart; let q = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(p, q)"); 
 				};
 			});
 		});

@@ -237,7 +237,7 @@ class UsersController extends AppController
 					$email 
 						->emailFormat('html')
 						->to($user->email)
-						->cc($supervisor_email)
+						//->cc($supervisor_email) : no need to cc supervisor email when add accout
 						->subject($subject)
 						->send($body);
 				}catch(\Exception $e){

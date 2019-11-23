@@ -24,7 +24,10 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	$(document ).ready(function() {
+	$(document ).ready(function() {        
+		  $('form').bind('submit', function () {
+			$(this).find(':input').prop('disabled', false);
+		  });
 		$('#listdepartment').change(function(){
 			var id = $(this).val();
 			var role_id = $('#listrole').val();

@@ -70,6 +70,29 @@ class UserLeavesController extends AppController
         $user_organization_id=$usersOrganization->organization_id;
 
         $list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
+        
+        $language_id = $this->getLanguageId();
+
+        if($language_id==2){ //Bahasa
+            $arrayStatus = array();
+            foreach ($list_status as $key => $value) {
+                if($key==1){
+                    $arrayStatus[$key]="Menunggu Kelulusan";
+                }elseif($key==2){
+                    $arrayStatus[$key]="Diluluskan";
+                }elseif($key==3){
+                    $arrayStatus[$key]="Ditolak";
+                }elseif($key==4){
+                    $arrayStatus[$key]="Dibatalkan";
+                }elseif($key==5){
+                    $arrayStatus[$key]="Tidak Sah";
+                }
+                
+            }
+            $list_status = $arrayStatus;
+        }
+
+
         if ($userRoles->hasRole(['Master Admin'])) {
             $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
             $list_user = $this->Users->find('list')->where(["status"=>1]);
@@ -119,7 +142,7 @@ class UserLeavesController extends AppController
             $list_user = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
             return $q->where(['UserOrganizations.organization_id'=>$user_organization_id])->where(['Users.status'=>1]);});
 
-            $list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
+            //$list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
 
             $staffSelected = $this->request->query('staff');
             $statusSelected = $this->request->query('status');
@@ -150,7 +173,7 @@ class UserLeavesController extends AppController
 
         }elseif ($userRoles->hasRole(['Staff'])) {
 
-            $list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
+            //$list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
 
             $statusSelected = $this->request->query('status');
 
@@ -174,6 +197,106 @@ class UserLeavesController extends AppController
         }
                 
         $this->set(compact('userLeaves', 'list_organization','list_user','list_status','staffSelected','organizationSelected','statusSelected','userRoles'));
+    }
+
+
+
+    public function my_timeoff()
+    {
+        
+        $this->set('title', __('Time Off'));
+        /*$this->paginate = [
+            'contain' => ['Users', 'LeaveStatus', 'LeaveTypes']
+        ];*/
+        $this->loadModel('Users');
+        $this->loadModel('UserLeaves');
+        $this->loadModel('UserLeavesLogs');
+        $this->loadModel('LeaveTypes');
+        $this->loadModel('LeaveStatus');
+        $this->loadModel('Organizations');
+        $this->loadModel('UserOrganizations');
+
+
+        $conn = ConnectionManager::get('default');
+
+        $today_date = date('d-m-Y');    
+        $user_id = $this->AuthUser->id();
+
+        $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$user_id"])->limit(1)->first();
+        $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
+
+        $usersOrganization = $this->UserOrganizations->find()->Where(['UserOrganizations.user_id' => "$user_id"])->limit(1)->first();
+        $user_organization_id=$usersOrganization->organization_id;
+
+        $list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
+        $language_id = $this->getLanguageId();
+
+        if($language_id==2){ //Bahasa
+            $arrayStatus = array();
+            foreach ($list_status as $key => $value) {
+                if($key==1){
+                    $arrayStatus[$key]="Menunggu Kelulusan";
+                }elseif($key==2){
+                    $arrayStatus[$key]="Diluluskan";
+                }elseif($key==3){
+                    $arrayStatus[$key]="Ditolak";
+                }elseif($key==4){
+                    $arrayStatus[$key]="Dibatalkan";
+                }elseif($key==5){
+                    $arrayStatus[$key]="Tidak Sah";
+                }
+                
+            }
+            $list_status = $arrayStatus;
+        }
+
+        $yearselected = $this->request->query('att_year');
+        $monthselected = $this->request->query('att_month');
+        $statusSelected = $this->request->query('status');
+        
+        /*if (empty($yearselected) OR $yearselected !=' '){
+            echo $yearselected = date('Y');
+        }
+
+        if (empty($monthselected) OR $monthselected !=' '){
+            echo $monthselected = date('m');
+        }*/
+
+        if($yearselected){
+            $yearselected = $this->request->query('att_year');          
+        }else{
+            $yearselected = date('Y');
+        }
+     
+        if($monthselected){
+            $monthselected = $this->request->query('att_month');
+        }else{
+            $monthselected = date('m');
+        }
+        
+
+        $sql_leave = "SELECT user_leaves.*, leave_status.`name` AS leave_status_name, leave_types.`name`AS leave_type_name,users.id AS user_id, users.name AS user_name, organizations.id AS organization_id, organizations.`name` AS organizations_name FROM user_leaves 
+            JOIN users on users.id=user_leaves.user_id
+            JOIN leave_status ON leave_status.`id`=user_leaves.`leave_status_id`
+            JOIN leave_types ON leave_types.`id` = user_leaves.`leave_type_id`
+            JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` 
+            JOIN organizations ON organizations.id = user_organizations.`organization_id`";
+
+        if(!empty($statusSelected)){
+            $sql_leave .= " WHERE users.id=$user_id AND leave_status.id=$statusSelected";
+        
+        }else{
+            $sql_leave .= " WHERE users.id=$user_id";
+            
+        }
+
+        $sql_leave .=" AND YEAR(user_leaves.date_start)=$yearselected AND MONTH(user_leaves.date_start)=$monthselected";
+        $sql_leave .=" ORDER BY user_leaves.cdate desc";
+        $stmt_sql_leave = $conn->execute($sql_leave);
+        $userLeaves = $stmt_sql_leave->fetchAll('assoc');
+        
+                
+        $this->set(compact('yearselected','monthselected','userLeaves', 'list_organization','list_user','list_status','staffSelected','organizationSelected','statusSelected','userRoles'));
     }
 
 
@@ -813,9 +936,9 @@ class UserLeavesController extends AppController
                     
                     }
 
-                $this->Flash->success(__('Time off has been saved.'));
+                $this->Flash->success(__('Time off has been cancelled.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'my_timeoff']);
             }
             $this->Flash->error(__('Time off could not be saved. Please, try again.'));
         }
@@ -1054,7 +1177,7 @@ class UserLeavesController extends AppController
                 //sent notification email to staff
 
 
-                $this->Flash->success(__('Time off has been saved.'));
+                $this->Flash->success(__('Time off has been void.'));
 
                 return $this->redirect(['action' => 'index']);
             }

@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                    <h3 class="box-title"><?= __('List Time Off') ?></h3>
+                    <h3 class="box-title"><?= __('Time Off Approval') ?></h3>
                 </div>
             <div class="box-body">
                 <div class="designations index dataTable_wrapper table-responsive">
@@ -81,7 +81,7 @@
                                 <td><?= h($userLeave['end_time']) ?></td>
                                 <td><b style="color:<?php if($userLeave['leave_status_id']==1){echo "orange";}elseif($userLeave['leave_status_id']==2){echo "green";}elseif($userLeave['leave_status_id']==3){echo "red";}elseif($userLeave['leave_status_id']==4){echo "default";} elseif($userLeave['leave_status_id']==5){echo "default";} ?>">
                                     
-                                    <?= h($userLeave['leave_status_name']) ?>
+                                    <?php echo __($userLeave['leave_status_name']) ;?>
                                      </b>
                                     <?php if(!empty($userLeave['remark'])){ ?>
 

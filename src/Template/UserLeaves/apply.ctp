@@ -11,7 +11,7 @@
                                    
                         
                         $("#listuser").empty();
-                        $('#listuser').append($('<option value>--Please Select--</option>'));
+                        $('#listuser').append($('<option value><?php echo __('--Please Select--')?></option>'));
                                                     
                         $.each(data.users, function(i, p) {
                             console.log(p);
@@ -86,14 +86,14 @@
                                         <?php if($userRoles->hasRole(['Master Admin'])) :?>
                                         <td align="left"><label for="deparment"><?php echo $this->Form->label('Department');?></label></td>
                                         <td>    
-                                            <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected,'required'=>true,]); ?>
+                                            <?php echo $this->Form->input('department', ['label'=>false,'options' => $list_organization, 'empty' => __('--Please Select--'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listdepartment', 'value'=>$organizationSelected,'required'=>true,]); ?>
                                              
                                         </td>
                                         <?php endif; ?>
                                         <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
                                         <td align="left"><label for="staff"><?php echo $this->Form->label('Staff');?></label></td>
                                         <td>    
-                                            <?php echo $this->Form->input('staff', ['label'=>false,'options' => $list_user, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$staffSelected,'required'=>true,]); ?>
+                                            <?php echo $this->Form->input('staff', ['label'=>false,'options' => $list_user, 'empty' => __('--Please Select--'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'listuser', 'value'=>$staffSelected,'required'=>true,]); ?>
                                         </td>
                                         <?php endif; ?>
                                         <?php if($userRoles->hasRole(['Staff'])) :?>
@@ -108,7 +108,7 @@
                                     <tr>
                                         <td align="left"><label for="date"><?php echo $this->Form->label('Purpose');?></label></td>
                                         <td>
-                                          <?php echo $this->Form->input('leave_type', ['required'=>true,'label'=>false,'options' => $leaveTypes, 'empty' => __('-- Please Select --'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'leavetype', 'value'=>$leaveTypeSelected]); ?>
+                                          <?php echo $this->Form->input('leave_type', ['required'=>true,'label'=>false,'options' => $leaveTypes, 'empty' => __('--Please Select--'), 'class' => 'form-control','style'=>'width:250px;', 'id'=>'leavetype', 'value'=>$leaveTypeSelected]); ?>
                                         </td>
                                     </tr>
 

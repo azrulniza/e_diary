@@ -92,7 +92,7 @@ class ReportsController extends AppController
 			$dateselected = date( 'Y-m-d');
 		}
 			
-		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name,Attendances.late_status,Attendances.late_remark,uleave.reason
+		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.redcard,Organization.name as organization_name,Attendances.late_status,Attendances.late_remark,uleave.reason
 			FROM users Users
 			LEFT JOIN (
 				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks,attn_late.status as late_status, attn_late.late_remark
@@ -108,10 +108,13 @@ class ReportsController extends AppController
 				GROUP BY Attendances2.user_id
 			)Attendances2 ON Users.id = Attendances2.user_id
 			LEFT JOIN (
-				SELECT ucards.user_id,c.name as card_colour FROM user_cards ucards
-				LEFT JOIN cards c ON ucards.card_id=c.id 
-				WHERE date(ucards.cdate) = '".$dateselected."'
-				GROUP BY ucards.user_id
+				SELECT count(Ucards.card_id) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
+					FROM user_cards Ucards
+					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
+					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".date("m",strtotime($dateselected))."'
+					AND DATE_FORMAT(Ucards.cdate, '%Y')='".date("Y",strtotime($dateselected))."'
+					and Ucards.card_id = 3
+					GROUP BY Ucards.user_id
 			) UserCards ON UserCards.user_id = Users.id
 			LEFT JOIN (
 				SELECT uleave.reason, uleave.user_id
@@ -214,12 +217,13 @@ class ReportsController extends AppController
 					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN (
-					SELECT count(Ucards.card_id=3) as redcard, Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
-					from user_cards Ucards
+					SELECT count(Ucards.card_id) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
+					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
-					WHERE  DATE_FORMAT(Ucards.cdate, '%Y-%m-%d')>='".$thisweekStart."'
-					AND DATE_FORMAT(Ucards.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
-					Group by Ucards.user_id
+					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".date("m",strtotime($dateselected))."'
+					AND DATE_FORMAT(Ucards.cdate, '%Y')='".date("Y",strtotime($dateselected))."'
+					and Ucards.card_id = 3
+					GROUP BY Ucards.user_id
 				) cardinfo ON Users.id =cardinfo.user_id
 				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
@@ -329,11 +333,12 @@ class ReportsController extends AppController
 					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN ( 
-					SELECT count(Ucards.card_id =3) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
+					SELECT count(Ucards.card_id) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
 					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."'
 					AND DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."'
+					and Ucards.card_id = 3
 					GROUP BY Ucards.user_id
 				)cardinfo ON cardinfo.user_id=Users.id 
 				WHERE Users.status = 1";
@@ -403,9 +408,9 @@ class ReportsController extends AppController
 			 FROM users u 
 			 LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			 LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -437,9 +442,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -471,9 +476,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -505,9 +510,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -539,9 +544,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -598,7 +603,7 @@ class ReportsController extends AppController
 			$dateselected = date( 'Y-m-d');
 		}
 		
-		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.card_colour,Organization.name as organization_name,Attendances.late_status,Attendances.late_remark,uleave.reason
+		$sql = "SELECT Users.*, Attendances.cdate as attn_date,Attendances.in_time,Attendances2.out_time, Attendances.remarks,UserCards.redcard,Organization.name as organization_name,Attendances.late_status,Attendances.late_remark,uleave.reason
 			FROM users Users
 			LEFT JOIN (
 				SELECT Attendances.cdate,Attendances.cdate as in_time,Attendances.status,Attendances.user_id,Attendances.remarks,attn_late.status as late_status, attn_late.late_remark
@@ -614,10 +619,13 @@ class ReportsController extends AppController
 				GROUP BY Attendances2.user_id
 			)Attendances2 ON Users.id = Attendances2.user_id
 			LEFT JOIN (
-				SELECT ucards.user_id,c.name as card_colour FROM user_cards ucards
-				LEFT JOIN cards c ON ucards.card_id=c.id 
-				WHERE date(ucards.cdate) = '".$dateselected."'
-				GROUP BY ucards.user_id
+				SELECT count(Ucards.card_id) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
+					FROM user_cards Ucards
+					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
+					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".date("m",strtotime($dateselected))."'
+					AND DATE_FORMAT(Ucards.cdate, '%Y')='".date("Y",strtotime($dateselected))."'
+					and Ucards.card_id = 3
+					GROUP BY Ucards.user_id
 			) UserCards ON UserCards.user_id = Users.id
 			LEFT JOIN (
 				SELECT uleave.reason, uleave.user_id
@@ -714,9 +722,16 @@ class ReportsController extends AppController
 			}
 			
 			if ($showData == 1){
-				if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
-				if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
-				if ($user['card_colour'] == 'Red'){ $totalred += 1;}
+				//if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
+				//if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
+				//if ($user['card_colour'] == 'Red'){ $totalred += 1;}
+				if($user['redcard'] == 3){
+					$totalred += 1; 
+				} else if($user['redcard'] < 3){
+					$totalyellow += 1;
+				} else if($user['redcard'] > 3){
+					$totalgreen += 1;
+				}
 				if($hours>0){ $totalhours = round($hours, 2);}
 				if ($user['in_time'] !=''){ $intime = date('H:i:s',strtotime($user['in_time']));}
 				if ($user['out_time'] !=''){ $outtime = date('H:i:s',strtotime($user['out_time']));}
@@ -728,10 +743,10 @@ class ReportsController extends AppController
 		$total_officer = $count_no - 1;
 		$data[]=',,,,,'.__('Total Officer').','.$total_officer;		
 		$count_no++;
-		$data[]=',,,,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
-		$count_no++;		
-		$data[]=',,,,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
-		$count_no++;
+		//$data[]=',,,,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
+		//$count_no++;		
+		//$data[]=',,,,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
+		//$count_no++;
 		
 		$size=count($data);
 		$count=0;
@@ -776,12 +791,13 @@ class ReportsController extends AppController
 					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN (
-					SELECT count(Ucards.card_id=3) as redcard, Ucards.cdate,Ucards.card_id,Ucards.user_id,Ucards.remarks,Cards.name as card_colour
-					from user_cards Ucards
+					SELECT count(Ucards.card_id) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
+					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
-					WHERE  DATE_FORMAT(Ucards.cdate, '%Y-%m-%d')>='".$thisweekStart."'
-					AND DATE_FORMAT(Ucards.cdate, '%Y-%m-%d')<='".$thisweekEnd."'
-					Group by Ucards.user_id
+					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".date("m",strtotime($dateselected))."'
+					AND DATE_FORMAT(Ucards.cdate, '%Y')='".date("Y",strtotime($dateselected))."'
+					and Ucards.card_id = 3
+					GROUP BY Ucards.user_id
 				) cardinfo ON Users.id =cardinfo.user_id
 				LEFT JOIN user_organizations Uorganization ON Uorganization.user_id = Users.id
 				LEFT JOIN organizations Organization ON Uorganization.organization_id = Organization.id
@@ -835,12 +851,16 @@ class ReportsController extends AppController
 		$totalred = 0;
 		$totalgreen = 0;
 		foreach ($weeklyresults as $key => $user){
-			$user['card_colour'] = 'Yellow';
-			if($user['redcard'] == 3){ $user['card_colour'] = 'Red'; }
-			if($user['redcard'] > 3){ $user['card_colour'] = 'Green'; }
-			if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
-			if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
-			if ($user['card_colour'] == 'Red'){ $totalred += 1;}
+			if($user['redcard'] == 3){
+				$totalred += 1; 
+			} else if($user['redcard'] < 3){
+				$totalyellow += 1;
+			} else if($user['redcard'] > 3){
+				$totalgreen += 1;
+			}
+			//if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
+			//if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
+			//if ($user['card_colour'] == 'Red'){ $totalred += 1;}
 			if($user['total_late'] >=3 ) {$totalLate = '1';} else { $totalLate =''; }
 			$late_not_approved1 = $user['total_late'] - $user['approved_late'];
 			if($late_not_approved1 > 0) { $late_not_approved = $late_not_approved1;}
@@ -852,10 +872,10 @@ class ReportsController extends AppController
 		$total_officer = $count_no - 1;
 		$data[]=',,,'.__('Total Officer').','.$total_officer;		
 		$count_no++;
-		$data[]=',,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
-		$count_no++;		
-		$data[]=',,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
-		$count_no++;
+		//$data[]=',,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
+		//$count_no++;		
+		//$data[]=',,,'.__('Total Officer That Hold Green Cards').','.$totalgreen;		
+		//$count_no++;
 		
 		$size=count($data);
 		$count=0;
@@ -906,11 +926,12 @@ class ReportsController extends AppController
 					GROUP BY Attendances.user_id
 				)Attendances ON Users.id = Attendances.user_id
 				LEFT JOIN ( 
-					SELECT count(Ucards.card_id =3) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
+					SELECT count(Ucards.card_id) as redcard, Ucards.cdate, Ucards.card_id, Ucards.user_id, Ucards.remarks, Cards.name as card_colour
 					FROM user_cards Ucards
 					LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
 					WHERE DATE_FORMAT(Ucards.cdate, '%m')='".$monthselected."'
 					AND DATE_FORMAT(Ucards.cdate, '%Y')='".$yearselected."'
+					AND Ucards.card_id =3
 					GROUP BY Ucards.user_id
 				)cardinfo ON cardinfo.user_id=Users.id 
 				WHERE Users.status = 1";
@@ -987,7 +1008,7 @@ class ReportsController extends AppController
 		$total_officer = $count_no - 1;
 		$data[]=',,,,,,'.__('Total Officer').','.$total_officer;		
 		$count_no++;
-		$data[]=',,,,,,'.__('Total Officer Late More Than 3 Times').','.$total3times;	
+		$data[]=',,,,,,'.__('Total Officer Late More Than 2 Times').','.$total3times;	
 		$count_no++;
 		$data[]=',,,,,,'.__('Total Officer That Hold Red Cards').','.$totalred;	
 		$count_no++;		
@@ -1030,9 +1051,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -1062,9 +1083,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -1094,9 +1115,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -1126,9 +1147,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -1159,9 +1180,9 @@ class ReportsController extends AppController
 			FROM users u 
 			LEFT JOIN user_organizations UserOrganization ON UserOrganization.user_id = u.id
 			LEFT JOIN ( 
-				SELECT count(Ucards.card_id=3) < 3 as yellow,
-				count(Ucards.card_id=3) = 3 as red,
-				count(Ucards.card_id=3) > 3 as green,
+				SELECT SUM(Ucards.card_id=3) < 3 as yellow,
+				SUM(Ucards.card_id=3) = 3 as red,
+				SUM(Ucards.card_id=3) > 3 as green,
 				Ucards.card_id,Ucards.user_id
 				FROM user_cards Ucards
 				LEFT JOIN cards Cards ON Cards.id=Ucards.card_id 
@@ -1323,6 +1344,23 @@ class ReportsController extends AppController
 			$totalStaffRed116 = 0; 
 		}
 		
+		//count
+		if($grade55results[0]['total_officer'] > 0){
+			$yellowholder55 = $grade55results[0]['total_officer'] - $totalStaffGreen55 - $totalStaffRed55;
+		} else { $yellowholder55 = 0 ;}
+		if($grade4854results[0]['total_officer'] > 0){
+			$yellowholder4854= $grade4854results[0]['total_officer'] - $totalStaffGreen4854 - $totalStaffRed4854;
+		} else { $yellowholder4854  = 0 ;}
+		if($grade4144results[0]['total_officer'] > 0){
+			$yellowholder4144 = $grade4144results[0]['total_officer'] - $totalStaffGreen4144 - $totalStaffRed4144;
+		} else { $yellowholder4144 = 0 ;}
+		if($grade1740results[0]['total_officer'] > 0){
+			$yellowholder1740 = $grade1740results[0]['total_officer'] - $totalStaffGreen1740 - $totalStaffRed1740;
+		} else { $yellowholder1740 = 0;}
+		if($grade116results[0]['total_officer'] > 0){
+			$yellowholder116 = $grade116results[0]['total_officer'] - $totalStaffGreen116 - $totalStaffRed116;
+		} else { $yellowholder116 = 0;}
+
 		$file_date=date('dMY');
 		$file_fullname = $file_date.'_SummaryReport';
 		$now = \Cake\I18n\Time::now();
@@ -1344,22 +1382,22 @@ class ReportsController extends AppController
 		$count_no=1;
 
 		
-		$data[]=$count_no .','.__('Higher Management Group').','.$grade55results[0]['total_officer'] .','.$totalStaffYellow55 .','.$totalStaffGreen55.','.$totalStaffRed55.','.$totalLateOfficer55;
+		$data[]=$count_no .','.__('Higher Management Group').','.$grade55results[0]['total_officer'] .','.$yellowholder55 .','.$totalStaffGreen55.','.$totalStaffRed55.','.$totalLateOfficer55;
 		$count_no++;
-		$data[]=$count_no .','.__('Professional Management Group (Grade 48-54)').','.$grade4854results[0]['total_officer'] .','.$totalStaffYellow4854 .','.$totalStaffGreen4854.','.$totalStaffRed4854.','.$totalLateOfficer4854;
+		$data[]=$count_no .','.__('Professional Management Group (Grade 48-54)').','.$grade4854results[0]['total_officer'] .','.$yellowholder4854 .','.$totalStaffGreen4854.','.$totalStaffRed4854.','.$totalLateOfficer4854;
 		$count_no++;
-		$data[]=$count_no .','.__('Professional Management Group (Grade 41-44)').','.$grade4144results[0]['total_officer'] .','.$totalStaffYellow4144 .','.$totalStaffGreen4144.','.$totalStaffRed4144.','.$totalLateOfficer4144;
+		$data[]=$count_no .','.__('Professional Management Group (Grade 41-44)').','.$grade4144results[0]['total_officer'] .','.$yellowholder4144 .','.$totalStaffGreen4144.','.$totalStaffRed4144.','.$totalLateOfficer4144;
 		$count_no++;
-		$data[]=$count_no .','.__('Executing Group (Grade 17-40)').','.$grade1740results[0]['total_officer'] .','.$totalStaffYellow1740 .','.$totalStaffGreen1740.','.$totalStaffRed1740.','.$totalLateOfficer1740;
+		$data[]=$count_no .','.__('Executing Group (Grade 17-40)').','.$grade1740results[0]['total_officer'] .','.$yellowholder1740 .','.$totalStaffGreen1740.','.$totalStaffRed1740.','.$totalLateOfficer1740;
 		$count_no++;
-		$data[]=$count_no .','.__('Executing Group (Grade 1-16)').','.$grade116results[0]['total_officer'] .','.$totalStaffYellow116 .','.$totalStaffGreen116.','.$totalStaffRed116.','.$totalLateOfficer116;
+		$data[]=$count_no .','.__('Executing Group (Grade 1-16)').','.$grade116results[0]['total_officer'] .','.$yellowholder116 .','.$totalStaffGreen116.','.$totalStaffRed116.','.$totalLateOfficer116;
 		$count_no++;	
 			
 		//grand total count
 		$gtotalstaff= $grade55results[0]['total_officer'] + $grade4854results[0]['total_officer'] + $grade4144results[0]['total_officer'] + $grade1740results[0]['total_officer'] + $grade116results[0]['total_officer'];
 									
-		$gtotalyellow= $totalStaffYellow55 + $totalStaffYellow4854 +$totalStaffYellow4144 + $totalStaffYellow1740 +$totalStaffYellow116;
-		
+		//$gtotalyellow= $totalStaffYellow55 + $totalStaffYellow4854 +$totalStaffYellow4144 + $totalStaffYellow1740 +$totalStaffYellow116;
+		$gtotalyellow= $yellowholder116 + $yellowholder1740 + $yellowholder4144 + $yellowholder4854 + $yellowholder55;
 		$gtotalgreen= $totalStaffGreen55 + $totalStaffGreen4854 +$totalStaffGreen4144 + $totalStaffGreen1740 + $totalStaffGreen116;
 		
 		$gtotalred= $totalStaffRed55 + $totalStaffRed4854 +$totalStaffRed4144 + $totalStaffRed1740 +$totalStaffRed116;

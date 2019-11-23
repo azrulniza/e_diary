@@ -84,9 +84,9 @@
 							}
 						}
 						
-						if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
-						if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
-						if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
+						//if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
+						//if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
+						//if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
 						
 						if ($user['late_status'] != NULL){
 							$late_status_approval = __('yes');
@@ -97,6 +97,13 @@
 							$late_status_approval = '';
 						}
 						if($showData == 1) {
+						if($user['redcard'] == 3){
+							$totalred += 1; 
+						} else if($user['redcard'] < 3){
+							$totalyellow += 1;
+						} else if($user['redcard'] > 3){
+							$totalgreen += 1;
+						}
 						?>
                             <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
                                 <td><?= $count-$this->Paginator->param('perPage')?></td>
@@ -111,21 +118,21 @@
 						<?php } ?>
                         <?php endforeach ?>
 							<tr>
-								<td colspan='4'><b><?= __('Total Officer)')?></b></td>
-								<td colspan='4'><b><?= $count?></b></td>
+								<td colspan=''><b><?= __('Total Officer')?></b></td>
+								<td colspan='7'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
 								<td colspan='4'><b><?= 'Total Officer That Hold Yellow Cards'?></b></td>
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
-							<tr>
+							<!--<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards')?></b></td>
 								<td colspan='4'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards')?></b></td>
 								<td colspan='4'><b><?= $totalgreen?></b></td>
-							</tr>
+							</tr>-->
                         </tbody>
                     </table>
 					</div>

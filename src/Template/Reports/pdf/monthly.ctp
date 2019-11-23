@@ -82,7 +82,7 @@
                                 <td align='center'><?php if($late_not_approved > 0) {echo $late_not_approved;} ?></td>
 								<td>
 									<?php if ($user['card_colour']) {?>
-									<b style="color:<?= $user['card_colour'] ?>"><span class="fa fa-square"></span></b>
+									<b style="color:<?= $user['card_colour'] ?>"><span style="border-radius:25%; border: 0.5px solid #000000; !important;" class="fa fa-square"></span></b>
 									<?php } ?>
 									<?= __($user['card_colour']) ?>
 								</td>
@@ -95,7 +95,7 @@
 								<td colspan='4'><b><?= $count?></b></td>
 							</tr>
 							<tr>
-								<td colspan='5'><b><?= __('Total Officer Late More Than 3 Times')?></b></td>
+								<td colspan='5'><b><?= __('Total Officer Late More Than 2 Times')?></b></td>
 								<td colspan='4'><b><?= $total3times?></b></td>
 							</tr>
 							<!--<tr>

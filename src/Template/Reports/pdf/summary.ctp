@@ -31,12 +31,18 @@
                             </tr>
                         </thead>
 						
-                        <tbody class="ui-sortable">
+                         <tbody class="ui-sortable">
 							<tr class="even">
+								<?php 
+								if($grade55result[0]['total_officer'] > 0){
+									$yellowholder55 = $grade55result[0]['total_officer'] - $grade55result[0]['green'] - $grade55result[0]['red'];
+								} else {$yellowholder55 = '-';}
+								?>
 								<td><?= '1'; ?></td>
 								<td><?= __('Higher Management Group') ?></td>
 								<td align='center'><?= $grade55result[0]['total_officer']; ?></td>
-								<td align='center'><?php if ($grade55result[0]['yellow'] > 0){ echo $grade55result[0]['yellow']; }else{ echo '-'; } ?></td>
+								<!--<td align='center'><?php if ($grade55result[0]['yellow'] > 0){ echo $grade55result[0]['yellow']; }else{ echo '-'; } ?></td>-->
+								<td align='center'><?php echo $yellowholder55;?></td>
 								<td align='center'><?php if ($grade55result[0]['green'] > 0){ echo $grade55result[0]['green']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade55result[0]['red'] > 0){ echo $grade55result[0]['red']; }else{ echo '-'; } ?></td>
 								<td align='center'>
@@ -51,10 +57,16 @@
 								</td>
 							</tr>
 							<tr class="even">
+								<?php 
+								if($grade4854result[0]['total_officer'] >0){
+									$yellowholder4854 = $grade4854result[0]['total_officer'] - $grade4854result[0]['green'] - $grade4854result[0]['red'];
+								} else {$yellowholder4854 = '-';}
+								?>
 								<td><?= '2'; ?></td>
 								<td><?= __('Professional Management Group (Grade 48-54)') ?></td>
 								<td align='center'><?= $grade4854result[0]['total_officer']; ?></td>
-								<td align='center'><?php if ($grade4854result[0]['yellow'] > 0){ echo $grade4854result[0]['yellow']; }else{ echo '-'; } ?></td>
+								<!--<td align='center'><?php if ($grade4854result[0]['yellow'] > 0){ echo $grade4854result[0]['yellow']; }else{ echo '-'; } ?></td>-->
+								<td align='center'><?php echo $yellowholder4854;?></td>
 								<td align='center'><?php if ($grade4854result[0]['green'] > 0){ echo $grade4854result[0]['green']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade4854result[0]['red'] > 0){ echo $grade4854result[0]['red']; }else{ echo '-'; } ?></td>
 								<td align='center'>
@@ -69,10 +81,16 @@
 								</td>
 							</tr>
 							<tr class="odd">
+								<?php 
+								if($grade4144result[0]['total_officer'] > 0){
+									$yellowholder4144 = $grade4144result[0]['total_officer'] - $grade4144result[0]['green'] - $grade4144result[0]['red'];
+								} else {$yellowholder4144 = '-';}
+								?>
 								<td><?= '3'; ?></td>
 								<td><?= __('Professional Management Group (Grade 41-44)') ?></td>
 								<td align='center'><?= $grade4144result[0]['total_officer']; ?></td>
-								<td align='center'><?php if ($grade4144result[0]['yellow'] > 0){ echo $grade4144result[0]['yellow']; }else{ echo '-'; } ?></td>
+								<!--<td align='center'><?php if ($grade4144result[0]['yellow'] > 0){ echo $grade4144result[0]['yellow']; }else{ echo '-'; } ?></td>-->
+								<td align='center'><?php echo $yellowholder4144;?></td>
 								<td align='center'><?php if ($grade4144result[0]['green'] > 0){ echo $grade4144result[0]['green']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade4144result[0]['red'] > 0){ echo $grade4144result[0]['red']; }else{ echo '-'; } ?></td>
 								<td align='center'>
@@ -87,10 +105,16 @@
 								</td>
 							</tr>
 							<tr class="even">
+								<?php 
+								if($grade1740result[0]['total_officer'] > 0){
+									$yellowholder1740 = $grade1740result[0]['total_officer'] - $grade1740result[0]['green'] - $grade1740result[0]['red'];
+								} else {$yellowholder1740 = '-';}
+								?>
 								<td><?= '4'; ?></td>
 								<td><?= __('Executing Group (Grade 17-40)') ?></td>
 								<td align='center'><?= $grade1740result[0]['total_officer']; ?></td>
-								<td align='center'><?php if ($grade1740result[0]['yellow'] > 0){ echo $grade1740result[0]['yellow']; }else{ echo '-'; } ?></td>
+								<!--<td align='center'><?php if ($grade1740result[0]['yellow'] > 0){ echo $grade1740result[0]['yellow']; }else{ echo '-'; } ?></td>-->
+								<td align='center'><?php echo $yellowholder1740;?></td>
 								<td align='center'><?php if ($grade1740result[0]['green'] > 0){ echo $grade1740result[0]['green']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade1740result[0]['red'] > 0){ echo $grade1740result[0]['red']; }else{ echo '-'; } ?></td>
 								<td align='center'>
@@ -107,10 +131,16 @@
 								</td>
 							</tr>
 							<tr class="odd">
+								<?php 
+								if($grade116result[0]['total_officer'] > 0){
+									$yellowholder116 = $grade116result[0]['total_officer'] - $grade116result[0]['green'] - $grade116result[0]['red'];
+								} else {$yellowholder116 = '-';}
+								?>
 								<td><?= '5'; ?></td>
 								<td><?= __('Executing Group (Grade 1-16)') ?></td>
 								<td align='center'><?= $grade116result[0]['total_officer']; ?></td>
-								<td align='center'><?php if ($grade116result[0]['yellow'] > 0){ echo $grade116result[0]['yellow']; }else{ echo '-'; } ?></td>
+								<!--<td align='center'><?php if ($grade116result[0]['yellow'] > 0){ echo $grade116result[0]['yellow']; }else{ echo '-'; } ?></td>-->
+								<td align='center'><?php echo $yellowholder116;?></td>
 								<td align='center'><?php if ($grade116result[0]['green'] > 0){ echo $grade116result[0]['green']; }else{ echo '-'; } ?></td>
 								<td align='center'><?php if ($grade116result[0]['red'] > 0){ echo $grade116result[0]['red']; }else{ echo '-'; } ?></td>
 								<td align='center'>
@@ -128,7 +158,7 @@
 								<?php 
 									$gtotalstaff= $grade116result[0]['total_officer'] + $grade1740result[0]['total_officer'] +$grade4144result[0]['total_officer'] + $grade4854result[0]['total_officer'] +$grade55result[0]['total_officer'];
 									
-									$gtotalyellow= $grade116result[0]['yellow'] + $grade1740result[0]['yellow'] +$grade4144result[0]['yellow'] + $grade4854result[0]['yellow'] +$grade55result[0]['yellow'];
+									$gtotalyellow= $yellowholder116 + $yellowholder1740 + $yellowholder4144 + $yellowholder4854 + $yellowholder55;
 									
 									$gtotalgreen= $grade116result[0]['green'] + $grade1740result[0]['green'] +$grade4144result[0]['green'] + $grade4854result[0]['green'] +$grade55result[0]['green'];
 									
@@ -136,7 +166,7 @@
 									
 									$gtotal3times = $count116late + $count1740late + $count4144late + $count4854late + $count55late;
 								?>
-								<td align='center' colspan='2'><b><?= __('Grand Total') ?></b></td>
+								<td align='center' colspan='2'><b><?= __('Grand Total')?></b></td>
 								<td align='center'><b><?= $gtotalstaff ?></b></td>
 								<td align='center'><b><?= $gtotalyellow ?></b></td>
 								<td align='center'><b><?= $gtotalgreen ?></b></td>

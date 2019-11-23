@@ -85,10 +85,16 @@
 						$user['card_colour'] = 'Yellow';
 						if($user['redcard'] == 3){ $user['card_colour'] = 'Red'; }
 						if($user['redcard'] > 3){ $user['card_colour'] = 'Green'; }
-						if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
-						if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
-						if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
-						
+						//if ($user['card_colour'] == 'Yellow'){ $totalyellow += 1;}
+						//if ($user['card_colour'] == 'Green'){ $totalgreen += 1;}
+						//if ($user['card_colour'] == 'Red'){ $totalred += 1;}	
+						if($user['redcard'] == 3){
+							$totalred += 1; 
+						} else if($user['redcard'] < 3){
+							$totalyellow += 1;
+						} else if($user['redcard'] > 3){
+							$totalgreen += 1;
+						}
 						$late_not_approved = $user['total_late'] - $user['approved_late'];
 						?>
                             <tr id="<?= $user->id; ?>" class="<?= (++$count%2 ? 'odd' : 'even') ?>">
@@ -109,21 +115,21 @@
 							
                         <?php endforeach ?>
 							<tr>
-								<td colspan='4'><b><?= __('Total Officer') ?></b></td>
+								<td colspan='2'><b><?= __('Total Officer') ?></b></td>
 								<td colspan='3'><b><?= $count?></b></td>
 							</tr>
 							<!--<tr>
 								<td colspan='4'><b><?= 'Total Officer That Hold Yellow Cards'?></b></td>
 								<td colspan='3'><b><?= $totalyellow?></b></td>
 							</tr>-->
-							<tr>
+							<!--<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Red Cards') ?></b></td>
 								<td colspan='3'><b><?= $totalred?></b></td>
 							</tr>
 							<tr>
 								<td colspan='4'><b><?= __('Total Officer That Hold Green Cards') ?></b></td>
 								<td colspan='3'><b><?= $totalgreen?></b></td>
-							</tr>
+							</tr>-->
                         </tbody>
                     </table>
                 </div>

@@ -68,7 +68,7 @@ $this->Html->script('dashboard');
 								</div>
 							  </div>
 						</div>
-						<div class="col-md-3 col-sm-4 col-xs-8">
+						<div class="col-md-3 col-sm-6 col-xs-12">
 							  <div class="small-box bg-red">
 								<div class="inner">
 								  <h3><?php echo $staff_absent ?></h3>
@@ -142,6 +142,7 @@ $this->Html->script('dashboard');
 				
 				?>
 				<?php echo $this->Html->script('/js/loader'); ?>
+				
 				<div class="col-md-6 col-sm-4 col-xs-8">
 					<!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
 					
@@ -263,7 +264,7 @@ $this->Html->script('dashboard');
 							  </div>
 						</div>
 
-						<div class="col-md-3 col-sm-4 col-xs-8">
+						<div class="col-md-3 col-sm-6 col-xs-12">
 							  <div style="pointer-events: none;" class="small-box bg-danger">
 								<div class="inner">
 								  <h3><?php echo $user_total_normal_month ?></h3>

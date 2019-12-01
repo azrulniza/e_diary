@@ -1,3 +1,16 @@
+<script text="javascript">
+$(document).ready( function () {
+    $('#dataTables-users').DataTable({
+		'paging'      : false,
+		'lengthChange': false,
+		'searching'   : false,
+		'ordering'    : true,
+		'info'        : true,
+		'autoWidth'   : false
+	});
+} );
+
+</script>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default">

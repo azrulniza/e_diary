@@ -51,6 +51,7 @@ if (isset($title)) {
     // (2) Customs
     //   (2.1) Global
     echo $this->Html->css('main');
+    echo $this->Html->css('jquery.dataTables.min.css');
     //   (2.2) From Views
     echo $this->fetch('css');
     ?>
@@ -67,6 +68,7 @@ if (isset($title)) {
     // (1) AdminLTE
     //   (1.1) jQuery 2.1.4
     echo $this->Html->script('jquery/jquery.min');
+    echo $this->Html->script('jquery/jquery.dataTables.min.js');
     //   (1.2) Bootstrap 3.3.4
     echo $this->Html->script('bootstrap/bootstrap.min');
     echo $this->Html->script('adminlte/app.min');

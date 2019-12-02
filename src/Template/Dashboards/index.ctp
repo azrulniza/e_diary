@@ -14,10 +14,10 @@ $this->Html->script('dashboard');
 						data = JSON.parse(data);
 						console.log(data);
 						$("#listuser").empty();
-						$('#listuser').append($('<option value><?php __("-- All --") ?></option>'));
+						$('#listuser').append($('<option value><?php echo __("--Please Select--") ?></option>'));
 													
 						$.each(data.users, function(i, p) {
-							console.log(p);
+							//console.log(p);
 							$('#listuser').append($('<option></option>').val(p.id).html(p.name));
 						});
 			}});
@@ -28,14 +28,14 @@ $this->Html->script('dashboard');
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-body">
-            	<?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])){?>
+            	<?php if($userRoles->hasRole(['Master Admin','Ketua Pengarah']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])){?>
             		<h4><?php echo __('Today Summary');?></h4><hr/>
 
 			    <?= $this->Form->create('list',['type' => 'GET','class' => 'form-horizontal']) ?>
 				<table id="addTable" class="table-condensed" style="table-layout: auto;">
                     <tbody>
                         <tr>
-                            <?php if($userRoles->hasRole(['Master Admin'])) :?>
+                            <?php if($userRoles->hasRole(['Master Admin','Ketua Pengarah'])) :?>
                             <td align="left"><label for="department"><?php echo $this->Form->label('Department');?></label></td>
                             <td>    
                                
@@ -218,7 +218,7 @@ $this->Html->script('dashboard');
                     <tbody>
                         <tr>
                            
-                            <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
+                            <?php if($userRoles->hasRole(['Master Admin','Ketua Pengarah']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
                             <td align="left"><label for="staff"><?php echo $this->Form->label(__('Staffs'));?></label></td>
                             <td>                                             
                                 

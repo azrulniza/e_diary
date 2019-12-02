@@ -1,3 +1,4 @@
+<?php  echo $this->Html->css('jquery.dataTables.min.css'); ?>
 <script text="javascript">
 $(document).ready( function () {
     $('#dataTables-users').DataTable({  

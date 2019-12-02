@@ -56,11 +56,23 @@
 			}});
 		});
  		$('#listrole').change(function(){
+		    var id = $(this).val();
 			if($( "#listrole" ).val() < 1){
 				$("#listdepartment").prop('disabled',true);
 			}else{
 				$("#listdepartment").prop('disabled',false);
 			}
+			
+			if(id == 5){
+                $("#listuser").hide();
+                $("label[for='listuser']").hide();
+				$("#listuser").prop('required',false);
+            }else{
+                $("#listuser").show();
+                $("label[for='listuser']").show();
+				$("#listuser").prop('required',true);				
+            }
+
 			$("#listdepartment" ).val('');
 			$("#listuser").prop('disabled',true);
 			$("#listdesignation").prop('disabled',true);
@@ -68,6 +80,11 @@
 			$("#listdesignation").val('');
 
 		});
+		if($( "#listrole" ).val() == 5){
+            $("#listuser").hide();
+            $("label[for='listuser']").hide();
+			$("#listuser").prop('required',false);
+        }
 		$('#listdesignation').change(function(){
 			if($( "#listdesignation" ).val() < 1){
 				$("#listuser").prop('disabled',true);

@@ -228,6 +228,7 @@ define('MASTER_ADMIN', 1);
 define('SUPERVISOR', 2);
 define('ADMIN', 3);
 define('STAFF', 4);
+define('KETUA_PENGARAH', 5);
 
 Plugin::load('CakePdf', ['bootstrap' => true, 'routes' => true]);
 Configure::write('CakePdf', [

@@ -146,7 +146,9 @@ class UsersController extends AppController
 			$now = \Cake\I18n\Time::now();
 			$user->cdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
 			$user->mdate = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
-			
+			if($this->request->data['role'] == 5){
+				$user->report_to=0;
+			}
 			if(!empty($this->request->data['image']['tmp_name'])){
 				$fileName = $this->request->data['image']['name'];
 				$str_date = $now->i18nFormat('yyMMdd');

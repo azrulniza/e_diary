@@ -79,7 +79,6 @@ if (isset($title)) {
             return <?=  json_encode($appVars, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)?>;
         } 
 		$(document ).ready(function(e) {
-						
 			var required = "<?php echo __('Please fill out this field.'); ?>";
 			$("input[required], select[required]").attr("oninvalid", "this.setCustomValidity('"+ required +"')");
 			$("input[required], select[required]").attr("oninput", "setCustomValidity('')");
@@ -90,7 +89,10 @@ if (isset($title)) {
 			{ 
 				if($(this).attr('name') != 'ic_number'){
 					$(this).attr("oninput", "let p = this.selectionStart; let q = this.selectionEnd; this.value = this.value.toUpperCase();this.setSelectionRange(p, q)"); 
-				};
+				}else{
+					$("input[required], select[required]").attr("oninvalid", "");
+					$(this).attr("oninput", "setCustomValidity('')");
+				}
 			});
 		});
     </script>

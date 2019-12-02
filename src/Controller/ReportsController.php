@@ -74,7 +74,7 @@ class ReportsController extends AppController
 			$departmentSelected = $deptId;
         }
 		
-		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor']) || $userRoles->hasRole(['Ketua Pengarah']))  && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }
@@ -190,7 +190,7 @@ class ReportsController extends AppController
 		if ($userRoles->hasRole(['Supervisor'])) {
 			$departmentSelected = $deptId;
         }		
-		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor']) || $userRoles->hasRole(['Ketua Pengarah'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }
@@ -293,7 +293,7 @@ class ReportsController extends AppController
 			$departmentSelected = $deptId;
         }
 		
-		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor'])) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Supervisor']) || $userRoles->hasRole(['Ketua Pengarah'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }
@@ -1453,7 +1453,7 @@ class ReportsController extends AppController
 		$this->set('resultDepartment',$sqldepartment);
 		$deptId = $resultDepartment[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Ketua Pengarah'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }
@@ -1642,7 +1642,7 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Ketua Pengarah'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }
@@ -1904,7 +1904,7 @@ class ReportsController extends AppController
 		
 		$deptId = $resultDepartments[0]['organization_id'];
 		
-		if ($userRoles->hasRole(['Master Admin']) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin']) || $userRoles->hasRole(['Ketua Pengarah'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }
@@ -2099,7 +2099,7 @@ class ReportsController extends AppController
 			$departmentSelected = $deptId;
         }
 		
-		if (($userRoles->hasRole(['Master Admin','Supervisor','Admin'])) && $departmentSelected) {
+		if (($userRoles->hasRole(['Master Admin','Supervisor','Admin','Ketua Pengarah'])) && $departmentSelected) {
 		   $users = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($departmentSelected){
             return $q->where(['UserOrganizations.organization_id'=>$departmentSelected])->where(['Users.status'=>1]);});
 	    }

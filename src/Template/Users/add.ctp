@@ -63,6 +63,15 @@
 			}else{
 				$("#listdepartment").prop('disabled',false);
 			}
+			if ($("#listrole").val() == 5 ){
+				$("#listuser").hide();
+                $("label[for='listuser']").hide();
+                $("#listuser").prop('required',false);
+			}else{
+				$("#listuser").show();
+                $("label[for='listuser']").show();   
+                $("#listuser").prop('required',true);				
+			}
 			$("#listdepartment" ).val('');
 			$("#listuser").prop('disabled',true);
 			$("#listdesignation").prop('disabled',true);

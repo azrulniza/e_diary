@@ -101,7 +101,7 @@ class UsersController extends AppController
 		}
 		
 		$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1])->order(['name']);
-        $users = $this->paginate($query);
+        $users = $query;
         $this->set(compact('users','reportTo','organizations','organizationSelected','userRoles','search_name','currentUser'));
     }
 

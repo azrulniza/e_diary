@@ -1,13 +1,7 @@
 <script text="javascript">
 $(document).ready( function () {
-    $('#dataTables-users').DataTable({
-		'paging'      : false,
-		'lengthChange': false,
-		'searching'   : false,
-		'ordering'    : true,
-		'info'        : true,
-		'autoWidth'   : false
-	});
+    $('#dataTables-users').DataTable({  "dom": '<lf<t>ip>'
+});
 } );
 
 </script>
@@ -88,14 +82,14 @@ $(document).ready( function () {
                 </div>
             </div>
             <div class="box-footer">
-                <div class="paginator">
+                <!--<div class="paginator">
                     <ul class="pagination">
                         <?= $this->Paginator->prev('< ' . __('previous')) ?>
                         <?= $this->Paginator->numbers() ?>
                         <?= $this->Paginator->next(__('next') . ' >') ?>
                     </ul>
                     <p><?= $this->Paginator->counter() ?></p>
-                </div>
+                </div>-->
             </div>
 			<?php }else {?>
                     <div class="box-body">

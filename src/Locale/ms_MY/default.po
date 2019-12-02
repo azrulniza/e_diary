@@ -3453,3 +3453,15 @@ msgstr "Sila sertakan \'.\' dalam alamat e-mel."
 
 msgid "\'.\' cannot be used at last position."
 msgstr " "
+
+msgid "Show _MENU_"
+msgstr "Paparkan _MENU_"
+
+msgid "Showing _PAGE_ of _PAGES_"
+msgstr "Paparan _PAGE_ dari _PAGES_"
+
+msgid "(filtered from _MAX_ total records)"
+msgstr "(ditapis dari _MAX_ rekod)"
+
+msgid "Search:"
+msgstr "Carian:"

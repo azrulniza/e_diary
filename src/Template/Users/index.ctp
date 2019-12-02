@@ -1,7 +1,21 @@
 <script text="javascript">
 $(document).ready( function () {
-    $('#dataTables-users').DataTable({  "dom": '<lf<t>ip>'
-});
+    $('#dataTables-users').DataTable({  
+		"dom": '<lf<t>ip>',
+		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "<?php echo __('All') ?>"]],
+		"language": {
+            "lengthMenu": "<?php echo __('Show _MENU_') ?>",
+            "zeroRecords": "<?php echo __('No Record') ?>",
+            "info": "<?php echo __('Showing _PAGE_ of _PAGES_') ?>",
+            "infoEmpty": "<?php echo __('No Record') ?>",
+            "infoFiltered": "<?php echo __('(filtered from _MAX_ total records)') ?>",
+			"search":         "<?php echo __('Search:') ?>",
+			"paginate": {
+				"next":       "<?php echo __('next') ?>",
+				"previous":   "<?php echo __('previous') ?>"
+			}
+		}
+	});
 } );
 
 </script>
@@ -18,8 +32,8 @@ $(document).ready( function () {
 					endif; ?>
 					
 					<?php
-                    echo $this->Form->input('search', ['label' => __('Name'),'id'=>'myInput', 'type'=>'text','class' => 'form-control','style'=>'width:345px; height:32px;','value' => $search_name]);
-					?><br><br>
+                    //echo $this->Form->input('search', ['label' => __('Name'),'id'=>'myInput', 'type'=>'text','class' => 'form-control','style'=>'width:345px; height:32px;','value' => $search_name]);
+					?>
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="search"></label>
 						<div class="col-md-10"><button class="btn btn-primary" type="submit"><?php echo __('Search') ;?></button></div>
@@ -93,7 +107,7 @@ $(document).ready( function () {
             </div>
 			<?php }else {?>
                     <div class="box-body">
-                        <?php echo __('No user found.') ?>
+                        <?php echo __('No Record') ?>
                     </div>
 
             <?php } ?>

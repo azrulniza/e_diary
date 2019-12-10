@@ -252,7 +252,7 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
-			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
+			$roles = $this->Users->Roles->find('list', ['limit' => 200])->order(['description ASC']);
 			$reportTo = $this->Users->find('list');/* ->contain('Roles');
 			$reportTo->matching('Roles', function ($q) {
                 return $q->where(['Roles.id IN' => [SUPERVISOR]]);
@@ -412,7 +412,7 @@ class UsersController extends AppController
 		$selected_designation = $this->UserDesignations->find()->where(['user_id'=> $id])->first()->designation_id;
 		$selected_reportTo = $this->Users->find()->where(['id'=> $id])->first()->report_to;
 		if ($this->AuthUser->hasRole(MASTER_ADMIN) ) {
-			$roles = $this->Users->Roles->find('list', ['limit' => 200]);
+			$roles = $this->Users->Roles->find('list', ['limit' => 200])->order(['description ASC']);
 			
 			$organizations = $this->Organizations->find('list', ['limit' => 200])->where(['status'=>1])->order(['name']);
 			$designations = $this->Designations->find('list', ['limit' => 200])->where(['organization_id'=>$selected_dept])->where(['status'=>1])->order(['name']);

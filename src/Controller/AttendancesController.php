@@ -489,7 +489,7 @@ class AttendancesController extends AppController
                 $statusSelected = $this->request->query('status');
             }
             
-            $sql="SELECT `attendance_lates`.*, attendances.cdate AS clock_in,Users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM `attendance_lates` 
+            $sql="SELECT `attendance_lates`.*, attendances.cdate AS clock_in,users.id AS user_id, Users.name AS username, Users.`report_to`, designations.`id` AS desgination_id, designations.`name` AS designation_name, designations.`gred` AS designation_gred, organizations.`name` AS organization_name, organizations.`id` AS organization_id FROM `attendance_lates` 
                     JOIN `attendances` ON attendances.`id`=attendance_lates.`attendance_id`
                     JOIN users ON users.id=attendances.`user_id`
                     JOIN `user_organizations` ON `user_organizations`.`user_id`=users.`id`

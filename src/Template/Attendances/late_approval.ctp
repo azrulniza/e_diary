@@ -9,7 +9,7 @@
                 <div class="attendances index dataTable_wrapper table-responsive">
                  
                     <?php //print_r($attendance_in); die;?>
-                    <?php if($userRoles->hasRole(['Master Admin'])) :?>
+                    <?php if($userRoles->hasRole(['Ketua Pengarah','Master Admin','Admin','Supervisor'])) :?>
 
                         <table id="addTable" class="table-condensed" style="table-layout: auto;">
                                 <tbody>
@@ -84,7 +84,7 @@
                                 <th><?= __('Late Remark') ?></th>
                                 <th><?= __('Status') ?></th>
                                
-                                <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
+                                <?php if($userRoles->hasRole(['Ketua Pengarah','Master Admin','Admin','Supervisor'])) :?>
                                     <th class="actions"><?= __('Actions') ?></th>
                                 <?php endif; ?>
                             </tr>
@@ -141,7 +141,7 @@
                                 
                                 </td>
                                 
-                               <?php if($userRoles->hasRole(['Master Admin','Admin','Supervisor'])) :?>
+                               <?php if($userRoles->hasRole(['Ketua Pengarah','Master Admin','Admin','Supervisor'])) :?>
                                     <td class="actions">
                                         
                                         <div class="btn-group">

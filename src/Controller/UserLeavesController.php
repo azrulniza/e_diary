@@ -92,10 +92,55 @@ class UserLeavesController extends AppController
             $list_status = $arrayStatus;
         }
 
+        if ($userRoles->hasRole(['Ketua Pengarah'])) {
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name'=>'ASC']);
 
-        if ($userRoles->hasRole(['Master Admin'])) {
-            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
-            $list_user = $this->Users->find('list')->where(["status"=>1]);
+            $list_user = $this->Users->find('list')->contain(['UsersRoles.Roles'])->innerJoinWith('UsersRoles.Roles', function($q){ return $q->where(['UsersRoles.role_id '=>2]); })->where(["status"=>1])->order(['Users.name'=>'ASC']);
+            
+            $organizationSelected = $this->request->query('department');
+            $staffSelected = $this->request->query('staff');
+            $statusSelected = $this->request->query('status');
+
+            $sql_leave = "SELECT user_leaves.*, leave_status.`name` AS leave_status_name, leave_types.`name`AS leave_type_name,users.id AS user_id, users.name AS user_name, organizations.id AS organization_id, organizations.`name` AS organizations_name FROM user_leaves 
+                JOIN users on users.id=user_leaves.user_id
+                JOIN users_roles ON users_roles.user_id=users.id
+                JOIN leave_status ON leave_status.`id`=user_leaves.`leave_status_id`
+                JOIN leave_types ON leave_types.`id` = user_leaves.`leave_type_id`
+                JOIN `user_organizations` ON `user_organizations`.`user_id`= `users`.`id` 
+                JOIN organizations ON organizations.id = user_organizations.`organization_id`";
+
+            if(!empty($organizationSelected) AND !empty($staffSelected) AND !empty($statusSelected)){ // all selected
+                $sql_leave .= " WHERE organizations.id=$organizationSelected AND users.id=$staffSelected AND user_leaves.leave_status_id=$statusSelected";
+            
+            }else if(!empty($organizationSelected) AND empty($staffSelected) AND empty($statusSelected)){ // organization only
+                $sql_leave .= " WHERE organizations.id=$organizationSelected";
+                
+            }else if(!empty($organizationSelected) AND empty($staffSelected) AND !empty($statusSelected)){ // organization & status
+                $sql_leave .= " WHERE organizations.id=$organizationSelected AND user_leaves.leave_status_id=$statusSelected";
+                
+            }else if(!empty($organizationSelected) AND !empty($staffSelected) AND empty($statusSelected)){ //organization & staff
+                $sql_leave .= " WHERE organizations.id=$organizationSelected AND users.id=$staffSelected";
+                
+            }else if(empty($organizationSelected) AND !empty($staffSelected) AND empty($statusSelected)){ // staff
+                $sql_leave .= " WHERE users.id=$staffSelected";
+                
+            }else if(empty($organizationSelected) AND !empty($staffSelected) AND !empty($statusSelected)){ // staff & status
+                $sql_leave .= " WHERE users.id=$staffSelected AND user_leaves.leave_status_id=$statusSelected";
+               
+            }else if(empty($organizationSelected) AND empty($staffSelected) AND !empty($statusSelected)){ // status
+                $sql_leave .= " WHERE leave_status.id=$statusSelected";
+                
+            }
+
+
+           
+            $sql_leave .=" AND users_roles.role_id=2 ORDER BY user_leaves.cdate desc";
+            $stmt_sql_leave = $conn->execute($sql_leave);
+            $userLeaves = $stmt_sql_leave->fetchAll('assoc');
+
+        }elseif ($userRoles->hasRole(['Master Admin'])) {
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name'=>'ASC']);
+            $list_user = $this->Users->find('list')->where(["status"=>1])->order(['Users.name'=>'ASC']);
             
             $organizationSelected = $this->request->query('department');
             $staffSelected = $this->request->query('staff');
@@ -140,7 +185,7 @@ class UserLeavesController extends AppController
 
            // $list_user = $this->Users->find('list')->contain(['UserOrganizations'])->where(["Users.status"=>1])->where(['UserOrganizations.organization_id'=>"$user_organization_id"]);
             $list_user = $this->Users->find('list')->order(['Users.name' => 'ASC'])->innerJoinWith('UserOrganizations.Organizations' , function($q) use($user_organization_id){
-            return $q->where(['UserOrganizations.organization_id'=>$user_organization_id])->where(['Users.status'=>1]);});
+            return $q->where(['UserOrganizations.organization_id'=>$user_organization_id])->where(['Users.status'=>1])->order(['Users.name'=>'ASC']);});
 
             //$list_status = $this->LeaveStatus->find('list')->where(["status"=>1]);
 

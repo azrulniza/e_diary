@@ -29,12 +29,12 @@
 						  
 							echo $date_control;
 						?>
-						<?php if ($userRoles->hasRole(['Master Admin'])) :?>
+						<?php if ($userRoles->hasRole(['Master Admin','Ketua Pengarah'])) :?>
 							<?php
 								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments, 'empty'=>__('All'),'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
 						<?php endif; ?>
-						<?php if ($userRoles->hasRole(['Master Admin','Supervisor'])) :?>
+						<?php if ($userRoles->hasRole(['Master Admin','Supervisor','Ketua Pengarah'])) :?>
 							<?php
 								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users, 'empty'=>__('All'),'value'=>$userSelected,'style'=>'width:40%']);
 							?>

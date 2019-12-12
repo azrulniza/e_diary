@@ -11,7 +11,7 @@
                         <table id="addTable" class="table-condensed" style="table-layout: auto;">
                                 <tbody>
                                     <tr>
-                                        <?php if($userRoles->hasRole(['Master Admin'])) :?>
+                                        <?php if($userRoles->hasRole(['Master Admin','Ketua Pengarah'])) :?>
                                         <td align="left"><label for="department"><?php echo $this->Form->label('Department');?></label></td>
                                         <td>    
                                            
@@ -20,7 +20,7 @@
                                              
                                         </td>
                                         <?php endif; ?>
-                                        <?php if($userRoles->hasRole(['Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
+                                        <?php if($userRoles->hasRole(['Ketua Pengarah','Master Admin']) OR $userRoles->hasRole(['Supervisor']) OR $userRoles->hasRole(['Admin'])) :?>
                                         <td align="left"><label for="staff"><?php echo $this->Form->label('Staff');?></label></td>
                                         <td>                                             
                                             
@@ -98,7 +98,7 @@
                                                 echo $this->Form->postLink($this->Html->tag('i', __('Cancel')), ['action' => 'cancel', $userLeave['id']], ['escape' => false, 'title' => __('Cancel'), 'class' => 'btn btn-default btn-xs', 'data-toggle'=>'tooltip', 'confirm' => __('Are you sure you want to CANCEL this leave application?')]);
                                             }
 
-                                            if($userRoles->hasRole(['Master Admin','Supervisor'])){
+                                            if($userRoles->hasRole(['Ketua Pengarah','Master Admin','Supervisor'])){
                                                 echo $this->Form->postLink($this->Html->tag('i', __('Approve')), ['action' => 'approve', $userLeave['id']], ['escape' => false, 'title' => __('Approve'), 'class' => 'btn btn-success btn-xs','data-toggle'=>'tooltip','confirm' => __('Are you sure you want to APPROVE this leave application?')]);
 
                                                 //echo $this->Html->link($this->Html->tag('i', __('Reject')), ['action' => 'update', $userLeave['id']], ['escape' => false, 'title' => __('Reject'), 'class' => 'btn btn-danger btn-xs','data-toggle'=>'tooltip']);
@@ -163,7 +163,7 @@
                                     
                                        
                                         <?php if($userLeave['leave_status_id']==2){
-                                            if($userRoles->hasRole(['Master Admin','Supervisor','Staff'])){
+                                            if($userRoles->hasRole(['Ketua Pengarah','Master Admin','Supervisor','Staff'])){
                                              echo $this->Form->postLink($this->Html->tag('i', __('Void')), ['action' => 'void', $userLeave['id']], ['escape' => false, 'title' => __('Void'), 'class' => 'btn btn-default btn-xs', 'data-toggle'=>'tooltip', 'confirm' => __('Are you sure you want to VOID this leave application?')]);
                                             }
 

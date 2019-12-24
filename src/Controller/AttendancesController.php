@@ -63,7 +63,7 @@ class AttendancesController extends AppController
         $user_organization_id=$usersOrganization->organization_id;
 
         if ($userRoles->hasRole(['Master Admin'])) {
-            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name' => 'ASC']);;
 
             $organizationSelected = $this->request->query('department');
            
@@ -470,7 +470,7 @@ class AttendancesController extends AppController
         $user_organization_id=$usersOrganization->organization_id;
 
         if ($userRoles->hasRole(['Ketua Pengarah'])) {
-            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name' => 'ASC']);
 
             if ($this->request->is('post')) {
                 $data = $this->request->data;
@@ -562,7 +562,7 @@ class AttendancesController extends AppController
                 $attendances[$attendance_in['user_id']]=$attendance_in;
             }
         }elseif ($userRoles->hasRole(['Master Admin'])) {
-            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name' => 'ASC']);;
 
             if ($this->request->is('post')) {
                 $data = $this->request->data;
@@ -772,7 +772,7 @@ class AttendancesController extends AppController
         $user_organization_id=$usersOrganization->organization_id;
 
         if ($userRoles->hasRole(['Master Admin'])) {
-            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name' => 'ASC']);;
             
            
             $language_id = $this->getLanguageId();

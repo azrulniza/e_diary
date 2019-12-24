@@ -12,12 +12,12 @@
 						
 						<?php if ($userRoles->hasRole(['Master Admin','Ketua Pengarah'])) :?>
 							<?php
-								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments,'empty'=>__('-- Please Select --'), 'value'=>$departmentSelected,'style'=>'width:40%']);
+								echo $this->Form->input('department', ['label' => __('Departments'), 'type'=>'select','id'=>'listdepartment','class' => 'form-control autosubmit','options' => $departments,'empty'=>__('--Please Select--'), 'value'=>$departmentSelected,'style'=>'width:40%']);
 							?>		
 						<?php endif; ?>
 						<?php if (!$userRoles->hasRole(['Staff'])) :?>
 							<?php
-								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users,'empty'=>__('-- Please Select --'), 'value'=>$userSelected,'style'=>'width:40%']);
+								echo $this->Form->input('user', ['label' => __('Staffs'), 'type'=>'select', 'id'=>'listuser','class' => 'form-control autosubmit','options' => $users,'empty'=>__('--Please Select--'), 'value'=>$userSelected,'style'=>'width:40%']);
 							?>
 						<?php endif; ?>
 						<?php								

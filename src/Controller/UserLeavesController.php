@@ -373,7 +373,7 @@ class UserLeavesController extends AppController
         $user_organization_id=$usersOrganization->organization_id;
 
         if ($userRoles->hasRole(['Master Admin'])) {
-            $list_organization = $this->Organizations->find('list')->where(["status"=>1]);
+            $list_organization = $this->Organizations->find('list')->where(["status"=>1])->order(['name' => 'ASC']);
             $list_user = $this->UserLeaves->Users->find('list')->order(['Users.name' => 'ASC'])->where(["status"=>1]);
 
             $organizationSelected = $this->request->query('department');

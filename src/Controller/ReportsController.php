@@ -55,9 +55,9 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));
+		))->order(['name' => 'ASC']);
 		
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name'=>'ASC']);
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
@@ -169,12 +169,11 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+		))->order(['name' => 'ASC']);
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		$thisweekStart	= date('Y-m-d', strtotime( 'sunday last week' ) );
 		$thisweekEnd	= date( 'Y-m-d', strtotime( 'saturday this week' ) );
 		
-		//department session
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
 		
@@ -273,8 +272,8 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
         $users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));	
-		$departments = $this->Organizations->find('list')->where(['status'=>1]);
+		))->order(['name' => 'ASC']);	
+		$departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		$thismonthStart	= date('Y-m-1');
 		$thismonthEnd	= date( 'Y-m-t');
 		
@@ -381,8 +380,8 @@ class ReportsController extends AppController
 		$userId = $this->AuthUser->id();
         $user = $this->Users->find()->contain(['Roles'])->Where(['id' => "$userId"])->limit(1)->first();
         $userRoles = $this->Users->Roles->initRolesChecker($user->roles);
-		$users = $this->Users->find('list');
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+		$users = $this->Users->find('list')->order(['name' => 'ASC']);
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		$thismonthStart	= date('Y-m-01');
 		$thismonthEnd	= date( 'Y-m-t');
 		
@@ -1445,8 +1444,8 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));	
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+		))->order(['name' => 'ASC']);	
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		
 		//department session
 		$sqldepartment = "SELECT * FROM user_organizations WHERE user_id='".$userId."'";
@@ -1632,8 +1631,8 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));	
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+		))->order(['name' => 'ASC']);	
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		$connection = ConnectionManager::get('default');
 		
 		//department session
@@ -1894,8 +1893,8 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));	
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+		))->order(['name' => 'ASC']);	
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		$connection = ConnectionManager::get('default');
 		
 		//department session
@@ -2081,8 +2080,8 @@ class ReportsController extends AppController
 		//$users = $this->Users->find('list');
 		$users = $this->Users->find('list', array(
         'conditions' => array('Users.status' => '1')
-		));	
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+		))->order(['name' => 'ASC']);	
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(['name' => 'ASC']);
 		$connection = ConnectionManager::get('default');
 		
 		//department session

@@ -60,8 +60,8 @@
 						?>
 						<?php								
 							  $leaveType = array(
-							  '1' => 'Personal Matters',
-							  '2' => 'Work Affairs');
+							  '1' => __('Personal Matters'),
+							  '2' => __('Work Affairs'));
 							echo $this->Form->input(
 								'leaveType',
 								['label' => __('Purpose'),

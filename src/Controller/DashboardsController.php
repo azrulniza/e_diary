@@ -579,7 +579,7 @@ class DashboardsController extends AppController
             $user = $this->Users->find()->where(['id' => $userSelected])->first();
         }
 
-        $departments = $this->Organizations->find('list')->where(['status'=>1]);
+        $departments = $this->Organizations->find('list')->where(['status'=>1])->order(["name"=>"ASC"]);
 
 		//$staff_absent = 2;
 		//$staff_working = 10;
